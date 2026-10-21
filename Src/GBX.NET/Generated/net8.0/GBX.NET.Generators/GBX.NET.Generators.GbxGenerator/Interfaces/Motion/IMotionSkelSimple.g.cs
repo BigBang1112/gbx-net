@@ -31,38 +31,37 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionSkelSimpleMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionSkelSimple where T0 : class
+{
+    new T0? SkelValues { get; set; }
+}
 public partial interface IMotionSkelSimple : IClassVersion<global::GBX.NET.Engines.Motion.CMotionSkelSimple>
 {
     global::GBX.NET.Interfaces.Function.IFuncSkelValues? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelSimpleTM10 : IMotionSkelSimple
+public partial interface IMotionSkelSimpleTM10 : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelSimpleTMPU : IMotionSkelSimple
+public partial interface IMotionSkelSimpleTMPU : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelSimpleTMSX : IMotionSkelSimple
+public partial interface IMotionSkelSimpleTMSX : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelSimpleTMNESWC : IMotionSkelSimple
+public partial interface IMotionSkelSimpleTMNESWC : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelSimpleVSK5 : IMotionSkelSimple
+public partial interface IMotionSkelSimpleVSK5 : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelSimpleTMF : IMotionSkelSimple
+public partial interface IMotionSkelSimpleTMF : IMotionSkelSimple, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? SkelValues { get; set; }
 }
 

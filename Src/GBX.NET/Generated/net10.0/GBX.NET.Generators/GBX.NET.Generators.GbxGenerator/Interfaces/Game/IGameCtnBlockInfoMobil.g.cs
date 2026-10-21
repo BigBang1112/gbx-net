@@ -31,6 +31,27 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockInfoMobilMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobil where T0 : class where T1 : class
+{
+    new T0? OldMobil { get; set; }
+    new IReadOnlyList<T1>? SolidDecals { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockInfoMobilMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobil where T0 : class
+{
+    global::GBX.NET.Engines.Plug.CPlugPrefab? PrefabFid { get; set; }
+    T0? RailPath { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockInfoMobilMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobil where T0 : class
+{
+    Vec3 GeomRotation { get; set; }
+    Vec3 GeomTranslation { get; set; }
+    bool HasGeomTransformation { get; set; }
+    T0? OldSolidAggreg { get; set; }
+    T0? SolidFid { get; set; }
+}
 public partial interface IGameCtnBlockInfoMobil : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil>
 {
     NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobilLink>? DynaLinks { get; set; }
@@ -40,52 +61,25 @@ public partial interface IGameCtnBlockInfoMobil : IClassVersion<global::GBX.NET.
     int SolidFrequency { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoMobilMP3 : IGameCtnBlockInfoMobil
+public partial interface IGameCtnBlockInfoMobilMP3 : IGameCtnBlockInfoMobil, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? OldMobil { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3>? SolidDecals { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoMobilTMT : IGameCtnBlockInfoMobil
+public partial interface IGameCtnBlockInfoMobilTMT : IGameCtnBlockInfoMobil, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>
 {
-    Vec3 GeomRotation { get; set; }
-    Vec3 GeomTranslation { get; set; }
-    bool HasGeomTransformation { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? OldMobil { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? OldSolidAggreg { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT>? SolidDecals { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? SolidFid { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoMobilMP4 : IGameCtnBlockInfoMobil
+public partial interface IGameCtnBlockInfoMobilMP4 : IGameCtnBlockInfoMobil, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers2<global::GBX.NET.Interfaces.Plug.IPlugPathMP4>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>
 {
-    Vec3 GeomRotation { get; set; }
-    Vec3 GeomTranslation { get; set; }
-    bool HasGeomTransformation { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? OldMobil { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? OldSolidAggreg { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugPrefab? PrefabFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugPathMP4? RailPath { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4>? SolidDecals { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? SolidFid { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugPathMP4? TrafficPath { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoMobilTM2020 : IGameCtnBlockInfoMobil
+public partial interface IGameCtnBlockInfoMobilTM2020 : IGameCtnBlockInfoMobil, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020, global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers2<global::GBX.NET.Interfaces.Plug.IPlugPathTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMobilMembers3<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020>? CitizenRoadChunks { get; set; }
-    Vec3 GeomRotation { get; set; }
-    Vec3 GeomTranslation { get; set; }
-    bool HasGeomTransformation { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTM2020? OldMobil { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? OldSolidAggreg { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPlacementPatchTM2020>? PlacementPatches { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugPrefab? PrefabFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? RailPath { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugRecastPolyMeshDataTM2020? RecastPolyMeshData { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugRoadChunkTrafficTM2020>? RoadChunks { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020>? SolidDecals { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? SolidFid { get; set; }
     float VFXAngle { get; set; }
     Vec3 VFXDirection { get; set; }
     Vec3 VFXPosition { get; set; }

@@ -31,6 +31,24 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneFlatMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnZoneFlat
+{
+    bool AutoSimplifyGenealogy { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneFlatMembers2<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Game.IGameCtnZoneFlat where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    new T0? BlockInfoClip { get; set; }
+    new T1? BlockInfoFlat { get; set; }
+    new T2? BlockInfoPylon { get; set; }
+    new T3? BlockInfoRoad { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneFlatMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnZoneFlat
+{
+    bool GroundOnly { get; set; }
+}
 public partial interface IGameCtnZoneFlat : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnZoneFlat>, global::GBX.NET.Interfaces.Game.IGameCtnZone
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -44,136 +62,45 @@ public partial interface IGameCtnZoneFlat : IClassVersion<global::GBX.NET.Engine
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlat? BlockInfoFlat { get; set; }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylon? BlockInfoPylon { get; set; }
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoad? BlockInfoRoad { get; set; }
-    new int Height { get; set; }
-    new string? SurfaceId { get; set; }
-    new string? ZoneId { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTM10 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10
+public partial interface IGameCtnZoneFlatTM10 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM10, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTM10? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM10? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10? BlockInfoRoad { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTMPU : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU
+public partial interface IGameCtnZoneFlatTMPU : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMPU, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMPU? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMPU? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU? BlockInfoRoad { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTMSX : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX
+public partial interface IGameCtnZoneFlatTMSX : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMSX, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMSX? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMSX? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    bool GroundOnly { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTMNESWC : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC
+public partial interface IGameCtnZoneFlatTMNESWC : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMNESWC? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMNESWC? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    bool GroundOnly { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatVSK5 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5
+public partial interface IGameCtnZoneFlatVSK5 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonVSK5, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatVSK5? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonVSK5? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    bool GroundOnly { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTMF : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF
+public partial interface IGameCtnZoneFlatTMF : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMF, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMF? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMF? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    bool GroundOnly { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatMP3 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3
+public partial interface IGameCtnZoneFlatMP3 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    bool AutoSimplifyGenealogy { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatMP3? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool GroundOnly { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTMT : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT
+public partial interface IGameCtnZoneFlatTMT : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    bool AutoSimplifyGenealogy { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTMT? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool GroundOnly { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatMP4 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4
+public partial interface IGameCtnZoneFlatMP4 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    bool AutoSimplifyGenealogy { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatMP4? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool GroundOnly { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneFlatTM2020 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020
+public partial interface IGameCtnZoneFlatTM2020 : IGameCtnZoneFlat, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFlatMembers3
 {
-    bool AutoSimplifyGenealogy { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020? BlockInfoClip { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFlatTM2020? BlockInfoFlat { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? BlockInfoPylon { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020? BlockInfoRoad { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool GroundOnly { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 

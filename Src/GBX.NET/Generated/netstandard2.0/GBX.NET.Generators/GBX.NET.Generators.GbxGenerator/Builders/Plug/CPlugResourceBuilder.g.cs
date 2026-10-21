@@ -36,7 +36,7 @@ public abstract class CPlugResourceBuilderBase<TSelf> where TSelf : CPlugResourc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state;
     private protected CPlugResourceBuilderBase() => state = new();
     private protected CPlugResourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state) => this.state = state;
-    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state, global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]?>("Resources", value, GameVersion.MP4, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[])value.Clone(), static (node, value) => node.Resources = value);
+    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugResource> state, global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugResourceBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
     public global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]? Resources
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugModelShading.FidId[]?>("Resources");
@@ -54,6 +54,20 @@ public abstract class CPlugResourceBuilderBase<TSelf> where TSelf : CPlugResourc
 }
 public partial class CPlugResourceBuilder : CPlugResourceBuilderBase<CPlugResourceBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugResource CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugResource();
+        var chunk090BE000 = new global::GBX.NET.Engines.Plug.CPlugResource.Chunk090BE000();
+        node.Chunks.Add(chunk090BE000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugResource node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugResource.Chunk090BE000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BE000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugResource node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -63,13 +77,12 @@ public partial class CPlugResourceBuilder : CPlugResourceBuilderBase<CPlugResour
         public global::GBX.NET.Interfaces.Plug.IPlugResourceMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugResource Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugResource();
-            var chunk090BE000 = new global::GBX.NET.Engines.Plug.CPlugResource.Chunk090BE000();
-            node.Chunks.Add(chunk090BE000);
+            var node = CPlugResourceBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugResource.Chunk090BE000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090BE000 is missing or has an incompatible version.");
+            CPlugResourceBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugResourceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

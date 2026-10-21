@@ -39,7 +39,7 @@ public partial class CGameCtnMediaBlockTurret : global::GBX.NET.Interfaces.Game.
         get => DataTape;
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMP4.DataTape
+    global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>.DataTape
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnMediaBlockTurret : global::GBX.NET.Interfaces.Game.
         }
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretTM2020.DataTape
+    global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020>.DataTape
     {
         get
         {

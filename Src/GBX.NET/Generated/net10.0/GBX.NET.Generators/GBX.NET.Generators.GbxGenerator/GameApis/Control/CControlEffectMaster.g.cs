@@ -89,7 +89,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         get => SpecialEffect;
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.ActionEffect
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusEffect
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusGainedEffect
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusLostByAnotherEffect
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.FocusLostEffect
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.HidingEffect
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.ManagedEffect
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.ShowingEffect
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.SleepingEffect
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>.SpecialEffect
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.ActionEffect
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusEffect
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusGainedEffect
     {
         get
         {
@@ -239,7 +239,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusLostByAnotherEffect
     {
         get
         {
@@ -249,7 +249,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.FocusLostEffect
     {
         get
         {
@@ -259,7 +259,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.HidingEffect
     {
         get
         {
@@ -269,7 +269,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.ManagedEffect
     {
         get
         {
@@ -279,7 +279,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.ShowingEffect
     {
         get
         {
@@ -289,7 +289,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.SleepingEffect
     {
         get
         {
@@ -299,7 +299,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>.SpecialEffect
     {
         get
         {
@@ -309,7 +309,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.ActionEffect
     {
         get
         {
@@ -319,7 +319,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusEffect
     {
         get
         {
@@ -329,7 +329,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -339,7 +339,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusGainedEffect
     {
         get
         {
@@ -349,7 +349,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusLostByAnotherEffect
     {
         get
         {
@@ -359,7 +359,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.FocusLostEffect
     {
         get
         {
@@ -369,7 +369,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.HidingEffect
     {
         get
         {
@@ -379,7 +379,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.ManagedEffect
     {
         get
         {
@@ -389,7 +389,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.ShowingEffect
     {
         get
         {
@@ -399,7 +399,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.SleepingEffect
     {
         get
         {
@@ -409,7 +409,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.SpecialEffect
     {
         get
         {
@@ -419,7 +419,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.ActionEffect
     {
         get
         {
@@ -429,7 +429,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusEffect
     {
         get
         {
@@ -439,7 +439,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -449,7 +449,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusGainedEffect
     {
         get
         {
@@ -459,7 +459,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusLostByAnotherEffect
     {
         get
         {
@@ -469,7 +469,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.FocusLostEffect
     {
         get
         {
@@ -479,7 +479,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.HidingEffect
     {
         get
         {
@@ -489,7 +489,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.ManagedEffect
     {
         get
         {
@@ -499,7 +499,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.ShowingEffect
     {
         get
         {
@@ -509,7 +509,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.SleepingEffect
     {
         get
         {
@@ -519,7 +519,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.SpecialEffect
     {
         get
         {
@@ -529,7 +529,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.ActionEffect
     {
         get
         {
@@ -539,7 +539,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusEffect
     {
         get
         {
@@ -549,7 +549,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -559,7 +559,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusGainedEffect
     {
         get
         {
@@ -569,7 +569,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusLostByAnotherEffect
     {
         get
         {
@@ -579,7 +579,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.FocusLostEffect
     {
         get
         {
@@ -589,7 +589,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.HidingEffect
     {
         get
         {
@@ -599,7 +599,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.ManagedEffect
     {
         get
         {
@@ -609,7 +609,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.ShowingEffect
     {
         get
         {
@@ -619,7 +619,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.SleepingEffect
     {
         get
         {
@@ -629,7 +629,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.SpecialEffect
     {
         get
         {
@@ -639,7 +639,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.ActionEffect
     {
         get
         {
@@ -649,7 +649,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusEffect
     {
         get
         {
@@ -659,7 +659,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -669,7 +669,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusGainedEffect
     {
         get
         {
@@ -679,7 +679,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusLostByAnotherEffect
     {
         get
         {
@@ -689,7 +689,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.FocusLostEffect
     {
         get
         {
@@ -699,7 +699,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.HidingEffect
     {
         get
         {
@@ -709,7 +709,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.ManagedEffect
     {
         get
         {
@@ -719,7 +719,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.ShowingEffect
     {
         get
         {
@@ -729,7 +729,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.SleepingEffect
     {
         get
         {
@@ -739,7 +739,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.SpecialEffect
     {
         get
         {
@@ -749,7 +749,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.ActionEffect
     {
         get
         {
@@ -759,7 +759,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusEffect
     {
         get
         {
@@ -769,7 +769,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -779,7 +779,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusGainedEffect
     {
         get
         {
@@ -789,7 +789,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusLostByAnotherEffect
     {
         get
         {
@@ -799,7 +799,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.FocusLostEffect
     {
         get
         {
@@ -809,7 +809,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.HidingEffect
     {
         get
         {
@@ -819,7 +819,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.ManagedEffect
     {
         get
         {
@@ -829,7 +829,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.ShowingEffect
     {
         get
         {
@@ -839,7 +839,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.SleepingEffect
     {
         get
         {
@@ -849,7 +849,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.SpecialEffect
     {
         get
         {
@@ -859,7 +859,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SpecialEffect = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.ActionEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.ActionEffect
     {
         get
         {
@@ -869,7 +869,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ActionEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.FocusEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusEffect
     {
         get
         {
@@ -879,7 +879,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.FocusGainedByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusGainedByAnotherEffect
     {
         get
         {
@@ -889,7 +889,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.FocusGainedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusGainedEffect
     {
         get
         {
@@ -899,7 +899,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusGainedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.FocusLostByAnotherEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusLostByAnotherEffect
     {
         get
         {
@@ -909,7 +909,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostByAnotherEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.FocusLostEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.FocusLostEffect
     {
         get
         {
@@ -919,7 +919,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => FocusLostEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.HidingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.HidingEffect
     {
         get
         {
@@ -929,7 +929,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => HidingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.ManagedEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.ManagedEffect
     {
         get
         {
@@ -939,7 +939,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ManagedEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.ShowingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.ShowingEffect
     {
         get
         {
@@ -949,7 +949,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => ShowingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.SleepingEffect
+    global::GBX.NET.Interfaces.Control.IControlEffectTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.SleepingEffect
     {
         get
         {
@@ -959,7 +959,7 @@ public partial class CControlEffectMaster : global::GBX.NET.Interfaces.Control.I
         }
         set => SleepingEffect = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffect node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020.SpecialEffect
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.SpecialEffect
     {
         get
         {

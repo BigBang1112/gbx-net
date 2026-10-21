@@ -31,48 +31,45 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAudioMembers1 : global::GBX.NET.Interfaces.Plug.IPlugAudio
+{
+    string Name { get; set; }
+}
 public partial interface IPlugAudio : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAudio>
 {
 }
 
-public partial interface IPlugAudioTMSX : IPlugAudio
+public partial interface IPlugAudioTMSX : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioTMNESWC : IPlugAudio
+public partial interface IPlugAudioTMNESWC : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioVSK5 : IPlugAudio
+public partial interface IPlugAudioVSK5 : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioTMF : IPlugAudio
+public partial interface IPlugAudioTMF : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioMP3 : IPlugAudio
+public partial interface IPlugAudioMP3 : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioTMT : IPlugAudio
+public partial interface IPlugAudioTMT : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioMP4 : IPlugAudio
+public partial interface IPlugAudioMP4 : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
-public partial interface IPlugAudioTM2020 : IPlugAudio
+public partial interface IPlugAudioTM2020 : IPlugAudio, global::GBX.NET.Interfaces.Plug.IPlugAudioMembers1
 {
-    string Name { get; set; }
 }
 
 public partial interface IPlugAudioTM10 : IPlugAudio

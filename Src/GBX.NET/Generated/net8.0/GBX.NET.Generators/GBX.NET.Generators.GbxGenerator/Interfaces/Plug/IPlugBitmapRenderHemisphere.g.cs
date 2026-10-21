@@ -31,6 +31,19 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderHemisphereMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphere
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
+    float SpecularPower0 { get; set; }
+    float SpecularPower1 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderHemisphereMembers2 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphere
+{
+    bool AutoScaleWithPower { get; set; }
+    bool UseLightDir { get; set; }
+}
 public partial interface IPlugBitmapRenderHemisphere : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRender
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,149 +53,45 @@ public partial interface IPlugBitmapRenderHemisphere : IClassVersion<global::GBX
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new ushort IVIdMask { get; set; }
-    new ushort IVIdRef { get; set; }
-    new ushort SVIdMask { get; set; }
-    new ushort SVIdRef { get; set; }
 }
 
 public partial interface IPlugBitmapRenderHemisphereTM10 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new uint LegacyRenderFlags { get; set; }
 }
 
 public partial interface IPlugBitmapRenderHemisphereTMPU : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new uint LegacyRenderFlags { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereTMSX : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX
+public partial interface IPlugBitmapRenderHemisphereTMSX : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereTMNESWC : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC
+public partial interface IPlugBitmapRenderHemisphereTMNESWC : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC? RenderSub { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereVSK5 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
+public partial interface IPlugBitmapRenderHemisphereVSK5 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5? RenderSub { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereTMF : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF
+public partial interface IPlugBitmapRenderHemisphereTMF : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF? RenderSub { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
 }
 
 public partial interface IPlugBitmapRenderHemisphereMP3 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3
 {
-    new float FogCustomFarZ { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? RenderSub { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereTMT : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT
+public partial interface IPlugBitmapRenderHemisphereTMT : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers2
 {
-    bool AutoScaleWithPower { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT? RenderSub { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
-    bool UseLightDir { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereMP4 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4
+public partial interface IPlugBitmapRenderHemisphereMP4 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers2
 {
-    bool AutoScaleWithPower { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4? RenderSub { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
-    bool UseLightDir { get; set; }
 }
 
-public partial interface IPlugBitmapRenderHemisphereTM2020 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020
+public partial interface IPlugBitmapRenderHemisphereTM2020 : IPlugBitmapRenderHemisphere, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderHemisphereMembers2
 {
-    bool AutoScaleWithPower { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapRenderHemisphere.EHemiLayout HemiLayout { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020? RenderSub { get; set; }
-    float SpecularPower0 { get; set; }
-    float SpecularPower1 { get; set; }
-    bool UseLightDir { get; set; }
 }
 

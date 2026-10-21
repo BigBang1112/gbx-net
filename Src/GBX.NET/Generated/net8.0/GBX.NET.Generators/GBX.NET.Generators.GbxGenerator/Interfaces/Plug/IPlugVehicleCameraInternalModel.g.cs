@@ -31,6 +31,17 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleCameraInternalModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModel
+{
+    bool CamBlendEnabled { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleCameraInternalModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModel
+{
+    bool IsFirstPerson { get; set; }
+    Vec3 PitchYawRoll { get; set; }
+}
 public partial interface IPlugVehicleCameraInternalModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel>, global::GBX.NET.Interfaces.Plug.IPlugCamControlModel
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -49,31 +60,20 @@ public partial interface IPlugVehicleCameraInternalModelMP3 : IPlugVehicleCamera
 {
 }
 
-public partial interface IPlugVehicleCameraInternalModelTMT : IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT
+public partial interface IPlugVehicleCameraInternalModelTMT : IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMembers2
 {
-    bool IsFirstPerson { get; set; }
-    Vec3 PitchYawRoll { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake { get; set; }
 }
 
-public partial interface IPlugVehicleCameraInternalModelMP4 : IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4
+public partial interface IPlugVehicleCameraInternalModelMP4 : IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMembers2
 {
-    bool CamBlendEnabled { get; set; }
-    bool IsFirstPerson { get; set; }
-    Vec3 PitchYawRoll { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake { get; set; }
 }
 
-public partial interface IPlugVehicleCameraInternalModelTM2020 : IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020
+public partial interface IPlugVehicleCameraInternalModelTM2020 : IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMembers2
 {
     float BulletTimeFovSmoothDelta_m_Delta { get; set; }
     int BulletTimeFovSmoothDelta_m_TimeDown { get; set; }
     int BulletTimeFovSmoothDelta_m_TimeUp { get; set; }
-    bool CamBlendEnabled { get; set; }
-    bool IsFirstPerson { get; set; }
     float PilotHeadCoef { get; set; }
-    Vec3 PitchYawRoll { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake { get; set; }
     float SuperBulletTimeFovSmoothMultiplier { get; set; }
     int SuperBulletTimeFovSmoothMultiplier_m_TimeDown { get; set; }
     int SuperBulletTimeFovSmoothMultiplier_m_TimeUp { get; set; }

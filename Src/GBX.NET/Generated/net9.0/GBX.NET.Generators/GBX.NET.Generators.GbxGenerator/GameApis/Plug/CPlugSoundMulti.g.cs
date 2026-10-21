@@ -34,102 +34,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugSoundMulti : global::GBX.NET.Interfaces.Plug.IPlugSoundMulti, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugSoundMultiBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3.BackingSound
-    {
-        get
-        {
-            var node = BackingSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3.FocusedSound
-    {
-        get
-        {
-            var node = FocusedSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3.OldSubSources
-    {
-        get => OldSubSources is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(() => OldSubSources, static node => { if (node is null) throw new MemberNullException("OldSubSources"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => OldSubSources = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3.PitchFromDistance
-    {
-        get
-        {
-            var node = PitchFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP3.VolumeFromDistance
-    {
-        get
-        {
-            var node = VolumeFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT.BackingSound
-    {
-        get
-        {
-            var node = BackingSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT.FocusedSound
-    {
-        get
-        {
-            var node = FocusedSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT.PitchFromDistance
-    {
-        get
-        {
-            var node = PitchFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT.VolumeFormSpeedKmh
-    {
-        get
-        {
-            var node = VolumeFormSpeedKmh;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT.VolumeFromDistance
-    {
-        get
-        {
-            var node = VolumeFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTMT.VolumeFromInput
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFromInput
     {
         get
         {
@@ -139,57 +44,7 @@ public partial class CPlugSoundMulti : global::GBX.NET.Interfaces.Plug.IPlugSoun
         }
         set => VolumeFromInput = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4.BackingSound
-    {
-        get
-        {
-            var node = BackingSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4.FocusedSound
-    {
-        get
-        {
-            var node = FocusedSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4.PitchFromDistance
-    {
-        get
-        {
-            var node = PitchFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4.VolumeFormSpeedKmh
-    {
-        get
-        {
-            var node = VolumeFormSpeedKmh;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4.VolumeFromDistance
-    {
-        get
-        {
-            var node = VolumeFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMP4.VolumeFromInput
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.VolumeFromInput
     {
         get
         {
@@ -199,57 +54,7 @@ public partial class CPlugSoundMulti : global::GBX.NET.Interfaces.Plug.IPlugSoun
         }
         set => VolumeFromInput = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020.BackingSound
-    {
-        get
-        {
-            var node = BackingSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020.FocusedSound
-    {
-        get
-        {
-            var node = FocusedSound;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020.PitchFromDistance
-    {
-        get
-        {
-            var node = PitchFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020.VolumeFormSpeedKmh
-    {
-        get
-        {
-            var node = VolumeFormSpeedKmh;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020.VolumeFromDistance
-    {
-        get
-        {
-            var node = VolumeFromDistance;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiTM2020.VolumeFromInput
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMultiMembers4<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.VolumeFromInput
     {
         get
         {

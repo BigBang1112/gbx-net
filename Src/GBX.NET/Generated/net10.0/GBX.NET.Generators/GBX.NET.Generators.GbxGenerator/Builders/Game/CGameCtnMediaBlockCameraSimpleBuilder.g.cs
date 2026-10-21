@@ -36,8 +36,8 @@ public abstract class CGameCtnMediaBlockCameraSimpleBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state;
     private protected CGameCtnMediaBlockCameraSimpleBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>?>("Keys", value, GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>(value), static (node, value) => node.Keys = value);
-    private protected static void SetUseSmoothInterpolation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state, bool value) => state.Set<bool>("UseSmoothInterpolation", value, GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.UseSmoothInterpolation = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetUseSmoothInterpolation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraSimpleBuilderAssignments.GetUseSmoothInterpolationAssignment(), value, GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Key>?>("Keys");
@@ -69,6 +69,35 @@ public abstract class CGameCtnMediaBlockCameraSimpleBuilderBase<TSelf> where TSe
 }
 public partial class CGameCtnMediaBlockCameraSimpleBuilder : CGameCtnMediaBlockCameraSimpleBuilderBase<CGameCtnMediaBlockCameraSimpleBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple();
+        var chunk030A1002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002(game);
+        node.Chunks.Add(chunk030A1002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A1002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple();
+        var chunk030A1002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002(game);
+        node.Chunks.Add(chunk030A1002);
+        var chunk0309F002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk0309F002();
+        chunk0309F002.Version = 3;
+        node.Chunks.Add(chunk0309F002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A1002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk0309F002>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0309F002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TMT : CGameCtnMediaBlockCameraSimpleBuilderBase<TMT>
@@ -77,13 +106,12 @@ public partial class CGameCtnMediaBlockCameraSimpleBuilder : CGameCtnMediaBlockC
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple();
-            var chunk030A1002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002(GameVersion.TMT);
-            node.Chunks.Add(chunk030A1002);
+            var node = CGameCtnMediaBlockCameraSimpleBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk030A1002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraSimpleBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockCameraSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -96,17 +124,12 @@ public partial class CGameCtnMediaBlockCameraSimpleBuilder : CGameCtnMediaBlockC
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraSimpleTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple();
-            var chunk030A1002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002(GameVersion.TM2020);
-            node.Chunks.Add(chunk030A1002);
-            var chunk0309F002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk0309F002();
-            chunk0309F002.Version = 3;
-            node.Chunks.Add(chunk0309F002);
+            var node = CGameCtnMediaBlockCameraSimpleBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk030A1002>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk030A1002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraSimple.Chunk0309F002>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0309F002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraSimpleBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockCameraSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

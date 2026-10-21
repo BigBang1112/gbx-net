@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationTerrainModifierMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifier where T0 : class
+{
+    new T0? Remapping { get; set; }
+}
 public partial interface IGameCtnDecorationTerrainModifier : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier>
 {
     string? IdName { get; set; }
@@ -38,28 +43,23 @@ public partial interface IGameCtnDecorationTerrainModifier : IClassVersion<globa
     global::GBX.NET.Interfaces.Plug.IPlugGameSkin? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationTerrainModifierVSK5 : IGameCtnDecorationTerrainModifier
+public partial interface IGameCtnDecorationTerrainModifierVSK5 : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationTerrainModifierTMF : IGameCtnDecorationTerrainModifier
+public partial interface IGameCtnDecorationTerrainModifierTMF : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationTerrainModifierMP3 : IGameCtnDecorationTerrainModifier
+public partial interface IGameCtnDecorationTerrainModifierMP3 : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationTerrainModifierTMT : IGameCtnDecorationTerrainModifier
+public partial interface IGameCtnDecorationTerrainModifierTMT : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationTerrainModifierMP4 : IGameCtnDecorationTerrainModifier
+public partial interface IGameCtnDecorationTerrainModifierMP4 : IGameCtnDecorationTerrainModifier, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? Remapping { get; set; }
 }
 

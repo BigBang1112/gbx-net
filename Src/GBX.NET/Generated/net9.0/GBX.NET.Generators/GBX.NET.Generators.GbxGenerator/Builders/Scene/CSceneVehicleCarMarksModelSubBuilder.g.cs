@@ -36,26 +36,26 @@ public abstract class CSceneVehicleCarMarksModelSubBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state;
     private protected CSceneVehicleCarMarksModelSubBuilderBase() => state = new();
     private protected CSceneVehicleCarMarksModelSubBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state) => this.state = state;
-    private protected static void SetAlpha(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("Alpha", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Alpha = value);
-    private protected static void SetAlphaCoefForceX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("AlphaCoefForceX", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AlphaCoefForceX = value);
-    private protected static void SetAlphaCoefForceZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("AlphaCoefForceZ", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AlphaCoefForceZ = value);
-    private protected static void SetAlphaMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("AlphaMax", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AlphaMax = value);
-    private protected static void SetCondForceXGreaterThan(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("CondForceXGreaterThan", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CondForceXGreaterThan = value);
-    private protected static void SetCondForceZGreaterThan(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("CondForceZGreaterThan", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CondForceZGreaterThan = value);
-    private protected static void SetCondGroundContact(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, bool value) => state.Set<bool>("CondGroundContact", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CondGroundContact = value);
-    private protected static void SetCondMaterialId(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, byte value) => state.Set<byte>("CondMaterialId", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CondMaterialId = value);
-    private protected static void SetCondSliding(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, bool value) => state.Set<bool>("CondSliding", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CondSliding = value);
-    private protected static void SetFadeDist(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("FadeDist", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FadeDist = value);
-    private protected static void SetGroundOffset(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("GroundOffset", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.GroundOffset = value);
-    private protected static void SetLegacyFlag(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, bool value) => state.Set<bool>("LegacyFlag", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LegacyFlag = value);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Material = value);
-    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("Material", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Material.CopyFrom(reference));
-    private protected static void SetSampleMinDist(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("SampleMinDist", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SampleMinDist = value);
-    private protected static void SetTexVPerMeter(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("TexVPerMeter", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TexVPerMeter = value);
-    private protected static void SetWidth(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("Width", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Width = value);
-    private protected static void SetWidthCoefForceX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("WidthCoefForceX", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.WidthCoefForceX = value);
-    private protected static void SetWidthCoefForceZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("WidthCoefForceZ", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.WidthCoefForceZ = value);
-    private protected static void SetWidthMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set<float>("WidthMax", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.WidthMax = value);
+    private protected static void SetAlpha(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAlphaCoefForceX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaCoefForceXAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAlphaCoefForceZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaCoefForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAlphaMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetAlphaMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCondForceXGreaterThan(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondForceXGreaterThanAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCondForceZGreaterThan(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondForceZGreaterThanAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCondGroundContact(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondGroundContactAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCondMaterialId(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondMaterialIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCondSliding(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetCondSlidingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFadeDist(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetFadeDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetGroundOffset(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetGroundOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLegacyFlag(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetLegacyFlagAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSampleMinDist(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetSampleMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTexVPerMeter(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetTexVPerMeterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetWidth(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetWidthCoefForceX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthCoefForceXAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetWidthCoefForceZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthCoefForceZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetWidthMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelSubBuilderAssignments.GetWidthMaxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float Alpha
     {
         get => state.Get<float>("Alpha");
@@ -255,6 +255,20 @@ public abstract class CSceneVehicleCarMarksModelSubBuilderBase<TSelf> where TSel
 }
 public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMarksModelSubBuilderBase<CSceneVehicleCarMarksModelSubBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub();
+        var chunk0A082003 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003();
+        node.Chunks.Add(chunk0A082003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A082003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -270,13 +284,12 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub();
-            var chunk0A082003 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003();
-            node.Chunks.Add(chunk0A082003);
+            var node = CSceneVehicleCarMarksModelSubBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A082003 is missing or has an incompatible version.");
+            CSceneVehicleCarMarksModelSubBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneVehicleCarMarksModelSubBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -293,13 +306,12 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub();
-            var chunk0A082003 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003();
-            node.Chunks.Add(chunk0A082003);
+            var node = CSceneVehicleCarMarksModelSubBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A082003 is missing or has an incompatible version.");
+            CSceneVehicleCarMarksModelSubBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneVehicleCarMarksModelSubBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -316,13 +328,12 @@ public partial class CSceneVehicleCarMarksModelSubBuilder : CSceneVehicleCarMark
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub();
-            var chunk0A082003 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003();
-            node.Chunks.Add(chunk0A082003);
+            var node = CSceneVehicleCarMarksModelSubBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub.Chunk0A082003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A082003 is missing or has an incompatible version.");
+            CSceneVehicleCarMarksModelSubBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneVehicleCarMarksModelSubBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

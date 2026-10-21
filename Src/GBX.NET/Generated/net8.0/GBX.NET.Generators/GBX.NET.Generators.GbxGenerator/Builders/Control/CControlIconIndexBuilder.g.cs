@@ -36,16 +36,16 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state;
     private protected CControlIconIndexBuilderBase() => state = new();
     private protected CControlIconIndexBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state) => this.state = state;
-    private protected static void SetIndexOff(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("IndexOff", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.IndexOff = value);
-    private protected static void SetIndexOffFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("IndexOffFocused", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.IndexOffFocused = value);
-    private protected static void SetIndexOffGrayed(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("IndexOffGrayed", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.IndexOffGrayed = value);
-    private protected static void SetIndexOn(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("IndexOn", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.IndexOn = value);
-    private protected static void SetIndexOnFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("IndexOnFocused", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.IndexOnFocused = value);
-    private protected static void SetIndexOnGrayed(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("IndexOnGrayed", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.IndexOnGrayed = value);
-    private protected static void SetMarginPercentU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("MarginPercentU", value, GameVersion.TMF, static value => value, static (node, value) => node.MarginPercentU = value);
-    private protected static void SetMarginPercentV(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set<int>("MarginPercentV", value, GameVersion.TMF, static value => value, static (node, value) => node.MarginPercentV = value);
-    private protected static void SetMarginSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, Vec2 value) => state.Set<Vec2>("MarginSize", value, GameVersion.TMF, static value => value, static (node, value) => node.MarginSize = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, string? value) => state.Set<string?>("Name", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
+    private protected static void SetIndexOff(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetIndexOffFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetIndexOffGrayed(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOffGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetIndexOn(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetIndexOnFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnFocusedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetIndexOnGrayed(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetIndexOnGrayedAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetMarginPercentU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentUAssignment(), value, GameVersion.TMF);
+    private protected static void SetMarginPercentV(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginPercentVAssignment(), value, GameVersion.TMF);
+    private protected static void SetMarginSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetMarginSizeAssignment(), value, GameVersion.TMF);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlIconIndex> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlIconIndexBuilderAssignments.GetNameAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
     public int IndexOff
     {
         get => state.Get<int>("IndexOff");
@@ -119,6 +119,31 @@ public abstract class CControlIconIndexBuilderBase<TSelf> where TSelf : CControl
 }
 public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CControlIconIndexBuilder>
 {
+    private static global::GBX.NET.Engines.Control.CControlIconIndex CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlIconIndex();
+        var chunk0702B000 = new global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B000();
+        node.Chunks.Add(chunk0702B000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlIconIndex node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0702B000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlIconIndex CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlIconIndex();
+        var chunk0702B002 = new global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002();
+        node.Chunks.Add(chunk0702B002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlIconIndex node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0702B002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlIconIndex node, GameVersion game)
+    {
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public partial class VSK5 : CControlIconIndexBuilderBase<VSK5>
@@ -127,13 +152,12 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         public global::GBX.NET.Interfaces.Control.IControlIconIndexVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlIconIndex Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlIconIndex();
-            var chunk0702B000 = new global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B000();
-            node.Chunks.Add(chunk0702B000);
+            var node = CControlIconIndexBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0702B000 is missing or has an incompatible version.");
+            CControlIconIndexBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CControlIconIndexBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -176,13 +200,12 @@ public partial class CControlIconIndexBuilder : CControlIconIndexBuilderBase<CCo
         public global::GBX.NET.Interfaces.Control.IControlIconIndexTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlIconIndex Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlIconIndex();
-            var chunk0702B002 = new global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002();
-            node.Chunks.Add(chunk0702B002);
+            var node = CControlIconIndexBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlIconIndex.Chunk0702B002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0702B002 is missing or has an incompatible version.");
+            CControlIconIndexBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CControlIconIndexBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

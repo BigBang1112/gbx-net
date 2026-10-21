@@ -36,10 +36,10 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state;
     private protected CPlugSpawnModelBuilderBase() => state = new();
     private protected CPlugSpawnModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state) => this.state = state;
-    private protected static void SetDefaultGravitySpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, Vec3 value) => state.Set<Vec3>("DefaultGravitySpawn", value, GameVersion.TM2020, static value => value, static (node, value) => node.DefaultGravitySpawn = value);
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, Iso4 value) => state.Set<Iso4>("Loc", value, GameVersion.TM2020, static value => value, static (node, value) => node.Loc = value);
-    private protected static void SetTorqueDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, TimeInt32 value) => state.Set<TimeInt32>("TorqueDuration", value, GameVersion.TM2020, static value => value, static (node, value) => node.TorqueDuration = value);
-    private protected static void SetTorqueX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, float value) => state.Set<float>("TorqueX", value, GameVersion.TM2020, static value => value, static (node, value) => node.TorqueX = value);
+    private protected static void SetDefaultGravitySpawn(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.TM2020);
+    private protected static void SetTorqueDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.TM2020);
+    private protected static void SetTorqueX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpawnModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.TM2020);
     public Vec3 DefaultGravitySpawn
     {
         get => state.Get<Vec3>("DefaultGravitySpawn");
@@ -83,6 +83,20 @@ public abstract class CPlugSpawnModelBuilderBase<TSelf> where TSelf : CPlugSpawn
 }
 public partial class CPlugSpawnModelBuilder : CPlugSpawnModelBuilderBase<CPlugSpawnModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugSpawnModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSpawnModel();
+        var chunk0917A000 = new global::GBX.NET.Engines.Plug.CPlugSpawnModel.Chunk0917A000(game);
+        node.Chunks.Add(chunk0917A000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSpawnModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpawnModel.Chunk0917A000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0917A000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSpawnModel node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugSpawnModelBuilderBase<TM2020>
     {
@@ -90,13 +104,12 @@ public partial class CPlugSpawnModelBuilder : CPlugSpawnModelBuilderBase<CPlugSp
         public global::GBX.NET.Interfaces.Plug.IPlugSpawnModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSpawnModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSpawnModel();
-            var chunk0917A000 = new global::GBX.NET.Engines.Plug.CPlugSpawnModel.Chunk0917A000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0917A000);
+            var node = CPlugSpawnModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpawnModel.Chunk0917A000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0917A000 is missing or has an incompatible version.");
+            CPlugSpawnModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugSpawnModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

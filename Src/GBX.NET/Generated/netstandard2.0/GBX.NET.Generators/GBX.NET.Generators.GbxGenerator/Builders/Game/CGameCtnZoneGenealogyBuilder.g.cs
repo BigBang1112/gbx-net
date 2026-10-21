@@ -36,10 +36,10 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state;
     private protected CGameCtnZoneGenealogyBuilderBase() => state = new();
     private protected CGameCtnZoneGenealogyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state) => this.state = state;
-    private protected static void SetCurrentIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, int value) => state.Set<int>("CurrentIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CurrentIndex = value);
-    private protected static void SetCurrentZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, string? value) => state.Set<string?>("CurrentZoneId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CurrentZoneId = value);
-    private protected static void SetDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, Direction value) => state.Set<Direction>("Dir", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Dir = value);
-    private protected static void SetZoneIds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, string[]? value) => state.Set<string[]?>("ZoneIds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (string[])value.Clone(), static (node, value) => node.ZoneIds = value);
+    private protected static void SetCurrentIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCurrentZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetCurrentZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDir(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, Direction value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetZoneIds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneGenealogyBuilderAssignments.GetZoneIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int CurrentIndex
     {
         get => state.Get<int>("CurrentIndex");
@@ -87,6 +87,20 @@ public abstract class CGameCtnZoneGenealogyBuilderBase<TSelf> where TSelf : CGam
 }
 public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilderBase<CGameCtnZoneGenealogyBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy();
+        var chunk0311D002 = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002();
+        node.Chunks.Add(chunk0311D002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0311D002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -99,13 +113,12 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy();
-            var chunk0311D002 = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002();
-            node.Chunks.Add(chunk0311D002);
+            var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0311D002 is missing or has an incompatible version.");
+            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -118,13 +131,12 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy();
-            var chunk0311D002 = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002();
-            node.Chunks.Add(chunk0311D002);
+            var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0311D002 is missing or has an incompatible version.");
+            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -137,13 +149,12 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy();
-            var chunk0311D002 = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002();
-            node.Chunks.Add(chunk0311D002);
+            var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0311D002 is missing or has an incompatible version.");
+            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -156,13 +167,12 @@ public partial class CGameCtnZoneGenealogyBuilder : CGameCtnZoneGenealogyBuilder
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy();
-            var chunk0311D002 = new global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002();
-            node.Chunks.Add(chunk0311D002);
+            var node = CGameCtnZoneGenealogyBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy.Chunk0311D002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0311D002 is missing or has an incompatible version.");
+            CGameCtnZoneGenealogyBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnZoneGenealogyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

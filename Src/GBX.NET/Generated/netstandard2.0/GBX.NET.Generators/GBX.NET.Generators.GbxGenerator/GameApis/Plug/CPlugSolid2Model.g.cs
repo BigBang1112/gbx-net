@@ -36,18 +36,18 @@ public partial class CPlugSolid2Model : global::GBX.NET.Interfaces.Plug.IPlugSol
     public static global::GBX.NET.Builders.Engines.Plug.CPlugSolid2ModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModel>? global::GBX.NET.Interfaces.Plug.IPlugSolid2Model.LightUserModels
     {
-        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModel>(() => LightUserModels, static node => node ?? throw new MemberNullException("LightUserModels"));
-        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugLightUserModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModel>(GetLightUserModelsBuilderReferences, GameVersion.Unspecified, true, "LightUserModels");
+        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModel>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst>? global::GBX.NET.Interfaces.Plug.IPlugSolid2Model.MaterialInsts
     {
-        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst>(() => MaterialInsts, static node => node ?? throw new MemberNullException("MaterialInsts"));
-        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst>(GetMaterialInstsBuilderReferences, GameVersion.Unspecified, true, "MaterialInsts");
+        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? global::GBX.NET.Interfaces.Plug.IPlugSolid2Model.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(() => Materials, static node => node ?? throw new MemberNullException("Materials"));
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(GetMaterialsBuilderReferences, GameVersion.Unspecified, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSkel? global::GBX.NET.Interfaces.Plug.IPlugSolid2Model.Skel
     {
@@ -56,25 +56,25 @@ public partial class CPlugSolid2Model : global::GBX.NET.Interfaces.Plug.IPlugSol
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisual>? global::GBX.NET.Interfaces.Plug.IPlugSolid2Model.Visuals
     {
-        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisual>(() => Visuals, static node => node ?? throw new MemberNullException("Visuals"));
-        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisual>(GetVisualsBuilderReferences, GameVersion.Unspecified, true, "Visuals");
+        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisual>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3.LightUserModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSkelMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>.LightUserModels
     {
-        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3>(() => LightUserModels, static node => { if (node is null) throw new MemberNullException("LightUserModels"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugLightUserModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3>(GetLightUserModelsBuilderReferences, GameVersion.MP3, true, "LightUserModels");
+        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3.MaterialInsts
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSkelMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>.MaterialInsts
     {
-        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3>(() => MaterialInsts, static node => { if (node is null) throw new MemberNullException("MaterialInsts"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3>(GetMaterialInstsBuilderReferences, GameVersion.MP3, true, "MaterialInsts");
+        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSkelMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>(GetMaterialsBuilderReferences, GameVersion.MP3, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSkelMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>.Skel
     {
         get
         {
@@ -84,27 +84,27 @@ public partial class CPlugSolid2Model : global::GBX.NET.Interfaces.Plug.IPlugSol
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3.Visuals
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSkelMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>.Visuals
     {
-        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>(() => Visuals, static node => { if (node is null) throw new MemberNullException("Visuals"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>(GetVisualsBuilderReferences, GameVersion.MP3, true, "Visuals");
+        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT.LightUserModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>.LightUserModels
     {
-        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT>(() => LightUserModels, static node => { if (node is null) throw new MemberNullException("LightUserModels"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugLightUserModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT>(GetLightUserModelsBuilderReferences, GameVersion.TMT, true, "LightUserModels");
+        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT.MaterialInsts
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>.MaterialInsts
     {
-        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT>(() => MaterialInsts, static node => { if (node is null) throw new MemberNullException("MaterialInsts"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT>(GetMaterialInstsBuilderReferences, GameVersion.TMT, true, "MaterialInsts");
+        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>(GetMaterialsBuilderReferences, GameVersion.TMT, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>.Skel
     {
         get
         {
@@ -114,27 +114,27 @@ public partial class CPlugSolid2Model : global::GBX.NET.Interfaces.Plug.IPlugSol
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT.Visuals
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>.Visuals
     {
-        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>(() => Visuals, static node => { if (node is null) throw new MemberNullException("Visuals"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>(GetVisualsBuilderReferences, GameVersion.TMT, true, "Visuals");
+        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4.LightUserModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>.LightUserModels
     {
-        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4>(() => LightUserModels, static node => { if (node is null) throw new MemberNullException("LightUserModels"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugLightUserModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4>(GetLightUserModelsBuilderReferences, GameVersion.MP4, true, "LightUserModels");
+        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4.MaterialInsts
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>.MaterialInsts
     {
-        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4>(() => MaterialInsts, static node => { if (node is null) throw new MemberNullException("MaterialInsts"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4>(GetMaterialInstsBuilderReferences, GameVersion.MP4, true, "MaterialInsts");
+        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(GetMaterialsBuilderReferences, GameVersion.MP4, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>.Skel
     {
         get
         {
@@ -144,27 +144,27 @@ public partial class CPlugSolid2Model : global::GBX.NET.Interfaces.Plug.IPlugSol
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4.Visuals
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>.Visuals
     {
-        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>(() => Visuals, static node => { if (node is null) throw new MemberNullException("Visuals"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>(GetVisualsBuilderReferences, GameVersion.MP4, true, "Visuals");
+        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020.LightUserModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>.LightUserModels
     {
-        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020>(() => LightUserModels, static node => { if (node is null) throw new MemberNullException("LightUserModels"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugLightUserModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => LightUserModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020>(GetLightUserModelsBuilderReferences, GameVersion.TM2020, true, "LightUserModels");
+        set => LightUserModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugLightUserModel, global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020.MaterialInsts
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>.MaterialInsts
     {
-        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020>(() => MaterialInsts, static node => { if (node is null) throw new MemberNullException("MaterialInsts"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MaterialInsts is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020>(GetMaterialInstsBuilderReferences, GameVersion.TM2020, true, "MaterialInsts");
+        set => MaterialInsts = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>(GetMaterialsBuilderReferences, GameVersion.TM2020, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>.Skel
     {
         get
         {
@@ -174,9 +174,13 @@ public partial class CPlugSolid2Model : global::GBX.NET.Interfaces.Plug.IPlugSol
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020.Visuals
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>.Visuals
     {
-        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>(() => Visuals, static node => { if (node is null) throw new MemberNullException("Visuals"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Visuals is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>(GetVisualsBuilderReferences, GameVersion.TM2020, true, "Visuals");
+        set => Visuals = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugLightUserModel>? GetLightUserModelsBuilderReferences() => LightUserModels;
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>? GetMaterialInstsBuilderReferences() => MaterialInsts;
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? GetMaterialsBuilderReferences() => Materials;
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugVisual>? GetVisualsBuilderReferences() => Visuals;
 }

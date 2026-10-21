@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.Scene;
 
 public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneObjectTMU
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectTM10.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>.Motion
     {
         get
         {
@@ -43,7 +43,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionTMPU? global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTMPU? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMPU>.Motion
     {
         get
         {
@@ -53,7 +53,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionTMSX? global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTMSX? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMSX>.Motion
     {
         get
         {
@@ -63,7 +63,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>.Motion
     {
         get
         {
@@ -73,7 +73,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionVSK5? global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionVSK5? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionVSK5>.Motion
     {
         get
         {
@@ -83,7 +83,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionTMF? global::GBX.NET.Interfaces.Scene.ISceneObjectTMF.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTMF? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMF>.Motion
     {
         get
         {
@@ -93,7 +93,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionMP3? global::GBX.NET.Interfaces.Scene.ISceneObjectMP3.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionMP3? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP3>.Motion
     {
         get
         {
@@ -103,7 +103,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionTMT? global::GBX.NET.Interfaces.Scene.ISceneObjectTMT.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTMT? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMT>.Motion
     {
         get
         {
@@ -113,7 +113,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionMP4? global::GBX.NET.Interfaces.Scene.ISceneObjectMP4.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionMP4? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP4>.Motion
     {
         get
         {
@@ -123,7 +123,7 @@ public partial class CSceneObject : global::GBX.NET.Interfaces.Scene.ISceneObjec
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionTM2020? global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020.Motion
+    global::GBX.NET.Interfaces.Motion.IMotionTM2020? global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM2020>.Motion
     {
         get
         {

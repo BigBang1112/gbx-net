@@ -31,6 +31,167 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.System;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers1 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    string? AntiCheatServerUrl { get; set; }
+    bool AudioAllowHRTF { get; set; }
+    int AudioDontMuteWhenApplicationUnfocused { get; set; }
+    bool AudioSoundHdr { get; set; }
+    bool DisableReplayRecording { get; set; }
+    bool EdDontConnect { get; set; }
+    bool FileTransferEnableAvatarDownload { get; set; }
+    bool FileTransferEnableAvatarLocators { get; set; }
+    bool FileTransferEnableAvatarUpload { get; set; }
+    bool FileTransferEnableMapDownload { get; set; }
+    bool FileTransferEnableMapLocators { get; set; }
+    bool FileTransferEnableMapModDownload { get; set; }
+    bool FileTransferEnableMapModLocators { get; set; }
+    bool FileTransferEnableMapModUpload { get; set; }
+    bool FileTransferEnableMapSkinDownload { get; set; }
+    bool FileTransferEnableMapSkinLocators { get; set; }
+    bool FileTransferEnableMapSkinUpload { get; set; }
+    bool FileTransferEnableMapUpload { get; set; }
+    bool FileTransferEnableTagSkinDownload { get; set; }
+    bool FileTransferEnableTagSkinLocators { get; set; }
+    bool FileTransferEnableTagSkinUpload { get; set; }
+    bool FileTransferEnableUnknownTypeDownload { get; set; }
+    bool FileTransferEnableUnknownTypeLocators { get; set; }
+    bool FileTransferEnableUnknownTypeUpload { get; set; }
+    bool FileTransferEnableVehicleSkinDownload { get; set; }
+    bool FileTransferEnableVehicleSkinLocators { get; set; }
+    bool FileTransferEnableVehicleSkinUpload { get; set; }
+    ulong FileTransferMaxCacheSize { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality GamePackQuality { get; set; }
+    string? InstallUid { get; set; }
+    int NetworkSpeed { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion PlayerOcclusion { get; set; }
+    int PlayerShadow { get; set; }
+    int SmMaxPlayerResimStepPerFrame { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers2 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    string? NetworkProxyUrl { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers3 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    int AudioMaxSounds { get; set; }
+    int AudioSoundsPerUpdate { get; set; }
+    int AudioUpdatePeriod { get; set; }
+    int DisplayAntialiasing { get; set; }
+    int DisplayColorDepth { get; set; }
+    bool DisplayDisableShadowBuffer { get; set; }
+    bool DisplayFullScreen { get; set; }
+    int DisplayHLQuality { get; set; }
+    int DisplayMaxFiltering { get; set; }
+    int DisplayRefreshRate { get; set; }
+    Int2 DisplayScreenSizeFS { get; set; }
+    int DisplayShaderQuality { get; set; }
+    int DisplayShadows { get; set; }
+    int DisplayTexturesQuality { get; set; }
+    bool DisplayVSync { get; set; }
+    string? NetworkMasterServerAddress { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers4 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    bool MasterServerIsRegistred { get; set; }
+    string? MasterServerKey { get; set; }
+    string? MasterServerLogin { get; set; }
+    string? MasterServerPassword { get; set; }
+    int NetworkConnection { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers5 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    bool AudioUseEAX { get; set; }
+    float InputsDeadZone { get; set; }
+    float InputsSensitivity { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers6 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    string[]? KeyHashes { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers7 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    bool AudioAllowEFX { get; set; }
+    string? AudioDevice_Oal { get; set; }
+    string? EncryptedKey { get; set; }
+    bool InputsCaptureKeyboard { get; set; }
+    bool InputsEnableRumble { get; set; }
+    uint[]? NetworkFirewallTestedExeChecksums { get; set; }
+    string? NetworkLastUsedMSAddress { get; set; }
+    string? NetworkLastUsedMSPath { get; set; }
+    DateTime? ParentalLockLastUnlockedTime { get; set; }
+    UInt128 ParentalLockPasswordHash { get; set; }
+    int PlayerInfoDisplaySize { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers8 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    int NetworkP2PServerPort { get; set; }
+    int NetworkServerBroadcastLength { get; set; }
+    bool NetworkTestInternetConnection { get; set; }
+    int TmBackgroundQuality { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers9 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    uint FileTransferMaxCacheSize32 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers10 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    bool Advertising_DisabledByUser { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
+    float Advertising_TunningCoef { get; set; }
+    bool AudioDisableDoppler { get; set; }
+    int AudioGlobalQuality { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
+    bool AutoUpdateFromLocator { get; set; }
+    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
+    string? AutoUpdateLocatorDBUrl { get; set; }
+    string? BlackListUrl { get; set; }
+    bool EnableCrashLogUpload { get; set; }
+    bool EnableLocators { get; set; }
+    bool FileTransferEnableDownload { get; set; }
+    bool FileTransferEnableUpload { get; set; }
+    bool InputsFreezeUnusedAxes { get; set; }
+    bool NetworkUseNatUPnP { get; set; }
+    int TmMaxOpponents { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers11 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
+    bool TmOppShadows { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers12 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
+    bool InputsAlternateMethod { get; set; }
+    bool IsSafeMode { get; set; }
+    bool IsSkipRollingDemo { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers13 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    string? InstallCdKey { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigMembers14 : global::GBX.NET.Interfaces.System.ISystemConfig
+{
+    int NetworkDownloadRate { get; set; }
+    int NetworkUploadRate { get; set; }
+    bool ProfileEnableMulti { get; set; }
+    string? ProfileName { get; set; }
+}
 public partial interface ISystemConfig : IClassVersion<global::GBX.NET.Engines.System.CSystemConfig>
 {
     global::GBX.NET.Engines.System.CSystemConfig.EAudioAcceleration AudioAcceleration_Dx9 { get; set; }
@@ -56,629 +217,55 @@ public partial interface ISystemConfig : IClassVersion<global::GBX.NET.Engines.S
     global::GBX.NET.Engines.System.CSystemConfig.EVsk3BoatVisibility Vsk3TeamMate { get; set; }
 }
 
-public partial interface ISystemConfigTM10 : ISystemConfig
+public partial interface ISystemConfigTM10 : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers3, global::GBX.NET.Interfaces.System.ISystemConfigMembers4, global::GBX.NET.Interfaces.System.ISystemConfigMembers5
 {
-    int AudioMaxSounds { get; set; }
-    int AudioSoundsPerUpdate { get; set; }
-    int AudioUpdatePeriod { get; set; }
-    bool AudioUseEAX { get; set; }
-    int DisplayAntialiasing { get; set; }
-    int DisplayColorDepth { get; set; }
-    bool DisplayDisableShadowBuffer { get; set; }
-    bool DisplayFullScreen { get; set; }
-    int DisplayHLQuality { get; set; }
-    int DisplayMaxFiltering { get; set; }
-    int DisplayRefreshRate { get; set; }
-    Int2 DisplayScreenSizeFS { get; set; }
-    int DisplayShaderQuality { get; set; }
-    int DisplayShadows { get; set; }
-    int DisplayTexturesQuality { get; set; }
-    bool DisplayVSync { get; set; }
-    float InputsDeadZone { get; set; }
-    float InputsSensitivity { get; set; }
-    bool MasterServerIsRegistred { get; set; }
-    string? MasterServerKey { get; set; }
-    string? MasterServerLogin { get; set; }
-    string? MasterServerPassword { get; set; }
-    int NetworkConnection { get; set; }
-    string? NetworkMasterServerAddress { get; set; }
 }
 
-public partial interface ISystemConfigTMPU : ISystemConfig
+public partial interface ISystemConfigTMPU : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers3, global::GBX.NET.Interfaces.System.ISystemConfigMembers4, global::GBX.NET.Interfaces.System.ISystemConfigMembers5, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12
 {
-    int AudioMaxSounds { get; set; }
-    int AudioSoundsPerUpdate { get; set; }
-    int AudioUpdatePeriod { get; set; }
-    bool AudioUseEAX { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    int DisplayAntialiasing { get; set; }
-    int DisplayColorDepth { get; set; }
-    bool DisplayDisableShadowBuffer { get; set; }
-    bool DisplayFullScreen { get; set; }
-    int DisplayHLQuality { get; set; }
-    int DisplayMaxFiltering { get; set; }
-    int DisplayRefreshRate { get; set; }
-    Int2 DisplayScreenSizeFS { get; set; }
-    int DisplayShaderQuality { get; set; }
-    int DisplayShadows { get; set; }
-    int DisplayTexturesQuality { get; set; }
-    bool DisplayVSync { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    float InputsDeadZone { get; set; }
-    float InputsSensitivity { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    bool MasterServerIsRegistred { get; set; }
-    string? MasterServerKey { get; set; }
-    string? MasterServerLogin { get; set; }
-    string? MasterServerPassword { get; set; }
-    int NetworkConnection { get; set; }
     bool NetworkEnableAvatarDownload { get; set; }
-    string? NetworkMasterServerAddress { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigTMO : ISystemConfig
+public partial interface ISystemConfigTMO : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers4, global::GBX.NET.Interfaces.System.ISystemConfigMembers5, global::GBX.NET.Interfaces.System.ISystemConfigMembers9, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioGlobalQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AudioUseEAX { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    uint FileTransferMaxCacheSize32 { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    float InputsDeadZone { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    float InputsSensitivity { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    bool MasterServerIsRegistred { get; set; }
-    string? MasterServerKey { get; set; }
-    string? MasterServerLogin { get; set; }
-    string? MasterServerPassword { get; set; }
-    int NetworkConnection { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    int TmMaxOpponents { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigTMSX : ISystemConfig
+public partial interface ISystemConfigTMSX : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers4, global::GBX.NET.Interfaces.System.ISystemConfigMembers5, global::GBX.NET.Interfaces.System.ISystemConfigMembers9, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioGlobalQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AudioUseEAX { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    uint FileTransferMaxCacheSize32 { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    float InputsDeadZone { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    float InputsSensitivity { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    bool MasterServerIsRegistred { get; set; }
-    string? MasterServerKey { get; set; }
-    string? MasterServerLogin { get; set; }
-    string? MasterServerPassword { get; set; }
-    int NetworkConnection { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    int TmMaxOpponents { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigTMNESWC : ISystemConfig
+public partial interface ISystemConfigTMNESWC : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers4, global::GBX.NET.Interfaces.System.ISystemConfigMembers5, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers9, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioGlobalQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AudioUseEAX { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    uint FileTransferMaxCacheSize32 { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    float InputsDeadZone { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    float InputsSensitivity { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    bool MasterServerIsRegistred { get; set; }
-    string? MasterServerKey { get; set; }
-    string? MasterServerLogin { get; set; }
-    string? MasterServerPassword { get; set; }
-    int NetworkConnection { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    int TmBackgroundQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    int TmMaxOpponents { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigTMU : ISystemConfig
+public partial interface ISystemConfigTMU : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers5, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers9, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers13, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioGlobalQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AudioUseEAX { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    uint FileTransferMaxCacheSize32 { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    float InputsDeadZone { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    float InputsSensitivity { get; set; }
-    string? InstallCdKey { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    int NetworkDownloadRate { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int TmBackgroundQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    int TmMaxOpponents { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigVSK5 : ISystemConfig
+public partial interface ISystemConfigVSK5 : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers5, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers9, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers13, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioGlobalQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AudioUseEAX { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    uint FileTransferMaxCacheSize32 { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    float InputsDeadZone { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    float InputsSensitivity { get; set; }
-    string? InstallCdKey { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    int NetworkDownloadRate { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int TmBackgroundQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    int TmMaxOpponents { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigTMF : ISystemConfig
+public partial interface ISystemConfigTMF : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers6, global::GBX.NET.Interfaces.System.ISystemConfigMembers7, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers9, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers11, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    bool AudioAllowEFX { get; set; }
-    string? AudioDevice_Oal { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioGlobalQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    string? EncryptedKey { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    uint FileTransferMaxCacheSize32 { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    bool InputsCaptureKeyboard { get; set; }
-    bool InputsEnableRumble { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    string[]? KeyHashes { get; set; }
     string? MenuSkin { get; set; }
-    int NetworkDownloadRate { get; set; }
-    uint[]? NetworkFirewallTestedExeChecksums { get; set; }
-    string? NetworkLastUsedMSAddress { get; set; }
-    string? NetworkLastUsedMSPath { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    DateTime? ParentalLockLastUnlockedTime { get; set; }
-    UInt128 ParentalLockPasswordHash { get; set; }
-    int PlayerInfoDisplaySize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int TmBackgroundQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.ETmCarProjector TmCarProjector { get; set; }
-    int TmMaxOpponents { get; set; }
-    bool TmOppShadows { get; set; }
 }
 
-public partial interface ISystemConfigMP3 : ISystemConfig
+public partial interface ISystemConfigMP3 : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers1, global::GBX.NET.Interfaces.System.ISystemConfigMembers6, global::GBX.NET.Interfaces.System.ISystemConfigMembers7, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    string? AntiCheatServerUrl { get; set; }
-    bool AudioAllowEFX { get; set; }
-    bool AudioAllowHRTF { get; set; }
-    string? AudioDevice_Oal { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioDontMuteWhenApplicationUnfocused { get; set; }
-    int AudioGlobalQuality { get; set; }
-    bool AudioSoundHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    bool DisableReplayRecording { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EdDontConnect { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    string? EncryptedKey { get; set; }
-    bool FileTransferEnableAvatarDownload { get; set; }
-    bool FileTransferEnableAvatarLocators { get; set; }
-    bool FileTransferEnableAvatarUpload { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableMapDownload { get; set; }
-    bool FileTransferEnableMapLocators { get; set; }
-    bool FileTransferEnableMapModDownload { get; set; }
-    bool FileTransferEnableMapModLocators { get; set; }
-    bool FileTransferEnableMapModUpload { get; set; }
-    bool FileTransferEnableMapSkinDownload { get; set; }
-    bool FileTransferEnableMapSkinLocators { get; set; }
-    bool FileTransferEnableMapSkinUpload { get; set; }
-    bool FileTransferEnableMapUpload { get; set; }
-    bool FileTransferEnableTagSkinDownload { get; set; }
-    bool FileTransferEnableTagSkinLocators { get; set; }
-    bool FileTransferEnableTagSkinUpload { get; set; }
-    bool FileTransferEnableUnknownTypeDownload { get; set; }
-    bool FileTransferEnableUnknownTypeLocators { get; set; }
-    bool FileTransferEnableUnknownTypeUpload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    bool FileTransferEnableVehicleSkinDownload { get; set; }
-    bool FileTransferEnableVehicleSkinLocators { get; set; }
-    bool FileTransferEnableVehicleSkinUpload { get; set; }
-    ulong FileTransferMaxCacheSize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality GamePackQuality { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    bool InputsCaptureKeyboard { get; set; }
-    bool InputsEnableRumble { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    string? InstallUid { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    string[]? KeyHashes { get; set; }
-    int NetworkDownloadRate { get; set; }
-    uint[]? NetworkFirewallTestedExeChecksums { get; set; }
-    string? NetworkLastUsedMSAddress { get; set; }
-    string? NetworkLastUsedMSPath { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    int NetworkSpeed { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    DateTime? ParentalLockLastUnlockedTime { get; set; }
-    UInt128 ParentalLockPasswordHash { get; set; }
-    int PlayerInfoDisplaySize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion PlayerOcclusion { get; set; }
-    int PlayerShadow { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int SmMaxPlayerResimStepPerFrame { get; set; }
-    int TmBackgroundQuality { get; set; }
-    int TmMaxOpponents { get; set; }
 }
 
-public partial interface ISystemConfigTMT : ISystemConfig
+public partial interface ISystemConfigTMT : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers1, global::GBX.NET.Interfaces.System.ISystemConfigMembers7, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    string? AntiCheatServerUrl { get; set; }
-    bool AudioAllowEFX { get; set; }
-    bool AudioAllowHRTF { get; set; }
-    string? AudioDevice_Oal { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioDontMuteWhenApplicationUnfocused { get; set; }
-    int AudioGlobalQuality { get; set; }
-    bool AudioSoundHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    bool DisableReplayRecording { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EdDontConnect { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    string? EncryptedKey { get; set; }
-    bool FileTransferEnableAvatarDownload { get; set; }
-    bool FileTransferEnableAvatarLocators { get; set; }
-    bool FileTransferEnableAvatarUpload { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableMapDownload { get; set; }
-    bool FileTransferEnableMapLocators { get; set; }
-    bool FileTransferEnableMapModDownload { get; set; }
-    bool FileTransferEnableMapModLocators { get; set; }
-    bool FileTransferEnableMapModUpload { get; set; }
-    bool FileTransferEnableMapSkinDownload { get; set; }
-    bool FileTransferEnableMapSkinLocators { get; set; }
-    bool FileTransferEnableMapSkinUpload { get; set; }
-    bool FileTransferEnableMapUpload { get; set; }
-    bool FileTransferEnableTagSkinDownload { get; set; }
-    bool FileTransferEnableTagSkinLocators { get; set; }
-    bool FileTransferEnableTagSkinUpload { get; set; }
-    bool FileTransferEnableUnknownTypeDownload { get; set; }
-    bool FileTransferEnableUnknownTypeLocators { get; set; }
-    bool FileTransferEnableUnknownTypeUpload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    bool FileTransferEnableVehicleSkinDownload { get; set; }
-    bool FileTransferEnableVehicleSkinLocators { get; set; }
-    bool FileTransferEnableVehicleSkinUpload { get; set; }
-    ulong FileTransferMaxCacheSize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality GamePackQuality { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    bool InputsCaptureKeyboard { get; set; }
-    bool InputsEnableRumble { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    string? InstallUid { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    int NetworkDownloadRate { get; set; }
-    uint[]? NetworkFirewallTestedExeChecksums { get; set; }
-    string? NetworkLastUsedMSAddress { get; set; }
-    string? NetworkLastUsedMSPath { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    int NetworkSpeed { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    DateTime? ParentalLockLastUnlockedTime { get; set; }
-    UInt128 ParentalLockPasswordHash { get; set; }
-    int PlayerInfoDisplaySize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion PlayerOcclusion { get; set; }
-    int PlayerShadow { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int SmMaxPlayerResimStepPerFrame { get; set; }
-    int TmBackgroundQuality { get; set; }
-    int TmMaxOpponents { get; set; }
 }
 
-public partial interface ISystemConfigMP4 : ISystemConfig
+public partial interface ISystemConfigMP4 : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers1, global::GBX.NET.Interfaces.System.ISystemConfigMembers2, global::GBX.NET.Interfaces.System.ISystemConfigMembers7, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    string? AntiCheatServerUrl { get; set; }
-    bool AudioAllowEFX { get; set; }
-    bool AudioAllowHRTF { get; set; }
-    string? AudioDevice_Oal { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioDontMuteWhenApplicationUnfocused { get; set; }
-    int AudioGlobalQuality { get; set; }
-    bool AudioSoundHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    bool DisableReplayRecording { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EdDontConnect { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    string? EncryptedKey { get; set; }
-    bool FileTransferEnableAvatarDownload { get; set; }
-    bool FileTransferEnableAvatarLocators { get; set; }
-    bool FileTransferEnableAvatarUpload { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableMapDownload { get; set; }
-    bool FileTransferEnableMapLocators { get; set; }
-    bool FileTransferEnableMapModDownload { get; set; }
-    bool FileTransferEnableMapModLocators { get; set; }
-    bool FileTransferEnableMapModUpload { get; set; }
-    bool FileTransferEnableMapSkinDownload { get; set; }
-    bool FileTransferEnableMapSkinLocators { get; set; }
-    bool FileTransferEnableMapSkinUpload { get; set; }
-    bool FileTransferEnableMapUpload { get; set; }
-    bool FileTransferEnableTagSkinDownload { get; set; }
-    bool FileTransferEnableTagSkinLocators { get; set; }
-    bool FileTransferEnableTagSkinUpload { get; set; }
-    bool FileTransferEnableUnknownTypeDownload { get; set; }
-    bool FileTransferEnableUnknownTypeLocators { get; set; }
-    bool FileTransferEnableUnknownTypeUpload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    bool FileTransferEnableVehicleSkinDownload { get; set; }
-    bool FileTransferEnableVehicleSkinLocators { get; set; }
-    bool FileTransferEnableVehicleSkinUpload { get; set; }
-    ulong FileTransferMaxCacheSize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality GamePackQuality { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    bool InputsCaptureKeyboard { get; set; }
-    bool InputsEnableRumble { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    string? InstallUid { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    int NetworkDownloadRate { get; set; }
-    uint[]? NetworkFirewallTestedExeChecksums { get; set; }
-    string? NetworkLastUsedMSAddress { get; set; }
-    string? NetworkLastUsedMSPath { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    string? NetworkProxyUrl { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    int NetworkSpeed { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    DateTime? ParentalLockLastUnlockedTime { get; set; }
-    UInt128 ParentalLockPasswordHash { get; set; }
-    int PlayerInfoDisplaySize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion PlayerOcclusion { get; set; }
-    int PlayerShadow { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int SmMaxPlayerResimStepPerFrame { get; set; }
-    int TmBackgroundQuality { get; set; }
-    int TmMaxOpponents { get; set; }
 }
 
-public partial interface ISystemConfigTM2020 : ISystemConfig
+public partial interface ISystemConfigTM2020 : ISystemConfig, global::GBX.NET.Interfaces.System.ISystemConfigMembers1, global::GBX.NET.Interfaces.System.ISystemConfigMembers2, global::GBX.NET.Interfaces.System.ISystemConfigMembers7, global::GBX.NET.Interfaces.System.ISystemConfigMembers8, global::GBX.NET.Interfaces.System.ISystemConfigMembers10, global::GBX.NET.Interfaces.System.ISystemConfigMembers12, global::GBX.NET.Interfaces.System.ISystemConfigMembers14
 {
-    bool Advertising_DisabledByUser { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAdvertisingEnabled Advertising_Enabled { get; set; }
-    float Advertising_TunningCoef { get; set; }
-    string? AntiCheatServerUrl { get; set; }
-    bool AudioAllowEFX { get; set; }
-    bool AudioAllowHRTF { get; set; }
-    string? AudioDevice_Oal { get; set; }
-    bool AudioDisableDoppler { get; set; }
-    int AudioDontMuteWhenApplicationUnfocused { get; set; }
-    int AudioGlobalQuality { get; set; }
-    bool AudioSoundHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EAudioSpeakerConfig AudioSpeakerConfig { get; set; }
-    bool AutoUpdateFromLocator { get; set; }
-    bool AutoUpdateFromLocatorAtInternetConnection { get; set; }
-    string? AutoUpdateLocatorDBUrl { get; set; }
     string? BadWordListUrl { get; set; }
-    string? BlackListUrl { get; set; }
-    bool DisableReplayRecording { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay? Display { get; set; }
-    bool EdDontConnect { get; set; }
-    bool EnableCrashLogUpload { get; set; }
-    bool EnableLocators { get; set; }
-    string? EncryptedKey { get; set; }
-    bool FileTransferEnableAvatarDownload { get; set; }
-    bool FileTransferEnableAvatarLocators { get; set; }
-    bool FileTransferEnableAvatarUpload { get; set; }
-    bool FileTransferEnableDownload { get; set; }
-    bool FileTransferEnableMapDownload { get; set; }
-    bool FileTransferEnableMapLocators { get; set; }
-    bool FileTransferEnableMapModDownload { get; set; }
-    bool FileTransferEnableMapModLocators { get; set; }
-    bool FileTransferEnableMapModUpload { get; set; }
-    bool FileTransferEnableMapSkinDownload { get; set; }
-    bool FileTransferEnableMapSkinLocators { get; set; }
-    bool FileTransferEnableMapSkinUpload { get; set; }
-    bool FileTransferEnableMapUpload { get; set; }
-    bool FileTransferEnableTagSkinDownload { get; set; }
-    bool FileTransferEnableTagSkinLocators { get; set; }
-    bool FileTransferEnableTagSkinUpload { get; set; }
-    bool FileTransferEnableUnknownTypeDownload { get; set; }
-    bool FileTransferEnableUnknownTypeLocators { get; set; }
-    bool FileTransferEnableUnknownTypeUpload { get; set; }
-    bool FileTransferEnableUpload { get; set; }
-    bool FileTransferEnableVehicleSkinDownload { get; set; }
-    bool FileTransferEnableVehicleSkinLocators { get; set; }
-    bool FileTransferEnableVehicleSkinUpload { get; set; }
-    ulong FileTransferMaxCacheSize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EGamePackQuality GamePackQuality { get; set; }
-    bool InputsAlternateMethod { get; set; }
-    bool InputsCaptureKeyboard { get; set; }
     bool InputsEnableJoysticks { get; set; }
-    bool InputsEnableRumble { get; set; }
-    bool InputsFreezeUnusedAxes { get; set; }
-    string? InstallUid { get; set; }
-    bool IsSafeMode { get; set; }
-    bool IsSkipRollingDemo { get; set; }
-    int NetworkDownloadRate { get; set; }
-    uint[]? NetworkFirewallTestedExeChecksums { get; set; }
-    string? NetworkLastUsedMSAddress { get; set; }
-    string? NetworkLastUsedMSPath { get; set; }
-    int NetworkP2PServerPort { get; set; }
-    string? NetworkProxyUrl { get; set; }
-    int NetworkServerBroadcastLength { get; set; }
-    int NetworkSpeed { get; set; }
-    bool NetworkTestInternetConnection { get; set; }
-    int NetworkUploadRate { get; set; }
-    bool NetworkUseNatUPnP { get; set; }
-    DateTime? ParentalLockLastUnlockedTime { get; set; }
-    UInt128 ParentalLockPasswordHash { get; set; }
-    int PlayerInfoDisplaySize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerInfoDisplayType PlayerInfoDisplayType { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfig.EPlayerOcclusion PlayerOcclusion { get; set; }
-    int PlayerShadow { get; set; }
-    bool ProfileEnableMulti { get; set; }
-    string? ProfileName { get; set; }
-    int SmMaxPlayerResimStepPerFrame { get; set; }
-    int TmBackgroundQuality { get; set; }
-    int TmMaxOpponents { get; set; }
 }
 

@@ -44,7 +44,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         get => Shader;
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.ColorGradient
+    global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.ColorGradient
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.IntensityFilter
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.IntensityFilter
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.Material
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>.Shader
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.SizeOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.SizeOverLife
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.SizeXOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.SizeXOverLife
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX.TransparencyOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMSX, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX>.TransparencyOverLife
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.ColorGradient
+    global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.ColorGradient
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.IntensityFilter
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.IntensityFilter
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Material
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>.Shader
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.SizeOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.SizeOverLife
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.SizeXOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.SizeXOverLife
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC.TransparencyOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC>.TransparencyOverLife
     {
         get
         {
@@ -184,7 +184,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.ColorGradient
+    global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.ColorGradient
     {
         get
         {
@@ -194,7 +194,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.IntensityFilter
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.IntensityFilter
     {
         get
         {
@@ -204,7 +204,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.Material
     {
         get
         {
@@ -214,7 +214,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>.Shader
     {
         get
         {
@@ -224,7 +224,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.SizeOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.SizeOverLife
     {
         get
         {
@@ -234,7 +234,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.SizeXOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.SizeXOverLife
     {
         get
         {
@@ -244,7 +244,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5.TransparencyOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientVSK5, global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5>.TransparencyOverLife
     {
         get
         {
@@ -254,7 +254,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.ColorGradient
+    global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.ColorGradient
     {
         get
         {
@@ -264,7 +264,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => ColorGradient = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncColorGradient node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.IntensityFilter
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.IntensityFilter
     {
         get
         {
@@ -274,7 +274,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => IntensityFilter = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.Material
     {
         get
         {
@@ -284,7 +284,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>.Shader
     {
         get
         {
@@ -294,7 +294,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.SizeOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.SizeOverLife
     {
         get
         {
@@ -304,7 +304,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.SizeXOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.SizeXOverLife
     {
         get
         {
@@ -314,7 +314,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => SizeXOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF.TransparencyOverLife
+    global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers3<global::GBX.NET.Interfaces.Function.IFuncColorGradientTMF, global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF>.TransparencyOverLife
     {
         get
         {
@@ -324,7 +324,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => TransparencyOverLife = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnvelope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.Material
     {
         get
         {
@@ -334,7 +334,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>.Shader
     {
         get
         {
@@ -344,7 +344,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3.Solid2Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP3>.Solid2Model
     {
         get
         {
@@ -354,7 +354,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.Material
     {
         get
         {
@@ -364,7 +364,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>.Shader
     {
         get
         {
@@ -374,7 +374,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT.Solid2Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTMT>.Solid2Model
     {
         get
         {
@@ -384,7 +384,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.Material
     {
         get
         {
@@ -394,7 +394,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>.Shader
     {
         get
         {
@@ -404,7 +404,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4.Solid2Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>.Solid2Model
     {
         get
         {
@@ -414,7 +414,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Solid2Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.Material
     {
         get
         {
@@ -424,7 +424,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020.Shader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>.Shader
     {
         get
         {
@@ -434,7 +434,7 @@ public partial class CPlugParticleEmitterSubModel : global::GBX.NET.Interfaces.P
         }
         set => Shader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020.Solid2Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>.Solid2Model
     {
         get
         {

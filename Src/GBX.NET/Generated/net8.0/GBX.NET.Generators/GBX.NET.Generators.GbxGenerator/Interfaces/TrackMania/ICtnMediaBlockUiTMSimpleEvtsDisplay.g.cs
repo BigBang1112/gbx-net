@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ICtnMediaBlockUiTMSimpleEvtsDisplayMembers1 : global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplay
+{
+    bool Checkpoints { get; set; }
+    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode DisplayMode { get; set; }
+    bool EndOfLaps { get; set; }
+    bool EndOfRace { get; set; }
+    bool GhostsName { get; set; }
+    bool StuntFigures { get; set; }
+}
 public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplay : IClassVersion<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplay
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,28 +50,14 @@ public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplay : IClassVersion<glo
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new TimeSingle End { get; set; }
-    new TimeSingle Start { get; set; }
 }
 
-public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayTMNESWC : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC
+public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayTMNESWC : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMembers1
 {
-    bool Checkpoints { get; set; }
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode DisplayMode { get; set; }
-    bool EndOfLaps { get; set; }
-    bool EndOfRace { get; set; }
-    bool GhostsName { get; set; }
-    bool StuntFigures { get; set; }
 }
 
-public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayVSK5 : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayVSK5
+public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayVSK5 : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayVSK5, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockUiTMSimpleEvtsDisplayMembers1
 {
-    bool Checkpoints { get; set; }
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockUiTMSimpleEvtsDisplay.EDisplayMode DisplayMode { get; set; }
-    bool EndOfLaps { get; set; }
-    bool EndOfRace { get; set; }
-    bool GhostsName { get; set; }
-    bool StuntFigures { get; set; }
 }
 
 public partial interface ICtnMediaBlockUiTMSimpleEvtsDisplayTMF : ICtnMediaBlockUiTMSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiSimpleEvtsDisplayTMF

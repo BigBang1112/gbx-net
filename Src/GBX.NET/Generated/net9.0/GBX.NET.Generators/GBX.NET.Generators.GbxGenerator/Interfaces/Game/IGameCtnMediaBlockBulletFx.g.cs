@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockBulletFxMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFx where T0 : class
+{
+    new T0? DataTape { get; set; }
+}
 public partial interface IGameCtnMediaBlockBulletFx : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -45,13 +50,11 @@ public partial interface IGameCtnMediaBlockBulletFx : IClassVersion<global::GBX.
     TimeSingle Start { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockBulletFxTMT : IGameCtnMediaBlockBulletFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockBulletFxTMT : IGameCtnMediaBlockBulletFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT? DataTape { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockBulletFxMP4 : IGameCtnMediaBlockBulletFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockBulletFxMP4 : IGameCtnMediaBlockBulletFx, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? DataTape { get; set; }
 }
 

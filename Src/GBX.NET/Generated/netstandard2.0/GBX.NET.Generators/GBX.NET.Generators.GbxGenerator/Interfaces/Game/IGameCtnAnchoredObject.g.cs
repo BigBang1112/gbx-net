@@ -31,6 +31,21 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAnchoredObjectMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObject where T0 : class
+{
+    new T0? WaypointSpecialProperty { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAnchoredObjectMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObject
+{
+    global::GBX.NET.PackDesc? PackDesc { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAnchoredObjectMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObject
+{
+    float Scale { get; set; }
+}
 public partial interface IGameCtnAnchoredObject : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>
 {
     Vec3 AbsolutePositionInMap { get; set; }
@@ -44,31 +59,22 @@ public partial interface IGameCtnAnchoredObject : IClassVersion<global::GBX.NET.
     Vec3 YawPitchRoll { get; set; }
 }
 
-public partial interface IGameCtnAnchoredObjectMP3 : IGameCtnAnchoredObject
+public partial interface IGameCtnAnchoredObjectMP3 : IGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? WaypointSpecialProperty { get; set; }
 }
 
-public partial interface IGameCtnAnchoredObjectTMT : IGameCtnAnchoredObject
+public partial interface IGameCtnAnchoredObjectTMT : IGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT>, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers3
 {
-    float Scale { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? WaypointSpecialProperty { get; set; }
 }
 
-public partial interface IGameCtnAnchoredObjectMP4 : IGameCtnAnchoredObject
+public partial interface IGameCtnAnchoredObjectMP4 : IGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4>, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers2, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers3
 {
-    global::GBX.NET.PackDesc? PackDesc { get; set; }
-    float Scale { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4? WaypointSpecialProperty { get; set; }
 }
 
-public partial interface IGameCtnAnchoredObjectTM2020 : IGameCtnAnchoredObject
+public partial interface IGameCtnAnchoredObjectTM2020 : IGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers2, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers3
 {
     BoxAligned BoundingBox { get; set; }
-    global::GBX.NET.PackDesc? PackDesc { get; set; }
-    float Scale { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnAnchoredObject.ScriptParameter[]? ScriptParameters { get; set; }
     byte ScriptTraitsVersion { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? WaypointSpecialProperty { get; set; }
 }
 

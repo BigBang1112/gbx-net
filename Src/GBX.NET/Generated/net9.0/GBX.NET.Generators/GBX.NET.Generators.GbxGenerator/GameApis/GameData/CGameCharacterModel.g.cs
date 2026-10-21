@@ -36,8 +36,8 @@ public partial class CGameCharacterModel : global::GBX.NET.Interfaces.GameData.I
     public static global::GBX.NET.Builders.Engines.GameData.CGameCharacterModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModel>? global::GBX.NET.Interfaces.GameData.IGameCharacterModel.Objects
     {
-        get => Objects is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModel>(() => Objects, static node => node ?? throw new MemberNullException("Objects"));
-        set => Objects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(value.Select(static item => item is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Objects is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModel>(GetObjectsBuilderReferences, GameVersion.Unspecified, true, "Objects");
+        set => Objects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModel>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCharPhyModel? global::GBX.NET.Interfaces.GameData.IGameCharacterModel.PhysicsModel
     {
@@ -46,8 +46,8 @@ public partial class CGameCharacterModel : global::GBX.NET.Interfaces.GameData.I
     }
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>? global::GBX.NET.Interfaces.GameData.IGameCharacterModelTM2020.Objects
     {
-        get => Objects is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(() => Objects, static node => { if (node is null) throw new MemberNullException("Objects"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Objects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(value.Select(static item => item is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Objects is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(GetObjectsBuilderReferences, GameVersion.TM2020, true, "Objects");
+        set => Objects = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugCharPhyModelTM2020? global::GBX.NET.Interfaces.GameData.IGameCharacterModelTM2020.PhysicsModel
     {
@@ -59,4 +59,5 @@ public partial class CGameCharacterModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => PhysicsModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.GameData.CGameObjectModel>? GetObjectsBuilderReferences() => Objects;
 }

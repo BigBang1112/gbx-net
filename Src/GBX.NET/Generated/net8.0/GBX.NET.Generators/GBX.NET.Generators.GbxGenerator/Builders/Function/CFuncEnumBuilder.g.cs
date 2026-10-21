@@ -36,16 +36,16 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state;
     private protected CFuncEnumBuilderBase() => state = new();
     private protected CFuncEnumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) => this.state = state;
-    private protected static void SetAtlas(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Int2 value) => state.Set<Int2>("Atlas", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Atlas = value);
-    private protected static void SetIconIndexs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IconIndexs = value);
-    private protected static void SetIconIndexsReference(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer>>("IconIndexs", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.IconIndexs.CopyFrom(reference));
-    private protected static void SetMaxTexCoord(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set<Vec2>("MaxTexCoord", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MaxTexCoord = value);
-    private protected static void SetMinTexCoord(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set<Vec2>("MinTexCoord", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MinTexCoord = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetTexSize(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set<Vec2>("TexSize", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.TexSize = value);
-    private protected static void SetValues(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlug>?>("Values", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Values = value);
-    private protected static void SetValuesAtlasYx(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, int[]? value) => state.Set<int[]?>("ValuesAtlasYx", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.ValuesAtlasYx = value);
-    private protected static void SetWantedCount(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, int value) => state.Set<int>("WantedCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.WantedCount = value);
+    private protected static void SetAtlas(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Int2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetAtlasAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIconIndexs(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetIconIndexsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIconIndexsReference(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetIconIndexsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaxTexCoord(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetMaxTexCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMinTexCoord(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetMinTexCoordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTexSize(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetTexSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetValues(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlug>? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetValuesAtlasYx(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetValuesAtlasYxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetWantedCount(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilderAssignments.GetWantedCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     public Int2 Atlas
     {
         get => state.Get<Int2>("Atlas");
@@ -129,8 +129,87 @@ public abstract class CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilder
         return (TSelf)this;
     }
 }
+public abstract class CFuncEnumBuilderMembers1<TSelf> : CFuncEnumBuilderBase<TSelf> where TSelf : CFuncEnumBuilderMembers1<TSelf>
+{
+    private protected CFuncEnumBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
+    public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
+    {
+        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
+        set => SetIconIndexs(state, value);
+    }
+    public TSelf WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
+    {
+        IconIndexs = value;
+        return (TSelf)this;
+    }
+    public TSelf WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetIconIndexsReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CFuncEnumBuilderMembers2<TSelf> : CFuncEnumBuilderMembers1<TSelf> where TSelf : CFuncEnumBuilderMembers2<TSelf>
+{
+    private protected CFuncEnumBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
+    public Vec2 TexSize
+    {
+        get => state.Get<Vec2>("TexSize");
+        set => SetTexSize(state, value);
+    }
+    public TSelf WithTexSize(Vec2 value)
+    {
+        TexSize = value;
+        return (TSelf)this;
+    }
+}
 public partial class CFuncEnumBuilder : CFuncEnumBuilderBase<CFuncEnumBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncEnum CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncEnum();
+        var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
+        node.Chunks.Add(chunk0500E005);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncEnum node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500E005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncEnum CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncEnum();
+        var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
+        node.Chunks.Add(chunk0500E005);
+        var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
+        node.Chunks.Add(chunk0500E006);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncEnum node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500E005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500E006 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncEnum CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncEnum();
+        var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
+        node.Chunks.Add(chunk0500E005);
+        var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
+        node.Chunks.Add(chunk0500E006);
+        var chunk0500E007 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007();
+        node.Chunks.Add(chunk0500E007);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncEnum node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500E005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500E006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500E007 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncEnum node, GameVersion game)
+    {
+    }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -146,330 +225,144 @@ public partial class CFuncEnumBuilder : CFuncEnumBuilderBase<CFuncEnumBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
+            var node = CFuncEnumBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0500E005 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
-    public partial class VSK5 : CFuncEnumBuilderBase<VSK5>
+    public partial class VSK5 : CFuncEnumBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-            set => SetIconIndexs(state, value);
-        }
-        public VSK5 WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            IconIndexs = value;
-            return this;
-        }
-        public VSK5 WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconIndexsReference(state, value);
-            return this;
-        }
         public VSK5 WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? value)
         {
-            return WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Function.IFuncEnumVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
-            var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
-            node.Chunks.Add(chunk0500E006);
+            var node = CFuncEnumBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500E005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500E006 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
-    public partial class TMF : CFuncEnumBuilderBase<TMF>
+    public partial class TMF : CFuncEnumBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-            set => SetIconIndexs(state, value);
-        }
-        public TMF WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            IconIndexs = value;
-            return this;
-        }
-        public TMF WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconIndexsReference(state, value);
-            return this;
-        }
         public TMF WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? value)
         {
-            return WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec2 TexSize
-        {
-            get => state.Get<Vec2>("TexSize");
-            set => SetTexSize(state, value);
-        }
-        public TMF WithTexSize(Vec2 value)
-        {
-            TexSize = value;
-            return this;
+            return base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Function.IFuncEnumTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
-            var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
-            node.Chunks.Add(chunk0500E006);
-            var chunk0500E007 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007();
-            node.Chunks.Add(chunk0500E007);
+            var node = CFuncEnumBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500E005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500E007 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
-    public partial class MP3 : CFuncEnumBuilderBase<MP3>
+    public partial class MP3 : CFuncEnumBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-            set => SetIconIndexs(state, value);
-        }
-        public MP3 WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            IconIndexs = value;
-            return this;
-        }
-        public MP3 WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconIndexsReference(state, value);
-            return this;
-        }
         public MP3 WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? value)
         {
-            return WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec2 TexSize
-        {
-            get => state.Get<Vec2>("TexSize");
-            set => SetTexSize(state, value);
-        }
-        public MP3 WithTexSize(Vec2 value)
-        {
-            TexSize = value;
-            return this;
+            return base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Function.IFuncEnumMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
-            var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
-            node.Chunks.Add(chunk0500E006);
-            var chunk0500E007 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007();
-            node.Chunks.Add(chunk0500E007);
+            var node = CFuncEnumBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500E005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500E007 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
-    public partial class TMT : CFuncEnumBuilderBase<TMT>
+    public partial class TMT : CFuncEnumBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-            set => SetIconIndexs(state, value);
-        }
-        public TMT WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            IconIndexs = value;
-            return this;
-        }
-        public TMT WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconIndexsReference(state, value);
-            return this;
-        }
         public TMT WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? value)
         {
-            return WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec2 TexSize
-        {
-            get => state.Get<Vec2>("TexSize");
-            set => SetTexSize(state, value);
-        }
-        public TMT WithTexSize(Vec2 value)
-        {
-            TexSize = value;
-            return this;
+            return base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Function.IFuncEnumTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
-            var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
-            node.Chunks.Add(chunk0500E006);
-            var chunk0500E007 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007();
-            node.Chunks.Add(chunk0500E007);
+            var node = CFuncEnumBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500E005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500E007 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
-    public partial class MP4 : CFuncEnumBuilderBase<MP4>
+    public partial class MP4 : CFuncEnumBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-            set => SetIconIndexs(state, value);
-        }
-        public MP4 WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            IconIndexs = value;
-            return this;
-        }
-        public MP4 WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconIndexsReference(state, value);
-            return this;
-        }
         public MP4 WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? value)
         {
-            return WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec2 TexSize
-        {
-            get => state.Get<Vec2>("TexSize");
-            set => SetTexSize(state, value);
-        }
-        public MP4 WithTexSize(Vec2 value)
-        {
-            TexSize = value;
-            return this;
+            return base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Function.IFuncEnumMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
-            var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
-            node.Chunks.Add(chunk0500E006);
-            var chunk0500E007 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007();
-            node.Chunks.Add(chunk0500E007);
+            var node = CFuncEnumBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500E005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500E007 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncEnum node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncEnum node);
     }
-    public partial class TM2020 : CFuncEnumBuilderBase<TM2020>
+    public partial class TM2020 : CFuncEnumBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnum> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? IconIndexs
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("IconIndexs");
-            set => SetIconIndexs(state, value);
-        }
-        public TM2020 WithIconIndexs(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            IconIndexs = value;
-            return this;
-        }
-        public TM2020 WithIconIndexsReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetIconIndexsReference(state, value);
-            return this;
-        }
         public TM2020 WithIconIndexs(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? value)
         {
-            return WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec2 TexSize
-        {
-            get => state.Get<Vec2>("TexSize");
-            set => SetTexSize(state, value);
-        }
-        public TM2020 WithTexSize(Vec2 value)
-        {
-            TexSize = value;
-            return this;
+            return base.WithIconIndexs(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Function.IFuncEnumTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnum Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnum();
-            var chunk0500E005 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005();
-            node.Chunks.Add(chunk0500E005);
-            var chunk0500E006 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006();
-            node.Chunks.Add(chunk0500E006);
-            var chunk0500E007 = new global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007();
-            node.Chunks.Add(chunk0500E007);
+            var node = CFuncEnumBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0500E005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E006>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0500E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnum.Chunk0500E007>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0500E007 is missing or has an incompatible version.");
+            CFuncEnumBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CFuncEnumBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

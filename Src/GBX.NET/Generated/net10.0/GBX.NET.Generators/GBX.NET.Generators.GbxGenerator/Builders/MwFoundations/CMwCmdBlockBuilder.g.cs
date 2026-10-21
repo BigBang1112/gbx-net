@@ -36,9 +36,9 @@ public abstract class CMwCmdBlockBuilderBase<TSelf> where TSelf : CMwCmdBlockBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state;
     private protected CMwCmdBlockBuilderBase() => state = new();
     private protected CMwCmdBlockBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state) => this.state = state;
-    private protected static void SetCmds(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>?>("Cmds", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Cmds = value);
-    private protected static void SetContextVariables(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]?>("ContextVariables", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[])value.Clone(), static (node, value) => node.ContextVariables = value);
-    private protected static void SetVariables(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]?>("Variables", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[])value.Clone(), static (node, value) => node.Variables = value);
+    private protected static void SetCmds(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetCmdsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetContextVariables(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetContextVariablesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetVariables(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdBlockBuilderAssignments.GetVariablesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? Cmds
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>?>("Cmds");
@@ -88,6 +88,20 @@ public abstract class CMwCmdBlockBuilderBase<TSelf> where TSelf : CMwCmdBlockBui
 }
 public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdBlock CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
+        var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
+        node.Chunks.Add(chunk01030004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01030004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdBlock node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -100,13 +114,12 @@ public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuil
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
-            var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
-            node.Chunks.Add(chunk01030004);
+            var node = CMwCmdBlockBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk01030004 is missing or has an incompatible version.");
+            CMwCmdBlockBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CMwCmdBlockBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -119,13 +132,12 @@ public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuil
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
-            var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
-            node.Chunks.Add(chunk01030004);
+            var node = CMwCmdBlockBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk01030004 is missing or has an incompatible version.");
+            CMwCmdBlockBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CMwCmdBlockBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -138,13 +150,12 @@ public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuil
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
-            var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
-            node.Chunks.Add(chunk01030004);
+            var node = CMwCmdBlockBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk01030004 is missing or has an incompatible version.");
+            CMwCmdBlockBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CMwCmdBlockBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -157,13 +168,12 @@ public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuil
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
-            var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
-            node.Chunks.Add(chunk01030004);
+            var node = CMwCmdBlockBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk01030004 is missing or has an incompatible version.");
+            CMwCmdBlockBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CMwCmdBlockBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -176,13 +186,12 @@ public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuil
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
-            var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
-            node.Chunks.Add(chunk01030004);
+            var node = CMwCmdBlockBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk01030004 is missing or has an incompatible version.");
+            CMwCmdBlockBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CMwCmdBlockBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -195,13 +204,12 @@ public partial class CMwCmdBlockBuilder : CMwCmdBlockBuilderBase<CMwCmdBlockBuil
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock();
-            var chunk01030004 = new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004();
-            node.Chunks.Add(chunk01030004);
+            var node = CMwCmdBlockBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.Chunk01030004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01030004 is missing or has an incompatible version.");
+            CMwCmdBlockBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdBlockBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

@@ -64,7 +64,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         get => ShieldTouchSound;
         set => ShieldTouchSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.Shape
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4.ShapeVisModel
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ShapeVisModel
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShapeVisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4.ShieldActiveSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ShieldActiveSound
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldActiveSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4.ShieldDestroySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ShieldDestroySound
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldDestroySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4.ShieldTouchParticle
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ShieldTouchParticle
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldTouchParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4.ShieldTouchSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ShieldTouchSound
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldTouchSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.Shape
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020.ShapeVisModel
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ShapeVisModel
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShapeVisModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid2Model node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020.ShieldActiveSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ShieldActiveSound
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldActiveSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020.ShieldDestroySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ShieldDestroySound
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldDestroySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020.ShieldTouchParticle
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ShieldTouchParticle
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CPlugShieldModel : global::GBX.NET.Interfaces.Plug.IPlugShi
         }
         set => ShieldTouchParticle = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020.ShieldTouchSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ShieldTouchSound
     {
         get
         {

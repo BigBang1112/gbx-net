@@ -34,26 +34,6 @@ namespace GBX.NET.Engines.Scene;
 public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Scene.CSceneVehicleBuilder Create() => new();
-    global::GBX.NET.Interfaces.Motion.IMotion? global::GBX.NET.Interfaces.Scene.ISceneVehicle.Motion
-    {
-        get => Motion;
-        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? global::GBX.NET.Interfaces.Scene.ISceneVehicle.ObjectLink
-    {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLink>(() => ObjectLink, static node => node ?? throw new MemberNullException("ObjectLink"));
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10.MessageHandler
-    {
-        get
-        {
-            var node = MessageHandler;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
-        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Motion.IMotionTM10? global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10.Motion
     {
         get
@@ -66,18 +46,8 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTM10.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU.MessageHandler
-    {
-        get
-        {
-            var node = MessageHandler;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
-        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(GetObjectLinkBuilderReferences, GameVersion.TM10, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMPU? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU.Motion
     {
@@ -91,18 +61,8 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMPU.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX.MessageHandler
-    {
-        get
-        {
-            var node = MessageHandler;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(GetObjectLinkBuilderReferences, GameVersion.TMPU, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMSX? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX.Motion
     {
@@ -116,18 +76,8 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMSX.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC.MessageHandler
-    {
-        get
-        {
-            var node = MessageHandler;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(GetObjectLinkBuilderReferences, GameVersion.TMSX, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC.Motion
     {
@@ -141,10 +91,10 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMNESWC.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(GetObjectLinkBuilderReferences, GameVersion.TMNESWC, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(value, false));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.Environment
+    global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5>.Environment
     {
         get
         {
@@ -153,16 +103,6 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
             return node;
         }
         set => Environment = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.MessageHandler
-    {
-        get
-        {
-            var node = MessageHandler;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.Motion
     {
@@ -176,10 +116,10 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(GetObjectLinkBuilderReferences, GameVersion.VSK5, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(value, false));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.VehicleMaterials
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5>.VehicleMaterials
     {
         get
         {
@@ -189,7 +129,7 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
         }
         set => VehicleMaterials = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.VehicleStruct
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5>.VehicleStruct
     {
         get
         {
@@ -199,7 +139,7 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
         }
         set => VehicleStruct = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleVSK5.VehicleTunings
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5>.VehicleTunings
     {
         get
         {
@@ -209,7 +149,7 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
         }
         set => VehicleTunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.Environment
+    global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF>.Environment
     {
         get
         {
@@ -218,16 +158,6 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
             return node;
         }
         set => Environment = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.MessageHandler
-    {
-        get
-        {
-            var node = MessageHandler;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.Motion
     {
@@ -241,10 +171,10 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(GetObjectLinkBuilderReferences, GameVersion.TMF, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(value, false));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.VehicleMaterials
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF>.VehicleMaterials
     {
         get
         {
@@ -254,7 +184,7 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
         }
         set => VehicleMaterials = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.VehicleStruct
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF>.VehicleStruct
     {
         get
         {
@@ -264,7 +194,7 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
         }
         set => VehicleStruct = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMF.VehicleTunings
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF? global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF>.VehicleTunings
     {
         get
         {
@@ -286,8 +216,8 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? global::GBX.NET.Interfaces.Scene.ISceneVehicleMP3.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(GetObjectLinkBuilderReferences, GameVersion.MP3, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTMT? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMT.Motion
     {
@@ -301,8 +231,8 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? global::GBX.NET.Interfaces.Scene.ISceneVehicleTMT.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(GetObjectLinkBuilderReferences, GameVersion.TMT, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionMP4? global::GBX.NET.Interfaces.Scene.ISceneVehicleMP4.Motion
     {
@@ -316,8 +246,8 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? global::GBX.NET.Interfaces.Scene.ISceneVehicleMP4.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(GetObjectLinkBuilderReferences, GameVersion.MP4, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Motion.IMotionTM2020? global::GBX.NET.Interfaces.Scene.ISceneVehicleTM2020.Motion
     {
@@ -329,4 +259,5 @@ public partial class CSceneVehicle : global::GBX.NET.Interfaces.Scene.ISceneVehi
         }
         set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkBuilderReferences() => ObjectLink;
 }

@@ -36,42 +36,42 @@ public abstract class GxLightSpotBuilderBase<TSelf> where TSelf : GxLightSpotBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state;
     private protected GxLightSpotBuilderBase() => state = new();
     private protected GxLightSpotBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) => this.state = state;
-    private protected static void SetAmbientRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, Vec3 value) => state.Set<Vec3>("AmbientRGB", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AmbientRGB = value);
-    private protected static void SetAngleFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AngleFlare", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleFlare = value);
-    private protected static void SetAngleInner(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AngleInner", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleInner = value);
-    private protected static void SetAngleInnerShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AngleInnerShadow", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleInnerShadow = value);
-    private protected static void SetAngleOuter(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AngleOuter", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleOuter = value);
-    private protected static void SetAngleOuterShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AngleOuterShadow", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleOuterShadow = value);
-    private protected static void SetAttHTnLR(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AttHTnLR", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AttHTnLR = value);
-    private protected static void SetAttHTnLR2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AttHTnLR2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AttHTnLR2 = value);
-    private protected static void SetAttHdrRadiusCoef(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AttHdrRadiusCoef", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AttHdrRadiusCoef = value);
-    private protected static void SetAttHyper2DerivAt0(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AttHyper2DerivAt0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AttHyper2DerivAt0 = value);
-    private protected static void SetAttHyper2Tension(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("AttHyper2Tension", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AttHyper2Tension = value);
-    private protected static void SetAttenuation1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("Attenuation1", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Attenuation1 = value);
-    private protected static void SetAttenuation2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("Attenuation2", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Attenuation2 = value);
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, Vec3 value) => state.Set<Vec3>("Color", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Color = value);
-    private protected static void SetCustomAngleFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, bool value) => state.Set<bool>("CustomAngleFlare", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CustomAngleFlare = value);
-    private protected static void SetCustomAngleShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, bool value) => state.Set<bool>("CustomAngleShadow", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CustomAngleShadow = value);
-    private protected static void SetDiffuseIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("DiffuseIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DiffuseIntensity = value);
-    private protected static void SetEmittingCylinderLenZ(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("EmittingCylinderLenZ", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EmittingCylinderLenZ = value);
-    private protected static void SetEmittingRadius(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("EmittingRadius", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmittingRadius = value);
-    private protected static void SetFalloffExponent(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("FalloffExponent", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FalloffExponent = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, uint value) => state.Set<uint>("Flags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetFlareBiasZ(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("FlareBiasZ", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FlareBiasZ = value);
-    private protected static void SetFlareIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("FlareIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FlareIntensity = value);
-    private protected static void SetFlareSize(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("FlareSize", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FlareSize = value);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("Intensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Intensity = value);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("Radius", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Radius = value);
-    private protected static void SetRadiusFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("RadiusFlare", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RadiusFlare = value);
-    private protected static void SetRadiusIndex(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("RadiusIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RadiusIndex = value);
-    private protected static void SetRadiusShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("RadiusShadow", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RadiusShadow = value);
-    private protected static void SetRadiusSpecular(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("RadiusSpecular", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RadiusSpecular = value);
-    private protected static void SetShadowIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("ShadowIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowIntensity = value);
-    private protected static void SetShadowRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, Vec3 value) => state.Set<Vec3>("ShadowRGB", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowRGB = value);
-    private protected static void SetSpecularIntens(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("SpecularIntens", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SpecularIntens = value);
-    private protected static void SetSpecularPower(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set<float>("SpecularPower", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SpecularPower = value);
-    private protected static void SetSubLightCountX(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, byte value) => state.Set<byte>("SubLightCountX", value, GameVersion.TM2020, static value => value, static (node, value) => node.SubLightCountX = value);
-    private protected static void SetSubLightCountY(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, byte value) => state.Set<byte>("SubLightCountY", value, GameVersion.TM2020, static value => value, static (node, value) => node.SubLightCountY = value);
+    private protected static void SetAmbientRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAmbientRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAngleFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetAngleFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAngleInner(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetAngleInnerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAngleInnerShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetAngleInnerShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAngleOuter(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetAngleOuterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAngleOuterShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetAngleOuterShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAttHTnLR(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHTnLRAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAttHTnLR2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHTnLR2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAttHdrRadiusCoef(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHdrRadiusCoefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAttHyper2DerivAt0(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHyper2DerivAt0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAttHyper2Tension(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttHyper2TensionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAttenuation1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation1Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetAttenuation2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetAttenuation2Assignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCustomAngleFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetCustomAngleFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCustomAngleShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetCustomAngleShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDiffuseIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetDiffuseIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEmittingCylinderLenZ(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingCylinderLenZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEmittingRadius(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetEmittingRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFalloffExponent(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetFalloffExponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlareBiasZ(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightPointBuilderAssignments.GetFlareBiasZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlareIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetFlareIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlareSize(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightPointBuilderAssignments.GetFlareSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRadiusFlare(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRadiusIndex(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRadiusShadow(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusShadowAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRadiusSpecular(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBallBuilderAssignments.GetRadiusSpecularAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowIntensity(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowRGB(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetShadowRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSpecularIntens(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularIntensAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSpecularPower(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightBuilderAssignments.GetSpecularPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSubLightCountX(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetSubLightCountXAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSubLightCountY(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxLightSpotBuilderAssignments.GetSubLightCountYAssignment(), value, GameVersion.TM2020);
     public Vec3 AmbientRGB
     {
         get => state.Get<Vec3>("AmbientRGB");
@@ -193,8 +193,399 @@ public abstract class GxLightSpotBuilderBase<TSelf> where TSelf : GxLightSpotBui
         return (TSelf)this;
     }
 }
+public abstract class GxLightSpotBuilderMembers1<TSelf> : GxLightSpotBuilderBase<TSelf> where TSelf : GxLightSpotBuilderMembers1<TSelf>
+{
+    private protected GxLightSpotBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
+    public float Attenuation1
+    {
+        get => state.Get<float>("Attenuation1");
+        set => SetAttenuation1(state, value);
+    }
+    public TSelf WithAttenuation1(float value)
+    {
+        Attenuation1 = value;
+        return (TSelf)this;
+    }
+    public float Attenuation2
+    {
+        get => state.Get<float>("Attenuation2");
+        set => SetAttenuation2(state, value);
+    }
+    public TSelf WithAttenuation2(float value)
+    {
+        Attenuation2 = value;
+        return (TSelf)this;
+    }
+}
+public abstract class GxLightSpotBuilderMembers2<TSelf> : GxLightSpotBuilderBase<TSelf> where TSelf : GxLightSpotBuilderMembers2<TSelf>
+{
+    private protected GxLightSpotBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
+    public float AngleFlare
+    {
+        get => state.Get<float>("AngleFlare");
+        set => SetAngleFlare(state, value);
+    }
+    public TSelf WithAngleFlare(float value)
+    {
+        AngleFlare = value;
+        return (TSelf)this;
+    }
+    public float AngleInnerShadow
+    {
+        get => state.Get<float>("AngleInnerShadow");
+        set => SetAngleInnerShadow(state, value);
+    }
+    public TSelf WithAngleInnerShadow(float value)
+    {
+        AngleInnerShadow = value;
+        return (TSelf)this;
+    }
+    public float AngleOuterShadow
+    {
+        get => state.Get<float>("AngleOuterShadow");
+        set => SetAngleOuterShadow(state, value);
+    }
+    public TSelf WithAngleOuterShadow(float value)
+    {
+        AngleOuterShadow = value;
+        return (TSelf)this;
+    }
+    public bool CustomAngleFlare
+    {
+        get => state.Get<bool>("CustomAngleFlare");
+        set => SetCustomAngleFlare(state, value);
+    }
+    public TSelf WithCustomAngleFlare(bool value)
+    {
+        CustomAngleFlare = value;
+        return (TSelf)this;
+    }
+    public bool CustomAngleShadow
+    {
+        get => state.Get<bool>("CustomAngleShadow");
+        set => SetCustomAngleShadow(state, value);
+    }
+    public TSelf WithCustomAngleShadow(bool value)
+    {
+        CustomAngleShadow = value;
+        return (TSelf)this;
+    }
+    public uint Flags
+    {
+        get => state.Get<uint>("Flags");
+        set => SetFlags(state, value);
+    }
+    public TSelf WithFlags(uint value)
+    {
+        Flags = value;
+        return (TSelf)this;
+    }
+    public float FlareBiasZ
+    {
+        get => state.Get<float>("FlareBiasZ");
+        set => SetFlareBiasZ(state, value);
+    }
+    public TSelf WithFlareBiasZ(float value)
+    {
+        FlareBiasZ = value;
+        return (TSelf)this;
+    }
+    public float RadiusFlare
+    {
+        get => state.Get<float>("RadiusFlare");
+        set => SetRadiusFlare(state, value);
+    }
+    public TSelf WithRadiusFlare(float value)
+    {
+        RadiusFlare = value;
+        return (TSelf)this;
+    }
+    public float RadiusShadow
+    {
+        get => state.Get<float>("RadiusShadow");
+        set => SetRadiusShadow(state, value);
+    }
+    public TSelf WithRadiusShadow(float value)
+    {
+        RadiusShadow = value;
+        return (TSelf)this;
+    }
+    public float RadiusSpecular
+    {
+        get => state.Get<float>("RadiusSpecular");
+        set => SetRadiusSpecular(state, value);
+    }
+    public TSelf WithRadiusSpecular(float value)
+    {
+        RadiusSpecular = value;
+        return (TSelf)this;
+    }
+}
+public abstract class GxLightSpotBuilderMembers3<TSelf> : GxLightSpotBuilderMembers2<TSelf> where TSelf : GxLightSpotBuilderMembers3<TSelf>
+{
+    private protected GxLightSpotBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
+    public float DiffuseIntensity
+    {
+        get => state.Get<float>("DiffuseIntensity");
+        set => SetDiffuseIntensity(state, value);
+    }
+    public TSelf WithDiffuseIntensity(float value)
+    {
+        DiffuseIntensity = value;
+        return (TSelf)this;
+    }
+}
+public abstract class GxLightSpotBuilderMembers4<TSelf> : GxLightSpotBuilderMembers3<TSelf> where TSelf : GxLightSpotBuilderMembers4<TSelf>
+{
+    private protected GxLightSpotBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
+    public float SpecularIntens
+    {
+        get => state.Get<float>("SpecularIntens");
+        set => SetSpecularIntens(state, value);
+    }
+    public TSelf WithSpecularIntens(float value)
+    {
+        SpecularIntens = value;
+        return (TSelf)this;
+    }
+    public float SpecularPower
+    {
+        get => state.Get<float>("SpecularPower");
+        set => SetSpecularPower(state, value);
+    }
+    public TSelf WithSpecularPower(float value)
+    {
+        SpecularPower = value;
+        return (TSelf)this;
+    }
+}
+public abstract class GxLightSpotBuilderMembers5<TSelf> : GxLightSpotBuilderMembers3<TSelf> where TSelf : GxLightSpotBuilderMembers5<TSelf>
+{
+    private protected GxLightSpotBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
+    public float AttHTnLR
+    {
+        get => state.Get<float>("AttHTnLR");
+        set => SetAttHTnLR(state, value);
+    }
+    public TSelf WithAttHTnLR(float value)
+    {
+        AttHTnLR = value;
+        return (TSelf)this;
+    }
+    public float AttHTnLR2
+    {
+        get => state.Get<float>("AttHTnLR2");
+        set => SetAttHTnLR2(state, value);
+    }
+    public TSelf WithAttHTnLR2(float value)
+    {
+        AttHTnLR2 = value;
+        return (TSelf)this;
+    }
+    public float AttHdrRadiusCoef
+    {
+        get => state.Get<float>("AttHdrRadiusCoef");
+        set => SetAttHdrRadiusCoef(state, value);
+    }
+    public TSelf WithAttHdrRadiusCoef(float value)
+    {
+        AttHdrRadiusCoef = value;
+        return (TSelf)this;
+    }
+    public float AttHyper2DerivAt0
+    {
+        get => state.Get<float>("AttHyper2DerivAt0");
+        set => SetAttHyper2DerivAt0(state, value);
+    }
+    public TSelf WithAttHyper2DerivAt0(float value)
+    {
+        AttHyper2DerivAt0 = value;
+        return (TSelf)this;
+    }
+    public float AttHyper2Tension
+    {
+        get => state.Get<float>("AttHyper2Tension");
+        set => SetAttHyper2Tension(state, value);
+    }
+    public TSelf WithAttHyper2Tension(float value)
+    {
+        AttHyper2Tension = value;
+        return (TSelf)this;
+    }
+    public float EmittingCylinderLenZ
+    {
+        get => state.Get<float>("EmittingCylinderLenZ");
+        set => SetEmittingCylinderLenZ(state, value);
+    }
+    public TSelf WithEmittingCylinderLenZ(float value)
+    {
+        EmittingCylinderLenZ = value;
+        return (TSelf)this;
+    }
+    public float RadiusIndex
+    {
+        get => state.Get<float>("RadiusIndex");
+        set => SetRadiusIndex(state, value);
+    }
+    public TSelf WithRadiusIndex(float value)
+    {
+        RadiusIndex = value;
+        return (TSelf)this;
+    }
+}
 public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuilder>
 {
+    private static global::GBX.NET.Engines.Graphic.GxLightSpot CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
+        var chunk0400B000 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B000();
+        node.Chunks.Add(chunk0400B000);
+        var chunk04002002 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002002();
+        node.Chunks.Add(chunk04002002);
+        var chunk04003003 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003003();
+        node.Chunks.Add(chunk04003003);
+        var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
+        node.Chunks.Add(chunk04001008);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04003003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Graphic.GxLightSpot CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
+        var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
+        node.Chunks.Add(chunk0400B001);
+        var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
+        node.Chunks.Add(chunk0400B002);
+        var chunk04002006 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006();
+        node.Chunks.Add(chunk04002006);
+        var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
+        node.Chunks.Add(chunk04003004);
+        var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
+        node.Chunks.Add(chunk04001008);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04003004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Graphic.GxLightSpot CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
+        var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
+        node.Chunks.Add(chunk0400B001);
+        var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
+        node.Chunks.Add(chunk0400B002);
+        var chunk04002006 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006();
+        node.Chunks.Add(chunk04002006);
+        var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
+        node.Chunks.Add(chunk04003004);
+        var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
+        node.Chunks.Add(chunk04001009);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04003004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Graphic.GxLightSpot CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
+        var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
+        node.Chunks.Add(chunk0400B001);
+        var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
+        node.Chunks.Add(chunk0400B002);
+        var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
+        node.Chunks.Add(chunk04002008);
+        var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
+        node.Chunks.Add(chunk04002009);
+        var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
+        node.Chunks.Add(chunk0400200A);
+        var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
+        node.Chunks.Add(chunk04003004);
+        var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
+        node.Chunks.Add(chunk04001009);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400200A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04003004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Graphic.GxLightSpot CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
+        var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
+        node.Chunks.Add(chunk0400B002);
+        var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
+        node.Chunks.Add(chunk04002008);
+        var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
+        node.Chunks.Add(chunk04002009);
+        var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
+        node.Chunks.Add(chunk0400200A);
+        var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
+        node.Chunks.Add(chunk04003004);
+        var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
+        node.Chunks.Add(chunk04001009);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400200A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04003004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04001009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Graphic.GxLightSpot CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
+        var chunk0400B003 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B003(game);
+        node.Chunks.Add(chunk0400B003);
+        var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
+        node.Chunks.Add(chunk04002008);
+        var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
+        node.Chunks.Add(chunk04002009);
+        var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
+        node.Chunks.Add(chunk0400200A);
+        var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
+        node.Chunks.Add(chunk04003004);
+        var chunk0400100A = new global::GBX.NET.Engines.Graphic.GxLight.Chunk0400100A();
+        chunk0400100A.Version = 0;
+        node.Chunks.Add(chunk0400100A);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0400B003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04002009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0400200A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04003004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk0400100A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0400100A is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Graphic.GxLightSpot node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -207,135 +598,45 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : GxLightSpotBuilderBase<TM10>
+    public partial class TM10 : GxLightSpotBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float Attenuation1
-        {
-            get => state.Get<float>("Attenuation1");
-            set => SetAttenuation1(state, value);
-        }
-        public TM10 WithAttenuation1(float value)
-        {
-            Attenuation1 = value;
-            return this;
-        }
-        public float Attenuation2
-        {
-            get => state.Get<float>("Attenuation2");
-            set => SetAttenuation2(state, value);
-        }
-        public TM10 WithAttenuation2(float value)
-        {
-            Attenuation2 = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B000 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B000();
-            node.Chunks.Add(chunk0400B000);
-            var chunk04002002 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002002();
-            node.Chunks.Add(chunk04002002);
-            var chunk04003003 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003003();
-            node.Chunks.Add(chunk04003003);
-            var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
-            node.Chunks.Add(chunk04001008);
+            var node = GxLightSpotBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0400B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk04002002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk04003003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk04001008 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class TMPU : GxLightSpotBuilderBase<TMPU>
+    public partial class TMPU : GxLightSpotBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float Attenuation1
-        {
-            get => state.Get<float>("Attenuation1");
-            set => SetAttenuation1(state, value);
-        }
-        public TMPU WithAttenuation1(float value)
-        {
-            Attenuation1 = value;
-            return this;
-        }
-        public float Attenuation2
-        {
-            get => state.Get<float>("Attenuation2");
-            set => SetAttenuation2(state, value);
-        }
-        public TMPU WithAttenuation2(float value)
-        {
-            Attenuation2 = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B000 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B000();
-            node.Chunks.Add(chunk0400B000);
-            var chunk04002002 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002002();
-            node.Chunks.Add(chunk04002002);
-            var chunk04003003 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003003();
-            node.Chunks.Add(chunk04003003);
-            var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
-            node.Chunks.Add(chunk04001008);
+            var node = GxLightSpotBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0400B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk04002002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk04003003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk04001008 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class TMSX : GxLightSpotBuilderBase<TMSX>
+    public partial class TMSX : GxLightSpotBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public TMSX WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public TMSX WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public TMSX WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
@@ -356,137 +657,24 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
             Attenuation2 = value;
             return this;
         }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public TMSX WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public TMSX WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMSX WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public TMSX WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public TMSX WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public TMSX WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public TMSX WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
-            node.Chunks.Add(chunk0400B001);
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002006 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006();
-            node.Chunks.Add(chunk04002006);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
-            node.Chunks.Add(chunk04001008);
+            var node = GxLightSpotBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0400B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk04002006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk04001008 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class TMNESWC : GxLightSpotBuilderBase<TMNESWC>
+    public partial class TMNESWC : GxLightSpotBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public TMNESWC WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public TMNESWC WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public TMNESWC WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
@@ -507,137 +695,24 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
             Attenuation2 = value;
             return this;
         }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public TMNESWC WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public TMNESWC WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMNESWC WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public TMNESWC WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public TMNESWC WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public TMNESWC WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public TMNESWC WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
-            node.Chunks.Add(chunk0400B001);
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002006 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006();
-            node.Chunks.Add(chunk04002006);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001008 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008();
-            node.Chunks.Add(chunk04001008);
+            var node = GxLightSpotBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0400B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk04002006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001008>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk04001008 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class VSK5 : GxLightSpotBuilderBase<VSK5>
+    public partial class VSK5 : GxLightSpotBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public VSK5 WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public VSK5 WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public VSK5 WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
@@ -658,167 +733,24 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
             Attenuation2 = value;
             return this;
         }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public VSK5 WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public VSK5 WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public float DiffuseIntensity
-        {
-            get => state.Get<float>("DiffuseIntensity");
-            set => SetDiffuseIntensity(state, value);
-        }
-        public VSK5 WithDiffuseIntensity(float value)
-        {
-            DiffuseIntensity = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public VSK5 WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public VSK5 WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public VSK5 WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public VSK5 WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public VSK5 WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
-        public float SpecularIntens
-        {
-            get => state.Get<float>("SpecularIntens");
-            set => SetSpecularIntens(state, value);
-        }
-        public VSK5 WithSpecularIntens(float value)
-        {
-            SpecularIntens = value;
-            return this;
-        }
-        public float SpecularPower
-        {
-            get => state.Get<float>("SpecularPower");
-            set => SetSpecularPower(state, value);
-        }
-        public VSK5 WithSpecularPower(float value)
-        {
-            SpecularPower = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
-            node.Chunks.Add(chunk0400B001);
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002006 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006();
-            node.Chunks.Add(chunk04002006);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
-            node.Chunks.Add(chunk04001009);
+            var node = GxLightSpotBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0400B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk04002006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk04001009 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class TMF : GxLightSpotBuilderBase<TMF>
+    public partial class TMF : GxLightSpotBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public TMF WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public TMF WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public TMF WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
         public float Attenuation1
         {
             get => state.Get<float>("Attenuation1");
@@ -839,317 +771,24 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
             Attenuation2 = value;
             return this;
         }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public TMF WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public TMF WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public float DiffuseIntensity
-        {
-            get => state.Get<float>("DiffuseIntensity");
-            set => SetDiffuseIntensity(state, value);
-        }
-        public TMF WithDiffuseIntensity(float value)
-        {
-            DiffuseIntensity = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMF WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public TMF WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public TMF WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public TMF WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public TMF WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
-        public float SpecularIntens
-        {
-            get => state.Get<float>("SpecularIntens");
-            set => SetSpecularIntens(state, value);
-        }
-        public TMF WithSpecularIntens(float value)
-        {
-            SpecularIntens = value;
-            return this;
-        }
-        public float SpecularPower
-        {
-            get => state.Get<float>("SpecularPower");
-            set => SetSpecularPower(state, value);
-        }
-        public TMF WithSpecularPower(float value)
-        {
-            SpecularPower = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
-            node.Chunks.Add(chunk0400B001);
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002006 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006();
-            node.Chunks.Add(chunk04002006);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
-            node.Chunks.Add(chunk04001009);
+            var node = GxLightSpotBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0400B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk04002006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException("Required TMF chunk Chunk04001009 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class MP3 : GxLightSpotBuilderBase<MP3>
+    public partial class MP3 : GxLightSpotBuilderMembers5<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public MP3 WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public MP3 WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public MP3 WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
-        public float AttHTnLR
-        {
-            get => state.Get<float>("AttHTnLR");
-            set => SetAttHTnLR(state, value);
-        }
-        public MP3 WithAttHTnLR(float value)
-        {
-            AttHTnLR = value;
-            return this;
-        }
-        public float AttHTnLR2
-        {
-            get => state.Get<float>("AttHTnLR2");
-            set => SetAttHTnLR2(state, value);
-        }
-        public MP3 WithAttHTnLR2(float value)
-        {
-            AttHTnLR2 = value;
-            return this;
-        }
-        public float AttHdrRadiusCoef
-        {
-            get => state.Get<float>("AttHdrRadiusCoef");
-            set => SetAttHdrRadiusCoef(state, value);
-        }
-        public MP3 WithAttHdrRadiusCoef(float value)
-        {
-            AttHdrRadiusCoef = value;
-            return this;
-        }
-        public float AttHyper2DerivAt0
-        {
-            get => state.Get<float>("AttHyper2DerivAt0");
-            set => SetAttHyper2DerivAt0(state, value);
-        }
-        public MP3 WithAttHyper2DerivAt0(float value)
-        {
-            AttHyper2DerivAt0 = value;
-            return this;
-        }
-        public float AttHyper2Tension
-        {
-            get => state.Get<float>("AttHyper2Tension");
-            set => SetAttHyper2Tension(state, value);
-        }
-        public MP3 WithAttHyper2Tension(float value)
-        {
-            AttHyper2Tension = value;
-            return this;
-        }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public MP3 WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public MP3 WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public float DiffuseIntensity
-        {
-            get => state.Get<float>("DiffuseIntensity");
-            set => SetDiffuseIntensity(state, value);
-        }
-        public MP3 WithDiffuseIntensity(float value)
-        {
-            DiffuseIntensity = value;
-            return this;
-        }
-        public float EmittingCylinderLenZ
-        {
-            get => state.Get<float>("EmittingCylinderLenZ");
-            set => SetEmittingCylinderLenZ(state, value);
-        }
-        public MP3 WithEmittingCylinderLenZ(float value)
-        {
-            EmittingCylinderLenZ = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public MP3 WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public MP3 WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public MP3 WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusIndex
-        {
-            get => state.Get<float>("RadiusIndex");
-            set => SetRadiusIndex(state, value);
-        }
-        public MP3 WithRadiusIndex(float value)
-        {
-            RadiusIndex = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public MP3 WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public MP3 WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
         public float SpecularIntens
         {
             get => state.Get<float>("SpecularIntens");
@@ -1173,220 +812,21 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
-            node.Chunks.Add(chunk0400B001);
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
-            node.Chunks.Add(chunk04002008);
-            var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
-            node.Chunks.Add(chunk04002009);
-            var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
-            node.Chunks.Add(chunk0400200A);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
-            node.Chunks.Add(chunk04001009);
+            var node = GxLightSpotBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0400B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk04002008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk04002009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0400200A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk04001009 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class TMT : GxLightSpotBuilderBase<TMT>
+    public partial class TMT : GxLightSpotBuilderMembers5<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public TMT WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public TMT WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public TMT WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
-        public float AttHTnLR
-        {
-            get => state.Get<float>("AttHTnLR");
-            set => SetAttHTnLR(state, value);
-        }
-        public TMT WithAttHTnLR(float value)
-        {
-            AttHTnLR = value;
-            return this;
-        }
-        public float AttHTnLR2
-        {
-            get => state.Get<float>("AttHTnLR2");
-            set => SetAttHTnLR2(state, value);
-        }
-        public TMT WithAttHTnLR2(float value)
-        {
-            AttHTnLR2 = value;
-            return this;
-        }
-        public float AttHdrRadiusCoef
-        {
-            get => state.Get<float>("AttHdrRadiusCoef");
-            set => SetAttHdrRadiusCoef(state, value);
-        }
-        public TMT WithAttHdrRadiusCoef(float value)
-        {
-            AttHdrRadiusCoef = value;
-            return this;
-        }
-        public float AttHyper2DerivAt0
-        {
-            get => state.Get<float>("AttHyper2DerivAt0");
-            set => SetAttHyper2DerivAt0(state, value);
-        }
-        public TMT WithAttHyper2DerivAt0(float value)
-        {
-            AttHyper2DerivAt0 = value;
-            return this;
-        }
-        public float AttHyper2Tension
-        {
-            get => state.Get<float>("AttHyper2Tension");
-            set => SetAttHyper2Tension(state, value);
-        }
-        public TMT WithAttHyper2Tension(float value)
-        {
-            AttHyper2Tension = value;
-            return this;
-        }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public TMT WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public TMT WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public float DiffuseIntensity
-        {
-            get => state.Get<float>("DiffuseIntensity");
-            set => SetDiffuseIntensity(state, value);
-        }
-        public TMT WithDiffuseIntensity(float value)
-        {
-            DiffuseIntensity = value;
-            return this;
-        }
-        public float EmittingCylinderLenZ
-        {
-            get => state.Get<float>("EmittingCylinderLenZ");
-            set => SetEmittingCylinderLenZ(state, value);
-        }
-        public TMT WithEmittingCylinderLenZ(float value)
-        {
-            EmittingCylinderLenZ = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMT WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public TMT WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public TMT WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusIndex
-        {
-            get => state.Get<float>("RadiusIndex");
-            set => SetRadiusIndex(state, value);
-        }
-        public TMT WithRadiusIndex(float value)
-        {
-            RadiusIndex = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public TMT WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public TMT WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
         public float SpecularIntens
         {
             get => state.Get<float>("SpecularIntens");
@@ -1410,220 +850,21 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B001 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001();
-            node.Chunks.Add(chunk0400B001);
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
-            node.Chunks.Add(chunk04002008);
-            var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
-            node.Chunks.Add(chunk04002009);
-            var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
-            node.Chunks.Add(chunk0400200A);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
-            node.Chunks.Add(chunk04001009);
+            var node = GxLightSpotBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0400B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException("Required TMT chunk Chunk04002008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk04002009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0400200A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk04001009 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class MP4 : GxLightSpotBuilderBase<MP4>
+    public partial class MP4 : GxLightSpotBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public MP4 WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public MP4 WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public MP4 WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
-        public float AttHTnLR
-        {
-            get => state.Get<float>("AttHTnLR");
-            set => SetAttHTnLR(state, value);
-        }
-        public MP4 WithAttHTnLR(float value)
-        {
-            AttHTnLR = value;
-            return this;
-        }
-        public float AttHTnLR2
-        {
-            get => state.Get<float>("AttHTnLR2");
-            set => SetAttHTnLR2(state, value);
-        }
-        public MP4 WithAttHTnLR2(float value)
-        {
-            AttHTnLR2 = value;
-            return this;
-        }
-        public float AttHdrRadiusCoef
-        {
-            get => state.Get<float>("AttHdrRadiusCoef");
-            set => SetAttHdrRadiusCoef(state, value);
-        }
-        public MP4 WithAttHdrRadiusCoef(float value)
-        {
-            AttHdrRadiusCoef = value;
-            return this;
-        }
-        public float AttHyper2DerivAt0
-        {
-            get => state.Get<float>("AttHyper2DerivAt0");
-            set => SetAttHyper2DerivAt0(state, value);
-        }
-        public MP4 WithAttHyper2DerivAt0(float value)
-        {
-            AttHyper2DerivAt0 = value;
-            return this;
-        }
-        public float AttHyper2Tension
-        {
-            get => state.Get<float>("AttHyper2Tension");
-            set => SetAttHyper2Tension(state, value);
-        }
-        public MP4 WithAttHyper2Tension(float value)
-        {
-            AttHyper2Tension = value;
-            return this;
-        }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public MP4 WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public MP4 WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public float DiffuseIntensity
-        {
-            get => state.Get<float>("DiffuseIntensity");
-            set => SetDiffuseIntensity(state, value);
-        }
-        public MP4 WithDiffuseIntensity(float value)
-        {
-            DiffuseIntensity = value;
-            return this;
-        }
-        public float EmittingCylinderLenZ
-        {
-            get => state.Get<float>("EmittingCylinderLenZ");
-            set => SetEmittingCylinderLenZ(state, value);
-        }
-        public MP4 WithEmittingCylinderLenZ(float value)
-        {
-            EmittingCylinderLenZ = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public MP4 WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public MP4 WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public MP4 WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusIndex
-        {
-            get => state.Get<float>("RadiusIndex");
-            set => SetRadiusIndex(state, value);
-        }
-        public MP4 WithRadiusIndex(float value)
-        {
-            RadiusIndex = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public MP4 WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public MP4 WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
         public float SpecularIntens
         {
             get => state.Get<float>("SpecularIntens");
@@ -1647,217 +888,21 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B002 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002();
-            node.Chunks.Add(chunk0400B002);
-            var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
-            node.Chunks.Add(chunk04002008);
-            var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
-            node.Chunks.Add(chunk04002009);
-            var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
-            node.Chunks.Add(chunk0400200A);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk04001009 = new global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009();
-            node.Chunks.Add(chunk04001009);
+            var node = GxLightSpotBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0400B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk04002008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk04002009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0400200A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk04001009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk04001009 is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe4(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
         partial void ValidateNode(global::GBX.NET.Engines.Graphic.GxLightSpot node);
     }
-    public partial class TM2020 : GxLightSpotBuilderBase<TM2020>
+    public partial class TM2020 : GxLightSpotBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxLightSpot> state) : base(state) { }
-        public float AngleFlare
-        {
-            get => state.Get<float>("AngleFlare");
-            set => SetAngleFlare(state, value);
-        }
-        public TM2020 WithAngleFlare(float value)
-        {
-            AngleFlare = value;
-            return this;
-        }
-        public float AngleInnerShadow
-        {
-            get => state.Get<float>("AngleInnerShadow");
-            set => SetAngleInnerShadow(state, value);
-        }
-        public TM2020 WithAngleInnerShadow(float value)
-        {
-            AngleInnerShadow = value;
-            return this;
-        }
-        public float AngleOuterShadow
-        {
-            get => state.Get<float>("AngleOuterShadow");
-            set => SetAngleOuterShadow(state, value);
-        }
-        public TM2020 WithAngleOuterShadow(float value)
-        {
-            AngleOuterShadow = value;
-            return this;
-        }
-        public float AttHTnLR
-        {
-            get => state.Get<float>("AttHTnLR");
-            set => SetAttHTnLR(state, value);
-        }
-        public TM2020 WithAttHTnLR(float value)
-        {
-            AttHTnLR = value;
-            return this;
-        }
-        public float AttHTnLR2
-        {
-            get => state.Get<float>("AttHTnLR2");
-            set => SetAttHTnLR2(state, value);
-        }
-        public TM2020 WithAttHTnLR2(float value)
-        {
-            AttHTnLR2 = value;
-            return this;
-        }
-        public float AttHdrRadiusCoef
-        {
-            get => state.Get<float>("AttHdrRadiusCoef");
-            set => SetAttHdrRadiusCoef(state, value);
-        }
-        public TM2020 WithAttHdrRadiusCoef(float value)
-        {
-            AttHdrRadiusCoef = value;
-            return this;
-        }
-        public float AttHyper2DerivAt0
-        {
-            get => state.Get<float>("AttHyper2DerivAt0");
-            set => SetAttHyper2DerivAt0(state, value);
-        }
-        public TM2020 WithAttHyper2DerivAt0(float value)
-        {
-            AttHyper2DerivAt0 = value;
-            return this;
-        }
-        public float AttHyper2Tension
-        {
-            get => state.Get<float>("AttHyper2Tension");
-            set => SetAttHyper2Tension(state, value);
-        }
-        public TM2020 WithAttHyper2Tension(float value)
-        {
-            AttHyper2Tension = value;
-            return this;
-        }
-        public bool CustomAngleFlare
-        {
-            get => state.Get<bool>("CustomAngleFlare");
-            set => SetCustomAngleFlare(state, value);
-        }
-        public TM2020 WithCustomAngleFlare(bool value)
-        {
-            CustomAngleFlare = value;
-            return this;
-        }
-        public bool CustomAngleShadow
-        {
-            get => state.Get<bool>("CustomAngleShadow");
-            set => SetCustomAngleShadow(state, value);
-        }
-        public TM2020 WithCustomAngleShadow(bool value)
-        {
-            CustomAngleShadow = value;
-            return this;
-        }
-        public float DiffuseIntensity
-        {
-            get => state.Get<float>("DiffuseIntensity");
-            set => SetDiffuseIntensity(state, value);
-        }
-        public TM2020 WithDiffuseIntensity(float value)
-        {
-            DiffuseIntensity = value;
-            return this;
-        }
-        public float EmittingCylinderLenZ
-        {
-            get => state.Get<float>("EmittingCylinderLenZ");
-            set => SetEmittingCylinderLenZ(state, value);
-        }
-        public TM2020 WithEmittingCylinderLenZ(float value)
-        {
-            EmittingCylinderLenZ = value;
-            return this;
-        }
-        public uint Flags
-        {
-            get => state.Get<uint>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TM2020 WithFlags(uint value)
-        {
-            Flags = value;
-            return this;
-        }
-        public float FlareBiasZ
-        {
-            get => state.Get<float>("FlareBiasZ");
-            set => SetFlareBiasZ(state, value);
-        }
-        public TM2020 WithFlareBiasZ(float value)
-        {
-            FlareBiasZ = value;
-            return this;
-        }
-        public float RadiusFlare
-        {
-            get => state.Get<float>("RadiusFlare");
-            set => SetRadiusFlare(state, value);
-        }
-        public TM2020 WithRadiusFlare(float value)
-        {
-            RadiusFlare = value;
-            return this;
-        }
-        public float RadiusIndex
-        {
-            get => state.Get<float>("RadiusIndex");
-            set => SetRadiusIndex(state, value);
-        }
-        public TM2020 WithRadiusIndex(float value)
-        {
-            RadiusIndex = value;
-            return this;
-        }
-        public float RadiusShadow
-        {
-            get => state.Get<float>("RadiusShadow");
-            set => SetRadiusShadow(state, value);
-        }
-        public TM2020 WithRadiusShadow(float value)
-        {
-            RadiusShadow = value;
-            return this;
-        }
-        public float RadiusSpecular
-        {
-            get => state.Get<float>("RadiusSpecular");
-            set => SetRadiusSpecular(state, value);
-        }
-        public TM2020 WithRadiusSpecular(float value)
-        {
-            RadiusSpecular = value;
-            return this;
-        }
         public byte SubLightCountX
         {
             get => state.Get<byte>("SubLightCountX");
@@ -1881,29 +926,12 @@ public partial class GxLightSpotBuilder : GxLightSpotBuilderBase<GxLightSpotBuil
         public global::GBX.NET.Interfaces.Graphic.IGxLightSpotTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxLightSpot Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxLightSpot();
-            var chunk0400B003 = new global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B003(GameVersion.TM2020);
-            node.Chunks.Add(chunk0400B003);
-            var chunk04002008 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008();
-            node.Chunks.Add(chunk04002008);
-            var chunk04002009 = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009();
-            node.Chunks.Add(chunk04002009);
-            var chunk0400200A = new global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A();
-            node.Chunks.Add(chunk0400200A);
-            var chunk04003004 = new global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004();
-            node.Chunks.Add(chunk04003004);
-            var chunk0400100A = new global::GBX.NET.Engines.Graphic.GxLight.Chunk0400100A();
-            chunk0400100A.Version = 0;
-            node.Chunks.Add(chunk0400100A);
+            var node = GxLightSpotBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightSpot.Chunk0400B003>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0400B003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002008>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk04002008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk04002009>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk04002009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightBall.Chunk0400200A>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0400200A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLightPoint.Chunk04003004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk04003004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxLight.Chunk0400100A>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0400100A is missing or has an incompatible version.");
+            GxLightSpotBuilder.ValidateRecipe5(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            GxLightSpotBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

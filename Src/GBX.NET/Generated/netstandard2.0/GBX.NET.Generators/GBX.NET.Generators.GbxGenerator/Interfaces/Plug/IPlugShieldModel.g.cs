@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShieldModelMembers1<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Plug.IPlugShieldModel where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    new T0? Shape { get; set; }
+    new T1? ShapeVisModel { get; set; }
+    new T2? ShieldActiveSound { get; set; }
+    new T2? ShieldDestroySound { get; set; }
+    new T3? ShieldTouchParticle { get; set; }
+    new T2? ShieldTouchSound { get; set; }
+}
 public partial interface IPlugShieldModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugShieldModel>
 {
     int Cooldown { get; set; }
@@ -60,23 +70,11 @@ public partial interface IPlugShieldModel : IClassVersion<global::GBX.NET.Engine
     float Transparency { get; set; }
 }
 
-public partial interface IPlugShieldModelMP4 : IPlugShieldModel
+public partial interface IPlugShieldModelMP4 : IPlugShieldModel, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? Shape { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? ShapeVisModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? ShieldActiveSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? ShieldDestroySound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ShieldTouchParticle { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? ShieldTouchSound { get; set; }
 }
 
-public partial interface IPlugShieldModelTM2020 : IPlugShieldModel
+public partial interface IPlugShieldModelTM2020 : IPlugShieldModel, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? Shape { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? ShapeVisModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? ShieldActiveSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? ShieldDestroySound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ShieldTouchParticle { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? ShieldTouchSound { get; set; }
 }
 

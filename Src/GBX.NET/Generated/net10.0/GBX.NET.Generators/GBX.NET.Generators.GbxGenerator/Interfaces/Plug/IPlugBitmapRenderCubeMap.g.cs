@@ -31,6 +31,19 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderCubeMapMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMap
+{
+    uint Flags { get; set; }
+    float MinDistToUpdate { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapRenderCubeMapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMap where T0 : class
+{
+    T0? BitmapImageSpace { get; set; }
+    float BitmapImageSpaceDistToCenter { get; set; }
+    float BitmapImageSpaceScaleHeight { get; set; }
+}
 public partial interface IPlugBitmapRenderCubeMap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapRenderCubeMap>, global::GBX.NET.Interfaces.Plug.IPlugBitmapRender
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -42,145 +55,46 @@ public partial interface IPlugBitmapRenderCubeMap : IClassVersion<global::GBX.NE
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     int CubeFaceCount { get; set; }
     float FarZ { get; set; }
-    new ushort IVIdMask { get; set; }
-    new ushort IVIdRef { get; set; }
     float NearZ { get; set; }
-    new ushort SVIdMask { get; set; }
-    new ushort SVIdRef { get; set; }
 }
 
 public partial interface IPlugBitmapRenderCubeMapTM10 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new uint LegacyRenderFlags { get; set; }
 }
 
 public partial interface IPlugBitmapRenderCubeMapTMPU : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new uint LegacyRenderFlags { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
 }
 
 public partial interface IPlugBitmapRenderCubeMapTMSX : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    new uint RenderFlags { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
 }
 
 public partial interface IPlugBitmapRenderCubeMapTMNESWC : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC? RenderSub { get; set; }
 }
 
 public partial interface IPlugBitmapRenderCubeMapVSK5 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    new uint ClearColor { get; set; }
-    new float FogCustomFarZ { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5? RenderSub { get; set; }
 }
 
-public partial interface IPlugBitmapRenderCubeMapTMF : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF
+public partial interface IPlugBitmapRenderCubeMapTMF : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapImageSpace { get; set; }
-    float BitmapImageSpaceDistToCenter { get; set; }
-    float BitmapImageSpaceScaleHeight { get; set; }
-    new uint ClearColor { get; set; }
-    uint Flags { get; set; }
-    new float FogCustomFarZ { get; set; }
-    float MinDistToUpdate { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF? RenderSub { get; set; }
 }
 
-public partial interface IPlugBitmapRenderCubeMapMP3 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3
+public partial interface IPlugBitmapRenderCubeMapMP3 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers1
 {
-    uint Flags { get; set; }
-    new float FogCustomFarZ { get; set; }
-    float MinDistToUpdate { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? RenderSub { get; set; }
 }
 
-public partial interface IPlugBitmapRenderCubeMapTMT : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT
+public partial interface IPlugBitmapRenderCubeMapTMT : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapImageSpace { get; set; }
-    float BitmapImageSpaceDistToCenter { get; set; }
-    float BitmapImageSpaceScaleHeight { get; set; }
-    new uint ClearColor { get; set; }
-    uint Flags { get; set; }
-    new float FogCustomFarZ { get; set; }
-    float MinDistToUpdate { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT? RenderSub { get; set; }
 }
 
-public partial interface IPlugBitmapRenderCubeMapMP4 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4
+public partial interface IPlugBitmapRenderCubeMapMP4 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapImageSpace { get; set; }
-    float BitmapImageSpaceDistToCenter { get; set; }
-    float BitmapImageSpaceScaleHeight { get; set; }
-    new uint ClearColor { get; set; }
-    uint Flags { get; set; }
-    new float FogCustomFarZ { get; set; }
-    float MinDistToUpdate { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4? RenderSub { get; set; }
 }
 
-public partial interface IPlugBitmapRenderCubeMapTM2020 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020
+public partial interface IPlugBitmapRenderCubeMapTM2020 : IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapClear { get; set; }
-    new Vec2? BitmapClearUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapImageSpace { get; set; }
-    float BitmapImageSpaceDistToCenter { get; set; }
-    float BitmapImageSpaceScaleHeight { get; set; }
-    new uint ClearColor { get; set; }
-    uint Flags { get; set; }
-    new float FogCustomFarZ { get; set; }
-    float MinDistToUpdate { get; set; }
-    new uint RenderFlags { get; set; }
-    new uint RenderFlags2 { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPath RenderPath { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugBitmapRender.ERenderPathFails RenderPathFails { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020? RenderSub { get; set; }
 }
 

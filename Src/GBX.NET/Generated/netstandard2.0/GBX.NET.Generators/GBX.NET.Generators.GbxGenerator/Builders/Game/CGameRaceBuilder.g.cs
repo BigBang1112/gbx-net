@@ -36,9 +36,9 @@ public abstract class CGameRaceBuilderBase<TSelf> where TSelf : CGameRaceBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state;
     private protected CGameRaceBuilderBase() => state = new();
     private protected CGameRaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state) => this.state = state;
-    private protected static void SetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceFid", value, GameVersion.TMF, static value => value, static (node, value) => node.InterfaceFid = value);
-    private protected static void SetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("InterfaceFid", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.InterfaceFid.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
+    private protected static void SetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidAssignment(), value, GameVersion.TMF);
+    private protected static void SetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameRace> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
@@ -52,6 +52,34 @@ public abstract class CGameRaceBuilderBase<TSelf> where TSelf : CGameRaceBuilder
 }
 public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameRace CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameRace();
+        var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
+        node.Chunks.Add(chunk03008000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameRace CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameRace();
+        var chunk03073000 = new global::GBX.NET.Engines.Game.CGameRace.Chunk03073000();
+        node.Chunks.Add(chunk03073000);
+        var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
+        node.Chunks.Add(chunk03008000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameRace.Chunk03073000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03073000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameRace node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -70,13 +98,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -89,13 +116,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -108,13 +134,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -127,13 +152,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -146,13 +170,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -181,16 +204,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03073000 = new global::GBX.NET.Engines.Game.CGameRace.Chunk03073000();
-            node.Chunks.Add(chunk03073000);
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameRace.Chunk03073000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03073000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -203,13 +222,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -222,13 +240,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -241,13 +258,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -260,13 +276,12 @@ public partial class CGameRaceBuilder : CGameRaceBuilderBase<CGameRaceBuilder>
         public global::GBX.NET.Interfaces.Game.IGameRaceTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameRace Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameRace();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CGameRaceBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03008000 is missing or has an incompatible version.");
+            CGameRaceBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameRaceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

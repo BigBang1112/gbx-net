@@ -36,13 +36,13 @@ public abstract class CMwCmdForBuilderBase<TSelf> where TSelf : CMwCmdForBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state;
     private protected CMwCmdForBuilderBase() => state = new();
     private protected CMwCmdForBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state) => this.state = state;
-    private protected static void SetBlock(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?>("Block", value, GameVersion.TMF, static value => value, static (node, value) => node.Block = value);
-    private protected static void SetBlockReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock>>("Block", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Block.CopyFrom(reference));
-    private protected static void SetMax(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Max", value, GameVersion.TMF, static value => value, static (node, value) => node.Max = value);
-    private protected static void SetMaxReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Max", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Max.CopyFrom(reference));
-    private protected static void SetMin(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Min", value, GameVersion.TMF, static value => value, static (node, value) => node.Min = value);
-    private protected static void SetMinReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Min", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Min.CopyFrom(reference));
-    private protected static void SetVariableName(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, string? value) => state.Set<string?>("VariableName", value, GameVersion.TMF, static value => value, static (node, value) => node.VariableName = value);
+    private protected static void SetBlock(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetBlockAssignment(), value, GameVersion.TMF);
+    private protected static void SetBlockReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetBlockReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetMax(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMaxAssignment(), value, GameVersion.TMF);
+    private protected static void SetMaxReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMaxReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetMin(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMinAssignment(), value, GameVersion.TMF);
+    private protected static void SetMinReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetMinReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetVariableName(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdFor> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdForBuilderAssignments.GetVariableNameAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdBlock? Block
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdBlock?>("Block");
@@ -104,6 +104,20 @@ public abstract class CMwCmdForBuilderBase<TSelf> where TSelf : CMwCmdForBuilder
 }
 public partial class CMwCmdForBuilder : CMwCmdForBuilderBase<CMwCmdForBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdFor CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdFor();
+        var chunk01035000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdFor.Chunk01035000();
+        node.Chunks.Add(chunk01035000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdFor node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdFor.Chunk01035000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01035000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdFor node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdForBuilderBase<TMF>
     {
@@ -115,13 +129,12 @@ public partial class CMwCmdForBuilder : CMwCmdForBuilderBase<CMwCmdForBuilder>
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdForTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdFor Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdFor();
-            var chunk01035000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdFor.Chunk01035000();
-            node.Chunks.Add(chunk01035000);
+            var node = CMwCmdForBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdFor.Chunk01035000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01035000 is missing or has an incompatible version.");
+            CMwCmdForBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdForBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,21 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolid2ModelMembers1<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugSolid2Model where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+{
+    new IReadOnlyList<T0>? LightUserModels { get; set; }
+    new IReadOnlyList<T1>? MaterialInsts { get; set; }
+    new IReadOnlyList<T2>? Materials { get; set; }
+    new T3? Skel { get; set; }
+    new IReadOnlyList<T4>? Visuals { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolid2ModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugSolid2Model
+{
+    global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? FakeOccProjs { get; set; }
+    byte[]? FileImageBytes { get; set; }
+}
 public partial interface IPlugSolid2Model : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSolid2Model>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModel>? LightUserModels { get; set; }
@@ -40,43 +55,19 @@ public partial interface IPlugSolid2Model : IClassVersion<global::GBX.NET.Engine
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisual>? Visuals { get; set; }
 }
 
-public partial interface IPlugSolid2ModelMP3 : IPlugSolid2Model
+public partial interface IPlugSolid2ModelMP3 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSkelMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3>? LightUserModels { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3>? MaterialInsts { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>? Materials { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? Skel { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualMP3>? Visuals { get; set; }
 }
 
-public partial interface IPlugSolid2ModelTMT : IPlugSolid2Model
+public partial interface IPlugSolid2ModelTMT : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSkelTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT>? LightUserModels { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT>? MaterialInsts { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>? Materials { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? Skel { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualTMT>? Visuals { get; set; }
 }
 
-public partial interface IPlugSolid2ModelMP4 : IPlugSolid2Model
+public partial interface IPlugSolid2ModelMP4 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers2
 {
-    global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? FakeOccProjs { get; set; }
-    byte[]? FileImageBytes { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4>? LightUserModels { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4>? MaterialInsts { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>? Materials { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? Skel { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualMP4>? Visuals { get; set; }
 }
 
-public partial interface IPlugSolid2ModelTM2020 : IPlugSolid2Model
+public partial interface IPlugSolid2ModelTM2020 : IPlugSolid2Model, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMembers2
 {
-    global::GBX.NET.Engines.Plug.CPlugSolid2Model.FakeOccProj[]? FakeOccProjs { get; set; }
-    byte[]? FileImageBytes { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020>? LightUserModels { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020>? MaterialInsts { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>? Materials { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? Skel { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVisualTM2020>? Visuals { get; set; }
 }
 

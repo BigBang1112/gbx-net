@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFontBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugFontBitmap where T0 : class where T1 : class
+{
+    new T0? CustomMaterialModel { get; set; }
+    new T1? FallbackFont { get; set; }
+}
 public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFontBitmap>
 {
     Rect Bounds { get; set; }
@@ -48,15 +54,11 @@ public partial interface IPlugFontBitmap : IClassVersion<global::GBX.NET.Engines
     global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? RemapPages { get; set; }
 }
 
-public partial interface IPlugFontBitmapMP4 : IPlugFontBitmap
+public partial interface IPlugFontBitmapMP4 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? CustomMaterialModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4? FallbackFont { get; set; }
 }
 
-public partial interface IPlugFontBitmapTM2020 : IPlugFontBitmap
+public partial interface IPlugFontBitmapTM2020 : IPlugFontBitmap, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? CustomMaterialModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020? FallbackFont { get; set; }
 }
 

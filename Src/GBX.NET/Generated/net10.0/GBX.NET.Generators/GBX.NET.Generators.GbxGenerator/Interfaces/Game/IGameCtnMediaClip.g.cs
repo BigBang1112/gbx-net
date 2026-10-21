@@ -31,83 +31,76 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaClipMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip
+{
+    string ConfigScript { get; set; }
+    bool IsScriptEvent { get; set; }
+    float StereoSepMax { get; set; }
+    bool StopWhenLeave { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaClipMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip
+{
+    int LocalPlayerClipEntIndex { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaClipMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip where T0 : class
+{
+    new IReadOnlyList<T0> Tracks { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaClipMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip
+{
+    bool StopWhenRespawn { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaClipMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaClip where T0 : class
+{
+    T0? Scene { get; set; }
+}
 public partial interface IGameCtnMediaClip : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaClip>
 {
     string? Name { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipTMSX : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipTMSX : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipTMNESWC : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipTMNESWC : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipTMU : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipTMU : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>
 {
     global::GBX.NET.Engines.Scene.CScene? Scene { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipVSK5 : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipVSK5 : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers5<global::GBX.NET.Interfaces.Scene.ISceneVSK5>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneVSK5? Scene { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipTMF : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipTMF : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers2, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers5<global::GBX.NET.Interfaces.Scene.ISceneTMF>
 {
-    int LocalPlayerClipEntIndex { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneTMF? Scene { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipMP3 : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipMP3 : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers2, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3>
 {
-    string ConfigScript { get; set; }
-    bool IsScriptEvent { get; set; }
-    int LocalPlayerClipEntIndex { get; set; }
-    float StereoSepMax { get; set; }
-    bool StopWhenLeave { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipTMT : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipTMT : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers2, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers4
 {
-    string ConfigScript { get; set; }
-    bool IsScriptEvent { get; set; }
-    int LocalPlayerClipEntIndex { get; set; }
-    float StereoSepMax { get; set; }
-    bool StopWhenLeave { get; set; }
-    bool StopWhenRespawn { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipMP4 : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipMP4 : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers2, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers4
 {
-    string ConfigScript { get; set; }
-    bool IsScriptEvent { get; set; }
-    int LocalPlayerClipEntIndex { get; set; }
-    float StereoSepMax { get; set; }
-    bool StopWhenLeave { get; set; }
-    bool StopWhenRespawn { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4> Tracks { get; set; }
 }
 
-public partial interface IGameCtnMediaClipTM2020 : IGameCtnMediaClip
+public partial interface IGameCtnMediaClipTM2020 : IGameCtnMediaClip, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers2, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers3<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMembers4
 {
-    string ConfigScript { get; set; }
     int Flags { get; set; }
-    bool IsScriptEvent { get; set; }
-    int LocalPlayerClipEntIndex { get; set; }
-    float StereoSepMax { get; set; }
-    bool StopWhenLeave { get; set; }
-    bool StopWhenRespawn { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020> Tracks { get; set; }
     bool TriggersBeforeRaceStart { get; set; }
 }
 

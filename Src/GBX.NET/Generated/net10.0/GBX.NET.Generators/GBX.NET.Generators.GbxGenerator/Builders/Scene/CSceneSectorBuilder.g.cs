@@ -36,9 +36,9 @@ public abstract class CSceneSectorBuilderBase<TSelf> where TSelf : CSceneSectorB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state;
     private protected CSceneSectorBuilderBase() => state = new();
     private protected CSceneSectorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state) => this.state = state;
-    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, int value) => state.Set<int>("Scene", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Scene = value);
-    private protected static void SetZone(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, global::GBX.NET.Engines.Hms.CHmsZone? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsZone?>("Zone", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Zone = value);
-    private protected static void SetZoneReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsZone> value) => state.Set<NodeRef<global::GBX.NET.Engines.Hms.CHmsZone>>("Zone", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Hms.CHmsZone>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Zone.CopyFrom(reference));
+    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetZone(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, global::GBX.NET.Engines.Hms.CHmsZone? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetZoneReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSector> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsZone> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSectorBuilderAssignments.GetZoneReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int Scene
     {
         get => state.Get<int>("Scene");
@@ -68,6 +68,29 @@ public abstract class CSceneSectorBuilderBase<TSelf> where TSelf : CSceneSectorB
 }
 public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneSector CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneSector();
+        var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
+        node.Chunks.Add(chunk0A004000);
+        var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
+        node.Chunks.Add(chunk0A004001);
+        var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
+        node.Chunks.Add(chunk0A004002);
+        var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
+        node.Chunks.Add(chunk0A004004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneSector node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A004000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A004001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A004002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A004004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneSector node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -90,22 +113,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -122,22 +135,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -154,22 +157,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -186,22 +179,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -218,22 +201,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -250,22 +223,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -282,22 +245,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -314,22 +267,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -346,22 +289,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -378,22 +311,12 @@ public partial class CSceneSectorBuilder : CSceneSectorBuilderBase<CSceneSectorB
         public global::GBX.NET.Interfaces.Scene.ISceneSectorTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSector Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSector();
-            var chunk0A004000 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000();
-            node.Chunks.Add(chunk0A004000);
-            var chunk0A004001 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001();
-            node.Chunks.Add(chunk0A004001);
-            var chunk0A004002 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002();
-            node.Chunks.Add(chunk0A004002);
-            var chunk0A004004 = new global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004();
-            node.Chunks.Add(chunk0A004004);
+            var node = CSceneSectorBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A004000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A004001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSector.Chunk0A004004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A004004 is missing or has an incompatible version.");
+            CSceneSectorBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneSectorBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

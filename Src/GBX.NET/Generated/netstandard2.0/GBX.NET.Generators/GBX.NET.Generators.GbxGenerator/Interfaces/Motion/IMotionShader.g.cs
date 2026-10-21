@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionShaderMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Motion.IMotionShader where T0 : class where T1 : class where T2 : class
+{
+    new T0? FuncShader { get; set; }
+    new T1? Material { get; set; }
+    new T2? Shader { get; set; }
+}
 public partial interface IMotionShader : IClassVersion<global::GBX.NET.Engines.Motion.CMotionShader>
 {
     global::GBX.NET.Interfaces.Function.IFuncShader? FuncShader { get; set; }
@@ -38,66 +45,39 @@ public partial interface IMotionShader : IClassVersion<global::GBX.NET.Engines.M
     global::GBX.NET.Interfaces.Plug.IPlugShader? Shader { get; set; }
 }
 
-public partial interface IMotionShaderTM10 : IMotionShader
+public partial interface IMotionShaderTM10 : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTM10? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? Shader { get; set; }
 }
 
-public partial interface IMotionShaderTMPU : IMotionShader
+public partial interface IMotionShaderTMPU : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMPU? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? Shader { get; set; }
 }
 
-public partial interface IMotionShaderTMSX : IMotionShader
+public partial interface IMotionShaderTMSX : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMSX? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? Shader { get; set; }
 }
 
-public partial interface IMotionShaderTMNESWC : IMotionShader
+public partial interface IMotionShaderTMNESWC : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? Shader { get; set; }
 }
 
-public partial interface IMotionShaderVSK5 : IMotionShader
+public partial interface IMotionShaderVSK5 : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? Shader { get; set; }
 }
 
-public partial interface IMotionShaderTMF : IMotionShader
+public partial interface IMotionShaderTMF : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMF? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? Shader { get; set; }
 }
 
-public partial interface IMotionShaderMP3 : IMotionShader
+public partial interface IMotionShaderMP3 : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderMP3? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? Shader { get; set; }
 }
 
-public partial interface IMotionShaderTMT : IMotionShader
+public partial interface IMotionShaderTMT : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMT? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? Shader { get; set; }
 }
 
-public partial interface IMotionShaderMP4 : IMotionShader
+public partial interface IMotionShaderMP4 : IMotionShader, global::GBX.NET.Interfaces.Motion.IMotionShaderMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderMP4? FuncShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? Shader { get; set; }
 }
 

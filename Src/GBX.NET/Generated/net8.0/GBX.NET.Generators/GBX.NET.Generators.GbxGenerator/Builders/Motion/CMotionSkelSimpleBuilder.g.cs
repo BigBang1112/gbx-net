@@ -36,8 +36,8 @@ public abstract class CMotionSkelSimpleBuilderBase<TSelf> where TSelf : CMotionS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state;
     private protected CMotionSkelSimpleBuilderBase() => state = new();
     private protected CMotionSkelSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state) => this.state = state;
-    private protected static void SetSkelValues(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state, global::GBX.NET.Engines.Function.CFuncSkelValues? value) => state.Set<global::GBX.NET.Engines.Function.CFuncSkelValues?>("SkelValues", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.SkelValues = value);
-    private protected static void SetSkelValuesReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state, NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues>>("SkelValues", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SkelValues.CopyFrom(reference));
+    private protected static void SetSkelValues(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state, global::GBX.NET.Engines.Function.CFuncSkelValues? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetSkelValuesReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionSkelSimple> state, NodeRef<global::GBX.NET.Engines.Function.CFuncSkelValues> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionSkelSimpleBuilderAssignments.GetSkelValuesReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public global::GBX.NET.Engines.Function.CFuncSkelValues? SkelValues
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncSkelValues?>("SkelValues");
@@ -57,6 +57,20 @@ public abstract class CMotionSkelSimpleBuilderBase<TSelf> where TSelf : CMotionS
 }
 public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMotionSkelSimpleBuilder>
 {
+    private static global::GBX.NET.Engines.Motion.CMotionSkelSimple CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
+        var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
+        node.Chunks.Add(chunk08036000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionSkelSimple node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08036000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionSkelSimple node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -73,13 +87,12 @@ public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMo
         public global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkelSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
-            var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
-            node.Chunks.Add(chunk08036000);
+            var node = CMotionSkelSimpleBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk08036000 is missing or has an incompatible version.");
+            CMotionSkelSimpleBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CMotionSkelSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -96,13 +109,12 @@ public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMo
         public global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkelSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
-            var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
-            node.Chunks.Add(chunk08036000);
+            var node = CMotionSkelSimpleBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk08036000 is missing or has an incompatible version.");
+            CMotionSkelSimpleBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CMotionSkelSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -119,13 +131,12 @@ public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMo
         public global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkelSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
-            var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
-            node.Chunks.Add(chunk08036000);
+            var node = CMotionSkelSimpleBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk08036000 is missing or has an incompatible version.");
+            CMotionSkelSimpleBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CMotionSkelSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -142,13 +153,12 @@ public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMo
         public global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkelSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
-            var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
-            node.Chunks.Add(chunk08036000);
+            var node = CMotionSkelSimpleBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk08036000 is missing or has an incompatible version.");
+            CMotionSkelSimpleBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CMotionSkelSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -165,13 +175,12 @@ public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMo
         public global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkelSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
-            var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
-            node.Chunks.Add(chunk08036000);
+            var node = CMotionSkelSimpleBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk08036000 is missing or has an incompatible version.");
+            CMotionSkelSimpleBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CMotionSkelSimpleBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -188,13 +197,12 @@ public partial class CMotionSkelSimpleBuilder : CMotionSkelSimpleBuilderBase<CMo
         public global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionSkelSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionSkelSimple();
-            var chunk08036000 = new global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000();
-            node.Chunks.Add(chunk08036000);
+            var node = CMotionSkelSimpleBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionSkelSimple.Chunk08036000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk08036000 is missing or has an incompatible version.");
+            CMotionSkelSimpleBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMotionSkelSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

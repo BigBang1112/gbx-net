@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerScoreMembers1 : global::GBX.NET.Interfaces.Game.IGamePlayerScore
+{
+    global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores { get; set; }
+    int SurvivalScoresVersion { get; set; }
+}
 public partial interface IGamePlayerScore : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerScore>
 {
     string? NickName { get; set; }
@@ -48,25 +54,19 @@ public partial interface IGamePlayerScoreTMPU : IGamePlayerScore
 {
 }
 
-public partial interface IGamePlayerScoreTMSX : IGamePlayerScore
+public partial interface IGamePlayerScoreTMSX : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores { get; set; }
-    int SurvivalScoresVersion { get; set; }
 }
 
-public partial interface IGamePlayerScoreTMNESWC : IGamePlayerScore
+public partial interface IGamePlayerScoreTMNESWC : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores { get; set; }
-    int SurvivalScoresVersion { get; set; }
 }
 
-public partial interface IGamePlayerScoreVSK5 : IGamePlayerScore
+public partial interface IGamePlayerScoreVSK5 : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores { get; set; }
-    int SurvivalScoresVersion { get; set; }
 }
 
-public partial interface IGamePlayerScoreTMF : IGamePlayerScore
+public partial interface IGamePlayerScoreTMF : IGamePlayerScore, global::GBX.NET.Interfaces.Game.IGamePlayerScoreMembers1
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>? CampaignPlayerScores { get; set; }
     byte CampaignRecordsStateVersion { get; set; }
@@ -107,8 +107,6 @@ public partial interface IGamePlayerScoreTMF : IGamePlayerScore
     int SubmittedSoloPuzzleTimeSeconds { get; set; }
     int SubmittedSoloRaceTimeSeconds { get; set; }
     int SubmittedSoloStuntsTimeSeconds { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores { get; set; }
-    int SurvivalScoresVersion { get; set; }
     global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? TrainingMedalsScores { get; set; }
 }
 

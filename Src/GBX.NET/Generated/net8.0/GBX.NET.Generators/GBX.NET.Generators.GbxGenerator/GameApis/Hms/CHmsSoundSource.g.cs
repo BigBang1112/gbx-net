@@ -39,7 +39,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         get => PlugSound;
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTM10.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.PlugSound
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         }
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMPU.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.PlugSound
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         }
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMSX.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.PlugSound
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         }
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMNESWC.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.PlugSound
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         }
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceVSK5.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.PlugSound
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         }
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceTMF.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.PlugSound
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CHmsSoundSource : global::GBX.NET.Interfaces.Hms.IHmsSoundS
         }
         set => PlugSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMP3.PlugSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.PlugSound
     {
         get
         {

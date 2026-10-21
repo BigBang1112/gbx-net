@@ -36,7 +36,7 @@ public abstract class CGamePodiumInfoBuilderBase<TSelf> where TSelf : CGamePodiu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state;
     private protected CGamePodiumInfoBuilderBase() => state = new();
     private protected CGamePodiumInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state) => this.state = state;
-    private protected static void SetMediaClipFids(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("MediaClipFids", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.MediaClipFids = value);
+    private protected static void SetMediaClipFids(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePodiumInfo> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePodiumInfoBuilderAssignments.GetMediaClipFidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? MediaClipFids
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("MediaClipFids");
@@ -58,6 +58,21 @@ public abstract class CGamePodiumInfoBuilderBase<TSelf> where TSelf : CGamePodiu
 }
 public partial class CGamePodiumInfoBuilder : CGamePodiumInfoBuilderBase<CGamePodiumInfoBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGamePodiumInfo CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePodiumInfo();
+        var chunk03168000 = new global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000();
+        chunk03168000.Version = 0;
+        node.Chunks.Add(chunk03168000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePodiumInfo node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03168000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePodiumInfo node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -69,14 +84,12 @@ public partial class CGamePodiumInfoBuilder : CGamePodiumInfoBuilderBase<CGamePo
         public global::GBX.NET.Interfaces.Game.IGamePodiumInfoMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePodiumInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePodiumInfo();
-            var chunk03168000 = new global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000();
-            chunk03168000.Version = 0;
-            node.Chunks.Add(chunk03168000);
+            var node = CGamePodiumInfoBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03168000 is missing or has an incompatible version.");
+            CGamePodiumInfoBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGamePodiumInfoBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -89,14 +102,12 @@ public partial class CGamePodiumInfoBuilder : CGamePodiumInfoBuilderBase<CGamePo
         public global::GBX.NET.Interfaces.Game.IGamePodiumInfoTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePodiumInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePodiumInfo();
-            var chunk03168000 = new global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000();
-            chunk03168000.Version = 0;
-            node.Chunks.Add(chunk03168000);
+            var node = CGamePodiumInfoBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03168000 is missing or has an incompatible version.");
+            CGamePodiumInfoBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGamePodiumInfoBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -109,14 +120,12 @@ public partial class CGamePodiumInfoBuilder : CGamePodiumInfoBuilderBase<CGamePo
         public global::GBX.NET.Interfaces.Game.IGamePodiumInfoMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePodiumInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePodiumInfo();
-            var chunk03168000 = new global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000();
-            chunk03168000.Version = 0;
-            node.Chunks.Add(chunk03168000);
+            var node = CGamePodiumInfoBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePodiumInfo.Chunk03168000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03168000 is missing or has an incompatible version.");
+            CGamePodiumInfoBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGamePodiumInfoBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,14 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCampaignsScoresManagerMembers1<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManager where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    new IReadOnlyList<T0>? CampaignScores { get; set; }
+    new IReadOnlyList<T1>? ChallengeScores { get; set; }
+    new T2? GeneralScores { get; set; }
+    new T3? SkillScoreComputer { get; set; }
+}
 public partial interface IGameCampaignsScoresManager : IClassVersion<global::GBX.NET.Engines.Game.CGameCampaignsScoresManager>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScores>? CampaignScores { get; set; }
@@ -39,19 +47,11 @@ public partial interface IGameCampaignsScoresManager : IClassVersion<global::GBX
     global::GBX.NET.Interfaces.Game.IGameSkillScoreComputer? SkillScoreComputer { get; set; }
 }
 
-public partial interface IGameCampaignsScoresManagerTMF : IGameCampaignsScoresManager
+public partial interface IGameCampaignsScoresManagerTMF : IGameCampaignsScoresManager, global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF, global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF>? CampaignScores { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF>? ChallengeScores { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF? GeneralScores { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF? SkillScoreComputer { get; set; }
 }
 
-public partial interface IGameCampaignsScoresManagerMP3 : IGameCampaignsScoresManager
+public partial interface IGameCampaignsScoresManagerMP3 : IGameCampaignsScoresManager, global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3, global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3>? CampaignScores { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3>? ChallengeScores { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3? GeneralScores { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3? SkillScoreComputer { get; set; }
 }
 

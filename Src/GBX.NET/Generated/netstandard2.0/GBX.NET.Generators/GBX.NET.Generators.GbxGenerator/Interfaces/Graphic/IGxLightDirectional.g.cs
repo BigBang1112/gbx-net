@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Graphic;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxLightDirectionalMembers1 : global::GBX.NET.Interfaces.Graphic.IGxLightDirectional
+{
+    Vec3 DblSidedRGB { get; set; }
+    float EmittAngularSize { get; set; }
+    float FlareAngularSize { get; set; }
+    float ReverseIntens { get; set; }
+    Vec3 ReverseRGB { get; set; }
+}
 public partial interface IGxLightDirectional : IClassVersion<global::GBX.NET.Engines.Graphic.GxLightDirectional>, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbient
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -41,14 +50,8 @@ public partial interface IGxLightDirectional : IClassVersion<global::GBX.NET.Eng
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     Vec3 BoundaryHintPos { get; set; }
-    new Vec3 Color { get; set; }
     float DazzleAngleMax { get; set; }
     float DazzleIntensity { get; set; }
-    new global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags { get; set; }
-    new float FlareIntensity { get; set; }
-    new float Intensity { get; set; }
-    new float ShadowIntensity { get; set; }
-    new Vec3 ShadowRGB { get; set; }
     bool UseBoundaryHint { get; set; }
 }
 
@@ -60,91 +63,35 @@ public partial interface IGxLightDirectionalTMPU : IGxLightDirectional, global::
 {
 }
 
-public partial interface IGxLightDirectionalTMSX : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMSX
+public partial interface IGxLightDirectionalTMSX : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
 }
 
-public partial interface IGxLightDirectionalTMNESWC : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMNESWC
+public partial interface IGxLightDirectionalTMNESWC : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
 }
 
-public partial interface IGxLightDirectionalVSK5 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5
+public partial interface IGxLightDirectionalVSK5 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    new float DiffuseIntensity { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightDirectionalTMF : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMF
+public partial interface IGxLightDirectionalTMF : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMF, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    new float DiffuseIntensity { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightDirectionalMP3 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP3
+public partial interface IGxLightDirectionalMP3 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP3, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    new float DiffuseIntensity { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightDirectionalTMT : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMT
+public partial interface IGxLightDirectionalTMT : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMT, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    new float DiffuseIntensity { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightDirectionalMP4 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP4
+public partial interface IGxLightDirectionalMP4 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP4, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    new float DiffuseIntensity { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightDirectionalTM2020 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM2020
+public partial interface IGxLightDirectionalTM2020 : IGxLightDirectional, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightDirectionalMembers1
 {
-    Vec3 DblSidedRGB { get; set; }
-    new float DiffuseIntensity { get; set; }
-    float EmittAngularSize { get; set; }
-    float FlareAngularSize { get; set; }
-    float ReverseIntens { get; set; }
-    Vec3 ReverseRGB { get; set; }
 }
 

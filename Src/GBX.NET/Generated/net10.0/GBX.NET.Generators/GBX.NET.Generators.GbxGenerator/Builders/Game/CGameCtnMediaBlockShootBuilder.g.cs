@@ -36,8 +36,8 @@ public abstract class CGameCtnMediaBlockShootBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot> state;
     private protected CGameCtnMediaBlockShootBuilderBase() => state = new();
     private protected CGameCtnMediaBlockShootBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot> state, TimeSingle value) => state.Set<TimeSingle>("End", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.End = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot> state, TimeSingle value) => state.Set<TimeSingle>("Start", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Start = value);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockShootBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockShootBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
@@ -61,6 +61,20 @@ public abstract class CGameCtnMediaBlockShootBuilderBase<TSelf> where TSelf : CG
 }
 public partial class CGameCtnMediaBlockShootBuilder : CGameCtnMediaBlockShootBuilderBase<CGameCtnMediaBlockShootBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot();
+        var chunk03145000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000();
+        node.Chunks.Add(chunk03145000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03145000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -72,13 +86,12 @@ public partial class CGameCtnMediaBlockShootBuilder : CGameCtnMediaBlockShootBui
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockShootTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot();
-            var chunk03145000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000();
-            node.Chunks.Add(chunk03145000);
+            var node = CGameCtnMediaBlockShootBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03145000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockShootBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockShootBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -91,13 +104,12 @@ public partial class CGameCtnMediaBlockShootBuilder : CGameCtnMediaBlockShootBui
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockShootMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot();
-            var chunk03145000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000();
-            node.Chunks.Add(chunk03145000);
+            var node = CGameCtnMediaBlockShootBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03145000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockShootBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockShootBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -110,13 +122,12 @@ public partial class CGameCtnMediaBlockShootBuilder : CGameCtnMediaBlockShootBui
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockShootTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot();
-            var chunk03145000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000();
-            node.Chunks.Add(chunk03145000);
+            var node = CGameCtnMediaBlockShootBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockShoot.Chunk03145000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03145000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockShootBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockShootBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -36,78 +36,78 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state;
     private protected CControlStyleBuilderBase() => state = new();
     private protected CControlStyleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) => this.state = state;
-    private protected static void SetActionBackSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionBackSound", value, GameVersion.MP4, static value => value, static (node, value) => node.ActionBackSound = value);
-    private protected static void SetActionBackSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("ActionBackSound", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ActionBackSound.CopyFrom(reference));
-    private protected static void SetActionSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ActionSound = value);
-    private protected static void SetActionSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("ActionSound", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ActionSound.CopyFrom(reference));
-    private protected static void SetButtonDefaultIconId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, string? value) => state.Set<string?>("ButtonDefaultIconId", value, GameVersion.MP4 | GameVersion.TMF, static value => value, static (node, value) => node.ButtonDefaultIconId = value);
-    private protected static void SetButtonDefaultIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ButtonDefaultIcons = value);
-    private protected static void SetButtonDefaultIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>>("ButtonDefaultIcons", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ButtonDefaultIcons.CopyFrom(reference));
-    private protected static void SetButtonIconHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("ButtonIconHeight", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ButtonIconHeight = value);
-    private protected static void SetButtonIconWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("ButtonIconWidth", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ButtonIconWidth = value);
-    private protected static void SetDefaultShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugShader?>("DefaultShader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultShader = value);
-    private protected static void SetDefaultShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>("DefaultShader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.DefaultShader.CopyFrom(reference));
-    private protected static void SetEffectMaster(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Control.CControlEffectMaster? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EffectMaster = value);
-    private protected static void SetEffectMasterReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster>>("EffectMaster", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.EffectMaster.CopyFrom(reference));
-    private protected static void SetEntrySound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("EntrySound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EntrySound = value);
-    private protected static void SetEntrySoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("EntrySound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.EntrySound.CopyFrom(reference));
-    private protected static void SetEnumForceDisplayType(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, int value) => state.Set<int>("EnumForceDisplayType", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumForceDisplayType = value);
-    private protected static void SetEnumForceIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set<global::GBX.NET.Engines.Function.CFuncEnum?>("EnumForceIcons", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumForceIcons = value);
-    private protected static void SetEnumForceIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>>("EnumForceIcons", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.EnumForceIcons.CopyFrom(reference));
-    private protected static void SetEnumIconHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("EnumIconHeight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumIconHeight = value);
-    private protected static void SetEnumIconWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("EnumIconWidth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumIconWidth = value);
-    private protected static void SetEnumListShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugShader?>("EnumListShader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumListShader = value);
-    private protected static void SetEnumListShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>("EnumListShader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.EnumListShader.CopyFrom(reference));
-    private protected static void SetEnumMaxElemCount(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, int value) => state.Set<int>("EnumMaxElemCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumMaxElemCount = value);
-    private protected static void SetEnumSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("EnumSound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EnumSound = value);
-    private protected static void SetEnumSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("EnumSound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.EnumSound.CopyFrom(reference));
-    private protected static void SetFitTextSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set<bool>("FitTextSize", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FitTextSize = value);
-    private protected static void SetFocusAreaEnable(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set<bool>("FocusAreaEnable", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaEnable = value);
-    private protected static void SetFocusAreaMaterial(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaMaterial = value);
-    private protected static void SetFocusAreaMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("FocusAreaMaterial", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusAreaMaterial.CopyFrom(reference));
-    private protected static void SetFocusAreaMaterialFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaMaterialFocused = value);
-    private protected static void SetFocusAreaMaterialFocusedReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("FocusAreaMaterialFocused", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusAreaMaterialFocused.CopyFrom(reference));
-    private protected static void SetFocusAreaMaterialReadOnly(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaMaterialReadOnly = value);
-    private protected static void SetFocusAreaMaterialReadOnlyReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("FocusAreaMaterialReadOnly", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusAreaMaterialReadOnly.CopyFrom(reference));
-    private protected static void SetFocusAreaMaterialSelected(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaMaterialSelected = value);
-    private protected static void SetFocusAreaMaterialSelectedReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("FocusAreaMaterialSelected", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusAreaMaterialSelected.CopyFrom(reference));
-    private protected static void SetFocusAreaMinHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("FocusAreaMinHeight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaMinHeight = value);
-    private protected static void SetFocusAreaMinWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("FocusAreaMinWidth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaMinWidth = value);
-    private protected static void SetFocusAreaSolid(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaSolid = value);
-    private protected static void SetFocusAreaSolidReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid>>("FocusAreaSolid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusAreaSolid.CopyFrom(reference));
-    private protected static void SetFocusAreaXMargin(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("FocusAreaXMargin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaXMargin = value);
-    private protected static void SetFocusAreaYMargin(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("FocusAreaYMargin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaYMargin = value);
-    private protected static void SetFocusAreaZOffset(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("FocusAreaZOffset", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusAreaZOffset = value);
-    private protected static void SetFocusGainedScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("FocusGainedScript", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusGainedScript = value);
-    private protected static void SetFocusGainedScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>>("FocusGainedScript", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusGainedScript.CopyFrom(reference));
-    private protected static void SetFocusLostScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("FocusLostScript", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusLostScript = value);
-    private protected static void SetFocusLostScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>>("FocusLostScript", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusLostScript.CopyFrom(reference));
-    private protected static void SetFocusSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("FocusSound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusSound = value);
-    private protected static void SetFocusSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("FocusSound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusSound.CopyFrom(reference));
-    private protected static void SetFont(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugFont? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFont?>("Font", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Font = value);
-    private protected static void SetFontReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFont>>("Font", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFont>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Font.CopyFrom(reference));
-    private protected static void SetLineGradientColor0(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set<Vec4>("LineGradientColor0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LineGradientColor0 = value);
-    private protected static void SetLineGradientColor1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set<Vec4>("LineGradientColor1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LineGradientColor1 = value);
-    private protected static void SetQuadGradientColor0(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set<Vec4>("QuadGradientColor0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadGradientColor0 = value);
-    private protected static void SetQuadGradientColor1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set<Vec4>("QuadGradientColor1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadGradientColor1 = value);
-    private protected static void SetQuadIsFill(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set<bool>("QuadIsFill", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadIsFill = value);
-    private protected static void SetQuadIsLines(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set<bool>("QuadIsLines", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadIsLines = value);
-    private protected static void SetQuadLinesColor(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set<Vec4>("QuadLinesColor", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadLinesColor = value);
-    private protected static void SetQuadZ(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("QuadZ", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadZ = value);
-    private protected static void SetQuadZLines(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("QuadZLines", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.QuadZLines = value);
-    private protected static void SetQuad_UvBottomRight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec2 value) => state.Set<Vec2>("Quad_UvBottomRight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Quad_UvBottomRight = value);
-    private protected static void SetQuad_UvTopLeft(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec2 value) => state.Set<Vec2>("Quad_UvTopLeft", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Quad_UvTopLeft = value);
-    private protected static void SetSkew(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("Skew", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Skew = value);
-    private protected static void SetSliderBarHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("SliderBarHeight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderBarHeight = value);
-    private protected static void SetSliderBarIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderBarIcons = value);
-    private protected static void SetSliderBarIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>>("SliderBarIcons", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SliderBarIcons.CopyFrom(reference));
-    private protected static void SetSliderBarWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("SliderBarWidth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderBarWidth = value);
-    private protected static void SetSliderCursorHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("SliderCursorHeight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderCursorHeight = value);
-    private protected static void SetSliderCursorIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderCursorIcons = value);
-    private protected static void SetSliderCursorIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>>("SliderCursorIcons", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncEnum>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SliderCursorIcons.CopyFrom(reference));
-    private protected static void SetSliderCursorWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set<float>("SliderCursorWidth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderCursorWidth = value);
-    private protected static void SetSliderSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SliderSound = value);
-    private protected static void SetSliderSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("SliderSound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SliderSound.CopyFrom(reference));
+    private protected static void SetActionBackSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundAssignment(), value, GameVersion.MP4);
+    private protected static void SetActionBackSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionBackSoundReferenceAssignment(), value, GameVersion.MP4);
+    private protected static void SetActionSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetActionSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetActionSoundReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetButtonDefaultIconId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconIdAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
+    private protected static void SetButtonDefaultIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetButtonDefaultIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonDefaultIconsReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetButtonIconHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetButtonIconWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetButtonIconWidthAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDefaultShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetDefaultShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDefaultShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetDefaultShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEffectMaster(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Control.CControlEffectMaster? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEffectMasterAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEffectMasterReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEffectMasterReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEntrySound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEntrySoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEntrySoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEntrySoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumForceDisplayType(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceDisplayTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumForceIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumForceIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumForceIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumIconHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumIconHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumIconWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumIconWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumListShader(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumListShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumListShaderReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumListShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumMaxElemCount(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumMaxElemCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEnumSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetEnumSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFitTextSize(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFitTextSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaEnable(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterial(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialFocused(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialFocusedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialFocusedReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialFocusedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialReadOnly(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReadOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialReadOnlyReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialReadOnlyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialSelected(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialSelectedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMaterialSelectedReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMaterialSelectedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMinHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMinHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaMinWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaMinWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaSolid(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaSolidReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaXMargin(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaXMarginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaYMargin(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaYMarginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusAreaZOffset(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusAreaZOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusGainedScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusGainedScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusGainedScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusGainedScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusLostScript(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusLostScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusLostScriptReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusLostScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFocusSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFont(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugFont? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFontAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFontReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetFontReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLineGradientColor0(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLineGradientColor1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetLineGradientColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadGradientColor0(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadGradientColor0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadGradientColor1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadGradientColor1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadIsFill(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadIsFillAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadIsLines(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadIsLinesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadLinesColor(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadLinesColorAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadZ(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadZAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuadZLines(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuadZLinesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuad_UvBottomRight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuad_UvBottomRightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetQuad_UvTopLeft(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetQuad_UvTopLeftAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSkew(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSkewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderBarHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderBarIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderBarIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderBarWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderBarWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderCursorHeight(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderCursorIcons(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Function.CFuncEnum? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorIconsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderCursorIconsReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorIconsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderCursorWidth(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderCursorWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderSound(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSliderSoundReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlStyleBuilderAssignments.GetSliderSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugShader? DefaultShader
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("DefaultShader");
@@ -287,8 +287,836 @@ public abstract class CControlStyleBuilderBase<TSelf> where TSelf : CControlStyl
         return (TSelf)this;
     }
 }
+public abstract class CControlStyleBuilderMembers1<TSelf> : CControlStyleBuilderBase<TSelf> where TSelf : CControlStyleBuilderMembers1<TSelf>
+{
+    private protected CControlStyleBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+    public Vec4 QuadGradientColor0
+    {
+        get => state.Get<Vec4>("QuadGradientColor0");
+        set => SetQuadGradientColor0(state, value);
+    }
+    public TSelf WithQuadGradientColor0(Vec4 value)
+    {
+        QuadGradientColor0 = value;
+        return (TSelf)this;
+    }
+    public Vec4 QuadGradientColor1
+    {
+        get => state.Get<Vec4>("QuadGradientColor1");
+        set => SetQuadGradientColor1(state, value);
+    }
+    public TSelf WithQuadGradientColor1(Vec4 value)
+    {
+        QuadGradientColor1 = value;
+        return (TSelf)this;
+    }
+    public bool QuadIsFill
+    {
+        get => state.Get<bool>("QuadIsFill");
+        set => SetQuadIsFill(state, value);
+    }
+    public TSelf WithQuadIsFill(bool value)
+    {
+        QuadIsFill = value;
+        return (TSelf)this;
+    }
+    public bool QuadIsLines
+    {
+        get => state.Get<bool>("QuadIsLines");
+        set => SetQuadIsLines(state, value);
+    }
+    public TSelf WithQuadIsLines(bool value)
+    {
+        QuadIsLines = value;
+        return (TSelf)this;
+    }
+    public float QuadZ
+    {
+        get => state.Get<float>("QuadZ");
+        set => SetQuadZ(state, value);
+    }
+    public TSelf WithQuadZ(float value)
+    {
+        QuadZ = value;
+        return (TSelf)this;
+    }
+    public float QuadZLines
+    {
+        get => state.Get<float>("QuadZLines");
+        set => SetQuadZLines(state, value);
+    }
+    public TSelf WithQuadZLines(float value)
+    {
+        QuadZLines = value;
+        return (TSelf)this;
+    }
+    public Vec2 Quad_UvBottomRight
+    {
+        get => state.Get<Vec2>("Quad_UvBottomRight");
+        set => SetQuad_UvBottomRight(state, value);
+    }
+    public TSelf WithQuad_UvBottomRight(Vec2 value)
+    {
+        Quad_UvBottomRight = value;
+        return (TSelf)this;
+    }
+    public Vec2 Quad_UvTopLeft
+    {
+        get => state.Get<Vec2>("Quad_UvTopLeft");
+        set => SetQuad_UvTopLeft(state, value);
+    }
+    public TSelf WithQuad_UvTopLeft(Vec2 value)
+    {
+        Quad_UvTopLeft = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CControlStyleBuilderMembers2<TSelf> : CControlStyleBuilderMembers1<TSelf> where TSelf : CControlStyleBuilderMembers2<TSelf>
+{
+    private protected CControlStyleBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+    public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
+    {
+        get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
+        set => SetEffectMaster(state, value);
+    }
+    public TSelf WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
+    {
+        EffectMaster = value;
+        return (TSelf)this;
+    }
+    public TSelf WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetEffectMasterReference(state, value);
+        return (TSelf)this;
+    }
+    public Vec4 LineGradientColor0
+    {
+        get => state.Get<Vec4>("LineGradientColor0");
+        set => SetLineGradientColor0(state, value);
+    }
+    public TSelf WithLineGradientColor0(Vec4 value)
+    {
+        LineGradientColor0 = value;
+        return (TSelf)this;
+    }
+    public Vec4 LineGradientColor1
+    {
+        get => state.Get<Vec4>("LineGradientColor1");
+        set => SetLineGradientColor1(state, value);
+    }
+    public TSelf WithLineGradientColor1(Vec4 value)
+    {
+        LineGradientColor1 = value;
+        return (TSelf)this;
+    }
+    public float Skew
+    {
+        get => state.Get<float>("Skew");
+        set => SetSkew(state, value);
+    }
+    public TSelf WithSkew(float value)
+    {
+        Skew = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CControlStyleBuilderMembers3<TSelf> : CControlStyleBuilderMembers2<TSelf> where TSelf : CControlStyleBuilderMembers3<TSelf>
+{
+    private protected CControlStyleBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+    public bool FocusAreaEnable
+    {
+        get => state.Get<bool>("FocusAreaEnable");
+        set => SetFocusAreaEnable(state, value);
+    }
+    public TSelf WithFocusAreaEnable(bool value)
+    {
+        FocusAreaEnable = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
+        set => SetFocusAreaMaterial(state, value);
+    }
+    public TSelf WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
+    {
+        FocusAreaMaterial = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFocusAreaMaterialReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
+        set => SetFocusAreaMaterialFocused(state, value);
+    }
+    public TSelf WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
+    {
+        FocusAreaMaterialFocused = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFocusAreaMaterialFocusedReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
+        set => SetFocusAreaMaterialReadOnly(state, value);
+    }
+    public TSelf WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
+    {
+        FocusAreaMaterialReadOnly = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFocusAreaMaterialReadOnlyReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
+        set => SetFocusAreaMaterialSelected(state, value);
+    }
+    public TSelf WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
+    {
+        FocusAreaMaterialSelected = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFocusAreaMaterialSelectedReference(state, value);
+        return (TSelf)this;
+    }
+    public float FocusAreaMinHeight
+    {
+        get => state.Get<float>("FocusAreaMinHeight");
+        set => SetFocusAreaMinHeight(state, value);
+    }
+    public TSelf WithFocusAreaMinHeight(float value)
+    {
+        FocusAreaMinHeight = value;
+        return (TSelf)this;
+    }
+    public float FocusAreaMinWidth
+    {
+        get => state.Get<float>("FocusAreaMinWidth");
+        set => SetFocusAreaMinWidth(state, value);
+    }
+    public TSelf WithFocusAreaMinWidth(float value)
+    {
+        FocusAreaMinWidth = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
+        set => SetFocusAreaSolid(state, value);
+    }
+    public TSelf WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
+    {
+        FocusAreaSolid = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFocusAreaSolidReference(state, value);
+        return (TSelf)this;
+    }
+    public float FocusAreaXMargin
+    {
+        get => state.Get<float>("FocusAreaXMargin");
+        set => SetFocusAreaXMargin(state, value);
+    }
+    public TSelf WithFocusAreaXMargin(float value)
+    {
+        FocusAreaXMargin = value;
+        return (TSelf)this;
+    }
+    public float FocusAreaYMargin
+    {
+        get => state.Get<float>("FocusAreaYMargin");
+        set => SetFocusAreaYMargin(state, value);
+    }
+    public TSelf WithFocusAreaYMargin(float value)
+    {
+        FocusAreaYMargin = value;
+        return (TSelf)this;
+    }
+    public float FocusAreaZOffset
+    {
+        get => state.Get<float>("FocusAreaZOffset");
+        set => SetFocusAreaZOffset(state, value);
+    }
+    public TSelf WithFocusAreaZOffset(float value)
+    {
+        FocusAreaZOffset = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugFont? Font
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
+        set => SetFont(state, value);
+    }
+    public TSelf WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
+    {
+        Font = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFontReference(state, value);
+        return (TSelf)this;
+    }
+    public float SliderBarHeight
+    {
+        get => state.Get<float>("SliderBarHeight");
+        set => SetSliderBarHeight(state, value);
+    }
+    public TSelf WithSliderBarHeight(float value)
+    {
+        SliderBarHeight = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
+        set => SetSliderBarIcons(state, value);
+    }
+    public TSelf WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
+    {
+        SliderBarIcons = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetSliderBarIconsReference(state, value);
+        return (TSelf)this;
+    }
+    public float SliderBarWidth
+    {
+        get => state.Get<float>("SliderBarWidth");
+        set => SetSliderBarWidth(state, value);
+    }
+    public TSelf WithSliderBarWidth(float value)
+    {
+        SliderBarWidth = value;
+        return (TSelf)this;
+    }
+    public float SliderCursorHeight
+    {
+        get => state.Get<float>("SliderCursorHeight");
+        set => SetSliderCursorHeight(state, value);
+    }
+    public TSelf WithSliderCursorHeight(float value)
+    {
+        SliderCursorHeight = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
+        set => SetSliderCursorIcons(state, value);
+    }
+    public TSelf WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
+    {
+        SliderCursorIcons = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetSliderCursorIconsReference(state, value);
+        return (TSelf)this;
+    }
+    public float SliderCursorWidth
+    {
+        get => state.Get<float>("SliderCursorWidth");
+        set => SetSliderCursorWidth(state, value);
+    }
+    public TSelf WithSliderCursorWidth(float value)
+    {
+        SliderCursorWidth = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
+        set => SetSliderSound(state, value);
+    }
+    public TSelf WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
+    {
+        SliderSound = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetSliderSoundReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CControlStyleBuilderMembers4<TSelf> : CControlStyleBuilderMembers3<TSelf> where TSelf : CControlStyleBuilderMembers4<TSelf>
+{
+    private protected CControlStyleBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
+        set => SetActionSound(state, value);
+    }
+    public TSelf WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
+    {
+        ActionSound = value;
+        return (TSelf)this;
+    }
+    public TSelf WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetActionSoundReference(state, value);
+        return (TSelf)this;
+    }
+    public string? ButtonDefaultIconId
+    {
+        get => state.Get<string?>("ButtonDefaultIconId");
+        set => SetButtonDefaultIconId(state, value);
+    }
+    public TSelf WithButtonDefaultIconId(string? value)
+    {
+        ButtonDefaultIconId = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
+        set => SetButtonDefaultIcons(state, value);
+    }
+    public TSelf WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
+    {
+        ButtonDefaultIcons = value;
+        return (TSelf)this;
+    }
+    public TSelf WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetButtonDefaultIconsReference(state, value);
+        return (TSelf)this;
+    }
+    public float ButtonIconHeight
+    {
+        get => state.Get<float>("ButtonIconHeight");
+        set => SetButtonIconHeight(state, value);
+    }
+    public TSelf WithButtonIconHeight(float value)
+    {
+        ButtonIconHeight = value;
+        return (TSelf)this;
+    }
+    public float ButtonIconWidth
+    {
+        get => state.Get<float>("ButtonIconWidth");
+        set => SetButtonIconWidth(state, value);
+    }
+    public TSelf WithButtonIconWidth(float value)
+    {
+        ButtonIconWidth = value;
+        return (TSelf)this;
+    }
+}
 public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlStyleBuilder>
 {
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
+        node.Chunks.Add(chunk0701700D);
+        var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
+        node.Chunks.Add(chunk0701700E);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
+        node.Chunks.Add(chunk0701700D);
+        var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
+        node.Chunks.Add(chunk0701700E);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
+        node.Chunks.Add(chunk07017014);
+        var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
+        node.Chunks.Add(chunk07017015);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017015 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
+        node.Chunks.Add(chunk0701700D);
+        var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
+        node.Chunks.Add(chunk0701700E);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
+        node.Chunks.Add(chunk07017014);
+        var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
+        node.Chunks.Add(chunk07017015);
+        var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
+        node.Chunks.Add(chunk07017016);
+        var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
+        node.Chunks.Add(chunk07017017);
+        var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
+        node.Chunks.Add(chunk07017018);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017018 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
+        node.Chunks.Add(chunk0701700D);
+        var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
+        node.Chunks.Add(chunk0701700E);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
+        node.Chunks.Add(chunk07017014);
+        var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
+        node.Chunks.Add(chunk07017015);
+        var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
+        node.Chunks.Add(chunk07017016);
+        var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
+        node.Chunks.Add(chunk07017017);
+        var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
+        node.Chunks.Add(chunk07017018);
+        var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
+        node.Chunks.Add(chunk0701701B);
+        var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
+        node.Chunks.Add(chunk0701701C);
+        var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
+        node.Chunks.Add(chunk0701701D);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
+        node.Chunks.Add(chunk0701700D);
+        var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
+        node.Chunks.Add(chunk0701700E);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
+        node.Chunks.Add(chunk07017014);
+        var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
+        node.Chunks.Add(chunk07017015);
+        var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
+        node.Chunks.Add(chunk07017016);
+        var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
+        node.Chunks.Add(chunk07017017);
+        var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
+        node.Chunks.Add(chunk07017018);
+        var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
+        node.Chunks.Add(chunk0701701B);
+        var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
+        node.Chunks.Add(chunk0701701C);
+        var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
+        node.Chunks.Add(chunk0701701D);
+        var chunk0701701E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701E();
+        node.Chunks.Add(chunk0701701E);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701E is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
+        node.Chunks.Add(chunk0701700D);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
+        node.Chunks.Add(chunk07017014);
+        var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
+        node.Chunks.Add(chunk07017015);
+        var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
+        node.Chunks.Add(chunk07017016);
+        var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
+        node.Chunks.Add(chunk07017017);
+        var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
+        node.Chunks.Add(chunk07017018);
+        var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
+        node.Chunks.Add(chunk0701701B);
+        var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
+        node.Chunks.Add(chunk0701701C);
+        var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
+        node.Chunks.Add(chunk0701701D);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
+        node.Chunks.Add(chunk07017016);
+        var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
+        node.Chunks.Add(chunk07017017);
+        var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
+        node.Chunks.Add(chunk07017018);
+        var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
+        node.Chunks.Add(chunk0701701B);
+        var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
+        node.Chunks.Add(chunk0701701C);
+        var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
+        node.Chunks.Add(chunk0701701D);
+        var chunk0701701F = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701F();
+        chunk0701701F.Version = 0;
+        node.Chunks.Add(chunk0701701F);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0701701F is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlStyle CreateRecipe7(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlStyle();
+        var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
+        node.Chunks.Add(chunk07017000);
+        var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
+        node.Chunks.Add(chunk07017004);
+        var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
+        node.Chunks.Add(chunk07017009);
+        var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
+        node.Chunks.Add(chunk0701700B);
+        var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
+        node.Chunks.Add(chunk0701700C);
+        var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
+        node.Chunks.Add(chunk07017010);
+        var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
+        node.Chunks.Add(chunk07017016);
+        var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
+        node.Chunks.Add(chunk07017017);
+        var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
+        node.Chunks.Add(chunk07017018);
+        var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
+        node.Chunks.Add(chunk0701701B);
+        var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
+        node.Chunks.Add(chunk0701701C);
+        var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
+        node.Chunks.Add(chunk0701701D);
+        return node;
+    }
+    private static void ValidateRecipe7(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701700C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07017018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701701D is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlStyle node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -391,41 +1219,19 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         public global::GBX.NET.Interfaces.Control.IControlStyleTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
-            node.Chunks.Add(chunk0701700E);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
+            var node = CControlStyleBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0701700E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk07017010 is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TMPU : CControlStyleBuilderBase<TMPU>
+    public partial class TMPU : CControlStyleBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
@@ -512,46 +1318,6 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public TMPU WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public TMPU WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public TMPU WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public TMPU WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
@@ -562,90 +1328,22 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public TMPU WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public TMPU WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public TMPU WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public TMPU WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlStyleTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
-            node.Chunks.Add(chunk0701700E);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
+            var node = CControlStyleBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0701700E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk07017015 is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TMSX : CControlStyleBuilderBase<TMSX>
+    public partial class TMSX : CControlStyleBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
@@ -708,25 +1406,9 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public TMSX WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public TMSX WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public TMSX WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? value)
         {
@@ -752,66 +1434,6 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public TMSX WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public TMSX WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public TMSX WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public TMSX WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public TMSX WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public TMSX WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
@@ -822,109 +1444,22 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public TMSX WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public TMSX WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public TMSX WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public TMSX WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public TMSX WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlStyleTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
-            node.Chunks.Add(chunk0701700E);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
+            var node = CControlStyleBuilder.CreateRecipe2(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0701700E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07017018 is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe2(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TMNESWC : CControlStyleBuilderBase<TMNESWC>
+    public partial class TMNESWC : CControlStyleBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
@@ -991,25 +1526,9 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public TMNESWC WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public TMNESWC WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public TMNESWC WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMNESWC WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? value)
         {
@@ -1039,66 +1558,6 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public TMNESWC WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public TMNESWC WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public TMNESWC WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public TMNESWC WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public TMNESWC WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public TMNESWC WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
@@ -1109,109 +1568,22 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public TMNESWC WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public TMNESWC WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public TMNESWC WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public TMNESWC WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public TMNESWC WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
-            node.Chunks.Add(chunk0701700E);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
+            var node = CControlStyleBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0701700E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07017018 is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class VSK5 : CControlStyleBuilderBase<VSK5>
+    public partial class VSK5 : CControlStyleBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
@@ -1278,25 +1650,9 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public VSK5 WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public VSK5 WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public VSK5 WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? value)
         {
@@ -1314,165 +1670,25 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithEnumSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool FocusAreaEnable
-        {
-            get => state.Get<bool>("FocusAreaEnable");
-            set => SetFocusAreaEnable(state, value);
-        }
-        public VSK5 WithFocusAreaEnable(bool value)
-        {
-            FocusAreaEnable = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-            set => SetFocusAreaMaterial(state, value);
-        }
-        public VSK5 WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterial = value;
-            return this;
-        }
-        public VSK5 WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReference(state, value);
-            return this;
-        }
         public VSK5 WithFocusAreaMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value)
         {
-            return WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-            set => SetFocusAreaMaterialFocused(state, value);
-        }
-        public VSK5 WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialFocused = value;
-            return this;
-        }
-        public VSK5 WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialFocusedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithFocusAreaMaterialFocused(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value)
         {
-            return WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-            set => SetFocusAreaMaterialReadOnly(state, value);
-        }
-        public VSK5 WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialReadOnly = value;
-            return this;
-        }
-        public VSK5 WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReadOnlyReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithFocusAreaMaterialReadOnly(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value)
         {
-            return WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-            set => SetFocusAreaMaterialSelected(state, value);
-        }
-        public VSK5 WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialSelected = value;
-            return this;
-        }
-        public VSK5 WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialSelectedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithFocusAreaMaterialSelected(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value)
         {
-            return WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaMinHeight
-        {
-            get => state.Get<float>("FocusAreaMinHeight");
-            set => SetFocusAreaMinHeight(state, value);
-        }
-        public VSK5 WithFocusAreaMinHeight(float value)
-        {
-            FocusAreaMinHeight = value;
-            return this;
-        }
-        public float FocusAreaMinWidth
-        {
-            get => state.Get<float>("FocusAreaMinWidth");
-            set => SetFocusAreaMinWidth(state, value);
-        }
-        public VSK5 WithFocusAreaMinWidth(float value)
-        {
-            FocusAreaMinWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-            set => SetFocusAreaSolid(state, value);
-        }
-        public VSK5 WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
-        {
-            FocusAreaSolid = value;
-            return this;
-        }
-        public VSK5 WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaSolidReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithFocusAreaSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? value)
         {
-            return WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaXMargin
-        {
-            get => state.Get<float>("FocusAreaXMargin");
-            set => SetFocusAreaXMargin(state, value);
-        }
-        public VSK5 WithFocusAreaXMargin(float value)
-        {
-            FocusAreaXMargin = value;
-            return this;
-        }
-        public float FocusAreaYMargin
-        {
-            get => state.Get<float>("FocusAreaYMargin");
-            set => SetFocusAreaYMargin(state, value);
-        }
-        public VSK5 WithFocusAreaYMargin(float value)
-        {
-            FocusAreaYMargin = value;
-            return this;
-        }
-        public float FocusAreaZOffset
-        {
-            get => state.Get<float>("FocusAreaZOffset");
-            set => SetFocusAreaZOffset(state, value);
-        }
-        public VSK5 WithFocusAreaZOffset(float value)
-        {
-            FocusAreaZOffset = value;
-            return this;
+            return base.WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithFocusGainedScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? value)
         {
@@ -1486,82 +1702,6 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugFont? Font
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-            set => SetFont(state, value);
-        }
-        public VSK5 WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
-        {
-            Font = value;
-            return this;
-        }
-        public VSK5 WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFontReference(state, value);
-            return this;
-        }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public VSK5 WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public VSK5 WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public VSK5 WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public VSK5 WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public VSK5 WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public VSK5 WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
@@ -1572,313 +1712,51 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public VSK5 WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public VSK5 WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public VSK5 WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public VSK5 WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public VSK5 WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
-        public float SliderBarHeight
-        {
-            get => state.Get<float>("SliderBarHeight");
-            set => SetSliderBarHeight(state, value);
-        }
-        public VSK5 WithSliderBarHeight(float value)
-        {
-            SliderBarHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-            set => SetSliderBarIcons(state, value);
-        }
-        public VSK5 WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderBarIcons = value;
-            return this;
-        }
-        public VSK5 WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderBarIconsReference(state, value);
-            return this;
-        }
         public VSK5 WithSliderBarIcons(global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? value)
         {
-            return WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderBarWidth
-        {
-            get => state.Get<float>("SliderBarWidth");
-            set => SetSliderBarWidth(state, value);
-        }
-        public VSK5 WithSliderBarWidth(float value)
-        {
-            SliderBarWidth = value;
-            return this;
-        }
-        public float SliderCursorHeight
-        {
-            get => state.Get<float>("SliderCursorHeight");
-            set => SetSliderCursorHeight(state, value);
-        }
-        public VSK5 WithSliderCursorHeight(float value)
-        {
-            SliderCursorHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-            set => SetSliderCursorIcons(state, value);
-        }
-        public VSK5 WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderCursorIcons = value;
-            return this;
-        }
-        public VSK5 WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderCursorIconsReference(state, value);
-            return this;
+            return base.WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? value)
         {
-            return WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderCursorWidth
-        {
-            get => state.Get<float>("SliderCursorWidth");
-            set => SetSliderCursorWidth(state, value);
-        }
-        public VSK5 WithSliderCursorWidth(float value)
-        {
-            SliderCursorWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-            set => SetSliderSound(state, value);
-        }
-        public VSK5 WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            SliderSound = value;
-            return this;
-        }
-        public VSK5 WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderSoundReference(state, value);
-            return this;
+            return base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? value)
         {
-            return WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlStyleVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
-            node.Chunks.Add(chunk0701700E);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
-            var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
-            node.Chunks.Add(chunk0701701B);
-            var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
-            node.Chunks.Add(chunk0701701C);
-            var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
-            node.Chunks.Add(chunk0701701D);
+            var node = CControlStyleBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701700E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07017018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701701B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701701C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701701D is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe3(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TMF : CControlStyleBuilderBase<TMF>
+    public partial class TMF : CControlStyleBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
-        }
-        public TMF WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            ActionSound = value;
-            return this;
-        }
-        public TMF WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
-            return this;
-        }
         public TMF WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? value)
         {
-            return WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? ButtonDefaultIconId
-        {
-            get => state.Get<string?>("ButtonDefaultIconId");
-            set => SetButtonDefaultIconId(state, value);
-        }
-        public TMF WithButtonDefaultIconId(string? value)
-        {
-            ButtonDefaultIconId = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
-        }
-        public TMF WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            ButtonDefaultIcons = value;
-            return this;
-        }
-        public TMF WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
-            return this;
+            return base.WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMF? value)
         {
-            return WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float ButtonIconHeight
-        {
-            get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
-        }
-        public TMF WithButtonIconHeight(float value)
-        {
-            ButtonIconHeight = value;
-            return this;
-        }
-        public float ButtonIconWidth
-        {
-            get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
-        }
-        public TMF WithButtonIconWidth(float value)
-        {
-            ButtonIconWidth = value;
-            return this;
+            return base.WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? value)
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public TMF WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public TMF WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public TMF WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? value)
         {
@@ -1896,165 +1774,25 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithEnumSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool FocusAreaEnable
-        {
-            get => state.Get<bool>("FocusAreaEnable");
-            set => SetFocusAreaEnable(state, value);
-        }
-        public TMF WithFocusAreaEnable(bool value)
-        {
-            FocusAreaEnable = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-            set => SetFocusAreaMaterial(state, value);
-        }
-        public TMF WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterial = value;
-            return this;
-        }
-        public TMF WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReference(state, value);
-            return this;
-        }
         public TMF WithFocusAreaMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value)
         {
-            return WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-            set => SetFocusAreaMaterialFocused(state, value);
-        }
-        public TMF WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialFocused = value;
-            return this;
-        }
-        public TMF WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialFocusedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithFocusAreaMaterialFocused(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value)
         {
-            return WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-            set => SetFocusAreaMaterialReadOnly(state, value);
-        }
-        public TMF WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialReadOnly = value;
-            return this;
-        }
-        public TMF WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReadOnlyReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithFocusAreaMaterialReadOnly(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value)
         {
-            return WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-            set => SetFocusAreaMaterialSelected(state, value);
-        }
-        public TMF WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialSelected = value;
-            return this;
-        }
-        public TMF WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialSelectedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithFocusAreaMaterialSelected(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value)
         {
-            return WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaMinHeight
-        {
-            get => state.Get<float>("FocusAreaMinHeight");
-            set => SetFocusAreaMinHeight(state, value);
-        }
-        public TMF WithFocusAreaMinHeight(float value)
-        {
-            FocusAreaMinHeight = value;
-            return this;
-        }
-        public float FocusAreaMinWidth
-        {
-            get => state.Get<float>("FocusAreaMinWidth");
-            set => SetFocusAreaMinWidth(state, value);
-        }
-        public TMF WithFocusAreaMinWidth(float value)
-        {
-            FocusAreaMinWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-            set => SetFocusAreaSolid(state, value);
-        }
-        public TMF WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
-        {
-            FocusAreaSolid = value;
-            return this;
-        }
-        public TMF WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaSolidReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithFocusAreaSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? value)
         {
-            return WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaXMargin
-        {
-            get => state.Get<float>("FocusAreaXMargin");
-            set => SetFocusAreaXMargin(state, value);
-        }
-        public TMF WithFocusAreaXMargin(float value)
-        {
-            FocusAreaXMargin = value;
-            return this;
-        }
-        public float FocusAreaYMargin
-        {
-            get => state.Get<float>("FocusAreaYMargin");
-            set => SetFocusAreaYMargin(state, value);
-        }
-        public TMF WithFocusAreaYMargin(float value)
-        {
-            FocusAreaYMargin = value;
-            return this;
-        }
-        public float FocusAreaZOffset
-        {
-            get => state.Get<float>("FocusAreaZOffset");
-            set => SetFocusAreaZOffset(state, value);
-        }
-        public TMF WithFocusAreaZOffset(float value)
-        {
-            FocusAreaZOffset = value;
-            return this;
+            return base.WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithFocusGainedScript(global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? value)
         {
@@ -2068,82 +1806,6 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugFont? Font
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-            set => SetFont(state, value);
-        }
-        public TMF WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
-        {
-            Font = value;
-            return this;
-        }
-        public TMF WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFontReference(state, value);
-            return this;
-        }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public TMF WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public TMF WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public TMF WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public TMF WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public TMF WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public TMF WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
         public Vec4 QuadLinesColor
         {
             get => state.Get<Vec4>("QuadLinesColor");
@@ -2154,246 +1816,43 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public TMF WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public TMF WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public TMF WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public TMF WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public TMF WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
-        public float SliderBarHeight
-        {
-            get => state.Get<float>("SliderBarHeight");
-            set => SetSliderBarHeight(state, value);
-        }
-        public TMF WithSliderBarHeight(float value)
-        {
-            SliderBarHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-            set => SetSliderBarIcons(state, value);
-        }
-        public TMF WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderBarIcons = value;
-            return this;
-        }
-        public TMF WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderBarIconsReference(state, value);
-            return this;
-        }
         public TMF WithSliderBarIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMF? value)
         {
-            return WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderBarWidth
-        {
-            get => state.Get<float>("SliderBarWidth");
-            set => SetSliderBarWidth(state, value);
-        }
-        public TMF WithSliderBarWidth(float value)
-        {
-            SliderBarWidth = value;
-            return this;
-        }
-        public float SliderCursorHeight
-        {
-            get => state.Get<float>("SliderCursorHeight");
-            set => SetSliderCursorHeight(state, value);
-        }
-        public TMF WithSliderCursorHeight(float value)
-        {
-            SliderCursorHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-            set => SetSliderCursorIcons(state, value);
-        }
-        public TMF WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderCursorIcons = value;
-            return this;
-        }
-        public TMF WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderCursorIconsReference(state, value);
-            return this;
+            return base.WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMF? value)
         {
-            return WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderCursorWidth
-        {
-            get => state.Get<float>("SliderCursorWidth");
-            set => SetSliderCursorWidth(state, value);
-        }
-        public TMF WithSliderCursorWidth(float value)
-        {
-            SliderCursorWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-            set => SetSliderSound(state, value);
-        }
-        public TMF WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            SliderSound = value;
-            return this;
-        }
-        public TMF WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderSoundReference(state, value);
-            return this;
+            return base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? value)
         {
-            return WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlStyleTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk0701700E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E();
-            node.Chunks.Add(chunk0701700E);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
-            var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
-            node.Chunks.Add(chunk0701701B);
-            var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
-            node.Chunks.Add(chunk0701701C);
-            var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
-            node.Chunks.Add(chunk0701701D);
-            var chunk0701701E = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701E();
-            node.Chunks.Add(chunk0701701E);
+            var node = CControlStyleBuilder.CreateRecipe4(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701700E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07017018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701701B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701701C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701701D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701701E is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe4(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class MP3 : CControlStyleBuilderBase<MP3>
+    public partial class MP3 : CControlStyleBuilderMembers3<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public MP3 WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? value)
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public MP3 WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public MP3 WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public MP3 WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value)
         {
@@ -2411,245 +1870,29 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithEnumSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool FocusAreaEnable
-        {
-            get => state.Get<bool>("FocusAreaEnable");
-            set => SetFocusAreaEnable(state, value);
-        }
-        public MP3 WithFocusAreaEnable(bool value)
-        {
-            FocusAreaEnable = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-            set => SetFocusAreaMaterial(state, value);
-        }
-        public MP3 WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterial = value;
-            return this;
-        }
-        public MP3 WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReference(state, value);
-            return this;
-        }
         public MP3 WithFocusAreaMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value)
         {
-            return WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-            set => SetFocusAreaMaterialFocused(state, value);
-        }
-        public MP3 WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialFocused = value;
-            return this;
-        }
-        public MP3 WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialFocusedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFocusAreaMaterialFocused(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value)
         {
-            return WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-            set => SetFocusAreaMaterialReadOnly(state, value);
-        }
-        public MP3 WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialReadOnly = value;
-            return this;
-        }
-        public MP3 WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReadOnlyReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFocusAreaMaterialReadOnly(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value)
         {
-            return WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-            set => SetFocusAreaMaterialSelected(state, value);
-        }
-        public MP3 WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialSelected = value;
-            return this;
-        }
-        public MP3 WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialSelectedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFocusAreaMaterialSelected(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value)
         {
-            return WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaMinHeight
-        {
-            get => state.Get<float>("FocusAreaMinHeight");
-            set => SetFocusAreaMinHeight(state, value);
-        }
-        public MP3 WithFocusAreaMinHeight(float value)
-        {
-            FocusAreaMinHeight = value;
-            return this;
-        }
-        public float FocusAreaMinWidth
-        {
-            get => state.Get<float>("FocusAreaMinWidth");
-            set => SetFocusAreaMinWidth(state, value);
-        }
-        public MP3 WithFocusAreaMinWidth(float value)
-        {
-            FocusAreaMinWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-            set => SetFocusAreaSolid(state, value);
-        }
-        public MP3 WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
-        {
-            FocusAreaSolid = value;
-            return this;
-        }
-        public MP3 WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaSolidReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFocusAreaSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? value)
         {
-            return WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaXMargin
-        {
-            get => state.Get<float>("FocusAreaXMargin");
-            set => SetFocusAreaXMargin(state, value);
-        }
-        public MP3 WithFocusAreaXMargin(float value)
-        {
-            FocusAreaXMargin = value;
-            return this;
-        }
-        public float FocusAreaYMargin
-        {
-            get => state.Get<float>("FocusAreaYMargin");
-            set => SetFocusAreaYMargin(state, value);
-        }
-        public MP3 WithFocusAreaYMargin(float value)
-        {
-            FocusAreaYMargin = value;
-            return this;
-        }
-        public float FocusAreaZOffset
-        {
-            get => state.Get<float>("FocusAreaZOffset");
-            set => SetFocusAreaZOffset(state, value);
-        }
-        public MP3 WithFocusAreaZOffset(float value)
-        {
-            FocusAreaZOffset = value;
-            return this;
+            return base.WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFocusSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value)
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFont? Font
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-            set => SetFont(state, value);
-        }
-        public MP3 WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
-        {
-            Font = value;
-            return this;
-        }
-        public MP3 WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFontReference(state, value);
-            return this;
-        }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public MP3 WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public MP3 WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public MP3 WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public MP3 WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public MP3 WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public MP3 WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
         }
         public Vec4 QuadLinesColor
         {
@@ -2661,240 +1904,43 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public MP3 WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public MP3 WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public MP3 WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public MP3 WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public MP3 WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
-        public float SliderBarHeight
-        {
-            get => state.Get<float>("SliderBarHeight");
-            set => SetSliderBarHeight(state, value);
-        }
-        public MP3 WithSliderBarHeight(float value)
-        {
-            SliderBarHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-            set => SetSliderBarIcons(state, value);
-        }
-        public MP3 WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderBarIcons = value;
-            return this;
-        }
-        public MP3 WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderBarIconsReference(state, value);
-            return this;
-        }
         public MP3 WithSliderBarIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP3? value)
         {
-            return WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderBarWidth
-        {
-            get => state.Get<float>("SliderBarWidth");
-            set => SetSliderBarWidth(state, value);
-        }
-        public MP3 WithSliderBarWidth(float value)
-        {
-            SliderBarWidth = value;
-            return this;
-        }
-        public float SliderCursorHeight
-        {
-            get => state.Get<float>("SliderCursorHeight");
-            set => SetSliderCursorHeight(state, value);
-        }
-        public MP3 WithSliderCursorHeight(float value)
-        {
-            SliderCursorHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-            set => SetSliderCursorIcons(state, value);
-        }
-        public MP3 WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderCursorIcons = value;
-            return this;
-        }
-        public MP3 WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderCursorIconsReference(state, value);
-            return this;
+            return base.WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP3? value)
         {
-            return WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderCursorWidth
-        {
-            get => state.Get<float>("SliderCursorWidth");
-            set => SetSliderCursorWidth(state, value);
-        }
-        public MP3 WithSliderCursorWidth(float value)
-        {
-            SliderCursorWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-            set => SetSliderSound(state, value);
-        }
-        public MP3 WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            SliderSound = value;
-            return this;
-        }
-        public MP3 WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderSoundReference(state, value);
-            return this;
+            return base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? value)
         {
-            return WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlStyleMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
-            var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
-            node.Chunks.Add(chunk0701701B);
-            var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
-            node.Chunks.Add(chunk0701701C);
-            var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
-            node.Chunks.Add(chunk0701701D);
+            var node = CControlStyleBuilder.CreateRecipe5(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07017018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701701B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701701C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701701D is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe5(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TMT : CControlStyleBuilderBase<TMT>
+    public partial class TMT : CControlStyleBuilderMembers3<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public TMT WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? value)
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public TMT WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public TMT WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public TMT WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value)
         {
@@ -2912,245 +1958,29 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithEnumSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool FocusAreaEnable
-        {
-            get => state.Get<bool>("FocusAreaEnable");
-            set => SetFocusAreaEnable(state, value);
-        }
-        public TMT WithFocusAreaEnable(bool value)
-        {
-            FocusAreaEnable = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-            set => SetFocusAreaMaterial(state, value);
-        }
-        public TMT WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterial = value;
-            return this;
-        }
-        public TMT WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReference(state, value);
-            return this;
-        }
         public TMT WithFocusAreaMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value)
         {
-            return WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-            set => SetFocusAreaMaterialFocused(state, value);
-        }
-        public TMT WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialFocused = value;
-            return this;
-        }
-        public TMT WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialFocusedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFocusAreaMaterialFocused(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value)
         {
-            return WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-            set => SetFocusAreaMaterialReadOnly(state, value);
-        }
-        public TMT WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialReadOnly = value;
-            return this;
-        }
-        public TMT WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReadOnlyReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFocusAreaMaterialReadOnly(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value)
         {
-            return WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-            set => SetFocusAreaMaterialSelected(state, value);
-        }
-        public TMT WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialSelected = value;
-            return this;
-        }
-        public TMT WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialSelectedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFocusAreaMaterialSelected(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value)
         {
-            return WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaMinHeight
-        {
-            get => state.Get<float>("FocusAreaMinHeight");
-            set => SetFocusAreaMinHeight(state, value);
-        }
-        public TMT WithFocusAreaMinHeight(float value)
-        {
-            FocusAreaMinHeight = value;
-            return this;
-        }
-        public float FocusAreaMinWidth
-        {
-            get => state.Get<float>("FocusAreaMinWidth");
-            set => SetFocusAreaMinWidth(state, value);
-        }
-        public TMT WithFocusAreaMinWidth(float value)
-        {
-            FocusAreaMinWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-            set => SetFocusAreaSolid(state, value);
-        }
-        public TMT WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
-        {
-            FocusAreaSolid = value;
-            return this;
-        }
-        public TMT WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaSolidReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFocusAreaSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? value)
         {
-            return WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaXMargin
-        {
-            get => state.Get<float>("FocusAreaXMargin");
-            set => SetFocusAreaXMargin(state, value);
-        }
-        public TMT WithFocusAreaXMargin(float value)
-        {
-            FocusAreaXMargin = value;
-            return this;
-        }
-        public float FocusAreaYMargin
-        {
-            get => state.Get<float>("FocusAreaYMargin");
-            set => SetFocusAreaYMargin(state, value);
-        }
-        public TMT WithFocusAreaYMargin(float value)
-        {
-            FocusAreaYMargin = value;
-            return this;
-        }
-        public float FocusAreaZOffset
-        {
-            get => state.Get<float>("FocusAreaZOffset");
-            set => SetFocusAreaZOffset(state, value);
-        }
-        public TMT WithFocusAreaZOffset(float value)
-        {
-            FocusAreaZOffset = value;
-            return this;
+            return base.WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFocusSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value)
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFont? Font
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-            set => SetFont(state, value);
-        }
-        public TMT WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
-        {
-            Font = value;
-            return this;
-        }
-        public TMT WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFontReference(state, value);
-            return this;
-        }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public TMT WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public TMT WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public TMT WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public TMT WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public TMT WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public TMT WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
         }
         public Vec4 QuadLinesColor
         {
@@ -3162,215 +1992,34 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
             QuadLinesColor = value;
             return this;
         }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public TMT WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public TMT WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public TMT WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public TMT WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public TMT WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
-        public float SliderBarHeight
-        {
-            get => state.Get<float>("SliderBarHeight");
-            set => SetSliderBarHeight(state, value);
-        }
-        public TMT WithSliderBarHeight(float value)
-        {
-            SliderBarHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-            set => SetSliderBarIcons(state, value);
-        }
-        public TMT WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderBarIcons = value;
-            return this;
-        }
-        public TMT WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderBarIconsReference(state, value);
-            return this;
-        }
         public TMT WithSliderBarIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMT? value)
         {
-            return WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderBarWidth
-        {
-            get => state.Get<float>("SliderBarWidth");
-            set => SetSliderBarWidth(state, value);
-        }
-        public TMT WithSliderBarWidth(float value)
-        {
-            SliderBarWidth = value;
-            return this;
-        }
-        public float SliderCursorHeight
-        {
-            get => state.Get<float>("SliderCursorHeight");
-            set => SetSliderCursorHeight(state, value);
-        }
-        public TMT WithSliderCursorHeight(float value)
-        {
-            SliderCursorHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-            set => SetSliderCursorIcons(state, value);
-        }
-        public TMT WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderCursorIcons = value;
-            return this;
-        }
-        public TMT WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderCursorIconsReference(state, value);
-            return this;
+            return base.WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTMT? value)
         {
-            return WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderCursorWidth
-        {
-            get => state.Get<float>("SliderCursorWidth");
-            set => SetSliderCursorWidth(state, value);
-        }
-        public TMT WithSliderCursorWidth(float value)
-        {
-            SliderCursorWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-            set => SetSliderSound(state, value);
-        }
-        public TMT WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            SliderSound = value;
-            return this;
-        }
-        public TMT WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderSoundReference(state, value);
-            return this;
+            return base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? value)
         {
-            return WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlStyleTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk0701700D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D();
-            node.Chunks.Add(chunk0701700D);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017014 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014();
-            node.Chunks.Add(chunk07017014);
-            var chunk07017015 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015();
-            node.Chunks.Add(chunk07017015);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
-            var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
-            node.Chunks.Add(chunk0701701B);
-            var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
-            node.Chunks.Add(chunk0701701C);
-            var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
-            node.Chunks.Add(chunk0701701D);
+            var node = CControlStyleBuilder.CreateRecipe5(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701700D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017014>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017015>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07017018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701701B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701701C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701701D is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe5(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class MP4 : CControlStyleBuilderBase<MP4>
+    public partial class MP4 : CControlStyleBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugSound? ActionBackSound
@@ -3393,99 +2042,21 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return WithActionBackSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugSound? ActionSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("ActionSound");
-            set => SetActionSound(state, value);
-        }
-        public MP4 WithActionSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            ActionSound = value;
-            return this;
-        }
-        public MP4 WithActionSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetActionSoundReference(state, value);
-            return this;
-        }
         public MP4 WithActionSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
         {
-            return WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? ButtonDefaultIconId
-        {
-            get => state.Get<string?>("ButtonDefaultIconId");
-            set => SetButtonDefaultIconId(state, value);
-        }
-        public MP4 WithButtonDefaultIconId(string? value)
-        {
-            ButtonDefaultIconId = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("ButtonDefaultIcons");
-            set => SetButtonDefaultIcons(state, value);
-        }
-        public MP4 WithButtonDefaultIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            ButtonDefaultIcons = value;
-            return this;
-        }
-        public MP4 WithButtonDefaultIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetButtonDefaultIconsReference(state, value);
-            return this;
+            return base.WithActionSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithButtonDefaultIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP4? value)
         {
-            return WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float ButtonIconHeight
-        {
-            get => state.Get<float>("ButtonIconHeight");
-            set => SetButtonIconHeight(state, value);
-        }
-        public MP4 WithButtonIconHeight(float value)
-        {
-            ButtonIconHeight = value;
-            return this;
-        }
-        public float ButtonIconWidth
-        {
-            get => state.Get<float>("ButtonIconWidth");
-            set => SetButtonIconWidth(state, value);
-        }
-        public MP4 WithButtonIconWidth(float value)
-        {
-            ButtonIconWidth = value;
-            return this;
+            return base.WithButtonDefaultIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? value)
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public MP4 WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public MP4 WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public MP4 WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
         {
@@ -3503,475 +2074,67 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithEnumSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool FocusAreaEnable
-        {
-            get => state.Get<bool>("FocusAreaEnable");
-            set => SetFocusAreaEnable(state, value);
-        }
-        public MP4 WithFocusAreaEnable(bool value)
-        {
-            FocusAreaEnable = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-            set => SetFocusAreaMaterial(state, value);
-        }
-        public MP4 WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterial = value;
-            return this;
-        }
-        public MP4 WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReference(state, value);
-            return this;
-        }
         public MP4 WithFocusAreaMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value)
         {
-            return WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-            set => SetFocusAreaMaterialFocused(state, value);
-        }
-        public MP4 WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialFocused = value;
-            return this;
-        }
-        public MP4 WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialFocusedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFocusAreaMaterialFocused(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value)
         {
-            return WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-            set => SetFocusAreaMaterialReadOnly(state, value);
-        }
-        public MP4 WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialReadOnly = value;
-            return this;
-        }
-        public MP4 WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReadOnlyReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFocusAreaMaterialReadOnly(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value)
         {
-            return WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-            set => SetFocusAreaMaterialSelected(state, value);
-        }
-        public MP4 WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialSelected = value;
-            return this;
-        }
-        public MP4 WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialSelectedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFocusAreaMaterialSelected(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value)
         {
-            return WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaMinHeight
-        {
-            get => state.Get<float>("FocusAreaMinHeight");
-            set => SetFocusAreaMinHeight(state, value);
-        }
-        public MP4 WithFocusAreaMinHeight(float value)
-        {
-            FocusAreaMinHeight = value;
-            return this;
-        }
-        public float FocusAreaMinWidth
-        {
-            get => state.Get<float>("FocusAreaMinWidth");
-            set => SetFocusAreaMinWidth(state, value);
-        }
-        public MP4 WithFocusAreaMinWidth(float value)
-        {
-            FocusAreaMinWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-            set => SetFocusAreaSolid(state, value);
-        }
-        public MP4 WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
-        {
-            FocusAreaSolid = value;
-            return this;
-        }
-        public MP4 WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaSolidReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFocusAreaSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? value)
         {
-            return WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaXMargin
-        {
-            get => state.Get<float>("FocusAreaXMargin");
-            set => SetFocusAreaXMargin(state, value);
-        }
-        public MP4 WithFocusAreaXMargin(float value)
-        {
-            FocusAreaXMargin = value;
-            return this;
-        }
-        public float FocusAreaYMargin
-        {
-            get => state.Get<float>("FocusAreaYMargin");
-            set => SetFocusAreaYMargin(state, value);
-        }
-        public MP4 WithFocusAreaYMargin(float value)
-        {
-            FocusAreaYMargin = value;
-            return this;
-        }
-        public float FocusAreaZOffset
-        {
-            get => state.Get<float>("FocusAreaZOffset");
-            set => SetFocusAreaZOffset(state, value);
-        }
-        public MP4 WithFocusAreaZOffset(float value)
-        {
-            FocusAreaZOffset = value;
-            return this;
+            return base.WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFocusSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugFont? Font
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-            set => SetFont(state, value);
-        }
-        public MP4 WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
-        {
-            Font = value;
-            return this;
-        }
-        public MP4 WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFontReference(state, value);
-            return this;
-        }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public MP4 WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public MP4 WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public MP4 WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public MP4 WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public MP4 WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public MP4 WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public MP4 WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public MP4 WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public MP4 WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public MP4 WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public MP4 WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
-        public float SliderBarHeight
-        {
-            get => state.Get<float>("SliderBarHeight");
-            set => SetSliderBarHeight(state, value);
-        }
-        public MP4 WithSliderBarHeight(float value)
-        {
-            SliderBarHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-            set => SetSliderBarIcons(state, value);
-        }
-        public MP4 WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderBarIcons = value;
-            return this;
-        }
-        public MP4 WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderBarIconsReference(state, value);
-            return this;
-        }
         public MP4 WithSliderBarIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP4? value)
         {
-            return WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderBarWidth
-        {
-            get => state.Get<float>("SliderBarWidth");
-            set => SetSliderBarWidth(state, value);
-        }
-        public MP4 WithSliderBarWidth(float value)
-        {
-            SliderBarWidth = value;
-            return this;
-        }
-        public float SliderCursorHeight
-        {
-            get => state.Get<float>("SliderCursorHeight");
-            set => SetSliderCursorHeight(state, value);
-        }
-        public MP4 WithSliderCursorHeight(float value)
-        {
-            SliderCursorHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-            set => SetSliderCursorIcons(state, value);
-        }
-        public MP4 WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderCursorIcons = value;
-            return this;
-        }
-        public MP4 WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderCursorIconsReference(state, value);
-            return this;
+            return base.WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumMP4? value)
         {
-            return WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderCursorWidth
-        {
-            get => state.Get<float>("SliderCursorWidth");
-            set => SetSliderCursorWidth(state, value);
-        }
-        public MP4 WithSliderCursorWidth(float value)
-        {
-            SliderCursorWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-            set => SetSliderSound(state, value);
-        }
-        public MP4 WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            SliderSound = value;
-            return this;
-        }
-        public MP4 WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderSoundReference(state, value);
-            return this;
+            return base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? value)
         {
-            return WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlStyleMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
-            var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
-            node.Chunks.Add(chunk0701701B);
-            var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
-            node.Chunks.Add(chunk0701701C);
-            var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
-            node.Chunks.Add(chunk0701701D);
-            var chunk0701701F = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701F();
-            chunk0701701F.Version = 0;
-            node.Chunks.Add(chunk0701701F);
+            var node = CControlStyleBuilder.CreateRecipe6(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07017018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701701B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701701C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701701D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701F>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0701701F is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe6(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlStyle node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlStyle node);
     }
-    public partial class TM2020 : CControlStyleBuilderBase<TM2020>
+    public partial class TM2020 : CControlStyleBuilderMembers3<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlStyle> state) : base(state) { }
         public TM2020 WithDefaultShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? value)
         {
             return base.WithDefaultShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlEffectMaster? EffectMaster
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlEffectMaster?>("EffectMaster");
-            set => SetEffectMaster(state, value);
-        }
-        public TM2020 WithEffectMaster(global::GBX.NET.Engines.Control.CControlEffectMaster? value)
-        {
-            EffectMaster = value;
-            return this;
-        }
-        public TM2020 WithEffectMasterReference(NodeRef<global::GBX.NET.Engines.Control.CControlEffectMaster> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetEffectMasterReference(state, value);
-            return this;
-        }
         public TM2020 WithEffectMaster(global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020? value)
         {
-            return WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithEffectMaster(value is null ? (global::GBX.NET.Engines.Control.CControlEffectMaster?)null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithEntrySound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value)
         {
@@ -3989,439 +2152,51 @@ public partial class CControlStyleBuilder : CControlStyleBuilderBase<CControlSty
         {
             return base.WithEnumSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool FocusAreaEnable
-        {
-            get => state.Get<bool>("FocusAreaEnable");
-            set => SetFocusAreaEnable(state, value);
-        }
-        public TM2020 WithFocusAreaEnable(bool value)
-        {
-            FocusAreaEnable = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterial");
-            set => SetFocusAreaMaterial(state, value);
-        }
-        public TM2020 WithFocusAreaMaterial(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterial = value;
-            return this;
-        }
-        public TM2020 WithFocusAreaMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReference(state, value);
-            return this;
-        }
         public TM2020 WithFocusAreaMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value)
         {
-            return WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialFocused
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialFocused");
-            set => SetFocusAreaMaterialFocused(state, value);
-        }
-        public TM2020 WithFocusAreaMaterialFocused(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialFocused = value;
-            return this;
-        }
-        public TM2020 WithFocusAreaMaterialFocusedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialFocusedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFocusAreaMaterialFocused(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value)
         {
-            return WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialReadOnly
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialReadOnly");
-            set => SetFocusAreaMaterialReadOnly(state, value);
-        }
-        public TM2020 WithFocusAreaMaterialReadOnly(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialReadOnly = value;
-            return this;
-        }
-        public TM2020 WithFocusAreaMaterialReadOnlyReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialReadOnlyReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialFocused(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFocusAreaMaterialReadOnly(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value)
         {
-            return WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial? FocusAreaMaterialSelected
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("FocusAreaMaterialSelected");
-            set => SetFocusAreaMaterialSelected(state, value);
-        }
-        public TM2020 WithFocusAreaMaterialSelected(global::GBX.NET.Engines.Plug.CPlugMaterial? value)
-        {
-            FocusAreaMaterialSelected = value;
-            return this;
-        }
-        public TM2020 WithFocusAreaMaterialSelectedReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaMaterialSelectedReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialReadOnly(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFocusAreaMaterialSelected(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value)
         {
-            return WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaMinHeight
-        {
-            get => state.Get<float>("FocusAreaMinHeight");
-            set => SetFocusAreaMinHeight(state, value);
-        }
-        public TM2020 WithFocusAreaMinHeight(float value)
-        {
-            FocusAreaMinHeight = value;
-            return this;
-        }
-        public float FocusAreaMinWidth
-        {
-            get => state.Get<float>("FocusAreaMinWidth");
-            set => SetFocusAreaMinWidth(state, value);
-        }
-        public TM2020 WithFocusAreaMinWidth(float value)
-        {
-            FocusAreaMinWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSolid? FocusAreaSolid
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSolid?>("FocusAreaSolid");
-            set => SetFocusAreaSolid(state, value);
-        }
-        public TM2020 WithFocusAreaSolid(global::GBX.NET.Engines.Plug.CPlugSolid? value)
-        {
-            FocusAreaSolid = value;
-            return this;
-        }
-        public TM2020 WithFocusAreaSolidReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFocusAreaSolidReference(state, value);
-            return this;
+            return base.WithFocusAreaMaterialSelected(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFocusAreaSolid(global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? value)
         {
-            return WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float FocusAreaXMargin
-        {
-            get => state.Get<float>("FocusAreaXMargin");
-            set => SetFocusAreaXMargin(state, value);
-        }
-        public TM2020 WithFocusAreaXMargin(float value)
-        {
-            FocusAreaXMargin = value;
-            return this;
-        }
-        public float FocusAreaYMargin
-        {
-            get => state.Get<float>("FocusAreaYMargin");
-            set => SetFocusAreaYMargin(state, value);
-        }
-        public TM2020 WithFocusAreaYMargin(float value)
-        {
-            FocusAreaYMargin = value;
-            return this;
-        }
-        public float FocusAreaZOffset
-        {
-            get => state.Get<float>("FocusAreaZOffset");
-            set => SetFocusAreaZOffset(state, value);
-        }
-        public TM2020 WithFocusAreaZOffset(float value)
-        {
-            FocusAreaZOffset = value;
-            return this;
+            return base.WithFocusAreaSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFocusSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value)
         {
             return base.WithFocusSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugFont? Font
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFont?>("Font");
-            set => SetFont(state, value);
-        }
-        public TM2020 WithFont(global::GBX.NET.Engines.Plug.CPlugFont? value)
-        {
-            Font = value;
-            return this;
-        }
-        public TM2020 WithFontReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFont> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFontReference(state, value);
-            return this;
-        }
-        public Vec4 LineGradientColor0
-        {
-            get => state.Get<Vec4>("LineGradientColor0");
-            set => SetLineGradientColor0(state, value);
-        }
-        public TM2020 WithLineGradientColor0(Vec4 value)
-        {
-            LineGradientColor0 = value;
-            return this;
-        }
-        public Vec4 LineGradientColor1
-        {
-            get => state.Get<Vec4>("LineGradientColor1");
-            set => SetLineGradientColor1(state, value);
-        }
-        public TM2020 WithLineGradientColor1(Vec4 value)
-        {
-            LineGradientColor1 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor0
-        {
-            get => state.Get<Vec4>("QuadGradientColor0");
-            set => SetQuadGradientColor0(state, value);
-        }
-        public TM2020 WithQuadGradientColor0(Vec4 value)
-        {
-            QuadGradientColor0 = value;
-            return this;
-        }
-        public Vec4 QuadGradientColor1
-        {
-            get => state.Get<Vec4>("QuadGradientColor1");
-            set => SetQuadGradientColor1(state, value);
-        }
-        public TM2020 WithQuadGradientColor1(Vec4 value)
-        {
-            QuadGradientColor1 = value;
-            return this;
-        }
-        public bool QuadIsFill
-        {
-            get => state.Get<bool>("QuadIsFill");
-            set => SetQuadIsFill(state, value);
-        }
-        public TM2020 WithQuadIsFill(bool value)
-        {
-            QuadIsFill = value;
-            return this;
-        }
-        public bool QuadIsLines
-        {
-            get => state.Get<bool>("QuadIsLines");
-            set => SetQuadIsLines(state, value);
-        }
-        public TM2020 WithQuadIsLines(bool value)
-        {
-            QuadIsLines = value;
-            return this;
-        }
-        public float QuadZ
-        {
-            get => state.Get<float>("QuadZ");
-            set => SetQuadZ(state, value);
-        }
-        public TM2020 WithQuadZ(float value)
-        {
-            QuadZ = value;
-            return this;
-        }
-        public float QuadZLines
-        {
-            get => state.Get<float>("QuadZLines");
-            set => SetQuadZLines(state, value);
-        }
-        public TM2020 WithQuadZLines(float value)
-        {
-            QuadZLines = value;
-            return this;
-        }
-        public Vec2 Quad_UvBottomRight
-        {
-            get => state.Get<Vec2>("Quad_UvBottomRight");
-            set => SetQuad_UvBottomRight(state, value);
-        }
-        public TM2020 WithQuad_UvBottomRight(Vec2 value)
-        {
-            Quad_UvBottomRight = value;
-            return this;
-        }
-        public Vec2 Quad_UvTopLeft
-        {
-            get => state.Get<Vec2>("Quad_UvTopLeft");
-            set => SetQuad_UvTopLeft(state, value);
-        }
-        public TM2020 WithQuad_UvTopLeft(Vec2 value)
-        {
-            Quad_UvTopLeft = value;
-            return this;
-        }
-        public float Skew
-        {
-            get => state.Get<float>("Skew");
-            set => SetSkew(state, value);
-        }
-        public TM2020 WithSkew(float value)
-        {
-            Skew = value;
-            return this;
-        }
-        public float SliderBarHeight
-        {
-            get => state.Get<float>("SliderBarHeight");
-            set => SetSliderBarHeight(state, value);
-        }
-        public TM2020 WithSliderBarHeight(float value)
-        {
-            SliderBarHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderBarIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderBarIcons");
-            set => SetSliderBarIcons(state, value);
-        }
-        public TM2020 WithSliderBarIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderBarIcons = value;
-            return this;
-        }
-        public TM2020 WithSliderBarIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderBarIconsReference(state, value);
-            return this;
-        }
         public TM2020 WithSliderBarIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? value)
         {
-            return WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderBarWidth
-        {
-            get => state.Get<float>("SliderBarWidth");
-            set => SetSliderBarWidth(state, value);
-        }
-        public TM2020 WithSliderBarWidth(float value)
-        {
-            SliderBarWidth = value;
-            return this;
-        }
-        public float SliderCursorHeight
-        {
-            get => state.Get<float>("SliderCursorHeight");
-            set => SetSliderCursorHeight(state, value);
-        }
-        public TM2020 WithSliderCursorHeight(float value)
-        {
-            SliderCursorHeight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncEnum? SliderCursorIcons
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncEnum?>("SliderCursorIcons");
-            set => SetSliderCursorIcons(state, value);
-        }
-        public TM2020 WithSliderCursorIcons(global::GBX.NET.Engines.Function.CFuncEnum? value)
-        {
-            SliderCursorIcons = value;
-            return this;
-        }
-        public TM2020 WithSliderCursorIconsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncEnum> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderCursorIconsReference(state, value);
-            return this;
+            return base.WithSliderBarIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithSliderCursorIcons(global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? value)
         {
-            return WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float SliderCursorWidth
-        {
-            get => state.Get<float>("SliderCursorWidth");
-            set => SetSliderCursorWidth(state, value);
-        }
-        public TM2020 WithSliderCursorWidth(float value)
-        {
-            SliderCursorWidth = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSound? SliderSound
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SliderSound");
-            set => SetSliderSound(state, value);
-        }
-        public TM2020 WithSliderSound(global::GBX.NET.Engines.Plug.CPlugSound? value)
-        {
-            SliderSound = value;
-            return this;
-        }
-        public TM2020 WithSliderSoundReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSliderSoundReference(state, value);
-            return this;
+            return base.WithSliderCursorIcons(value is null ? (global::GBX.NET.Engines.Function.CFuncEnum?)null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithSliderSound(global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? value)
         {
-            return WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSliderSound(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlStyleTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlStyle Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlStyle();
-            var chunk07017000 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000();
-            node.Chunks.Add(chunk07017000);
-            var chunk07017004 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004();
-            node.Chunks.Add(chunk07017004);
-            var chunk07017009 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009();
-            node.Chunks.Add(chunk07017009);
-            var chunk0701700B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B();
-            node.Chunks.Add(chunk0701700B);
-            var chunk0701700C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C();
-            node.Chunks.Add(chunk0701700C);
-            var chunk07017010 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010();
-            node.Chunks.Add(chunk07017010);
-            var chunk07017016 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016();
-            node.Chunks.Add(chunk07017016);
-            var chunk07017017 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017();
-            node.Chunks.Add(chunk07017017);
-            var chunk07017018 = new global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018();
-            node.Chunks.Add(chunk07017018);
-            var chunk0701701B = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B();
-            node.Chunks.Add(chunk0701701B);
-            var chunk0701701C = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C();
-            node.Chunks.Add(chunk0701701C);
-            var chunk0701701D = new global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D();
-            node.Chunks.Add(chunk0701701D);
+            var node = CControlStyleBuilder.CreateRecipe7(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017009>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701700B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701700C>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701700C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017010>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017016>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017017>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk07017018>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07017018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701701B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701C>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701701C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlStyle.Chunk0701701D>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701701D is missing or has an incompatible version.");
+            CControlStyleBuilder.ValidateRecipe7(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CControlStyleBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

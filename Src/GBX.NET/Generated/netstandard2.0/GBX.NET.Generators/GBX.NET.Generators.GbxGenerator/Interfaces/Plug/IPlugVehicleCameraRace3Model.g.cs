@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleCameraRace3ModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace3Model
+{
+    float AirSpawn_VelY0 { get; set; }
+    float AirSpawn_VelY1 { get; set; }
+    PlugCurve? DeltaRadiusFromSpeedKmh { get; set; }
+    float HelicopterCameraSlerpRoll { get; set; }
+    float VehiclePitchCoef { get; set; }
+}
 public partial interface IPlugVehicleCameraRace3Model : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace3Model>, global::GBX.NET.Interfaces.Plug.IPlugCamControlModel
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -120,26 +129,13 @@ public partial interface IPlugVehicleCameraRace3ModelMP3 : IPlugVehicleCameraRac
 
 public partial interface IPlugVehicleCameraRace3ModelTMT : IPlugVehicleCameraRace3Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake { get; set; }
 }
 
-public partial interface IPlugVehicleCameraRace3ModelMP4 : IPlugVehicleCameraRace3Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4
+public partial interface IPlugVehicleCameraRace3ModelMP4 : IPlugVehicleCameraRace3Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace3ModelMembers1
 {
-    float AirSpawn_VelY0 { get; set; }
-    float AirSpawn_VelY1 { get; set; }
-    PlugCurve? DeltaRadiusFromSpeedKmh { get; set; }
-    float HelicopterCameraSlerpRoll { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake { get; set; }
-    float VehiclePitchCoef { get; set; }
 }
 
-public partial interface IPlugVehicleCameraRace3ModelTM2020 : IPlugVehicleCameraRace3Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020
+public partial interface IPlugVehicleCameraRace3ModelTM2020 : IPlugVehicleCameraRace3Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace3ModelMembers1
 {
-    float AirSpawn_VelY0 { get; set; }
-    float AirSpawn_VelY1 { get; set; }
-    PlugCurve? DeltaRadiusFromSpeedKmh { get; set; }
-    float HelicopterCameraSlerpRoll { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake { get; set; }
-    float VehiclePitchCoef { get; set; }
 }
 

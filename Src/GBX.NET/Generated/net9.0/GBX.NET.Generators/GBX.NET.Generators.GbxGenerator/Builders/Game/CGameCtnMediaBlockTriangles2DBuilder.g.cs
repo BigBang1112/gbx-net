@@ -36,13 +36,13 @@ public abstract class CGameCtnMediaBlockTriangles2DBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state;
     private protected CGameCtnMediaBlockTriangles2DBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTriangles2DBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state) => this.state = state;
-    private protected static void SetClipEntId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, int value) => state.Set<int>("ClipEntId", value, GameVersion.TM2020, static value => value, static (node, value) => node.ClipEntId = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> value) => state.Set<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key>>("Keys", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value is null ? null! : new global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key>(value), static (node, value) => node.Keys = value);
-    private protected static void SetPickMode3D(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode>("PickMode3D", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.PickMode3D = value);
-    private protected static void SetPickPlaneNormal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, Vec3 value) => state.Set<Vec3>("PickPlaneNormal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.PickPlaneNormal = value);
-    private protected static void SetPickPlanePosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, Vec3 value) => state.Set<Vec3>("PickPlanePosition", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.PickPlanePosition = value);
-    private protected static void SetTriangles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::GBX.NET.Int3[] value) => state.Set<global::GBX.NET.Int3[]>("Triangles", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Int3[])value.Clone(), static (node, value) => node.Triangles = value);
-    private protected static void SetVertices(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::GBX.NET.Vec4[] value) => state.Set<global::GBX.NET.Vec4[]>("Vertices", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Vec4[])value.Clone(), static (node, value) => node.Vertices = value);
+    private protected static void SetClipEntId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetClipEntIdAssignment(), value, GameVersion.TM2020);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetPickMode3D(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickMode3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetPickPlaneNormal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlaneNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetPickPlanePosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetPickPlanePositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetTriangles(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::GBX.NET.Int3[] value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetTrianglesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetVertices(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D> state, global::GBX.NET.Vec4[] value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTrianglesBuilderAssignments.GetVerticesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> Keys
     {
         get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key>>("Keys");
@@ -122,6 +122,36 @@ public abstract class CGameCtnMediaBlockTriangles2DBuilderBase<TSelf> where TSel
 }
 public partial class CGameCtnMediaBlockTriangles2DBuilder : CGameCtnMediaBlockTriangles2DBuilderBase<CGameCtnMediaBlockTriangles2DBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
+        var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
+        node.Chunks.Add(chunk03029001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03029001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
+        var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
+        node.Chunks.Add(chunk03029001);
+        var chunk03029002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029002();
+        node.Chunks.Add(chunk03029002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03029001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03029002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D node, GameVersion game)
+    {
+        if (node.Triangles is null) throw new MemberNullException("Triangles");
+        if (node.Vertices is null) throw new MemberNullException("Vertices");
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -135,15 +165,12 @@ public partial class CGameCtnMediaBlockTriangles2DBuilder : CGameCtnMediaBlockTr
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTriangles2DTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
-            var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
-            node.Chunks.Add(chunk03029001);
+            var node = CGameCtnMediaBlockTriangles2DBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03029001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.Triangles is null) throw new MemberNullException("Triangles");
-            if (node.Vertices is null) throw new MemberNullException("Vertices");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -156,15 +183,12 @@ public partial class CGameCtnMediaBlockTriangles2DBuilder : CGameCtnMediaBlockTr
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTriangles2DMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
-            var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
-            node.Chunks.Add(chunk03029001);
+            var node = CGameCtnMediaBlockTriangles2DBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03029001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.Triangles is null) throw new MemberNullException("Triangles");
-            if (node.Vertices is null) throw new MemberNullException("Vertices");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -177,15 +201,12 @@ public partial class CGameCtnMediaBlockTriangles2DBuilder : CGameCtnMediaBlockTr
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTriangles2DTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
-            var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
-            node.Chunks.Add(chunk03029001);
+            var node = CGameCtnMediaBlockTriangles2DBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03029001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Triangles is null) throw new MemberNullException("Triangles");
-            if (node.Vertices is null) throw new MemberNullException("Vertices");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -198,15 +219,12 @@ public partial class CGameCtnMediaBlockTriangles2DBuilder : CGameCtnMediaBlockTr
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTriangles2DMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
-            var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
-            node.Chunks.Add(chunk03029001);
+            var node = CGameCtnMediaBlockTriangles2DBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03029001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Triangles is null) throw new MemberNullException("Triangles");
-            if (node.Vertices is null) throw new MemberNullException("Vertices");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -229,18 +247,12 @@ public partial class CGameCtnMediaBlockTriangles2DBuilder : CGameCtnMediaBlockTr
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTriangles2DTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles2D();
-            var chunk03029001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001();
-            node.Chunks.Add(chunk03029001);
-            var chunk03029002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029002();
-            node.Chunks.Add(chunk03029002);
+            var node = CGameCtnMediaBlockTriangles2DBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03029001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Chunk03029002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03029002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Triangles is null) throw new MemberNullException("Triangles");
-            if (node.Vertices is null) throw new MemberNullException("Vertices");
+            CGameCtnMediaBlockTriangles2DBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

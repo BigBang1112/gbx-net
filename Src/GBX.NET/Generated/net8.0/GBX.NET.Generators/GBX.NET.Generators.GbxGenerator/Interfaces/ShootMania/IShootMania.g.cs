@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.ShootMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IShootManiaMembers1<T0, T1> : global::GBX.NET.Interfaces.ShootMania.IShootMania where T0 : class where T1 : class
+{
+    T0? ArenaInterfaceUI { get; set; }
+    T1? ArenaResources { get; set; }
+}
 public partial interface IShootMania : IClassVersion<global::GBX.NET.Engines.ShootMania.CShootMania>, global::GBX.NET.Interfaces.Game.IGameManiaTitleCore
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,7 +46,6 @@ public partial interface IShootMania : IClassVersion<global::GBX.NET.Engines.Sho
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface IShootManiaTM10 : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM10
@@ -75,15 +80,11 @@ public partial interface IShootManiaTMT : IShootMania, global::GBX.NET.Interface
 {
 }
 
-public partial interface IShootManiaMP4 : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4
+public partial interface IShootManiaMP4 : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreMP4, global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dMP4, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4>
 {
-    global::GBX.NET.Interfaces.Scene.IScene2dMP4? ArenaInterfaceUI { get; set; }
-    global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4? ArenaResources { get; set; }
 }
 
-public partial interface IShootManiaTM2020 : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM2020
+public partial interface IShootManiaTM2020 : IShootMania, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM2020, global::GBX.NET.Interfaces.ShootMania.IShootManiaMembers1<global::GBX.NET.Interfaces.Scene.IScene2dTM2020, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020>
 {
-    global::GBX.NET.Interfaces.Scene.IScene2dTM2020? ArenaInterfaceUI { get; set; }
-    global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020? ArenaResources { get; set; }
 }
 

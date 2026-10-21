@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockSceneryMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockScenery where T0 : class
+{
+    new T0? DataTape { get; set; }
+}
 public partial interface IGameCtnMediaBlockScenery : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -45,18 +50,15 @@ public partial interface IGameCtnMediaBlockScenery : IClassVersion<global::GBX.N
     List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? Keys { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockSceneryTMT : IGameCtnMediaBlockScenery, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockSceneryTMT : IGameCtnMediaBlockScenery, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSceneryMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT? DataTape { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockSceneryMP4 : IGameCtnMediaBlockScenery, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockSceneryMP4 : IGameCtnMediaBlockScenery, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSceneryMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? DataTape { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockSceneryTM2020 : IGameCtnMediaBlockScenery, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockSceneryTM2020 : IGameCtnMediaBlockScenery, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSceneryMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020? DataTape { get; set; }
 }
 

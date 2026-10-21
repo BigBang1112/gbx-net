@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraTargetMembers1 : global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
+{
+    bool CanUseRelativeTargetLocation { get; set; }
+}
 public partial interface IGameControlCameraTarget : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCameraTarget>, global::GBX.NET.Interfaces.Game.IGameControlCamera
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -44,114 +49,26 @@ public partial interface IGameControlCameraTarget : IClassVersion<global::GBX.NE
     bool IsUpLinked { get; set; }
     Iso4 Location { get; set; }
     float LookAtFactor { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IGameControlCameraTargetTMSX : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMSX
+public partial interface IGameControlCameraTargetTMSX : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMembers1
 {
-    new bool CanCameraMove { get; set; }
-    bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFov { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeTargetPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTargetTMNESWC : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMNESWC
+public partial interface IGameControlCameraTargetTMNESWC : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMembers1
 {
-    new bool CanCameraMove { get; set; }
-    bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTargetVSK5 : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraVSK5
+public partial interface IGameControlCameraTargetVSK5 : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMembers1
 {
-    new bool CanCameraMove { get; set; }
-    bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTargetTMF : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMF
+public partial interface IGameControlCameraTargetTMF : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMembers1
 {
-    new bool CanCameraMove { get; set; }
-    bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTargetMP3 : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraMP3
+public partial interface IGameControlCameraTargetMP3 : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMembers1
 {
-    bool CanUseRelativeTargetLocation { get; set; }
 }
 
 public partial interface IGameControlCameraTargetTMT : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTMT
@@ -160,29 +77,6 @@ public partial interface IGameControlCameraTargetTMT : IGameControlCameraTarget,
 
 public partial interface IGameControlCameraTargetMP4 : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraMP4
 {
-    new bool CanCameraMove { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
 public partial interface IGameControlCameraTargetTM2020 : IGameControlCameraTarget, global::GBX.NET.Interfaces.Game.IGameControlCameraTM2020

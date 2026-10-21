@@ -31,6 +31,20 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCrystalMembers1 : global::GBX.NET.Interfaces.Plug.IPlugCrystal
+{
+    byte[]? EditorData { get; set; }
+    int EditorDataFlags { get; set; }
+    int[]? FaceSmoothingGroupIndices { get; set; }
+    float[]? SmoothingGroups { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCrystalMembers2 : global::GBX.NET.Interfaces.Plug.IPlugCrystal
+{
+    int GenerateMode { get; set; }
+    float SpriteSize { get; set; }
+}
 public partial interface IPlugCrystal : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCrystal>, global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -43,87 +57,43 @@ public partial interface IPlugCrystal : IClassVersion<global::GBX.NET.Engines.Pl
     List<global::GBX.NET.Engines.Plug.CPlugCrystal.Material> Materials { get; set; }
 }
 
-public partial interface IPlugCrystalTM10 : IPlugCrystal
+public partial interface IPlugCrystalTM10 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
-    int GenerateMode { get; set; }
-    float SpriteSize { get; set; }
 }
 
-public partial interface IPlugCrystalTMPU : IPlugCrystal
+public partial interface IPlugCrystalTMPU : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
-    int GenerateMode { get; set; }
-    float SpriteSize { get; set; }
 }
 
-public partial interface IPlugCrystalTMSX : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMSX
+public partial interface IPlugCrystalTMSX : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMSX, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
-    new uint Flags { get; set; }
-    int GenerateMode { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
-    float SpriteSize { get; set; }
 }
 
-public partial interface IPlugCrystalTMNESWC : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC
+public partial interface IPlugCrystalTMNESWC : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
-    new uint Flags { get; set; }
-    int GenerateMode { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
-    float SpriteSize { get; set; }
 }
 
-public partial interface IPlugCrystalVSK5 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5
+public partial interface IPlugCrystalVSK5 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
-    new uint Flags { get; set; }
-    int GenerateMode { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
-    float SpriteSize { get; set; }
 }
 
-public partial interface IPlugCrystalTMF : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMF
+public partial interface IPlugCrystalTMF : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMF, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers2
 {
-    new uint Flags { get; set; }
-    int GenerateMode { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
-    float SpriteSize { get; set; }
 }
 
 public partial interface IPlugCrystalMP3 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP3
 {
-    new uint Flags { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
 }
 
 public partial interface IPlugCrystalTMT : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMT
 {
-    new uint Flags { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
 }
 
-public partial interface IPlugCrystalMP4 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP4
+public partial interface IPlugCrystalMP4 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP4, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers1
 {
-    byte[]? EditorData { get; set; }
-    int EditorDataFlags { get; set; }
-    int[]? FaceSmoothingGroupIndices { get; set; }
-    new uint Flags { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
-    float[]? SmoothingGroups { get; set; }
 }
 
-public partial interface IPlugCrystalTM2020 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTM2020
+public partial interface IPlugCrystalTM2020 : IPlugCrystal, global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTM2020, global::GBX.NET.Interfaces.Plug.IPlugCrystalMembers1
 {
-    byte[]? EditorData { get; set; }
-    int EditorDataFlags { get; set; }
-    int[]? FaceSmoothingGroupIndices { get; set; }
-    new uint Flags { get; set; }
-    new bool IsSaveGenerated { get; set; }
-    new bool IsToKeepInSaveAsRelease { get; set; }
-    float[]? SmoothingGroups { get; set; }
 }
 

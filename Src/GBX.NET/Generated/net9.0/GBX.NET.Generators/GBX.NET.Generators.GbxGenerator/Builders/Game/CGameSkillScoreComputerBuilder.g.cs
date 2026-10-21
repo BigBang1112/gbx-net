@@ -39,6 +39,20 @@ public abstract class CGameSkillScoreComputerBuilderBase<TSelf> where TSelf : CG
 }
 public partial class CGameSkillScoreComputerBuilder : CGameSkillScoreComputerBuilderBase<CGameSkillScoreComputerBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameSkillScoreComputer CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameSkillScoreComputer();
+        var chunk03062000 = new global::GBX.NET.Engines.Game.CGameSkillScoreComputer.Chunk03062000();
+        node.Chunks.Add(chunk03062000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameSkillScoreComputer node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameSkillScoreComputer.Chunk03062000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03062000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameSkillScoreComputer node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public partial class TMF : CGameSkillScoreComputerBuilderBase<TMF>
@@ -47,13 +61,12 @@ public partial class CGameSkillScoreComputerBuilder : CGameSkillScoreComputerBui
         public global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameSkillScoreComputer Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameSkillScoreComputer();
-            var chunk03062000 = new global::GBX.NET.Engines.Game.CGameSkillScoreComputer.Chunk03062000();
-            node.Chunks.Add(chunk03062000);
+            var node = CGameSkillScoreComputerBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameSkillScoreComputer.Chunk03062000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03062000 is missing or has an incompatible version.");
+            CGameSkillScoreComputerBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameSkillScoreComputerBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -66,13 +79,12 @@ public partial class CGameSkillScoreComputerBuilder : CGameSkillScoreComputerBui
         public global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameSkillScoreComputer Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameSkillScoreComputer();
-            var chunk03062000 = new global::GBX.NET.Engines.Game.CGameSkillScoreComputer.Chunk03062000();
-            node.Chunks.Add(chunk03062000);
+            var node = CGameSkillScoreComputerBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameSkillScoreComputer.Chunk03062000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03062000 is missing or has an incompatible version.");
+            CGameSkillScoreComputerBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameSkillScoreComputerBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }

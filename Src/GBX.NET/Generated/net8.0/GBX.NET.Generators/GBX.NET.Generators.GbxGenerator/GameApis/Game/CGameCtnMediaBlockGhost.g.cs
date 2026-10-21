@@ -39,7 +39,7 @@ public partial class CGameCtnMediaBlockGhost : global::GBX.NET.Interfaces.Game.I
         get => GhostModel;
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostTMF.GhostModel
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF>.GhostModel
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnMediaBlockGhost : global::GBX.NET.Interfaces.Game.I
         }
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostTMT.GhostModel
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT>.GhostModel
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameCtnMediaBlockGhost : global::GBX.NET.Interfaces.Game.I
         }
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMP4.GhostModel
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4>.GhostModel
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameCtnMediaBlockGhost : global::GBX.NET.Interfaces.Game.I
         }
         set => GhostModel = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostTM2020.GhostModel
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020>.GhostModel
     {
         get
         {

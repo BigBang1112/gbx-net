@@ -31,54 +31,55 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehiclePhyTuningsMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings
+{
+    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehiclePhyTuningsMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings where T0 : class
+{
+    new IReadOnlyList<T0>? Tuning { get; set; }
+}
 public partial interface IPlugVehiclePhyTunings : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning>? Tuning { get; set; }
     int TuningIndex { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsTM10 : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsTM10 : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers1
 {
-    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsTMPU : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsTMPU : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers1
 {
-    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsTMSX : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsTMSX : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers1
 {
-    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsTMNESWC : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsTMNESWC : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers1
 {
-    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsVSK5 : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsVSK5 : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsTMF : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsTMF : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsMP3 : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsMP3 : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsMP4 : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsMP4 : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>? Tuning { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningsTM2020 : IPlugVehiclePhyTunings
+public partial interface IPlugVehiclePhyTuningsTM2020 : IPlugVehiclePhyTunings, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>? Tuning { get; set; }
 }
 

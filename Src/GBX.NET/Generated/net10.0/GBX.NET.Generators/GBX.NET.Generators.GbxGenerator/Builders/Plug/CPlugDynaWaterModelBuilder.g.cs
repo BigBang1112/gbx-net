@@ -39,6 +39,20 @@ public abstract class CPlugDynaWaterModelBuilderBase<TSelf> where TSelf : CPlugD
 }
 public partial class CPlugDynaWaterModelBuilder : CPlugDynaWaterModelBuilderBase<CPlugDynaWaterModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugDynaWaterModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugDynaWaterModel();
+        var chunk0915F000 = new global::GBX.NET.Engines.Plug.CPlugDynaWaterModel.Chunk0915F000(game);
+        node.Chunks.Add(chunk0915F000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDynaWaterModel.Chunk0915F000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0915F000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugDynaWaterModel node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugDynaWaterModelBuilderBase<TM2020>
     {
@@ -46,13 +60,12 @@ public partial class CPlugDynaWaterModelBuilder : CPlugDynaWaterModelBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugDynaWaterModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDynaWaterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDynaWaterModel();
-            var chunk0915F000 = new global::GBX.NET.Engines.Plug.CPlugDynaWaterModel.Chunk0915F000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0915F000);
+            var node = CPlugDynaWaterModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDynaWaterModel.Chunk0915F000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0915F000 is missing or has an incompatible version.");
+            CPlugDynaWaterModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugDynaWaterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

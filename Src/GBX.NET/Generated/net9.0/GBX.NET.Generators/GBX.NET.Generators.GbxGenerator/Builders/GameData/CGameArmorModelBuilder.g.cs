@@ -36,8 +36,8 @@ public abstract class CGameArmorModelBuilderBase<TSelf> where TSelf : CGameArmor
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state;
     private protected CGameArmorModelBuilderBase() => state = new();
     private protected CGameArmorModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state) => this.state = state;
-    private protected static void SetArmorMax(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state, int value) => state.Set<int>("ArmorMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ArmorMax = value);
-    private protected static void SetReplenishDelayAfterDamage(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state, int value) => state.Set<int>("ReplenishDelayAfterDamage", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ReplenishDelayAfterDamage = value);
+    private protected static void SetArmorMax(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetArmorMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetReplenishDelayAfterDamage(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameArmorModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameArmorModelBuilderAssignments.GetReplenishDelayAfterDamageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int ArmorMax
     {
         get => state.Get<int>("ArmorMax");
@@ -61,6 +61,21 @@ public abstract class CGameArmorModelBuilderBase<TSelf> where TSelf : CGameArmor
 }
 public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameArmorModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameArmorModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameArmorModel();
+        var chunk2E00D000 = new global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000();
+        chunk2E00D000.Version = 0;
+        node.Chunks.Add(chunk2E00D000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameArmorModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00D000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameArmorModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -73,14 +88,12 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
         public global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameArmorModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameArmorModel();
-            var chunk2E00D000 = new global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000();
-            chunk2E00D000.Version = 0;
-            node.Chunks.Add(chunk2E00D000);
+            var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk2E00D000 is missing or has an incompatible version.");
+            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -93,14 +106,12 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
         public global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameArmorModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameArmorModel();
-            var chunk2E00D000 = new global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000();
-            chunk2E00D000.Version = 0;
-            node.Chunks.Add(chunk2E00D000);
+            var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk2E00D000 is missing or has an incompatible version.");
+            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -113,14 +124,12 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
         public global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameArmorModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameArmorModel();
-            var chunk2E00D000 = new global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000();
-            chunk2E00D000.Version = 0;
-            node.Chunks.Add(chunk2E00D000);
+            var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E00D000 is missing or has an incompatible version.");
+            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -133,14 +142,12 @@ public partial class CGameArmorModelBuilder : CGameArmorModelBuilderBase<CGameAr
         public global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameArmorModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameArmorModel();
-            var chunk2E00D000 = new global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000();
-            chunk2E00D000.Version = 0;
-            node.Chunks.Add(chunk2E00D000);
+            var node = CGameArmorModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameArmorModel.Chunk2E00D000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E00D000 is missing or has an incompatible version.");
+            CGameArmorModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameArmorModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

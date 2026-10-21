@@ -31,33 +31,33 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneVehicleEnvironmentMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironment where T0 : class
+{
+    new IReadOnlyList<T0>? Materials { get; set; }
+}
 public partial interface ISceneVehicleEnvironment : IClassVersion<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? Materials { get; set; }
 }
 
-public partial interface ISceneVehicleEnvironmentTMPU : ISceneVehicleEnvironment
+public partial interface ISceneVehicleEnvironmentTMPU : ISceneVehicleEnvironment, global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>? Materials { get; set; }
 }
 
-public partial interface ISceneVehicleEnvironmentTMSX : ISceneVehicleEnvironment
+public partial interface ISceneVehicleEnvironmentTMSX : ISceneVehicleEnvironment, global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>? Materials { get; set; }
 }
 
-public partial interface ISceneVehicleEnvironmentTMNESWC : ISceneVehicleEnvironment
+public partial interface ISceneVehicleEnvironmentTMNESWC : ISceneVehicleEnvironment, global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>? Materials { get; set; }
 }
 
-public partial interface ISceneVehicleEnvironmentVSK5 : ISceneVehicleEnvironment
+public partial interface ISceneVehicleEnvironmentVSK5 : ISceneVehicleEnvironment, global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>? Materials { get; set; }
 }
 
-public partial interface ISceneVehicleEnvironmentTMF : ISceneVehicleEnvironment
+public partial interface ISceneVehicleEnvironmentTMF : ISceneVehicleEnvironment, global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>? Materials { get; set; }
 }
 

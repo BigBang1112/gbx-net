@@ -31,6 +31,25 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeParametersMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallengeParameters where T0 : class
+{
+    bool IsValidatedForScriptModes { get; set; }
+    string? MapStyle { get; set; }
+    string? MapType { get; set; }
+    T0? RaceValidateGhost { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeParametersMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeParameters
+{
+    int[]? Items { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeParametersMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeParameters
+{
+    int? AuthorScore { get; set; }
+    TimeInt32 TimeLimit { get; set; }
+}
 public partial interface IGameCtnChallengeParameters : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters>
 {
     TimeInt32? AuthorTime { get; set; }
@@ -48,70 +67,35 @@ public partial interface IGameCtnChallengeParametersTMPU : IGameCtnChallengePara
 {
 }
 
-public partial interface IGameCtnChallengeParametersTMSX : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersTMSX : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    int[]? Items { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersTMNESWC : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersTMNESWC : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    int[]? Items { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersVSK5 : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersVSK5 : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    int[]? Items { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersTMF : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersTMF : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersMP3 : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersMP3 : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    bool IsValidatedForScriptModes { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3? RaceValidateGhost { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersTMT : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersTMT : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    bool IsValidatedForScriptModes { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? RaceValidateGhost { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersMP4 : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersMP4 : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    bool IsValidatedForScriptModes { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? RaceValidateGhost { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 
-public partial interface IGameCtnChallengeParametersTM2020 : IGameCtnChallengeParameters
+public partial interface IGameCtnChallengeParametersTM2020 : IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers3
 {
-    int? AuthorScore { get; set; }
-    bool IsValidatedForScriptModes { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? RaceValidateGhost { get; set; }
-    TimeInt32 TimeLimit { get; set; }
 }
 

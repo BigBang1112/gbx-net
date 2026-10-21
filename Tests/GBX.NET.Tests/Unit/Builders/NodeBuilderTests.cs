@@ -60,6 +60,20 @@ public class NodeBuilderTests
     }
 
     [Test]
+    public async Task ScopedCollection_FollowsReplacementAndValidatesChildrenWhenRead()
+    {
+        var node = CGameCtnMediaClip.Create().ForTMF().Build();
+        IGameCtnMediaClipTMF view = node;
+        var tracks = view.Tracks;
+        var replacement = CGameCtnMediaTrack.Create().ForTMF().WithName("Replacement").BuildInterface();
+        view.Tracks = [replacement];
+        await Assert.That(tracks[0]).IsSameReferenceAs(replacement);
+
+        node.Tracks = [CGameCtnMediaTrack.Create().ForTM2020().Build()];
+        await Assert.That(() => tracks[0]).Throws<InvalidOperationException>();
+    }
+
+    [Test]
     public async Task BuildInterface_DerivedBlocksConvertToTheirBaseGameInterface()
     {
         IGameCtnMediaBlockTextTMF text = CGameCtnMediaBlockText.Create().ForTMF().WithText("Hello").BuildInterface();

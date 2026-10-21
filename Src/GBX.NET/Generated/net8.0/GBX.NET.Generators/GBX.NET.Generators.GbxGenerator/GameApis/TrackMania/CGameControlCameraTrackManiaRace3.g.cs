@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.TrackMania;
 public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMSX, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMNESWC, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3VSK5, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMF, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3MP3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMT, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3MP4, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TM2020
 {
     public static new global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace3Builder Create() => new();
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMSX.FlyingLookDownFactorFromSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.FlyingLookDownFactorFromSpeedRatio
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => FlyingLookDownFactorFromSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMSX.LookAtFactorFromUpSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.LookAtFactorFromUpSpeedRatio
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMSX.SlerpSpeedModulationFromSpeed
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.SlerpSpeedModulationFromSpeed
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => SlerpSpeedModulationFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMNESWC.FlyingLookDownFactorFromSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.FlyingLookDownFactorFromSpeedRatio
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => FlyingLookDownFactorFromSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMNESWC.LookAtFactorFromUpSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.LookAtFactorFromUpSpeedRatio
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMNESWC.SlerpSpeedModulationFromSpeed
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.SlerpSpeedModulationFromSpeed
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => SlerpSpeedModulationFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3VSK5.FlyingLookDownFactorFromSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.FlyingLookDownFactorFromSpeedRatio
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => FlyingLookDownFactorFromSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3VSK5.LookAtFactorFromUpSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.LookAtFactorFromUpSpeedRatio
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3VSK5.SlerpSpeedModulationFromSpeed
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.SlerpSpeedModulationFromSpeed
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => SlerpSpeedModulationFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMF.FlyingLookDownFactorFromSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.FlyingLookDownFactorFromSpeedRatio
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => FlyingLookDownFactorFromSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMF.LookAtFactorFromUpSpeedRatio
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.LookAtFactorFromUpSpeedRatio
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CGameControlCameraTrackManiaRace3 : global::GBX.NET.Interfa
         }
         set => LookAtFactorFromUpSpeedRatio = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3TMF.SlerpSpeedModulationFromSpeed
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.SlerpSpeedModulationFromSpeed
     {
         get
         {

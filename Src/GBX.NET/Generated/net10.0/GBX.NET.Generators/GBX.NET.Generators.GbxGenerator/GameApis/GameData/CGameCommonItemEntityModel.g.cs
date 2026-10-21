@@ -36,8 +36,8 @@ public partial class CGameCommonItemEntityModel : global::GBX.NET.Interfaces.Gam
     public static global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelTM2020.Actions
     {
-        get => Actions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(() => Actions, static node => { if (node is null) throw new MemberNullException("Actions"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Actions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(value.Select(static item => item is global::GBX.NET.Engines.GameData.CGameActionModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Actions is null ? null : new ScopedNodeList<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(GetActionsBuilderReferences, GameVersion.TM2020, true, "Actions");
+        set => Actions = value is null ? null : new NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelTM2020.ParticleEmitterModel
     {
@@ -49,4 +49,5 @@ public partial class CGameCommonItemEntityModel : global::GBX.NET.Interfaces.Gam
         }
         set => ParticleEmitterModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? GetActionsBuilderReferences() => Actions;
 }

@@ -36,9 +36,9 @@ public abstract class CGameCtnMediaBlockOpponentVisibilityBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state;
     private protected CGameCtnMediaBlockOpponentVisibilityBuilderBase() => state = new();
     private protected CGameCtnMediaBlockOpponentVisibilityBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, TimeSingle value) => state.Set<TimeSingle>("End", value, GameVersion.TM2020, static value => value, static (node, value) => node.End = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, TimeSingle value) => state.Set<TimeSingle>("Start", value, GameVersion.TM2020, static value => value, static (node, value) => node.Start = value);
-    private protected static void SetVisibility(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility>("Visibility", value, GameVersion.TM2020, static value => value, static (node, value) => node.Visibility = value);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetEndAssignment(), value, GameVersion.TM2020);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetStartAssignment(), value, GameVersion.TM2020);
+    private protected static void SetVisibility(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.EVisibility value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockOpponentVisibilityBuilderAssignments.GetVisibilityAssignment(), value, GameVersion.TM2020);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
@@ -72,6 +72,23 @@ public abstract class CGameCtnMediaBlockOpponentVisibilityBuilderBase<TSelf> whe
 }
 public partial class CGameCtnMediaBlockOpponentVisibilityBuilder : CGameCtnMediaBlockOpponentVisibilityBuilderBase<CGameCtnMediaBlockOpponentVisibilityBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility();
+        var chunk0338B000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B000();
+        node.Chunks.Add(chunk0338B000);
+        var chunk0338B001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B001();
+        node.Chunks.Add(chunk0338B001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0338B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0338B001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameCtnMediaBlockOpponentVisibilityBuilderBase<TM2020>
     {
@@ -79,16 +96,12 @@ public partial class CGameCtnMediaBlockOpponentVisibilityBuilder : CGameCtnMedia
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockOpponentVisibilityTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility();
-            var chunk0338B000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B000();
-            node.Chunks.Add(chunk0338B000);
-            var chunk0338B001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B001();
-            node.Chunks.Add(chunk0338B001);
+            var node = CGameCtnMediaBlockOpponentVisibilityBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0338B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockOpponentVisibility.Chunk0338B001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0338B001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockOpponentVisibilityBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockOpponentVisibilityBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,31 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel where T0 : class
+{
+    new T0? Shared { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel
+{
+    float DefaultSparkleRelSpeedThreshold { get; set; }
+    float DefaultSparkleScale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel where T0 : class
+{
+    T0? AudioEnvironmentForFirstPerson { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel { get; set; }
+    float SoundBodyImpact_Hard_ThresholdKmh { get; set; }
+    float SoundBodyImpact_Soft_ThresholdKmh { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents { get; set; }
+    Vec3 SoundImpactWheelBackPos { get; set; }
+    Vec3 SoundImpactWheelFrontPos { get; set; }
+    float SoundWheelImpact_Hard_ThresholdKmh { get; set; }
+    float SoundWheelImpact_Soft_ThresholdKmh { get; set; }
+    int SurfVersion { get; set; }
+}
 public partial interface IPlugVehicleVisModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel>
 {
     float DefaultDamperMinLen { get; set; }
@@ -39,58 +64,20 @@ public partial interface IPlugVehicleVisModel : IClassVersion<global::GBX.NET.En
     global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet Sounds { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelMP3 : IPlugVehicleVisModel
+public partial interface IPlugVehicleVisModelMP3 : IPlugVehicleVisModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP3? Shared { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelTMT : IPlugVehicleVisModel
+public partial interface IPlugVehicleVisModelTMT : IPlugVehicleVisModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? AudioEnvironmentForFirstPerson { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMT? Shared { get; set; }
-    float SoundBodyImpact_Hard_ThresholdKmh { get; set; }
-    float SoundBodyImpact_Soft_ThresholdKmh { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents { get; set; }
-    Vec3 SoundImpactWheelBackPos { get; set; }
-    Vec3 SoundImpactWheelFrontPos { get; set; }
-    float SoundWheelImpact_Hard_ThresholdKmh { get; set; }
-    float SoundWheelImpact_Soft_ThresholdKmh { get; set; }
-    int SurfVersion { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelMP4 : IPlugVehicleVisModel
+public partial interface IPlugVehicleVisModelMP4 : IPlugVehicleVisModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? AudioEnvironmentForFirstPerson { get; set; }
-    float DefaultSparkleRelSpeedThreshold { get; set; }
-    float DefaultSparkleScale { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4? Shared { get; set; }
-    float SoundBodyImpact_Hard_ThresholdKmh { get; set; }
-    float SoundBodyImpact_Soft_ThresholdKmh { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents { get; set; }
-    Vec3 SoundImpactWheelBackPos { get; set; }
-    Vec3 SoundImpactWheelFrontPos { get; set; }
-    float SoundWheelImpact_Hard_ThresholdKmh { get; set; }
-    float SoundWheelImpact_Soft_ThresholdKmh { get; set; }
-    int SurfVersion { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelTM2020 : IPlugVehicleVisModel
+public partial interface IPlugVehicleVisModelTM2020 : IPlugVehicleVisModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvironmentForFirstPerson { get; set; }
-    float DefaultSparkleRelSpeedThreshold { get; set; }
-    float DefaultSparkleScale { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020? FxSystem { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020? Shared { get; set; }
-    float SoundBodyImpact_Hard_ThresholdKmh { get; set; }
-    float SoundBodyImpact_Soft_ThresholdKmh { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents { get; set; }
-    Vec3 SoundImpactWheelBackPos { get; set; }
-    Vec3 SoundImpactWheelFrontPos { get; set; }
-    float SoundWheelImpact_Hard_ThresholdKmh { get; set; }
-    float SoundWheelImpact_Soft_ThresholdKmh { get; set; }
-    int SurfVersion { get; set; }
 }
 

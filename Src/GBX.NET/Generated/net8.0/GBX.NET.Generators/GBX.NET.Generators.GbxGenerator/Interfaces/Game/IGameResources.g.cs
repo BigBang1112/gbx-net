@@ -31,20 +31,29 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
-public partial interface IGameResources : IClassVersion<global::GBX.NET.Engines.Game.CGameResources>
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameResourcesMembers1 : global::GBX.NET.Interfaces.Game.IGameResources
 {
+    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMeshFid { get; set; }
 }
-
-public partial interface IGameResourcesTMF : IGameResources
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameResourcesMembers2 : global::GBX.NET.Interfaces.Game.IGameResources
 {
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockSoundFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTColorGradingImageFid { get; set; }
+}
+public partial interface IGameResources : IClassVersion<global::GBX.NET.Engines.Game.CGameResources>
+{
+}
+
+public partial interface IGameResourcesTMF : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2
+{
     global::GBX.NET.Engines.MwFoundations.CMwNod? MenusRemapping { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? UnknownFlagBitmap { get; set; }
 }
 
-public partial interface IGameResourcesMP4 : IGameResources
+public partial interface IGameResourcesMP4 : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers1, global::GBX.NET.Interfaces.Game.IGameResourcesMembers2
 {
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Base { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Editor { get; set; }
@@ -61,13 +70,9 @@ public partial interface IGameResourcesMP4 : IGameResources
     global::GBX.NET.Engines.MwFoundations.CMwNod? CardStationSummaryFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultAvatarBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorEditorFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMeshFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorModuleFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorVehicleFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultLeagueLogoBitmapFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockBitmapFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTBlockSoundFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTColorGradingImageFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMTDecal2dBitmapFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultMusicFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultOnlineNewsIconBitmapFid { get; set; }
@@ -160,13 +165,12 @@ public partial interface IGameResourcesMP4 : IGameResources
     string? TitleTemplateFolder { get; set; }
 }
 
-public partial interface IGameResourcesTM2020 : IGameResources
+public partial interface IGameResourcesTM2020 : IGameResources, global::GBX.NET.Interfaces.Game.IGameResourcesMembers1
 {
     string? AdnFolder { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? BadWordDict { get; set; }
     byte[]? CompiledWordDictionary { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMediaTrackerFid { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorMeshFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DefaultEditorSkinFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? IconShooterDefaultSettingsFid { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? IconShooterMoodFid { get; set; }

@@ -36,25 +36,25 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state;
     private protected CGameManialink3dMoodBuilderBase() => state = new();
     private protected CGameManialink3dMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state) => this.state = state;
-    private protected static void SetCloudsRgbMaxLinear(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("CloudsRgbMaxLinear", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CloudsRgbMaxLinear = value);
-    private protected static void SetCloudsRgbMinLinear(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("CloudsRgbMinLinear", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CloudsRgbMinLinear = value);
-    private protected static void SetFidImageCloudsMinMaxDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFileImg?>("FidImageCloudsMinMaxDayTime", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.FidImageCloudsMinMaxDayTime = value);
-    private protected static void SetFidImageCloudsMinMaxDayTimeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>("FidImageCloudsMinMaxDayTime", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FidImageCloudsMinMaxDayTime.CopyFrom(reference));
-    private protected static void SetFidImageSkyGradientV(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFileImg?>("FidImageSkyGradientV", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.FidImageSkyGradientV = value);
-    private protected static void SetFidImageSkyGradientVReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>("FidImageSkyGradientV", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FidImageSkyGradientV.CopyFrom(reference));
-    private protected static void SetFogColorSrgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("FogColorSrgb", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.FogColorSrgb = value);
-    private protected static void SetLAmbient_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("LAmbient_LinearRgb", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LAmbient_LinearRgb = value);
-    private protected static void SetLBall_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LBall_Intens", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LBall_Intens = value);
-    private protected static void SetLBall_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("LBall_LinearRgb", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LBall_LinearRgb = value);
-    private protected static void SetLBall_Radius(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LBall_Radius", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LBall_Radius = value);
-    private protected static void SetLDir0_DirPhi(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LDir0_DirPhi", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir0_DirPhi = value);
-    private protected static void SetLDir0_DirTheta(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LDir0_DirTheta", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir0_DirTheta = value);
-    private protected static void SetLDir0_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LDir0_Intens", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir0_Intens = value);
-    private protected static void SetLDir0_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("LDir0_LinearRgb", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir0_LinearRgb = value);
-    private protected static void SetLDir1_DirPhi(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LDir1_DirPhi", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir1_DirPhi = value);
-    private protected static void SetLDir1_DirTheta(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LDir1_DirTheta", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir1_DirTheta = value);
-    private protected static void SetLDir1_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set<float>("LDir1_Intens", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir1_Intens = value);
-    private protected static void SetLDir1_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set<Vec3>("LDir1_LinearRgb", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LDir1_LinearRgb = value);
+    private protected static void SetCloudsRgbMaxLinear(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMaxLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetCloudsRgbMinLinear(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetCloudsRgbMinLinearAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFidImageCloudsMinMaxDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFidImageCloudsMinMaxDayTimeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageCloudsMinMaxDayTimeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFidImageSkyGradientV(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFidImageSkyGradientVReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFidImageSkyGradientVReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFogColorSrgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetFogColorSrgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLAmbient_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLAmbient_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLBall_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLBall_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLBall_Radius(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLBall_RadiusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir0_DirPhi(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir0_DirTheta(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir0_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir0_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir0_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir1_DirPhi(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirPhiAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir1_DirTheta(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_DirThetaAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir1_Intens(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_IntensAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLDir1_LinearRgb(NodeBuilderState<global::GBX.NET.Engines.Game.CGameManialink3dMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameManialink3dMoodBuilderAssignments.GetLDir1_LinearRgbAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public Vec3 CloudsRgbMaxLinear
     {
         get => state.Get<Vec3>("CloudsRgbMaxLinear");
@@ -240,6 +240,33 @@ public abstract class CGameManialink3dMoodBuilderBase<TSelf> where TSelf : CGame
 }
 public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBase<CGameManialink3dMoodBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameManialink3dMood CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManialink3dMood();
+        var chunk0316F000 = new global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0316F000();
+        chunk0316F000.Version = 1;
+        node.Chunks.Add(chunk0316F000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameManialink3dMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0316F000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316F000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameManialink3dMood CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameManialink3dMood();
+        var chunk0317E000 = new global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0317E000();
+        chunk0317E000.Version = 1;
+        node.Chunks.Add(chunk0317E000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameManialink3dMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0317E000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0317E000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameManialink3dMood node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -250,14 +277,12 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
         public global::GBX.NET.Interfaces.Game.IGameManialink3dMoodMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameManialink3dMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameManialink3dMood();
-            var chunk0316F000 = new global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0316F000();
-            chunk0316F000.Version = 1;
-            node.Chunks.Add(chunk0316F000);
+            var node = CGameManialink3dMoodBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0316F000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0316F000 is missing or has an incompatible version.");
+            CGameManialink3dMoodBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameManialink3dMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -270,14 +295,12 @@ public partial class CGameManialink3dMoodBuilder : CGameManialink3dMoodBuilderBa
         public global::GBX.NET.Interfaces.Game.IGameManialink3dMoodTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameManialink3dMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameManialink3dMood();
-            var chunk0317E000 = new global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0317E000();
-            chunk0317E000.Version = 1;
-            node.Chunks.Add(chunk0317E000);
+            var node = CGameManialink3dMoodBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameManialink3dMood.Chunk0317E000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0317E000 is missing or has an incompatible version.");
+            CGameManialink3dMoodBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameManialink3dMoodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

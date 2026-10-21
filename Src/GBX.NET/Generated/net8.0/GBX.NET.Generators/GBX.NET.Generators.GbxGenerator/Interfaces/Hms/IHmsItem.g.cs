@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsItemMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsItem where T0 : class
+{
+    new T0? Solid { get; set; }
+}
 public partial interface IHmsItem : IClassVersion<global::GBX.NET.Engines.Hms.CHmsItem>
 {
     bool BackgroundZClipCullBefore { get; set; }
@@ -69,53 +74,43 @@ public partial interface IHmsItem : IClassVersion<global::GBX.NET.Engines.Hms.CH
     ushort VisibleId { get; set; }
 }
 
-public partial interface IHmsItemTM10 : IHmsItem
+public partial interface IHmsItemTM10 : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? Solid { get; set; }
 }
 
-public partial interface IHmsItemTMPU : IHmsItem
+public partial interface IHmsItemTMPU : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? Solid { get; set; }
 }
 
-public partial interface IHmsItemTMSX : IHmsItem
+public partial interface IHmsItemTMSX : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? Solid { get; set; }
 }
 
-public partial interface IHmsItemTMNESWC : IHmsItem
+public partial interface IHmsItemTMNESWC : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? Solid { get; set; }
 }
 
-public partial interface IHmsItemVSK5 : IHmsItem
+public partial interface IHmsItemVSK5 : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? Solid { get; set; }
 }
 
-public partial interface IHmsItemTMF : IHmsItem
+public partial interface IHmsItemTMF : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? Solid { get; set; }
 }
 
-public partial interface IHmsItemMP3 : IHmsItem
+public partial interface IHmsItemMP3 : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? Solid { get; set; }
 }
 
-public partial interface IHmsItemTMT : IHmsItem
+public partial interface IHmsItemTMT : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? Solid { get; set; }
 }
 
-public partial interface IHmsItemMP4 : IHmsItem
+public partial interface IHmsItemMP4 : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? Solid { get; set; }
 }
 
-public partial interface IHmsItemTM2020 : IHmsItem
+public partial interface IHmsItemTM2020 : IHmsItem, global::GBX.NET.Interfaces.Hms.IHmsItemMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? Solid { get; set; }
 }
 

@@ -31,19 +31,22 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugPathMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugPath where T0 : class
+{
+    new IReadOnlyList<T0>? PolyLines { get; set; }
+}
 public partial interface IPlugPath : IClassVersion<global::GBX.NET.Engines.Plug.CPlugPath>
 {
     byte[]? LineGroups { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3>? PolyLines { get; set; }
 }
 
-public partial interface IPlugPathMP4 : IPlugPath
+public partial interface IPlugPathMP4 : IPlugPath, global::GBX.NET.Interfaces.Plug.IPlugPathMembers1<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4>? PolyLines { get; set; }
 }
 
-public partial interface IPlugPathTM2020 : IPlugPath
+public partial interface IPlugPathTM2020 : IPlugPath, global::GBX.NET.Interfaces.Plug.IPlugPathMembers1<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020>? PolyLines { get; set; }
 }
 

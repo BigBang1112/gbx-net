@@ -39,7 +39,7 @@ public partial class CGameCtnMediaBlockEntity : global::GBX.NET.Interfaces.Game.
         get => RecordData;
         set => RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMP4.RecordData
+    global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMembers1<global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4>.RecordData
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnMediaBlockEntity : global::GBX.NET.Interfaces.Game.
         }
         set => RecordData = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugEntRecordData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityTM2020.RecordData
+    global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMembers1<global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020>.RecordData
     {
         get
         {

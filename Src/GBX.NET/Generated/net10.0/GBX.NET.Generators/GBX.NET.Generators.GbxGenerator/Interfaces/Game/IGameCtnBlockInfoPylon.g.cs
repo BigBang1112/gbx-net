@@ -31,6 +31,14 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockInfoPylonMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylon
+{
+    int BlockHeightOffset { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonAmount PylonAmount { get; set; }
+    float PylonOffset { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonPlacement PylonPlacement { get; set; }
+}
 public partial interface IGameCtnBlockInfoPylon : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfo
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,347 +48,45 @@ public partial interface IGameCtnBlockInfoPylon : IClassVersion<global::GBX.NET.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new int CatalogPosition { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IconFid { get; set; }
-    new global::GBX.NET.Ident Ident { get; set; }
-    new bool IsInternal { get; set; }
-    new bool IsPillar { get; set; }
-    new string? PageName { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EWayPointType WayPointType { get; set; }
 }
 
 public partial interface IGameCtnBlockInfoPylonTM10 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM10
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>? AirBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? AirHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? ConstructionModeHelperMobil { get; set; }
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>? GroundBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? GroundHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10? Pillar { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
-    new int SizeX { get; set; }
-    new int SizeY { get; set; }
-    new int SizeZ { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    new Iso4? SpawnLocAir { get; set; }
-    new Iso4? SpawnLocGround { get; set; }
 }
 
 public partial interface IGameCtnBlockInfoPylonTMPU : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMPU
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>? AirBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? AirHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? ConstructionModeHelperMobil { get; set; }
-    new int CopperPrice { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>? GroundBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? GroundHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMPU? Pillar { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
-    new int SizeX { get; set; }
-    new int SizeY { get; set; }
-    new int SizeZ { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    new Iso4? SpawnLocAir { get; set; }
-    new Iso4? SpawnLocGround { get; set; }
 }
 
 public partial interface IGameCtnBlockInfoPylonTMSX : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>? AirBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? AirHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? ConstructionModeHelperMobil { get; set; }
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>? GroundBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? GroundHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsReplacement { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMSX? Pillar { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
-    new int SizeX { get; set; }
-    new int SizeY { get; set; }
-    new int SizeZ { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    new Iso4? SpawnLocAir { get; set; }
-    new Iso4? SpawnLocGround { get; set; }
 }
 
 public partial interface IGameCtnBlockInfoPylonTMNESWC : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>? AirBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? AirHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? ConstructionModeHelperMobil { get; set; }
-    new int CopperPrice { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>? GroundBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? GroundHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    new bool IsReplacement { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC? Pillar { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
-    new int SizeX { get; set; }
-    new int SizeY { get; set; }
-    new int SizeZ { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    new Iso4? SpawnLocAir { get; set; }
-    new Iso4? SpawnLocGround { get; set; }
 }
 
 public partial interface IGameCtnBlockInfoPylonVSK5 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>? AirBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? AirHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? ConstructionModeHelperMobil { get; set; }
-    new int CopperPrice { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>? GroundBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? GroundHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    new bool IsReplacement { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicVSK5? Pillar { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
-    new int SizeX { get; set; }
-    new int SizeY { get; set; }
-    new int SizeZ { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    new Iso4? SpawnLocAir { get; set; }
-    new Iso4? SpawnLocGround { get; set; }
 }
 
 public partial interface IGameCtnBlockInfoPylonTMF : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>? AirBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? AirHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? AirMobils { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? ConstructionModeHelperMobil { get; set; }
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>? GroundBlockUnitInfos { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? GroundHelperMobil { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneMobil>[]? GroundMobils { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsReplacement { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new bool NoRespawn { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF? Pillar { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.ESelection Selection { get; set; }
-    new int SizeX { get; set; }
-    new int SizeY { get; set; }
-    new int SizeZ { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    new Iso4? SpawnLocAir { get; set; }
-    new Iso4? SpawnLocGround { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoPylonMP3 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP3
+public partial interface IGameCtnBlockInfoPylonMP3 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMembers1
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP3>? AdditionalVariantsAir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3>? AdditionalVariantsGround { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType { get; set; }
-    int BlockHeightOffset { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP3? CharPhySpecialProperty { get; set; }
-    new bool CharPhySpecialPropertyCustomizable { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new Direction Dir { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP3? FogVolumeBox { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new bool IconAutoUseGround { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    new bool NoRespawn { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo { get; set; }
-    new Iso4 PrecalcPartLoc { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams? PrecalcPartParams { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonAmount PylonAmount { get; set; }
-    float PylonOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonPlacement PylonPlacement { get; set; }
-    new string? SkinDirectory { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? Sound1 { get; set; }
-    new Iso4 Sound1Loc { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? Sound2 { get; set; }
-    new Iso4 Sound2Loc { get; set; }
-    new bool SpawnUnderground { get; set; }
-    new string? SymmetricalBlockInfoId { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? WaypointSpecialProperty { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoPylonTMT : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMT
+public partial interface IGameCtnBlockInfoPylonTMT : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMembers1
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTMT>? AdditionalVariantsAir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT>? AdditionalVariantsGround { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType { get; set; }
-    int BlockHeightOffset { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTMT? CharPhySpecialProperty { get; set; }
-    new bool CharPhySpecialPropertyCustomizable { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new Direction Dir { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTMT? FogVolumeBox { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new bool IconAutoUseGround { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT? IconMacroBlockInfo { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    new bool NoRespawn { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo { get; set; }
-    new Iso4 PrecalcPartLoc { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT? PrecalcPartParams { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonAmount PylonAmount { get; set; }
-    float PylonOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonPlacement PylonPlacement { get; set; }
-    new string? SkinDirectory { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? Sound1 { get; set; }
-    new Iso4 Sound1Loc { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? Sound2 { get; set; }
-    new Iso4 Sound2Loc { get; set; }
-    new bool SpawnUnderground { get; set; }
-    new string? SymmetricalBlockInfoId { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? WaypointSpecialProperty { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoPylonMP4 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP4
+public partial interface IGameCtnBlockInfoPylonMP4 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMembers1
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP4>? AdditionalVariantsAir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4>? AdditionalVariantsGround { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType { get; set; }
-    int BlockHeightOffset { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP4? CharPhySpecialProperty { get; set; }
-    new bool CharPhySpecialPropertyCustomizable { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new Direction Dir { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP4? FogVolumeBox { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new bool IconAutoUseGround { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4? IconMacroBlockInfo { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    new bool NoRespawn { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir PillarShapeMultiDir { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonAmount PylonAmount { get; set; }
-    float PylonOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonPlacement PylonPlacement { get; set; }
-    new string? SkinDirectory { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound1 { get; set; }
-    new Iso4 Sound1Loc { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound2 { get; set; }
-    new Iso4 Sound2Loc { get; set; }
-    new string? SymmetricalBlockInfoId { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoPylonTM2020 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020
+public partial interface IGameCtnBlockInfoPylonTM2020 : IGameCtnBlockInfoPylon, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMembers1
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTM2020>? AdditionalVariantsAir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020>? AdditionalVariantsGround { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EBaseType BaseType { get; set; }
-    int BlockHeightOffset { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020? BlockInfoModelFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTM2020? CharPhySpecialProperty { get; set; }
-    new bool CharPhySpecialPropertyCustomizable { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? DefaultSkinName { get; set; }
-    new string? Description { get; set; }
-    new Direction Dir { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTM2020? FogVolumeBox { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new bool IconAutoUseGround { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020? IconMacroBlockInfo { get; set; }
-    new float IconPhase01 { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IntroInfo { get; set; }
-    new bool IsAdvanced { get; set; }
-    new bool IsMultiHeightPillarOrVFC { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.MaterialModifierPlacementTag? MatModifierPlacementTag { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier2 { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease { get; set; }
-    new string? Name { get; set; }
-    new bool NoRespawn { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfo.EMultiDir PillarShapeMultiDir { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? PodiumInfo { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonAmount PylonAmount { get; set; }
-    float PylonOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockInfoPylon.EPylonPlacement PylonPlacement { get; set; }
-    new string? SkinDirectory { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? Sound1 { get; set; }
-    new Iso4 Sound1Loc { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? Sound2 { get; set; }
-    new Iso4 Sound2Loc { get; set; }
-    new string? SymmetricalBlockInfoId { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
 }
 

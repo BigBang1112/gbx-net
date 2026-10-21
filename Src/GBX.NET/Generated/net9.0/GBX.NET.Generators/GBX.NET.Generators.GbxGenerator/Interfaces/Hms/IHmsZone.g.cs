@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsZoneMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsZone where T0 : class
+{
+    T0? BitmapCubeReflectHdrAlpha2 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsZoneMembers2<T0> : global::GBX.NET.Interfaces.Hms.IHmsZone where T0 : class
+{
+    T0? BitmapCubeReflectHardSpecA { get; set; }
+}
 public partial interface IHmsZone : IClassVersion<global::GBX.NET.Engines.Hms.CHmsZone>
 {
     bool FogByVertex { get; set; }
@@ -64,37 +74,27 @@ public partial interface IHmsZoneTMNESWC : IHmsZone
 {
 }
 
-public partial interface IHmsZoneVSK5 : IHmsZone
+public partial interface IHmsZoneVSK5 : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapCubeReflectHardSpecA { get; set; }
 }
 
-public partial interface IHmsZoneTMF : IHmsZone
+public partial interface IHmsZoneTMF : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapCubeReflectHardSpecA { get; set; }
 }
 
-public partial interface IHmsZoneMP3 : IHmsZone
+public partial interface IHmsZoneMP3 : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapCubeReflectHardSpecA { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 
-public partial interface IHmsZoneTMT : IHmsZone
+public partial interface IHmsZoneTMT : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapCubeReflectHardSpecA { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 
-public partial interface IHmsZoneMP4 : IHmsZone
+public partial interface IHmsZoneMP4 : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeReflectHardSpecA { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 
-public partial interface IHmsZoneTM2020 : IHmsZone
+public partial interface IHmsZoneTM2020 : IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapCubeReflectHardSpecA { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 

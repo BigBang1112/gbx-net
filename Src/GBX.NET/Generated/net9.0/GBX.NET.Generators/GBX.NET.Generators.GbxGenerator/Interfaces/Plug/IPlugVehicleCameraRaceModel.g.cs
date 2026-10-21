@@ -31,6 +31,17 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleCameraRaceModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModel
+{
+    string? CameraId { get; set; }
+    float Fov { get; set; }
+    float LookAtFactor { get; set; }
+    float MaxDist { get; set; }
+    float MinDist { get; set; }
+    float PlaneDist { get; set; }
+    Iso4 RelativeTargetLocation { get; set; }
+}
 public partial interface IPlugVehicleCameraRaceModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel>, global::GBX.NET.Interfaces.Plug.IPlugCamControlModel
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,7 +51,6 @@ public partial interface IPlugVehicleCameraRaceModel : IClassVersion<global::GBX
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel? Shake { get; set; }
 }
 
 public partial interface IPlugVehicleCameraRaceModelTMT : IPlugVehicleCameraRaceModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT
@@ -48,27 +58,13 @@ public partial interface IPlugVehicleCameraRaceModelTMT : IPlugVehicleCameraRace
     new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake { get; set; }
 }
 
-public partial interface IPlugVehicleCameraRaceModelMP4 : IPlugVehicleCameraRaceModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4
+public partial interface IPlugVehicleCameraRaceModelMP4 : IPlugVehicleCameraRaceModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelMembers1
 {
-    string? CameraId { get; set; }
-    float Fov { get; set; }
-    float LookAtFactor { get; set; }
-    float MaxDist { get; set; }
-    float MinDist { get; set; }
-    float PlaneDist { get; set; }
-    Iso4 RelativeTargetLocation { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake { get; set; }
 }
 
-public partial interface IPlugVehicleCameraRaceModelTM2020 : IPlugVehicleCameraRaceModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020
+public partial interface IPlugVehicleCameraRaceModelTM2020 : IPlugVehicleCameraRaceModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelMembers1
 {
-    string? CameraId { get; set; }
-    float Fov { get; set; }
-    float LookAtFactor { get; set; }
-    float MaxDist { get; set; }
-    float MinDist { get; set; }
-    float PlaneDist { get; set; }
-    Iso4 RelativeTargetLocation { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake { get; set; }
 }
 

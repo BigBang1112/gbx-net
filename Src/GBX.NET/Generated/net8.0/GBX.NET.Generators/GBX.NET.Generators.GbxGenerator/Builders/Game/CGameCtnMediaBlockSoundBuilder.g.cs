@@ -36,14 +36,14 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state;
     private protected CGameCtnMediaBlockSoundBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSoundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) => this.state = state;
-    private protected static void SetAudioToSpeech(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set<bool>("AudioToSpeech", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AudioToSpeech = value);
-    private protected static void SetAudioToSpeechTarget(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, int value) => state.Set<int>("AudioToSpeechTarget", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AudioToSpeechTarget = value);
-    private protected static void SetIsLooping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set<bool>("IsLooping", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsLooping = value);
-    private protected static void SetIsMusic(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set<bool>("IsMusic", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.IsMusic = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>(value), static (node, value) => node.Keys = value);
-    private protected static void SetPlayCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, int value) => state.Set<int>("PlayCount", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.PlayCount = value);
-    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, PackDesc? value) => state.Set<PackDesc?>("Sound", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Sound = value);
-    private protected static void SetStopWithClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set<bool>("StopWithClip", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StopWithClip = value);
+    private protected static void SetAudioToSpeech(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAudioToSpeechTarget(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetAudioToSpeechTargetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIsLooping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsLoopingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsMusic(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetIsMusicAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPlayCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetPlayCountAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStopWithClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSoundBuilderAssignments.GetStopWithClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool IsLooping
     {
         get => state.Get<bool>("IsLooping");
@@ -93,8 +93,101 @@ public abstract class CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CG
         return (TSelf)this;
     }
 }
+public abstract class CGameCtnMediaBlockSoundBuilderMembers1<TSelf> : CGameCtnMediaBlockSoundBuilderBase<TSelf> where TSelf : CGameCtnMediaBlockSoundBuilderMembers1<TSelf>
+{
+    private protected CGameCtnMediaBlockSoundBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
+    public bool IsMusic
+    {
+        get => state.Get<bool>("IsMusic");
+        set => SetIsMusic(state, value);
+    }
+    public TSelf WithIsMusic(bool value)
+    {
+        IsMusic = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnMediaBlockSoundBuilderMembers2<TSelf> : CGameCtnMediaBlockSoundBuilderMembers1<TSelf> where TSelf : CGameCtnMediaBlockSoundBuilderMembers2<TSelf>
+{
+    private protected CGameCtnMediaBlockSoundBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
+    public bool AudioToSpeech
+    {
+        get => state.Get<bool>("AudioToSpeech");
+        set => SetAudioToSpeech(state, value);
+    }
+    public TSelf WithAudioToSpeech(bool value)
+    {
+        AudioToSpeech = value;
+        return (TSelf)this;
+    }
+    public int AudioToSpeechTarget
+    {
+        get => state.Get<int>("AudioToSpeechTarget");
+        set => SetAudioToSpeechTarget(state, value);
+    }
+    public TSelf WithAudioToSpeechTarget(int value)
+    {
+        AudioToSpeechTarget = value;
+        return (TSelf)this;
+    }
+    public bool StopWithClip
+    {
+        get => state.Get<bool>("StopWithClip");
+        set => SetStopWithClip(state, value);
+    }
+    public TSelf WithStopWithClip(bool value)
+    {
+        StopWithClip = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBuilderBase<CGameCtnMediaBlockSoundBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
+        var chunk030A7001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001();
+        node.Chunks.Add(chunk030A7001);
+        var chunk030A7002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002();
+        node.Chunks.Add(chunk030A7002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A7001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A7002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
+        var chunk030A7003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(game);
+        node.Chunks.Add(chunk030A7003);
+        var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(game);
+        node.Chunks.Add(chunk030A7004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
+        var chunk030A7003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(game);
+        node.Chunks.Add(chunk030A7003);
+        var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(game);
+        node.Chunks.Add(chunk030A7004);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A7004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -110,16 +203,12 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001();
-            node.Chunks.Add(chunk030A7001);
-            var chunk030A7002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002();
-            node.Chunks.Add(chunk030A7002);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk030A7001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk030A7002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -132,16 +221,12 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001();
-            node.Chunks.Add(chunk030A7001);
-            var chunk030A7002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002();
-            node.Chunks.Add(chunk030A7002);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk030A7001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk030A7002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -154,234 +239,84 @@ public partial class CGameCtnMediaBlockSoundBuilder : CGameCtnMediaBlockSoundBui
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001();
-            node.Chunks.Add(chunk030A7001);
-            var chunk030A7002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002();
-            node.Chunks.Add(chunk030A7002);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk030A7001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk030A7002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
-    public partial class TMF : CGameCtnMediaBlockSoundBuilderBase<TMF>
+    public partial class TMF : CGameCtnMediaBlockSoundBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
-        public bool IsMusic
-        {
-            get => state.Get<bool>("IsMusic");
-            set => SetIsMusic(state, value);
-        }
-        public TMF WithIsMusic(bool value)
-        {
-            IsMusic = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(GameVersion.TMF);
-            node.Chunks.Add(chunk030A7003);
-            var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(GameVersion.TMF);
-            node.Chunks.Add(chunk030A7004);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 0 }) throw new InvalidOperationException("Required TMF chunk Chunk030A7003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException("Required TMF chunk Chunk030A7004 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
-    public partial class TMT : CGameCtnMediaBlockSoundBuilderBase<TMT>
+    public partial class TMT : CGameCtnMediaBlockSoundBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
-        public bool AudioToSpeech
-        {
-            get => state.Get<bool>("AudioToSpeech");
-            set => SetAudioToSpeech(state, value);
-        }
-        public TMT WithAudioToSpeech(bool value)
-        {
-            AudioToSpeech = value;
-            return this;
-        }
-        public int AudioToSpeechTarget
-        {
-            get => state.Get<int>("AudioToSpeechTarget");
-            set => SetAudioToSpeechTarget(state, value);
-        }
-        public TMT WithAudioToSpeechTarget(int value)
-        {
-            AudioToSpeechTarget = value;
-            return this;
-        }
-        public bool IsMusic
-        {
-            get => state.Get<bool>("IsMusic");
-            set => SetIsMusic(state, value);
-        }
-        public TMT WithIsMusic(bool value)
-        {
-            IsMusic = value;
-            return this;
-        }
-        public bool StopWithClip
-        {
-            get => state.Get<bool>("StopWithClip");
-            set => SetStopWithClip(state, value);
-        }
-        public TMT WithStopWithClip(bool value)
-        {
-            StopWithClip = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(GameVersion.TMT);
-            node.Chunks.Add(chunk030A7003);
-            var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(GameVersion.TMT);
-            node.Chunks.Add(chunk030A7004);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk030A7003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk030A7004 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
-    public partial class MP4 : CGameCtnMediaBlockSoundBuilderBase<MP4>
+    public partial class MP4 : CGameCtnMediaBlockSoundBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
-        public bool AudioToSpeech
-        {
-            get => state.Get<bool>("AudioToSpeech");
-            set => SetAudioToSpeech(state, value);
-        }
-        public MP4 WithAudioToSpeech(bool value)
-        {
-            AudioToSpeech = value;
-            return this;
-        }
-        public int AudioToSpeechTarget
-        {
-            get => state.Get<int>("AudioToSpeechTarget");
-            set => SetAudioToSpeechTarget(state, value);
-        }
-        public MP4 WithAudioToSpeechTarget(int value)
-        {
-            AudioToSpeechTarget = value;
-            return this;
-        }
-        public bool IsMusic
-        {
-            get => state.Get<bool>("IsMusic");
-            set => SetIsMusic(state, value);
-        }
-        public MP4 WithIsMusic(bool value)
-        {
-            IsMusic = value;
-            return this;
-        }
-        public bool StopWithClip
-        {
-            get => state.Get<bool>("StopWithClip");
-            set => SetStopWithClip(state, value);
-        }
-        public MP4 WithStopWithClip(bool value)
-        {
-            StopWithClip = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(GameVersion.MP4);
-            node.Chunks.Add(chunk030A7003);
-            var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(GameVersion.MP4);
-            node.Chunks.Add(chunk030A7004);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk030A7003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk030A7004 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound node);
     }
-    public partial class TM2020 : CGameCtnMediaBlockSoundBuilderBase<TM2020>
+    public partial class TM2020 : CGameCtnMediaBlockSoundBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound> state) : base(state) { }
-        public bool AudioToSpeech
-        {
-            get => state.Get<bool>("AudioToSpeech");
-            set => SetAudioToSpeech(state, value);
-        }
-        public TM2020 WithAudioToSpeech(bool value)
-        {
-            AudioToSpeech = value;
-            return this;
-        }
-        public int AudioToSpeechTarget
-        {
-            get => state.Get<int>("AudioToSpeechTarget");
-            set => SetAudioToSpeechTarget(state, value);
-        }
-        public TM2020 WithAudioToSpeechTarget(int value)
-        {
-            AudioToSpeechTarget = value;
-            return this;
-        }
-        public bool IsMusic
-        {
-            get => state.Get<bool>("IsMusic");
-            set => SetIsMusic(state, value);
-        }
-        public TM2020 WithIsMusic(bool value)
-        {
-            IsMusic = value;
-            return this;
-        }
-        public bool StopWithClip
-        {
-            get => state.Get<bool>("StopWithClip");
-            set => SetStopWithClip(state, value);
-        }
-        public TM2020 WithStopWithClip(bool value)
-        {
-            StopWithClip = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound();
-            var chunk030A7003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003(GameVersion.TM2020);
-            node.Chunks.Add(chunk030A7003);
-            var chunk030A7004 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004(GameVersion.TM2020);
-            node.Chunks.Add(chunk030A7004);
+            var node = CGameCtnMediaBlockSoundBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7003>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk030A7003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound.Chunk030A7004>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk030A7004 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSoundBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockSoundBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

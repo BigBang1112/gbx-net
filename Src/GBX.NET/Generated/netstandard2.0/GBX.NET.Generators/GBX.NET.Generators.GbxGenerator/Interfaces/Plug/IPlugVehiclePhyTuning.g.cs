@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehiclePhyTuningMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuning
+{
+    bool InTuningCycle { get; set; }
+}
 public partial interface IPlugVehiclePhyTuning : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>
 {
     string Name { get; set; }
@@ -44,23 +49,19 @@ public partial interface IPlugVehiclePhyTuningTMF : IPlugVehiclePhyTuning
 {
 }
 
-public partial interface IPlugVehiclePhyTuningMP3 : IPlugVehiclePhyTuning
+public partial interface IPlugVehiclePhyTuningMP3 : IPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMembers1
 {
-    bool InTuningCycle { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningTMT : IPlugVehiclePhyTuning
+public partial interface IPlugVehiclePhyTuningTMT : IPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMembers1
 {
-    bool InTuningCycle { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningMP4 : IPlugVehiclePhyTuning
+public partial interface IPlugVehiclePhyTuningMP4 : IPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMembers1
 {
-    bool InTuningCycle { get; set; }
 }
 
-public partial interface IPlugVehiclePhyTuningTM2020 : IPlugVehiclePhyTuning
+public partial interface IPlugVehiclePhyTuningTM2020 : IPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMembers1
 {
-    bool InTuningCycle { get; set; }
 }
 

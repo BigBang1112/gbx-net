@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Graphic;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxLightSpotMembers1 : global::GBX.NET.Interfaces.Graphic.IGxLightSpot
+{
+    float AngleFlare { get; set; }
+    float AngleInnerShadow { get; set; }
+    float AngleOuterShadow { get; set; }
+    bool CustomAngleFlare { get; set; }
+    bool CustomAngleShadow { get; set; }
+}
 public partial interface IGxLightSpot : IClassVersion<global::GBX.NET.Engines.Graphic.GxLightSpot>, global::GBX.NET.Interfaces.Graphic.IGxLightBall
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,194 +49,57 @@ public partial interface IGxLightSpot : IClassVersion<global::GBX.NET.Engines.Gr
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new Vec3 AmbientRGB { get; set; }
     float AngleInner { get; set; }
     float AngleOuter { get; set; }
-    new Vec3 Color { get; set; }
-    new float EmittingRadius { get; set; }
     float FalloffExponent { get; set; }
-    new float FlareIntensity { get; set; }
-    new float FlareSize { get; set; }
-    new float Intensity { get; set; }
-    new float Radius { get; set; }
-    new float ShadowIntensity { get; set; }
-    new Vec3 ShadowRGB { get; set; }
 }
 
 public partial interface IGxLightSpotTM10 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM10
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
 }
 
 public partial interface IGxLightSpotTMPU : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMPU
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
 }
 
-public partial interface IGxLightSpotTMSX : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMSX
+public partial interface IGxLightSpotTMSX : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
 }
 
-public partial interface IGxLightSpotTMNESWC : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC
+public partial interface IGxLightSpotTMNESWC : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
 }
 
-public partial interface IGxLightSpotVSK5 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5
+public partial interface IGxLightSpotVSK5 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
-    new float DiffuseIntensity { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightSpotTMF : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMF
+public partial interface IGxLightSpotTMF : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMF, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
-    new float DiffuseIntensity { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightSpotMP3 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP3
+public partial interface IGxLightSpotMP3 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP3, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightSpotTMT : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMT
+public partial interface IGxLightSpotTMT : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMT, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightSpotMP4 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4
+public partial interface IGxLightSpotMP4 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightSpotTM2020 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020
+public partial interface IGxLightSpotTM2020 : IGxLightSpot, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightSpotMembers1
 {
-    float AngleFlare { get; set; }
-    float AngleInnerShadow { get; set; }
-    float AngleOuterShadow { get; set; }
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    bool CustomAngleFlare { get; set; }
-    bool CustomAngleShadow { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
     new uint Flags { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
     byte SubLightCountX { get; set; }
     byte SubLightCountY { get; set; }
 }

@@ -36,8 +36,8 @@ public abstract class CPlugPolyLine3BuilderBase<TSelf> where TSelf : CPlugPolyLi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state;
     private protected CPlugPolyLine3BuilderBase() => state = new();
     private protected CPlugPolyLine3BuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state) => this.state = state;
-    private protected static void SetLefts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state, Vec3[]? value) => state.Set<Vec3[]?>("Lefts", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (Vec3[])value.Clone(), static (node, value) => node.Lefts = value);
-    private protected static void SetPoss(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state, Vec3[]? value) => state.Set<Vec3[]?>("Poss", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (Vec3[])value.Clone(), static (node, value) => node.Poss = value);
+    private protected static void SetLefts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state, Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPolyLine3BuilderAssignments.GetLeftsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPoss(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPolyLine3> state, Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPolyLine3BuilderAssignments.GetPossAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public Vec3[]? Lefts
     {
         get => state.Get<Vec3[]?>("Lefts");
@@ -69,6 +69,31 @@ public abstract class CPlugPolyLine3BuilderBase<TSelf> where TSelf : CPlugPolyLi
 }
 public partial class CPlugPolyLine3Builder : CPlugPolyLine3BuilderBase<CPlugPolyLine3Builder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugPolyLine3 CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugPolyLine3();
+        var chunk09118000 = new global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000(game);
+        node.Chunks.Add(chunk09118000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugPolyLine3 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk09118000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugPolyLine3 CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugPolyLine3();
+        var chunk09118000 = new global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000(game);
+        node.Chunks.Add(chunk09118000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugPolyLine3 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk09118000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugPolyLine3 node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -79,13 +104,12 @@ public partial class CPlugPolyLine3Builder : CPlugPolyLine3BuilderBase<CPlugPoly
         public global::GBX.NET.Interfaces.Plug.IPlugPolyLine3MP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPolyLine3 Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPolyLine3();
-            var chunk09118000 = new global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000(GameVersion.MP4);
-            node.Chunks.Add(chunk09118000);
+            var node = CPlugPolyLine3Builder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk09118000 is missing or has an incompatible version.");
+            CPlugPolyLine3Builder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugPolyLine3Builder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -98,13 +122,12 @@ public partial class CPlugPolyLine3Builder : CPlugPolyLine3BuilderBase<CPlugPoly
         public global::GBX.NET.Interfaces.Plug.IPlugPolyLine3TM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPolyLine3 Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPolyLine3();
-            var chunk09118000 = new global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09118000);
+            var node = CPlugPolyLine3Builder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPolyLine3.Chunk09118000>() is not { Version: 8 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09118000 is missing or has an incompatible version.");
+            CPlugPolyLine3Builder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugPolyLine3Builder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

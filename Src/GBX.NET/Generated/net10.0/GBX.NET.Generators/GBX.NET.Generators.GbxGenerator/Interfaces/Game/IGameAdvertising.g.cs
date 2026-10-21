@@ -31,6 +31,22 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameAdvertisingMembers1 : global::GBX.NET.Interfaces.Game.IGameAdvertising
+{
+    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
+    string? Radial_Config { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameAdvertisingMembers2 : global::GBX.NET.Interfaces.Game.IGameAdvertising
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameAdvertisingMembers3 : global::GBX.NET.Interfaces.Game.IGameAdvertising
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
+}
 public partial interface IGameAdvertising : IClassVersion<global::GBX.NET.Engines.Game.CGameAdvertising>, global::GBX.NET.Interfaces.Game.IGameNod
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,7 +56,6 @@ public partial interface IGameAdvertising : IClassVersion<global::GBX.NET.Engine
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface IGameAdvertisingTM10 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTM10
@@ -51,53 +66,32 @@ public partial interface IGameAdvertisingTMPU : IGameAdvertising, global::GBX.NE
 {
 }
 
-public partial interface IGameAdvertisingTMSX : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMSX
+public partial interface IGameAdvertisingTMSX : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMSX, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers2, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig { get; set; }
 }
 
-public partial interface IGameAdvertisingTMNESWC : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMNESWC
+public partial interface IGameAdvertisingTMNESWC : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMNESWC, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers2, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? FilesOrig { get; set; }
-    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
-    string? Radial_Config { get; set; }
 }
 
-public partial interface IGameAdvertisingVSK5 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodVSK5
+public partial interface IGameAdvertisingVSK5 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodVSK5, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
-    string? Radial_Config { get; set; }
 }
 
-public partial interface IGameAdvertisingTMF : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMF
+public partial interface IGameAdvertisingTMF : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMF, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
-    string? Radial_Config { get; set; }
 }
 
-public partial interface IGameAdvertisingMP3 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodMP3
+public partial interface IGameAdvertisingMP3 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodMP3, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
-    string? Radial_Config { get; set; }
 }
 
-public partial interface IGameAdvertisingTMT : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMT
+public partial interface IGameAdvertisingTMT : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTMT, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
-    string? Radial_Config { get; set; }
 }
 
-public partial interface IGameAdvertisingMP4 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodMP4
+public partial interface IGameAdvertisingMP4 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodMP4, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers1, global::GBX.NET.Interfaces.Game.IGameAdvertisingMembers3
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Files { get; set; }
-    global::GBX.NET.Engines.Game.CGameAdvertising.EMode Mode { get; set; }
-    string? Radial_Config { get; set; }
 }
 
 public partial interface IGameAdvertisingTM2020 : IGameAdvertising, global::GBX.NET.Interfaces.Game.IGameNodTM2020

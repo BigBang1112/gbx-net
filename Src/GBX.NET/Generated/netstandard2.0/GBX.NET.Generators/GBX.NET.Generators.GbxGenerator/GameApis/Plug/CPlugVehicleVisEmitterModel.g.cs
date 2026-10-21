@@ -49,7 +49,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         get => ParticleEmitterModel2;
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5.ParticleEmitterModel0
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModel0
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5.ParticleEmitterModel1
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModel1
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5.ParticleEmitterModel2
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>.ParticleEmitterModel2
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF.ParticleEmitterModel0
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModel0
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF.ParticleEmitterModel1
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModel1
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF.ParticleEmitterModel2
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>.ParticleEmitterModel2
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3.ParticleEmitterModel0
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModel0
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3.ParticleEmitterModel1
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModel1
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3.ParticleEmitterModel2
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModel2
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3.ParticleEmitterModelShoot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>.ParticleEmitterModelShoot
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMT.ParticleEmitterModel0
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModel0
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMT.ParticleEmitterModel1
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModel1
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMT.ParticleEmitterModel2
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModel2
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMT.ParticleEmitterModelShoot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>.ParticleEmitterModelShoot
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP4.ParticleEmitterModel0
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModel0
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP4.ParticleEmitterModel1
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModel1
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP4.ParticleEmitterModel2
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModel2
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP4.ParticleEmitterModelShoot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>.ParticleEmitterModelShoot
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModelShoot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTM2020.ParticleEmitterModel0
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModel0
     {
         get
         {
@@ -239,7 +239,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTM2020.ParticleEmitterModel1
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModel1
     {
         get
         {
@@ -249,7 +249,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTM2020.ParticleEmitterModel2
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModel2
     {
         get
         {
@@ -259,7 +259,7 @@ public partial class CPlugVehicleVisEmitterModel : global::GBX.NET.Interfaces.Pl
         }
         set => ParticleEmitterModel2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTM2020.ParticleEmitterModelShoot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>.ParticleEmitterModelShoot
     {
         get
         {

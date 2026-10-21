@@ -36,7 +36,7 @@ public abstract class CPlugVehicleMaterialGroupBuilderBase<TSelf> where TSelf : 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state;
     private protected CPlugVehicleMaterialGroupBuilderBase() => state = new();
     private protected CPlugVehicleMaterialGroupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state) => this.state = state;
-    private protected static void SetMaterialIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state, int[] value) => state.Set<int[]>("MaterialIds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.MaterialIds = value);
+    private protected static void SetMaterialIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup> state, int[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialGroupBuilderAssignments.GetMaterialIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public int[] MaterialIds
     {
         get => state.Get<int[]>("MaterialIds");
@@ -54,6 +54,21 @@ public abstract class CPlugVehicleMaterialGroupBuilderBase<TSelf> where TSelf : 
 }
 public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGroupBuilderBase<CPlugVehicleMaterialGroupBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
+        var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
+        node.Chunks.Add(chunk090E9000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E9000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup node, GameVersion game)
+    {
+        if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -68,14 +83,12 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
-            var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
-            node.Chunks.Add(chunk090E9000);
+            var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090E9000 is missing or has an incompatible version.");
+            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -88,14 +101,12 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
-            var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
-            node.Chunks.Add(chunk090E9000);
+            var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090E9000 is missing or has an incompatible version.");
+            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -108,14 +119,12 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
-            var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
-            node.Chunks.Add(chunk090E9000);
+            var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090E9000 is missing or has an incompatible version.");
+            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -128,14 +137,12 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
-            var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
-            node.Chunks.Add(chunk090E9000);
+            var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090E9000 is missing or has an incompatible version.");
+            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -148,14 +155,12 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
-            var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
-            node.Chunks.Add(chunk090E9000);
+            var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090E9000 is missing or has an incompatible version.");
+            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -168,14 +173,12 @@ public partial class CPlugVehicleMaterialGroupBuilder : CPlugVehicleMaterialGrou
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup();
-            var chunk090E9000 = new global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000();
-            node.Chunks.Add(chunk090E9000);
+            var node = CPlugVehicleMaterialGroupBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleMaterialGroup.Chunk090E9000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090E9000 is missing or has an incompatible version.");
+            CPlugVehicleMaterialGroupBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.MaterialIds is null) throw new MemberNullException("MaterialIds");
+            CPlugVehicleMaterialGroupBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

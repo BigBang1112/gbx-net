@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncColorGradientMembers1 : global::GBX.NET.Interfaces.Function.IFuncColorGradient
+{
+    global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace { get; set; }
+}
 public partial interface IFuncColorGradient : IClassVersion<global::GBX.NET.Engines.Function.CFuncColorGradient>, global::GBX.NET.Interfaces.Function.IFunc
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -64,23 +69,19 @@ public partial interface IFuncColorGradientTMF : IFuncColorGradient, global::GBX
 {
 }
 
-public partial interface IFuncColorGradientMP3 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncMP3
+public partial interface IFuncColorGradientMP3 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncColorGradientMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace { get; set; }
 }
 
-public partial interface IFuncColorGradientTMT : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncTMT
+public partial interface IFuncColorGradientTMT : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncColorGradientMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace { get; set; }
 }
 
-public partial interface IFuncColorGradientMP4 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncMP4
+public partial interface IFuncColorGradientMP4 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncColorGradientMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace { get; set; }
 }
 
-public partial interface IFuncColorGradientTM2020 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncTM2020
+public partial interface IFuncColorGradientTM2020 : IFuncColorGradient, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Function.IFuncColorGradientMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncColorGradient.EColorSpace ColorSpace { get; set; }
 }
 

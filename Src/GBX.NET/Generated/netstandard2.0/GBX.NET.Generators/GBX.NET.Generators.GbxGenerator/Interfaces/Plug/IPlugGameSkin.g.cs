@@ -31,93 +31,75 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugGameSkinMembers1 : global::GBX.NET.Interfaces.Plug.IPlugGameSkin
+{
+    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids2 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugGameSkinMembers2 : global::GBX.NET.Interfaces.Plug.IPlugGameSkin
+{
+    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugGameSkinMembers3 : global::GBX.NET.Interfaces.Plug.IPlugGameSkin
+{
+    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugGameSkinMembers4 : global::GBX.NET.Interfaces.Plug.IPlugGameSkin
+{
+    string? DirName { get; set; }
+    string? PainterSceneId { get; set; }
+    string? PainterTextureName { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugGameSkinMembers5 : global::GBX.NET.Interfaces.Plug.IPlugGameSkin
+{
+    string? DirNameAlt { get; set; }
+}
 public partial interface IPlugGameSkin : IClassVersion<global::GBX.NET.Engines.Plug.CPlugGameSkin>
 {
 }
 
-public partial interface IPlugGameSkinTM10 : IPlugGameSkin
+public partial interface IPlugGameSkinTM10 : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids2 { get; set; }
 }
 
-public partial interface IPlugGameSkinTMPU : IPlugGameSkin
+public partial interface IPlugGameSkinTMPU : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids2 { get; set; }
 }
 
-public partial interface IPlugGameSkinTMSX : IPlugGameSkin
+public partial interface IPlugGameSkinTMSX : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers2, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinTMNESWC : IPlugGameSkin
+public partial interface IPlugGameSkinTMNESWC : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinVSK5 : IPlugGameSkin
+public partial interface IPlugGameSkinVSK5 : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    string? DirNameAlt { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinTMF : IPlugGameSkin
+public partial interface IPlugGameSkinTMF : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers2, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    string? DirNameAlt { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinMP3 : IPlugGameSkin
+public partial interface IPlugGameSkinMP3 : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers2, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    string? DirNameAlt { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinTMT : IPlugGameSkin
+public partial interface IPlugGameSkinTMT : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers2, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    string? DirNameAlt { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinMP4 : IPlugGameSkin
+public partial interface IPlugGameSkinMP4 : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers2, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers3, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.Fid[]? CustomizableFids { get; set; }
-    string? DirName { get; set; }
-    string? DirNameAlt { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 
-public partial interface IPlugGameSkinTM2020 : IPlugGameSkin
+public partial interface IPlugGameSkinTM2020 : IPlugGameSkin, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers2, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers4, global::GBX.NET.Interfaces.Plug.IPlugGameSkinMembers5
 {
     global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? CustomizableFilePaths { get; set; }
-    string? DirName { get; set; }
-    string? DirNameAlt { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugGameSkin.HeaderFid[]? HeaderFids { get; set; }
-    string? PainterSceneId { get; set; }
-    string? PainterTextureName { get; set; }
 }
 

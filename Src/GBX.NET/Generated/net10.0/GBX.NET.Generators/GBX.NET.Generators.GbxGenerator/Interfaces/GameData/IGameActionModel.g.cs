@@ -31,6 +31,33 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameActionModelMembers1 : global::GBX.NET.Interfaces.GameData.IGameActionModel
+{
+    new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings? Script { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameActionModelMembers2<T0> : global::GBX.NET.Interfaces.GameData.IGameActionModel where T0 : class
+{
+    new T0? Anim { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameActionModelMembers3<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameActionModel where T0 : class where T1 : class
+{
+    bool IsLockModeActive { get; set; }
+    string? Name { get; set; }
+    new T0? Script { get; set; }
+    T1? ShieldModel { get; set; }
+    bool UseVehicleGuns { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameActionModelMembers4 : global::GBX.NET.Interfaces.GameData.IGameActionModel
+{
+    int InventoryItemClass { get; set; }
+    bool LegacyFlag { get; set; }
+    int SpriteBlockVersion { get; set; }
+    global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks { get; set; }
+}
 public partial interface IGameActionModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameActionModel>
 {
     string ActionName { get; set; }
@@ -59,50 +86,22 @@ public partial interface IGameActionModel : IClassVersion<global::GBX.NET.Engine
     global::GBX.NET.Engines.GameData.CGameActionModel.SoundBlock[]? SoundBlocks { get; set; }
 }
 
-public partial interface IGameActionModelMP3 : IGameActionModel
+public partial interface IGameActionModelMP3 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers1, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP3? Anim { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings? Script { get; set; }
 }
 
-public partial interface IGameActionModelTMT : IGameActionModel
+public partial interface IGameActionModelTMT : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers1, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT? Anim { get; set; }
-    int InventoryItemClass { get; set; }
-    bool LegacyFlag { get; set; }
     int[]? LegacyInventoryValues { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings? Script { get; set; }
-    int SpriteBlockVersion { get; set; }
-    global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks { get; set; }
 }
 
-public partial interface IGameActionModelMP4 : IGameActionModel
+public partial interface IGameActionModelMP4 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4, global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? Anim { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>? BulletModels_Nadeo { get; set; }
-    int InventoryItemClass { get; set; }
-    bool IsLockModeActive { get; set; }
-    bool LegacyFlag { get; set; }
-    string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4? Script { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? ShieldModel { get; set; }
-    int SpriteBlockVersion { get; set; }
-    global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks { get; set; }
-    bool UseVehicleGuns { get; set; }
 }
 
-public partial interface IGameActionModelTM2020 : IGameActionModel
+public partial interface IGameActionModelTM2020 : IGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020, global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020>, global::GBX.NET.Interfaces.GameData.IGameActionModelMembers4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? Anim { get; set; }
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? BulletModels_Nadeo { get; set; }
-    int InventoryItemClass { get; set; }
-    bool IsLockModeActive { get; set; }
-    bool LegacyFlag { get; set; }
-    string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020? Script { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020? ShieldModel { get; set; }
-    int SpriteBlockVersion { get; set; }
-    global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks { get; set; }
-    bool UseVehicleGuns { get; set; }
 }
 

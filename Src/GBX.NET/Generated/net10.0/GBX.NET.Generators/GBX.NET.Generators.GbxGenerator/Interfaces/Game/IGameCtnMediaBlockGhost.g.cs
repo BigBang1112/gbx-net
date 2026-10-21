@@ -31,6 +31,19 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockGhostMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhost where T0 : class
+{
+    new T0? GhostModel { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockGhostMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhost
+{
+    bool ForceHue { get; set; }
+    bool ForceLight { get; set; }
+    List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? Keys { get; set; }
+    bool NoDamage { get; set; }
+}
 public partial interface IGameCtnMediaBlockGhost : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -44,38 +57,22 @@ public partial interface IGameCtnMediaBlockGhost : IClassVersion<global::GBX.NET
     float StartOffset { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockGhostTMF : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF
+public partial interface IGameCtnMediaBlockGhostTMF : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF>
 {
     TimeSingle End { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnGhostTMF? GhostModel { get; set; }
     TimeSingle Start { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockGhostTMT : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockGhostTMT : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers2
 {
-    bool ForceHue { get; set; }
-    bool ForceLight { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? GhostModel { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? Keys { get; set; }
-    bool NoDamage { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockGhostMP4 : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockGhostMP4 : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers2
 {
-    bool ForceHue { get; set; }
-    bool ForceLight { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? GhostModel { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? Keys { get; set; }
-    bool NoDamage { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockGhostTM2020 : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockGhostTM2020 : IGameCtnMediaBlockGhost, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockGhostMembers2
 {
-    bool ForceHue { get; set; }
-    bool ForceLight { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? GhostModel { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockGhost.Key>? Keys { get; set; }
-    bool NoDamage { get; set; }
     float TrailIntensity { get; set; }
 }
 

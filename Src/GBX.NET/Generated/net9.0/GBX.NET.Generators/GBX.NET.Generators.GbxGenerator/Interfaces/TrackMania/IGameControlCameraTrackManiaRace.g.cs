@@ -31,6 +31,21 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraTrackManiaRaceMembers1 : global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace
+{
+    float CarCameraAlign { get; set; }
+    float CarCameraDistance { get; set; }
+    float CarCameraHeight { get; set; }
+    float CarCameraTargetDistance { get; set; }
+    float ConeAperture { get; set; }
+    float ConeMaxSpeed { get; set; }
+    float ConeMinSpeed { get; set; }
+    bool IsSegmentCast { get; set; }
+    float SegmentCastLength { get; set; }
+    float SegmentCastMinDist { get; set; }
+    bool UseSpeedDir { get; set; }
+}
 public partial interface IGameControlCameraTrackManiaRace : IClassVersion<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace>, global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,215 +55,34 @@ public partial interface IGameControlCameraTrackManiaRace : IClassVersion<global
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool Interpolate { get; set; }
-    new bool IsUpLinked { get; set; }
-    new Iso4 Location { get; set; }
-    new float LookAtFactor { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRaceTMSX : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX
+public partial interface IGameControlCameraTrackManiaRaceTMSX : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMembers1
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float CarCameraAlign { get; set; }
-    float CarCameraDistance { get; set; }
-    float CarCameraHeight { get; set; }
-    float CarCameraTargetDistance { get; set; }
-    float ConeAperture { get; set; }
-    float ConeMaxSpeed { get; set; }
-    float ConeMinSpeed { get; set; }
-    new float DefaultFov { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    bool IsSegmentCast { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeTargetPos { get; set; }
-    float SegmentCastLength { get; set; }
-    float SegmentCastMinDist { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    bool UseSpeedDir { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRaceTMNESWC : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC
+public partial interface IGameControlCameraTrackManiaRaceTMNESWC : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMembers1
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float CarCameraAlign { get; set; }
-    float CarCameraDistance { get; set; }
-    float CarCameraHeight { get; set; }
-    float CarCameraTargetDistance { get; set; }
-    float ConeAperture { get; set; }
-    float ConeMaxSpeed { get; set; }
-    float ConeMinSpeed { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    bool IsSegmentCast { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    float SegmentCastLength { get; set; }
-    float SegmentCastMinDist { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    bool UseSpeedDir { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRaceVSK5 : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5
+public partial interface IGameControlCameraTrackManiaRaceVSK5 : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMembers1
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float CarCameraAlign { get; set; }
-    float CarCameraDistance { get; set; }
-    float CarCameraHeight { get; set; }
-    float CarCameraTargetDistance { get; set; }
-    float ConeAperture { get; set; }
-    float ConeMaxSpeed { get; set; }
-    float ConeMinSpeed { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    bool IsSegmentCast { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    float SegmentCastLength { get; set; }
-    float SegmentCastMinDist { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    bool UseSpeedDir { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRaceTMF : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF
+public partial interface IGameControlCameraTrackManiaRaceTMF : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMembers1
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float CarCameraAlign { get; set; }
-    float CarCameraDistance { get; set; }
-    float CarCameraHeight { get; set; }
-    float CarCameraTargetDistance { get; set; }
-    float ConeAperture { get; set; }
-    float ConeMaxSpeed { get; set; }
-    float ConeMinSpeed { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    bool IsSegmentCast { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    float SegmentCastLength { get; set; }
-    float SegmentCastMinDist { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    bool UseSpeedDir { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRaceMP3 : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3
+public partial interface IGameControlCameraTrackManiaRaceMP3 : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMembers1
 {
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float CarCameraAlign { get; set; }
-    float CarCameraDistance { get; set; }
-    float CarCameraHeight { get; set; }
-    float CarCameraTargetDistance { get; set; }
-    float ConeAperture { get; set; }
-    float ConeMaxSpeed { get; set; }
-    float ConeMinSpeed { get; set; }
-    bool IsSegmentCast { get; set; }
-    float SegmentCastLength { get; set; }
-    float SegmentCastMinDist { get; set; }
-    bool UseSpeedDir { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRaceTMT : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT
+public partial interface IGameControlCameraTrackManiaRaceTMT : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMembers1
 {
-    float CarCameraAlign { get; set; }
-    float CarCameraDistance { get; set; }
-    float CarCameraHeight { get; set; }
-    float CarCameraTargetDistance { get; set; }
-    float ConeAperture { get; set; }
-    float ConeMaxSpeed { get; set; }
-    float ConeMinSpeed { get; set; }
-    bool IsSegmentCast { get; set; }
-    float SegmentCastLength { get; set; }
-    float SegmentCastMinDist { get; set; }
-    bool UseSpeedDir { get; set; }
 }
 
 public partial interface IGameControlCameraTrackManiaRaceMP4 : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP4
 {
-    new bool CanCameraMove { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
 public partial interface IGameControlCameraTrackManiaRaceTM2020 : IGameControlCameraTrackManiaRace, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTM2020

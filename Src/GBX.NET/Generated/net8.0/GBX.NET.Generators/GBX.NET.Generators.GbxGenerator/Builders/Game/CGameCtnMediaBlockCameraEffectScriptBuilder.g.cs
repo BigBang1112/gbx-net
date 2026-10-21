@@ -36,8 +36,8 @@ public abstract class CGameCtnMediaBlockCameraEffectScriptBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state;
     private protected CGameCtnMediaBlockCameraEffectScriptBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraEffectScriptBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>(value), static (node, value) => node.Keys = value);
-    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state, string value) => state.Set<string>("Script", value, GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.Script = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectScriptBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectScriptBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Key>?>("Keys");
@@ -69,6 +69,21 @@ public abstract class CGameCtnMediaBlockCameraEffectScriptBuilderBase<TSelf> whe
 }
 public partial class CGameCtnMediaBlockCameraEffectScriptBuilder : CGameCtnMediaBlockCameraEffectScriptBuilderBase<CGameCtnMediaBlockCameraEffectScriptBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript();
+        var chunk03161000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Chunk03161000(game);
+        node.Chunks.Add(chunk03161000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Chunk03161000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03161000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript node, GameVersion game)
+    {
+        if (node.Script is null) throw new MemberNullException("Script");
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -79,14 +94,12 @@ public partial class CGameCtnMediaBlockCameraEffectScriptBuilder : CGameCtnMedia
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectScriptTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript();
-            var chunk03161000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Chunk03161000(GameVersion.TMT);
-            node.Chunks.Add(chunk03161000);
+            var node = CGameCtnMediaBlockCameraEffectScriptBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Chunk03161000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk03161000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectScriptBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Script is null) throw new MemberNullException("Script");
+            CGameCtnMediaBlockCameraEffectScriptBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -99,14 +112,12 @@ public partial class CGameCtnMediaBlockCameraEffectScriptBuilder : CGameCtnMedia
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectScriptMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript();
-            var chunk03161000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Chunk03161000(GameVersion.MP4);
-            node.Chunks.Add(chunk03161000);
+            var node = CGameCtnMediaBlockCameraEffectScriptBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectScript.Chunk03161000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk03161000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectScriptBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Script is null) throw new MemberNullException("Script");
+            CGameCtnMediaBlockCameraEffectScriptBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

@@ -40,8 +40,6 @@ public partial interface IMwCmdExpMult : IClassVersion<global::GBX.NET.Engines.M
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value1 { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value2 { get; set; }
 }
 
 public partial interface IMwCmdExpMultTMF : IMwCmdExpMult, global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumBinTMF

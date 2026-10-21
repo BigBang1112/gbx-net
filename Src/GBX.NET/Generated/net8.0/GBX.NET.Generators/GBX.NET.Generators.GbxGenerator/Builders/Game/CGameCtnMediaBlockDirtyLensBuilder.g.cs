@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockDirtyLensBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens> state;
     private protected CGameCtnMediaBlockDirtyLensBuilderBase() => state = new();
     private protected CGameCtnMediaBlockDirtyLensBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockDirtyLensBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Key>?>("Keys");
@@ -58,6 +58,21 @@ public abstract class CGameCtnMediaBlockDirtyLensBuilderBase<TSelf> where TSelf 
 }
 public partial class CGameCtnMediaBlockDirtyLensBuilder : CGameCtnMediaBlockDirtyLensBuilderBase<CGameCtnMediaBlockDirtyLensBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens();
+        var chunk03165000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000();
+        chunk03165000.Version = 0;
+        node.Chunks.Add(chunk03165000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03165000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -69,14 +84,12 @@ public partial class CGameCtnMediaBlockDirtyLensBuilder : CGameCtnMediaBlockDirt
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockDirtyLensTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens();
-            var chunk03165000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000();
-            chunk03165000.Version = 0;
-            node.Chunks.Add(chunk03165000);
+            var node = CGameCtnMediaBlockDirtyLensBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03165000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockDirtyLensBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockDirtyLensBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -89,14 +102,12 @@ public partial class CGameCtnMediaBlockDirtyLensBuilder : CGameCtnMediaBlockDirt
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockDirtyLensMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens();
-            var chunk03165000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000();
-            chunk03165000.Version = 0;
-            node.Chunks.Add(chunk03165000);
+            var node = CGameCtnMediaBlockDirtyLensBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03165000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockDirtyLensBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockDirtyLensBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -109,14 +120,12 @@ public partial class CGameCtnMediaBlockDirtyLensBuilder : CGameCtnMediaBlockDirt
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockDirtyLensTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens();
-            var chunk03165000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000();
-            chunk03165000.Version = 0;
-            node.Chunks.Add(chunk03165000);
+            var node = CGameCtnMediaBlockDirtyLensBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockDirtyLens.Chunk03165000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03165000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockDirtyLensBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockDirtyLensBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

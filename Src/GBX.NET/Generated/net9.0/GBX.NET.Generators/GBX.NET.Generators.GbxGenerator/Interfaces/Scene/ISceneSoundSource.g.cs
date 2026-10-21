@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneSoundSourceMembers1 : global::GBX.NET.Interfaces.Scene.ISceneSoundSource
+{
+    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
+}
 public partial interface ISceneSoundSource : IClassVersion<global::GBX.NET.Engines.Scene.CSceneSoundSource>, global::GBX.NET.Interfaces.Scene.IScenePoc
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,51 +45,41 @@ public partial interface ISceneSoundSource : IClassVersion<global::GBX.NET.Engin
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool IsActive { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface ISceneSoundSourceTM10 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTM10
+public partial interface ISceneSoundSourceTM10 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTM10, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
-public partial interface ISceneSoundSourceTMPU : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMPU
+public partial interface ISceneSoundSourceTMPU : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMPU, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
-public partial interface ISceneSoundSourceTMSX : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMSX
+public partial interface ISceneSoundSourceTMSX : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMSX, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
-public partial interface ISceneSoundSourceTMNESWC : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMNESWC
+public partial interface ISceneSoundSourceTMNESWC : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
-public partial interface ISceneSoundSourceVSK5 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocVSK5
+public partial interface ISceneSoundSourceVSK5 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocVSK5, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
-public partial interface ISceneSoundSourceTMF : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMF
+public partial interface ISceneSoundSourceTMF : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMF, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
-public partial interface ISceneSoundSourceMP3 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocMP3
+public partial interface ISceneSoundSourceMP3 : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocMP3, global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMembers1
 {
     new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource { get; set; }
 }
 
 public partial interface ISceneSoundSourceTMT : ISceneSoundSource, global::GBX.NET.Interfaces.Scene.IScenePocTMT

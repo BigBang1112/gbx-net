@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncShadersMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncShaders where T0 : class
+{
+    new IReadOnlyList<T0>? FuncShaders { get; set; }
+}
 public partial interface IFuncShaders : IClassVersion<global::GBX.NET.Engines.Function.CFuncShaders>, global::GBX.NET.Interfaces.Function.IFuncShader
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,73 +45,46 @@ public partial interface IFuncShaders : IClassVersion<global::GBX.NET.Engines.Fu
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader>? FuncShaders { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
-public partial interface IFuncShadersTM10 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTM10
+public partial interface IFuncShadersTM10 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM10>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM10>? FuncShaders { get; set; }
 }
 
-public partial interface IFuncShadersTMPU : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU
+public partial interface IFuncShadersTMPU : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>? FuncShaders { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersTMSX : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX
+public partial interface IFuncShadersTMSX : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>? FuncShaders { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersTMNESWC : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC
+public partial interface IFuncShadersTMNESWC : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>? FuncShaders { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersVSK5 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5
+public partial interface IFuncShadersVSK5 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>? FuncShaders { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersTMF : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMF
+public partial interface IFuncShadersTMF : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMF, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>? FuncShaders { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersMP3 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderMP3
+public partial interface IFuncShadersMP3 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderMP3, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>? FuncShaders { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersTMT : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMT
+public partial interface IFuncShadersTMT : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTMT, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>? FuncShaders { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersMP4 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderMP4
+public partial interface IFuncShadersMP4 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderMP4, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>? FuncShaders { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncShadersTM2020 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020
+public partial interface IFuncShadersTM2020 : IFuncShaders, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020, global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>? FuncShaders { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

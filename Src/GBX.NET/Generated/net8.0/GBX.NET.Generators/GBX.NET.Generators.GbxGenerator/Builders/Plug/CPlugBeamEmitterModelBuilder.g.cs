@@ -36,7 +36,7 @@ public abstract class CPlugBeamEmitterModelBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state;
     private protected CPlugBeamEmitterModelBuilderBase() => state = new();
     private protected CPlugBeamEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) => this.state = state;
-    private protected static void SetSubModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>?>("SubModels", value, GameVersion.MP4, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.SubModels = value);
+    private protected static void SetSubModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBeamEmitterModelBuilderAssignments.GetSubModelsAssignment(), value, GameVersion.MP4);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>? SubModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel>?>("SubModels");
@@ -58,6 +58,21 @@ public abstract class CPlugBeamEmitterModelBuilderBase<TSelf> where TSelf : CPlu
 }
 public partial class CPlugBeamEmitterModelBuilder : CPlugBeamEmitterModelBuilderBase<CPlugBeamEmitterModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel();
+        var chunk090B4002 = new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel.Chunk090B4002();
+        chunk090B4002.Version = 0;
+        node.Chunks.Add(chunk090B4002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel.Chunk090B4002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B4002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -66,7 +81,7 @@ public partial class CPlugBeamEmitterModelBuilder : CPlugBeamEmitterModelBuilder
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel> state) : base(state) { }
         public MP4 WithSubModels(params global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4[] values)
         {
-            return base.WithSubModels(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithSubModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBeamEmitterSubModel, global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4>(values, false));
         }
         public MP4 WithSubModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterSubModelMP4> values)
         {
@@ -75,14 +90,12 @@ public partial class CPlugBeamEmitterModelBuilder : CPlugBeamEmitterModelBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel();
-            var chunk090B4002 = new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel.Chunk090B4002();
-            chunk090B4002.Version = 0;
-            node.Chunks.Add(chunk090B4002);
+            var node = CPlugBeamEmitterModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel.Chunk090B4002>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk090B4002 is missing or has an incompatible version.");
+            CPlugBeamEmitterModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugBeamEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionWeatherMembers1 : global::GBX.NET.Interfaces.Motion.IMotionWeather
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel { get; set; }
+}
 public partial interface IMotionWeather : IClassVersion<global::GBX.NET.Engines.Motion.CMotionWeather>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -42,48 +47,39 @@ public partial interface IMotionWeather : IClassVersion<global::GBX.NET.Engines.
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IMotionWeatherTM10 : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10
+public partial interface IMotionWeatherTM10 : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10, global::GBX.NET.Interfaces.Motion.IMotionWeatherMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel { get; set; }
 }
 
-public partial interface IMotionWeatherTMPU : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU
+public partial interface IMotionWeatherTMPU : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU, global::GBX.NET.Interfaces.Motion.IMotionWeatherMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel { get; set; }
 }
 
 public partial interface IMotionWeatherTMSX : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionWeatherTMNESWC : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMNESWC
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionWeatherVSK5 : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionWeatherTMF : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionWeatherMP3 : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionWeatherTMT : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionWeatherMP4 : IMotionWeather, global::GBX.NET.Interfaces.Motion.IMotionManagedMP4
 {
-    new string? Name { get; set; }
 }
 

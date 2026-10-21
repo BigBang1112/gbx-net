@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Hms;
 public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global::GBX.NET.Interfaces.Hms.IHmsZoneTM10, global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU, global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX, global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5, global::GBX.NET.Interfaces.Hms.IHmsZoneTMF, global::GBX.NET.Interfaces.Hms.IHmsZoneMP3, global::GBX.NET.Interfaces.Hms.IHmsZoneTMT, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020
 {
     public static global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5.BitmapCubeReflectHardSpecA
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapCubeReflectHardSpecA
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Hms.IHmsZoneTMF.BitmapCubeReflectHardSpecA
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapCubeReflectHardSpecA
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsZoneMP3.BitmapCubeReflectHardSpecA
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapCubeReflectHardSpecA
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsZoneMP3.BitmapCubeReflectHdrAlpha2
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapCubeReflectHdrAlpha2
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsZoneTMT.BitmapCubeReflectHardSpecA
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapCubeReflectHardSpecA
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsZoneTMT.BitmapCubeReflectHdrAlpha2
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapCubeReflectHdrAlpha2
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Hms.IHmsZoneMP4.BitmapCubeReflectHardSpecA
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapCubeReflectHardSpecA
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Hms.IHmsZoneMP4.BitmapCubeReflectHdrAlpha2
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapCubeReflectHdrAlpha2
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHdrAlpha2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020.BitmapCubeReflectHardSpecA
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapCubeReflectHardSpecA
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CHmsZone : global::GBX.NET.Interfaces.Hms.IHmsZone, global:
         }
         set => BitmapCubeReflectHardSpecA = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020.BitmapCubeReflectHdrAlpha2
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Hms.IHmsZoneMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapCubeReflectHdrAlpha2
     {
         get
         {

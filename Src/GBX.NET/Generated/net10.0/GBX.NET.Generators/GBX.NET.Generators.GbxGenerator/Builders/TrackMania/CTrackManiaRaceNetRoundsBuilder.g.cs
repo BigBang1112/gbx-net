@@ -36,9 +36,9 @@ public abstract class CTrackManiaRaceNetRoundsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state;
     private protected CTrackManiaRaceNetRoundsBuilderBase() => state = new();
     private protected CTrackManiaRaceNetRoundsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state) => this.state = state;
-    private protected static void SetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("InterfaceFid", value, GameVersion.TMF, static value => value, static (node, value) => node.InterfaceFid = value);
-    private protected static void SetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("InterfaceFid", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.InterfaceFid.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
+    private protected static void SetInterfaceFid(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidAssignment(), value, GameVersion.TMF);
+    private protected static void SetInterfaceFidReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameRaceBuilderAssignments.GetInterfaceFidReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
@@ -52,6 +52,37 @@ public abstract class CTrackManiaRaceNetRoundsBuilderBase<TSelf> where TSelf : C
 }
 public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsBuilderBase<CTrackManiaRaceNetRoundsBuilder>
 {
+    private static global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
+        var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
+        node.Chunks.Add(chunk03008000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
+        var chunk24014002 = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014002();
+        node.Chunks.Add(chunk24014002);
+        var chunk03073000 = new global::GBX.NET.Engines.Game.CGameRace.Chunk03073000();
+        node.Chunks.Add(chunk03073000);
+        var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
+        node.Chunks.Add(chunk03008000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24014002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameRace.Chunk03073000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03073000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -70,13 +101,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -89,13 +119,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -108,13 +137,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -127,13 +155,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -146,13 +173,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -181,19 +207,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk24014002 = new global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014002();
-            node.Chunks.Add(chunk24014002);
-            var chunk03073000 = new global::GBX.NET.Engines.Game.CGameRace.Chunk03073000();
-            node.Chunks.Add(chunk03073000);
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CTrackManiaRace.Chunk24014002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk24014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameRace.Chunk03073000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03073000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -206,13 +225,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -225,13 +243,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -244,13 +261,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -263,13 +279,12 @@ public partial class CTrackManiaRaceNetRoundsBuilder : CTrackManiaRaceNetRoundsB
         public global::GBX.NET.Interfaces.TrackMania.ITrackManiaRaceNetRoundsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CTrackManiaRaceNetRounds();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CTrackManiaRaceNetRoundsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03008000 is missing or has an incompatible version.");
+            CTrackManiaRaceNetRoundsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CTrackManiaRaceNetRoundsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

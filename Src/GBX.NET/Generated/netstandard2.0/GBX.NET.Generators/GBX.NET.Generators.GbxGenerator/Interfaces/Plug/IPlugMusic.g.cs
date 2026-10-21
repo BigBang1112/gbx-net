@@ -40,215 +40,45 @@ public partial interface IPlugMusic : IClassVersion<global::GBX.NET.Engines.Plug
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new float ConeOutsideAttenuation { get; set; }
-    new int InsideConeAngle { get; set; }
-    new bool IsContinuous { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugSound.EMode Mode { get; set; }
-    new int OutsideConeAngle { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? PlugFile { get; set; }
-    new float Priority { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugSound.ESoundKind SoundKind { get; set; }
 }
 
 public partial interface IPlugMusicTM10 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTM10
 {
-    new float ConeOutsideAttenuationHF { get; set; }
-    new float Volume { get; set; }
 }
 
 public partial interface IPlugMusicTMPU : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMPU
 {
-    new float ConeOutsideAttenuationHF { get; set; }
-    new float Volume { get; set; }
 }
 
 public partial interface IPlugMusicTMSX : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMSX
 {
-    new float AirAbsorptionFactor { get; set; }
-    new float ConeOutsideAttenuationHF { get; set; }
-    new float DopplerFactor { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float MaxDistanceOmni { get; set; }
-    new string Name { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new float Volume { get; set; }
-    new float VolumeAttenuationDirect { get; set; }
-    new float VolumeAttenuationDirectHF { get; set; }
-    new float VolumeAttenuationRoom { get; set; }
-    new float VolumeAttenuationRoomHF { get; set; }
 }
 
 public partial interface IPlugMusicTMNESWC : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMNESWC
 {
-    new float AirAbsorptionFactor { get; set; }
-    new float ConeOutsideAttenuationHF { get; set; }
-    new float DopplerFactor { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float MaxDistanceOmni { get; set; }
-    new string Name { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new float Volume { get; set; }
-    new float VolumeAttenuationDirect { get; set; }
-    new float VolumeAttenuationDirectHF { get; set; }
-    new float VolumeAttenuationRoom { get; set; }
-    new float VolumeAttenuationRoomHF { get; set; }
 }
 
 public partial interface IPlugMusicVSK5 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeVSK5
 {
-    new float AirAbsorptionFactor { get; set; }
-    new float ConeOutsideAttenuationHF { get; set; }
-    new float DopplerFactor { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float MaxDistanceOmni { get; set; }
-    new string Name { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new float Volume { get; set; }
-    new float VolumeAttenuationDirect { get; set; }
-    new float VolumeAttenuationDirectHF { get; set; }
-    new float VolumeAttenuationRoom { get; set; }
-    new float VolumeAttenuationRoomHF { get; set; }
 }
 
 public partial interface IPlugMusicTMF : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMF
 {
-    new float AirAbsorptionFactor { get; set; }
-    new float ConeOutsideAttenuationHF { get; set; }
-    new float DopplerFactor { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float MaxDistanceOmni { get; set; }
-    new string Name { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new float Volume { get; set; }
-    new float VolumeAttenuationDirect { get; set; }
-    new float VolumeAttenuationDirectHF { get; set; }
-    new float VolumeAttenuationRoom { get; set; }
-    new float VolumeAttenuationRoomHF { get; set; }
 }
 
 public partial interface IPlugMusicMP3 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeMP3
 {
-    new float AirAbsorptionFactor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? BackingSound { get; set; }
-    new int BalanceGroup { get; set; }
-    new float DopplerFactor { get; set; }
-    new int DuplicatesIntervalMin { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float FadePlayDuration { get; set; }
-    new float FadeStopDuration { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? FocusedSound { get; set; }
-    new string? GroupDuplicate { get; set; }
-    new int IgnoreSourceProperties { get; set; }
-    new float MaxDistance { get; set; }
-    new int MaxDuplicates { get; set; }
-    new string Name { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? OldSubSources { get; set; }
-    new float Pitch { get; set; }
-    new int PitchFromDistMode { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? PitchFromDistance { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new int RoomFxSend { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new bool UseLowPassFilter { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? VolumeFromDistance { get; set; }
 }
 
 public partial interface IPlugMusicTMT : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTMT
 {
-    new float AirAbsorptionFactor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? BackingSound { get; set; }
-    new int BalanceGroup { get; set; }
-    new float DopplerFactor { get; set; }
-    new int DuplicatesIntervalMin { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float FadePlayDuration { get; set; }
-    new float FadeStopDuration { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? FocusedSound { get; set; }
-    new string? GroupDuplicate { get; set; }
-    new int IgnoreSourceProperties { get; set; }
-    new float MaxDistance { get; set; }
-    new int MaxDuplicates { get; set; }
-    new string Name { get; set; }
-    new float PanAngleDeg { get; set; }
-    new float Pitch { get; set; }
-    new int PitchFromDistMode { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? PitchFromDistance { get; set; }
-    new float Radius { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new int RoomFxSend { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new bool UseLowPassFilter { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? VolumeFormSpeedKmh { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? VolumeFromDistance { get; set; }
 }
 
 public partial interface IPlugMusicMP4 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeMP4
 {
-    new float AirAbsorptionFactor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? BackingSound { get; set; }
-    new int BalanceGroup { get; set; }
-    new float DopplerFactor { get; set; }
-    new int DuplicatesIntervalMin { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float FadePlayDuration { get; set; }
-    new float FadeStopDuration { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? FocusedSound { get; set; }
-    new string? GroupDuplicate { get; set; }
-    new int IgnoreSourceProperties { get; set; }
-    new float MaxDistance { get; set; }
-    new int MaxDuplicates { get; set; }
-    new string Name { get; set; }
-    new float PanAngleDeg { get; set; }
-    new float Pitch { get; set; }
-    new int PitchFromDistMode { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? PitchFromDistance { get; set; }
-    new float Radius { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new int RoomFxSend { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new bool UseLowPassFilter { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? VolumeFormSpeedKmh { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? VolumeFromDistance { get; set; }
 }
 
 public partial interface IPlugMusicTM2020 : IPlugMusic, global::GBX.NET.Interfaces.Plug.IPlugMusicTypeTM2020
 {
-    new float AirAbsorptionFactor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? BackingSound { get; set; }
-    new int BalanceGroup { get; set; }
-    new float DopplerFactor { get; set; }
-    new int DuplicatesIntervalMin { get; set; }
-    new bool EnableDoppler { get; set; }
-    new float FadePlayDuration { get; set; }
-    new float FadeStopDuration { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? FocusedSound { get; set; }
-    new string? GroupDuplicate { get; set; }
-    new int IgnoreSourceProperties { get; set; }
-    new float MaxDistance { get; set; }
-    new int MaxDuplicates { get; set; }
-    new string Name { get; set; }
-    new float PanAngleDeg { get; set; }
-    new float Pitch { get; set; }
-    new int PitchFromDistMode { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? PitchFromDistance { get; set; }
-    new float Radius { get; set; }
-    new float RefDistance { get; set; }
-    new float RolloffFactor { get; set; }
-    new int RoomFxSend { get; set; }
-    new float RoomRolloffFactor { get; set; }
-    new bool UseLowPassFilter { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? VolumeFormSpeedKmh { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? VolumeFromDistance { get; set; }
 }
 

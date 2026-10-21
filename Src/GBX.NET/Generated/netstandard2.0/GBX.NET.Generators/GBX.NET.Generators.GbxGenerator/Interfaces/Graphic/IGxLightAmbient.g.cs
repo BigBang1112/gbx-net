@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Graphic;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxLightAmbientMembers1 : global::GBX.NET.Interfaces.Graphic.IGxLightAmbient
+{
+    float ShadeMaxY { get; set; }
+    float ShadeMinY { get; set; }
+}
 public partial interface IGxLightAmbient : IClassVersion<global::GBX.NET.Engines.Graphic.GxLightAmbient>, global::GBX.NET.Interfaces.Graphic.IGxLight
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,12 +46,6 @@ public partial interface IGxLightAmbient : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new Vec3 Color { get; set; }
-    new global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags { get; set; }
-    new float FlareIntensity { get; set; }
-    new float Intensity { get; set; }
-    new float ShadowIntensity { get; set; }
-    new Vec3 ShadowRGB { get; set; }
 }
 
 public partial interface IGxLightAmbientTM10 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTM10
@@ -56,67 +56,35 @@ public partial interface IGxLightAmbientTMPU : IGxLightAmbient, global::GBX.NET.
 {
 }
 
-public partial interface IGxLightAmbientTMSX : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMSX
+public partial interface IGxLightAmbientTMSX : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
 }
 
-public partial interface IGxLightAmbientTMNESWC : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC
+public partial interface IGxLightAmbientTMNESWC : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
 }
 
-public partial interface IGxLightAmbientVSK5 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightVSK5
+public partial interface IGxLightAmbientVSK5 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightAmbientTMF : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMF
+public partial interface IGxLightAmbientTMF : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMF, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightAmbientMP3 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightMP3
+public partial interface IGxLightAmbientMP3 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightMP3, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightAmbientTMT : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMT
+public partial interface IGxLightAmbientTMT : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMT, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightAmbientMP4 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightMP4
+public partial interface IGxLightAmbientMP4 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightMP4, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightAmbientTM2020 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTM2020
+public partial interface IGxLightAmbientTM2020 : IGxLightAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightAmbientMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float ShadeMaxY { get; set; }
-    float ShadeMinY { get; set; }
 }
 

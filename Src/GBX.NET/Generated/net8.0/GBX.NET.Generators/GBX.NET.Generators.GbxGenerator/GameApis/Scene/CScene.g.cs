@@ -33,34 +33,35 @@ namespace GBX.NET.Engines.Scene;
 
 public partial class CScene : global::GBX.NET.Interfaces.Scene.IScene, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneTM2020
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>? global::GBX.NET.Interfaces.Scene.ISceneTMSX.MotionManagerModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(() => MotionManagerModels, static node => { if (node is null) throw new MemberNullException("MotionManagerModels"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(value.Select(static item => item is global::GBX.NET.Engines.Motion.CMotionManager node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(GetMotionManagerModelsBuilderReferences, GameVersion.TMSX, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneTMNESWC.MotionManagerModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(() => MotionManagerModels, static node => { if (node is null) throw new MemberNullException("MotionManagerModels"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(value.Select(static item => item is global::GBX.NET.Engines.Motion.CMotionManager node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(GetMotionManagerModelsBuilderReferences, GameVersion.TMNESWC, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>? global::GBX.NET.Interfaces.Scene.ISceneVSK5.MotionManagerModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>(() => MotionManagerModels, static node => { if (node is null) throw new MemberNullException("MotionManagerModels"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(value.Select(static item => item is global::GBX.NET.Engines.Motion.CMotionManager node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>(GetMotionManagerModelsBuilderReferences, GameVersion.VSK5, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>? global::GBX.NET.Interfaces.Scene.ISceneTMF.MotionManagerModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>(() => MotionManagerModels, static node => { if (node is null) throw new MemberNullException("MotionManagerModels"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(value.Select(static item => item is global::GBX.NET.Engines.Motion.CMotionManager node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>(GetMotionManagerModelsBuilderReferences, GameVersion.TMF, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>? global::GBX.NET.Interfaces.Scene.ISceneMP3.MotionManagerModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>(() => MotionManagerModels, static node => { if (node is null) throw new MemberNullException("MotionManagerModels"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(value.Select(static item => item is global::GBX.NET.Engines.Motion.CMotionManager node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>(GetMotionManagerModelsBuilderReferences, GameVersion.MP3, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>? global::GBX.NET.Interfaces.Scene.ISceneTMT.MotionManagerModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>? global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>.MotionManagerModels
     {
-        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>(() => MotionManagerModels, static node => { if (node is null) throw new MemberNullException("MotionManagerModels"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(value.Select(static item => item is global::GBX.NET.Engines.Motion.CMotionManager node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MotionManagerModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>(GetMotionManagerModelsBuilderReferences, GameVersion.TMT, true, "MotionManagerModels");
+        set => MotionManagerModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Motion.CMotionManager, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Motion.CMotionManager>? GetMotionManagerModelsBuilderReferences() => MotionManagerModels;
 }

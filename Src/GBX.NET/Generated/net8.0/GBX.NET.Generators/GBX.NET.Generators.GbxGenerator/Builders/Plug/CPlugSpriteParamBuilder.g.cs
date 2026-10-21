@@ -36,12 +36,12 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state;
     private protected CPlugSpriteParamBuilderBase() => state = new();
     private protected CPlugSpriteParamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state) => this.state = state;
-    private protected static void SetGlobalDirTiltFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float value) => state.Set<float>("GlobalDirTiltFactor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.GlobalDirTiltFactor = value);
-    private protected static void SetGlobalDirection(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, Vec3 value) => state.Set<Vec3>("GlobalDirection", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.GlobalDirection = value);
-    private protected static void SetPivotPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, Vec2 value) => state.Set<Vec2>("PivotPoint", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PivotPoint = value);
-    private protected static void SetTextureHeightInWorld(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float value) => state.Set<float>("TextureHeightInWorld", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TextureHeightInWorld = value);
-    private protected static void SetVisibleMaxDistAtFov90(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float? value) => state.Set<float?>("VisibleMaxDistAtFov90", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.VisibleMaxDistAtFov90 = value);
-    private protected static void SetVisibleMinScreenHeight01(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float? value) => state.Set<float?>("VisibleMinScreenHeight01", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.VisibleMinScreenHeight01 = value);
+    private protected static void SetGlobalDirTiltFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirTiltFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetGlobalDirection(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetGlobalDirectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPivotPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetPivotPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTextureHeightInWorld(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetTextureHeightInWorldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetVisibleMaxDistAtFov90(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMaxDistAtFov90Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetVisibleMinScreenHeight01(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSpriteParam> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSpriteParamBuilderAssignments.GetVisibleMinScreenHeight01Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float GlobalDirTiltFactor
     {
         get => state.Get<float>("GlobalDirTiltFactor");
@@ -105,6 +105,20 @@ public abstract class CPlugSpriteParamBuilderBase<TSelf> where TSelf : CPlugSpri
 }
 public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlugSpriteParamBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugSpriteParam CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSpriteParam();
+        var chunk090AC001 = new global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001(game);
+        node.Chunks.Add(chunk090AC001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSpriteParam node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090AC001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSpriteParam node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -117,13 +131,12 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSpriteParam Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSpriteParam();
-            var chunk090AC001 = new global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001(GameVersion.MP3);
-            node.Chunks.Add(chunk090AC001);
+            var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk090AC001 is missing or has an incompatible version.");
+            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -136,13 +149,12 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSpriteParam Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSpriteParam();
-            var chunk090AC001 = new global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001(GameVersion.TMT);
-            node.Chunks.Add(chunk090AC001);
+            var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk090AC001 is missing or has an incompatible version.");
+            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -155,13 +167,12 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSpriteParam Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSpriteParam();
-            var chunk090AC001 = new global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001(GameVersion.MP4);
-            node.Chunks.Add(chunk090AC001);
+            var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk090AC001 is missing or has an incompatible version.");
+            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -174,13 +185,12 @@ public partial class CPlugSpriteParamBuilder : CPlugSpriteParamBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSpriteParam Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSpriteParam();
-            var chunk090AC001 = new global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001(GameVersion.TM2020);
-            node.Chunks.Add(chunk090AC001);
+            var node = CPlugSpriteParamBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSpriteParam.Chunk090AC001>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090AC001 is missing or has an incompatible version.");
+            CPlugSpriteParamBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugSpriteParamBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

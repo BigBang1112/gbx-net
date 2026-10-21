@@ -36,9 +36,9 @@ public abstract class CGameWaypointSpecialPropertyBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state;
     private protected CGameWaypointSpecialPropertyBuilderBase() => state = new();
     private protected CGameWaypointSpecialPropertyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state) => this.state = state;
-    private protected static void SetOrder(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, int value) => state.Set<int>("Order", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Order = value);
-    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ScriptMetadata = value);
-    private protected static void SetTag(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, string? value) => state.Set<string?>("Tag", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Tag = value);
+    private protected static void SetOrder(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetOrderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTag(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameWaypointSpecialPropertyBuilderAssignments.GetTagAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int Order
     {
         get => state.Get<int>("Order");
@@ -72,6 +72,24 @@ public abstract class CGameWaypointSpecialPropertyBuilderBase<TSelf> where TSelf
 }
 public partial class CGameWaypointSpecialPropertyBuilder : CGameWaypointSpecialPropertyBuilderBase<CGameWaypointSpecialPropertyBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty();
+        var chunk2E009000 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000(game);
+        node.Chunks.Add(chunk2E009000);
+        var chunk2E009001 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001();
+        chunk2E009001.Version = 0;
+        node.Chunks.Add(chunk2E009001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E009000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E009001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -84,17 +102,12 @@ public partial class CGameWaypointSpecialPropertyBuilder : CGameWaypointSpecialP
         public global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty();
-            var chunk2E009000 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000(GameVersion.MP3);
-            node.Chunks.Add(chunk2E009000);
-            var chunk2E009001 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001();
-            chunk2E009001.Version = 0;
-            node.Chunks.Add(chunk2E009001);
+            var node = CGameWaypointSpecialPropertyBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk2E009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk2E009001 is missing or has an incompatible version.");
+            CGameWaypointSpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameWaypointSpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -107,17 +120,12 @@ public partial class CGameWaypointSpecialPropertyBuilder : CGameWaypointSpecialP
         public global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty();
-            var chunk2E009000 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000(GameVersion.TMT);
-            node.Chunks.Add(chunk2E009000);
-            var chunk2E009001 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001();
-            chunk2E009001.Version = 0;
-            node.Chunks.Add(chunk2E009001);
+            var node = CGameWaypointSpecialPropertyBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk2E009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk2E009001 is missing or has an incompatible version.");
+            CGameWaypointSpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameWaypointSpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -130,17 +138,12 @@ public partial class CGameWaypointSpecialPropertyBuilder : CGameWaypointSpecialP
         public global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty();
-            var chunk2E009000 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000(GameVersion.MP4);
-            node.Chunks.Add(chunk2E009000);
-            var chunk2E009001 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001();
-            chunk2E009001.Version = 0;
-            node.Chunks.Add(chunk2E009001);
+            var node = CGameWaypointSpecialPropertyBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E009001 is missing or has an incompatible version.");
+            CGameWaypointSpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameWaypointSpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -153,17 +156,12 @@ public partial class CGameWaypointSpecialPropertyBuilder : CGameWaypointSpecialP
         public global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty();
-            var chunk2E009000 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000(GameVersion.TM2020);
-            node.Chunks.Add(chunk2E009000);
-            var chunk2E009001 = new global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001();
-            chunk2E009001.Version = 0;
-            node.Chunks.Add(chunk2E009001);
+            var node = CGameWaypointSpecialPropertyBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009000>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty.Chunk2E009001>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E009001 is missing or has an incompatible version.");
+            CGameWaypointSpecialPropertyBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameWaypointSpecialPropertyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

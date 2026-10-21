@@ -31,6 +31,73 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::System.Collections.Immutable.ImmutableList<string>? ActionFileNames { get; }
+    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.GameData.CGameActionModel>? ActionModels { get; }
+    global::System.Collections.Immutable.ImmutableList<string>? ActionNames { get; }
+    bool EnableMinimap { get; }
+    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.InterfaceScriptInfo>? InterfaceScriptInfos { get; }
+    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.ItemResource>? Items { get; }
+    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.PlayerOfInterest>? PlayersOfInterest { get; }
+    string? PlaygroundScript { get; }
+    int SceneryCapturableCount { get; }
+    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryCapturableDataTape { get; }
+    global::GBX.NET.Engines.Game.CGameReplayObjectVisData? SceneryObjects { get; }
+    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; }
+    float SceneryVortexShrinkSpeed { get; }
+    string? TitleId { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::TmEssentials.TimeInt32 DayPeriod { get; }
+    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts { get; }
+    global::GBX.NET.Engines.Plug.CPlugEntRecordData? RecordData { get; }
+    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryTurretsDataTape { get; }
+    float TimeOfDay { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput>? Inputs { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    byte[][]? OldCutKeys2 { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers5 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::GBX.NET.Ident? MapInfo { get; }
+    string? PlayerNickname { get; }
+    global::TmEssentials.TimeInt32? Time { get; }
+    string? Xml { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania? Events { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers8 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.BonusBumpKey>? BonusBumpKeys { get; }
+    byte[][]? CameraRecord { get; }
+    global::GBX.NET.Engines.Plug.CPlugDataTape? EmptyCarsVisDataTape { get; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnReplayRecordMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnReplayRecord
+{
+    string? PlayerLogin { get; }
+}
 public partial interface IGameCtnReplayRecord : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnReplayRecord>
 {
     string? AuthorExtraInfo { get; }
@@ -45,184 +112,51 @@ public partial interface IGameCtnReplayRecord : IClassVersion<global::GBX.NET.En
     global::TmEssentials.TimeInt32? RecordDuration { get; }
 }
 
-public partial interface IGameCtnReplayRecordTM10 : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTM10 : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers3
 {
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput>? Inputs { get; }
     byte[][]? OldCutKeys { get; }
 }
 
-public partial interface IGameCtnReplayRecordTMPU : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTMPU : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers3, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers4
 {
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput>? Inputs { get; }
-    byte[][]? OldCutKeys2 { get; }
 }
 
-public partial interface IGameCtnReplayRecordTMSX : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTMSX : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers4, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers6, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania? Events { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    byte[][]? OldCutKeys2 { get; }
-    string? PlayerNickname { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordTMNESWC : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTMNESWC : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers4, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers6, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania? Events { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    byte[][]? OldCutKeys2 { get; }
-    string? PlayerNickname { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordTMU : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTMU : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers4, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers6, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers9
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania? Events { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    byte[][]? OldCutKeys2 { get; }
-    string? PlayerLogin { get; }
-    string? PlayerNickname { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordVSK5 : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordVSK5 : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers4, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers6, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania? Events { get; }
-    byte[][]? OldCutKeys2 { get; }
 }
 
-public partial interface IGameCtnReplayRecordTMF : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTMF : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers9
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    string? PlayerLogin { get; }
-    string? PlayerNickname { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordMP3 : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordMP3 : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers1, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers9
 {
-    global::System.Collections.Immutable.ImmutableList<string>? ActionFileNames { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.GameData.CGameActionModel>? ActionModels { get; }
-    global::System.Collections.Immutable.ImmutableList<string>? ActionNames { get; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    bool EnableMinimap { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.InterfaceScriptInfo>? InterfaceScriptInfos { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.ItemResource>? Items { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    string? PlayerLogin { get; }
-    string? PlayerNickname { get; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.PlayerOfInterest>? PlayersOfInterest { get; }
-    string? PlaygroundScript { get; }
-    int SceneryCapturableCount { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryCapturableDataTape { get; }
-    global::GBX.NET.Engines.Game.CGameReplayObjectVisData? SceneryObjects { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; }
-    float SceneryVortexShrinkSpeed { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    string? TitleId { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordTMT : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTMT : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers1, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers8, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers9
 {
-    global::System.Collections.Immutable.ImmutableList<string>? ActionFileNames { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.GameData.CGameActionModel>? ActionModels { get; }
-    global::System.Collections.Immutable.ImmutableList<string>? ActionNames { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.BonusBumpKey>? BonusBumpKeys { get; }
-    byte[][]? CameraRecord { get; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? EmptyCarsVisDataTape { get; }
-    bool EnableMinimap { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.InterfaceScriptInfo>? InterfaceScriptInfos { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.ItemResource>? Items { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    string? PlayerLogin { get; }
-    string? PlayerNickname { get; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.PlayerOfInterest>? PlayersOfInterest { get; }
-    string? PlaygroundScript { get; }
-    int SceneryCapturableCount { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryCapturableDataTape { get; }
-    global::GBX.NET.Engines.Game.CGameReplayObjectVisData? SceneryObjects { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; }
-    float SceneryVortexShrinkSpeed { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    string? TitleId { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordMP4 : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordMP4 : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers1, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers2, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers8, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers9
 {
-    global::System.Collections.Immutable.ImmutableList<string>? ActionFileNames { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.GameData.CGameActionModel>? ActionModels { get; }
-    global::System.Collections.Immutable.ImmutableList<string>? ActionNames { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.BonusBumpKey>? BonusBumpKeys { get; }
-    byte[][]? CameraRecord { get; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::TmEssentials.TimeInt32 DayPeriod { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? EmptyCarsVisDataTape { get; }
-    bool EnableMinimap { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.InterfaceScriptInfo>? InterfaceScriptInfos { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.ItemResource>? Items { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    string? PlayerLogin { get; }
-    string? PlayerNickname { get; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.PlayerOfInterest>? PlayersOfInterest { get; }
-    string? PlaygroundScript { get; }
-    global::GBX.NET.Engines.Plug.CPlugEntRecordData? RecordData { get; }
-    int SceneryCapturableCount { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryCapturableDataTape { get; }
-    global::GBX.NET.Engines.Game.CGameReplayObjectVisData? SceneryObjects { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryTurretsDataTape { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; }
-    float SceneryVortexShrinkSpeed { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    float TimeOfDay { get; }
-    string? TitleId { get; }
-    string? Xml { get; }
 }
 
-public partial interface IGameCtnReplayRecordTM2020 : IGameCtnReplayRecord
+public partial interface IGameCtnReplayRecordTM2020 : IGameCtnReplayRecord, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers1, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers2, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers5, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers7, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers8, global::GBX.NET.Interfaces.Game.IGameCtnReplayRecordMembers9
 {
-    global::System.Collections.Immutable.ImmutableList<string>? ActionFileNames { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.GameData.CGameActionModel>? ActionModels { get; }
-    global::System.Collections.Immutable.ImmutableList<string>? ActionNames { get; }
     global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.ItemResource>? AdditionalItems { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.BonusBumpKey>? BonusBumpKeys { get; }
-    byte[][]? CameraRecord { get; }
     global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClip? Clip { get; }
-    global::TmEssentials.TimeInt32 DayPeriod { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? EmptyCarsVisDataTape { get; }
-    bool EnableMinimap { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.EntDataSceneUIdsToGhost>? EntDataSceneUIdsToGhosts { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.InterfaceScriptInfo>? InterfaceScriptInfos { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.ItemResource>? Items { get; }
     bool KeepOnlyAuthorGhosts { get; }
-    global::GBX.NET.Ident? MapInfo { get; }
-    string? PlayerLogin { get; }
-    string? PlayerNickname { get; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Engines.Game.CGameCtnReplayRecord.PlayerOfInterest>? PlayersOfInterest { get; }
-    string? PlaygroundScript { get; }
-    global::GBX.NET.Engines.Plug.CPlugEntRecordData? RecordData { get; }
-    int SceneryCapturableCount { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryCapturableDataTape { get; }
-    global::GBX.NET.Engines.Game.CGameReplayObjectVisData? SceneryObjects { get; }
-    global::GBX.NET.Engines.Plug.CPlugDataTape? SceneryTurretsDataTape { get; }
-    global::System.Collections.Immutable.ImmutableList<global::GBX.NET.Engines.Game.CGameCtnMediaBlockScenery.Key>? SceneryVortexKeys { get; }
-    float SceneryVortexShrinkSpeed { get; }
-    global::TmEssentials.TimeInt32? Time { get; }
-    float TimeOfDay { get; }
-    string? TitleId { get; }
-    string? Xml { get; }
 }
 

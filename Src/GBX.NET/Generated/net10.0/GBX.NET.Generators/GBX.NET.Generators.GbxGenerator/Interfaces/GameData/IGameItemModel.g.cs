@@ -31,6 +31,107 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers1<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
+{
+    T0? ArchetypeFid { get; set; }
+    string? ArchetypeRef { get; set; }
+    T1? DefaultPlacement { get; set; }
+    string? DefaultWeaponName { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemTypeE { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? PhyModelCustom { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? VisModelCustom { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType WaypointType { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers2 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    bool DisableLightmap { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModel { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModelEdition { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers3<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    T0? GameSkin { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers4<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
+{
+    T0? LowQualitySolid { get; set; }
+    T1? Vehicle { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers5<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    new T0? RaceInterfaceFid { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers6<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    T0? AudioEnvironmentInCar { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers7<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ForcedSkinsFids { get; set; }
+    T0? MaterialPilot { get; set; }
+    T0? StemBumpMaterial { get; set; }
+    T0? StemMaterial { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers8<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    T0? DecoratorSolid { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers9<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    T0? MaterialDetails { get; set; }
+    T0? MaterialGlass { get; set; }
+    T0? MaterialSkin { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers10 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    int DefaultCamIndex { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers11 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers12 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? ItemGroupElements { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers13<T0> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class
+{
+    IReadOnlyList<T0>? Actions { get; set; }
+    global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam DefaultCam { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers14<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameItemModel where T0 : class where T1 : class
+{
+    T0? BannerProfileFid { get; set; }
+    T1? FrontLight { get; set; }
+    T1? FrontLightSmall { get; set; }
+    T1? ProjFront { get; set; }
+    T1? ProjShadow { get; set; }
+    T1? RearLight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameItemModelMembers15 : global::GBX.NET.Interfaces.GameData.IGameItemModel
+{
+    Vec3 GroundPoint { get; set; }
+    float OrbitalCenterHeightFromGround { get; set; }
+    float OrbitalPreviewAngle { get; set; }
+    float OrbitalRadiusBase { get; set; }
+    float PainterGroundMargin { get; set; }
+}
 public partial interface IGameItemModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameItemModel>, global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,321 +141,52 @@ public partial interface IGameItemModel : IClassVersion<global::GBX.NET.Engines.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new int CatalogPosition { get; set; }
-    new global::GBX.NET.Ident Ident { get; set; }
-    new bool IsInternal { get; set; }
-    new string? PageName { get; set; }
     global::GBX.NET.Interfaces.Scene.IScene2d? RaceInterfaceFid { get; set; }
 }
 
-public partial interface IGameItemModelTM10 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10
+public partial interface IGameItemModelTM10 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM10>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTM10>
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM10? GameSkin { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? LowQualitySolid { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTM10? RaceInterfaceFid { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? Vehicle { get; set; }
 }
 
-public partial interface IGameItemModelTMPU : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU
+public partial interface IGameItemModelTMPU : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMPU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMPU>
 {
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMPU? GameSkin { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? LowQualitySolid { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTMPU? RaceInterfaceFid { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? Vehicle { get; set; }
 }
 
-public partial interface IGameItemModelTMSX : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX
+public partial interface IGameItemModelTMSX : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    new int CopperPrice { get; set; }
-    int DefaultCamIndex { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? LowQualitySolid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialDetails { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialGlass { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSkin { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTMSX? RaceInterfaceFid { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? Vehicle { get; set; }
 }
 
-public partial interface IGameItemModelTMNESWC : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC
+public partial interface IGameItemModelTMNESWC : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11
 {
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC? DecoratorSolid { get; set; }
-    int DefaultCamIndex { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ForcedSkinsFids { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? LowQualitySolid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialDetails { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialGlass { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialPilot { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSkin { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTMNESWC? RaceInterfaceFid { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? StemBumpMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? StemMaterial { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? Vehicle { get; set; }
 }
 
-public partial interface IGameItemModelVSK5 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5
+public partial interface IGameItemModelVSK5 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugLightVSK5>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BannerProfileFid { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5? DecoratorSolid { get; set; }
-    int DefaultCamIndex { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ForcedSkinsFids { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? FrontLight { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? FrontLightSmall { get; set; }
-    Vec3 GroundPoint { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? LowQualitySolid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialDetails { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialGlass { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialPilot { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSkin { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    float OrbitalCenterHeightFromGround { get; set; }
-    float OrbitalPreviewAngle { get; set; }
-    float OrbitalRadiusBase { get; set; }
-    float PainterGroundMargin { get; set; }
-    new string? ParentCollectorId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? ProjFront { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? ProjShadow { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dVSK5? RaceInterfaceFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? RearLight { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? StemBumpMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? StemMaterial { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? Vehicle { get; set; }
 }
 
-public partial interface IGameItemModelTMF : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF
+public partial interface IGameItemModelTMF : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers7<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers9<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers14<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugLightTMF>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF? AudioEnvironmentInCar { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BannerProfileFid { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF? DecoratorSolid { get; set; }
-    int DefaultCamIndex { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? ForcedSkinsFids { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? FrontLight { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? FrontLightSmall { get; set; }
-    Vec3 GroundPoint { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? LowQualitySolid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialDetails { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialGlass { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialPilot { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSkin { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    float OrbitalCenterHeightFromGround { get; set; }
-    float OrbitalPreviewAngle { get; set; }
-    float OrbitalRadiusBase { get; set; }
-    float PainterGroundMargin { get; set; }
-    new string? ParentCollectorId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? ProjFront { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? ProjShadow { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTMF? RaceInterfaceFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? RearLight { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? StemBumpMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? StemMaterial { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? Vehicle { get; set; }
 }
 
-public partial interface IGameItemModelMP3 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3
+public partial interface IGameItemModelMP3 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelMP3, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers8<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers10, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
 {
-    global::GBX.NET.Interfaces.GameData.IGameItemModelMP3? ArchetypeFid { get; set; }
-    string? ArchetypeRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3? AudioEnvironmentInCar { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3? DecoratorSolid { get; set; }
-    int DefaultCamIndex { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP3? DefaultPlacement { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    string? DefaultWeaponName { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    Vec3 GroundPoint { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
     new string? IconFid { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemTypeE { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new string? Name { get; set; }
-    float OrbitalCenterHeightFromGround { get; set; }
-    float OrbitalPreviewAngle { get; set; }
-    float OrbitalRadiusBase { get; set; }
-    float PainterGroundMargin { get; set; }
-    new string? ParentCollectorId { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? PhyModelCustom { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dMP3? RaceInterfaceFid { get; set; }
-    new string? SkinDirectory { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? VisModelCustom { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType WaypointType { get; set; }
 }
 
-public partial interface IGameItemModelTMT : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT
+public partial interface IGameItemModelTMT : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelTMT, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13<global::GBX.NET.Interfaces.GameData.IGameActionModelTMT>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTMT>? Actions { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemModelTMT? ArchetypeFid { get; set; }
-    string? ArchetypeRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? AudioEnvironmentInCar { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam DefaultCam { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTMT? DefaultPlacement { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    string? DefaultWeaponName { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    Vec3 GroundPoint { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
     new string? IconFid { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? ItemGroupElements { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemTypeE { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new string? Name { get; set; }
-    float OrbitalCenterHeightFromGround { get; set; }
-    float OrbitalPreviewAngle { get; set; }
-    float OrbitalRadiusBase { get; set; }
-    float PainterGroundMargin { get; set; }
-    new string? ParentCollectorId { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? PhyModelCustom { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTMT? RaceInterfaceFid { get; set; }
-    new string? SkinDirectory { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? VisModelCustom { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType WaypointType { get; set; }
 }
 
-public partial interface IGameItemModelMP4 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4
+public partial interface IGameItemModelMP4 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelMP4, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers2, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers6<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers12, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13<global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>? Actions { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemModelMP4? ArchetypeFid { get; set; }
-    string? ArchetypeRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? AudioEnvironmentInCar { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam DefaultCam { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamMP4? DefaultPlacement { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    string? DefaultWeaponName { get; set; }
-    new string? Description { get; set; }
-    bool DisableLightmap { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModel { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModelEdition { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    Vec3 GroundPoint { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
     new string? IconFid { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.ItemGroupElement[]? ItemGroupElements { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemTypeE { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new string? Name { get; set; }
-    float OrbitalCenterHeightFromGround { get; set; }
-    float OrbitalPreviewAngle { get; set; }
-    float OrbitalRadiusBase { get; set; }
-    float PainterGroundMargin { get; set; }
-    new string? ParentCollectorId { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? PhyModelCustom { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dMP4? RaceInterfaceFid { get; set; }
-    new string? SkinDirectory { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? VisModelCustom { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType WaypointType { get; set; }
 }
 
-public partial interface IGameItemModelTM2020 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020
+public partial interface IGameItemModelTM2020 : IGameItemModel, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers1<global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020, global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers2, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers5<global::GBX.NET.Interfaces.Scene.IScene2dTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers11, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers13<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>, global::GBX.NET.Interfaces.GameData.IGameItemModelMembers15
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>? Actions { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemModelTM2020? ArchetypeFid { get; set; }
-    string? ArchetypeRef { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? Cameras { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EDefaultCam DefaultCam { get; set; }
-    global::GBX.NET.Interfaces.GameData.IGameItemPlacementParamTM2020? DefaultPlacement { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? DefaultSkinName { get; set; }
-    string? DefaultWeaponName { get; set; }
-    new string? Description { get; set; }
-    bool DisableLightmap { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModel { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? EntityModelEdition { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    Vec3 GroundPoint { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
     new string? IconFid { get; set; }
-    new float IconPhase01 { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EItemType ItemTypeE { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? MaterialModifier { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod?>? NadeoSkinFids { get; set; }
-    new string? Name { get; set; }
-    float OrbitalCenterHeightFromGround { get; set; }
-    float OrbitalPreviewAngle { get; set; }
-    float OrbitalRadiusBase { get; set; }
-    float PainterGroundMargin { get; set; }
-    new string? ParentCollectorId { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? PhyModelCustom { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    new global::GBX.NET.Interfaces.Scene.IScene2dTM2020? RaceInterfaceFid { get; set; }
-    new string? SkinDirectory { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugVFXFileTM2020? VFX { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? VisModelCustom { get; set; }
-    global::GBX.NET.Engines.GameData.CGameItemModel.EWaypointType WaypointType { get; set; }
 }
 

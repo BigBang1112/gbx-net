@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Input;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IInputBindingsConfigMembers1 : global::GBX.NET.Interfaces.Input.IInputBindingsConfig
+{
+    int Version { get; set; }
+}
 public partial interface IInputBindingsConfig : IClassVersion<global::GBX.NET.Engines.Input.CInputBindingsConfig>
 {
     global::GBX.NET.Engines.Input.CInputBindingsConfig.Binding[]? Bindings { get; set; }
@@ -62,24 +67,20 @@ public partial interface IInputBindingsConfigTMF : IInputBindingsConfig
 {
 }
 
-public partial interface IInputBindingsConfigMP3 : IInputBindingsConfig
+public partial interface IInputBindingsConfigMP3 : IInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigMembers1
 {
-    int Version { get; set; }
 }
 
-public partial interface IInputBindingsConfigTMT : IInputBindingsConfig
+public partial interface IInputBindingsConfigTMT : IInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigMembers1
 {
-    int Version { get; set; }
 }
 
-public partial interface IInputBindingsConfigMP4 : IInputBindingsConfig
+public partial interface IInputBindingsConfigMP4 : IInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigMembers1
 {
-    int Version { get; set; }
 }
 
-public partial interface IInputBindingsConfigTM2020 : IInputBindingsConfig
+public partial interface IInputBindingsConfigTM2020 : IInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigMembers1
 {
     string[]? ConfiguredDeviceModels { get; set; }
-    int Version { get; set; }
 }
 

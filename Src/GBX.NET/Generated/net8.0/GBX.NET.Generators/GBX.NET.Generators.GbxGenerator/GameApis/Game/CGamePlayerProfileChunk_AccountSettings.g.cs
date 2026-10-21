@@ -36,77 +36,80 @@ public partial class CGamePlayerProfileChunk_AccountSettings : global::GBX.NET.I
     public static global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettings.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(() => InboxMessages, static node => node ?? throw new MemberNullException("InboxMessages"));
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(GetInboxMessagesBuilderReferences, GameVersion.Unspecified, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettings.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(() => OutboxMessages, static node => node ?? throw new MemberNullException("OutboxMessages"));
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(GetOutboxMessagesBuilderReferences, GameVersion.Unspecified, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettings.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(() => ReadMessages, static node => node ?? throw new MemberNullException("ReadMessages"));
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(GetReadMessagesBuilderReferences, GameVersion.Unspecified, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessage>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP3.InboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(() => InboxMessages, static node => { if (node is null) throw new MemberNullException("InboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(GetInboxMessagesBuilderReferences, GameVersion.MP3, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP3.OutboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(() => OutboxMessages, static node => { if (node is null) throw new MemberNullException("OutboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(GetOutboxMessagesBuilderReferences, GameVersion.MP3, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP3.ReadMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(() => ReadMessages, static node => { if (node is null) throw new MemberNullException("ReadMessages"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(GetReadMessagesBuilderReferences, GameVersion.MP3, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTMT.InboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(() => InboxMessages, static node => { if (node is null) throw new MemberNullException("InboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(GetInboxMessagesBuilderReferences, GameVersion.TMT, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTMT.OutboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(() => OutboxMessages, static node => { if (node is null) throw new MemberNullException("OutboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(GetOutboxMessagesBuilderReferences, GameVersion.TMT, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTMT.ReadMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(() => ReadMessages, static node => { if (node is null) throw new MemberNullException("ReadMessages"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(GetReadMessagesBuilderReferences, GameVersion.TMT, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP4.InboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(() => InboxMessages, static node => { if (node is null) throw new MemberNullException("InboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(GetInboxMessagesBuilderReferences, GameVersion.MP4, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP4.OutboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(() => OutboxMessages, static node => { if (node is null) throw new MemberNullException("OutboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(GetOutboxMessagesBuilderReferences, GameVersion.MP4, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP4.ReadMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(() => ReadMessages, static node => { if (node is null) throw new MemberNullException("ReadMessages"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(GetReadMessagesBuilderReferences, GameVersion.MP4, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTM2020.InboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(() => InboxMessages, static node => { if (node is null) throw new MemberNullException("InboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(GetInboxMessagesBuilderReferences, GameVersion.TM2020, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTM2020.OutboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(() => OutboxMessages, static node => { if (node is null) throw new MemberNullException("OutboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(GetOutboxMessagesBuilderReferences, GameVersion.TM2020, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTM2020.ReadMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(() => ReadMessages, static node => { if (node is null) throw new MemberNullException("ReadMessages"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(GetReadMessagesBuilderReferences, GameVersion.TM2020, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetInboxMessagesBuilderReferences() => InboxMessages;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetOutboxMessagesBuilderReferences() => OutboxMessages;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetReadMessagesBuilderReferences() => ReadMessages;
 }

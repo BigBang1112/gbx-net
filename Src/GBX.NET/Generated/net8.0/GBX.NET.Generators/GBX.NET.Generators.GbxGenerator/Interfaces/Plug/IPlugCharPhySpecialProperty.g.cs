@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharPhySpecialPropertyMembers1 : global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialProperty
+{
+    TimeInt32 FreeWheelingDuration { get; set; }
+    bool JumpPadCenterOnPad { get; set; }
+    Vec3 JumpPadDestinationOffset { get; set; }
+    int JumpPadSize { get; set; }
+    float TrajectoryCurve { get; set; }
+}
 public partial interface IPlugCharPhySpecialProperty : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty>
 {
     bool JumpPadFixedVel { get; set; }
@@ -65,39 +74,19 @@ public partial interface IPlugCharPhySpecialPropertyTMF : IPlugCharPhySpecialPro
 {
 }
 
-public partial interface IPlugCharPhySpecialPropertyMP3 : IPlugCharPhySpecialProperty
+public partial interface IPlugCharPhySpecialPropertyMP3 : IPlugCharPhySpecialProperty, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMembers1
 {
-    TimeInt32 FreeWheelingDuration { get; set; }
-    bool JumpPadCenterOnPad { get; set; }
-    Vec3 JumpPadDestinationOffset { get; set; }
-    int JumpPadSize { get; set; }
-    float TrajectoryCurve { get; set; }
 }
 
-public partial interface IPlugCharPhySpecialPropertyTMT : IPlugCharPhySpecialProperty
+public partial interface IPlugCharPhySpecialPropertyTMT : IPlugCharPhySpecialProperty, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMembers1
 {
-    TimeInt32 FreeWheelingDuration { get; set; }
-    bool JumpPadCenterOnPad { get; set; }
-    Vec3 JumpPadDestinationOffset { get; set; }
-    int JumpPadSize { get; set; }
-    float TrajectoryCurve { get; set; }
 }
 
-public partial interface IPlugCharPhySpecialPropertyMP4 : IPlugCharPhySpecialProperty
+public partial interface IPlugCharPhySpecialPropertyMP4 : IPlugCharPhySpecialProperty, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMembers1
 {
-    TimeInt32 FreeWheelingDuration { get; set; }
-    bool JumpPadCenterOnPad { get; set; }
-    Vec3 JumpPadDestinationOffset { get; set; }
-    int JumpPadSize { get; set; }
-    float TrajectoryCurve { get; set; }
 }
 
-public partial interface IPlugCharPhySpecialPropertyTM2020 : IPlugCharPhySpecialProperty
+public partial interface IPlugCharPhySpecialPropertyTM2020 : IPlugCharPhySpecialProperty, global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMembers1
 {
-    TimeInt32 FreeWheelingDuration { get; set; }
-    bool JumpPadCenterOnPad { get; set; }
-    Vec3 JumpPadDestinationOffset { get; set; }
-    int JumpPadSize { get; set; }
-    float TrajectoryCurve { get; set; }
 }
 

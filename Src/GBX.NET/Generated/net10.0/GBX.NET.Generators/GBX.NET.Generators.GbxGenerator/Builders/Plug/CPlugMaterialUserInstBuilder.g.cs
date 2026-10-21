@@ -36,22 +36,22 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state;
     private protected CPlugMaterialUserInstBuilderBase() => state = new();
     private protected CPlugMaterialUserInstBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) => this.state = state;
-    private protected static void SetBaseTexture(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set<string?>("BaseTexture", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BaseTexture = value);
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, int[]? value) => state.Set<int[]?>("Color", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.Color = value);
-    private protected static void SetCsts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]?>("Csts", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[])value.Clone(), static (node, value) => node.Csts = value);
-    private protected static void SetHidingGroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set<string?>("HidingGroup", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.HidingGroup = value);
-    private protected static void SetIsNatural(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, bool value) => state.Set<bool>("IsNatural", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.IsNatural = value);
-    private protected static void SetIsUsingGameMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, bool value) => state.Set<bool>("IsUsingGameMaterial", value, GameVersion.TM2020, static value => value, static (node, value) => node.IsUsingGameMaterial = value);
-    private protected static void SetLink(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set<string?>("Link", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Link = value);
-    private protected static void SetMaterialName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set<string?>("MaterialName", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MaterialName = value);
-    private protected static void SetModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set<string?>("Model", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Model = value);
-    private protected static void SetSurfaceGameplayId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>("SurfaceGameplayId", value, GameVersion.TM2020, static value => value, static (node, value) => node.SurfaceGameplayId = value);
-    private protected static void SetSurfacePhysicId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfacePhysicId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SurfacePhysicId = value);
-    private protected static void SetTextureSizeInMeters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, float value) => state.Set<float>("TextureSizeInMeters", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.TextureSizeInMeters = value);
-    private protected static void SetTilingU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingU", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.TilingU = value);
-    private protected static void SetTilingV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingV", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.TilingV = value);
-    private protected static void SetUserTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]?>("UserTextures", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[])value.Clone(), static (node, value) => node.UserTextures = value);
-    private protected static void SetUvAnims(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]?>("UvAnims", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[])value.Clone(), static (node, value) => node.UvAnims = value);
+    private protected static void SetBaseTexture(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetBaseTextureAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCsts(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Cst[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetCstsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetHidingGroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetHidingGroupAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetIsNatural(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsNaturalAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetIsUsingGameMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetIsUsingGameMaterialAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLink(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaterialName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetMaterialNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSurfaceGameplayId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfaceGameplayIdAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSurfacePhysicId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetSurfacePhysicIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTextureSizeInMeters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTextureSizeInMetersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetTilingU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingUAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetTilingV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetTilingVAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetUserTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUserTexturesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetUvAnims(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state, global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UvAnim[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialUserInstBuilderAssignments.GetUvAnimsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string? BaseTexture
     {
         get => state.Get<string?>("BaseTexture");
@@ -145,8 +145,137 @@ public abstract class CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlu
         return WithUvAnims(values.ToArray());
     }
 }
+public abstract class CPlugMaterialUserInstBuilderMembers1<TSelf> : CPlugMaterialUserInstBuilderBase<TSelf> where TSelf : CPlugMaterialUserInstBuilderMembers1<TSelf>
+{
+    private protected CPlugMaterialUserInstBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]?>("UserTextures");
+        set => SetUserTextures(state, value);
+    }
+    public TSelf WithUserTextures(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value)
+    {
+        UserTextures = value;
+        return (TSelf)this;
+    }
+    public TSelf WithUserTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture> values)
+    {
+        return WithUserTextures(values.ToArray());
+    }
+}
+public abstract class CPlugMaterialUserInstBuilderMembers2<TSelf> : CPlugMaterialUserInstBuilderMembers1<TSelf> where TSelf : CPlugMaterialUserInstBuilderMembers2<TSelf>
+{
+    private protected CPlugMaterialUserInstBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
+    public string? HidingGroup
+    {
+        get => state.Get<string?>("HidingGroup");
+        set => SetHidingGroup(state, value);
+    }
+    public TSelf WithHidingGroup(string? value)
+    {
+        HidingGroup = value;
+        return (TSelf)this;
+    }
+    public bool IsNatural
+    {
+        get => state.Get<bool>("IsNatural");
+        set => SetIsNatural(state, value);
+    }
+    public TSelf WithIsNatural(bool value)
+    {
+        IsNatural = value;
+        return (TSelf)this;
+    }
+    public float TextureSizeInMeters
+    {
+        get => state.Get<float>("TextureSizeInMeters");
+        set => SetTextureSizeInMeters(state, value);
+    }
+    public TSelf WithTextureSizeInMeters(float value)
+    {
+        TextureSizeInMeters = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingU");
+        set => SetTilingU(state, value);
+    }
+    public TSelf WithTilingU(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
+    {
+        TilingU = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingV");
+        set => SetTilingV(state, value);
+    }
+    public TSelf WithTilingV(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
+    {
+        TilingV = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilderBase<CPlugMaterialUserInstBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
+        var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game);
+        node.Chunks.Add(chunk090FD000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
+        var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game);
+        node.Chunks.Add(chunk090FD000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
+        var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game);
+        node.Chunks.Add(chunk090FD000);
+        var chunk090FD001 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(game);
+        node.Chunks.Add(chunk090FD001);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialUserInst CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
+        var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(game);
+        node.Chunks.Add(chunk090FD000);
+        var chunk090FD001 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(game);
+        node.Chunks.Add(chunk090FD001);
+        var chunk090FD002 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD002();
+        chunk090FD002.Version = 0;
+        node.Chunks.Add(chunk090FD002);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD002>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FD002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -159,161 +288,57 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-            var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(GameVersion.MP3);
-            node.Chunks.Add(chunk090FD000);
+            var node = CPlugMaterialUserInstBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 4 }) throw new InvalidOperationException("Required MP3 chunk Chunk090FD000 is missing or has an incompatible version.");
+            CPlugMaterialUserInstBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugMaterialUserInstBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
     }
-    public partial class TMT : CPlugMaterialUserInstBuilderBase<TMT>
+    public partial class TMT : CPlugMaterialUserInstBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]?>("UserTextures");
-            set => SetUserTextures(state, value);
-        }
-        public TMT WithUserTextures(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value)
-        {
-            UserTextures = value;
-            return this;
-        }
-        public TMT WithUserTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture> values)
-        {
-            return WithUserTextures(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-            var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(GameVersion.TMT);
-            node.Chunks.Add(chunk090FD000);
+            var node = CPlugMaterialUserInstBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk Chunk090FD000 is missing or has an incompatible version.");
+            CPlugMaterialUserInstBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugMaterialUserInstBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
     }
-    public partial class MP4 : CPlugMaterialUserInstBuilderBase<MP4>
+    public partial class MP4 : CPlugMaterialUserInstBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
-        public string? HidingGroup
-        {
-            get => state.Get<string?>("HidingGroup");
-            set => SetHidingGroup(state, value);
-        }
-        public MP4 WithHidingGroup(string? value)
-        {
-            HidingGroup = value;
-            return this;
-        }
-        public bool IsNatural
-        {
-            get => state.Get<bool>("IsNatural");
-            set => SetIsNatural(state, value);
-        }
-        public MP4 WithIsNatural(bool value)
-        {
-            IsNatural = value;
-            return this;
-        }
-        public float TextureSizeInMeters
-        {
-            get => state.Get<float>("TextureSizeInMeters");
-            set => SetTextureSizeInMeters(state, value);
-        }
-        public MP4 WithTextureSizeInMeters(float value)
-        {
-            TextureSizeInMeters = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingU");
-            set => SetTilingU(state, value);
-        }
-        public MP4 WithTilingU(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
-        {
-            TilingU = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingV");
-            set => SetTilingV(state, value);
-        }
-        public MP4 WithTilingV(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
-        {
-            TilingV = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]?>("UserTextures");
-            set => SetUserTextures(state, value);
-        }
-        public MP4 WithUserTextures(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value)
-        {
-            UserTextures = value;
-            return this;
-        }
-        public MP4 WithUserTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture> values)
-        {
-            return WithUserTextures(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-            var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(GameVersion.MP4);
-            node.Chunks.Add(chunk090FD000);
-            var chunk090FD001 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(GameVersion.MP4);
-            node.Chunks.Add(chunk090FD001);
+            var node = CPlugMaterialUserInstBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 9 }) throw new InvalidOperationException("Required MP4 chunk Chunk090FD000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk090FD001 is missing or has an incompatible version.");
+            CPlugMaterialUserInstBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugMaterialUserInstBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst node);
     }
-    public partial class TM2020 : CPlugMaterialUserInstBuilderBase<TM2020>
+    public partial class TM2020 : CPlugMaterialUserInstBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst> state) : base(state) { }
-        public string? HidingGroup
-        {
-            get => state.Get<string?>("HidingGroup");
-            set => SetHidingGroup(state, value);
-        }
-        public TM2020 WithHidingGroup(string? value)
-        {
-            HidingGroup = value;
-            return this;
-        }
-        public bool IsNatural
-        {
-            get => state.Get<bool>("IsNatural");
-            set => SetIsNatural(state, value);
-        }
-        public TM2020 WithIsNatural(bool value)
-        {
-            IsNatural = value;
-            return this;
-        }
         public bool IsUsingGameMaterial
         {
             get => state.Get<bool>("IsUsingGameMaterial");
@@ -334,67 +359,15 @@ public partial class CPlugMaterialUserInstBuilder : CPlugMaterialUserInstBuilder
             SurfaceGameplayId = value;
             return this;
         }
-        public float TextureSizeInMeters
-        {
-            get => state.Get<float>("TextureSizeInMeters");
-            set => SetTextureSizeInMeters(state, value);
-        }
-        public TM2020 WithTextureSizeInMeters(float value)
-        {
-            TextureSizeInMeters = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingU");
-            set => SetTilingU(state, value);
-        }
-        public TM2020 WithTilingU(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
-        {
-            TilingU = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress>("TilingV");
-            set => SetTilingV(state, value);
-        }
-        public TM2020 WithTilingV(global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress value)
-        {
-            TilingV = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]?>("UserTextures");
-            set => SetUserTextures(state, value);
-        }
-        public TM2020 WithUserTextures(params global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? value)
-        {
-            UserTextures = value;
-            return this;
-        }
-        public TM2020 WithUserTextures(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture> values)
-        {
-            return WithUserTextures(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialUserInst Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst();
-            var chunk090FD000 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090FD000);
-            var chunk090FD001 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001(GameVersion.TM2020);
-            node.Chunks.Add(chunk090FD001);
-            var chunk090FD002 = new global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD002();
-            chunk090FD002.Version = 0;
-            node.Chunks.Add(chunk090FD002);
+            var node = CPlugMaterialUserInstBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD000>() is not { Version: 11 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090FD000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD001>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090FD001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.Chunk090FD002>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090FD002 is missing or has an incompatible version.");
+            CPlugMaterialUserInstBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugMaterialUserInstBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

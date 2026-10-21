@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameSpawnModelMembers1 : global::GBX.NET.Interfaces.GameData.IGameSpawnModel
+{
+    int TorqueDuration { get; set; }
+    float TorqueX { get; set; }
+}
 public partial interface IGameSpawnModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameSpawnModel>
 {
     Iso4 Loc { get; set; }
@@ -41,16 +47,12 @@ public partial interface IGameSpawnModelMP3 : IGameSpawnModel
 {
 }
 
-public partial interface IGameSpawnModelTMT : IGameSpawnModel
+public partial interface IGameSpawnModelTMT : IGameSpawnModel, global::GBX.NET.Interfaces.GameData.IGameSpawnModelMembers1
 {
-    int TorqueDuration { get; set; }
-    float TorqueX { get; set; }
 }
 
-public partial interface IGameSpawnModelMP4 : IGameSpawnModel
+public partial interface IGameSpawnModelMP4 : IGameSpawnModel, global::GBX.NET.Interfaces.GameData.IGameSpawnModelMembers1
 {
     Vec3 DefaultGravitySpawn { get; set; }
-    int TorqueDuration { get; set; }
-    float TorqueX { get; set; }
 }
 

@@ -39,7 +39,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         get => CmdBaseParams;
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTM10.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTM10>.CmdBaseParams
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMPU.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMPU>.CmdBaseParams
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMSX.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMSX>.CmdBaseParams
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMNESWC>.CmdBaseParams
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseVSK5.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsVSK5>.CmdBaseParams
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMF.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMF>.CmdBaseParams
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP3.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP3>.CmdBaseParams
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMT.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsTMT>.CmdBaseParams
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CMotionCmdBase : global::GBX.NET.Interfaces.Motion.IMotionC
         }
         set => CmdBaseParams = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotionCmdBaseParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP4.CmdBaseParams
+    global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4? global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseParamsMP4>.CmdBaseParams
     {
         get
         {

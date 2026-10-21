@@ -39,7 +39,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         get => BlockInfoFrontier;
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM10.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10>.BlockInfoFrontier
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMPU.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU>.BlockInfoFrontier
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMSX.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX>.BlockInfoFrontier
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMNESWC.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC>.BlockInfoFrontier
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierVSK5.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5>.BlockInfoFrontier
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMF.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF>.BlockInfoFrontier
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP3.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3>.BlockInfoFrontier
     {
         get
         {
@@ -109,12 +109,12 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP3.CompatibleZones
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>.CompatibleZones
     {
-        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>(() => CompatibleZones, static node => { if (node is null) throw new MemberNullException("CompatibleZones"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>(GetCompatibleZonesBuilderReferences, GameVersion.MP3, true, "CompatibleZones");
+        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMT.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT>.BlockInfoFrontier
     {
         get
         {
@@ -124,12 +124,12 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTMT.CompatibleZones
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>.CompatibleZones
     {
-        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>(() => CompatibleZones, static node => { if (node is null) throw new MemberNullException("CompatibleZones"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>(GetCompatibleZonesBuilderReferences, GameVersion.TMT, true, "CompatibleZones");
+        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP4.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4>.BlockInfoFrontier
     {
         get
         {
@@ -139,12 +139,12 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMP4.CompatibleZones
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>.CompatibleZones
     {
-        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>(() => CompatibleZones, static node => { if (node is null) throw new MemberNullException("CompatibleZones"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>(GetCompatibleZonesBuilderReferences, GameVersion.MP4, true, "CompatibleZones");
+        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM2020.BlockInfoFrontier
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020>.BlockInfoFrontier
     {
         get
         {
@@ -154,9 +154,10 @@ public partial class CGameCtnZoneFrontier : global::GBX.NET.Interfaces.Game.IGam
         }
         set => BlockInfoFrontier = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoFrontier node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierTM2020.CompatibleZones
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>.CompatibleZones
     {
-        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>(() => CompatibleZones, static node => { if (node is null) throw new MemberNullException("CompatibleZones"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CompatibleZones is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>(GetCompatibleZonesBuilderReferences, GameVersion.TM2020, true, "CompatibleZones");
+        set => CompatibleZones = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo, global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo>? GetCompatibleZonesBuilderReferences() => CompatibleZones;
 }

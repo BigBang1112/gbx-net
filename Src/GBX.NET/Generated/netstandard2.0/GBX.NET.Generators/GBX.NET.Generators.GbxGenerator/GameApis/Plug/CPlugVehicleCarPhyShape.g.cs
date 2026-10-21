@@ -39,7 +39,7 @@ public partial class CPlugVehicleCarPhyShape : global::GBX.NET.Interfaces.Plug.I
         get => MoveShape;
         set => MoveShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4.MoveShape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.MoveShape
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugVehicleCarPhyShape : global::GBX.NET.Interfaces.Plug.I
         }
         set => MoveShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020.MoveShape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.MoveShape
     {
         get
         {

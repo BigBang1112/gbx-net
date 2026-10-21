@@ -36,63 +36,18 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
     public static new global::GBX.NET.Builders.Engines.Game.CGameCtnBlockInfoVariantGroundBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain>(() => AutoTerrains, static node => node ?? throw new MemberNullException("AutoTerrains"));
-        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain>(GetAutoTerrainsBuilderReferences, GameVersion.Unspecified, true, "AutoTerrains");
+        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.BlockUnitModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>.AutoTerrains
     {
-        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo>(() => BlockUnitModels, static node => node ?? throw new MemberNullException("BlockUnitModels"));
-        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameGateModel? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.Gate
-    {
-        get => Gate;
-        set => Gate = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameGateModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugProbe? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.Probe
-    {
-        get => Probe;
-        set => Probe = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugProbe node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.ScreenInteractionTriggerSolid
-    {
-        get => ScreenInteractionTriggerSolid;
-        set => ScreenInteractionTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameTeleporterModel? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.Teleporter
-    {
-        get => Teleporter;
-        set => Teleporter = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameTeleporterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameTurbineModel? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.Turbine
-    {
-        get => Turbine;
-        set => Turbine = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameTurbineModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround.WaypointTriggerSolid
-    {
-        get => WaypointTriggerSolid;
-        set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3.AutoTerrains
-    {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>(() => AutoTerrains, static node => { if (node is null) throw new MemberNullException("AutoTerrains"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>(GetAutoTerrainsBuilderReferences, GameVersion.MP3, true, "AutoTerrains");
+        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3.BlockUnitModels
     {
-        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3>(() => BlockUnitModels, static node => { if (node is null) throw new MemberNullException("BlockUnitModels"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3.FacultativeHelperMobil
-    {
-        get
-        {
-            var node = FacultativeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => FacultativeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3>(GetBlockUnitModelsBuilderReferences, GameVersion.MP3, true, "BlockUnitModels");
+        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3>(value, false));
     }
     global::GBX.NET.Interfaces.GameData.IGameGateModelMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3.Gate
     {
@@ -103,16 +58,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
             return node;
         }
         set => Gate = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameGateModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3.HelperMobil
-    {
-        get
-        {
-            var node = HelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => HelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugProbeMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3.Probe
     {
@@ -164,35 +109,15 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         }
         set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.AutoTerrains
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>(() => AutoTerrains, static node => { if (node is null) throw new MemberNullException("AutoTerrains"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>(GetAutoTerrainsBuilderReferences, GameVersion.TMT, true, "AutoTerrains");
+        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.BlockUnitModels
     {
-        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT>(() => BlockUnitModels, static node => { if (node is null) throw new MemberNullException("BlockUnitModels"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.FacultativeHelperSolidFid
-    {
-        get
-        {
-            var node = FacultativeHelperSolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => FacultativeHelperSolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.FlockModel
-    {
-        get
-        {
-            var node = FlockModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => FlockModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT>(GetBlockUnitModelsBuilderReferences, GameVersion.TMT, true, "BlockUnitModels");
+        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT>(value, false));
     }
     global::GBX.NET.Interfaces.GameData.IGameGateModelTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.Gate
     {
@@ -203,16 +128,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
             return node;
         }
         set => Gate = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameGateModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.HelperSolidFid
-    {
-        get
-        {
-            var node = HelperSolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => HelperSolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugProbeTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.Probe
     {
@@ -233,16 +148,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
             return node;
         }
         set => ScreenInteractionTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.SpawnModel
-    {
-        get
-        {
-            var node = SpawnModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => SpawnModel = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameSpawnModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameTeleporterModelTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT.Teleporter
     {
@@ -274,35 +179,15 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         }
         set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.AutoTerrains
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>(() => AutoTerrains, static node => { if (node is null) throw new MemberNullException("AutoTerrains"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>(GetAutoTerrainsBuilderReferences, GameVersion.MP4, true, "AutoTerrains");
+        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.BlockUnitModels
     {
-        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4>(() => BlockUnitModels, static node => { if (node is null) throw new MemberNullException("BlockUnitModels"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.FacultativeHelperSolidFid
-    {
-        get
-        {
-            var node = FacultativeHelperSolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => FacultativeHelperSolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.FlockModel
-    {
-        get
-        {
-            var node = FlockModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => FlockModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4>(GetBlockUnitModelsBuilderReferences, GameVersion.MP4, true, "BlockUnitModels");
+        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4>(value, false));
     }
     global::GBX.NET.Interfaces.GameData.IGameGateModelMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.Gate
     {
@@ -313,16 +198,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
             return node;
         }
         set => Gate = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameGateModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.HelperSolidFid
-    {
-        get
-        {
-            var node = HelperSolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => HelperSolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugProbeMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.Probe
     {
@@ -343,16 +218,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
             return node;
         }
         set => ScreenInteractionTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.SpawnModel
-    {
-        get
-        {
-            var node = SpawnModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => SpawnModel = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameSpawnModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4.Teleporter
     {
@@ -384,35 +249,15 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         }
         set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.AutoTerrains
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>.AutoTerrains
     {
-        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>(() => AutoTerrains, static node => { if (node is null) throw new MemberNullException("AutoTerrains"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => AutoTerrains is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>(GetAutoTerrainsBuilderReferences, GameVersion.TM2020, true, "AutoTerrains");
+        set => AutoTerrains = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.BlockUnitModels
     {
-        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020>(() => BlockUnitModels, static node => { if (node is null) throw new MemberNullException("BlockUnitModels"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.FacultativeHelperSolidFid
-    {
-        get
-        {
-            var node = FacultativeHelperSolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => FacultativeHelperSolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.FlockModel
-    {
-        get
-        {
-            var node = FlockModel;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => FlockModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
+        get => BlockUnitModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020>(GetBlockUnitModelsBuilderReferences, GameVersion.TM2020, true, "BlockUnitModels");
+        set => BlockUnitModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.Gate
     {
@@ -424,16 +269,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         }
         set => Gate = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameGateModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.HelperSolidFid
-    {
-        get
-        {
-            var node = HelperSolidFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => HelperSolidFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Plug.IPlugProbeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.Probe
     {
         get
@@ -443,16 +278,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
             return node;
         }
         set => Probe = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugProbe node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.ScreenInteractionTriggerShape
-    {
-        get
-        {
-            var node = ScreenInteractionTriggerShape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => ScreenInteractionTriggerShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.ScreenInteractionTriggerSolid
     {
@@ -484,16 +309,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         }
         set => Turbine = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameTurbineModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.WaypointTriggerShape
-    {
-        get
-        {
-            var node = WaypointTriggerShape;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => WaypointTriggerShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020.WaypointTriggerSolid
     {
         get
@@ -504,4 +319,6 @@ public partial class CGameCtnBlockInfoVariantGround : global::GBX.NET.Interfaces
         }
         set => WaypointTriggerSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>? GetAutoTerrainsBuilderReferences() => AutoTerrains;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>? GetBlockUnitModelsBuilderReferences() => BlockUnitModels;
 }

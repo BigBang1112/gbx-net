@@ -36,7 +36,7 @@ public abstract class CMwCmdExpBoolBuilderBase<TSelf> where TSelf : CMwCmdExpBoo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state;
     private protected CMwCmdExpBoolBuilderBase() => state = new();
     private protected CMwCmdExpBoolBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state) => this.state = state;
-    private protected static void SetBool(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state, bool value) => state.Set<bool>("Bool", value, GameVersion.TMF, static value => value, static (node, value) => node.Bool = value);
+    private protected static void SetBool(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBuilderAssignments.GetBoolAssignment(), value, GameVersion.TMF);
     public bool Bool
     {
         get => state.Get<bool>("Bool");
@@ -50,6 +50,20 @@ public abstract class CMwCmdExpBoolBuilderBase<TSelf> where TSelf : CMwCmdExpBoo
 }
 public partial class CMwCmdExpBoolBuilder : CMwCmdExpBoolBuilderBase<CMwCmdExpBoolBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool();
+        var chunk0103B000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000();
+        node.Chunks.Add(chunk0103B000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103B000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpBoolBuilderBase<TMF>
     {
@@ -57,13 +71,12 @@ public partial class CMwCmdExpBoolBuilder : CMwCmdExpBoolBuilderBase<CMwCmdExpBo
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpBoolTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool();
-            var chunk0103B000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000();
-            node.Chunks.Add(chunk0103B000);
+            var node = CMwCmdExpBoolBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBool.Chunk0103B000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0103B000 is missing or has an incompatible version.");
+            CMwCmdExpBoolBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdExpBoolBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

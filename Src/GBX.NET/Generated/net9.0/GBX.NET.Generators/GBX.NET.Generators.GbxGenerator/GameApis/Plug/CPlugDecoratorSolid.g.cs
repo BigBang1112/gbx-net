@@ -36,42 +36,43 @@ public partial class CPlugDecoratorSolid : global::GBX.NET.Interfaces.Plug.IPlug
     public static global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorSolidBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree>(() => TreeDecorators, static node => node ?? throw new MemberNullException("TreeDecorators"));
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree>(GetTreeDecoratorsBuilderReferences, GameVersion.Unspecified, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>(GetTreeDecoratorsBuilderReferences, GameVersion.TMNESWC, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>(GetTreeDecoratorsBuilderReferences, GameVersion.VSK5, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>(GetTreeDecoratorsBuilderReferences, GameVersion.TMF, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>(GetTreeDecoratorsBuilderReferences, GameVersion.MP3, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>(GetTreeDecoratorsBuilderReferences, GameVersion.TMT, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>(GetTreeDecoratorsBuilderReferences, GameVersion.MP4, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020.TreeDecorators
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>? global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>.TreeDecorators
     {
-        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>(() => TreeDecorators, static node => { if (node is null) throw new MemberNullException("TreeDecorators"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugDecoratorTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => TreeDecorators is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>(GetTreeDecoratorsBuilderReferences, GameVersion.TM2020, true, "TreeDecorators");
+        set => TreeDecorators = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>? GetTreeDecoratorsBuilderReferences() => TreeDecorators;
 }

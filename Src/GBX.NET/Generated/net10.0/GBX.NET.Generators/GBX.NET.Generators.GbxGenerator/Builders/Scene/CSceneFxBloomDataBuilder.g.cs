@@ -36,9 +36,9 @@ public abstract class CSceneFxBloomDataBuilderBase<TSelf> where TSelf : CSceneFx
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state;
     private protected CSceneFxBloomDataBuilderBase() => state = new();
     private protected CSceneFxBloomDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state) => this.state = state;
-    private protected static void SetFakeHdrExponent(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set<float>("FakeHdrExponent", value, GameVersion.TMF, static value => value, static (node, value) => node.FakeHdrExponent = value);
-    private protected static void SetFakeHdrMin(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set<float>("FakeHdrMin", value, GameVersion.TMF, static value => value, static (node, value) => node.FakeHdrMin = value);
-    private protected static void SetHighInvExponent(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set<float>("HighInvExponent", value, GameVersion.TMF, static value => value, static (node, value) => node.HighInvExponent = value);
+    private protected static void SetFakeHdrExponent(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrExponentAssignment(), value, GameVersion.TMF);
+    private protected static void SetFakeHdrMin(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetFakeHdrMinAssignment(), value, GameVersion.TMF);
+    private protected static void SetHighInvExponent(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloomData> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomDataBuilderAssignments.GetHighInvExponentAssignment(), value, GameVersion.TMF);
     public float FakeHdrExponent
     {
         get => state.Get<float>("FakeHdrExponent");
@@ -72,6 +72,20 @@ public abstract class CSceneFxBloomDataBuilderBase<TSelf> where TSelf : CSceneFx
 }
 public partial class CSceneFxBloomDataBuilder : CSceneFxBloomDataBuilderBase<CSceneFxBloomDataBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneFxBloomData CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxBloomData();
+        var chunk0A03F000 = new global::GBX.NET.Engines.Scene.CSceneFxBloomData.Chunk0A03F000();
+        node.Chunks.Add(chunk0A03F000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxBloomData node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxBloomData.Chunk0A03F000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A03F000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxBloomData node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CSceneFxBloomDataBuilderBase<TMF>
     {
@@ -79,13 +93,12 @@ public partial class CSceneFxBloomDataBuilder : CSceneFxBloomDataBuilderBase<CSc
         public global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneFxBloomData Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneFxBloomData();
-            var chunk0A03F000 = new global::GBX.NET.Engines.Scene.CSceneFxBloomData.Chunk0A03F000();
-            node.Chunks.Add(chunk0A03F000);
+            var node = CSceneFxBloomDataBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxBloomData.Chunk0A03F000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A03F000 is missing or has an incompatible version.");
+            CSceneFxBloomDataBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneFxBloomDataBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

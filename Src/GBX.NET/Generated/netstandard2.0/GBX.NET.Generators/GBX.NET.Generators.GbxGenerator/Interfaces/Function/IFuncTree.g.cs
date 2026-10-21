@@ -40,9 +40,6 @@ public partial interface IFuncTree : IClassVersion<global::GBX.NET.Engines.Funct
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
 public partial interface IFuncTreeTM10 : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTM10
@@ -51,51 +48,37 @@ public partial interface IFuncTreeTM10 : IFuncTree, global::GBX.NET.Interfaces.F
 
 public partial interface IFuncTreeTMPU : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTMPU
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeTMSX : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTMSX
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeTMNESWC : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeVSK5 : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeTMF : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTMF
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeMP3 : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugMP3
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeTMT : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTMT
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeMP4 : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugMP4
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeTM2020 : IFuncTree, global::GBX.NET.Interfaces.Function.IFuncPlugTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

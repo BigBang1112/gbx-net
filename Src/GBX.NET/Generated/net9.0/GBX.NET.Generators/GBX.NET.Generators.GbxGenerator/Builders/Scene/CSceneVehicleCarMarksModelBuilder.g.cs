@@ -36,8 +36,8 @@ public abstract class CSceneVehicleCarMarksModelBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state;
     private protected CSceneVehicleCarMarksModelBuilderBase() => state = new();
     private protected CSceneVehicleCarMarksModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state) => this.state = state;
-    private protected static void SetDisabled(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state, bool value) => state.Set<bool>("Disabled", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Disabled = value);
-    private protected static void SetModels(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>?>("Models", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Models = value);
+    private protected static void SetDisabled(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilderAssignments.GetDisabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetModels(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleCarMarksModelBuilderAssignments.GetModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool Disabled
     {
         get => state.Get<bool>("Disabled");
@@ -69,6 +69,23 @@ public abstract class CSceneVehicleCarMarksModelBuilderBase<TSelf> where TSelf :
 }
 public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksModelBuilderBase<CSceneVehicleCarMarksModelBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel();
+        var chunk0A081000 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000();
+        node.Chunks.Add(chunk0A081000);
+        var chunk0A081001 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001();
+        node.Chunks.Add(chunk0A081001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A081000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A081001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -79,7 +96,7 @@ public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksMo
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state) : base(state) { }
         public TMT WithModels(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT[] values)
         {
-            return base.WithModels(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT>(values, false));
         }
         public TMT WithModels(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT> values)
         {
@@ -88,16 +105,12 @@ public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksMo
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel();
-            var chunk0A081000 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000();
-            node.Chunks.Add(chunk0A081000);
-            var chunk0A081001 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001();
-            node.Chunks.Add(chunk0A081001);
+            var node = CSceneVehicleCarMarksModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A081000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A081001 is missing or has an incompatible version.");
+            CSceneVehicleCarMarksModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneVehicleCarMarksModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -109,7 +122,7 @@ public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksMo
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state) : base(state) { }
         public MP4 WithModels(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4[] values)
         {
-            return base.WithModels(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4>(values, false));
         }
         public MP4 WithModels(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4> values)
         {
@@ -118,16 +131,12 @@ public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksMo
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel();
-            var chunk0A081000 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000();
-            node.Chunks.Add(chunk0A081000);
-            var chunk0A081001 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001();
-            node.Chunks.Add(chunk0A081001);
+            var node = CSceneVehicleCarMarksModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A081000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A081001 is missing or has an incompatible version.");
+            CSceneVehicleCarMarksModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneVehicleCarMarksModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -139,7 +148,7 @@ public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksMo
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel> state) : base(state) { }
         public TM2020 WithModels(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020[] values)
         {
-            return base.WithModels(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020>(values, false));
         }
         public TM2020 WithModels(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020> values)
         {
@@ -148,16 +157,12 @@ public partial class CSceneVehicleCarMarksModelBuilder : CSceneVehicleCarMarksMo
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel();
-            var chunk0A081000 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000();
-            node.Chunks.Add(chunk0A081000);
-            var chunk0A081001 = new global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001();
-            node.Chunks.Add(chunk0A081001);
+            var node = CSceneVehicleCarMarksModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A081000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel.Chunk0A081001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A081001 is missing or has an incompatible version.");
+            CSceneVehicleCarMarksModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneVehicleCarMarksModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,99 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    string? CpuDescription { get; set; }
+    int CpuKind { get; set; }
+    Checksum128? GhostUid128 { get; set; }
+    byte GpuCount { get; set; }
+    string? GpuDescription { get; set; }
+    int GpuDeviceId { get; set; }
+    int GpuVendorId { get; set; }
+    string? HardwareUid { get; set; }
+    byte HasHmd { get; set; }
+    string? LoggedUserName { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators { get; set; }
+    global::System.Net.IPAddress? NetworkAddress { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs { get; set; }
+    int[]? ScreenCaptureKeyframeIndices { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference { get; set; }
+    UInt256? SecurityKey256 { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings { get; set; }
+    bool SteeringWheelSensitivity { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    Checksum256? Validate_TitleChecksum { get; set; }
+    string? Validate_TitleId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    string? SkinFile { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    string? GhostAvatarName { get; set; }
+    int? GhostVersion { get; set; }
+    List<PackDesc>? SkinPackDescs { get; set; }
+    int? Validate_ValidationSeed { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers5 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    TimeInt32? RaceTime { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    int? StuntScore { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers8 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    Vec3 LightTrailColor { get; set; }
+    int? Respawns { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? Badge { get; set; }
+    bool HasBadges { get; set; }
+    TimeInt32? RaceStartTime { get; set; }
+    string? RecordingContext { get; set; }
+    string? SkinCustomization { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers10 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    UInt128? SecurityKey128 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnGhostMembers11 : global::GBX.NET.Interfaces.Game.IGameCtnGhost
+{
+    TimeInt32 EventsDuration { get; set; }
+    string? GhostLogin { get; set; }
+    global::GBX.NET.Id? GhostUid { get; set; }
+    int InputCountLimit { get; set; }
+    int InputStoreVersion { get; set; }
+    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
+    string? Validate_ChallengeUid { get; set; }
+    int Validate_CpuKind { get; set; }
+    uint Validate_ExeChecksum { get; set; }
+    string? Validate_ExeVersion { get; set; }
+    int Validate_OsKind { get; set; }
+    string? Validate_RaceSettings { get; set; }
+}
 public partial interface IGameCtnGhost : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnGhost>, global::GBX.NET.Interfaces.Game.IGameGhost
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -42,331 +135,68 @@ public partial interface IGameCtnGhost : IClassVersion<global::GBX.NET.Engines.G
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     string? GhostNickname { get; set; }
     Ident? PlayerModel { get; set; }
-    new global::GBX.NET.Engines.Game.CGameGhost.Data SampleData { get; }
 }
 
-public partial interface IGameCtnGhostTM10 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTM10
+public partial interface IGameCtnGhostTM10 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTM10, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3
 {
-    string? SkinFile { get; set; }
 }
 
-public partial interface IGameCtnGhostTMPU : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMPU
+public partial interface IGameCtnGhostTMPU : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMPU, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    string? SkinFile { get; set; }
 }
 
-public partial interface IGameCtnGhostTMS : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMS
+public partial interface IGameCtnGhostTMS : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMS, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8
 {
-    Vec3 LightTrailColor { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    new uint? SavedMobilClassId { get; set; }
-    string? SkinFile { get; set; }
 }
 
-public partial interface IGameCtnGhostTMSX : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMSX
+public partial interface IGameCtnGhostTMSX : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMSX, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    new uint? SavedMobilClassId { get; set; }
-    string? SkinFile { get; set; }
-    int? StuntScore { get; set; }
 }
 
-public partial interface IGameCtnGhostTMNESWC : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMNESWC
+public partial interface IGameCtnGhostTMNESWC : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    new uint? SavedMobilClassId { get; set; }
-    string? SkinFile { get; set; }
-    int? StuntScore { get; set; }
 }
 
-public partial interface IGameCtnGhostTMU : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMU
+public partial interface IGameCtnGhostTMU : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMU, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers10, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostLogin { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    UInt128? SecurityKey128 { get; set; }
-    string? SkinFile { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
 }
 
-public partial interface IGameCtnGhostVSK5 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostVSK5
+public partial interface IGameCtnGhostVSK5 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostVSK5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers10, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostLogin { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    UInt128? SecurityKey128 { get; set; }
-    string? SkinFile { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
 }
 
-public partial interface IGameCtnGhostTMF : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMF
+public partial interface IGameCtnGhostTMF : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMF, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers10, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostAvatarName { get; set; }
-    string? GhostLogin { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    int? GhostVersion { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    UInt128? SecurityKey128 { get; set; }
-    List<PackDesc>? SkinPackDescs { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
-    int? Validate_ValidationSeed { get; set; }
 }
 
-public partial interface IGameCtnGhostMP3 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostMP3
+public partial interface IGameCtnGhostMP3 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostMP3, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers1, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    string? CpuDescription { get; set; }
-    int CpuKind { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostAvatarName { get; set; }
-    string? GhostLogin { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    Checksum128? GhostUid128 { get; set; }
-    int? GhostVersion { get; set; }
-    byte GpuCount { get; set; }
-    string? GpuDescription { get; set; }
-    int GpuDeviceId { get; set; }
-    int GpuVendorId { get; set; }
-    string? HardwareUid { get; set; }
-    byte HasHmd { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    string? LoggedUserName { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators { get; set; }
-    global::System.Net.IPAddress? NetworkAddress { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    int? Respawns { get; set; }
-    int[]? ScreenCaptureKeyframeIndices { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference { get; set; }
-    UInt256? SecurityKey256 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings { get; set; }
-    List<PackDesc>? SkinPackDescs { get; set; }
-    bool SteeringWheelSensitivity { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
-    int? Validate_ValidationSeed { get; set; }
 }
 
-public partial interface IGameCtnGhostTMT : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMT
+public partial interface IGameCtnGhostTMT : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTMT, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers1, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers9, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? Badge { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    string? CpuDescription { get; set; }
-    int CpuKind { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostAvatarName { get; set; }
-    string? GhostLogin { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    Checksum128? GhostUid128 { get; set; }
-    int? GhostVersion { get; set; }
-    byte GpuCount { get; set; }
-    string? GpuDescription { get; set; }
-    int GpuDeviceId { get; set; }
-    int GpuVendorId { get; set; }
-    string? HardwareUid { get; set; }
-    bool HasBadges { get; set; }
-    byte HasHmd { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    string? LoggedUserName { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators { get; set; }
-    global::System.Net.IPAddress? NetworkAddress { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs { get; set; }
-    TimeInt32? RaceStartTime { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    string? RecordingContext { get; set; }
-    int? Respawns { get; set; }
-    int[]? ScreenCaptureKeyframeIndices { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference { get; set; }
-    UInt256? SecurityKey256 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings { get; set; }
-    string? SkinCustomization { get; set; }
-    List<PackDesc>? SkinPackDescs { get; set; }
-    bool SteeringWheelSensitivity { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
-    int? Validate_ValidationSeed { get; set; }
 }
 
-public partial interface IGameCtnGhostMP4 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostMP4
+public partial interface IGameCtnGhostMP4 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostMP4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers1, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers2, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers9, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? Badge { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    string? CpuDescription { get; set; }
-    int CpuKind { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostAvatarName { get; set; }
-    string? GhostLogin { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    Checksum128? GhostUid128 { get; set; }
-    int? GhostVersion { get; set; }
-    byte GpuCount { get; set; }
-    string? GpuDescription { get; set; }
-    int GpuDeviceId { get; set; }
-    int GpuVendorId { get; set; }
-    string? HardwareUid { get; set; }
-    bool HasBadges { get; set; }
-    byte HasHmd { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    string? LoggedUserName { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators { get; set; }
-    global::System.Net.IPAddress? NetworkAddress { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs { get; set; }
-    TimeInt32? RaceStartTime { get; set; }
-    TimeInt32? RaceTime { get; set; }
-    string? RecordingContext { get; set; }
-    int? Respawns { get; set; }
-    int[]? ScreenCaptureKeyframeIndices { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference { get; set; }
-    UInt256? SecurityKey256 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings { get; set; }
-    string? SkinCustomization { get; set; }
-    List<PackDesc>? SkinPackDescs { get; set; }
-    bool SteeringWheelSensitivity { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
-    Checksum256? Validate_TitleChecksum { get; set; }
-    string? Validate_TitleId { get; set; }
-    int? Validate_ValidationSeed { get; set; }
 }
 
-public partial interface IGameCtnGhostTM2020 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTM2020
+public partial interface IGameCtnGhostTM2020 : IGameCtnGhost, global::GBX.NET.Interfaces.Game.IGameGhostTM2020, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers1, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers2, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers4, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers5, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers6, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers7, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers8, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers9, global::GBX.NET.Interfaces.Game.IGameCtnGhostMembers11
 {
     int AppearanceVersion { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SBadge? Badge { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.Checkpoint[]? Checkpoints { get; set; }
-    string? CpuDescription { get; set; }
-    int CpuKind { get; set; }
-    TimeInt32 EventsDuration { get; set; }
-    string? GhostAvatarName { get; set; }
     string? GhostClubTag { get; set; }
     string? GhostCountryPath { get; set; }
-    string? GhostLogin { get; set; }
     string? GhostTrigram { get; set; }
-    global::GBX.NET.Id? GhostUid { get; set; }
-    Checksum128? GhostUid128 { get; set; }
-    int? GhostVersion { get; set; }
-    byte GpuCount { get; set; }
-    string? GpuDescription { get; set; }
-    int GpuDeviceId { get; set; }
-    int GpuVendorId { get; set; }
-    string? HardwareUid { get; set; }
-    bool HasBadges { get; set; }
-    byte HasHmd { get; set; }
     int HasInputs { get; set; }
-    int InputCountLimit { get; set; }
-    int InputStoreVersion { get; set; }
-    global::System.Collections.Immutable.ImmutableArray<global::GBX.NET.Inputs.IInput> Inputs { get; set; }
-    Vec3 LightTrailColor { get; set; }
-    string? LoggedUserName { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.MatchReplaySeparator[]? MatchReplaySeparators { get; set; }
-    global::System.Net.IPAddress? NetworkAddress { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.PlayerInputData[]? PlayerInputs { get; set; }
-    TimeInt32? RaceStartTime { get; set; }
-    TimeInt32? RaceTime { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? RecordData { get; set; }
-    string? RecordingContext { get; set; }
-    int? Respawns { get; set; }
-    int[]? ScreenCaptureKeyframeIndices { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugTimedPixelArray>? ScreenCaptures_Difference { get; set; }
-    UInt256? SecurityKey256 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnGhost.SettingsInfos[]? Settings { get; set; }
     int SimulationFlags { get; set; }
-    string? SkinCustomization { get; set; }
-    List<PackDesc>? SkinPackDescs { get; set; }
     int? SpawnLandmarkId { get; set; }
-    bool SteeringWheelSensitivity { get; set; }
-    int? StuntScore { get; set; }
-    string? Validate_ChallengeUid { get; set; }
-    int Validate_CpuKind { get; set; }
-    uint Validate_ExeChecksum { get; set; }
-    string? Validate_ExeVersion { get; set; }
     string? Validate_GameMode { get; set; }
     string? Validate_GameModeCustomData { get; set; }
     int Validate_GameRules { get; set; }
-    int Validate_OsKind { get; set; }
-    string? Validate_RaceSettings { get; set; }
     TimeInt32? Validate_RaceStartTime { get; set; }
     string? Validate_ScopeId { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnGhost.ScopeType Validate_ScopeType { get; set; }
-    Checksum256? Validate_TitleChecksum { get; set; }
-    string? Validate_TitleId { get; set; }
-    int? Validate_ValidationSeed { get; set; }
     TimeSpan? WalltimeDuration { get; }
     DateTimeOffset? WalltimeEndTimestamp { get; set; }
     DateTimeOffset? WalltimeStartTimestamp { get; set; }

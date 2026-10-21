@@ -44,7 +44,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         get => NightMaterial;
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTM10.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.DayMaterial
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTM10.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.NightMaterial
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMPU.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.DayMaterial
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMPU.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.NightMaterial
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMSX.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.DayMaterial
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMSX.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.NightMaterial
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMNESWC.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.DayMaterial
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMNESWC.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.NightMaterial
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Motion.IMotionDayTimeVSK5.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.DayMaterial
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Motion.IMotionDayTimeVSK5.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.NightMaterial
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMF.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.DayMaterial
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMF.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.NightMaterial
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMP3.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.DayMaterial
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMP3.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.NightMaterial
     {
         get
         {
@@ -184,7 +184,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMT.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.DayMaterial
     {
         get
         {
@@ -194,7 +194,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTMT.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.NightMaterial
     {
         get
         {
@@ -204,7 +204,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMP4.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.DayMaterial
     {
         get
         {
@@ -214,7 +214,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMP4.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.NightMaterial
     {
         get
         {
@@ -224,7 +224,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => NightMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTM2020.DayMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.DayMaterial
     {
         get
         {
@@ -234,7 +234,7 @@ public partial class CMotionDayTime : global::GBX.NET.Interfaces.Motion.IMotionD
         }
         set => DayMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Motion.IMotionDayTimeTM2020.NightMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.NightMaterial
     {
         get
         {

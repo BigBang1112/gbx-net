@@ -44,7 +44,7 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
         get => OfficialScores2;
         set => OfficialScores2 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMP3.OfficialScores1
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3>.OfficialScores1
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
         }
         set => OfficialScores1 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMP3.OfficialScores2
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3>.OfficialScores2
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
         }
         set => OfficialScores2 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresTMT.OfficialScores1
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT>.OfficialScores1
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
         }
         set => OfficialScores1 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresTMT.OfficialScores2
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT>.OfficialScores2
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
         }
         set => OfficialScores2 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMP4.OfficialScores1
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4>.OfficialScores1
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CGamePlayerProfileChunk_GameScores : global::GBX.NET.Interf
         }
         set => OfficialScores1 = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMP4.OfficialScores2
+    global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4>.OfficialScores2
     {
         get
         {

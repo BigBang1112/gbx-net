@@ -36,7 +36,7 @@ public abstract class CPlugCamShakeModelBuilderBase<TSelf> where TSelf : CPlugCa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state;
     private protected CPlugCamShakeModelBuilderBase() => state = new();
     private protected CPlugCamShakeModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state) => this.state = state;
-    private protected static void SetParams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[]>("Params", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[])value.Clone(), static (node, value) => node.Params = value);
+    private protected static void SetParams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamShakeModelBuilderAssignments.GetParamsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[] Params
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.CamShakeParams[]>("Params");
@@ -54,6 +54,32 @@ public abstract class CPlugCamShakeModelBuilderBase<TSelf> where TSelf : CPlugCa
 }
 public partial class CPlugCamShakeModelBuilder : CPlugCamShakeModelBuilderBase<CPlugCamShakeModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugCamShakeModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel();
+        var chunk0910B000 = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(game);
+        node.Chunks.Add(chunk0910B000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCamShakeModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910B000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugCamShakeModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel();
+        var chunk0910B000 = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(game);
+        node.Chunks.Add(chunk0910B000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugCamShakeModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910B000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCamShakeModel node, GameVersion game)
+    {
+        if (node.Params is null) throw new MemberNullException("Params");
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -65,14 +91,12 @@ public partial class CPlugCamShakeModelBuilder : CPlugCamShakeModelBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCamShakeModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel();
-            var chunk0910B000 = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(GameVersion.TMT);
-            node.Chunks.Add(chunk0910B000);
+            var node = CPlugCamShakeModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk0910B000 is missing or has an incompatible version.");
+            CPlugCamShakeModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Params is null) throw new MemberNullException("Params");
+            CPlugCamShakeModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -85,14 +109,12 @@ public partial class CPlugCamShakeModelBuilder : CPlugCamShakeModelBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCamShakeModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel();
-            var chunk0910B000 = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(GameVersion.MP4);
-            node.Chunks.Add(chunk0910B000);
+            var node = CPlugCamShakeModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk0910B000 is missing or has an incompatible version.");
+            CPlugCamShakeModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Params is null) throw new MemberNullException("Params");
+            CPlugCamShakeModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -105,14 +127,12 @@ public partial class CPlugCamShakeModelBuilder : CPlugCamShakeModelBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCamShakeModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel();
-            var chunk0910B000 = new global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0910B000);
+            var node = CPlugCamShakeModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamShakeModel.Chunk0910B000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0910B000 is missing or has an incompatible version.");
+            CPlugCamShakeModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Params is null) throw new MemberNullException("Params");
+            CPlugCamShakeModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

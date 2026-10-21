@@ -31,96 +31,69 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugLightMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugLight where T0 : class where T1 : class
+{
+    T0? BitmapFlare { get; set; }
+    T0? BitmapProjector { get; set; }
+    T1? FuncLight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugLightMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugLight where T0 : class
+{
+    new T0? Light { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugLightMembers3 : global::GBX.NET.Interfaces.Plug.IPlugLight
+{
+    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
+}
 public partial interface IPlugLight : IClassVersion<global::GBX.NET.Engines.Plug.CPlugLight>
 {
     global::GBX.NET.Interfaces.Graphic.IGxLight? Light { get; set; }
 }
 
-public partial interface IPlugLightTM10 : IPlugLight
+public partial interface IPlugLightTM10 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Function.IFuncLightTM10>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTM10>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapProjector { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightTM10? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTM10? Light { get; set; }
 }
 
-public partial interface IPlugLightTMPU : IPlugLight
+public partial interface IPlugLightTMPU : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Function.IFuncLightTMPU>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMPU>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapProjector { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMPU? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMPU? Light { get; set; }
 }
 
-public partial interface IPlugLightTMSX : IPlugLight
+public partial interface IPlugLightTMSX : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Function.IFuncLightTMSX>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMSX>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMSX? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMSX? Light { get; set; }
 }
 
-public partial interface IPlugLightTMNESWC : IPlugLight
+public partial interface IPlugLightTMNESWC : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? Light { get; set; }
 }
 
-public partial interface IPlugLightVSK5 : IPlugLight
+public partial interface IPlugLightVSK5 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Function.IFuncLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightVSK5? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightVSK5? Light { get; set; }
 }
 
-public partial interface IPlugLightTMF : IPlugLight
+public partial interface IPlugLightTMF : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Function.IFuncLightTMF>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMF>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMF? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMF? Light { get; set; }
 }
 
-public partial interface IPlugLightMP3 : IPlugLight
+public partial interface IPlugLightMP3 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Function.IFuncLightMP3>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightMP3>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightMP3? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightMP3? Light { get; set; }
 }
 
-public partial interface IPlugLightTMT : IPlugLight
+public partial interface IPlugLightTMT : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Function.IFuncLightTMT>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMT>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMT? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMT? Light { get; set; }
 }
 
-public partial interface IPlugLightMP4 : IPlugLight
+public partial interface IPlugLightMP4 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Function.IFuncLightMP4>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightMP4>, global::GBX.NET.Interfaces.Plug.IPlugLightMembers3
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapFlare { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapProjector { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugLight.EFlags Flags { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncLightMP4? FuncLight { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightMP4? Light { get; set; }
 }
 
-public partial interface IPlugLightTM2020 : IPlugLight
+public partial interface IPlugLightTM2020 : IPlugLight, global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTM2020>
 {
     float AnimPeriodMax { get; set; }
     float AnimPeriodMin { get; set; }
     string? AnimTimerName { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? ImageAnim { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? Light { get; set; }
 }
 

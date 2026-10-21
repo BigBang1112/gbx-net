@@ -36,10 +36,38 @@ public abstract class CGamePlayerProfileChunk_ChallengesScoresBuilderBase<TSelf>
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state;
     private protected CGamePlayerProfileChunk_ChallengesScoresBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_ChallengesScoresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state) => this.state = state;
-    private protected static void SetContextMapRecordsForProfile(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]?>("ContextMapRecordsForProfile", value, GameVersion.MP4, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[])value.Clone(), static (node, value) => node.ContextMapRecordsForProfile = value);
+    private protected static void SetContextMapRecordsForProfile(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.SContextMapRecordForProfile[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_ChallengesScoresBuilderAssignments.GetContextMapRecordsForProfileAssignment(), value, GameVersion.MP4);
 }
 public partial class CGamePlayerProfileChunk_ChallengesScoresBuilder : CGamePlayerProfileChunk_ChallengesScoresBuilderBase<CGamePlayerProfileChunk_ChallengesScoresBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores();
+        var chunk03149000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000(game);
+        node.Chunks.Add(chunk03149000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03149000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores();
+        var chunk03149000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000(game);
+        node.Chunks.Add(chunk03149000);
+        var chunk03149002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149002(game);
+        node.Chunks.Add(chunk03149002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03149000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149002>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03149002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -51,13 +79,12 @@ public partial class CGamePlayerProfileChunk_ChallengesScoresBuilder : CGamePlay
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_ChallengesScoresMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores();
-            var chunk03149000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000(GameVersion.MP3);
-            node.Chunks.Add(chunk03149000);
+            var node = CGamePlayerProfileChunk_ChallengesScoresBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk03149000 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_ChallengesScoresBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGamePlayerProfileChunk_ChallengesScoresBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -70,13 +97,12 @@ public partial class CGamePlayerProfileChunk_ChallengesScoresBuilder : CGamePlay
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_ChallengesScoresTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores();
-            var chunk03149000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000(GameVersion.TMT);
-            node.Chunks.Add(chunk03149000);
+            var node = CGamePlayerProfileChunk_ChallengesScoresBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk03149000 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_ChallengesScoresBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGamePlayerProfileChunk_ChallengesScoresBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -103,16 +129,12 @@ public partial class CGamePlayerProfileChunk_ChallengesScoresBuilder : CGamePlay
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_ChallengesScoresMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores();
-            var chunk03149000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000(GameVersion.MP4);
-            node.Chunks.Add(chunk03149000);
-            var chunk03149002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149002(GameVersion.MP4);
-            node.Chunks.Add(chunk03149002);
+            var node = CGamePlayerProfileChunk_ChallengesScoresBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk03149000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_ChallengesScores.Chunk03149002>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk03149002 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_ChallengesScoresBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGamePlayerProfileChunk_ChallengesScoresBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

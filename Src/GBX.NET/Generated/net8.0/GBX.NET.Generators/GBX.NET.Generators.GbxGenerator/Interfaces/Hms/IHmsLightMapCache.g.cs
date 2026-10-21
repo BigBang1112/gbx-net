@@ -31,6 +31,65 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers1 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
+    float BounceFactorLegacy { get; set; }
+    bool HasBumpLegacy { get; set; }
+    float MaxHDRLegacy { get; set; }
+    float MaxHDRMoodLegacy { get; set; }
+    float SkyFactorLegacy { get; set; }
+    bool SkyUseCloudsLegacy { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers2 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
+    int AllocModeT3 { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode { get; set; }
+    int BumpNorm { get; set; }
+    int CanFlipU { get; set; }
+    global::GBX.NET.Id Collection { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode { get; set; }
+    int Decal2D { get; set; }
+    int Decal3D { get; set; }
+    bool IsOnlyIndirectDir0 { get; set; }
+    bool IsSpriteLDirInAlpha { get; set; }
+    ulong LightmapCacheUid { get; set; }
+    float[]? MapT3s { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer { get; set; }
+    bool SpriteOriginY_WasWronglyTop { get; set; }
+    DateTime? TimeWriteMostRecentBlock { get; set; }
+    DateTime? TimeWriteMostRecentSolid { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers3 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
+    float AllocatedTexelByMeter { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump Bump { get; set; }
+    uint DynamicTime { get; set; }
+    int DynamicTimeVersion { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? Frames { get; set; }
+    TimeSpan? TimeOfDay { get; set; }
+    int TimeOfDayVersion { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers4 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers5 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapCacheMembers6 : global::GBX.NET.Interfaces.Hms.IHmsLightMapCache
+{
+    string? ChallengeIdLegacy { get; set; }
+}
 public partial interface IHmsLightMapCache : IClassVersion<global::GBX.NET.Engines.Hms.CHmsLightMapCache>
 {
     global::GBX.NET.Engines.Hms.CHmsLightMapCache.EAllocMode AllocMode { get; set; }
@@ -41,141 +100,29 @@ public partial interface IHmsLightMapCache : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Engines.Hms.CHmsLightMapCache.ESortMode SortMode { get; set; }
 }
 
-public partial interface IHmsLightMapCacheVSK5 : IHmsLightMapCache
+public partial interface IHmsLightMapCacheVSK5 : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers6
 {
-    string? ChallengeIdLegacy { get; set; }
     global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[]? MapsLegacy { get; set; }
 }
 
-public partial interface IHmsLightMapCacheTMF : IHmsLightMapCache
+public partial interface IHmsLightMapCacheTMF : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers6
 {
-    string? ChallengeIdLegacy { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps { get; set; }
 }
 
-public partial interface IHmsLightMapCacheMP3 : IHmsLightMapCache
+public partial interface IHmsLightMapCacheMP3 : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers1, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers2, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4
 {
-    int AllocModeT3 { get; set; }
-    float BounceFactorLegacy { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode { get; set; }
-    int BumpNorm { get; set; }
-    int CanFlipU { get; set; }
-    global::GBX.NET.Id Collection { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode { get; set; }
-    int Decal2D { get; set; }
-    int Decal3D { get; set; }
-    bool HasBumpLegacy { get; set; }
-    bool IsOnlyIndirectDir0 { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    float[]? MapT3s { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps { get; set; }
-    float MaxHDRLegacy { get; set; }
-    float MaxHDRMoodLegacy { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer { get; set; }
-    float SkyFactorLegacy { get; set; }
-    bool SkyUseCloudsLegacy { get; set; }
-    bool SpriteOriginY_WasWronglyTop { get; set; }
-    DateTime? TimeWriteMostRecentBlock { get; set; }
-    DateTime? TimeWriteMostRecentSolid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version { get; set; }
 }
 
-public partial interface IHmsLightMapCacheTMT : IHmsLightMapCache
+public partial interface IHmsLightMapCacheTMT : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers1, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers2, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers5
 {
-    int AllocModeT3 { get; set; }
-    float BounceFactorLegacy { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode { get; set; }
-    int BumpNorm { get; set; }
-    int CanFlipU { get; set; }
-    global::GBX.NET.Id Collection { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode { get; set; }
-    int Decal2D { get; set; }
-    int Decal3D { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform { get; set; }
-    bool HasBumpLegacy { get; set; }
-    bool IsOnlyIndirectDir0 { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    float[]? MapT3s { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps { get; set; }
-    float MaxHDRLegacy { get; set; }
-    float MaxHDRMoodLegacy { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer { get; set; }
-    float SkyFactorLegacy { get; set; }
-    bool SkyUseCloudsLegacy { get; set; }
-    bool SpriteOriginY_WasWronglyTop { get; set; }
-    DateTime? TimeWriteMostRecentBlock { get; set; }
-    DateTime? TimeWriteMostRecentSolid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version { get; set; }
 }
 
-public partial interface IHmsLightMapCacheMP4 : IHmsLightMapCache
+public partial interface IHmsLightMapCacheMP4 : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers2, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers5
 {
-    int AllocModeT3 { get; set; }
-    float AllocatedTexelByMeter { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump Bump { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode { get; set; }
-    int BumpNorm { get; set; }
-    int CanFlipU { get; set; }
-    global::GBX.NET.Id Collection { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode { get; set; }
-    int Decal2D { get; set; }
-    int Decal3D { get; set; }
-    uint DynamicTime { get; set; }
-    int DynamicTimeVersion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? Frames { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform { get; set; }
-    bool IsOnlyIndirectDir0 { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    float[]? MapT3s { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer { get; set; }
-    bool SpriteOriginY_WasWronglyTop { get; set; }
-    TimeSpan? TimeOfDay { get; set; }
-    int TimeOfDayVersion { get; set; }
-    DateTime? TimeWriteMostRecentBlock { get; set; }
-    DateTime? TimeWriteMostRecentSolid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version { get; set; }
 }
 
-public partial interface IHmsLightMapCacheTM2020 : IHmsLightMapCache
+public partial interface IHmsLightMapCacheTM2020 : IHmsLightMapCache, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers2, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMembers5
 {
-    int AllocModeT3 { get; set; }
-    float AllocatedTexelByMeter { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump Bump { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode { get; set; }
-    int BumpNorm { get; set; }
-    int CanFlipU { get; set; }
     string? ChallengeMapUid { get; set; }
-    global::GBX.NET.Id Collection { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode { get; set; }
-    int Decal2D { get; set; }
-    int Decal3D { get; set; }
-    uint DynamicTime { get; set; }
-    int DynamicTimeVersion { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? Frames { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform { get; set; }
-    bool IsOnlyIndirectDir0 { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    float[]? MapT3s { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer { get; set; }
-    bool SpriteOriginY_WasWronglyTop { get; set; }
-    TimeSpan? TimeOfDay { get; set; }
-    int TimeOfDayVersion { get; set; }
-    DateTime? TimeWriteMostRecentBlock { get; set; }
-    DateTime? TimeWriteMostRecentSolid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version { get; set; }
 }
 

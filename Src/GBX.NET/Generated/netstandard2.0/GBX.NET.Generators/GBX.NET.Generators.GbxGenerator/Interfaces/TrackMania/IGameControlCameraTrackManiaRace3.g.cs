@@ -31,6 +31,77 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraTrackManiaRace3Members1<T0> : global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3 where T0 : class
+{
+    float ConstantFlyingLookDownFactor { get; set; }
+    float EventBurningLookAtFactorDelta { get; set; }
+    int EventBurningLookAtFactorTimeDown { get; set; }
+    float EventBurningRadiusDelta { get; set; }
+    int EventBurningRadiusTimeDown { get; set; }
+    int EventBurningRadiusTimeUp { get; set; }
+    float EventChangeGearFarDelta { get; set; }
+    int EventChangeGearFarTimeDown { get; set; }
+    int EventChangeGearFarTimeUp { get; set; }
+    float EventTurboFarDelta { get; set; }
+    int EventTurboFarTimeDown { get; set; }
+    int EventTurboFarTimeUp { get; set; }
+    float EventTurboFovDelta { get; set; }
+    int EventTurboFovTimeDown { get; set; }
+    int EventTurboFovTimeUp { get; set; }
+    float Far { get; set; }
+    int FlyDurationBeforeFlyingBehavior { get; set; }
+    T0? FlyingLookDownFactorFromSpeedRatio { get; set; }
+    float FlyingLookDownFactorKa { get; set; }
+    float FlyingLookDownFactorKi { get; set; }
+    float InputBrakeFarDelta { get; set; }
+    int InputBrakeFarTimeDown { get; set; }
+    int InputBrakeFarTimeUp { get; set; }
+    float InputGasFarDelta { get; set; }
+    int InputGasFarTimeDown { get; set; }
+    int InputGasFarTimeUp { get; set; }
+    int InputNoSteerDurationBeforeReset { get; set; }
+    int InputSteerDurationBeforeBurnoutShowView { get; set; }
+    float InputSteerFarDelta { get; set; }
+    int InputSteerFarTimeDown { get; set; }
+    int InputSteerFarTimeUp { get; set; }
+    T0? LookAtFactorFromUpSpeedRatio { get; set; }
+    float MinSpeed { get; set; }
+    float MinSpeed2 { get; set; }
+    float RadiusDamperKa { get; set; }
+    float RadiusDamperKi { get; set; }
+    float SlerpSpeed { get; set; }
+    float SlerpSpeedCamUp { get; set; }
+    float SlerpSpeedCamUpDelta { get; set; }
+    float SlerpSpeedCamUpFlyingBehavior { get; set; }
+    int SlerpSpeedCamUpTimeDown { get; set; }
+    int SlerpSpeedCamUpTimeUp { get; set; }
+    float SlerpSpeedDelta { get; set; }
+    float SlerpSpeedFlyingBehavior { get; set; }
+    T0? SlerpSpeedModulationFromSpeed { get; set; }
+    int SlerpSpeedTimeDown { get; set; }
+    int SlerpSpeedTimeUp { get; set; }
+    float SlerpTargetCamUpDelta { get; set; }
+    int SlerpTargetCamUpTimeDown { get; set; }
+    int SlerpTargetCamUpTimeUp { get; set; }
+    float SlerpTargetPosDelta { get; set; }
+    float SlerpTargetPosFlyingDelta { get; set; }
+    int SlerpTargetPosFlyingTimeDown { get; set; }
+    int SlerpTargetPosFlyingTimeUp { get; set; }
+    float SlerpTargetPosNormalBehaviorDelta { get; set; }
+    int SlerpTargetPosNormalBehaviorTimeDown { get; set; }
+    int SlerpTargetPosNormalBehaviorTimeUp { get; set; }
+    int SlerpTargetPosTimeDown { get; set; }
+    int SlerpTargetPosTimeUp { get; set; }
+    float StateFlyingLookAtFactorDelta { get; set; }
+    int StateFlyingLookAtFactorTimeDown { get; set; }
+    int StateFlyingLookAtFactorTimeUp { get; set; }
+    float StateFlyingLookAtStep { get; set; }
+    float StateFlyingRadiusDelta { get; set; }
+    int StateFlyingRadiusTimeDown { get; set; }
+    int StateFlyingRadiusTimeUp { get; set; }
+    float Up { get; set; }
+}
 public partial interface IGameControlCameraTrackManiaRace3 : IClassVersion<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace3>, global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,386 +111,26 @@ public partial interface IGameControlCameraTrackManiaRace3 : IClassVersion<globa
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool Interpolate { get; set; }
-    new bool IsUpLinked { get; set; }
-    new Iso4 Location { get; set; }
-    new float LookAtFactor { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRace3TMSX : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX
+public partial interface IGameControlCameraTrackManiaRace3TMSX : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float ConstantFlyingLookDownFactor { get; set; }
-    new float DefaultFov { get; set; }
-    float EventBurningLookAtFactorDelta { get; set; }
-    int EventBurningLookAtFactorTimeDown { get; set; }
-    float EventBurningRadiusDelta { get; set; }
-    int EventBurningRadiusTimeDown { get; set; }
-    int EventBurningRadiusTimeUp { get; set; }
-    float EventChangeGearFarDelta { get; set; }
-    int EventChangeGearFarTimeDown { get; set; }
-    int EventChangeGearFarTimeUp { get; set; }
-    float EventTurboFarDelta { get; set; }
-    int EventTurboFarTimeDown { get; set; }
-    int EventTurboFarTimeUp { get; set; }
-    float EventTurboFovDelta { get; set; }
-    int EventTurboFovTimeDown { get; set; }
-    int EventTurboFovTimeUp { get; set; }
-    float Far { get; set; }
-    int FlyDurationBeforeFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? FlyingLookDownFactorFromSpeedRatio { get; set; }
-    float FlyingLookDownFactorKa { get; set; }
-    float FlyingLookDownFactorKi { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new float Fov { get; set; }
-    float InputBrakeFarDelta { get; set; }
-    int InputBrakeFarTimeDown { get; set; }
-    int InputBrakeFarTimeUp { get; set; }
-    float InputGasFarDelta { get; set; }
-    int InputGasFarTimeDown { get; set; }
-    int InputGasFarTimeUp { get; set; }
-    int InputNoSteerDurationBeforeReset { get; set; }
-    int InputSteerDurationBeforeBurnoutShowView { get; set; }
-    float InputSteerFarDelta { get; set; }
-    int InputSteerFarTimeDown { get; set; }
-    int InputSteerFarTimeUp { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? LookAtFactorFromUpSpeedRatio { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    float MinSpeed { get; set; }
-    float MinSpeed2 { get; set; }
-    new float PlaneDist { get; set; }
-    float RadiusDamperKa { get; set; }
-    float RadiusDamperKi { get; set; }
-    new Vec3 RelativeTargetPos { get; set; }
-    float SlerpSpeed { get; set; }
-    float SlerpSpeedCamUp { get; set; }
-    float SlerpSpeedCamUpDelta { get; set; }
-    float SlerpSpeedCamUpFlyingBehavior { get; set; }
-    int SlerpSpeedCamUpTimeDown { get; set; }
-    int SlerpSpeedCamUpTimeUp { get; set; }
-    float SlerpSpeedDelta { get; set; }
-    float SlerpSpeedFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? SlerpSpeedModulationFromSpeed { get; set; }
-    int SlerpSpeedTimeDown { get; set; }
-    int SlerpSpeedTimeUp { get; set; }
-    float SlerpTargetCamUpDelta { get; set; }
-    int SlerpTargetCamUpTimeDown { get; set; }
-    int SlerpTargetCamUpTimeUp { get; set; }
-    float SlerpTargetPosDelta { get; set; }
-    float SlerpTargetPosFlyingDelta { get; set; }
-    int SlerpTargetPosFlyingTimeDown { get; set; }
-    int SlerpTargetPosFlyingTimeUp { get; set; }
-    float SlerpTargetPosNormalBehaviorDelta { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeDown { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeUp { get; set; }
-    int SlerpTargetPosTimeDown { get; set; }
-    int SlerpTargetPosTimeUp { get; set; }
-    float StateFlyingLookAtFactorDelta { get; set; }
-    int StateFlyingLookAtFactorTimeDown { get; set; }
-    int StateFlyingLookAtFactorTimeUp { get; set; }
-    float StateFlyingLookAtStep { get; set; }
-    float StateFlyingRadiusDelta { get; set; }
-    int StateFlyingRadiusTimeDown { get; set; }
-    int StateFlyingRadiusTimeUp { get; set; }
-    float Up { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRace3TMNESWC : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC
+public partial interface IGameControlCameraTrackManiaRace3TMNESWC : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float ConstantFlyingLookDownFactor { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float EventBurningLookAtFactorDelta { get; set; }
-    int EventBurningLookAtFactorTimeDown { get; set; }
-    float EventBurningRadiusDelta { get; set; }
-    int EventBurningRadiusTimeDown { get; set; }
-    int EventBurningRadiusTimeUp { get; set; }
-    float EventChangeGearFarDelta { get; set; }
-    int EventChangeGearFarTimeDown { get; set; }
-    int EventChangeGearFarTimeUp { get; set; }
-    float EventTurboFarDelta { get; set; }
-    int EventTurboFarTimeDown { get; set; }
-    int EventTurboFarTimeUp { get; set; }
-    float EventTurboFovDelta { get; set; }
-    int EventTurboFovTimeDown { get; set; }
-    int EventTurboFovTimeUp { get; set; }
-    float Far { get; set; }
-    int FlyDurationBeforeFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? FlyingLookDownFactorFromSpeedRatio { get; set; }
-    float FlyingLookDownFactorKa { get; set; }
-    float FlyingLookDownFactorKi { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float InputBrakeFarDelta { get; set; }
-    int InputBrakeFarTimeDown { get; set; }
-    int InputBrakeFarTimeUp { get; set; }
-    float InputGasFarDelta { get; set; }
-    int InputGasFarTimeDown { get; set; }
-    int InputGasFarTimeUp { get; set; }
-    int InputNoSteerDurationBeforeReset { get; set; }
-    int InputSteerDurationBeforeBurnoutShowView { get; set; }
-    float InputSteerFarDelta { get; set; }
-    int InputSteerFarTimeDown { get; set; }
-    int InputSteerFarTimeUp { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? LookAtFactorFromUpSpeedRatio { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MinSpeed { get; set; }
-    float MinSpeed2 { get; set; }
-    new float PlaneDist { get; set; }
-    float RadiusDamperKa { get; set; }
-    float RadiusDamperKi { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    float SlerpSpeed { get; set; }
-    float SlerpSpeedCamUp { get; set; }
-    float SlerpSpeedCamUpDelta { get; set; }
-    float SlerpSpeedCamUpFlyingBehavior { get; set; }
-    int SlerpSpeedCamUpTimeDown { get; set; }
-    int SlerpSpeedCamUpTimeUp { get; set; }
-    float SlerpSpeedDelta { get; set; }
-    float SlerpSpeedFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? SlerpSpeedModulationFromSpeed { get; set; }
-    int SlerpSpeedTimeDown { get; set; }
-    int SlerpSpeedTimeUp { get; set; }
-    float SlerpTargetCamUpDelta { get; set; }
-    int SlerpTargetCamUpTimeDown { get; set; }
-    int SlerpTargetCamUpTimeUp { get; set; }
-    float SlerpTargetPosDelta { get; set; }
-    float SlerpTargetPosFlyingDelta { get; set; }
-    int SlerpTargetPosFlyingTimeDown { get; set; }
-    int SlerpTargetPosFlyingTimeUp { get; set; }
-    float SlerpTargetPosNormalBehaviorDelta { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeDown { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeUp { get; set; }
-    int SlerpTargetPosTimeDown { get; set; }
-    int SlerpTargetPosTimeUp { get; set; }
-    float StateFlyingLookAtFactorDelta { get; set; }
-    int StateFlyingLookAtFactorTimeDown { get; set; }
-    int StateFlyingLookAtFactorTimeUp { get; set; }
-    float StateFlyingLookAtStep { get; set; }
-    float StateFlyingRadiusDelta { get; set; }
-    int StateFlyingRadiusTimeDown { get; set; }
-    int StateFlyingRadiusTimeUp { get; set; }
-    float Up { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRace3VSK5 : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5
+public partial interface IGameControlCameraTrackManiaRace3VSK5 : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float ConstantFlyingLookDownFactor { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float EventBurningLookAtFactorDelta { get; set; }
-    int EventBurningLookAtFactorTimeDown { get; set; }
-    float EventBurningRadiusDelta { get; set; }
-    int EventBurningRadiusTimeDown { get; set; }
-    int EventBurningRadiusTimeUp { get; set; }
-    float EventChangeGearFarDelta { get; set; }
-    int EventChangeGearFarTimeDown { get; set; }
-    int EventChangeGearFarTimeUp { get; set; }
-    float EventTurboFarDelta { get; set; }
-    int EventTurboFarTimeDown { get; set; }
-    int EventTurboFarTimeUp { get; set; }
-    float EventTurboFovDelta { get; set; }
-    int EventTurboFovTimeDown { get; set; }
-    int EventTurboFovTimeUp { get; set; }
-    float Far { get; set; }
-    int FlyDurationBeforeFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? FlyingLookDownFactorFromSpeedRatio { get; set; }
-    float FlyingLookDownFactorKa { get; set; }
-    float FlyingLookDownFactorKi { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float InputBrakeFarDelta { get; set; }
-    int InputBrakeFarTimeDown { get; set; }
-    int InputBrakeFarTimeUp { get; set; }
-    float InputGasFarDelta { get; set; }
-    int InputGasFarTimeDown { get; set; }
-    int InputGasFarTimeUp { get; set; }
-    int InputNoSteerDurationBeforeReset { get; set; }
-    int InputSteerDurationBeforeBurnoutShowView { get; set; }
-    float InputSteerFarDelta { get; set; }
-    int InputSteerFarTimeDown { get; set; }
-    int InputSteerFarTimeUp { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? LookAtFactorFromUpSpeedRatio { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MinSpeed { get; set; }
-    float MinSpeed2 { get; set; }
-    new float PlaneDist { get; set; }
-    float RadiusDamperKa { get; set; }
-    float RadiusDamperKi { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    float SlerpSpeed { get; set; }
-    float SlerpSpeedCamUp { get; set; }
-    float SlerpSpeedCamUpDelta { get; set; }
-    float SlerpSpeedCamUpFlyingBehavior { get; set; }
-    int SlerpSpeedCamUpTimeDown { get; set; }
-    int SlerpSpeedCamUpTimeUp { get; set; }
-    float SlerpSpeedDelta { get; set; }
-    float SlerpSpeedFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? SlerpSpeedModulationFromSpeed { get; set; }
-    int SlerpSpeedTimeDown { get; set; }
-    int SlerpSpeedTimeUp { get; set; }
-    float SlerpTargetCamUpDelta { get; set; }
-    int SlerpTargetCamUpTimeDown { get; set; }
-    int SlerpTargetCamUpTimeUp { get; set; }
-    float SlerpTargetPosDelta { get; set; }
-    float SlerpTargetPosFlyingDelta { get; set; }
-    int SlerpTargetPosFlyingTimeDown { get; set; }
-    int SlerpTargetPosFlyingTimeUp { get; set; }
-    float SlerpTargetPosNormalBehaviorDelta { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeDown { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeUp { get; set; }
-    int SlerpTargetPosTimeDown { get; set; }
-    int SlerpTargetPosTimeUp { get; set; }
-    float StateFlyingLookAtFactorDelta { get; set; }
-    int StateFlyingLookAtFactorTimeDown { get; set; }
-    int StateFlyingLookAtFactorTimeUp { get; set; }
-    float StateFlyingLookAtStep { get; set; }
-    float StateFlyingRadiusDelta { get; set; }
-    int StateFlyingRadiusTimeDown { get; set; }
-    int StateFlyingRadiusTimeUp { get; set; }
-    float Up { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
-public partial interface IGameControlCameraTrackManiaRace3TMF : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF
+public partial interface IGameControlCameraTrackManiaRace3TMF : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF, global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace3Members1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float ConstantFlyingLookDownFactor { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float EventBurningLookAtFactorDelta { get; set; }
-    int EventBurningLookAtFactorTimeDown { get; set; }
-    float EventBurningRadiusDelta { get; set; }
-    int EventBurningRadiusTimeDown { get; set; }
-    int EventBurningRadiusTimeUp { get; set; }
-    float EventChangeGearFarDelta { get; set; }
-    int EventChangeGearFarTimeDown { get; set; }
-    int EventChangeGearFarTimeUp { get; set; }
-    float EventTurboFarDelta { get; set; }
-    int EventTurboFarTimeDown { get; set; }
-    int EventTurboFarTimeUp { get; set; }
-    float EventTurboFovDelta { get; set; }
-    int EventTurboFovTimeDown { get; set; }
-    int EventTurboFovTimeUp { get; set; }
-    float Far { get; set; }
-    int FlyDurationBeforeFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? FlyingLookDownFactorFromSpeedRatio { get; set; }
-    float FlyingLookDownFactorKa { get; set; }
-    float FlyingLookDownFactorKi { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float InputBrakeFarDelta { get; set; }
-    int InputBrakeFarTimeDown { get; set; }
-    int InputBrakeFarTimeUp { get; set; }
-    float InputGasFarDelta { get; set; }
-    int InputGasFarTimeDown { get; set; }
-    int InputGasFarTimeUp { get; set; }
-    int InputNoSteerDurationBeforeReset { get; set; }
-    int InputSteerDurationBeforeBurnoutShowView { get; set; }
-    float InputSteerFarDelta { get; set; }
-    int InputSteerFarTimeDown { get; set; }
-    int InputSteerFarTimeUp { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? LookAtFactorFromUpSpeedRatio { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MinSpeed { get; set; }
-    float MinSpeed2 { get; set; }
-    new float PlaneDist { get; set; }
-    float RadiusDamperKa { get; set; }
-    float RadiusDamperKi { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    float SlerpSpeed { get; set; }
-    float SlerpSpeedCamUp { get; set; }
-    float SlerpSpeedCamUpDelta { get; set; }
-    float SlerpSpeedCamUpFlyingBehavior { get; set; }
-    int SlerpSpeedCamUpTimeDown { get; set; }
-    int SlerpSpeedCamUpTimeUp { get; set; }
-    float SlerpSpeedDelta { get; set; }
-    float SlerpSpeedFlyingBehavior { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? SlerpSpeedModulationFromSpeed { get; set; }
-    int SlerpSpeedTimeDown { get; set; }
-    int SlerpSpeedTimeUp { get; set; }
-    float SlerpTargetCamUpDelta { get; set; }
-    int SlerpTargetCamUpTimeDown { get; set; }
-    int SlerpTargetCamUpTimeUp { get; set; }
-    float SlerpTargetPosDelta { get; set; }
-    float SlerpTargetPosFlyingDelta { get; set; }
-    int SlerpTargetPosFlyingTimeDown { get; set; }
-    int SlerpTargetPosFlyingTimeUp { get; set; }
-    float SlerpTargetPosNormalBehaviorDelta { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeDown { get; set; }
-    int SlerpTargetPosNormalBehaviorTimeUp { get; set; }
-    int SlerpTargetPosTimeDown { get; set; }
-    int SlerpTargetPosTimeUp { get; set; }
-    float StateFlyingLookAtFactorDelta { get; set; }
-    int StateFlyingLookAtFactorTimeDown { get; set; }
-    int StateFlyingLookAtFactorTimeUp { get; set; }
-    float StateFlyingLookAtStep { get; set; }
-    float StateFlyingRadiusDelta { get; set; }
-    int StateFlyingRadiusTimeDown { get; set; }
-    int StateFlyingRadiusTimeUp { get; set; }
-    float Up { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
 public partial interface IGameControlCameraTrackManiaRace3MP3 : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3
 {
-    new bool CanUseRelativeTargetLocation { get; set; }
 }
 
 public partial interface IGameControlCameraTrackManiaRace3TMT : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT
@@ -428,29 +139,6 @@ public partial interface IGameControlCameraTrackManiaRace3TMT : IGameControlCame
 
 public partial interface IGameControlCameraTrackManiaRace3MP4 : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP4
 {
-    new bool CanCameraMove { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    new float PlaneDist { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
 }
 
 public partial interface IGameControlCameraTrackManiaRace3TM2020 : IGameControlCameraTrackManiaRace3, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTM2020

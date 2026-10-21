@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameCtnChallengeParameters : global::GBX.NET.Interfaces.Game.IGameCtnChallengeParameters, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020
 {
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeParametersBuilder Create() => new();
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3.RaceValidateGhost
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP3>.RaceValidateGhost
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CGameCtnChallengeParameters : global::GBX.NET.Interfaces.Ga
         }
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT.RaceValidateGhost
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTMT>.RaceValidateGhost
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CGameCtnChallengeParameters : global::GBX.NET.Interfaces.Ga
         }
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4.RaceValidateGhost
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostMP4>.RaceValidateGhost
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGameCtnChallengeParameters : global::GBX.NET.Interfaces.Ga
         }
         set => RaceValidateGhost = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnGhost node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020.RaceValidateGhost
+    global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020? global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMembers1<global::GBX.NET.Interfaces.Game.IGameCtnGhostTM2020>.RaceValidateGhost
     {
         get
         {

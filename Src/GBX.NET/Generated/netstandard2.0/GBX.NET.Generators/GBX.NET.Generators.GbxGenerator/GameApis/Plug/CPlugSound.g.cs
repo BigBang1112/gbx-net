@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020
 {
     public static global::GBX.NET.Builders.Engines.Plug.CPlugSoundBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMP3.BackingSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.BackingSound
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMP3.FocusedSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.FocusedSound
     {
         get
         {
@@ -56,10 +56,10 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? global::GBX.NET.Interfaces.Plug.IPlugSoundMP3.OldSubSources
     {
-        get => OldSubSources is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(() => OldSubSources, static node => { if (node is null) throw new MemberNullException("OldSubSources"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => OldSubSources = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OldSubSources is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(GetOldSubSourcesBuilderReferences, GameVersion.MP3, true, "OldSubSources");
+        set => OldSubSources = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMP3.PitchFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.PitchFromDistance
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMP3.VolumeFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.VolumeFromDistance
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundTMT.BackingSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.BackingSound
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundTMT.FocusedSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.FocusedSound
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundTMT.PitchFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.PitchFromDistance
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundTMT.VolumeFormSpeedKmh
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFormSpeedKmh
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundTMT.VolumeFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.VolumeFromDistance
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMP4.BackingSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.BackingSound
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMP4.FocusedSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.FocusedSound
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMP4.PitchFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.PitchFromDistance
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMP4.VolumeFormSpeedKmh
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.VolumeFormSpeedKmh
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMP4.VolumeFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.VolumeFromDistance
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020.BackingSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.BackingSound
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => BackingSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020.FocusedSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.FocusedSound
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => FocusedSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020.PitchFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.PitchFromDistance
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => PitchFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020.VolumeFormSpeedKmh
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers5<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.VolumeFormSpeedKmh
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFormSpeedKmh = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020.VolumeFromDistance
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.VolumeFromDistance
     {
         get
         {
@@ -229,4 +229,5 @@ public partial class CPlugSound : global::GBX.NET.Interfaces.Plug.IPlugSound, gl
         }
         set => VolumeFromDistance = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? GetOldSubSourcesBuilderReferences() => OldSubSources;
 }

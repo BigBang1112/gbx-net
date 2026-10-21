@@ -40,7 +40,6 @@ public partial interface IPlugVehicleCameraHelicoModel : IClassVersion<global::G
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel? Shake { get; set; }
 }
 
 public partial interface IPlugVehicleCameraHelicoModelTMT : IPlugVehicleCameraHelicoModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT

@@ -34,34 +34,35 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugShaderPass : global::GBX.NET.Interfaces.Plug.IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020
 {
     public static global::GBX.NET.Builders.Engines.Plug.CPlugShaderPassBuilder Create() => new();
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX.VertexTextures
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(() => VertexTextures, static node => { if (node is null) throw new MemberNullException("VertexTextures"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugBitmapSampler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(GetVertexTexturesBuilderReferences, GameVersion.TMSX, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC.VertexTextures
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(() => VertexTextures, static node => { if (node is null) throw new MemberNullException("VertexTextures"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugBitmapSampler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(GetVertexTexturesBuilderReferences, GameVersion.TMNESWC, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5.VertexTextures
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(() => VertexTextures, static node => { if (node is null) throw new MemberNullException("VertexTextures"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugBitmapSampler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(GetVertexTexturesBuilderReferences, GameVersion.VSK5, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF.VertexTextures
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(() => VertexTextures, static node => { if (node is null) throw new MemberNullException("VertexTextures"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugBitmapSampler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(GetVertexTexturesBuilderReferences, GameVersion.TMF, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT.VertexTextures
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(() => VertexTextures, static node => { if (node is null) throw new MemberNullException("VertexTextures"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugBitmapSampler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(GetVertexTexturesBuilderReferences, GameVersion.TMT, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4.VertexTextures
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>? global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>.VertexTextures
     {
-        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(() => VertexTextures, static node => { if (node is null) throw new MemberNullException("VertexTextures"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugBitmapSampler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => VertexTextures is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(GetVertexTexturesBuilderReferences, GameVersion.MP4, true, "VertexTextures");
+        set => VertexTextures = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? GetVertexTexturesBuilderReferences() => VertexTextures;
 }

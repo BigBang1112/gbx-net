@@ -40,10 +40,7 @@ public partial interface ISceneLight : IClassVersion<global::GBX.NET.Engines.Sce
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool IsActive { get; set; }
     global::GBX.NET.Engines.Hms.CHmsLight? Light { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
 }
 
 public partial interface ISceneLightTM10 : ISceneLight, global::GBX.NET.Interfaces.Scene.IScenePocTM10

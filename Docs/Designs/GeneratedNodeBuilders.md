@@ -363,6 +363,18 @@ Emit sources with stable names for nodes, builders, interfaces, and adapters. So
 
 Generated output stays under the project's configured compiler-generated directory. Never edit those files directly. Keep implementation compatible with all library targets, including `netstandard2.0`, and preserve trimming and NativeAOT support through direct calls and generated dispatch.
 
+### Sharing generated code
+
+Keep member implementations proportional to distinct contracts and recipes rather than repeating them for every game:
+
+- Common setters share a generic base. Overlapping game-specific member sets share additional bases where at least two stages use them, retaining each stage's fluent return type. Handwritten replacements stay on the affected stage.
+- A property's declaring node owns its shared assignment descriptor. Derived builders supply their own availability masks, preserving setter order and snapshot behavior. Initialize descriptors lazily so using one setter does not root all setters during trimming.
+- Identical ordered chunk recipes and versions share typed creation and validation methods. Pass the selected game to constructors to retain game-specific defaults. Keep optional customization and validation hooks on each concrete stage.
+- Derived interfaces inherit equivalent parent members. Game interfaces share member contracts, with generic parameters for scoped child interfaces. Keep existing handwritten interface declarations and their accessor slots.
+- Scoped collection views share conversion and child-validation code, while their collection getter follows replacement of the owner's collection.
+
+Generated member-group names are implementation details and may change when metadata changes. Preserve the named node and game interfaces, selectors, stage return types, and `Build()`/`BuildInterface()` behavior. Compare assembly size as well as generated source size when changing this structure.
+
 ### Diagnostics
 
 Allocate diagnostic IDs during implementation. At minimum, distinguish:

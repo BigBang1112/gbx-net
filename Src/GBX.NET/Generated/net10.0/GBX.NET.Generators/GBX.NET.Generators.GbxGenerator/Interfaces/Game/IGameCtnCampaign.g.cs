@@ -31,159 +31,105 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    string? ModeScriptName { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount RequiredPlayersCount { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    bool OfficialRecordEnabled { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? CollectorUnlockers { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    int BronzeCompleteValue { get; set; }
+    int BronzeMedalValue { get; set; }
+    int GoldCompleteValue { get; set; }
+    int GoldMedalValue { get; set; }
+    int SilverCompleteValue { get; set; }
+    int SilverMedalValue { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCampaign where T0 : class
+{
+    new IReadOnlyList<T0>? ChallengeGroups { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    string? IconId { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    bool IsInternal { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers8 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    string? CampaignId { get; set; }
+    string? Name { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCampaignMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnCampaign
+{
+    global::GBX.NET.Id CollectionId { get; set; }
+    int Index { get; set; }
+    string? UnlockedByCampaign { get; set; }
+}
 public partial interface IGameCtnCampaign : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnCampaign>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>? ChallengeGroups { get; set; }
 }
 
-public partial interface IGameCtnCampaignTM10 : IGameCtnCampaign
+public partial interface IGameCtnCampaignTM10 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>
 {
-    int BronzeCompleteValue { get; set; }
-    int BronzeMedalValue { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>? ChallengeGroups { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? CollectorUnlockers { get; set; }
-    int GoldCompleteValue { get; set; }
-    int GoldMedalValue { get; set; }
-    int SilverCompleteValue { get; set; }
-    int SilverMedalValue { get; set; }
 }
 
-public partial interface IGameCtnCampaignTMPU : IGameCtnCampaign
+public partial interface IGameCtnCampaignTMPU : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>
 {
-    int BronzeCompleteValue { get; set; }
-    int BronzeMedalValue { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>? ChallengeGroups { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? CollectorUnlockers { get; set; }
-    int GoldCompleteValue { get; set; }
-    int GoldMedalValue { get; set; }
-    int SilverCompleteValue { get; set; }
-    int SilverMedalValue { get; set; }
 }
 
-public partial interface IGameCtnCampaignTMSX : IGameCtnCampaign
+public partial interface IGameCtnCampaignTMSX : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8
 {
-    int BronzeCompleteValue { get; set; }
-    int BronzeMedalValue { get; set; }
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>? ChallengeGroups { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? CollectorUnlockers { get; set; }
-    int GoldCompleteValue { get; set; }
-    int GoldMedalValue { get; set; }
-    bool IsInternal { get; set; }
-    string? Name { get; set; }
-    int SilverCompleteValue { get; set; }
-    int SilverMedalValue { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
 }
 
-public partial interface IGameCtnCampaignTMNESWC : IGameCtnCampaign
+public partial interface IGameCtnCampaignTMNESWC : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers3, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8
 {
-    int BronzeCompleteValue { get; set; }
-    int BronzeMedalValue { get; set; }
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>? ChallengeGroups { get; set; }
-    NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? CollectorUnlockers { get; set; }
-    int GoldCompleteValue { get; set; }
-    int GoldMedalValue { get; set; }
-    bool IsInternal { get; set; }
-    string? Name { get; set; }
-    int SilverCompleteValue { get; set; }
-    int SilverMedalValue { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
 }
 
-public partial interface IGameCtnCampaignVSK5 : IGameCtnCampaign
+public partial interface IGameCtnCampaignVSK5 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers4, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
-    int BronzeCompleteValue { get; set; }
-    int BronzeMedalValue { get; set; }
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>? ChallengeGroups { get; set; }
-    global::GBX.NET.Id CollectionId { get; set; }
-    int GoldCompleteValue { get; set; }
-    int GoldMedalValue { get; set; }
-    int Index { get; set; }
-    bool IsInternal { get; set; }
-    string? Name { get; set; }
-    int SilverCompleteValue { get; set; }
-    int SilverMedalValue { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
-    string? UnlockedByCampaign { get; set; }
 }
 
-public partial interface IGameCtnCampaignTMF : IGameCtnCampaign
+public partial interface IGameCtnCampaignTMF : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>? ChallengeGroups { get; set; }
-    global::GBX.NET.Id CollectionId { get; set; }
-    string? IconId { get; set; }
-    int Index { get; set; }
-    bool IsInternal { get; set; }
-    string? Name { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType { get; set; }
-    string? UnlockedByCampaign { get; set; }
 }
 
-public partial interface IGameCtnCampaignMP3 : IGameCtnCampaign
+public partial interface IGameCtnCampaignMP3 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers1, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>? ChallengeGroups { get; set; }
-    global::GBX.NET.Id CollectionId { get; set; }
-    string? IconId { get; set; }
-    int Index { get; set; }
-    string? ModeScriptName { get; set; }
-    string? Name { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount RequiredPlayersCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType { get; set; }
-    string? UnlockedByCampaign { get; set; }
 }
 
-public partial interface IGameCtnCampaignTMT : IGameCtnCampaign
+public partial interface IGameCtnCampaignTMT : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers1, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>? ChallengeGroups { get; set; }
-    global::GBX.NET.Id CollectionId { get; set; }
-    string? IconId { get; set; }
-    int Index { get; set; }
-    string? ModeScriptName { get; set; }
-    string? Name { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount RequiredPlayersCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType { get; set; }
-    string? UnlockedByCampaign { get; set; }
 }
 
-public partial interface IGameCtnCampaignMP4 : IGameCtnCampaign
+public partial interface IGameCtnCampaignMP4 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers1, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers2, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>? ChallengeGroups { get; set; }
-    global::GBX.NET.Id CollectionId { get; set; }
-    string? IconId { get; set; }
-    int Index { get; set; }
-    string? ModeScriptName { get; set; }
-    string? Name { get; set; }
-    bool OfficialRecordEnabled { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount RequiredPlayersCount { get; set; }
     string? ScoreContext { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType { get; set; }
-    string? UnlockedByCampaign { get; set; }
 }
 
-public partial interface IGameCtnCampaignTM2020 : IGameCtnCampaign
+public partial interface IGameCtnCampaignTM2020 : IGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers1, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers2, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers9
 {
-    string? CampaignId { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>? ChallengeGroups { get; set; }
-    global::GBX.NET.Id CollectionId { get; set; }
-    string? IconId { get; set; }
-    int Index { get; set; }
-    string? ModeScriptName { get; set; }
-    string? Name { get; set; }
-    bool OfficialRecordEnabled { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.ERequiredPlayersCount RequiredPlayersCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EType Type { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCampaign.EUnlockType UnlockType { get; set; }
-    string? UnlockedByCampaign { get; set; }
 }
 

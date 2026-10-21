@@ -36,17 +36,292 @@ public abstract class CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMateria
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state;
     private protected CPlugMaterialBuilderBase() => state = new();
     private protected CPlugMaterialBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) => this.state = state;
-    private protected static void SetCustomMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CustomMaterial = value);
-    private protected static void SetCustomMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>>("CustomMaterial", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.CustomMaterial.CopyFrom(reference));
-    private protected static void SetDeviceMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[])value.Clone(), static (node, value) => node.DeviceMaterials = value);
-    private protected static void SetGameplayId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId>("GameplayId", value, GameVersion.TM2020, static value => value, static (node, value) => node.GameplayId = value);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set<global::GBX.NET.Engines.Plug.CPlug?>("Shader", value, GameVersion.TM2020, static value => value, static (node, value) => node.Shader = value);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlug>>("Shader", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlug>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shader.CopyFrom(reference));
-    private protected static void SetShading(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>("Shading", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Shading = value);
-    private protected static void SetSurfaceId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.SurfaceId = value);
+    private protected static void SetCustomMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCustomMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetCustomMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDeviceMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetDeviceMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMPU | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetGameplayId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetGameplayIdAssignment(), value, GameVersion.TM2020);
+    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderAssignment(), value, GameVersion.TM2020);
+    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetShading(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetShadingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetSurfaceId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state, global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialBuilderAssignments.GetSurfaceIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+}
+public abstract class CPlugMaterialBuilderMembers1<TSelf> : CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMaterialBuilderMembers1<TSelf>
+{
+    private protected CPlugMaterialBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
+        set => SetCustomMaterial(state, value);
+    }
+    public TSelf WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
+    {
+        CustomMaterial = value;
+        return (TSelf)this;
+    }
+    public TSelf WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetCustomMaterialReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugMaterialBuilderMembers2<TSelf> : CPlugMaterialBuilderBase<TSelf> where TSelf : CPlugMaterialBuilderMembers2<TSelf>
+{
+    private protected CPlugMaterialBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
+        set => SetDeviceMaterials(state, value);
+    }
+    public TSelf WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
+    {
+        DeviceMaterials = value;
+        return (TSelf)this;
+    }
+    public TSelf WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
+    {
+        return WithDeviceMaterials(values.ToArray());
+    }
+}
+public abstract class CPlugMaterialBuilderMembers3<TSelf> : CPlugMaterialBuilderMembers2<TSelf> where TSelf : CPlugMaterialBuilderMembers3<TSelf>
+{
+    private protected CPlugMaterialBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
+        set => SetCustomMaterial(state, value);
+    }
+    public TSelf WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
+    {
+        CustomMaterial = value;
+        return (TSelf)this;
+    }
+    public TSelf WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetCustomMaterialReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
+        set => SetSurfaceId(state, value);
+    }
+    public TSelf WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
+    {
+        SurfaceId = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugMaterialBuilderMembers4<TSelf> : CPlugMaterialBuilderMembers3<TSelf> where TSelf : CPlugMaterialBuilderMembers4<TSelf>
+{
+    private protected CPlugMaterialBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>("Shading");
+        set => SetShading(state, value);
+    }
+    public TSelf WithShading(global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value)
+    {
+        Shading = value;
+        return (TSelf)this;
+    }
 }
 public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMaterialBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079002 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002();
+        node.Chunks.Add(chunk09079002);
+        var chunk09079004 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004();
+        node.Chunks.Add(chunk09079004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
+        node.Chunks.Add(chunk09079007);
+        var chunk09079009 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009();
+        node.Chunks.Add(chunk09079009);
+        var chunk0907900A = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A();
+        node.Chunks.Add(chunk0907900A);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
+        node.Chunks.Add(chunk09079007);
+        var chunk0907900A = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A();
+        node.Chunks.Add(chunk0907900A);
+        var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
+        node.Chunks.Add(chunk0907900D);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
+        node.Chunks.Add(chunk09079007);
+        var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
+        node.Chunks.Add(chunk0907900D);
+        var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
+        node.Chunks.Add(chunk0907900E);
+        var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
+        node.Chunks.Add(chunk0907900F);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900F is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
+        node.Chunks.Add(chunk09079007);
+        var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
+        node.Chunks.Add(chunk0907900D);
+        var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
+        node.Chunks.Add(chunk0907900E);
+        var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
+        node.Chunks.Add(chunk0907900F);
+        var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
+        node.Chunks.Add(chunk09079010);
+        var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
+        node.Chunks.Add(chunk09079011);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079011 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
+        node.Chunks.Add(chunk09079007);
+        var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
+        node.Chunks.Add(chunk0907900D);
+        var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
+        node.Chunks.Add(chunk0907900E);
+        var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
+        node.Chunks.Add(chunk0907900F);
+        var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
+        node.Chunks.Add(chunk09079010);
+        var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
+        node.Chunks.Add(chunk09079011);
+        var chunk09079012 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012();
+        node.Chunks.Add(chunk09079012);
+        var chunk09079013 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013();
+        node.Chunks.Add(chunk09079013);
+        var chunk09079014 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014();
+        node.Chunks.Add(chunk09079014);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0907900F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079014 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterial CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
+        var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
+        node.Chunks.Add(chunk09079001);
+        var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
+        node.Chunks.Add(chunk09079007);
+        var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
+        node.Chunks.Add(chunk09079010);
+        var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
+        node.Chunks.Add(chunk09079011);
+        var chunk09079012 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012();
+        node.Chunks.Add(chunk09079012);
+        var chunk09079013 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013();
+        node.Chunks.Add(chunk09079013);
+        var chunk09079014 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014();
+        node.Chunks.Add(chunk09079014);
+        var chunk09079015 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079015(game);
+        node.Chunks.Add(chunk09079015);
+        var chunk09079016 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079016();
+        chunk09079016.Version = 0;
+        node.Chunks.Add(chunk09079016);
+        var chunk09079017 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079017(game);
+        node.Chunks.Add(chunk09079017);
+        var chunk09079019 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079019();
+        chunk09079019.Version = 0;
+        node.Chunks.Add(chunk09079019);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09079014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079015>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk09079015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079016>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09079016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079017>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09079017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079019>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09079019 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugMaterial node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -59,181 +334,87 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugMaterialBuilderBase<TM10>
+    public partial class TM10 : CPlugMaterialBuilderMembers2<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public TM10 WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public TM10 WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079002 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002();
-            node.Chunks.Add(chunk09079002);
-            var chunk09079004 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004();
-            node.Chunks.Add(chunk09079004);
+            var node = CPlugMaterialBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09079002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09079004 is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMPU : CPlugMaterialBuilderBase<TMPU>
+    public partial class TMPU : CPlugMaterialBuilderMembers2<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public TMPU WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public TMPU WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079002 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002();
-            node.Chunks.Add(chunk09079002);
-            var chunk09079004 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004();
-            node.Chunks.Add(chunk09079004);
+            var node = CPlugMaterialBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09079002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09079004 is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMSX : CPlugMaterialBuilderBase<TMSX>
+    public partial class TMSX : CPlugMaterialBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public TMSX WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public TMSX WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public TMSX WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk09079009 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009();
-            node.Chunks.Add(chunk09079009);
-            var chunk0907900A = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A();
-            node.Chunks.Add(chunk0907900A);
+            var node = CPlugMaterialBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09079009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0907900A is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMNESWC : CPlugMaterialBuilderBase<TMNESWC>
+    public partial class TMNESWC : CPlugMaterialBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public TMNESWC WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public TMNESWC WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public TMNESWC WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk09079009 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009();
-            node.Chunks.Add(chunk09079009);
-            var chunk0907900A = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A();
-            node.Chunks.Add(chunk0907900A);
+            var node = CPlugMaterialBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079009>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09079009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0907900A is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class VSK5 : CPlugMaterialBuilderBase<VSK5>
+    public partial class VSK5 : CPlugMaterialBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
@@ -256,418 +437,115 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
         {
             return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public VSK5 WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public VSK5 WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk0907900A = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A();
-            node.Chunks.Add(chunk0907900A);
-            var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
-            node.Chunks.Add(chunk0907900D);
+            var node = CPlugMaterialBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900A>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0907900A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0907900D is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMF : CPlugMaterialBuilderBase<TMF>
+    public partial class TMF : CPlugMaterialBuilderMembers3<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public TMF WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public TMF WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public TMF WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public TMF WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public TMF WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
-            set => SetSurfaceId(state, value);
-        }
-        public TMF WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
-        {
-            SurfaceId = value;
-            return this;
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
-            node.Chunks.Add(chunk0907900D);
-            var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
-            node.Chunks.Add(chunk0907900E);
-            var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
-            node.Chunks.Add(chunk0907900F);
+            var node = CPlugMaterialBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0907900D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0907900E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0907900F is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe3(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class MP3 : CPlugMaterialBuilderBase<MP3>
+    public partial class MP3 : CPlugMaterialBuilderMembers3<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public MP3 WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public MP3 WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public MP3 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public MP3 WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public MP3 WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
-            set => SetSurfaceId(state, value);
-        }
-        public MP3 WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
-        {
-            SurfaceId = value;
-            return this;
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
-            node.Chunks.Add(chunk0907900D);
-            var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
-            node.Chunks.Add(chunk0907900E);
-            var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
-            node.Chunks.Add(chunk0907900F);
-            var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
-            node.Chunks.Add(chunk09079010);
-            var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
-            node.Chunks.Add(chunk09079011);
+            var node = CPlugMaterialBuilder.CreateRecipe4(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0907900D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0907900E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0907900F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09079010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09079011 is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe4(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TMT : CPlugMaterialBuilderBase<TMT>
+    public partial class TMT : CPlugMaterialBuilderMembers3<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public TMT WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public TMT WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public TMT WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public TMT WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public TMT WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
-            set => SetSurfaceId(state, value);
-        }
-        public TMT WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
-        {
-            SurfaceId = value;
-            return this;
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
-            node.Chunks.Add(chunk0907900D);
-            var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
-            node.Chunks.Add(chunk0907900E);
-            var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
-            node.Chunks.Add(chunk0907900F);
-            var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
-            node.Chunks.Add(chunk09079010);
-            var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
-            node.Chunks.Add(chunk09079011);
+            var node = CPlugMaterialBuilder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0907900D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0907900E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0907900F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09079010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09079011 is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe4(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class MP4 : CPlugMaterialBuilderBase<MP4>
+    public partial class MP4 : CPlugMaterialBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public MP4 WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public MP4 WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public MP4 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public MP4 WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public MP4 WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>("Shading");
-            set => SetShading(state, value);
-        }
-        public MP4 WithShading(global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value)
-        {
-            Shading = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
-            set => SetSurfaceId(state, value);
-        }
-        public MP4 WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
-        {
-            SurfaceId = value;
-            return this;
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk0907900D = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D();
-            node.Chunks.Add(chunk0907900D);
-            var chunk0907900E = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E();
-            node.Chunks.Add(chunk0907900E);
-            var chunk0907900F = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F();
-            node.Chunks.Add(chunk0907900F);
-            var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
-            node.Chunks.Add(chunk09079010);
-            var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
-            node.Chunks.Add(chunk09079011);
-            var chunk09079012 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012();
-            node.Chunks.Add(chunk09079012);
-            var chunk09079013 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013();
-            node.Chunks.Add(chunk09079013);
-            var chunk09079014 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014();
-            node.Chunks.Add(chunk09079014);
+            var node = CPlugMaterialBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900D>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0907900D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900E>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0907900E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk0907900F>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0907900F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09079014 is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe5(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterial node);
     }
-    public partial class TM2020 : CPlugMaterialBuilderBase<TM2020>
+    public partial class TM2020 : CPlugMaterialBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterial> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom? CustomMaterial
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom?>("CustomMaterial");
-            set => SetCustomMaterial(state, value);
-        }
-        public TM2020 WithCustomMaterial(global::GBX.NET.Engines.Plug.CPlugMaterialCustom? value)
-        {
-            CustomMaterial = value;
-            return this;
-        }
-        public TM2020 WithCustomMaterialReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCustomMaterialReference(state, value);
-            return this;
-        }
         public TM2020 WithCustomMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? value)
         {
-            return WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]?>("DeviceMaterials");
-            set => SetDeviceMaterials(state, value);
-        }
-        public TM2020 WithDeviceMaterials(params global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? value)
-        {
-            DeviceMaterials = value;
-            return this;
-        }
-        public TM2020 WithDeviceMaterials(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat> values)
-        {
-            return WithDeviceMaterials(values.ToArray());
+            return base.WithCustomMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterialCustom?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterialCustom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId GameplayId
         {
@@ -695,68 +573,15 @@ public partial class CPlugMaterialBuilder : CPlugMaterialBuilderBase<CPlugMateri
             SetShaderReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc?>("Shading");
-            set => SetShading(state, value);
-        }
-        public TM2020 WithShading(global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? value)
-        {
-            Shading = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId>("SurfaceId");
-            set => SetSurfaceId(state, value);
-        }
-        public TM2020 WithSurfaceId(global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId value)
-        {
-            SurfaceId = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterial Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterial();
-            var chunk09079001 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001();
-            node.Chunks.Add(chunk09079001);
-            var chunk09079007 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007();
-            node.Chunks.Add(chunk09079007);
-            var chunk09079010 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010();
-            node.Chunks.Add(chunk09079010);
-            var chunk09079011 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011();
-            node.Chunks.Add(chunk09079011);
-            var chunk09079012 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012();
-            node.Chunks.Add(chunk09079012);
-            var chunk09079013 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013();
-            node.Chunks.Add(chunk09079013);
-            var chunk09079014 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014();
-            node.Chunks.Add(chunk09079014);
-            var chunk09079015 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079015(GameVersion.TM2020);
-            node.Chunks.Add(chunk09079015);
-            var chunk09079016 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079016();
-            chunk09079016.Version = 0;
-            node.Chunks.Add(chunk09079016);
-            var chunk09079017 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079017(GameVersion.TM2020);
-            node.Chunks.Add(chunk09079017);
-            var chunk09079019 = new global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079019();
-            chunk09079019.Version = 0;
-            node.Chunks.Add(chunk09079019);
+            var node = CPlugMaterialBuilder.CreateRecipe6(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079007>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079010>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079011>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079012>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079013>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079014>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09079014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079015>() is not { Version: 7 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09079015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079016>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09079016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079017>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09079017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterial.Chunk09079019>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09079019 is missing or has an incompatible version.");
+            CPlugMaterialBuilder.ValidateRecipe6(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugMaterialBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

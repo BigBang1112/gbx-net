@@ -31,43 +31,41 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecoratorSolidMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolid where T0 : class
+{
+    new IReadOnlyList<T0>? TreeDecorators { get; set; }
+}
 public partial interface IPlugDecoratorSolid : IClassVersion<global::GBX.NET.Engines.Plug.CPlugDecoratorSolid>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidTMNESWC : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidTMNESWC : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidVSK5 : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidVSK5 : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidTMF : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidTMF : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidMP3 : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidMP3 : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidTMT : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidTMT : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidMP4 : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidMP4 : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4>? TreeDecorators { get; set; }
 }
 
-public partial interface IPlugDecoratorSolidTM2020 : IPlugDecoratorSolid
+public partial interface IPlugDecoratorSolidTM2020 : IPlugDecoratorSolid, global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020>? TreeDecorators { get; set; }
 }
 

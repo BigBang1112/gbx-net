@@ -31,6 +31,18 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisEmitterModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModel where T0 : class
+{
+    T0? ParticleEmitterModelShoot { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisEmitterModelMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModel where T0 : class
+{
+    new T0? ParticleEmitterModel0 { get; set; }
+    new T0? ParticleEmitterModel1 { get; set; }
+    new T0? ParticleEmitterModel2 { get; set; }
+}
 public partial interface IPlugVehicleVisEmitterModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel>
 {
     float EmitIntensity { get; set; }
@@ -55,49 +67,27 @@ public partial interface IPlugVehicleVisEmitterModel : IClassVersion<global::GBX
     int WheelIndex { get; set; }
 }
 
-public partial interface IPlugVehicleVisEmitterModelVSK5 : IPlugVehicleVisEmitterModel
+public partial interface IPlugVehicleVisEmitterModelVSK5 : IPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? ParticleEmitterModel0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? ParticleEmitterModel1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5? ParticleEmitterModel2 { get; set; }
 }
 
-public partial interface IPlugVehicleVisEmitterModelTMF : IPlugVehicleVisEmitterModel
+public partial interface IPlugVehicleVisEmitterModelTMF : IPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? ParticleEmitterModel0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? ParticleEmitterModel1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF? ParticleEmitterModel2 { get; set; }
 }
 
-public partial interface IPlugVehicleVisEmitterModelMP3 : IPlugVehicleVisEmitterModel
+public partial interface IPlugVehicleVisEmitterModelMP3 : IPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? ParticleEmitterModel0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? ParticleEmitterModel1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? ParticleEmitterModel2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? ParticleEmitterModelShoot { get; set; }
 }
 
-public partial interface IPlugVehicleVisEmitterModelTMT : IPlugVehicleVisEmitterModel
+public partial interface IPlugVehicleVisEmitterModelTMT : IPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? ParticleEmitterModel0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? ParticleEmitterModel1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? ParticleEmitterModel2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? ParticleEmitterModelShoot { get; set; }
 }
 
-public partial interface IPlugVehicleVisEmitterModelMP4 : IPlugVehicleVisEmitterModel
+public partial interface IPlugVehicleVisEmitterModelMP4 : IPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleEmitterModel0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleEmitterModel1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleEmitterModel2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? ParticleEmitterModelShoot { get; set; }
 }
 
-public partial interface IPlugVehicleVisEmitterModelTM2020 : IPlugVehicleVisEmitterModel
+public partial interface IPlugVehicleVisEmitterModelTM2020 : IPlugVehicleVisEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ParticleEmitterModel0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ParticleEmitterModel1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ParticleEmitterModel2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? ParticleEmitterModelShoot { get; set; }
 }
 

@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Graphic;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxLightPointMembers1 : global::GBX.NET.Interfaces.Graphic.IGxLightPoint
+{
+    float FlareBiasZ { get; set; }
+}
 public partial interface IGxLightPoint : IClassVersion<global::GBX.NET.Engines.Graphic.GxLightPoint>, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbient
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,13 +45,7 @@ public partial interface IGxLightPoint : IClassVersion<global::GBX.NET.Engines.G
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new Vec3 Color { get; set; }
-    new global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags { get; set; }
-    new float FlareIntensity { get; set; }
     float FlareSize { get; set; }
-    new float Intensity { get; set; }
-    new float ShadowIntensity { get; set; }
-    new Vec3 ShadowRGB { get; set; }
 }
 
 public partial interface IGxLightPointTM10 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM10
@@ -57,59 +56,35 @@ public partial interface IGxLightPointTMPU : IGxLightPoint, global::GBX.NET.Inte
 {
 }
 
-public partial interface IGxLightPointTMSX : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMSX
+public partial interface IGxLightPointTMSX : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    float FlareBiasZ { get; set; }
 }
 
-public partial interface IGxLightPointTMNESWC : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMNESWC
+public partial interface IGxLightPointTMNESWC : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    float FlareBiasZ { get; set; }
 }
 
-public partial interface IGxLightPointVSK5 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5
+public partial interface IGxLightPointVSK5 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float FlareBiasZ { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightPointTMF : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMF
+public partial interface IGxLightPointTMF : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMF, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float FlareBiasZ { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightPointMP3 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP3
+public partial interface IGxLightPointMP3 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP3, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float FlareBiasZ { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightPointTMT : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMT
+public partial interface IGxLightPointTMT : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTMT, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float FlareBiasZ { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightPointMP4 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP4
+public partial interface IGxLightPointMP4 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientMP4, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float FlareBiasZ { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightPointTM2020 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM2020
+public partial interface IGxLightPointTM2020 : IGxLightPoint, global::GBX.NET.Interfaces.Graphic.IGxLightNotAmbientTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightPointMembers1
 {
-    new float DiffuseIntensity { get; set; }
-    float FlareBiasZ { get; set; }
 }
 

@@ -31,23 +31,25 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCamControlModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugCamControlModel where T0 : class
+{
+    new T0? Shake { get; set; }
+}
 public partial interface IPlugCamControlModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCamControlModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel? Shake { get; set; }
 }
 
-public partial interface IPlugCamControlModelTMT : IPlugCamControlModel
+public partial interface IPlugCamControlModelTMT : IPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake { get; set; }
 }
 
-public partial interface IPlugCamControlModelMP4 : IPlugCamControlModel
+public partial interface IPlugCamControlModelMP4 : IPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake { get; set; }
 }
 
-public partial interface IPlugCamControlModelTM2020 : IPlugCamControlModel
+public partial interface IPlugCamControlModelTM2020 : IPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake { get; set; }
 }
 

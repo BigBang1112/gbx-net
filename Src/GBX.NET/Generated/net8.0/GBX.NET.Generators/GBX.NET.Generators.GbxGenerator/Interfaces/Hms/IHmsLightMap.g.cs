@@ -31,116 +31,68 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class
+{
+    bool BackgroundUseClouds { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
+    T0? BitmapLM_ILightDir { get; set; }
+    T0? BitmapLM_ILightInput { get; set; }
+    T0? BitmapLM_LListUV { get; set; }
+    T0? BitmapLM_LListW { get; set; }
+    T0? BitmapLM_LocalDirect { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
+    T0? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce { get; set; }
+    T0? BitmapSM_ColorPeeled { get; set; }
+    T0? BitmapSM_DepthToPeel { get; set; }
+    T0? BitmapShadow { get; set; }
+    T0? BitmapSprite3x3_Light { get; set; }
+    T0? BitmapSprite_ILightDir { get; set; }
+    T0? BitmapSprite_PosAndRadius { get; set; }
+    bool ClampAmb_PosY { get; set; }
+    bool ClampDir_PosY { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode CompressMode { get; set; }
+    uint GameTimerSeconds { get; set; }
+    bool IsSpriteLDirInAlpha { get; set; }
+    bool SRGB { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 StoreLDir0 { get; set; }
+    bool UseHDR { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMembers2<T0, T1> : global::GBX.NET.Interfaces.Hms.IHmsLightMap where T0 : class where T1 : class
+{
+    new T0? Mood { get; set; }
+    new T1? PointsInSphereOpt { get; set; }
+}
 public partial interface IHmsLightMap : IClassVersion<global::GBX.NET.Engines.Hms.CHmsLightMap>
 {
     global::GBX.NET.Interfaces.Hms.IHmsLightMapMood? Mood { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOpt? PointsInSphereOpt { get; set; }
 }
 
-public partial interface IHmsLightMapVSK5 : IHmsLightMap
+public partial interface IHmsLightMapVSK5 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5? Mood { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5? PointsInSphereOpt { get; set; }
 }
 
-public partial interface IHmsLightMapTMF : IHmsLightMap
+public partial interface IHmsLightMapTMF : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF? Mood { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF? PointsInSphereOpt { get; set; }
 }
 
-public partial interface IHmsLightMapMP3 : IHmsLightMap
+public partial interface IHmsLightMapMP3 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3>
 {
-    bool BackgroundUseClouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapLM_ILightDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapLM_ILightInput { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapLM_LListUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapLM_LListW { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapLM_LocalDirect { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSM_ColorPeeled { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSM_DepthToPeel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapShadow { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSprite3x3_Light { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSprite_ILightDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSprite_PosAndRadius { get; set; }
-    bool ClampAmb_PosY { get; set; }
-    bool ClampDir_PosY { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode CompressMode { get; set; }
-    uint GameTimerSeconds { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    new global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3? Mood { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3? PointsInSphereOpt { get; set; }
-    bool SRGB { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 StoreLDir0 { get; set; }
-    bool UseHDR { get; set; }
 }
 
-public partial interface IHmsLightMapTMT : IHmsLightMap
+public partial interface IHmsLightMapTMT : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT>
 {
-    bool BackgroundUseClouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapLM_ILightDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapLM_ILightInput { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapLM_LListUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapLM_LListW { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapLM_LocalDirect { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSM_ColorPeeled { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSM_DepthToPeel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapShadow { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSprite3x3_Light { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSprite_ILightDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSprite_PosAndRadius { get; set; }
-    bool ClampAmb_PosY { get; set; }
-    bool ClampDir_PosY { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode CompressMode { get; set; }
-    uint GameTimerSeconds { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    new global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT? Mood { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT? PointsInSphereOpt { get; set; }
-    bool SRGB { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 StoreLDir0 { get; set; }
-    bool UseHDR { get; set; }
 }
 
-public partial interface IHmsLightMapMP4 : IHmsLightMap
+public partial interface IHmsLightMapMP4 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4? Mood { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4? PointsInSphereOpt { get; set; }
 }
 
-public partial interface IHmsLightMapTM2020 : IHmsLightMap
+public partial interface IHmsLightMapTM2020 : IHmsLightMap, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Hms.IHmsLightMapMembers2<global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020, global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020>
 {
-    bool BackgroundUseClouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArrayLightSH { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapLM_ILightDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapLM_ILightInput { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapLM_LListUV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapLM_LListW { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapLM_LocalDirect { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapLightSumBump { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGeom_BBoxInvHDiag_ThroughBounce { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGridAmbSV { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapProbeGridAmbSV_Spread1 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSM_ColorPeeled { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSM_DepthToPeel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapShadow { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSprite3x3_Light { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSprite_ILightDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSprite_PosAndRadius { get; set; }
-    bool ClampAmb_PosY { get; set; }
-    bool ClampDir_PosY { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMap.ECompressMode CompressMode { get; set; }
-    uint GameTimerSeconds { get; set; }
-    bool IsSpriteLDirInAlpha { get; set; }
-    new global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020? Mood { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020? PointsInSphereOpt { get; set; }
-    bool SRGB { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMap.EStoreLDir0 StoreLDir0 { get; set; }
-    bool UseHDR { get; set; }
 }
 

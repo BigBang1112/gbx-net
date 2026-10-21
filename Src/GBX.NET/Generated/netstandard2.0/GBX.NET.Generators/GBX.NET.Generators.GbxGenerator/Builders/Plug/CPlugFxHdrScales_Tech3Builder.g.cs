@@ -39,6 +39,31 @@ public abstract class CPlugFxHdrScales_Tech3BuilderBase<TSelf> where TSelf : CPl
 }
 public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3BuilderBase<CPlugFxHdrScales_Tech3Builder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
+        var chunk090F5000 = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(game);
+        node.Chunks.Add(chunk090F5000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F5000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
+        var chunk090F5000 = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(game);
+        node.Chunks.Add(chunk090F5000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F5000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -51,13 +76,12 @@ public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3Build
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
-            var chunk090F5000 = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(GameVersion.MP3);
-            node.Chunks.Add(chunk090F5000);
+            var node = CPlugFxHdrScales_Tech3Builder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk090F5000 is missing or has an incompatible version.");
+            CPlugFxHdrScales_Tech3Builder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugFxHdrScales_Tech3Builder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -70,13 +94,12 @@ public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3Build
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
-            var chunk090F5000 = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(GameVersion.TMT);
-            node.Chunks.Add(chunk090F5000);
+            var node = CPlugFxHdrScales_Tech3Builder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk090F5000 is missing or has an incompatible version.");
+            CPlugFxHdrScales_Tech3Builder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugFxHdrScales_Tech3Builder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -89,13 +112,12 @@ public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3Build
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
-            var chunk090F5000 = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(GameVersion.MP4);
-            node.Chunks.Add(chunk090F5000);
+            var node = CPlugFxHdrScales_Tech3Builder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk090F5000 is missing or has an incompatible version.");
+            CPlugFxHdrScales_Tech3Builder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugFxHdrScales_Tech3Builder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -108,13 +130,12 @@ public partial class CPlugFxHdrScales_Tech3Builder : CPlugFxHdrScales_Tech3Build
         public global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3();
-            var chunk090F5000 = new global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090F5000);
+            var node = CPlugFxHdrScales_Tech3Builder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3.Chunk090F5000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090F5000 is missing or has an incompatible version.");
+            CPlugFxHdrScales_Tech3Builder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugFxHdrScales_Tech3Builder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

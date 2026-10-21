@@ -44,199 +44,45 @@ public partial interface IControlListCtnChallenges : IClassVersion<global::GBX.N
 
 public partial interface IControlListCtnChallengesTM10 : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTM10
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTM10? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTMPU : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTMPU
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMPU? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTMSX : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTMSX
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMSX? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTMNESWC : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTMNESWC
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTMU : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTMU
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? StyleNotValid { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? StyleValid { get; set; }
 }
 
 public partial interface IControlListCtnChallengesVSK5 : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionVSK5
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleVSK5? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTMF : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTMF
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlLayoutTMF? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMF? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMF? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesMP3 : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionMP3
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP3? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP3? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTMT : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTMT
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Engines.Control.CControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMT? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTMT? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesMP4 : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionMP4
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlLayoutMP4? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleMP4? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IControlListCtnChallengesTM2020 : IControlListCtnChallenges, global::GBX.NET.Interfaces.Control.IControlListConstructionTM2020
 {
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? LegacyStyle { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleTM2020? Style { get; set; }
-    new string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 

@@ -31,6 +31,21 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneFrontierMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier where T0 : class
+{
+    int BlockYOffsetFromParent { get; set; }
+    IReadOnlyList<T0>? CompatibleZones { get; set; }
+    bool FrontierChildBorder_AcceptPylons { get; set; }
+    bool FrontierParentBorder_AcceptPylons { get; set; }
+    bool FrontierStraightMiddle_AcceptPylons { get; set; }
+    bool FrontierTransitionMiddle_AcceptPylons { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneFrontierMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontier where T0 : class
+{
+    new T0? BlockInfoFrontier { get; set; }
+}
 public partial interface IGameCtnZoneFrontier : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnZoneFrontier>, global::GBX.NET.Interfaces.Game.IGameCtnZone
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -42,119 +57,46 @@ public partial interface IGameCtnZoneFrontier : IClassVersion<global::GBX.NET.En
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontier? BlockInfoFrontier { get; set; }
     string? ChildZoneId { get; set; }
-    new int Height { get; set; }
     string? ParentZoneId { get; set; }
-    new string? SurfaceId { get; set; }
-    new string? ZoneId { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTM10 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10
+public partial interface IGameCtnZoneFrontierTM10 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM10? BlockInfoFrontier { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTMPU : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU
+public partial interface IGameCtnZoneFrontierTMPU : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMPU? BlockInfoFrontier { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTMSX : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX
+public partial interface IGameCtnZoneFrontierTMSX : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMSX? BlockInfoFrontier { get; set; }
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTMNESWC : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC
+public partial interface IGameCtnZoneFrontierTMNESWC : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMNESWC? BlockInfoFrontier { get; set; }
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierVSK5 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5
+public partial interface IGameCtnZoneFrontierVSK5 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierVSK5? BlockInfoFrontier { get; set; }
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTMF : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF
+public partial interface IGameCtnZoneFrontierTMF : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMF? BlockInfoFrontier { get; set; }
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierMP3 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3
+public partial interface IGameCtnZoneFrontierMP3 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP3? BlockInfoFrontier { get; set; }
-    int BlockYOffsetFromParent { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3>? CompatibleZones { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool FrontierChildBorder_AcceptPylons { get; set; }
-    bool FrontierParentBorder_AcceptPylons { get; set; }
-    bool FrontierStraightMiddle_AcceptPylons { get; set; }
-    bool FrontierTransitionMiddle_AcceptPylons { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTMT : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT
+public partial interface IGameCtnZoneFrontierTMT : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTMT? BlockInfoFrontier { get; set; }
-    int BlockYOffsetFromParent { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT>? CompatibleZones { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool FrontierChildBorder_AcceptPylons { get; set; }
-    bool FrontierParentBorder_AcceptPylons { get; set; }
-    bool FrontierStraightMiddle_AcceptPylons { get; set; }
-    bool FrontierTransitionMiddle_AcceptPylons { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierMP4 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4
+public partial interface IGameCtnZoneFrontierMP4 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierMP4? BlockInfoFrontier { get; set; }
-    int BlockYOffsetFromParent { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4>? CompatibleZones { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool FrontierChildBorder_AcceptPylons { get; set; }
-    bool FrontierParentBorder_AcceptPylons { get; set; }
-    bool FrontierStraightMiddle_AcceptPylons { get; set; }
-    bool FrontierTransitionMiddle_AcceptPylons { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneFrontierTM2020 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020
+public partial interface IGameCtnZoneFrontierTM2020 : IGameCtnZoneFrontier, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnZoneFrontierMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoFrontierTM2020? BlockInfoFrontier { get; set; }
-    int BlockYOffsetFromParent { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020>? CompatibleZones { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    bool FrontierChildBorder_AcceptPylons { get; set; }
-    bool FrontierParentBorder_AcceptPylons { get; set; }
-    bool FrontierStraightMiddle_AcceptPylons { get; set; }
-    bool FrontierTransitionMiddle_AcceptPylons { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 

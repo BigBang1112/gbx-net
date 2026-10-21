@@ -31,6 +31,18 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockSoundMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSound
+{
+    bool IsMusic { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockSoundMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSound
+{
+    bool AudioToSpeech { get; set; }
+    int AudioToSpeechTarget { get; set; }
+    bool StopWithClip { get; set; }
+}
 public partial interface IGameCtnMediaBlockSound : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSound>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -58,32 +70,19 @@ public partial interface IGameCtnMediaBlockSoundVSK5 : IGameCtnMediaBlockSound, 
 {
 }
 
-public partial interface IGameCtnMediaBlockSoundTMF : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF
+public partial interface IGameCtnMediaBlockSoundTMF : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers1
 {
-    bool IsMusic { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockSoundTMT : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockSoundTMT : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers2
 {
-    bool AudioToSpeech { get; set; }
-    int AudioToSpeechTarget { get; set; }
-    bool IsMusic { get; set; }
-    bool StopWithClip { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockSoundMP4 : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockSoundMP4 : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers2
 {
-    bool AudioToSpeech { get; set; }
-    int AudioToSpeechTarget { get; set; }
-    bool IsMusic { get; set; }
-    bool StopWithClip { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockSoundTM2020 : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockSoundTM2020 : IGameCtnMediaBlockSound, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSoundMembers2
 {
-    bool AudioToSpeech { get; set; }
-    int AudioToSpeechTarget { get; set; }
-    bool IsMusic { get; set; }
-    bool StopWithClip { get; set; }
 }
 

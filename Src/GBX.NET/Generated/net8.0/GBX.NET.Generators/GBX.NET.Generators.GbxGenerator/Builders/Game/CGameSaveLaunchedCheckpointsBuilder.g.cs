@@ -36,9 +36,9 @@ public abstract class CGameSaveLaunchedCheckpointsBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state;
     private protected CGameSaveLaunchedCheckpointsBuilderBase() => state = new();
     private protected CGameSaveLaunchedCheckpointsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state) => this.state = state;
-    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]?>("Checkpoints", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[])value.Clone(), static (node, value) => node.Checkpoints = value);
-    private protected static void SetRecordVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, int value) => state.Set<int>("RecordVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.RecordVersion = value);
-    private protected static void SetSnapshots(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]?>("Snapshots", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[])value.Clone(), static (node, value) => node.Snapshots = value);
+    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetRecordVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetRecordVersionAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSnapshots(NodeBuilderState<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Snapshot[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameSaveLaunchedCheckpointsBuilderAssignments.GetSnapshotsAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]? Checkpoints
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Checkpoint[]?>("Checkpoints");
@@ -80,6 +80,20 @@ public abstract class CGameSaveLaunchedCheckpointsBuilderBase<TSelf> where TSelf
 }
 public partial class CGameSaveLaunchedCheckpointsBuilder : CGameSaveLaunchedCheckpointsBuilderBase<CGameSaveLaunchedCheckpointsBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints();
+        var chunk03262000 = new global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Chunk03262000(game);
+        node.Chunks.Add(chunk03262000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Chunk03262000>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk03262000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameSaveLaunchedCheckpointsBuilderBase<TM2020>
     {
@@ -87,13 +101,12 @@ public partial class CGameSaveLaunchedCheckpointsBuilder : CGameSaveLaunchedChec
         public global::GBX.NET.Interfaces.Game.IGameSaveLaunchedCheckpointsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints();
-            var chunk03262000 = new global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Chunk03262000(GameVersion.TM2020);
-            node.Chunks.Add(chunk03262000);
+            var node = CGameSaveLaunchedCheckpointsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints.Chunk03262000>() is not { Version: 7 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03262000 is missing or has an incompatible version.");
+            CGameSaveLaunchedCheckpointsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameSaveLaunchedCheckpointsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

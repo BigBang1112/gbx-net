@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionsMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotions where T0 : class
+{
+    new IReadOnlyList<T0>? Motions { get; set; }
+}
 public partial interface IMotions : IClassVersion<global::GBX.NET.Engines.Motion.CMotions>, global::GBX.NET.Interfaces.Motion.IMotion
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -43,55 +48,39 @@ public partial interface IMotions : IClassVersion<global::GBX.NET.Engines.Motion
     IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotion>? Motions { get; set; }
 }
 
-public partial interface IMotionsTM10 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTM10
+public partial interface IMotionsTM10 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTM10, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTM10>? Motions { get; set; }
 }
 
-public partial interface IMotionsTMPU : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMPU
+public partial interface IMotionsTMPU : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMPU, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMPU>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMPU>? Motions { get; set; }
 }
 
-public partial interface IMotionsTMSX : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMSX
+public partial interface IMotionsTMSX : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMSX, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMSX>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionsTMNESWC : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC
+public partial interface IMotionsTMNESWC : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionsVSK5 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionVSK5
+public partial interface IMotionsVSK5 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionVSK5, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionVSK5>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionsTMF : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMF
+public partial interface IMotionsTMF : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMF, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMF>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionsMP3 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionMP3
+public partial interface IMotionsMP3 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionMP3, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionMP3>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionsTMT : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMT
+public partial interface IMotionsTMT : IMotions, global::GBX.NET.Interfaces.Motion.IMotionTMT, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionTMT>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionsMP4 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionMP4
+public partial interface IMotionsMP4 : IMotions, global::GBX.NET.Interfaces.Motion.IMotionMP4, global::GBX.NET.Interfaces.Motion.IMotionsMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionMP4>? Motions { get; set; }
-    new string? Name { get; set; }
 }
 

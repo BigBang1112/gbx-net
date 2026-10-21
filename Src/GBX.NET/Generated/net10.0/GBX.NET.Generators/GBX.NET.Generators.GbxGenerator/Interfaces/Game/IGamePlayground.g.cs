@@ -40,7 +40,6 @@ public partial interface IGamePlayground : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface IGamePlaygroundTM10 : IGamePlayground, global::GBX.NET.Interfaces.Game.IGameNodTM10

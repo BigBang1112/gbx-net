@@ -31,6 +31,33 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderMembers1 : global::GBX.NET.Interfaces.Plug.IPlugShader
+{
+    global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders { get; set; }
+    uint Flags { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU { get; set; }
+    uint RequirementFlags2 { get; set; }
+    float VisibleMaxDist { get; set; }
+    float VisibleMinScreenHeight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugShader where T0 : class
+{
+    IReadOnlyList<T0>? LegacyCustomShaders { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderMembers3<T0, T1, T2> : global::GBX.NET.Interfaces.Plug.IPlugShader where T0 : class where T1 : class where T2 : class
+{
+    new T0? FuncShader { get; set; }
+    new IReadOnlyList<T1>? Passes { get; set; }
+    new T2? SolidWiredApply { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderMembers4 : global::GBX.NET.Interfaces.Plug.IPlugShader
+{
+    ulong RequirementFlags { get; set; }
+}
 public partial interface IPlugShader : IClassVersion<global::GBX.NET.Engines.Plug.CPlugShader>
 {
     global::GBX.NET.Interfaces.Function.IFuncShader? FuncShader { get; set; }
@@ -41,110 +68,43 @@ public partial interface IPlugShader : IClassVersion<global::GBX.NET.Engines.Plu
     ushort VisibleIdFlags { get; set; }
 }
 
-public partial interface IPlugShaderTM10 : IPlugShader
+public partial interface IPlugShaderTM10 : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM10>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTM10? FuncShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>? LegacyCustomShaders { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM10? SolidWiredApply { get; set; }
 }
 
-public partial interface IPlugShaderTMPU : IPlugShader
+public partial interface IPlugShaderTMPU : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMPU>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMPU? FuncShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>? LegacyCustomShaders { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMPU? SolidWiredApply { get; set; }
 }
 
-public partial interface IPlugShaderTMSX : IPlugShader
+public partial interface IPlugShaderTMSX : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMSX? FuncShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>? LegacyCustomShaders { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>? Passes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMSX? SolidWiredApply { get; set; }
 }
 
-public partial interface IPlugShaderTMNESWC : IPlugShader
+public partial interface IPlugShaderTMNESWC : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC? FuncShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>? LegacyCustomShaders { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? SolidWiredApply { get; set; }
 }
 
-public partial interface IPlugShaderVSK5 : IPlugShader
+public partial interface IPlugShaderVSK5 : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderVSK5? FuncShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>? LegacyCustomShaders { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5? SolidWiredApply { get; set; }
 }
 
-public partial interface IPlugShaderTMF : IPlugShader
+public partial interface IPlugShaderTMF : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMF? FuncShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>? LegacyCustomShaders { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF? SolidWiredApply { get; set; }
 }
 
-public partial interface IPlugShaderMP3 : IPlugShader
+public partial interface IPlugShaderMP3 : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers1, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP3>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders { get; set; }
-    uint Flags { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncShaderMP3? FuncShader { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    uint RequirementFlags2 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP3? SolidWiredApply { get; set; }
-    float VisibleMaxDist { get; set; }
-    float VisibleMinScreenHeight { get; set; }
 }
 
-public partial interface IPlugShaderTMT : IPlugShader
+public partial interface IPlugShaderTMT : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers1, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMT>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders { get; set; }
-    uint Flags { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTMT? FuncShader { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    uint RequirementFlags2 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMT? SolidWiredApply { get; set; }
-    float VisibleMaxDist { get; set; }
-    float VisibleMinScreenHeight { get; set; }
 }
 
-public partial interface IPlugShaderMP4 : IPlugShader
+public partial interface IPlugShaderMP4 : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers1, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP4>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders { get; set; }
-    uint Flags { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncShaderMP4? FuncShader { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    uint RequirementFlags2 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP4? SolidWiredApply { get; set; }
-    float VisibleMaxDist { get; set; }
-    float VisibleMinScreenHeight { get; set; }
 }
 
-public partial interface IPlugShaderTM2020 : IPlugShader
+public partial interface IPlugShaderTM2020 : IPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers1, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020>, global::GBX.NET.Interfaces.Plug.IPlugShaderMembers4
 {
-    global::GBX.NET.Engines.Plug.CPlugShader.ShaderCustom[] CustomShaders { get; set; }
-    uint Flags { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncShaderTM2020? FuncShader { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPUV? GPU { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>? Passes { get; set; }
-    ulong RequirementFlags { get; set; }
-    uint RequirementFlags2 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020? SolidWiredApply { get; set; }
-    float VisibleMaxDist { get; set; }
-    float VisibleMinScreenHeight { get; set; }
 }
 

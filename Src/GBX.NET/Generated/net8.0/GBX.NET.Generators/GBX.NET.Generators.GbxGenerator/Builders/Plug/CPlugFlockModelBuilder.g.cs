@@ -36,41 +36,41 @@ public abstract class CPlugFlockModelBuilderBase<TSelf> where TSelf : CPlugFlock
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state;
     private protected CPlugFlockModelBuilderBase() => state = new();
     private protected CPlugFlockModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) => this.state = state;
-    private protected static void SetAnimFileFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("AnimFileFid", value, GameVersion.MP4, static value => value, static (node, value) => node.AnimFileFid = value);
-    private protected static void SetAnimFileFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("AnimFileFid", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.AnimFileFid.CopyFrom(reference));
-    private protected static void SetAnimFlappingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimFlappingEnd", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimFlappingEnd = value);
-    private protected static void SetAnimFlappingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimFlappingStart", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimFlappingStart = value);
-    private protected static void SetAnimGlidingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimGlidingEnd", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimGlidingEnd = value);
-    private protected static void SetAnimGlidingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimGlidingStart", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimGlidingStart = value);
-    private protected static void SetAnimPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimPeriod", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AnimPeriod = value);
-    private protected static void SetAnimStandingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimStandingEnd", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimStandingEnd = value);
-    private protected static void SetAnimStandingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("AnimStandingStart", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimStandingStart = value);
-    private protected static void SetBirdModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BirdModel", value, GameVersion.MP4, static value => value, static (node, value) => node.BirdModel = value);
-    private protected static void SetBirdModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("BirdModel", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BirdModel.CopyFrom(reference));
-    private protected static void SetBirdModelFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BirdModelFid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BirdModelFid = value);
-    private protected static void SetBirdModelFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("BirdModelFid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BirdModelFid.CopyFrom(reference));
-    private protected static void SetCosViewAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("CosViewAngle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CosViewAngle = value);
-    private protected static void SetDefSpawnCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("DefSpawnCount", value, GameVersion.MP4, static value => value, static (node, value) => node.DefSpawnCount = value);
-    private protected static void SetFlockType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType>("FlockType", value, GameVersion.MP4, static value => value, static (node, value) => node.FlockType = value);
-    private protected static void SetKAvoidance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("KAvoidance", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KAvoidance = value);
-    private protected static void SetKGroundAvoid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("KGroundAvoid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KGroundAvoid = value);
-    private protected static void SetKGrouping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("KGrouping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KGrouping = value);
-    private protected static void SetKMatching(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("KMatching", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KMatching = value);
-    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("MaxSpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MaxSpeed = value);
-    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("MinSpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MinSpeed = value);
-    private protected static void SetRange(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("Range", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Range = value);
-    private protected static void SetSoundEventTakeOff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundEventTakeOff = value);
-    private protected static void SetSoundEventTakeOffReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("SoundEventTakeOff", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SoundEventTakeOff.CopyFrom(reference));
-    private protected static void SetSoundLoop(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundLoop", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundLoop = value);
-    private protected static void SetSoundLoopReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("SoundLoop", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SoundLoop.CopyFrom(reference));
-    private protected static void SetStandingDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("StandingDuration", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.StandingDuration = value);
-    private protected static void SetUpdateFrequency(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set<int>("UpdateFrequency", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.UpdateFrequency = value);
-    private protected static void SetVAvoidance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("VAvoidance", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VAvoidance = value);
-    private protected static void SetVGroundAvoid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("VGroundAvoid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VGroundAvoid = value);
-    private protected static void SetVGrouping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("VGrouping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VGrouping = value);
-    private protected static void SetVMatching(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("VMatching", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VMatching = value);
-    private protected static void SetVariance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("Variance", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Variance = value);
-    private protected static void SetVolatility(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set<float>("Volatility", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Volatility = value);
+    private protected static void SetAnimFileFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFileFidAssignment(), value, GameVersion.MP4);
+    private protected static void SetAnimFileFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFileFidReferenceAssignment(), value, GameVersion.MP4);
+    private protected static void SetAnimFlappingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimFlappingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimFlappingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimGlidingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimGlidingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimGlidingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAnimStandingEnd(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimStandingStart(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetAnimStandingStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBirdModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelAssignment(), value, GameVersion.MP4);
+    private protected static void SetBirdModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelReferenceAssignment(), value, GameVersion.MP4);
+    private protected static void SetBirdModelFid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelFidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBirdModelFidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetBirdModelFidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCosViewAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetCosViewAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDefSpawnCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetDefSpawnCountAssignment(), value, GameVersion.MP4);
+    private protected static void SetFlockType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetFlockTypeAssignment(), value, GameVersion.MP4);
+    private protected static void SetKAvoidance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKAvoidanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKGroundAvoid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKGroundAvoidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKGrouping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKGroupingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKMatching(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetKMatchingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRange(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSoundEventTakeOff(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundEventTakeOffReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundEventTakeOffReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundLoop(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundLoopReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetSoundLoopReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStandingDuration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetStandingDurationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetUpdateFrequency(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetUpdateFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVAvoidance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVAvoidanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVGroundAvoid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVGroundAvoidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVGrouping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVGroupingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVMatching(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVMatchingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVariance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVarianceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVolatility(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilderAssignments.GetVolatilityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int AnimPeriod
     {
         get => state.Get<int>("AnimPeriod");
@@ -98,8 +98,240 @@ public abstract class CPlugFlockModelBuilderBase<TSelf> where TSelf : CPlugFlock
         return (TSelf)this;
     }
 }
+public abstract class CPlugFlockModelBuilderMembers1<TSelf> : CPlugFlockModelBuilderBase<TSelf> where TSelf : CPlugFlockModelBuilderMembers1<TSelf>
+{
+    private protected CPlugFlockModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
+    public float CosViewAngle
+    {
+        get => state.Get<float>("CosViewAngle");
+        set => SetCosViewAngle(state, value);
+    }
+    public TSelf WithCosViewAngle(float value)
+    {
+        CosViewAngle = value;
+        return (TSelf)this;
+    }
+    public float KAvoidance
+    {
+        get => state.Get<float>("KAvoidance");
+        set => SetKAvoidance(state, value);
+    }
+    public TSelf WithKAvoidance(float value)
+    {
+        KAvoidance = value;
+        return (TSelf)this;
+    }
+    public float KGroundAvoid
+    {
+        get => state.Get<float>("KGroundAvoid");
+        set => SetKGroundAvoid(state, value);
+    }
+    public TSelf WithKGroundAvoid(float value)
+    {
+        KGroundAvoid = value;
+        return (TSelf)this;
+    }
+    public float KGrouping
+    {
+        get => state.Get<float>("KGrouping");
+        set => SetKGrouping(state, value);
+    }
+    public TSelf WithKGrouping(float value)
+    {
+        KGrouping = value;
+        return (TSelf)this;
+    }
+    public float KMatching
+    {
+        get => state.Get<float>("KMatching");
+        set => SetKMatching(state, value);
+    }
+    public TSelf WithKMatching(float value)
+    {
+        KMatching = value;
+        return (TSelf)this;
+    }
+    public float MaxSpeed
+    {
+        get => state.Get<float>("MaxSpeed");
+        set => SetMaxSpeed(state, value);
+    }
+    public TSelf WithMaxSpeed(float value)
+    {
+        MaxSpeed = value;
+        return (TSelf)this;
+    }
+    public float MinSpeed
+    {
+        get => state.Get<float>("MinSpeed");
+        set => SetMinSpeed(state, value);
+    }
+    public TSelf WithMinSpeed(float value)
+    {
+        MinSpeed = value;
+        return (TSelf)this;
+    }
+    public float Range
+    {
+        get => state.Get<float>("Range");
+        set => SetRange(state, value);
+    }
+    public TSelf WithRange(float value)
+    {
+        Range = value;
+        return (TSelf)this;
+    }
+    public int StandingDuration
+    {
+        get => state.Get<int>("StandingDuration");
+        set => SetStandingDuration(state, value);
+    }
+    public TSelf WithStandingDuration(int value)
+    {
+        StandingDuration = value;
+        return (TSelf)this;
+    }
+    public int UpdateFrequency
+    {
+        get => state.Get<int>("UpdateFrequency");
+        set => SetUpdateFrequency(state, value);
+    }
+    public TSelf WithUpdateFrequency(int value)
+    {
+        UpdateFrequency = value;
+        return (TSelf)this;
+    }
+    public float VAvoidance
+    {
+        get => state.Get<float>("VAvoidance");
+        set => SetVAvoidance(state, value);
+    }
+    public TSelf WithVAvoidance(float value)
+    {
+        VAvoidance = value;
+        return (TSelf)this;
+    }
+    public float VGroundAvoid
+    {
+        get => state.Get<float>("VGroundAvoid");
+        set => SetVGroundAvoid(state, value);
+    }
+    public TSelf WithVGroundAvoid(float value)
+    {
+        VGroundAvoid = value;
+        return (TSelf)this;
+    }
+    public float VGrouping
+    {
+        get => state.Get<float>("VGrouping");
+        set => SetVGrouping(state, value);
+    }
+    public TSelf WithVGrouping(float value)
+    {
+        VGrouping = value;
+        return (TSelf)this;
+    }
+    public float VMatching
+    {
+        get => state.Get<float>("VMatching");
+        set => SetVMatching(state, value);
+    }
+    public TSelf WithVMatching(float value)
+    {
+        VMatching = value;
+        return (TSelf)this;
+    }
+    public float Variance
+    {
+        get => state.Get<float>("Variance");
+        set => SetVariance(state, value);
+    }
+    public TSelf WithVariance(float value)
+    {
+        Variance = value;
+        return (TSelf)this;
+    }
+    public float Volatility
+    {
+        get => state.Get<float>("Volatility");
+        set => SetVolatility(state, value);
+    }
+    public TSelf WithVolatility(float value)
+    {
+        Volatility = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFlockModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
+        var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game);
+        node.Chunks.Add(chunk090E5000);
+        var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game);
+        node.Chunks.Add(chunk090E5001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFlockModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
+        var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game);
+        node.Chunks.Add(chunk090E5000);
+        var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game);
+        node.Chunks.Add(chunk090E5001);
+        var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(game);
+        node.Chunks.Add(chunk090E5002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugFlockModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
+        var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game);
+        node.Chunks.Add(chunk090E5000);
+        var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game);
+        node.Chunks.Add(chunk090E5001);
+        var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(game);
+        node.Chunks.Add(chunk090E5002);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugFlockModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugFlockModel CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
+        var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(game);
+        node.Chunks.Add(chunk090E5000);
+        var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(game);
+        node.Chunks.Add(chunk090E5001);
+        var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(game);
+        node.Chunks.Add(chunk090E5002);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugFlockModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E5002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFlockModel node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -112,1099 +344,115 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugFlockModelBuilderBase<TM10>
+    public partial class TM10 : CPlugFlockModelBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public TM10 WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public TM10 WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public TM10 WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public TM10 WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public TM10 WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TM10 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TM10 WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public TM10 WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public TM10 WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public TM10 WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public TM10 WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public TM10 WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public TM10 WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public TM10 WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public TM10 WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public TM10 WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TM10);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TM10);
-            node.Chunks.Add(chunk090E5001);
+            var node = CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM10 chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException("Required TM10 chunk Chunk090E5001 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class TMPU : CPlugFlockModelBuilderBase<TMPU>
+    public partial class TMPU : CPlugFlockModelBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public TMPU WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public TMPU WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public TMPU WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public TMPU WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public TMPU WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMPU WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMPU WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public TMPU WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public TMPU WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public TMPU WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public TMPU WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public TMPU WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public TMPU WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public TMPU WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public TMPU WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public TMPU WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TMPU);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TMPU);
-            node.Chunks.Add(chunk090E5001);
+            var node = CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMPU chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMPU chunk Chunk090E5001 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class TMSX : CPlugFlockModelBuilderBase<TMSX>
+    public partial class TMSX : CPlugFlockModelBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public TMSX WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public TMSX WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public TMSX WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public TMSX WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public TMSX WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMSX WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMSX WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public TMSX WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public TMSX WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public TMSX WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public TMSX WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public TMSX WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public TMSX WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public TMSX WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public TMSX WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public TMSX WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TMSX);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TMSX);
-            node.Chunks.Add(chunk090E5001);
+            var node = CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMSX chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMSX chunk Chunk090E5001 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class TMNESWC : CPlugFlockModelBuilderBase<TMNESWC>
+    public partial class TMNESWC : CPlugFlockModelBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public TMNESWC WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public TMNESWC WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public TMNESWC WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public TMNESWC WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public TMNESWC WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMNESWC WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMNESWC WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public TMNESWC WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public TMNESWC WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public TMNESWC WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public TMNESWC WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public TMNESWC WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public TMNESWC WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public TMNESWC WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public TMNESWC WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public TMNESWC WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TMNESWC);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TMNESWC);
-            node.Chunks.Add(chunk090E5001);
+            var node = CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMNESWC chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMNESWC chunk Chunk090E5001 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class VSK5 : CPlugFlockModelBuilderBase<VSK5>
+    public partial class VSK5 : CPlugFlockModelBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public VSK5 WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public VSK5 WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public VSK5 WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public VSK5 WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public VSK5 WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public VSK5 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public VSK5 WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public VSK5 WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public VSK5 WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public VSK5 WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public VSK5 WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public VSK5 WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public VSK5 WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public VSK5 WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public VSK5 WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public VSK5 WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.VSK5);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.VSK5);
-            node.Chunks.Add(chunk090E5001);
+            var node = CPlugFlockModelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException("Required VSK5 chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException("Required VSK5 chunk Chunk090E5001 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class TMF : CPlugFlockModelBuilderBase<TMF>
+    public partial class TMF : CPlugFlockModelBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public TMF WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public TMF WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public TMF WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public TMF WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public TMF WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMF WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMF WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public TMF WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public TMF WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public TMF WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public TMF WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public TMF WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public TMF WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public TMF WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public TMF WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public TMF WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TMF);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TMF);
-            node.Chunks.Add(chunk090E5001);
+            var node = CPlugFlockModelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMF chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMF chunk Chunk090E5001 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class MP3 : CPlugFlockModelBuilderBase<MP3>
+    public partial class MP3 : CPlugFlockModelBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
         public int AnimFlappingEnd
@@ -1267,86 +515,6 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
             AnimStandingStart = value;
             return this;
         }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public MP3 WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public MP3 WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public MP3 WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public MP3 WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public MP3 WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public MP3 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public MP3 WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public MP3 WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff");
@@ -1387,109 +555,22 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         {
             return WithSoundLoop(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public MP3 WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public MP3 WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public MP3 WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public MP3 WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public MP3 WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public MP3 WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public MP3 WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public MP3 WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.MP3);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.MP3);
-            node.Chunks.Add(chunk090E5001);
-            var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(GameVersion.MP3);
-            node.Chunks.Add(chunk090E5002);
+            var node = CPlugFlockModelBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk090E5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk090E5002 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class TMT : CPlugFlockModelBuilderBase<TMT>
+    public partial class TMT : CPlugFlockModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
         public int AnimFlappingEnd
@@ -1552,86 +633,6 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
             AnimStandingStart = value;
             return this;
         }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public TMT WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public TMT WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public TMT WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public TMT WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public TMT WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMT WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMT WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public TMT WithRange(float value)
-        {
-            Range = value;
-            return this;
-        }
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugSound?>("SoundEventTakeOff");
@@ -1672,109 +673,22 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         {
             return WithSoundLoop(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public TMT WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public TMT WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public TMT WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public TMT WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public TMT WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public TMT WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public TMT WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public TMT WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TMT);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TMT);
-            node.Chunks.Add(chunk090E5001);
-            var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(GameVersion.TMT);
-            node.Chunks.Add(chunk090E5002);
+            var node = CPlugFlockModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk090E5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk090E5002 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugFlockModel node);
     }
-    public partial class MP4 : CPlugFlockModelBuilderBase<MP4>
+    public partial class MP4 : CPlugFlockModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFlockModel> state) : base(state) { }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? AnimFileFid
@@ -1869,16 +783,6 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
             SetBirdModelReference(state, value);
             return this;
         }
-        public float CosViewAngle
-        {
-            get => state.Get<float>("CosViewAngle");
-            set => SetCosViewAngle(state, value);
-        }
-        public MP4 WithCosViewAngle(float value)
-        {
-            CosViewAngle = value;
-            return this;
-        }
         public int DefSpawnCount
         {
             get => state.Get<int>("DefSpawnCount");
@@ -1897,76 +801,6 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public MP4 WithFlockType(global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType value)
         {
             FlockType = value;
-            return this;
-        }
-        public float KAvoidance
-        {
-            get => state.Get<float>("KAvoidance");
-            set => SetKAvoidance(state, value);
-        }
-        public MP4 WithKAvoidance(float value)
-        {
-            KAvoidance = value;
-            return this;
-        }
-        public float KGroundAvoid
-        {
-            get => state.Get<float>("KGroundAvoid");
-            set => SetKGroundAvoid(state, value);
-        }
-        public MP4 WithKGroundAvoid(float value)
-        {
-            KGroundAvoid = value;
-            return this;
-        }
-        public float KGrouping
-        {
-            get => state.Get<float>("KGrouping");
-            set => SetKGrouping(state, value);
-        }
-        public MP4 WithKGrouping(float value)
-        {
-            KGrouping = value;
-            return this;
-        }
-        public float KMatching
-        {
-            get => state.Get<float>("KMatching");
-            set => SetKMatching(state, value);
-        }
-        public MP4 WithKMatching(float value)
-        {
-            KMatching = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public MP4 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public MP4 WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float Range
-        {
-            get => state.Get<float>("Range");
-            set => SetRange(state, value);
-        }
-        public MP4 WithRange(float value)
-        {
-            Range = value;
             return this;
         }
         public global::GBX.NET.Engines.Plug.CPlugSound? SoundEventTakeOff
@@ -2009,102 +843,15 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         {
             return WithSoundLoop(value is null ? (global::GBX.NET.Engines.Plug.CPlugSound?)null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public int StandingDuration
-        {
-            get => state.Get<int>("StandingDuration");
-            set => SetStandingDuration(state, value);
-        }
-        public MP4 WithStandingDuration(int value)
-        {
-            StandingDuration = value;
-            return this;
-        }
-        public int UpdateFrequency
-        {
-            get => state.Get<int>("UpdateFrequency");
-            set => SetUpdateFrequency(state, value);
-        }
-        public MP4 WithUpdateFrequency(int value)
-        {
-            UpdateFrequency = value;
-            return this;
-        }
-        public float VAvoidance
-        {
-            get => state.Get<float>("VAvoidance");
-            set => SetVAvoidance(state, value);
-        }
-        public MP4 WithVAvoidance(float value)
-        {
-            VAvoidance = value;
-            return this;
-        }
-        public float VGroundAvoid
-        {
-            get => state.Get<float>("VGroundAvoid");
-            set => SetVGroundAvoid(state, value);
-        }
-        public MP4 WithVGroundAvoid(float value)
-        {
-            VGroundAvoid = value;
-            return this;
-        }
-        public float VGrouping
-        {
-            get => state.Get<float>("VGrouping");
-            set => SetVGrouping(state, value);
-        }
-        public MP4 WithVGrouping(float value)
-        {
-            VGrouping = value;
-            return this;
-        }
-        public float VMatching
-        {
-            get => state.Get<float>("VMatching");
-            set => SetVMatching(state, value);
-        }
-        public MP4 WithVMatching(float value)
-        {
-            VMatching = value;
-            return this;
-        }
-        public float Variance
-        {
-            get => state.Get<float>("Variance");
-            set => SetVariance(state, value);
-        }
-        public MP4 WithVariance(float value)
-        {
-            Variance = value;
-            return this;
-        }
-        public float Volatility
-        {
-            get => state.Get<float>("Volatility");
-            set => SetVolatility(state, value);
-        }
-        public MP4 WithVolatility(float value)
-        {
-            Volatility = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.MP4);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.MP4);
-            node.Chunks.Add(chunk090E5001);
-            var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(GameVersion.MP4);
-            node.Chunks.Add(chunk090E5002);
+            var node = CPlugFlockModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk090E5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk090E5002 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -2217,19 +964,12 @@ public partial class CPlugFlockModelBuilder : CPlugFlockModelBuilderBase<CPlugFl
         public global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFlockModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFlockModel();
-            var chunk090E5000 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090E5000);
-            var chunk090E5001 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001(GameVersion.TM2020);
-            node.Chunks.Add(chunk090E5001);
-            var chunk090E5002 = new global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002(GameVersion.TM2020);
-            node.Chunks.Add(chunk090E5002);
+            var node = CPlugFlockModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5000>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5001>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFlockModel.Chunk090E5002>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E5002 is missing or has an incompatible version.");
+            CPlugFlockModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugFlockModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -44,7 +44,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         get => TreeLight;
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC>.Material
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC>.TreeLight
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>.Material
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>.TreeLight
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>.Material
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>.TreeLight
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>.Material
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>.TreeLight
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>.Material
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>.TreeLight
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>.Material
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>.TreeLight
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => TreeLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>.Material
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CPlugDecoratorTree : global::GBX.NET.Interfaces.Plug.IPlugD
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020.TreeLight
+    global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>.TreeLight
     {
         get
         {

@@ -41,7 +41,6 @@ public partial interface IFuncKeysNatural : IClassVersion<global::GBX.NET.Engine
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     int[]? Naturals { get; set; }
-    new float[]? Xs { get; set; }
 }
 
 public partial interface IFuncKeysNaturalTM10 : IFuncKeysNatural, global::GBX.NET.Interfaces.Function.IFuncKeysTM10

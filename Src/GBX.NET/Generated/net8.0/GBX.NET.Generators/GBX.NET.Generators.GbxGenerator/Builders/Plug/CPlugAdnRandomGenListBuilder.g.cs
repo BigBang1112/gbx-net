@@ -36,7 +36,7 @@ public abstract class CPlugAdnRandomGenListBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state;
     private protected CPlugAdnRandomGenListBuilderBase() => state = new();
     private protected CPlugAdnRandomGenListBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state) => this.state = state;
-    private protected static void SetDatas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>?>("Datas", value, GameVersion.TM2020, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Datas = value);
+    private protected static void SetDatas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAdnRandomGenListBuilderAssignments.GetDatasAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? Datas
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>?>("Datas");
@@ -58,13 +58,27 @@ public abstract class CPlugAdnRandomGenListBuilderBase<TSelf> where TSelf : CPlu
 }
 public partial class CPlugAdnRandomGenListBuilder : CPlugAdnRandomGenListBuilderBase<CPlugAdnRandomGenListBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList();
+        var chunk09157000 = new global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList.Chunk09157000(game);
+        node.Chunks.Add(chunk09157000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList.Chunk09157000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09157000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugAdnRandomGenListBuilderBase<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList> state) : base(state) { }
         public TM2020 WithDatas(params global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020[] values)
         {
-            return base.WithDatas(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithDatas(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>(values, false));
         }
         public TM2020 WithDatas(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020> values)
         {
@@ -73,13 +87,12 @@ public partial class CPlugAdnRandomGenListBuilder : CPlugAdnRandomGenListBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenListTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList();
-            var chunk09157000 = new global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList.Chunk09157000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09157000);
+            var node = CPlugAdnRandomGenListBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAdnRandomGenList.Chunk09157000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09157000 is missing or has an incompatible version.");
+            CPlugAdnRandomGenListBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugAdnRandomGenListBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

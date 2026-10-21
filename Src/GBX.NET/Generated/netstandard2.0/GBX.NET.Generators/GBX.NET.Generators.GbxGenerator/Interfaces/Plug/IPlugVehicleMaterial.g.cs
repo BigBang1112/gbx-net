@@ -31,99 +31,64 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class where T1 : class
+{
+    T0? TrailManagerModel { get; set; }
+    T1? TrailShader { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+{
+    bool TrailIsOnlyWhenSliding { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers3 : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial
+{
+    float AccelerationCoef { get; set; }
+    float BrakeCoef { get; set; }
+    float Grip { get; set; }
+    byte MaterialId { get; set; }
+    float Speed { get; set; }
+    float VibrationMax { get; set; }
+    float VibrationSpeedCoef { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleMaterialMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial where T0 : class
+{
+    T0? MaterialHeightDetailBitmap { get; set; }
+    Vec2 MaterialHeightDetailScale { get; set; }
+}
 public partial interface IPlugVehicleMaterial : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleMaterial>
 {
 }
 
-public partial interface IPlugVehicleMaterialTM10 : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialTM10 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
 {
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    bool TrailIsOnlyWhenSliding { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10? TrailManagerModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? TrailShader { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialTMPU : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialTMPU : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
 {
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    bool TrailIsOnlyWhenSliding { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU? TrailManagerModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? TrailShader { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialTMSX : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialTMSX : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
 {
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    bool TrailIsOnlyWhenSliding { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialTMNESWC : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialTMNESWC : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
 {
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialVSK5 : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialVSK5 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialTMF : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialTMF : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>
 {
-    float AccelerationCoef { get; set; }
-    float BrakeCoef { get; set; }
-    float Grip { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
-    byte MaterialId { get; set; }
-    float Speed { get; set; }
-    float VibrationMax { get; set; }
-    float VibrationSpeedCoef { get; set; }
 }
 
-public partial interface IPlugVehicleMaterialMP3 : IPlugVehicleMaterial
+public partial interface IPlugVehicleMaterialMP3 : IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? MaterialHeightDetailBitmap { get; set; }
-    Vec2 MaterialHeightDetailScale { get; set; }
 }
 
 public partial interface IPlugVehicleMaterialMP4 : IPlugVehicleMaterial

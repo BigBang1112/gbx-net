@@ -36,13 +36,13 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state;
     private protected CPlugGpuCompileCacheBuilderBase() => state = new();
     private protected CPlugGpuCompileCacheBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state) => this.state = state;
-    private protected static void SetData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData?>("Data", value, GameVersion.TM2020, static value => value, static (node, value) => node.Data = value);
-    private protected static void SetEntryPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, string? value) => state.Set<string?>("EntryPoint", value, GameVersion.TM2020, static value => value, static (node, value) => node.EntryPoint = value);
-    private protected static void SetHasSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, bool value) => state.Set<bool>("HasSlots", value, GameVersion.TM2020, static value => value, static (node, value) => node.HasSlots = value);
-    private protected static void SetHashes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, ulong[]? value) => state.Set<ulong[]?>("Hashes", value, GameVersion.TM2020, static value => value is null ? null! : (ulong[])value.Clone(), static (node, value) => node.Hashes = value);
-    private protected static void SetIncludes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]?>("Includes", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[])value.Clone(), static (node, value) => node.Includes = value);
-    private protected static void SetSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable?>("Slots", value, GameVersion.TM2020, static value => value, static (node, value) => node.Slots = value);
-    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, int value) => state.Set<int>("Type", value, GameVersion.TM2020, static value => value, static (node, value) => node.Type = value);
+    private protected static void SetData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetDataAssignment(), value, GameVersion.TM2020);
+    private protected static void SetEntryPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetEntryPointAssignment(), value, GameVersion.TM2020);
+    private protected static void SetHasSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHasSlotsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetHashes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, ulong[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetHashesAssignment(), value, GameVersion.TM2020);
+    private protected static void SetIncludes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Include[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetIncludesAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSlots(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.SlotTable? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetSlotsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGpuCompileCacheBuilderAssignments.GetTypeAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData? Data
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.CompileData?>("Data");
@@ -124,6 +124,23 @@ public abstract class CPlugGpuCompileCacheBuilderBase<TSelf> where TSelf : CPlug
 }
 public partial class CPlugGpuCompileCacheBuilder : CPlugGpuCompileCacheBuilderBase<CPlugGpuCompileCacheBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugGpuCompileCache CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache();
+        var chunk09053008 = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053008(game);
+        node.Chunks.Add(chunk09053008);
+        var chunk09053009 = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053009(game);
+        node.Chunks.Add(chunk09053009);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053008>() is not { Version: 18 }) throw new InvalidOperationException($"Required {game} chunk Chunk09053008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053009>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09053009 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugGpuCompileCache node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugGpuCompileCacheBuilderBase<TM2020>
     {
@@ -131,16 +148,12 @@ public partial class CPlugGpuCompileCacheBuilder : CPlugGpuCompileCacheBuilderBa
         public global::GBX.NET.Interfaces.Plug.IPlugGpuCompileCacheTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugGpuCompileCache Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache();
-            var chunk09053008 = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053008(GameVersion.TM2020);
-            node.Chunks.Add(chunk09053008);
-            var chunk09053009 = new global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053009(GameVersion.TM2020);
-            node.Chunks.Add(chunk09053009);
+            var node = CPlugGpuCompileCacheBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053008>() is not { Version: 18 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09053008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGpuCompileCache.Chunk09053009>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09053009 is missing or has an incompatible version.");
+            CPlugGpuCompileCacheBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugGpuCompileCacheBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

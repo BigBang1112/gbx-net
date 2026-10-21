@@ -31,6 +31,18 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleGpuModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModel where T0 : class
+{
+    new T0? Bitmap { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleGpuModelMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModel where T0 : class
+{
+    T0? BitmapOverLife { get; set; }
+    bool UseColorOverLife { get; set; }
+    bool UseEnergyOverLife { get; set; }
+}
 public partial interface IPlugParticleGpuModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleGpuModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? Bitmap { get; set; }
@@ -58,29 +70,19 @@ public partial interface IPlugParticleGpuModel : IClassVersion<global::GBX.NET.E
     float Weight { get; set; }
 }
 
-public partial interface IPlugParticleGpuModelMP3 : IPlugParticleGpuModel
+public partial interface IPlugParticleGpuModelMP3 : IPlugParticleGpuModel, global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? Bitmap { get; set; }
 }
 
-public partial interface IPlugParticleGpuModelTMT : IPlugParticleGpuModel
+public partial interface IPlugParticleGpuModelTMT : IPlugParticleGpuModel, global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Bitmap { get; set; }
 }
 
-public partial interface IPlugParticleGpuModelMP4 : IPlugParticleGpuModel
+public partial interface IPlugParticleGpuModelMP4 : IPlugParticleGpuModel, global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Bitmap { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapOverLife { get; set; }
-    bool UseColorOverLife { get; set; }
-    bool UseEnergyOverLife { get; set; }
 }
 
-public partial interface IPlugParticleGpuModelTM2020 : IPlugParticleGpuModel
+public partial interface IPlugParticleGpuModelTM2020 : IPlugParticleGpuModel, global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Bitmap { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapOverLife { get; set; }
-    bool UseColorOverLife { get; set; }
-    bool UseEnergyOverLife { get; set; }
 }
 

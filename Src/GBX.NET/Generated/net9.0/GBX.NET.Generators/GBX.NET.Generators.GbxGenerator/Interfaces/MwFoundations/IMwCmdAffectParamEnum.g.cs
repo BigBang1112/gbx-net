@@ -40,8 +40,6 @@ public partial interface IMwCmdAffectParamEnum : IClassVersion<global::GBX.NET.E
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value { get; set; }
 }
 
 public partial interface IMwCmdAffectParamEnumTMF : IMwCmdAffectParamEnum, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamTMF

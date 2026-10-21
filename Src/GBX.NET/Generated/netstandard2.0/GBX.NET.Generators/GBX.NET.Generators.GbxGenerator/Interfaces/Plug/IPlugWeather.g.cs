@@ -31,6 +31,42 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugWeather where T0 : class where T1 : class
+{
+    new T0? BitmapFlareMoon { get; set; }
+    new T0? BitmapFlareSun { get; set; }
+    new T0? BitmapRainFid { get; set; }
+    new T1? MaterialSea0 { get; set; }
+    new T1? MaterialSea1 { get; set; }
+    new T1? MaterialSky_Day { get; set; }
+    new T1? MaterialSky_Night { get; set; }
+    new T1? MaterialSky_SunFall { get; set; }
+    new T1? MaterialSky_SunRise { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugWeather where T0 : class
+{
+    T0? Clouds { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherMembers3 : global::GBX.NET.Interfaces.Plug.IPlugWeather
+{
+    global::GBX.NET.Engines.Plug.CPlugClouds? Clouds { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugWeather where T0 : class
+{
+    T0? BitmapSkyGradV { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugWeather where T0 : class
+{
+    T0? FogBlender { get; set; }
+}
 public partial interface IPlugWeather : IClassVersion<global::GBX.NET.Engines.Plug.CPlugWeather>, global::GBX.NET.Interfaces.Function.IFunc
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -83,180 +119,44 @@ public partial interface IPlugWeather : IClassVersion<global::GBX.NET.Engines.Pl
     Vec3 SeaTwkWaterColor_Night { get; set; }
 }
 
-public partial interface IPlugWeatherTM10 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTM10
+public partial interface IPlugWeatherTM10 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTM10, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapRainFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherTMPU : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMPU
+public partial interface IPlugWeatherTMPU : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMPU, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapRainFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherTMSX : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMSX
+public partial interface IPlugWeatherTMSX : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMSX, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugClouds? Clouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherTMNESWC : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMNESWC
+public partial interface IPlugWeatherTMNESWC : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC? Clouds { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherVSK5 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncVSK5
+public partial interface IPlugWeatherVSK5 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5? Clouds { get; set; }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5? FogBlender { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherTMF : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMF
+public partial interface IPlugWeatherTMF : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF? Clouds { get; set; }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMF? FogBlender { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherMP3 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncMP3
+public partial interface IPlugWeatherMP3 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugClouds? Clouds { get; set; }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP3? FogBlender { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherTMT : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMT
+public partial interface IPlugWeatherTMT : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugClouds? Clouds { get; set; }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMT? FogBlender { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherMP4 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncMP4
+public partial interface IPlugWeatherMP4 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugClouds? Clouds { get; set; }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP4? FogBlender { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? MaterialSky_SunRise { get; set; }
 }
 
-public partial interface IPlugWeatherTM2020 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTM2020
+public partial interface IPlugWeatherTM2020 : IPlugWeather, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapFlareMoon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapFlareSun { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapRainFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSkyGradV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugClouds? Clouds { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? EmitterInFog { get; set; }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020? FogBlender { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageFogColor { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageLightDirDblSided { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageSeaColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialSea0 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialSea1 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialSky_Day { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialSky_Night { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialSky_SunFall { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? MaterialSky_SunRise { get; set; }
 }
 

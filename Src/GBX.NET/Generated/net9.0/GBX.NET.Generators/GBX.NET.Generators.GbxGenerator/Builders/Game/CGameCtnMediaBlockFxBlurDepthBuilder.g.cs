@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockFxBlurDepthBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state;
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxBlurDepthBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurDepthBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Key>?>("Keys");
@@ -58,6 +58,20 @@ public abstract class CGameCtnMediaBlockFxBlurDepthBuilderBase<TSelf> where TSel
 }
 public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFxBlurDepthBuilderBase<CGameCtnMediaBlockFxBlurDepthBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
+        var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
+        node.Chunks.Add(chunk03081001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03081001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -73,13 +87,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -92,13 +105,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -111,13 +123,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -130,13 +141,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -149,13 +159,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -168,13 +177,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -187,13 +195,12 @@ public partial class CGameCtnMediaBlockFxBlurDepthBuilder : CGameCtnMediaBlockFx
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurDepthTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth();
-            var chunk03081001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001();
-            node.Chunks.Add(chunk03081001);
+            var node = CGameCtnMediaBlockFxBlurDepthBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurDepth.Chunk03081001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03081001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockFxBlurDepthBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameGateModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.GameData.IGameGateModel where T0 : class where T1 : class where T2 : class
+{
+    new T0? Armor { get; set; }
+    new T1? GateCloseSound { get; set; }
+    new T1? GateOpenSound { get; set; }
+    new T1? GateSound { get; set; }
+    new T2? Shape { get; set; }
+}
 public partial interface IGameGateModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameGateModel>
 {
     global::GBX.NET.Interfaces.GameData.IGameArmorModel? Armor { get; set; }
@@ -40,39 +49,19 @@ public partial interface IGameGateModel : IClassVersion<global::GBX.NET.Engines.
     global::GBX.NET.Interfaces.Plug.IPlugSurface? Shape { get; set; }
 }
 
-public partial interface IGameGateModelMP3 : IGameGateModel
+public partial interface IGameGateModelMP3 : IGameGateModel, global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3? Armor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? GateCloseSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? GateOpenSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? GateSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? Shape { get; set; }
 }
 
-public partial interface IGameGateModelTMT : IGameGateModel
+public partial interface IGameGateModelTMT : IGameGateModel, global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT? Armor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? GateCloseSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? GateOpenSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? GateSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? Shape { get; set; }
 }
 
-public partial interface IGameGateModelMP4 : IGameGateModel
+public partial interface IGameGateModelMP4 : IGameGateModel, global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4? Armor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? GateCloseSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? GateOpenSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? GateSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? Shape { get; set; }
 }
 
-public partial interface IGameGateModelTM2020 : IGameGateModel
+public partial interface IGameGateModelTM2020 : IGameGateModel, global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020? Armor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? GateCloseSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? GateOpenSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? GateSound { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? Shape { get; set; }
 }
 

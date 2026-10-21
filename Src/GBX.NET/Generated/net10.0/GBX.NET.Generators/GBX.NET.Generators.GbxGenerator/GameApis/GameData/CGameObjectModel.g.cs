@@ -54,7 +54,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         get => Vis;
         set => Vis = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4.Phy
+    global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.Phy
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => Phy = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4.SlaveHealDome
+    global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.SlaveHealDome
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => SlaveHealDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4.SlaveShieldDome
+    global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.SlaveShieldDome
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => SlaveShieldDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4.Vis
+    global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>.Vis
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => Vis = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectVisModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020.Phy
+    global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.Phy
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => Phy = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectPhyModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020.SlaveHealDome
+    global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.SlaveHealDome
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => SlaveHealDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020.SlaveShieldDome
+    global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.SlaveShieldDome
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CGameObjectModel : global::GBX.NET.Interfaces.GameData.IGam
         }
         set => SlaveShieldDome = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameObjectModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020.Vis
+    global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>.Vis
     {
         get
         {

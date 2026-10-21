@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockSpectatorsBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state;
     private protected CGameCtnMediaBlockSpectatorsBuilderBase() => state = new();
     private protected CGameCtnMediaBlockSpectatorsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>?>("Keys", value, GameVersion.TM2020, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockSpectatorsBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Key>?>("Keys");
@@ -58,6 +58,20 @@ public abstract class CGameCtnMediaBlockSpectatorsBuilderBase<TSelf> where TSelf
 }
 public partial class CGameCtnMediaBlockSpectatorsBuilder : CGameCtnMediaBlockSpectatorsBuilderBase<CGameCtnMediaBlockSpectatorsBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators();
+        var chunk030EB000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Chunk030EB000(game);
+        node.Chunks.Add(chunk030EB000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Chunk030EB000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk030EB000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameCtnMediaBlockSpectatorsBuilderBase<TM2020>
     {
@@ -65,13 +79,12 @@ public partial class CGameCtnMediaBlockSpectatorsBuilder : CGameCtnMediaBlockSpe
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockSpectatorsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators();
-            var chunk030EB000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Chunk030EB000(GameVersion.TM2020);
-            node.Chunks.Add(chunk030EB000);
+            var node = CGameCtnMediaBlockSpectatorsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockSpectators.Chunk030EB000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk030EB000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockSpectatorsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockSpectatorsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

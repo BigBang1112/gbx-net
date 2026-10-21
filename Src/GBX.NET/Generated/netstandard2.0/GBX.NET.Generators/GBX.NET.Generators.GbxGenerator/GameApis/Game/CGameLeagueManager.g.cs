@@ -36,27 +36,28 @@ public partial class CGameLeagueManager : global::GBX.NET.Interfaces.Game.IGameL
     public static global::GBX.NET.Builders.Engines.Game.CGameLeagueManagerBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeague>? global::GBX.NET.Interfaces.Game.IGameLeagueManager.Leagues
     {
-        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeague>(() => Leagues, static node => node ?? throw new MemberNullException("Leagues"));
-        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameLeague node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeague>(GetLeaguesBuilderReferences, GameVersion.Unspecified, true, "Leagues");
+        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeague>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueMP3>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerMP3.Leagues
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueMP3>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueMP3>.Leagues
     {
-        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueMP3>(() => Leagues, static node => { if (node is null) throw new MemberNullException("Leagues"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameLeague node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueMP3>(GetLeaguesBuilderReferences, GameVersion.MP3, true, "Leagues");
+        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMT>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerTMT.Leagues
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMT>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueTMT>.Leagues
     {
-        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMT>(() => Leagues, static node => { if (node is null) throw new MemberNullException("Leagues"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameLeague node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMT>(GetLeaguesBuilderReferences, GameVersion.TMT, true, "Leagues");
+        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueMP4>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerMP4.Leagues
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueMP4>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueMP4>.Leagues
     {
-        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueMP4>(() => Leagues, static node => { if (node is null) throw new MemberNullException("Leagues"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameLeague node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueMP4>(GetLeaguesBuilderReferences, GameVersion.MP4, true, "Leagues");
+        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerTM2020.Leagues
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>? global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>.Leagues
     {
-        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>(() => Leagues, static node => { if (node is null) throw new MemberNullException("Leagues"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameLeague node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>(GetLeaguesBuilderReferences, GameVersion.TM2020, true, "Leagues");
+        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? GetLeaguesBuilderReferences() => Leagues;
 }

@@ -39,12 +39,7 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
         get => KeysSkel;
         set => KeysSkel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValues? global::GBX.NET.Interfaces.Motion.IMotionSkel.SkelValues
-    {
-        get => SkelValues;
-        set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10? global::GBX.NET.Interfaces.Motion.IMotionSkelTM10.KeysSkel
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10>.KeysSkel
     {
         get
         {
@@ -64,7 +59,7 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU? global::GBX.NET.Interfaces.Motion.IMotionSkelTMPU.KeysSkel
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU>.KeysSkel
     {
         get
         {
@@ -84,7 +79,7 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX? global::GBX.NET.Interfaces.Motion.IMotionSkelTMSX.KeysSkel
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX>.KeysSkel
     {
         get
         {
@@ -104,7 +99,7 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelTMNESWC.KeysSkel
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC>.KeysSkel
     {
         get
         {
@@ -124,7 +119,7 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5? global::GBX.NET.Interfaces.Motion.IMotionSkelVSK5.KeysSkel
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5>.KeysSkel
     {
         get
         {
@@ -144,7 +139,7 @@ public partial class CMotionSkel : global::GBX.NET.Interfaces.Motion.IMotionSkel
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF? global::GBX.NET.Interfaces.Motion.IMotionSkelTMF.KeysSkel
+    global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF? global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF>.KeysSkel
     {
         get
         {

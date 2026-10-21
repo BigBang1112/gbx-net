@@ -31,6 +31,48 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolidMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugSolid where T0 : class where T1 : class
+{
+    DateTime? FileWriteTime { get; set; }
+    bool HasPreLightGen { get; set; }
+    IReadOnlyList<T0>? ParticleEmitterModels { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances { get; set; }
+    IReadOnlyList<T1>? Sounds { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolidMembers2 : global::GBX.NET.Interfaces.Plug.IPlugSolid
+{
+    global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? SolidLodNormalMap { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolidMembers3 : global::GBX.NET.Interfaces.Plug.IPlugSolid
+{
+    float AngularFluidFriction { get; set; }
+    Vec3 CenterOfMass { get; set; }
+    Mat3 InverseInertiaMatrix { get; set; }
+    float LinearFluidFriction { get; set; }
+    float Mass { get; set; }
+    float MaxDistPerStep { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolidMembers4<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugSolid where T0 : class where T1 : class
+{
+    new T0? Model { get; set; }
+    new T1? Tree { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolidMembers5 : global::GBX.NET.Interfaces.Plug.IPlugSolid
+{
+    byte TileCountU { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSolidMembers6 : global::GBX.NET.Interfaces.Plug.IPlugSolid
+{
+    bool? ModelIsExternal { get; set; }
+}
 public partial interface IPlugSolid : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSolid>
 {
     global::GBX.NET.Interfaces.Plug.IPlugSolid? Model { get; set; }
@@ -39,138 +81,44 @@ public partial interface IPlugSolid : IClassVersion<global::GBX.NET.Engines.Plug
     bool UseModel { get; set; }
 }
 
-public partial interface IPlugSolidTM10 : IPlugSolid
+public partial interface IPlugSolidTM10 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>
 {
-    float AngularFluidFriction { get; set; }
-    Vec3 CenterOfMass { get; set; }
-    Mat3 InverseInertiaMatrix { get; set; }
-    float LinearFluidFriction { get; set; }
-    float Mass { get; set; }
-    float MaxDistPerStep { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? Model { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTM10? Tree { get; set; }
 }
 
-public partial interface IPlugSolidTMPU : IPlugSolid
+public partial interface IPlugSolidTMPU : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>
 {
-    float AngularFluidFriction { get; set; }
-    Vec3 CenterOfMass { get; set; }
-    Mat3 InverseInertiaMatrix { get; set; }
-    float LinearFluidFriction { get; set; }
-    float Mass { get; set; }
-    float MaxDistPerStep { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? Model { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU? Tree { get; set; }
 }
 
-public partial interface IPlugSolidTMSX : IPlugSolid
+public partial interface IPlugSolidTMSX : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>
 {
-    float AngularFluidFriction { get; set; }
-    Vec3 CenterOfMass { get; set; }
-    Mat3 InverseInertiaMatrix { get; set; }
-    float LinearFluidFriction { get; set; }
-    float Mass { get; set; }
-    float MaxDistPerStep { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? Model { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX? Tree { get; set; }
 }
 
-public partial interface IPlugSolidTMNESWC : IPlugSolid
+public partial interface IPlugSolidTMNESWC : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>
 {
-    float AngularFluidFriction { get; set; }
-    Vec3 CenterOfMass { get; set; }
-    Mat3 InverseInertiaMatrix { get; set; }
-    float LinearFluidFriction { get; set; }
-    float Mass { get; set; }
-    float MaxDistPerStep { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? Model { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC? Tree { get; set; }
 }
 
-public partial interface IPlugSolidVSK5 : IPlugSolid
+public partial interface IPlugSolidVSK5 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers5, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    float AngularFluidFriction { get; set; }
-    Vec3 CenterOfMass { get; set; }
-    Mat3 InverseInertiaMatrix { get; set; }
-    float LinearFluidFriction { get; set; }
-    float Mass { get; set; }
-    float MaxDistPerStep { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? Model { get; set; }
-    bool? ModelIsExternal { get; set; }
-    byte TileCountU { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5? Tree { get; set; }
 }
 
-public partial interface IPlugSolidTMF : IPlugSolid
+public partial interface IPlugSolidTMF : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers3, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers5, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    float AngularFluidFriction { get; set; }
-    Vec3 CenterOfMass { get; set; }
-    Mat3 InverseInertiaMatrix { get; set; }
-    float LinearFluidFriction { get; set; }
-    float Mass { get; set; }
-    float MaxDistPerStep { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? Model { get; set; }
-    bool? ModelIsExternal { get; set; }
-    byte TileCountU { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTMF? Tree { get; set; }
 }
 
-public partial interface IPlugSolidMP3 : IPlugSolid
+public partial interface IPlugSolidMP3 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    DateTime? FileWriteTime { get; set; }
-    bool HasPreLightGen { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? Model { get; set; }
-    bool? ModelIsExternal { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>? ParticleEmitterModels { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? Sounds { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeMP3? Tree { get; set; }
 }
 
-public partial interface IPlugSolidTMT : IPlugSolid
+public partial interface IPlugSolidTMT : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    DateTime? FileWriteTime { get; set; }
-    bool HasPreLightGen { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? Model { get; set; }
-    bool? ModelIsExternal { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>? ParticleEmitterModels { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>? Sounds { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTMT? Tree { get; set; }
 }
 
-public partial interface IPlugSolidMP4 : IPlugSolid
+public partial interface IPlugSolidMP4 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers2, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    DateTime? FileWriteTime { get; set; }
-    bool HasPreLightGen { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? Model { get; set; }
-    bool? ModelIsExternal { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>? ParticleEmitterModels { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? SolidLodNormalMap { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? Sounds { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeMP4? Tree { get; set; }
 }
 
-public partial interface IPlugSolidTM2020 : IPlugSolid
+public partial interface IPlugSolidTM2020 : IPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers2, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>, global::GBX.NET.Interfaces.Plug.IPlugSolidMembers6
 {
-    DateTime? FileWriteTime { get; set; }
-    bool HasPreLightGen { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? Model { get; set; }
-    bool? ModelIsExternal { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>? ParticleEmitterModels { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? ParticleInstances { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? Path { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LodNormalMap? SolidLodNormalMap { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.PreLightGen? SolidPreLightGen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSolid.LocatedInstance[]? SoundInstances { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>? Sounds { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020? Tree { get; set; }
 }
 

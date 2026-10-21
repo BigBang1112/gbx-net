@@ -5,6 +5,136 @@ namespace GBX.NET.Generators.Tests;
 public partial class GenerationTests
 {
     [Test]
+    public async Task Generate_GameBuilders_SharesSettersAndRecipesWithoutLeakingGameMembers()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify()
+                    {
+                        var builder = Create();
+                        return builder.ForMP4().WithModern(7).Build().Modern == 7
+                            && builder.ForTM2020().WithModern(8).Build().Modern == 8
+                            && builder.ForMP4().Build().Value == 4
+                            && builder.ForTM2020().Build().Value == 20;
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4, TM2020]
+              int Value = 1 [MP4 = 4, TM2020 = 20]
+            0x002 [MP4, TM2020]
+              int Modern
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var builder = compilation.GetTypeByMetadataName("GBX.NET.Builders.Engines.Game.ExampleBuilder")!;
+        var mp4 = builder.GetTypeMembers("MP4").Single();
+        var modern = builder.GetTypeMembers("TM2020").Single();
+        await Assert.That(mp4.BaseType!.OriginalDefinition).IsEqualTo(modern.BaseType!.OriginalDefinition);
+        await Assert.That(((IMethodSymbol)mp4.BaseType.GetMembers("WithModern").Single()).ReturnType).IsEqualTo(mp4);
+        for (var type = builder.GetTypeMembers("TM10").Single(); type is not null; type = type.BaseType)
+            await Assert.That(type.GetMembers("WithModern")).IsEmpty();
+        await Assert.That(builder.GetMembers().OfType<IMethodSymbol>().Count(static m => m.Name.StartsWith("CreateRecipe"))).IsEqualTo(2);
+        // Availability remains correct through shared contracts as well as
+        // through the concrete builder stages.
+        var oldView = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleTM10")!;
+        await Assert.That(oldView.GetMembers("Modern")).IsEmpty();
+        await Assert.That(oldView.AllInterfaces.SelectMany(static i => i.GetMembers("Modern"))).IsEmpty();
+        var sharedView = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleMP4")!.AllInterfaces
+            .Single(static i => i.GetMembers("Modern").Length > 0);
+        await Assert.That(compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExampleTM2020")!.AllInterfaces.Contains(sharedView)).IsTrue();
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    public async Task Generate_GameBuilders_PreservesPartialSettersWhenSharingOtherMembers()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Builders.Engines.Game
+            {
+                public partial class ExampleBuilder
+                {
+                    public partial class MP4
+                    {
+                        public MP4 WithModern(int value) { SetModern(state, value + 1); return this; }
+                        partial void CustomizeNode(GBX.NET.Engines.Game.Example node) => node.Shared += 10;
+                    }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify() => Create().ForMP4().WithModern(7).WithShared(2).Build().Modern == 8
+                        && Create().ForMP4().WithShared(2).Build().Shared == 12
+                        && Create().ForTM2020().WithShared(2).Build().Shared == 2;
+                }
+            }
+            """, new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            0x001 [TM10, MP4, TM2020]
+              int Value
+            0x002 [MP4, TM2020]
+              int Modern
+              int Shared
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
+    public async Task Generate_GameInterfaces_PreservesProjectionsWhenTheBaseHasALegacyRawContract()
+    {
+        var (result, compilation) = RunGame("""
+            namespace GBX.NET.Interfaces.Game
+            {
+                public partial interface IBase : GBX.NET.IClassVersion<GBX.NET.Engines.Game.Base>
+                {
+                    GBX.NET.Engines.Game.CChild? Link { get; set; }
+                }
+            }
+            namespace GBX.NET.Engines.Game
+            {
+                public partial class Example
+                {
+                    public static bool Verify()
+                    {
+                        var child = CChild.Create().ForMP4().Build();
+                        var node = Create().ForMP4().WithLink(child).Build();
+                        GBX.NET.Interfaces.Game.IExample projected = node;
+                        GBX.NET.Interfaces.Game.IBase legacy = node;
+                        return object.ReferenceEquals(projected.Link, child) && object.ReferenceEquals(legacy.Link, child);
+                    }
+                }
+            }
+            """, new Text("Engines/Game/Base.chunkl", """
+            Base 0x03044000
+            - abstract
+            0x001 [MP4, TM2020]
+              CChild Link
+            """), new Text("Engines/Game/Example.chunkl", """
+            Example 0x03043000
+            - inherits: Base
+            0x001 [MP4, TM2020]
+              int Value
+            """), new Text("Engines/Game/CChild.chunkl", """
+            CChild 0x03045000
+            0x001 [MP4, TM2020]
+              int Value
+            """));
+        await Assert.That(result.Diagnostics).IsEmpty();
+        await AssertNoErrors(compilation);
+        var projected = compilation.GetTypeByMetadataName("GBX.NET.Interfaces.Game.IExample")!;
+        await Assert.That(((IPropertySymbol)projected.GetMembers("Link").Single()).Type.Name).IsEqualTo("IChild");
+        await Assert.That((bool)InvokeGame(compilation, "Verify")!).IsTrue();
+    }
+
+    [Test]
     public async Task Generate_GameBuilders_FiltersVersionedMembersAndPreservesStageTypes()
     {
         var (result, compilation) = RunGame("", new Text("Engines/Game/Example.chunkl", """
@@ -258,7 +388,10 @@ public partial class GenerationTests
     {
         using var runtime = typeof(GenerationTests).Assembly.GetManifestResourceStream("NodeBuilderState.cs")!;
         using var reader = new StreamReader(runtime);
-        return Run(source + GameSupport, true, files, "using System; using System.Collections.Generic;\n" + reader.ReadToEnd());
+        using var property = typeof(GenerationTests).Assembly.GetManifestResourceStream("NodeBuilderProperty.cs")!;
+        using var propertyReader = new StreamReader(property);
+        return Run(source + GameSupport, true, files, "using System; using System.Collections.Generic;\n" + reader.ReadToEnd() +
+            "\n" + propertyReader.ReadToEnd().Replace("namespace GBX.NET.Builders;", ""));
     }
 
     private static object? InvokeGame(Compilation compilation, string method)

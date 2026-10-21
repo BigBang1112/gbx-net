@@ -31,6 +31,59 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugBitmap where T0 : class where T1 : class
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas { get; set; }
+    T0? Decals { get; set; }
+    uint DefaultRenderClearColor { get; set; }
+    uint Flags3 { get; set; }
+    uint RenderSizeDiv { get; set; }
+    uint RenderSizeMul { get; set; }
+    T1? SpriteParam { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmap where T0 : class
+{
+    float HeightInMeters { get; set; }
+    T0? ImageArray { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? ImageArrayFids { get; set; }
+    string ImageArraySuffix { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmap where T0 : class
+{
+    new T0? BitmapRender { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers4 : global::GBX.NET.Interfaces.Plug.IPlugBitmap
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers5 : global::GBX.NET.Interfaces.Plug.IPlugBitmap
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? AtlasCountUVs { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers6 : global::GBX.NET.Interfaces.Plug.IPlugBitmap
+{
+    float[] MipMapFadeAlphas { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers7 : global::GBX.NET.Interfaces.Plug.IPlugBitmap
+{
+    float BumpScaleMipLevel { get; set; }
+    float DefaultTexCoordRotate { get; set; }
+    Vec2 DefaultTexCoordScale { get; set; }
+    Vec2 DefaultTexCoordTrans { get; set; }
+    uint Flags2 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapMembers8 : global::GBX.NET.Interfaces.Plug.IPlugBitmap
+{
+    uint FlagsHigh { get; set; }
+}
 public partial interface IPlugBitmap : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmap>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmapRender? BitmapRender { get; set; }
@@ -45,162 +98,58 @@ public partial interface IPlugBitmap : IClassVersion<global::GBX.NET.Engines.Plu
     global::GBX.NET.Engines.Plug.CPlugBitmap.SpecularSubMapCat[]? SpecularSubMapCats { get; set; }
 }
 
-public partial interface IPlugBitmapTM10 : IPlugBitmap
+public partial interface IPlugBitmapTM10 : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10? BitmapRender { get; set; }
 }
 
-public partial interface IPlugBitmapTMPU : IPlugBitmap
+public partial interface IPlugBitmapTMPU : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU? BitmapRender { get; set; }
 }
 
-public partial interface IPlugBitmapTMSX : IPlugBitmap
+public partial interface IPlugBitmapTMSX : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
 {
     ushort AtlasCountU { get; set; }
     ushort AtlasCountV { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
 }
 
-public partial interface IPlugBitmapTMNESWC : IPlugBitmap
+public partial interface IPlugBitmapTMNESWC : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? AtlasCountUVs { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
 }
 
-public partial interface IPlugBitmapVSK5 : IPlugBitmap
+public partial interface IPlugBitmapVSK5 : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? AtlasCountUVs { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
 }
 
-public partial interface IPlugBitmapTMF : IPlugBitmap
+public partial interface IPlugBitmapTMF : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers5, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AtlasCount[]? AtlasCountUVs { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
 }
 
-public partial interface IPlugBitmapMP3 : IPlugBitmap
+public partial interface IPlugBitmapMP3 : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3? Decals { get; set; }
-    uint DefaultRenderClearColor { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    uint Flags3 { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
-    uint RenderSizeDiv { get; set; }
-    uint RenderSizeMul { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3? SpriteParam { get; set; }
 }
 
-public partial interface IPlugBitmapTMT : IPlugBitmap
+public partial interface IPlugBitmapTMT : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers8
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT? Decals { get; set; }
-    uint DefaultRenderClearColor { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    uint Flags3 { get; set; }
-    uint FlagsHigh { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
-    uint RenderSizeDiv { get; set; }
-    uint RenderSizeMul { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT? SpriteParam { get; set; }
 }
 
-public partial interface IPlugBitmapMP4 : IPlugBitmap
+public partial interface IPlugBitmapMP4 : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugImageArrayMP4>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers8
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4? Decals { get; set; }
-    uint DefaultRenderClearColor { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    uint Flags3 { get; set; }
-    uint FlagsHigh { get; set; }
-    float HeightInMeters { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugImageArrayMP4? ImageArray { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? ImageArrayFids { get; set; }
-    string ImageArraySuffix { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
-    uint RenderSizeDiv { get; set; }
-    uint RenderSizeMul { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4? SpriteParam { get; set; }
 }
 
-public partial interface IPlugBitmapTM2020 : IPlugBitmap
+public partial interface IPlugBitmapTM2020 : IPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020>, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers6, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers7, global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers8
 {
-    global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? Additional { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmap.ImageArraySettings? ArraySettings { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAtlas? Atlas { get; set; }
     uint AtlasCubeFlags { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmap.CubeAtlasInput? AtlasCubeIn { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmapArray? BitmapArray { get; set; }
     string BitmapArrayElemName { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020? BitmapRender { get; set; }
-    float BumpScaleMipLevel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020? Decals { get; set; }
-    uint DefaultRenderClearColor { get; set; }
-    float DefaultTexCoordRotate { get; set; }
-    Vec2 DefaultTexCoordScale { get; set; }
-    Vec2 DefaultTexCoordTrans { get; set; }
-    uint Flags2 { get; set; }
-    uint Flags3 { get; set; }
-    uint FlagsHigh { get; set; }
     string GrassId { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? GrassIdImage { get; set; }
     float GrassIdTexCoordRotate { get; set; }
     Vec2 GrassIdTexCoordSize { get; set; }
     Vec2 GrassIdTexCoordTrans { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? GrassMatterArray { get; set; }
-    float HeightInMeters { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020? ImageArray { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmap.AdditionalParameters? ImageArrayAdditional { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugFileImg>? ImageArrayFids { get; set; }
-    string ImageArraySuffix { get; set; }
-    float[] MipMapFadeAlphas { get; set; }
-    uint RenderSizeDiv { get; set; }
-    uint RenderSizeMul { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020? SpriteParam { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmap.TextureSettings? TextureInfo { get; set; }
 }
 

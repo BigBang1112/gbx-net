@@ -31,29 +31,30 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnAutoTerrainMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain where T0 : class
+{
+    new T0? Genealogy { get; set; }
+}
 public partial interface IGameCtnAutoTerrain : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain>
 {
     global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogy? Genealogy { get; set; }
     Int3 Offset { get; set; }
 }
 
-public partial interface IGameCtnAutoTerrainMP3 : IGameCtnAutoTerrain
+public partial interface IGameCtnAutoTerrainMP3 : IGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3? Genealogy { get; set; }
 }
 
-public partial interface IGameCtnAutoTerrainTMT : IGameCtnAutoTerrain
+public partial interface IGameCtnAutoTerrainTMT : IGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT? Genealogy { get; set; }
 }
 
-public partial interface IGameCtnAutoTerrainMP4 : IGameCtnAutoTerrain
+public partial interface IGameCtnAutoTerrainMP4 : IGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4? Genealogy { get; set; }
 }
 
-public partial interface IGameCtnAutoTerrainTM2020 : IGameCtnAutoTerrain
+public partial interface IGameCtnAutoTerrainTM2020 : IGameCtnAutoTerrain, global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020? Genealogy { get; set; }
 }
 

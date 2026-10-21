@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Graphic;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxFogMembers1 : global::GBX.NET.Interfaces.Graphic.IGxFog
+{
+    Vec3 Color { get; set; }
+}
 public partial interface IGxFog : IClassVersion<global::GBX.NET.Engines.Graphic.GxFog>
 {
     float DepthMax { get; set; }
@@ -54,24 +59,20 @@ public partial interface IGxFogTMF : IGxFog
 {
 }
 
-public partial interface IGxFogMP3 : IGxFog
+public partial interface IGxFogMP3 : IGxFog, global::GBX.NET.Interfaces.Graphic.IGxFogMembers1
 {
-    Vec3 Color { get; set; }
 }
 
-public partial interface IGxFogTMT : IGxFog
+public partial interface IGxFogTMT : IGxFog, global::GBX.NET.Interfaces.Graphic.IGxFogMembers1
 {
-    Vec3 Color { get; set; }
 }
 
-public partial interface IGxFogMP4 : IGxFog
+public partial interface IGxFogMP4 : IGxFog, global::GBX.NET.Interfaces.Graphic.IGxFogMembers1
 {
-    Vec3 Color { get; set; }
 }
 
-public partial interface IGxFogTM2020 : IGxFog
+public partial interface IGxFogTM2020 : IGxFog, global::GBX.NET.Interfaces.Graphic.IGxFogMembers1
 {
-    Vec3 Color { get; set; }
     int FogVersion { get; set; }
 }
 

@@ -34,34 +34,4 @@ namespace GBX.NET.Engines.TrackMania;
 public partial class CTrackMania : global::GBX.NET.Interfaces.TrackMania.ITrackMania, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTMF, global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4, global::GBX.NET.Interfaces.TrackMania.ITrackManiaTM2020
 {
     public static new global::GBX.NET.Builders.Engines.TrackMania.CTrackManiaBuilder Create() => new();
-    global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4.CoverFlowDesc
-    {
-        get
-        {
-            var node = CoverFlowDesc;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => CoverFlowDesc = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCoverFlowDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4.DefaultStyleSheet
-    {
-        get
-        {
-            var node = DefaultStyleSheet;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? global::GBX.NET.Interfaces.TrackMania.ITrackManiaMP4.Resources
-    {
-        get
-        {
-            var node = Resources;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
 }

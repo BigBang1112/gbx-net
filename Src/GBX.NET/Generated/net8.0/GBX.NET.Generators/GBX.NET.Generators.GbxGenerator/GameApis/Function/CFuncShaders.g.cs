@@ -36,57 +36,58 @@ public partial class CFuncShaders : global::GBX.NET.Interfaces.Function.IFuncSha
     public static new global::GBX.NET.Builders.Engines.Function.CFuncShadersBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShader>? global::GBX.NET.Interfaces.Function.IFuncShaders.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShader>(() => FuncShaders, static node => node ?? throw new MemberNullException("FuncShaders"));
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShader>(GetFuncShadersBuilderReferences, GameVersion.Unspecified, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShader>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM10>? global::GBX.NET.Interfaces.Function.IFuncShadersTM10.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM10>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM10>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTM10>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTM10>(GetFuncShadersBuilderReferences, GameVersion.TM10, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTM10>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>? global::GBX.NET.Interfaces.Function.IFuncShadersTMPU.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>(GetFuncShadersBuilderReferences, GameVersion.TMPU, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>? global::GBX.NET.Interfaces.Function.IFuncShadersTMSX.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>(GetFuncShadersBuilderReferences, GameVersion.TMSX, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>? global::GBX.NET.Interfaces.Function.IFuncShadersTMNESWC.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>(GetFuncShadersBuilderReferences, GameVersion.TMNESWC, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>? global::GBX.NET.Interfaces.Function.IFuncShadersVSK5.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>(GetFuncShadersBuilderReferences, GameVersion.VSK5, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>? global::GBX.NET.Interfaces.Function.IFuncShadersTMF.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMF>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMF>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMF>(GetFuncShadersBuilderReferences, GameVersion.TMF, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>? global::GBX.NET.Interfaces.Function.IFuncShadersMP3.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderMP3>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderMP3>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderMP3>(GetFuncShadersBuilderReferences, GameVersion.MP3, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>? global::GBX.NET.Interfaces.Function.IFuncShadersTMT.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTMT>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMT>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMT>(GetFuncShadersBuilderReferences, GameVersion.TMT, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>? global::GBX.NET.Interfaces.Function.IFuncShadersMP4.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderMP4>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderMP4>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderMP4>(GetFuncShadersBuilderReferences, GameVersion.MP4, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>? global::GBX.NET.Interfaces.Function.IFuncShadersTM2020.FuncShaders
+    IReadOnlyList<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>? global::GBX.NET.Interfaces.Function.IFuncShadersMembers1<global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>.FuncShaders
     {
-        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>(() => FuncShaders, static node => { if (node is null) throw new MemberNullException("FuncShaders"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(value.Select(static item => item is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => FuncShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>(GetFuncShadersBuilderReferences, GameVersion.TM2020, true, "FuncShaders");
+        set => FuncShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Function.CFuncShader, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Function.CFuncShader>? GetFuncShadersBuilderReferences() => FuncShaders;
 }

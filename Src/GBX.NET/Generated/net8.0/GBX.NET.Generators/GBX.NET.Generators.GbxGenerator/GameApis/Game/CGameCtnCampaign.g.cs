@@ -36,57 +36,58 @@ public partial class CGameCtnCampaign : global::GBX.NET.Interfaces.Game.IGameCtn
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnCampaignBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>? global::GBX.NET.Interfaces.Game.IGameCtnCampaign.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>(() => ChallengeGroups, static node => node ?? throw new MemberNullException("ChallengeGroups"));
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>(GetChallengeGroupsBuilderReferences, GameVersion.Unspecified, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM10.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>(GetChallengeGroupsBuilderReferences, GameVersion.TM10, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMPU.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>(GetChallengeGroupsBuilderReferences, GameVersion.TMPU, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>(GetChallengeGroupsBuilderReferences, GameVersion.TMSX, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>(GetChallengeGroupsBuilderReferences, GameVersion.TMNESWC, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>(GetChallengeGroupsBuilderReferences, GameVersion.VSK5, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>(GetChallengeGroupsBuilderReferences, GameVersion.TMF, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP3.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>(GetChallengeGroupsBuilderReferences, GameVersion.MP3, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMT.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>(GetChallengeGroupsBuilderReferences, GameVersion.TMT, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMP4.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>(GetChallengeGroupsBuilderReferences, GameVersion.MP4, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignTM2020.ChallengeGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnCampaignMembers5<global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>.ChallengeGroups
     {
-        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>(() => ChallengeGroups, static node => { if (node is null) throw new MemberNullException("ChallengeGroups"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallengeGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>(GetChallengeGroupsBuilderReferences, GameVersion.TM2020, true, "ChallengeGroups");
+        set => ChallengeGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>? GetChallengeGroupsBuilderReferences() => ChallengeGroups;
 }

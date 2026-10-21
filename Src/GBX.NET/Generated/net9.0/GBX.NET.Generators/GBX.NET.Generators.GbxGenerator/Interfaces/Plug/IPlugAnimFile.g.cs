@@ -31,6 +31,45 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimFileMembers1 : global::GBX.NET.Interfaces.Plug.IPlugAnimFile
+{
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? BakedClips { get; set; }
+    int BakedVersion { get; set; }
+    int ClipFlagsVersion { get; set; }
+    int ClipVersion { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]? EditionClips { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>? EditionPoses { get; set; }
+    int JointGroupVersion { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]? JointGroups { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]? LegacyClips { get; set; }
+    int LegacyEditionVersion { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? LegacyGraphStacks { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? LegacyGraphs { get; set; }
+    int LegacyRootMotionVersion { get; set; }
+    int PoseGridVersion { get; set; }
+    int PoseGroupVersion { get; set; }
+    int SkelEditionStateVersion { get; set; }
+    int SkelEditionVersion { get; set; }
+    int SkelVersion { get; set; }
+    int TimingFixedPeriodVersion { get; set; }
+    int VariantGroupVersion { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimFileMembers2 : global::GBX.NET.Interfaces.Plug.IPlugAnimFile
+{
+    global::GBX.NET.Engines.Plug.CPlugSkel[]? Skels { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimFileMembers3 : global::GBX.NET.Interfaces.Plug.IPlugAnimFile
+{
+    int GraphVersion { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAnimFileMembers4 : global::GBX.NET.Interfaces.Plug.IPlugAnimFile
+{
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GraphStacks { get; set; }
+}
 public partial interface IPlugAnimFile : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAnimFile>
 {
     string? ImportString { get; set; }
@@ -42,72 +81,24 @@ public partial interface IPlugAnimFile : IClassVersion<global::GBX.NET.Engines.P
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimVariantGroup>? VariantGroups { get; set; }
 }
 
-public partial interface IPlugAnimFileMP3 : IPlugAnimFile
+public partial interface IPlugAnimFileMP3 : IPlugAnimFile, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers1, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers2, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers3
 {
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? BakedClips { get; set; }
-    int BakedVersion { get; set; }
-    int ClipFlagsVersion { get; set; }
-    int ClipVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]? EditionClips { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>? EditionPoses { get; set; }
-    int GraphVersion { get; set; }
-    int JointGroupVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]? JointGroups { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]? LegacyClips { get; set; }
-    int LegacyEditionVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? LegacyGraphStacks { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? LegacyGraphs { get; set; }
-    int LegacyRootMotionVersion { get; set; }
-    int PoseGridVersion { get; set; }
-    int PoseGroupVersion { get; set; }
-    int SkelEditionStateVersion { get; set; }
-    int SkelEditionVersion { get; set; }
-    int SkelVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSkel[]? Skels { get; set; }
-    int TimingFixedPeriodVersion { get; set; }
-    int VariantGroupVersion { get; set; }
 }
 
-public partial interface IPlugAnimFileTMT : IPlugAnimFile
+public partial interface IPlugAnimFileTMT : IPlugAnimFile, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers1, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers2, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers3
 {
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyBaked[]? BakedClips { get; set; }
-    int BakedVersion { get; set; }
-    int ClipFlagsVersion { get; set; }
-    int ClipVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyEdition[]? EditionClips { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimSkelEditionPose>? EditionPoses { get; set; }
-    int GraphVersion { get; set; }
-    int JointGroupVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyJointGroup[]? JointGroups { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyClip[]? LegacyClips { get; set; }
-    int LegacyEditionVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraphStack[]? LegacyGraphStacks { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAnimFile.LegacyGraph[]? LegacyGraphs { get; set; }
-    int LegacyRootMotionVersion { get; set; }
-    int PoseGridVersion { get; set; }
-    int PoseGroupVersion { get; set; }
-    int SkelEditionStateVersion { get; set; }
-    int SkelEditionVersion { get; set; }
-    int SkelVersion { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSkel[]? Skels { get; set; }
-    int TimingFixedPeriodVersion { get; set; }
-    int VariantGroupVersion { get; set; }
 }
 
-public partial interface IPlugAnimFileMP4 : IPlugAnimFile
+public partial interface IPlugAnimFileMP4 : IPlugAnimFile, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers2, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers4
 {
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimClip>? Clips { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GraphStacks { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSkel[]? Skels { get; set; }
 }
 
-public partial interface IPlugAnimFileTM2020 : IPlugAnimFile
+public partial interface IPlugAnimFileTM2020 : IPlugAnimFile, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers3, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMembers4
 {
     global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? BakedResources { get; set; }
     uint[]? ClassIds { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? ClipResources { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugAnimGraphStack>? GraphStacks { get; set; }
-    int GraphVersion { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.GraphRoot[]? Graphs { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? JointGroupResources { get; set; }
     global::GBX.NET.Engines.Plug.CPlugAnimFile.Resource[]? LegacyResources1 { get; set; }

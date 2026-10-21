@@ -31,6 +31,124 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    float LegacyWaterFogDepthScale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    Int128 CollectionPackMask { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water2 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers3<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class where T1 : class where T2 : class
+{
+    float BoardSquareBorder { get; set; }
+    float BoardSquareHeight { get; set; }
+    string[]? DecalsTypesId { get; set; }
+    T0? FidFuncShaderCloudsX2 { get; set; }
+    T1? FidPlugBitmapCloudsX2 { get; set; }
+    string? FolderAdditionalItem1 { get; set; }
+    string? FolderAdditionalItem2 { get; set; }
+    string? FolderDecalModels { get; set; }
+    string? FolderMacroDecals { get; set; }
+    int LightMapMapper { get; set; }
+    T2? OffZone_FogMatter { get; set; }
+    Vec3 Tech3TunnelSpecularExpScaleMax { get; set; }
+    float TerrainHeightOffset { get; set; }
+    float VisMeshLodDistScale { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water1 { get; set; }
+    float WaterFogClampAboveDist { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers4<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class where T1 : class
+{
+    T0? VehicleStyles { get; set; }
+    T1? WaterG_BitmapNormal { get; set; }
+    float WaterG_BumpScale { get; set; }
+    float WaterG_BumpScaleUV { get; set; }
+    float WaterG_BumpSpeedUV { get; set; }
+    float WaterG_RefracPertub { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers5<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class where T1 : class where T2 : class
+{
+    new IReadOnlyList<T0>? CompleteZoneList { get; set; }
+    new T1? DefaultDecoration { get; set; }
+    new T0? DefaultZone { get; set; }
+    new T2? IconFid { get; set; }
+    new T2? IconSmallFid { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    global::GBX.NET.Engines.Game.CGameCtnCollection.EBackgroundShadow BackgroundShadow { get; set; }
+    bool IsWaterMultiHeight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    string? LongDesc { get; set; }
+    Vec2 MapCoordDesc { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers8 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    bool HasBackgroundShadow { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    float WaterBottom { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers10 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    float WaterTop { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers11<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
+{
+    float CameraMinHeight { get; set; }
+    float ColorVertexMax { get; set; }
+    float ColorVertexMin { get; set; }
+    T0? LoadScreenFid { get; set; }
+    Vec2 MapCoordElem { get; set; }
+    Vec2 MapCoordIcon { get; set; }
+    T0? MapFid { get; set; }
+    Rect MapRect { get; set; }
+    bool ShadowCastBack { get; set; }
+    float ShadowSoftSizeInWorld { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers12<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
+{
+    T0? MarksModel { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers13 : global::GBX.NET.Interfaces.Game.IGameCtnCollection
+{
+    bool IsWaterOutsidePlayField { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers14<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
+{
+    IReadOnlyList<T0>? ReplacementTerrainModifiers { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnCollectionMembers15<T0> : global::GBX.NET.Interfaces.Game.IGameCtnCollection where T0 : class
+{
+    string? DisplayName { get; set; }
+    string? FolderBlockInfo { get; set; }
+    string? FolderDecoration { get; set; }
+    string? FolderItem { get; set; }
+    string? FolderMenusIcons { get; set; }
+    IReadOnlyList<T0>? ParticleEmitterModelsFids { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
+}
 public partial interface IGameCtnCollection : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnCollection>
 {
     int BlocksShadow { get; set; }
@@ -49,313 +167,50 @@ public partial interface IGameCtnCollection : IClassVersion<global::GBX.NET.Engi
     Ident? Vehicle { get; set; }
 }
 
-public partial interface IGameCtnCollectionTM10 : IGameCtnCollection
+public partial interface IGameCtnCollectionTM10 : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10>? CompleteZoneList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM10? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10? DefaultZone { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? IconSmallFid { get; set; }
 }
 
-public partial interface IGameCtnCollectionTMPU : IGameCtnCollection
+public partial interface IGameCtnCollectionTMPU : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU>? CompleteZoneList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMPU? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMPU? DefaultZone { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? IconSmallFid { get; set; }
 }
 
-public partial interface IGameCtnCollectionTMSX : IGameCtnCollection
+public partial interface IGameCtnCollectionTMSX : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers9, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
 {
-    float CameraMinHeight { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX>? CompleteZoneList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMSX? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX? DefaultZone { get; set; }
-    bool HasBackgroundShadow { get; set; }
     bool HasVertexLighting { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? IconSmallFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? LoadScreenFid { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    float WaterBottom { get; set; }
-    float WaterTop { get; set; }
 }
 
-public partial interface IGameCtnCollectionTMNESWC : IGameCtnCollection
+public partial interface IGameCtnCollectionTMNESWC : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers9, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
 {
-    float CameraMinHeight { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC>? CompleteZoneList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMNESWC? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC? DefaultZone { get; set; }
-    bool HasBackgroundShadow { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? IconSmallFid { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float WaterBottom { get; set; }
-    float WaterTop { get; set; }
 }
 
-public partial interface IGameCtnCollectionVSK5 : IGameCtnCollection
+public partial interface IGameCtnCollectionVSK5 : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers8, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers9, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers13, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers14<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>
 {
-    float CameraMinHeight { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5>? CompleteZoneList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationVSK5? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5? DefaultZone { get; set; }
-    string? DisplayName { get; set; }
-    string? FolderBlockInfo { get; set; }
-    string? FolderDecoration { get; set; }
-    string? FolderItem { get; set; }
-    string? FolderMenusIcons { get; set; }
-    bool HasBackgroundShadow { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? IconSmallFid { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelVSK5>? ParticleEmitterModelsFids { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5>? ReplacementTerrainModifiers { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float WaterBottom { get; set; }
-    float WaterTop { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 
-public partial interface IGameCtnCollectionTMF : IGameCtnCollection
+public partial interface IGameCtnCollectionTMF : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers9, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers13, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers14<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>
 {
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EBackgroundShadow BackgroundShadow { get; set; }
-    float CameraMinHeight { get; set; }
     bool? CarCanBeDirty { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF>? CompleteZoneList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMF? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF? DefaultZone { get; set; }
-    string? DisplayName { get; set; }
-    string? FolderBlockInfo { get; set; }
-    string? FolderDecoration { get; set; }
-    string? FolderItem { get; set; }
-    string? FolderMenusIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? IconSmallFid { get; set; }
-    bool IsWaterMultiHeight { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMF>? ParticleEmitterModelsFids { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF>? ReplacementTerrainModifiers { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float WaterBottom { get; set; }
-    float WaterTop { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 
-public partial interface IGameCtnCollectionMP3 : IGameCtnCollection
+public partial interface IGameCtnCollectionMP3 : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers1, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers2, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugFogMatterMP3>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers13, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers14<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>
 {
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EBackgroundShadow BackgroundShadow { get; set; }
-    float BoardSquareBorder { get; set; }
-    float BoardSquareHeight { get; set; }
-    float CameraMinHeight { get; set; }
-    Int128 CollectionPackMask { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3>? CompleteZoneList { get; set; }
-    string[]? DecalsTypesId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP3? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3? DefaultZone { get; set; }
-    string? DisplayName { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP3? FidFuncShaderCloudsX2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? FidPlugBitmapCloudsX2 { get; set; }
-    string? FolderAdditionalItem1 { get; set; }
-    string? FolderAdditionalItem2 { get; set; }
-    string? FolderBlockInfo { get; set; }
-    string? FolderDecalModels { get; set; }
-    string? FolderDecoration { get; set; }
-    string? FolderItem { get; set; }
-    string? FolderMacroDecals { get; set; }
-    string? FolderMenusIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? IconSmallFid { get; set; }
-    bool IsWaterMultiHeight { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    float LegacyWaterFogDepthScale { get; set; }
-    int LightMapMapper { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? MapFid { get; set; }
-    Rect MapRect { get; set; }
     global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModel? MarksModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFogMatterMP3? OffZone_FogMatter { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>? ParticleEmitterModelsFids { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3>? ReplacementTerrainModifiers { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    Vec3 Tech3TunnelSpecularExpScaleMax { get; set; }
-    float TerrainHeightOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float VisMeshLodDistScale { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water1 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water2 { get; set; }
-    float WaterFogClampAboveDist { get; set; }
-    float WaterTop { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 
-public partial interface IGameCtnCollectionTMT : IGameCtnCollection
+public partial interface IGameCtnCollectionTMT : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers1, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers2, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugFogMatterTMT>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers10, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers12<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTMT>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers13, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers14<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>
 {
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EBackgroundShadow BackgroundShadow { get; set; }
-    float BoardSquareBorder { get; set; }
-    float BoardSquareHeight { get; set; }
-    float CameraMinHeight { get; set; }
-    Int128 CollectionPackMask { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT>? CompleteZoneList { get; set; }
-    string[]? DecalsTypesId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTMT? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT? DefaultZone { get; set; }
-    string? DisplayName { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTMT? FidFuncShaderCloudsX2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? FidPlugBitmapCloudsX2 { get; set; }
-    string? FolderAdditionalItem1 { get; set; }
-    string? FolderAdditionalItem2 { get; set; }
-    string? FolderBlockInfo { get; set; }
-    string? FolderDecalModels { get; set; }
-    string? FolderDecoration { get; set; }
-    string? FolderItem { get; set; }
-    string? FolderMacroDecals { get; set; }
-    string? FolderMenusIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? IconSmallFid { get; set; }
-    bool IsWaterMultiHeight { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    float LegacyWaterFogDepthScale { get; set; }
-    int LightMapMapper { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTMT? MarksModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFogMatterTMT? OffZone_FogMatter { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>? ParticleEmitterModelsFids { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT>? ReplacementTerrainModifiers { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    Vec3 Tech3TunnelSpecularExpScaleMax { get; set; }
-    float TerrainHeightOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float VisMeshLodDistScale { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water1 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water2 { get; set; }
-    float WaterFogClampAboveDist { get; set; }
-    float WaterTop { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 
-public partial interface IGameCtnCollectionMP4 : IGameCtnCollection
+public partial interface IGameCtnCollectionMP4 : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers2, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugFogMatterMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers4<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers12<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers14<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>
 {
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EBackgroundShadow BackgroundShadow { get; set; }
-    float BoardSquareBorder { get; set; }
-    float BoardSquareHeight { get; set; }
-    float CameraMinHeight { get; set; }
-    Int128 CollectionPackMask { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4>? CompleteZoneList { get; set; }
-    string[]? DecalsTypesId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationMP4? DefaultDecoration { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4? DefaultZone { get; set; }
-    string? DisplayName { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVMP4? FidFuncShaderCloudsX2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? FidPlugBitmapCloudsX2 { get; set; }
-    string? FolderAdditionalItem1 { get; set; }
-    string? FolderAdditionalItem2 { get; set; }
-    string? FolderBlockInfo { get; set; }
-    string? FolderDecalModels { get; set; }
-    string? FolderDecoration { get; set; }
-    string? FolderItem { get; set; }
-    string? FolderMacroDecals { get; set; }
-    string? FolderMenusIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? IconSmallFid { get; set; }
-    bool IsWaterMultiHeight { get; set; }
-    int LightMapMapper { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelMP4? MarksModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFogMatterMP4? OffZone_FogMatter { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>? ParticleEmitterModelsFids { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4>? ReplacementTerrainModifiers { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    Vec3 Tech3TunnelSpecularExpScaleMax { get; set; }
-    float TerrainHeightOffset { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMP4? VehicleStyles { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float VisMeshLodDistScale { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water1 { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water2 { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water3 { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water4 { get; set; }
-    float WaterFogClampAboveDist { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? WaterG_BitmapNormal { get; set; }
-    float WaterG_BumpScale { get; set; }
-    float WaterG_BumpScaleUV { get; set; }
-    float WaterG_BumpSpeedUV { get; set; }
-    float WaterG_RefracPertub { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 
-public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection
+public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers3<global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugFogMatterTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers4<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers5<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers6, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers7, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers11<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers12<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnCollectionMembers15<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenListTM2020? AdnRandomGenList { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EBackgroundShadow BackgroundShadow { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_155 { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_2x3 { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapDisplayControlDefaultTVProgram_64x10A { get; set; }
@@ -367,13 +222,7 @@ public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement2x3 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidAdvertisement4x1 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? BlockSkins_Default_FidItemFlag { get; set; }
-    float BoardSquareBorder { get; set; }
-    float BoardSquareHeight { get; set; }
-    float CameraMinHeight { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? ColorBlindnessModifier { get; set; }
-    float ColorVertexMax { get; set; }
-    float ColorVertexMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020>? CompleteZoneList { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnCollection.SCustomizableDeco? CustomDeco { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecalSponsor1x1Big { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecalSponsor4x1 { get; set; }
@@ -381,57 +230,25 @@ public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecorationScreen16x9 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileImg? CustomDeco_Default_FidDecorationScreen8x1 { get; set; }
     int DecalFade_cBlock_FullDensity { get; set; }
-    string[]? DecalsTypesId { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnDecorationTM2020? DefaultDecoration { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? DefaultMaterial { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugMediaClipListTM2020? DefaultSpawnClipList { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020? DefaultZone { get; set; }
-    string? DisplayName { get; set; }
     float EditorHelperAmbientScale { get; set; }
     global::GBX.NET.Engines.Game.CGameBlockInfoGroups? FidBlockInfoGroups { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? FidBlockInfoInventory { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialColorTargetTable? FidColorTargetTable { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncShaderLayerUVTM2020? FidFuncShaderCloudsX2 { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? FidItemModelInventory { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? FidMacroBlockInfoInventory { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? FidPlugBitmapCloudsX2 { get; set; }
-    string? FolderAdditionalItem1 { get; set; }
-    string? FolderAdditionalItem2 { get; set; }
     string? FolderAdditionalItem3 { get; set; }
-    string? FolderBlockInfo { get; set; }
-    string? FolderDecalModels { get; set; }
-    string? FolderDecoration { get; set; }
     string? FolderDefaultActions { get; set; }
     string? FolderDefaultActions2 { get; set; }
-    string? FolderItem { get; set; }
-    string? FolderMacroDecals { get; set; }
     string? FolderMacroblock { get; set; }
     string? FolderMaterialModifiers { get; set; }
-    string? FolderMenusIcons { get; set; }
     string? FolderSpectatorSkins { get; set; }
     string? FolderSpectators { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? GlobalMaterialModifier { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? IconFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? IconSmallFid { get; set; }
-    bool IsWaterMultiHeight { get; set; }
     global::GBX.NET.Engines.Meta.NPlugItemPlacement_SGroups? ItemPlacementGroups { get; set; }
     int LegacyVehicleTransformFlags { get; set; }
-    int LightMapMapper { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? LoadScreenFid { get; set; }
-    string? LongDesc { get; set; }
-    Vec2 MapCoordDesc { get; set; }
-    Vec2 MapCoordElem { get; set; }
-    Vec2 MapCoordIcon { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? MapFid { get; set; }
-    Rect MapRect { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelTM2020? MarksModel { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFogMatterTM2020? OffZone_FogMatter { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>? ParticleEmitterModelsFids { get; set; }
     NodeRefList<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier>? ReplacementTerrainModifiers { get; set; }
-    bool ShadowCastBack { get; set; }
-    float ShadowSoftSizeInWorld { get; set; }
-    Vec3 Tech3TunnelSpecularExpScaleMax { get; set; }
-    float TerrainHeightOffset { get; set; }
     uint TurboColor_Roulette1 { get; set; }
     uint TurboColor_Roulette2 { get; set; }
     uint TurboColor_Roulette3 { get; set; }
@@ -439,22 +256,11 @@ public partial interface IGameCtnCollectionTM2020 : IGameCtnCollection
     uint TurboColor_Turbo2 { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnCollection.EVehicleEnvLayer VehicleEnvLayer { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? VehicleEnvLayer_FidBitmap { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesTM2020? VehicleStyles { get; set; }
     Ident? VehicleTransform_CarDesert { get; set; }
     Ident? VehicleTransform_CarRally { get; set; }
     Ident? VehicleTransform_CarSnow { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.EVertexLighting VertexLighting { get; set; }
-    float VisMeshLodDistScale { get; set; }
     int Water0Version { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.Water? Water1 { get; set; }
     global::GBX.NET.Engines.Plug.CPlugMaterialWaterArray? WaterArray { get; set; }
-    float WaterFogClampAboveDist { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? WaterG_BitmapNormal { get; set; }
-    float WaterG_BumpScale { get; set; }
-    float WaterG_BumpScaleUV { get; set; }
-    float WaterG_BumpSpeedUV { get; set; }
     bool WaterG_FogUseRefractRay { get; set; }
-    float WaterG_RefracPertub { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnCollection.ZoneString[]? ZoneStrings { get; set; }
 }
 

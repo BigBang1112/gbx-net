@@ -1,15 +1,30 @@
 using System.Collections;
+using GBX.NET.Exceptions;
 
 namespace GBX.NET.Builders;
 
 // Resolve each element only when requested, and follow replacement of the
 // owner's collection rather than capturing an obsolete list instance.
-internal sealed class ScopedNodeList<TNode, TView>(Func<NodeRefList<TNode>?> getNodes, Func<TNode, TView> project)
+internal sealed class ScopedNodeList<TNode, TView>(Func<NodeRefList<TNode>?> getNodes, GameVersion game, bool required, string member)
     : IReadOnlyList<TView> where TNode : CMwNod?
 {
     public int Count => getNodes()?.Count ?? 0;
 
-    public TView this[int index] => project((getNodes() ?? throw new ArgumentOutOfRangeException(nameof(index)))[index]);
+    public TView this[int index]
+    {
+        get
+        {
+            var node = (getNodes() ?? throw new ArgumentOutOfRangeException(nameof(index)))[index];
+            if (node is null)
+            {
+                if (required) throw new MemberNullException(member);
+                return default!;
+            }
+
+            if (game != GameVersion.Unspecified) NodeBuilderValidation.Validate(node, game);
+            return (TView)(object)node;
+        }
+    }
 
     public IEnumerator<TView> GetEnumerator()
     {

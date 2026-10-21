@@ -36,31 +36,31 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state;
     private protected CPlugVehicleVisEmitterModelBuilderBase() => state = new();
     private protected CPlugVehicleVisEmitterModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) => this.state = state;
-    private protected static void SetEmitIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, float value) => state.Set<float>("EmitIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmitIntensity = value);
-    private protected static void SetEmitIntensityBySpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set<Vec3>("EmitIntensityBySpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmitIntensityBySpeed = value);
-    private protected static void SetEmitIntensityOnTurbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, float value) => state.Set<float>("EmitIntensityOnTurbo", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmitIntensityOnTurbo = value);
-    private protected static void SetEmitSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set<Vec3>("EmitSpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmitSpeed = value);
-    private protected static void SetEmitSpeedBySpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set<Vec3>("EmitSpeedBySpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmitSpeedBySpeed = value);
-    private protected static void SetEmitSpeedBySpeedOnTurbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set<Vec3>("EmitSpeedBySpeedOnTurbo", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EmitSpeedBySpeedOnTurbo = value);
-    private protected static void SetIsEventMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set<bool>("IsEventMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsEventMode = value);
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Iso4 value) => state.Set<Iso4>("Loc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Loc = value);
-    private protected static void SetMaterialGroupIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set<int>("MaterialGroupIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MaterialGroupIndex = value);
-    private protected static void SetOnlyWhenAllWheelsSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set<bool>("OnlyWhenAllWheelsSliding", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.OnlyWhenAllWheelsSliding = value);
-    private protected static void SetOnlyWhenSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set<bool>("OnlyWhenSliding", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.OnlyWhenSliding = value);
-    private protected static void SetOrientWithVelocity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set<bool>("OrientWithVelocity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.OrientWithVelocity = value);
-    private protected static void SetParticleEmitterModel0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ParticleEmitterModel0 = value);
-    private protected static void SetParticleEmitterModel0Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>>("ParticleEmitterModel0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ParticleEmitterModel0.CopyFrom(reference));
-    private protected static void SetParticleEmitterModel1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ParticleEmitterModel1 = value);
-    private protected static void SetParticleEmitterModel1Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>>("ParticleEmitterModel1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ParticleEmitterModel1.CopyFrom(reference));
-    private protected static void SetParticleEmitterModel2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ParticleEmitterModel2 = value);
-    private protected static void SetParticleEmitterModel2Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>>("ParticleEmitterModel2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ParticleEmitterModel2.CopyFrom(reference));
-    private protected static void SetParticleEmitterModelShoot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ParticleEmitterModelShoot = value);
-    private protected static void SetParticleEmitterModelShootReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>>("ParticleEmitterModelShoot", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ParticleEmitterModelShoot.CopyFrom(reference));
-    private protected static void SetPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set<Vec3>("PitchYawRoll", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.PitchYawRoll = value);
-    private protected static void SetPosition(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set<Vec3>("Position", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Position = value);
-    private protected static void SetUseOwnerLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set<bool>("UseOwnerLoc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.UseOwnerLoc = value);
-    private protected static void SetVisualHandlerIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set<int>("VisualHandlerIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VisualHandlerIndex = value);
-    private protected static void SetWheelIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set<int>("WheelIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.WheelIndex = value);
+    private protected static void SetEmitIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEmitIntensityBySpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEmitIntensityOnTurbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitIntensityOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEmitSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEmitSpeedBySpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEmitSpeedBySpeedOnTurbo(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetEmitSpeedBySpeedOnTurboAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsEventMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetIsEventModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaterialGroupIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetMaterialGroupIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetOnlyWhenAllWheelsSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenAllWheelsSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetOnlyWhenSliding(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOnlyWhenSlidingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetOrientWithVelocity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetOrientWithVelocityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModel0(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModel0Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel0ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModel1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModel1Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel1ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModel2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModel2Reference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModel2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetParticleEmitterModelShoot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetParticleEmitterModelShootReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetParticleEmitterModelShootReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPosition(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetUseOwnerLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetUseOwnerLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVisualHandlerIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetVisualHandlerIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetWheelIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisEmitterModelBuilderAssignments.GetWheelIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public float EmitIntensity
     {
         get => state.Get<float>("EmitIntensity");
@@ -280,8 +280,101 @@ public abstract class CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf 
         return (TSelf)this;
     }
 }
+public abstract class CPlugVehicleVisEmitterModelBuilderMembers1<TSelf> : CPlugVehicleVisEmitterModelBuilderBase<TSelf> where TSelf : CPlugVehicleVisEmitterModelBuilderMembers1<TSelf>
+{
+    private protected CPlugVehicleVisEmitterModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
+        set => SetParticleEmitterModelShoot(state, value);
+    }
+    public TSelf WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
+    {
+        ParticleEmitterModelShoot = value;
+        return (TSelf)this;
+    }
+    public TSelf WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetParticleEmitterModelShootReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitterModelBuilderBase<CPlugVehicleVisEmitterModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(game);
+        var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
+        node.Chunks.Add(chunk090E6002);
+        var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
+        node.Chunks.Add(chunk090E6003);
+        var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
+        node.Chunks.Add(chunk090E6004);
+        var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
+        node.Chunks.Add(chunk090E6005);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(game);
+        var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
+        node.Chunks.Add(chunk090E6002);
+        var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
+        node.Chunks.Add(chunk090E6003);
+        var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
+        node.Chunks.Add(chunk090E6004);
+        var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
+        node.Chunks.Add(chunk090E6005);
+        var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
+        node.Chunks.Add(chunk090E6006);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6006 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(game);
+        var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
+        node.Chunks.Add(chunk090E6002);
+        var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
+        node.Chunks.Add(chunk090E6003);
+        var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
+        node.Chunks.Add(chunk090E6004);
+        var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
+        node.Chunks.Add(chunk090E6005);
+        var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
+        node.Chunks.Add(chunk090E6006);
+        var chunk090E6007 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6007();
+        chunk090E6007.Version = 0;
+        node.Chunks.Add(chunk090E6007);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090E6006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E6007 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node, GameVersion game)
+    {
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -308,22 +401,12 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(GameVersion.VSK5);
-            var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
-            node.Chunks.Add(chunk090E6002);
-            var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
-            node.Chunks.Add(chunk090E6003);
-            var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
-            node.Chunks.Add(chunk090E6004);
-            var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
-            node.Chunks.Add(chunk090E6005);
+            var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090E6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090E6003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090E6004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090E6005 is missing or has an incompatible version.");
+            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -348,29 +431,19 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(GameVersion.TMF);
-            var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
-            node.Chunks.Add(chunk090E6002);
-            var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
-            node.Chunks.Add(chunk090E6003);
-            var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
-            node.Chunks.Add(chunk090E6004);
-            var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
-            node.Chunks.Add(chunk090E6005);
+            var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090E6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090E6003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090E6004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090E6005 is missing or has an incompatible version.");
+            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
-    public partial class MP3 : CPlugVehicleVisEmitterModelBuilderBase<MP3>
+    public partial class MP3 : CPlugVehicleVisEmitterModelBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) : base(state) { }
         public MP3 WithParticleEmitterModel0(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? value)
@@ -385,55 +458,26 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         {
             return base.WithParticleEmitterModel2(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
-            set => SetParticleEmitterModelShoot(state, value);
-        }
-        public MP3 WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
-        {
-            ParticleEmitterModelShoot = value;
-            return this;
-        }
-        public MP3 WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticleEmitterModelShootReference(state, value);
-            return this;
-        }
         public MP3 WithParticleEmitterModelShoot(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3? value)
         {
-            return WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(GameVersion.MP3);
-            var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
-            node.Chunks.Add(chunk090E6002);
-            var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
-            node.Chunks.Add(chunk090E6003);
-            var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
-            node.Chunks.Add(chunk090E6004);
-            var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
-            node.Chunks.Add(chunk090E6005);
-            var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
-            node.Chunks.Add(chunk090E6006);
+            var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090E6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090E6003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090E6004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090E6005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090E6006 is missing or has an incompatible version.");
+            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
-    public partial class TMT : CPlugVehicleVisEmitterModelBuilderBase<TMT>
+    public partial class TMT : CPlugVehicleVisEmitterModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) : base(state) { }
         public TMT WithParticleEmitterModel0(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? value)
@@ -448,55 +492,26 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         {
             return base.WithParticleEmitterModel2(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
-            set => SetParticleEmitterModelShoot(state, value);
-        }
-        public TMT WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
-        {
-            ParticleEmitterModelShoot = value;
-            return this;
-        }
-        public TMT WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticleEmitterModelShootReference(state, value);
-            return this;
-        }
         public TMT WithParticleEmitterModelShoot(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT? value)
         {
-            return WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(GameVersion.TMT);
-            var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
-            node.Chunks.Add(chunk090E6002);
-            var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
-            node.Chunks.Add(chunk090E6003);
-            var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
-            node.Chunks.Add(chunk090E6004);
-            var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
-            node.Chunks.Add(chunk090E6005);
-            var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
-            node.Chunks.Add(chunk090E6006);
+            var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090E6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090E6003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090E6004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090E6005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090E6006 is missing or has an incompatible version.");
+            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
-    public partial class MP4 : CPlugVehicleVisEmitterModelBuilderBase<MP4>
+    public partial class MP4 : CPlugVehicleVisEmitterModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) : base(state) { }
         public MP4 WithParticleEmitterModel0(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
@@ -511,55 +526,26 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         {
             return base.WithParticleEmitterModel2(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
-            set => SetParticleEmitterModelShoot(state, value);
-        }
-        public MP4 WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
-        {
-            ParticleEmitterModelShoot = value;
-            return this;
-        }
-        public MP4 WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticleEmitterModelShootReference(state, value);
-            return this;
-        }
         public MP4 WithParticleEmitterModelShoot(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? value)
         {
-            return WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(GameVersion.MP4);
-            var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
-            node.Chunks.Add(chunk090E6002);
-            var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
-            node.Chunks.Add(chunk090E6003);
-            var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
-            node.Chunks.Add(chunk090E6004);
-            var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
-            node.Chunks.Add(chunk090E6005);
-            var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
-            node.Chunks.Add(chunk090E6006);
+            var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090E6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090E6003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090E6004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090E6005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090E6006 is missing or has an incompatible version.");
+            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel node);
     }
-    public partial class TM2020 : CPlugVehicleVisEmitterModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVehicleVisEmitterModelBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel> state) : base(state) { }
         public TM2020 WithParticleEmitterModel0(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value)
@@ -574,52 +560,19 @@ public partial class CPlugVehicleVisEmitterModelBuilder : CPlugVehicleVisEmitter
         {
             return base.WithParticleEmitterModel2(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? ParticleEmitterModelShoot
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModelShoot");
-            set => SetParticleEmitterModelShoot(state, value);
-        }
-        public TM2020 WithParticleEmitterModelShoot(global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value)
-        {
-            ParticleEmitterModelShoot = value;
-            return this;
-        }
-        public TM2020 WithParticleEmitterModelShootReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetParticleEmitterModelShootReference(state, value);
-            return this;
-        }
         public TM2020 WithParticleEmitterModelShoot(global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? value)
         {
-            return WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithParticleEmitterModelShoot(value is null ? (global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?)null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel(GameVersion.TM2020);
-            var chunk090E6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002();
-            node.Chunks.Add(chunk090E6002);
-            var chunk090E6003 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003();
-            node.Chunks.Add(chunk090E6003);
-            var chunk090E6004 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004();
-            node.Chunks.Add(chunk090E6004);
-            var chunk090E6005 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005();
-            node.Chunks.Add(chunk090E6005);
-            var chunk090E6006 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006();
-            node.Chunks.Add(chunk090E6006);
-            var chunk090E6007 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6007();
-            chunk090E6007.Version = 0;
-            node.Chunks.Add(chunk090E6007);
+            var node = CPlugVehicleVisEmitterModelBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090E6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090E6003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090E6004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090E6005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6006>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090E6006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisEmitterModel.Chunk090E6007>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E6007 is missing or has an incompatible version.");
+            CPlugVehicleVisEmitterModelBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleVisEmitterModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

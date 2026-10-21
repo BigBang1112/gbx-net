@@ -59,7 +59,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         get => TacticalLight;
         set => TacticalLight = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLightBall node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4.Part_Deactivated
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_Deactivated
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4.Part_DeactivatedShot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_DeactivatedShot
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4.Part_TeleportSpawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_TeleportSpawn
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4.Part_TeleportUnspawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.Part_TeleportUnspawn
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4.TacticalLight
+    global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>.TacticalLight
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => TacticalLight = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLightBall node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020.Part_Deactivated
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_Deactivated
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_Deactivated = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020.Part_DeactivatedShot
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_DeactivatedShot
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_DeactivatedShot = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020.Part_TeleportSpawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_TeleportSpawn
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_TeleportSpawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020.Part_TeleportUnspawn
+    global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.Part_TeleportUnspawn
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CPlugVisEntFxModel : global::GBX.NET.Interfaces.Plug.IPlugV
         }
         set => Part_TeleportUnspawn = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020.TacticalLight
+    global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020? global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>.TacticalLight
     {
         get
         {

@@ -39,6 +39,45 @@ public abstract class CScriptTraitsMetadataBuilderBase<TSelf> where TSelf : CScr
 }
 public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilderBase<CScriptTraitsMetadataBuilder>
 {
+    private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
+        var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
+        node.Chunks.Add(chunk11002000);
+        var chunk11001000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000();
+        node.Chunks.Add(chunk11001000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11002000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11001000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
+        var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
+        node.Chunks.Add(chunk11002000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11002000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Script.CScriptTraitsMetadata CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
+        var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
+        node.Chunks.Add(chunk11002000);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk11002000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Script.CScriptTraitsMetadata node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -51,16 +90,12 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
         public global::GBX.NET.Interfaces.Script.IScriptTraitsMetadataMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Script.CScriptTraitsMetadata Build()
         {
-            var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
-            var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
-            node.Chunks.Add(chunk11002000);
-            var chunk11001000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000();
-            node.Chunks.Add(chunk11001000);
+            var node = CScriptTraitsMetadataBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk11002000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk11001000 is missing or has an incompatible version.");
+            CScriptTraitsMetadataBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -73,16 +108,12 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
         public global::GBX.NET.Interfaces.Script.IScriptTraitsMetadataTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Script.CScriptTraitsMetadata Build()
         {
-            var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
-            var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
-            node.Chunks.Add(chunk11002000);
-            var chunk11001000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000();
-            node.Chunks.Add(chunk11001000);
+            var node = CScriptTraitsMetadataBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk11002000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11001000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk11001000 is missing or has an incompatible version.");
+            CScriptTraitsMetadataBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -95,13 +126,12 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
         public global::GBX.NET.Interfaces.Script.IScriptTraitsMetadataMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Script.CScriptTraitsMetadata Build()
         {
-            var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
-            var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
-            node.Chunks.Add(chunk11002000);
+            var node = CScriptTraitsMetadataBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk11002000 is missing or has an incompatible version.");
+            CScriptTraitsMetadataBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -114,13 +144,12 @@ public partial class CScriptTraitsMetadataBuilder : CScriptTraitsMetadataBuilder
         public global::GBX.NET.Interfaces.Script.IScriptTraitsMetadataTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Script.CScriptTraitsMetadata Build()
         {
-            var node = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata();
-            var chunk11002000 = new global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000();
-            node.Chunks.Add(chunk11002000);
+            var node = CScriptTraitsMetadataBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Script.CScriptTraitsMetadata.Chunk11002000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk11002000 is missing or has an incompatible version.");
+            CScriptTraitsMetadataBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CScriptTraitsMetadataBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -36,19 +36,19 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state;
     private protected CPlugDecoratorTreeBuilderBase() => state = new();
     private protected CPlugDecoratorTreeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) => this.state = state;
-    private protected static void SetCollidableCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set<int>("CollidableCond", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.CollidableCond = value);
-    private protected static void SetExistCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set<int>("ExistCond", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ExistCond = value);
-    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Material = value);
-    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("Material", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Material.CopyFrom(reference));
-    private protected static void SetNoLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set<bool>("NoLocation", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.NoLocation = value);
-    private protected static void SetShadowCasterApplyOnChilds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set<bool>("ShadowCasterApplyOnChilds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowCasterApplyOnChilds = value);
-    private protected static void SetShadowCasterCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set<int>("ShadowCasterCond", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowCasterCond = value);
-    private protected static void SetTransformVisualToSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set<bool>("TransformVisualToSurface", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.TransformVisualToSurface = value);
-    private protected static void SetTreeId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, string? value) => state.Set<string?>("TreeId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.TreeId = value);
-    private protected static void SetTreeLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, global::GBX.NET.Engines.Plug.CPlugTreeLight? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugTreeLight?>("TreeLight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.TreeLight = value);
-    private protected static void SetTreeLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeLight> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeLight>>("TreeLight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeLight>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.TreeLight.CopyFrom(reference));
-    private protected static void SetVisibleApplyOnChilds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set<bool>("VisibleApplyOnChilds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VisibleApplyOnChilds = value);
-    private protected static void SetVisibleCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set<int>("VisibleCond", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VisibleCond = value);
+    private protected static void SetCollidableCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetCollidableCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetExistCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetExistCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaterialReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetMaterialReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetNoLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetNoLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowCasterApplyOnChilds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterApplyOnChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowCasterCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetShadowCasterCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTransformVisualToSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTransformVisualToSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTreeId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTreeLight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, global::GBX.NET.Engines.Plug.CPlugTreeLight? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTreeLightReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeLight> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetTreeLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVisibleApplyOnChilds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetVisibleApplyOnChildsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVisibleCond(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDecoratorTreeBuilderAssignments.GetVisibleCondAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugMaterial? Material
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterial?>("Material");
@@ -142,8 +142,82 @@ public abstract class CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDe
         return (TSelf)this;
     }
 }
+public abstract class CPlugDecoratorTreeBuilderMembers1<TSelf> : CPlugDecoratorTreeBuilderBase<TSelf> where TSelf : CPlugDecoratorTreeBuilderMembers1<TSelf>
+{
+    private protected CPlugDecoratorTreeBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
+    public int ExistCond
+    {
+        get => state.Get<int>("ExistCond");
+        set => SetExistCond(state, value);
+    }
+    public TSelf WithExistCond(int value)
+    {
+        ExistCond = value;
+        return (TSelf)this;
+    }
+    public bool NoLocation
+    {
+        get => state.Get<bool>("NoLocation");
+        set => SetNoLocation(state, value);
+    }
+    public TSelf WithNoLocation(bool value)
+    {
+        NoLocation = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugDecoratorTreeBuilderMembers2<TSelf> : CPlugDecoratorTreeBuilderMembers1<TSelf> where TSelf : CPlugDecoratorTreeBuilderMembers2<TSelf>
+{
+    private protected CPlugDecoratorTreeBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
+    public int CollidableCond
+    {
+        get => state.Get<int>("CollidableCond");
+        set => SetCollidableCond(state, value);
+    }
+    public TSelf WithCollidableCond(int value)
+    {
+        CollidableCond = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<CPlugDecoratorTreeBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugDecoratorTree CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
+        var chunk090A2006 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2006();
+        node.Chunks.Add(chunk090A2006);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A2006 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugDecoratorTree CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
+        var chunk090A2008 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2008();
+        node.Chunks.Add(chunk090A2008);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A2008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugDecoratorTree CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
+        var chunk090A2009 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009();
+        node.Chunks.Add(chunk090A2009);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090A2009 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node, GameVersion game)
+    {
+    }
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -167,45 +241,24 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2006 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2006();
-            node.Chunks.Add(chunk090A2006);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk090A2006 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class VSK5 : CPlugDecoratorTreeBuilderBase<VSK5>
+    public partial class VSK5 : CPlugDecoratorTreeBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-        public int ExistCond
-        {
-            get => state.Get<int>("ExistCond");
-            set => SetExistCond(state, value);
-        }
-        public VSK5 WithExistCond(int value)
-        {
-            ExistCond = value;
-            return this;
-        }
         public VSK5 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? value)
         {
             return base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public bool NoLocation
-        {
-            get => state.Get<bool>("NoLocation");
-            set => SetNoLocation(state, value);
-        }
-        public VSK5 WithNoLocation(bool value)
-        {
-            NoLocation = value;
-            return this;
         }
         public VSK5 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5? value)
         {
@@ -214,55 +267,24 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2008 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2008();
-            node.Chunks.Add(chunk090A2008);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2008>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090A2008 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class TMF : CPlugDecoratorTreeBuilderBase<TMF>
+    public partial class TMF : CPlugDecoratorTreeBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-        public int CollidableCond
-        {
-            get => state.Get<int>("CollidableCond");
-            set => SetCollidableCond(state, value);
-        }
-        public TMF WithCollidableCond(int value)
-        {
-            CollidableCond = value;
-            return this;
-        }
-        public int ExistCond
-        {
-            get => state.Get<int>("ExistCond");
-            set => SetExistCond(state, value);
-        }
-        public TMF WithExistCond(int value)
-        {
-            ExistCond = value;
-            return this;
-        }
         public TMF WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? value)
         {
             return base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public bool NoLocation
-        {
-            get => state.Get<bool>("NoLocation");
-            set => SetNoLocation(state, value);
-        }
-        public TMF WithNoLocation(bool value)
-        {
-            NoLocation = value;
-            return this;
         }
         public TMF WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF? value)
         {
@@ -271,55 +293,24 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2009 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009();
-            node.Chunks.Add(chunk090A2009);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090A2009 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class MP3 : CPlugDecoratorTreeBuilderBase<MP3>
+    public partial class MP3 : CPlugDecoratorTreeBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-        public int CollidableCond
-        {
-            get => state.Get<int>("CollidableCond");
-            set => SetCollidableCond(state, value);
-        }
-        public MP3 WithCollidableCond(int value)
-        {
-            CollidableCond = value;
-            return this;
-        }
-        public int ExistCond
-        {
-            get => state.Get<int>("ExistCond");
-            set => SetExistCond(state, value);
-        }
-        public MP3 WithExistCond(int value)
-        {
-            ExistCond = value;
-            return this;
-        }
         public MP3 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? value)
         {
             return base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public bool NoLocation
-        {
-            get => state.Get<bool>("NoLocation");
-            set => SetNoLocation(state, value);
-        }
-        public MP3 WithNoLocation(bool value)
-        {
-            NoLocation = value;
-            return this;
         }
         public MP3 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3? value)
         {
@@ -328,55 +319,24 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2009 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009();
-            node.Chunks.Add(chunk090A2009);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090A2009 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class TMT : CPlugDecoratorTreeBuilderBase<TMT>
+    public partial class TMT : CPlugDecoratorTreeBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-        public int CollidableCond
-        {
-            get => state.Get<int>("CollidableCond");
-            set => SetCollidableCond(state, value);
-        }
-        public TMT WithCollidableCond(int value)
-        {
-            CollidableCond = value;
-            return this;
-        }
-        public int ExistCond
-        {
-            get => state.Get<int>("ExistCond");
-            set => SetExistCond(state, value);
-        }
-        public TMT WithExistCond(int value)
-        {
-            ExistCond = value;
-            return this;
-        }
         public TMT WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? value)
         {
             return base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public bool NoLocation
-        {
-            get => state.Get<bool>("NoLocation");
-            set => SetNoLocation(state, value);
-        }
-        public TMT WithNoLocation(bool value)
-        {
-            NoLocation = value;
-            return this;
         }
         public TMT WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT? value)
         {
@@ -385,55 +345,24 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2009 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009();
-            node.Chunks.Add(chunk090A2009);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090A2009 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class MP4 : CPlugDecoratorTreeBuilderBase<MP4>
+    public partial class MP4 : CPlugDecoratorTreeBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-        public int CollidableCond
-        {
-            get => state.Get<int>("CollidableCond");
-            set => SetCollidableCond(state, value);
-        }
-        public MP4 WithCollidableCond(int value)
-        {
-            CollidableCond = value;
-            return this;
-        }
-        public int ExistCond
-        {
-            get => state.Get<int>("ExistCond");
-            set => SetExistCond(state, value);
-        }
-        public MP4 WithExistCond(int value)
-        {
-            ExistCond = value;
-            return this;
-        }
         public MP4 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? value)
         {
             return base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public bool NoLocation
-        {
-            get => state.Get<bool>("NoLocation");
-            set => SetNoLocation(state, value);
-        }
-        public MP4 WithNoLocation(bool value)
-        {
-            NoLocation = value;
-            return this;
         }
         public MP4 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4? value)
         {
@@ -442,55 +371,24 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2009 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009();
-            node.Chunks.Add(chunk090A2009);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090A2009 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugDecoratorTree node);
     }
-    public partial class TM2020 : CPlugDecoratorTreeBuilderBase<TM2020>
+    public partial class TM2020 : CPlugDecoratorTreeBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDecoratorTree> state) : base(state) { }
-        public int CollidableCond
-        {
-            get => state.Get<int>("CollidableCond");
-            set => SetCollidableCond(state, value);
-        }
-        public TM2020 WithCollidableCond(int value)
-        {
-            CollidableCond = value;
-            return this;
-        }
-        public int ExistCond
-        {
-            get => state.Get<int>("ExistCond");
-            set => SetExistCond(state, value);
-        }
-        public TM2020 WithExistCond(int value)
-        {
-            ExistCond = value;
-            return this;
-        }
         public TM2020 WithMaterial(global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? value)
         {
             return base.WithMaterial(value is null ? (global::GBX.NET.Engines.Plug.CPlugMaterial?)null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public bool NoLocation
-        {
-            get => state.Get<bool>("NoLocation");
-            set => SetNoLocation(state, value);
-        }
-        public TM2020 WithNoLocation(bool value)
-        {
-            NoLocation = value;
-            return this;
         }
         public TM2020 WithTreeLight(global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020? value)
         {
@@ -499,13 +397,12 @@ public partial class CPlugDecoratorTreeBuilder : CPlugDecoratorTreeBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDecoratorTree Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree();
-            var chunk090A2009 = new global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009();
-            node.Chunks.Add(chunk090A2009);
+            var node = CPlugDecoratorTreeBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDecoratorTree.Chunk090A2009>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090A2009 is missing or has an incompatible version.");
+            CPlugDecoratorTreeBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugDecoratorTreeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

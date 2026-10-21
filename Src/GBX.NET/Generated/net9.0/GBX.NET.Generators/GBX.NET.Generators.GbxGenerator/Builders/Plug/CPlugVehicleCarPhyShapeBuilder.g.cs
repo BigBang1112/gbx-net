@@ -36,9 +36,9 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state;
     private protected CPlugVehicleCarPhyShapeBuilderBase() => state = new();
     private protected CPlugVehicleCarPhyShapeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state) => this.state = state;
-    private protected static void SetCarVsCarShapeBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, BoxAligned value) => state.Set<BoxAligned>("CarVsCarShapeBox", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CarVsCarShapeBox = value);
-    private protected static void SetMoveShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurface?>("MoveShape", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.MoveShape = value);
-    private protected static void SetMoveShapeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface>>("MoveShape", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MoveShape.CopyFrom(reference));
+    private protected static void SetCarVsCarShapeBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetCarVsCarShapeBoxAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetMoveShape(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, global::GBX.NET.Engines.Plug.CPlugSurface? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetMoveShapeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurface> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCarPhyShapeBuilderAssignments.GetMoveShapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public BoxAligned CarVsCarShapeBox
     {
         get => state.Get<BoxAligned>("CarVsCarShapeBox");
@@ -68,6 +68,20 @@ public abstract class CPlugVehicleCarPhyShapeBuilderBase<TSelf> where TSelf : CP
 }
 public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBuilderBase<CPlugVehicleCarPhyShapeBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape();
+        var chunk0910E000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000(game);
+        node.Chunks.Add(chunk0910E000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910E000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -82,13 +96,12 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape();
-            var chunk0910E000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000(GameVersion.MP4);
-            node.Chunks.Add(chunk0910E000);
+            var node = CPlugVehicleCarPhyShapeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000>() is not { Version: 6 }) throw new InvalidOperationException("Required MP4 chunk Chunk0910E000 is missing or has an incompatible version.");
+            CPlugVehicleCarPhyShapeBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleCarPhyShapeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -105,13 +118,12 @@ public partial class CPlugVehicleCarPhyShapeBuilder : CPlugVehicleCarPhyShapeBui
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape();
-            var chunk0910E000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0910E000);
+            var node = CPlugVehicleCarPhyShapeBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape.Chunk0910E000>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0910E000 is missing or has an incompatible version.");
+            CPlugVehicleCarPhyShapeBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleCarPhyShapeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

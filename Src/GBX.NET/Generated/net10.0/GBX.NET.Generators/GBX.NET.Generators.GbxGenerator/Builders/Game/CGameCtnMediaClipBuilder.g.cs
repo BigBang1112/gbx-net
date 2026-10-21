@@ -36,18 +36,18 @@ public abstract class CGameCtnMediaClipBuilderBase<TSelf> where TSelf : CGameCtn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state;
     private protected CGameCtnMediaClipBuilderBase() => state = new();
     private protected CGameCtnMediaClipBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) => this.state = state;
-    private protected static void SetConfigScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, string value) => state.Set<string>("ConfigScript", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ConfigScript = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, int value) => state.Set<int>("Flags", value, GameVersion.TM2020, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetIsScriptEvent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set<bool>("IsScriptEvent", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IsScriptEvent = value);
-    private protected static void SetLocalPlayerClipEntIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, int value) => state.Set<int>("LocalPlayerClipEntIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.LocalPlayerClipEntIndex = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, global::GBX.NET.Engines.Scene.CScene? value) => state.Set<global::GBX.NET.Engines.Scene.CScene?>("Scene", value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Scene = value);
-    private protected static void SetSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, NodeRef<global::GBX.NET.Engines.Scene.CScene> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CScene>>("Scene", value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CScene>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Scene.CopyFrom(reference));
-    private protected static void SetStereoSepMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, float value) => state.Set<float>("StereoSepMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StereoSepMax = value);
-    private protected static void SetStopWhenLeave(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set<bool>("StopWhenLeave", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StopWhenLeave = value);
-    private protected static void SetStopWhenRespawn(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set<bool>("StopWhenRespawn", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StopWhenRespawn = value);
-    private protected static void SetTracks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>>("Tracks", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Tracks = value);
-    private protected static void SetTriggersBeforeRaceStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set<bool>("TriggersBeforeRaceStart", value, GameVersion.TM2020, static value => value, static (node, value) => node.TriggersBeforeRaceStart = value);
+    private protected static void SetConfigScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetConfigScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetIsScriptEvent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetIsScriptEventAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLocalPlayerClipEntIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetLocalPlayerClipEntIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, global::GBX.NET.Engines.Scene.CScene? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetSceneAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, NodeRef<global::GBX.NET.Engines.Scene.CScene> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetSceneReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetStereoSepMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStereoSepMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStopWhenLeave(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStopWhenLeaveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStopWhenRespawn(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetStopWhenRespawnAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTracks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaTrack> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetTracksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetTriggersBeforeRaceStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaClipBuilderAssignments.GetTriggersBeforeRaceStartAssignment(), value, GameVersion.TM2020);
     public string? Name
     {
         get => state.Get<string?>("Name");
@@ -77,8 +77,197 @@ public abstract class CGameCtnMediaClipBuilderBase<TSelf> where TSelf : CGameCtn
         return WithTracks(values.ToArray());
     }
 }
+public abstract class CGameCtnMediaClipBuilderMembers1<TSelf> : CGameCtnMediaClipBuilderBase<TSelf> where TSelf : CGameCtnMediaClipBuilderMembers1<TSelf>
+{
+    private protected CGameCtnMediaClipBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
+    public int LocalPlayerClipEntIndex
+    {
+        get => state.Get<int>("LocalPlayerClipEntIndex");
+        set => SetLocalPlayerClipEntIndex(state, value);
+    }
+    public TSelf WithLocalPlayerClipEntIndex(int value)
+    {
+        LocalPlayerClipEntIndex = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnMediaClipBuilderMembers2<TSelf> : CGameCtnMediaClipBuilderBase<TSelf> where TSelf : CGameCtnMediaClipBuilderMembers2<TSelf>
+{
+    private protected CGameCtnMediaClipBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
+    public global::GBX.NET.Engines.Scene.CScene? Scene
+    {
+        get => state.Get<global::GBX.NET.Engines.Scene.CScene?>("Scene");
+        set => SetScene(state, value);
+    }
+    public TSelf WithScene(global::GBX.NET.Engines.Scene.CScene? value)
+    {
+        Scene = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSceneReference(NodeRef<global::GBX.NET.Engines.Scene.CScene> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetSceneReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnMediaClipBuilderMembers3<TSelf> : CGameCtnMediaClipBuilderMembers1<TSelf> where TSelf : CGameCtnMediaClipBuilderMembers3<TSelf>
+{
+    private protected CGameCtnMediaClipBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
+    public string ConfigScript
+    {
+        get => state.Get<string>("ConfigScript");
+        set => SetConfigScript(state, value);
+    }
+    public TSelf WithConfigScript(string value)
+    {
+        ConfigScript = value;
+        return (TSelf)this;
+    }
+    public bool IsScriptEvent
+    {
+        get => state.Get<bool>("IsScriptEvent");
+        set => SetIsScriptEvent(state, value);
+    }
+    public TSelf WithIsScriptEvent(bool value)
+    {
+        IsScriptEvent = value;
+        return (TSelf)this;
+    }
+    public float StereoSepMax
+    {
+        get => state.Get<float>("StereoSepMax");
+        set => SetStereoSepMax(state, value);
+    }
+    public TSelf WithStereoSepMax(float value)
+    {
+        StereoSepMax = value;
+        return (TSelf)this;
+    }
+    public bool StopWhenLeave
+    {
+        get => state.Get<bool>("StopWhenLeave");
+        set => SetStopWhenLeave(state, value);
+    }
+    public TSelf WithStopWhenLeave(bool value)
+    {
+        StopWhenLeave = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnMediaClipBuilderMembers4<TSelf> : CGameCtnMediaClipBuilderMembers3<TSelf> where TSelf : CGameCtnMediaClipBuilderMembers4<TSelf>
+{
+    private protected CGameCtnMediaClipBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
+    public bool StopWhenRespawn
+    {
+        get => state.Get<bool>("StopWhenRespawn");
+        set => SetStopWhenRespawn(state, value);
+    }
+    public TSelf WithStopWhenRespawn(bool value)
+    {
+        StopWhenRespawn = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGameCtnMediaClipBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
+        var chunk03079003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003();
+        node.Chunks.Add(chunk03079003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
+        var chunk03079003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003();
+        node.Chunks.Add(chunk03079003);
+        var chunk03079004 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004();
+        node.Chunks.Add(chunk03079004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
+        var chunk03079004 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004();
+        node.Chunks.Add(chunk03079004);
+        var chunk03079005 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005();
+        node.Chunks.Add(chunk03079005);
+        var chunk03079007 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007();
+        node.Chunks.Add(chunk03079007);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079007 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
+        var chunk03079005 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005();
+        node.Chunks.Add(chunk03079005);
+        var chunk03079007 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007();
+        node.Chunks.Add(chunk03079007);
+        var chunk03079008 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079008();
+        node.Chunks.Add(chunk03079008);
+        var chunk03079009 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079009();
+        node.Chunks.Add(chunk03079009);
+        var chunk0307900A = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900A();
+        node.Chunks.Add(chunk0307900A);
+        var chunk0307900B = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900B();
+        node.Chunks.Add(chunk0307900B);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03079009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307900A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0307900B is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
+        var chunk0307900D = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D(game);
+        node.Chunks.Add(chunk0307900D);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0307900D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaClip CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
+        var chunk0307900D = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D(game);
+        node.Chunks.Add(chunk0307900D);
+        var chunk0307900E = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900E(game);
+        node.Chunks.Add(chunk0307900E);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0307900D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0307900E is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaClip node, GameVersion game)
+    {
+        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.ConfigScript is null) throw new MemberNullException("ConfigScript");
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public TMU ForTMU() => new(state.Snapshot());
@@ -95,7 +284,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
         public TMSX WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX>(values, false));
         }
         public TMSX WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMSX> values)
         {
@@ -104,13 +293,12 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk03079003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003();
-            node.Chunks.Add(chunk03079003);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03079003 is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -122,7 +310,7 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
         public TMNESWC WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC>(values, false));
         }
         public TMNESWC WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMNESWC> values)
         {
@@ -131,41 +319,24 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk03079003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003();
-            node.Chunks.Add(chunk03079003);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03079003 is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class TMU : CGameCtnMediaClipBuilderBase<TMU>
+    public partial class TMU : CGameCtnMediaClipBuilderMembers2<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
-        public global::GBX.NET.Engines.Scene.CScene? Scene
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CScene?>("Scene");
-            set => SetScene(state, value);
-        }
-        public TMU WithScene(global::GBX.NET.Engines.Scene.CScene? value)
-        {
-            Scene = value;
-            return this;
-        }
-        public TMU WithSceneReference(NodeRef<global::GBX.NET.Engines.Scene.CScene> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSceneReference(state, value);
-            return this;
-        }
         public TMU WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU>(values, false));
         }
         public TMU WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMU> values)
         {
@@ -174,48 +345,28 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk03079003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003();
-            node.Chunks.Add(chunk03079003);
-            var chunk03079004 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004();
-            node.Chunks.Add(chunk03079004);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe1(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03079003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03079004 is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe1(node, GameVersion.TMU);
             NodeBuilderValidation.Validate(node, GameVersion.TMU);
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class VSK5 : CGameCtnMediaClipBuilderBase<VSK5>
+    public partial class VSK5 : CGameCtnMediaClipBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
-        public global::GBX.NET.Engines.Scene.CScene? Scene
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CScene?>("Scene");
-            set => SetScene(state, value);
-        }
-        public VSK5 WithScene(global::GBX.NET.Engines.Scene.CScene? value)
-        {
-            Scene = value;
-            return this;
-        }
-        public VSK5 WithSceneReference(NodeRef<global::GBX.NET.Engines.Scene.CScene> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSceneReference(state, value);
-            return this;
-        }
         public VSK5 WithScene(global::GBX.NET.Interfaces.Scene.ISceneVSK5? value)
         {
-            return WithScene(value is null ? (global::GBX.NET.Engines.Scene.CScene?)null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CScene?)null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5>(values, false));
         }
         public VSK5 WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackVSK5> values)
         {
@@ -224,23 +375,19 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk03079003 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003();
-            node.Chunks.Add(chunk03079003);
-            var chunk03079004 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004();
-            node.Chunks.Add(chunk03079004);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03079003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03079004 is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class TMF : CGameCtnMediaClipBuilderBase<TMF>
+    public partial class TMF : CGameCtnMediaClipBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
         public int LocalPlayerClipEntIndex
@@ -253,29 +400,13 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
             LocalPlayerClipEntIndex = value;
             return this;
         }
-        public global::GBX.NET.Engines.Scene.CScene? Scene
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CScene?>("Scene");
-            set => SetScene(state, value);
-        }
-        public TMF WithScene(global::GBX.NET.Engines.Scene.CScene? value)
-        {
-            Scene = value;
-            return this;
-        }
-        public TMF WithSceneReference(NodeRef<global::GBX.NET.Engines.Scene.CScene> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSceneReference(state, value);
-            return this;
-        }
         public TMF WithScene(global::GBX.NET.Interfaces.Scene.ISceneTMF? value)
         {
-            return WithScene(value is null ? (global::GBX.NET.Engines.Scene.CScene?)null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CScene?)null : value is global::GBX.NET.Engines.Scene.CScene node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF>(values, false));
         }
         public TMF WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMF> values)
         {
@@ -284,81 +415,24 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk03079004 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004();
-            node.Chunks.Add(chunk03079004);
-            var chunk03079005 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005();
-            node.Chunks.Add(chunk03079005);
-            var chunk03079007 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007();
-            node.Chunks.Add(chunk03079007);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03079004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03079005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03079007 is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class MP3 : CGameCtnMediaClipBuilderBase<MP3>
+    public partial class MP3 : CGameCtnMediaClipBuilderMembers3<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
-        public string ConfigScript
-        {
-            get => state.Get<string>("ConfigScript");
-            set => SetConfigScript(state, value);
-        }
-        public MP3 WithConfigScript(string value)
-        {
-            ConfigScript = value;
-            return this;
-        }
-        public bool IsScriptEvent
-        {
-            get => state.Get<bool>("IsScriptEvent");
-            set => SetIsScriptEvent(state, value);
-        }
-        public MP3 WithIsScriptEvent(bool value)
-        {
-            IsScriptEvent = value;
-            return this;
-        }
-        public int LocalPlayerClipEntIndex
-        {
-            get => state.Get<int>("LocalPlayerClipEntIndex");
-            set => SetLocalPlayerClipEntIndex(state, value);
-        }
-        public MP3 WithLocalPlayerClipEntIndex(int value)
-        {
-            LocalPlayerClipEntIndex = value;
-            return this;
-        }
-        public float StereoSepMax
-        {
-            get => state.Get<float>("StereoSepMax");
-            set => SetStereoSepMax(state, value);
-        }
-        public MP3 WithStereoSepMax(float value)
-        {
-            StereoSepMax = value;
-            return this;
-        }
-        public bool StopWhenLeave
-        {
-            get => state.Get<bool>("StopWhenLeave");
-            set => SetStopWhenLeave(state, value);
-        }
-        public MP3 WithStopWhenLeave(bool value)
-        {
-            StopWhenLeave = value;
-            return this;
-        }
         public MP3 WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3>(values, false));
         }
         public MP3 WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP3> values)
         {
@@ -367,101 +441,24 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk03079005 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005();
-            node.Chunks.Add(chunk03079005);
-            var chunk03079007 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007();
-            node.Chunks.Add(chunk03079007);
-            var chunk03079008 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079008();
-            node.Chunks.Add(chunk03079008);
-            var chunk03079009 = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079009();
-            node.Chunks.Add(chunk03079009);
-            var chunk0307900A = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900A();
-            node.Chunks.Add(chunk0307900A);
-            var chunk0307900B = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900B();
-            node.Chunks.Add(chunk0307900B);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03079005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079007>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03079007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079008>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03079008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk03079009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03079009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0307900A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0307900B is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.ConfigScript is null) throw new MemberNullException("ConfigScript");
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class TMT : CGameCtnMediaClipBuilderBase<TMT>
+    public partial class TMT : CGameCtnMediaClipBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
-        public string ConfigScript
-        {
-            get => state.Get<string>("ConfigScript");
-            set => SetConfigScript(state, value);
-        }
-        public TMT WithConfigScript(string value)
-        {
-            ConfigScript = value;
-            return this;
-        }
-        public bool IsScriptEvent
-        {
-            get => state.Get<bool>("IsScriptEvent");
-            set => SetIsScriptEvent(state, value);
-        }
-        public TMT WithIsScriptEvent(bool value)
-        {
-            IsScriptEvent = value;
-            return this;
-        }
-        public int LocalPlayerClipEntIndex
-        {
-            get => state.Get<int>("LocalPlayerClipEntIndex");
-            set => SetLocalPlayerClipEntIndex(state, value);
-        }
-        public TMT WithLocalPlayerClipEntIndex(int value)
-        {
-            LocalPlayerClipEntIndex = value;
-            return this;
-        }
-        public float StereoSepMax
-        {
-            get => state.Get<float>("StereoSepMax");
-            set => SetStereoSepMax(state, value);
-        }
-        public TMT WithStereoSepMax(float value)
-        {
-            StereoSepMax = value;
-            return this;
-        }
-        public bool StopWhenLeave
-        {
-            get => state.Get<bool>("StopWhenLeave");
-            set => SetStopWhenLeave(state, value);
-        }
-        public TMT WithStopWhenLeave(bool value)
-        {
-            StopWhenLeave = value;
-            return this;
-        }
-        public bool StopWhenRespawn
-        {
-            get => state.Get<bool>("StopWhenRespawn");
-            set => SetStopWhenRespawn(state, value);
-        }
-        public TMT WithStopWhenRespawn(bool value)
-        {
-            StopWhenRespawn = value;
-            return this;
-        }
         public TMT WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT>(values, false));
         }
         public TMT WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTMT> values)
         {
@@ -470,86 +467,24 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk0307900D = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D(GameVersion.TMT);
-            node.Chunks.Add(chunk0307900D);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0307900D is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe4(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.ConfigScript is null) throw new MemberNullException("ConfigScript");
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class MP4 : CGameCtnMediaClipBuilderBase<MP4>
+    public partial class MP4 : CGameCtnMediaClipBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
-        public string ConfigScript
-        {
-            get => state.Get<string>("ConfigScript");
-            set => SetConfigScript(state, value);
-        }
-        public MP4 WithConfigScript(string value)
-        {
-            ConfigScript = value;
-            return this;
-        }
-        public bool IsScriptEvent
-        {
-            get => state.Get<bool>("IsScriptEvent");
-            set => SetIsScriptEvent(state, value);
-        }
-        public MP4 WithIsScriptEvent(bool value)
-        {
-            IsScriptEvent = value;
-            return this;
-        }
-        public int LocalPlayerClipEntIndex
-        {
-            get => state.Get<int>("LocalPlayerClipEntIndex");
-            set => SetLocalPlayerClipEntIndex(state, value);
-        }
-        public MP4 WithLocalPlayerClipEntIndex(int value)
-        {
-            LocalPlayerClipEntIndex = value;
-            return this;
-        }
-        public float StereoSepMax
-        {
-            get => state.Get<float>("StereoSepMax");
-            set => SetStereoSepMax(state, value);
-        }
-        public MP4 WithStereoSepMax(float value)
-        {
-            StereoSepMax = value;
-            return this;
-        }
-        public bool StopWhenLeave
-        {
-            get => state.Get<bool>("StopWhenLeave");
-            set => SetStopWhenLeave(state, value);
-        }
-        public MP4 WithStopWhenLeave(bool value)
-        {
-            StopWhenLeave = value;
-            return this;
-        }
-        public bool StopWhenRespawn
-        {
-            get => state.Get<bool>("StopWhenRespawn");
-            set => SetStopWhenRespawn(state, value);
-        }
-        public MP4 WithStopWhenRespawn(bool value)
-        {
-            StopWhenRespawn = value;
-            return this;
-        }
         public MP4 WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4>(values, false));
         }
         public MP4 WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMP4> values)
         {
@@ -558,33 +493,21 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk0307900D = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D(GameVersion.MP4);
-            node.Chunks.Add(chunk0307900D);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0307900D is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe4(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.ConfigScript is null) throw new MemberNullException("ConfigScript");
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnMediaClip node);
     }
-    public partial class TM2020 : CGameCtnMediaClipBuilderBase<TM2020>
+    public partial class TM2020 : CGameCtnMediaClipBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaClip> state) : base(state) { }
-        public string ConfigScript
-        {
-            get => state.Get<string>("ConfigScript");
-            set => SetConfigScript(state, value);
-        }
-        public TM2020 WithConfigScript(string value)
-        {
-            ConfigScript = value;
-            return this;
-        }
         public int Flags
         {
             get => state.Get<int>("Flags");
@@ -595,59 +518,9 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
             Flags = value;
             return this;
         }
-        public bool IsScriptEvent
-        {
-            get => state.Get<bool>("IsScriptEvent");
-            set => SetIsScriptEvent(state, value);
-        }
-        public TM2020 WithIsScriptEvent(bool value)
-        {
-            IsScriptEvent = value;
-            return this;
-        }
-        public int LocalPlayerClipEntIndex
-        {
-            get => state.Get<int>("LocalPlayerClipEntIndex");
-            set => SetLocalPlayerClipEntIndex(state, value);
-        }
-        public TM2020 WithLocalPlayerClipEntIndex(int value)
-        {
-            LocalPlayerClipEntIndex = value;
-            return this;
-        }
-        public float StereoSepMax
-        {
-            get => state.Get<float>("StereoSepMax");
-            set => SetStereoSepMax(state, value);
-        }
-        public TM2020 WithStereoSepMax(float value)
-        {
-            StereoSepMax = value;
-            return this;
-        }
-        public bool StopWhenLeave
-        {
-            get => state.Get<bool>("StopWhenLeave");
-            set => SetStopWhenLeave(state, value);
-        }
-        public TM2020 WithStopWhenLeave(bool value)
-        {
-            StopWhenLeave = value;
-            return this;
-        }
-        public bool StopWhenRespawn
-        {
-            get => state.Get<bool>("StopWhenRespawn");
-            set => SetStopWhenRespawn(state, value);
-        }
-        public TM2020 WithStopWhenRespawn(bool value)
-        {
-            StopWhenRespawn = value;
-            return this;
-        }
         public TM2020 WithTracks(params global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020[] values)
         {
-            return base.WithTracks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaTrack node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTracks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020>(values, false));
         }
         public TM2020 WithTracks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackTM2020> values)
         {
@@ -666,17 +539,12 @@ public partial class CGameCtnMediaClipBuilder : CGameCtnMediaClipBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaClip Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaClip();
-            var chunk0307900D = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D(GameVersion.TM2020);
-            node.Chunks.Add(chunk0307900D);
-            var chunk0307900E = new global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900E(GameVersion.TM2020);
-            node.Chunks.Add(chunk0307900E);
+            var node = CGameCtnMediaClipBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900D>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0307900D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaClip.Chunk0307900E>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0307900E is missing or has an incompatible version.");
+            CGameCtnMediaClipBuilder.ValidateRecipe5(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.ConfigScript is null) throw new MemberNullException("ConfigScript");
+            CGameCtnMediaClipBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

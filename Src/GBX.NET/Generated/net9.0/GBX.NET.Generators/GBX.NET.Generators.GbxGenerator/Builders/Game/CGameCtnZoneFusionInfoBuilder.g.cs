@@ -36,9 +36,9 @@ public abstract class CGameCtnZoneFusionInfoBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state;
     private protected CGameCtnZoneFusionInfoBuilderBase() => state = new();
     private protected CGameCtnZoneFusionInfoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state) => this.state = state;
-    private protected static void SetCompatibleZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, string? value) => state.Set<string?>("CompatibleZoneId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CompatibleZoneId = value);
-    private protected static void SetFusionType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, int value) => state.Set<int>("FusionType", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FusionType = value);
-    private protected static void SetMergedZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, string? value) => state.Set<string?>("MergedZoneId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MergedZoneId = value);
+    private protected static void SetCompatibleZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetCompatibleZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFusionType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetFusionTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMergedZoneId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnZoneFusionInfoBuilderAssignments.GetMergedZoneIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string? CompatibleZoneId
     {
         get => state.Get<string?>("CompatibleZoneId");
@@ -72,6 +72,24 @@ public abstract class CGameCtnZoneFusionInfoBuilderBase<TSelf> where TSelf : CGa
 }
 public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuilderBase<CGameCtnZoneFusionInfoBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo();
+        var chunk03151000 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000();
+        node.Chunks.Add(chunk03151000);
+        var chunk03151001 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001();
+        chunk03151001.Version = 0;
+        node.Chunks.Add(chunk03151001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03151000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03151001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -84,17 +102,12 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo();
-            var chunk03151000 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000();
-            node.Chunks.Add(chunk03151000);
-            var chunk03151001 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001();
-            chunk03151001.Version = 0;
-            node.Chunks.Add(chunk03151001);
+            var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03151000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03151001 is missing or has an incompatible version.");
+            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -107,17 +120,12 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo();
-            var chunk03151000 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000();
-            node.Chunks.Add(chunk03151000);
-            var chunk03151001 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001();
-            chunk03151001.Version = 0;
-            node.Chunks.Add(chunk03151001);
+            var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03151000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03151001 is missing or has an incompatible version.");
+            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -130,17 +138,12 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo();
-            var chunk03151000 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000();
-            node.Chunks.Add(chunk03151000);
-            var chunk03151001 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001();
-            chunk03151001.Version = 0;
-            node.Chunks.Add(chunk03151001);
+            var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03151000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03151001 is missing or has an incompatible version.");
+            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -153,17 +156,12 @@ public partial class CGameCtnZoneFusionInfoBuilder : CGameCtnZoneFusionInfoBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnZoneFusionInfoTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo();
-            var chunk03151000 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000();
-            node.Chunks.Add(chunk03151000);
-            var chunk03151001 = new global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001();
-            chunk03151001.Version = 0;
-            node.Chunks.Add(chunk03151001);
+            var node = CGameCtnZoneFusionInfoBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03151000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnZoneFusionInfo.Chunk03151001>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03151001 is missing or has an incompatible version.");
+            CGameCtnZoneFusionInfoBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnZoneFusionInfoBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

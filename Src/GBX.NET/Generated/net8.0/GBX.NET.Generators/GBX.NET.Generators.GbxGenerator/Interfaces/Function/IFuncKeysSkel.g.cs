@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncKeysSkelMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncKeysSkel where T0 : class
+{
+    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
+    T0? Skel { get; set; }
+}
 public partial interface IFuncKeysSkel : IClassVersion<global::GBX.NET.Engines.Function.CFuncKeysSkel>, global::GBX.NET.Interfaces.Function.IFuncKeys
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,43 +46,30 @@ public partial interface IFuncKeysSkel : IClassVersion<global::GBX.NET.Engines.F
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new float[]? Xs { get; set; }
 }
 
-public partial interface IFuncKeysSkelTM10 : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTM10
+public partial interface IFuncKeysSkelTM10 : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTM10, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTM10>
 {
-    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTM10? Skel { get; set; }
 }
 
-public partial interface IFuncKeysSkelTMPU : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU
+public partial interface IFuncKeysSkelTMPU : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMPU>
 {
-    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMPU? Skel { get; set; }
 }
 
-public partial interface IFuncKeysSkelTMSX : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX
+public partial interface IFuncKeysSkelTMSX : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMSX>
 {
-    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMSX? Skel { get; set; }
 }
 
-public partial interface IFuncKeysSkelTMNESWC : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC
+public partial interface IFuncKeysSkelTMNESWC : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC>
 {
-    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? Skel { get; set; }
 }
 
-public partial interface IFuncKeysSkelVSK5 : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5
+public partial interface IFuncKeysSkelVSK5 : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelVSK5>
 {
-    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncSkelVSK5? Skel { get; set; }
 }
 
-public partial interface IFuncKeysSkelTMF : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMF
+public partial interface IFuncKeysSkelTMF : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysTMF, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMF>
 {
-    global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[][]? Locations { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMF? Skel { get; set; }
 }
 
 public partial interface IFuncKeysSkelMP3 : IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysMP3

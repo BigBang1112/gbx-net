@@ -36,10 +36,10 @@ public abstract class CPlugVFXFileBuilderBase<TSelf> where TSelf : CPlugVFXFileB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state;
     private protected CPlugVFXFileBuilderBase() => state = new();
     private protected CPlugVFXFileBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state) => this.state = state;
-    private protected static void SetClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, uint value) => state.Set<uint>("ClassId", value, GameVersion.TM2020, static value => value, static (node, value) => node.ClassId = value);
-    private protected static void SetMappings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]?>("Mappings", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[])value.Clone(), static (node, value) => node.Mappings = value);
-    private protected static void SetParameterVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, int value) => state.Set<int>("ParameterVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.ParameterVersion = value);
-    private protected static void SetParameters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]?>("Parameters", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[])value.Clone(), static (node, value) => node.Parameters = value);
+    private protected static void SetClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetClassIdAssignment(), value, GameVersion.TM2020);
+    private protected static void SetMappings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, global::GBX.NET.Engines.Plug.CPlugVFXFile.Mapping[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetMappingsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetParameterVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetParameterVersionAssignment(), value, GameVersion.TM2020);
+    private protected static void SetParameters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVFXFile> state, global::GBX.NET.Engines.Plug.CPlugVFXFile.Parameter[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVFXFileBuilderAssignments.GetParametersAssignment(), value, GameVersion.TM2020);
     public uint ClassId
     {
         get => state.Get<uint>("ClassId");
@@ -91,6 +91,20 @@ public abstract class CPlugVFXFileBuilderBase<TSelf> where TSelf : CPlugVFXFileB
 }
 public partial class CPlugVFXFileBuilder : CPlugVFXFileBuilderBase<CPlugVFXFileBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVFXFile CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVFXFile();
+        var chunk09153000 = new global::GBX.NET.Engines.Plug.CPlugVFXFile.Chunk09153000(game);
+        node.Chunks.Add(chunk09153000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVFXFile node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVFXFile.Chunk09153000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09153000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVFXFile node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugVFXFileBuilderBase<TM2020>
     {
@@ -98,13 +112,12 @@ public partial class CPlugVFXFileBuilder : CPlugVFXFileBuilderBase<CPlugVFXFileB
         public global::GBX.NET.Interfaces.Plug.IPlugVFXFileTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVFXFile Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVFXFile();
-            var chunk09153000 = new global::GBX.NET.Engines.Plug.CPlugVFXFile.Chunk09153000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09153000);
+            var node = CPlugVFXFileBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVFXFile.Chunk09153000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09153000 is missing or has an incompatible version.");
+            CPlugVFXFileBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVFXFileBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

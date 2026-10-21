@@ -31,6 +31,14 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameObjectModelMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.GameData.IGameObjectModel where T0 : class where T1 : class where T2 : class
+{
+    new T0? Phy { get; set; }
+    new T1? SlaveHealDome { get; set; }
+    new T1? SlaveShieldDome { get; set; }
+    new T2? Vis { get; set; }
+}
 public partial interface IGameObjectModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameObjectModel>
 {
     string? InventoryDescription { get; set; }
@@ -44,19 +52,11 @@ public partial interface IGameObjectModel : IClassVersion<global::GBX.NET.Engine
     global::GBX.NET.Interfaces.GameData.IGameObjectVisModel? Vis { get; set; }
 }
 
-public partial interface IGameObjectModelMP4 : IGameObjectModel
+public partial interface IGameObjectModelMP4 : IGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4? Phy { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? SlaveHealDome { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameObjectModelMP4? SlaveShieldDome { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameObjectVisModelMP4? Vis { get; set; }
 }
 
-public partial interface IGameObjectModelTM2020 : IGameObjectModel
+public partial interface IGameObjectModelTM2020 : IGameObjectModel, global::GBX.NET.Interfaces.GameData.IGameObjectModelMembers1<global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020, global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020? Phy { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? SlaveHealDome { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameObjectModelTM2020? SlaveShieldDome { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameObjectVisModelTM2020? Vis { get; set; }
 }
 

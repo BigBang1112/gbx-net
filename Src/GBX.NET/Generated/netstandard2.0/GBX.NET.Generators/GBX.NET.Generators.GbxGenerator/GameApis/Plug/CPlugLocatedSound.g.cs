@@ -39,7 +39,7 @@ public partial class CPlugLocatedSound : global::GBX.NET.Interfaces.Plug.IPlugLo
         get => Sound;
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMP3.Sound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.Sound
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugLocatedSound : global::GBX.NET.Interfaces.Plug.IPlugLo
         }
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTMT.Sound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sound
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugLocatedSound : global::GBX.NET.Interfaces.Plug.IPlugLo
         }
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMP4.Sound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sound
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugLocatedSound : global::GBX.NET.Interfaces.Plug.IPlugLo
         }
         set => Sound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTM2020.Sound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sound
     {
         get
         {

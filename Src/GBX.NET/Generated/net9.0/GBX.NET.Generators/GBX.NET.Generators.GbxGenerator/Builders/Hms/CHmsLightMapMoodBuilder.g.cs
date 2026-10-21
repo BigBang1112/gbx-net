@@ -36,12 +36,12 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLight
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state;
     private protected CHmsLightMapMoodBuilderBase() => state = new();
     private protected CHmsLightMapMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) => this.state = state;
-    private protected static void SetAmbientRange(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, Vec2 value) => state.Set<Vec2>("AmbientRange", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AmbientRange = value);
-    private protected static void SetBounceFactor(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set<float>("BounceFactor", value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BounceFactor = value);
-    private protected static void SetDirectionalScale(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set<float>("DirectionalScale", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DirectionalScale = value);
-    private protected static void SetMaxHDR(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set<float>("MaxHDR", value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MaxHDR = value);
-    private protected static void SetSkyFactor(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set<float>("SkyFactor", value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SkyFactor = value);
-    private protected static void SetSkyUseClouds(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, bool value) => state.Set<bool>("SkyUseClouds", value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SkyUseClouds = value);
+    private protected static void SetAmbientRange(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetAmbientRangeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBounceFactor(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetBounceFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDirectionalScale(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetDirectionalScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaxHDR(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetMaxHDRAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSkyFactor(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyFactorAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSkyUseClouds(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapMoodBuilderAssignments.GetSkyUseCloudsAssignment(), value, GameVersion.MP3 | GameVersion.TM2020 | GameVersion.TMT);
     public Vec2 AmbientRange
     {
         get => state.Get<Vec2>("AmbientRange");
@@ -63,8 +63,81 @@ public abstract class CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLight
         return (TSelf)this;
     }
 }
+public abstract class CHmsLightMapMoodBuilderMembers1<TSelf> : CHmsLightMapMoodBuilderBase<TSelf> where TSelf : CHmsLightMapMoodBuilderMembers1<TSelf>
+{
+    private protected CHmsLightMapMoodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
+    public float BounceFactor
+    {
+        get => state.Get<float>("BounceFactor");
+        set => SetBounceFactor(state, value);
+    }
+    public TSelf WithBounceFactor(float value)
+    {
+        BounceFactor = value;
+        return (TSelf)this;
+    }
+    public float MaxHDR
+    {
+        get => state.Get<float>("MaxHDR");
+        set => SetMaxHDR(state, value);
+    }
+    public TSelf WithMaxHDR(float value)
+    {
+        MaxHDR = value;
+        return (TSelf)this;
+    }
+    public float SkyFactor
+    {
+        get => state.Get<float>("SkyFactor");
+        set => SetSkyFactor(state, value);
+    }
+    public TSelf WithSkyFactor(float value)
+    {
+        SkyFactor = value;
+        return (TSelf)this;
+    }
+    public bool SkyUseClouds
+    {
+        get => state.Get<bool>("SkyUseClouds");
+        set => SetSkyUseClouds(state, value);
+    }
+    public TSelf WithSkyUseClouds(bool value)
+    {
+        SkyUseClouds = value;
+        return (TSelf)this;
+    }
+}
 public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsLightMapMoodBuilder>
 {
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapMood CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
+        var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
+        node.Chunks.Add(chunk06023000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsLightMapMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06023000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapMood CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
+        var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
+        node.Chunks.Add(chunk06023000);
+        var chunk06023004 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004();
+        chunk06023004.Version = 0;
+        node.Chunks.Add(chunk06023004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsLightMapMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06023000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk06023004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsLightMapMood node, GameVersion game)
+    {
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -79,13 +152,12 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
-            var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
-            node.Chunks.Add(chunk06023000);
+            var node = CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06023000 is missing or has an incompatible version.");
+            CHmsLightMapMoodBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -98,139 +170,48 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
-            var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
-            node.Chunks.Add(chunk06023000);
+            var node = CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06023000 is missing or has an incompatible version.");
+            CHmsLightMapMoodBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
-    public partial class MP3 : CHmsLightMapMoodBuilderBase<MP3>
+    public partial class MP3 : CHmsLightMapMoodBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
-        public float BounceFactor
-        {
-            get => state.Get<float>("BounceFactor");
-            set => SetBounceFactor(state, value);
-        }
-        public MP3 WithBounceFactor(float value)
-        {
-            BounceFactor = value;
-            return this;
-        }
-        public float MaxHDR
-        {
-            get => state.Get<float>("MaxHDR");
-            set => SetMaxHDR(state, value);
-        }
-        public MP3 WithMaxHDR(float value)
-        {
-            MaxHDR = value;
-            return this;
-        }
-        public float SkyFactor
-        {
-            get => state.Get<float>("SkyFactor");
-            set => SetSkyFactor(state, value);
-        }
-        public MP3 WithSkyFactor(float value)
-        {
-            SkyFactor = value;
-            return this;
-        }
-        public bool SkyUseClouds
-        {
-            get => state.Get<bool>("SkyUseClouds");
-            set => SetSkyUseClouds(state, value);
-        }
-        public MP3 WithSkyUseClouds(bool value)
-        {
-            SkyUseClouds = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
-            var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
-            node.Chunks.Add(chunk06023000);
-            var chunk06023004 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004();
-            chunk06023004.Version = 0;
-            node.Chunks.Add(chunk06023004);
+            var node = CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06023000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk06023004 is missing or has an incompatible version.");
+            CHmsLightMapMoodBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
-    public partial class TMT : CHmsLightMapMoodBuilderBase<TMT>
+    public partial class TMT : CHmsLightMapMoodBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
-        public float BounceFactor
-        {
-            get => state.Get<float>("BounceFactor");
-            set => SetBounceFactor(state, value);
-        }
-        public TMT WithBounceFactor(float value)
-        {
-            BounceFactor = value;
-            return this;
-        }
-        public float MaxHDR
-        {
-            get => state.Get<float>("MaxHDR");
-            set => SetMaxHDR(state, value);
-        }
-        public TMT WithMaxHDR(float value)
-        {
-            MaxHDR = value;
-            return this;
-        }
-        public float SkyFactor
-        {
-            get => state.Get<float>("SkyFactor");
-            set => SetSkyFactor(state, value);
-        }
-        public TMT WithSkyFactor(float value)
-        {
-            SkyFactor = value;
-            return this;
-        }
-        public bool SkyUseClouds
-        {
-            get => state.Get<bool>("SkyUseClouds");
-            set => SetSkyUseClouds(state, value);
-        }
-        public TMT WithSkyUseClouds(bool value)
-        {
-            SkyUseClouds = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
-            var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
-            node.Chunks.Add(chunk06023000);
-            var chunk06023004 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004();
-            chunk06023004.Version = 0;
-            node.Chunks.Add(chunk06023004);
+            var node = CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06023000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk06023004 is missing or has an incompatible version.");
+            CHmsLightMapMoodBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -243,76 +224,30 @@ public partial class CHmsLightMapMoodBuilder : CHmsLightMapMoodBuilderBase<CHmsL
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
-            var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
-            node.Chunks.Add(chunk06023000);
+            var node = CHmsLightMapMoodBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06023000 is missing or has an incompatible version.");
+            CHmsLightMapMoodBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapMood node);
     }
-    public partial class TM2020 : CHmsLightMapMoodBuilderBase<TM2020>
+    public partial class TM2020 : CHmsLightMapMoodBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapMood> state) : base(state) { }
-        public float BounceFactor
-        {
-            get => state.Get<float>("BounceFactor");
-            set => SetBounceFactor(state, value);
-        }
-        public TM2020 WithBounceFactor(float value)
-        {
-            BounceFactor = value;
-            return this;
-        }
-        public float MaxHDR
-        {
-            get => state.Get<float>("MaxHDR");
-            set => SetMaxHDR(state, value);
-        }
-        public TM2020 WithMaxHDR(float value)
-        {
-            MaxHDR = value;
-            return this;
-        }
-        public float SkyFactor
-        {
-            get => state.Get<float>("SkyFactor");
-            set => SetSkyFactor(state, value);
-        }
-        public TM2020 WithSkyFactor(float value)
-        {
-            SkyFactor = value;
-            return this;
-        }
-        public bool SkyUseClouds
-        {
-            get => state.Get<bool>("SkyUseClouds");
-            set => SetSkyUseClouds(state, value);
-        }
-        public TM2020 WithSkyUseClouds(bool value)
-        {
-            SkyUseClouds = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapMood Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapMood();
-            var chunk06023000 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000();
-            node.Chunks.Add(chunk06023000);
-            var chunk06023004 = new global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004();
-            chunk06023004.Version = 0;
-            node.Chunks.Add(chunk06023004);
+            var node = CHmsLightMapMoodBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06023000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapMood.Chunk06023004>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk06023004 is missing or has an incompatible version.");
+            CHmsLightMapMoodBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CHmsLightMapMoodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

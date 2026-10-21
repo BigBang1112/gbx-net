@@ -36,14 +36,14 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state;
     private protected CGameCtnDecorationSizeBuilderBase() => state = new();
     private protected CGameCtnDecorationSizeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) => this.state = state;
-    private protected static void SetBaseHeightBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, int value) => state.Set<int>("BaseHeightBase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BaseHeightBase = value);
-    private protected static void SetBaseHeightOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, int value) => state.Set<int>("BaseHeightOffset", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BaseHeightOffset = value);
-    private protected static void SetEditionZoneMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Vec2 value) => state.Set<Vec2>("EditionZoneMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EditionZoneMax = value);
-    private protected static void SetEditionZoneMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Vec2 value) => state.Set<Vec2>("EditionZoneMin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EditionZoneMin = value);
-    private protected static void SetOffsetBlockY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, bool value) => state.Set<bool>("OffsetBlockY", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OffsetBlockY = value);
-    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, global::GBX.NET.Engines.Scene.CSceneLayout? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneLayout?>("Scene", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Scene = value);
-    private protected static void SetSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneLayout> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneLayout>>("Scene", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneLayout>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Scene.CopyFrom(reference));
-    private protected static void SetSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Int3 value) => state.Set<Int3>("Size", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Size = value);
+    private protected static void SetBaseHeightBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBaseHeightOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetBaseHeightOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEditionZoneMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEditionZoneMin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetEditionZoneMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetOffsetBlockY(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetOffsetBlockYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, global::GBX.NET.Engines.Scene.CSceneLayout? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSceneReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneLayout> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSceneReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationSizeBuilderAssignments.GetSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public int BaseHeightBase
     {
         get => state.Get<int>("BaseHeightBase");
@@ -101,8 +101,67 @@ public abstract class CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGa
         return (TSelf)this;
     }
 }
+public abstract class CGameCtnDecorationSizeBuilderMembers1<TSelf> : CGameCtnDecorationSizeBuilderBase<TSelf> where TSelf : CGameCtnDecorationSizeBuilderMembers1<TSelf>
+{
+    private protected CGameCtnDecorationSizeBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
+    public int BaseHeightOffset
+    {
+        get => state.Get<int>("BaseHeightOffset");
+        set => SetBaseHeightOffset(state, value);
+    }
+    public TSelf WithBaseHeightOffset(int value)
+    {
+        BaseHeightOffset = value;
+        return (TSelf)this;
+    }
+    public bool OffsetBlockY
+    {
+        get => state.Get<bool>("OffsetBlockY");
+        set => SetOffsetBlockY(state, value);
+    }
+    public TSelf WithOffsetBlockY(bool value)
+    {
+        OffsetBlockY = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuilderBase<CGameCtnDecorationSizeBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationSize CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
+        var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
+        node.Chunks.Add(chunk0303B000);
+        var chunk0303B001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001();
+        node.Chunks.Add(chunk0303B001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303B001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationSize CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
+        var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
+        node.Chunks.Add(chunk0303B000);
+        var chunk0303B002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002();
+        node.Chunks.Add(chunk0303B002);
+        var chunk0303B003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003();
+        chunk0303B003.Version = 0;
+        node.Chunks.Add(chunk0303B003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303B003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -123,16 +182,12 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001();
-            node.Chunks.Add(chunk0303B001);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303B001 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -149,16 +204,12 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001();
-            node.Chunks.Add(chunk0303B001);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303B001 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -175,16 +226,12 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001();
-            node.Chunks.Add(chunk0303B001);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303B001 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -201,45 +248,21 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001();
-            node.Chunks.Add(chunk0303B001);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303B001 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
     }
-    public partial class MP3 : CGameCtnDecorationSizeBuilderBase<MP3>
+    public partial class MP3 : CGameCtnDecorationSizeBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
-        public int BaseHeightOffset
-        {
-            get => state.Get<int>("BaseHeightOffset");
-            set => SetBaseHeightOffset(state, value);
-        }
-        public MP3 WithBaseHeightOffset(int value)
-        {
-            BaseHeightOffset = value;
-            return this;
-        }
-        public bool OffsetBlockY
-        {
-            get => state.Get<bool>("OffsetBlockY");
-            set => SetOffsetBlockY(state, value);
-        }
-        public MP3 WithOffsetBlockY(bool value)
-        {
-            OffsetBlockY = value;
-            return this;
-        }
         public MP3 WithScene(global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3? value)
         {
             return base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CSceneLayout?)null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -247,49 +270,21 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002();
-            node.Chunks.Add(chunk0303B002);
-            var chunk0303B003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003();
-            chunk0303B003.Version = 0;
-            node.Chunks.Add(chunk0303B003);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0303B003 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
     }
-    public partial class TMT : CGameCtnDecorationSizeBuilderBase<TMT>
+    public partial class TMT : CGameCtnDecorationSizeBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
-        public int BaseHeightOffset
-        {
-            get => state.Get<int>("BaseHeightOffset");
-            set => SetBaseHeightOffset(state, value);
-        }
-        public TMT WithBaseHeightOffset(int value)
-        {
-            BaseHeightOffset = value;
-            return this;
-        }
-        public bool OffsetBlockY
-        {
-            get => state.Get<bool>("OffsetBlockY");
-            set => SetOffsetBlockY(state, value);
-        }
-        public TMT WithOffsetBlockY(bool value)
-        {
-            OffsetBlockY = value;
-            return this;
-        }
         public TMT WithScene(global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT? value)
         {
             return base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CSceneLayout?)null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -297,49 +292,21 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002();
-            node.Chunks.Add(chunk0303B002);
-            var chunk0303B003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003();
-            chunk0303B003.Version = 0;
-            node.Chunks.Add(chunk0303B003);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0303B003 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
     }
-    public partial class MP4 : CGameCtnDecorationSizeBuilderBase<MP4>
+    public partial class MP4 : CGameCtnDecorationSizeBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
-        public int BaseHeightOffset
-        {
-            get => state.Get<int>("BaseHeightOffset");
-            set => SetBaseHeightOffset(state, value);
-        }
-        public MP4 WithBaseHeightOffset(int value)
-        {
-            BaseHeightOffset = value;
-            return this;
-        }
-        public bool OffsetBlockY
-        {
-            get => state.Get<bool>("OffsetBlockY");
-            set => SetOffsetBlockY(state, value);
-        }
-        public MP4 WithOffsetBlockY(bool value)
-        {
-            OffsetBlockY = value;
-            return this;
-        }
         public MP4 WithScene(global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4? value)
         {
             return base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CSceneLayout?)null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -347,49 +314,21 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002();
-            node.Chunks.Add(chunk0303B002);
-            var chunk0303B003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003();
-            chunk0303B003.Version = 0;
-            node.Chunks.Add(chunk0303B003);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0303B003 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationSize node);
     }
-    public partial class TM2020 : CGameCtnDecorationSizeBuilderBase<TM2020>
+    public partial class TM2020 : CGameCtnDecorationSizeBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationSize> state) : base(state) { }
-        public int BaseHeightOffset
-        {
-            get => state.Get<int>("BaseHeightOffset");
-            set => SetBaseHeightOffset(state, value);
-        }
-        public TM2020 WithBaseHeightOffset(int value)
-        {
-            BaseHeightOffset = value;
-            return this;
-        }
-        public bool OffsetBlockY
-        {
-            get => state.Get<bool>("OffsetBlockY");
-            set => SetOffsetBlockY(state, value);
-        }
-        public TM2020 WithOffsetBlockY(bool value)
-        {
-            OffsetBlockY = value;
-            return this;
-        }
         public TM2020 WithScene(global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020? value)
         {
             return base.WithScene(value is null ? (global::GBX.NET.Engines.Scene.CSceneLayout?)null : value is global::GBX.NET.Engines.Scene.CSceneLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -397,20 +336,12 @@ public partial class CGameCtnDecorationSizeBuilder : CGameCtnDecorationSizeBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationSize Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize();
-            var chunk0303B000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000();
-            node.Chunks.Add(chunk0303B000);
-            var chunk0303B002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002();
-            node.Chunks.Add(chunk0303B002);
-            var chunk0303B003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003();
-            chunk0303B003.Version = 0;
-            node.Chunks.Add(chunk0303B003);
+            var node = CGameCtnDecorationSizeBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationSize.Chunk0303B003>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0303B003 is missing or has an incompatible version.");
+            CGameCtnDecorationSizeBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnDecorationSizeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

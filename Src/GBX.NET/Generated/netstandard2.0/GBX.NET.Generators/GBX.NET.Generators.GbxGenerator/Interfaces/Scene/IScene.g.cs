@@ -31,56 +31,55 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMembers1 : global::GBX.NET.Interfaces.Scene.IScene
+{
+    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMembers2 : global::GBX.NET.Interfaces.Scene.IScene
+{
+    global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMembers3<T0> : global::GBX.NET.Interfaces.Scene.IScene where T0 : class
+{
+    IReadOnlyList<T0>? MotionManagerModels { get; set; }
+}
 public partial interface IScene : IClassVersion<global::GBX.NET.Engines.Scene.CScene>
 {
 }
 
-public partial interface ISceneTM10 : IScene
+public partial interface ISceneTM10 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1
 {
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneTMPU : IScene
+public partial interface ISceneTMPU : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1
 {
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneTMSX : IScene
+public partial interface ISceneTMSX : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneTMNESWC : IScene
+public partial interface ISceneTMNESWC : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers2, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneVSK5 : IScene
+public partial interface ISceneVSK5 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneTMF : IScene
+public partial interface ISceneTMF : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneMP3 : IScene
+public partial interface ISceneMP3 : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneTMT : IScene
+public partial interface ISceneTMT : IScene, global::GBX.NET.Interfaces.Scene.ISceneMembers1, global::GBX.NET.Interfaces.Scene.ISceneMembers3<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
 public partial interface ISceneMP4 : IScene

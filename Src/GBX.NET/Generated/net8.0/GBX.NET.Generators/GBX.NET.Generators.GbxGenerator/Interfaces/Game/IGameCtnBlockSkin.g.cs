@@ -31,67 +31,60 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockSkinMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnBlockSkin
+{
+    string? SkinName { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockSkinMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnBlockSkin
+{
+    PackDesc? PackDesc { get; set; }
+    PackDesc? ParentPackDesc { get; set; }
+}
 public partial interface IGameCtnBlockSkin : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockSkin>
 {
     string? Text { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTM10 : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTM10 : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers1
 {
-    string? SkinName { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTMPU : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTMPU : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers1
 {
-    string? SkinName { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTMSX : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTMSX : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTMNESWC : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTMNESWC : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinVSK5 : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinVSK5 : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTMF : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTMF : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinMP3 : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinMP3 : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTMT : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTMT : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinMP4 : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinMP4 : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 
-public partial interface IGameCtnBlockSkinTM2020 : IGameCtnBlockSkin
+public partial interface IGameCtnBlockSkinTM2020 : IGameCtnBlockSkin, global::GBX.NET.Interfaces.Game.IGameCtnBlockSkinMembers2
 {
     PackDesc? ForegroundPackDesc { get; set; }
-    PackDesc? PackDesc { get; set; }
-    PackDesc? ParentPackDesc { get; set; }
 }
 

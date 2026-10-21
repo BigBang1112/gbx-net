@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSurfaceGeomMembers1 : global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeom
+{
+    BoxAligned BoundingBox { get; set; }
+}
 public partial interface IPlugSurfaceGeom : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom>
 {
 }
@@ -51,13 +56,11 @@ public partial interface IPlugSurfaceGeomTMNESWC : IPlugSurfaceGeom
 {
 }
 
-public partial interface IPlugSurfaceGeomVSK5 : IPlugSurfaceGeom
+public partial interface IPlugSurfaceGeomVSK5 : IPlugSurfaceGeom, global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomMembers1
 {
-    BoxAligned BoundingBox { get; set; }
 }
 
-public partial interface IPlugSurfaceGeomTMF : IPlugSurfaceGeom
+public partial interface IPlugSurfaceGeomTMF : IPlugSurfaceGeom, global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomMembers1
 {
-    BoxAligned BoundingBox { get; set; }
 }
 

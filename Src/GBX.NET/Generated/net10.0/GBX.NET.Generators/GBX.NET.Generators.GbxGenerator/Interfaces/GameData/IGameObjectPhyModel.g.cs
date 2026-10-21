@@ -31,6 +31,35 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameObjectPhyModelMembers1<T0> : global::GBX.NET.Interfaces.GameData.IGameObjectPhyModel where T0 : class
+{
+    new T0? HitShapeFid { get; set; }
+    new T0? MoveShapeFid { get; set; }
+    new T0? TriggerShapeFid { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameObjectPhyModelMembers2 : global::GBX.NET.Interfaces.GameData.IGameObjectPhyModel
+{
+    string? ActionModel { get; set; }
+    int Armor { get; set; }
+    bool CanStopEnemy { get; set; }
+    bool CanStopEnemyBullet { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugDynaModel? DynaModel { get; set; }
+    bool HasALifeTime { get; set; }
+    int HealArmorGainPerSecond { get; set; }
+    bool HealEnabled { get; set; }
+    int LifeTimeDuration { get; set; }
+    global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence? Persistence { get; set; }
+    float ScaleCoefMax { get; set; }
+    int ShieldDomeArmor { get; set; }
+    bool ShieldEnabled { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? SpecialProperties { get; set; }
+    float StaminaSpawnCoef { get; set; }
+    float ThrowAngularSpeed { get; set; }
+    float ThrowSpeed { get; set; }
+    int TimeBeforeDome { get; set; }
+}
 public partial interface IGameObjectPhyModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameObjectPhyModel>
 {
     global::GBX.NET.Engines.GameData.CGameActionModel?[]? Actions { get; set; }
@@ -46,74 +75,26 @@ public partial interface IGameObjectPhyModel : IClassVersion<global::GBX.NET.Eng
     global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? Triggers { get; set; }
 }
 
-public partial interface IGameObjectPhyModelMP3 : IGameObjectPhyModel
+public partial interface IGameObjectPhyModelMP3 : IGameObjectPhyModel, global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? HitShapeFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? MoveShapeFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? TriggerShapeFid { get; set; }
 }
 
-public partial interface IGameObjectPhyModelTMT : IGameObjectPhyModel
+public partial interface IGameObjectPhyModelTMT : IGameObjectPhyModel, global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? HitShapeFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? MoveShapeFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? TriggerShapeFid { get; set; }
 }
 
-public partial interface IGameObjectPhyModelMP4 : IGameObjectPhyModel
+public partial interface IGameObjectPhyModelMP4 : IGameObjectPhyModel, global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>, global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers2
 {
-    string? ActionModel { get; set; }
-    int Armor { get; set; }
-    bool CanStopEnemy { get; set; }
-    bool CanStopEnemyBullet { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugDynaModel? DynaModel { get; set; }
-    bool HasALifeTime { get; set; }
-    int HealArmorGainPerSecond { get; set; }
-    bool HealEnabled { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? HitShapeFid { get; set; }
-    int LifeTimeDuration { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? MoveShapeFid { get; set; }
-    global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence? Persistence { get; set; }
-    float ScaleCoefMax { get; set; }
-    int ShieldDomeArmor { get; set; }
-    bool ShieldEnabled { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SpecialProperties { get; set; }
-    float StaminaSpawnCoef { get; set; }
-    float ThrowAngularSpeed { get; set; }
-    float ThrowSpeed { get; set; }
-    int TimeBeforeDome { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? TriggerShapeFid { get; set; }
 }
 
-public partial interface IGameObjectPhyModelTM2020 : IGameObjectPhyModel
+public partial interface IGameObjectPhyModelTM2020 : IGameObjectPhyModel, global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>, global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers2
 {
-    string? ActionModel { get; set; }
-    int Armor { get; set; }
     bool BumperEnabled { get; set; }
-    bool CanStopEnemy { get; set; }
-    bool CanStopEnemyBullet { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugDynaModel? DynaModel { get; set; }
-    bool HasALifeTime { get; set; }
-    int HealArmorGainPerSecond { get; set; }
-    bool HealEnabled { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? HitShapeFid { get; set; }
-    int LifeTimeDuration { get; set; }
     bool MagnetEnabled { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? MoveShapeFid { get; set; }
-    global::GBX.NET.Engines.GameData.CGameObjectPhyModel.EPersistence? Persistence { get; set; }
-    float ScaleCoefMax { get; set; }
-    int ShieldDomeArmor { get; set; }
-    bool ShieldEnabled { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? SpecialProperties { get; set; }
-    float StaminaSpawnCoef { get; set; }
     float StaminaThrowCost { get; set; }
-    float ThrowAngularSpeed { get; set; }
-    float ThrowSpeed { get; set; }
     int ThrowableCooldownBetweenTakeAndThrow { get; set; }
     float ThrowableDamageCoef { get; set; }
     bool ThrowableEnabled { get; set; }
     int ThrowableStunnedDuration { get; set; }
-    int TimeBeforeDome { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? TriggerShapeFid { get; set; }
 }
 

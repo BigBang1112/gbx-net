@@ -19,10 +19,9 @@ internal sealed class NodeBuilderState<T> where T : class
         return default!;
     }
 
-    public void Set<TValue>(string name, TValue value, GameVersion games,
-        Func<TValue, TValue> copy, Action<T, TValue> assign)
+    public void Set<TValue>(NodeBuilderProperty<TValue> property, TValue value, GameVersion games)
     {
-        assignments.Add(new Assignment<TValue>(name, copy(value), games, copy, assign));
+        assignments.Add(new Assignment<TValue>(property, property.Copy(value), games));
     }
 
     public NodeBuilderState<T> Snapshot()
@@ -58,12 +57,12 @@ internal sealed class NodeBuilderState<T> where T : class
         public abstract void Apply(T node);
     }
 
-    private sealed class Assignment<TValue>(string name, TValue value, GameVersion games,
-        Func<TValue, TValue> copy, Action<T, TValue> assign) : Assignment(name, games)
+    private sealed class Assignment<TValue>(NodeBuilderProperty<TValue> property, TValue value, GameVersion games)
+        : Assignment(property.Name, games)
     {
         public TValue Value { get; } = value;
 
-        public override Assignment Snapshot() => new Assignment<TValue>(Name, copy(Value), Games, copy, assign);
-        public override void Apply(T node) => assign(node, copy(Value));
+        public override Assignment Snapshot() => new Assignment<TValue>(property, property.Copy(Value), Games);
+        public override void Apply(T node) => property.Assign(node, Value);
     }
 }

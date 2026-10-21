@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncEnumMembers1 : global::GBX.NET.Interfaces.Function.IFuncEnum
+{
+    Vec2 TexSize { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncEnumMembers2<T0> : global::GBX.NET.Interfaces.Function.IFuncEnum where T0 : class
+{
+    T0? IconIndexs { get; set; }
+}
 public partial interface IFuncEnum : IClassVersion<global::GBX.NET.Engines.Function.CFuncEnum>, global::GBX.NET.Interfaces.Function.IFunc
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -53,38 +63,27 @@ public partial interface IFuncEnumTMNESWC : IFuncEnum, global::GBX.NET.Interface
 {
 }
 
-public partial interface IFuncEnumVSK5 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncVSK5
+public partial interface IFuncEnumVSK5 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? IconIndexs { get; set; }
 }
 
-public partial interface IFuncEnumTMF : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMF
+public partial interface IFuncEnumTMF : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? IconIndexs { get; set; }
-    Vec2 TexSize { get; set; }
 }
 
-public partial interface IFuncEnumMP3 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP3
+public partial interface IFuncEnumMP3 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? IconIndexs { get; set; }
-    Vec2 TexSize { get; set; }
 }
 
-public partial interface IFuncEnumTMT : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMT
+public partial interface IFuncEnumTMT : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? IconIndexs { get; set; }
-    Vec2 TexSize { get; set; }
 }
 
-public partial interface IFuncEnumMP4 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP4
+public partial interface IFuncEnumMP4 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? IconIndexs { get; set; }
-    Vec2 TexSize { get; set; }
 }
 
-public partial interface IFuncEnumTM2020 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTM2020
+public partial interface IFuncEnumTM2020 : IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumMembers1, global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>
 {
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? IconIndexs { get; set; }
-    Vec2 TexSize { get; set; }
 }
 

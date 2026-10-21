@@ -36,9 +36,9 @@ public abstract class CMwCmdAffectParamVec3BuilderBase<TSelf> where TSelf : CMwC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state;
     private protected CMwCmdAffectParamVec3BuilderBase() => state = new();
     private protected CMwCmdAffectParamVec3BuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state) => this.state = state;
-    private protected static void SetParameter(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter", value, GameVersion.TMF, static value => value, static (node, value) => node.Parameter = value);
-    private protected static void SetValue(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value", value, GameVersion.TMF, static value => value, static (node, value) => node.Value = value);
-    private protected static void SetValueReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Value", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Value.CopyFrom(reference));
+    private protected static void SetParameter(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
+    private protected static void SetValue(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetValueAssignment(), value, GameVersion.TMF);
+    private protected static void SetValueReference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdAffectParamBuilderAssignments.GetValueReferenceAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
@@ -68,6 +68,20 @@ public abstract class CMwCmdAffectParamVec3BuilderBase<TSelf> where TSelf : CMwC
 }
 public partial class CMwCmdAffectParamVec3Builder : CMwCmdAffectParamVec3BuilderBase<CMwCmdAffectParamVec3Builder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3 CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3();
+        var chunk01033001 = new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParam.Chunk01033001();
+        node.Chunks.Add(chunk01033001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParam.Chunk01033001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01033001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3 node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdAffectParamVec3BuilderBase<TMF>
     {
@@ -75,13 +89,12 @@ public partial class CMwCmdAffectParamVec3Builder : CMwCmdAffectParamVec3Builder
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectParamVec3TMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3 Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParamVec3();
-            var chunk01033001 = new global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParam.Chunk01033001();
-            node.Chunks.Add(chunk01033001);
+            var node = CMwCmdAffectParamVec3Builder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdAffectParam.Chunk01033001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01033001 is missing or has an incompatible version.");
+            CMwCmdAffectParamVec3Builder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdAffectParamVec3Builder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

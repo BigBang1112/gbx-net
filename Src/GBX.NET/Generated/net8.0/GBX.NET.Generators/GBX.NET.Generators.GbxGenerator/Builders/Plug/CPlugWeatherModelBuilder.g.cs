@@ -36,15 +36,15 @@ public abstract class CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWea
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state;
     private protected CPlugWeatherModelBuilderBase() => state = new();
     private protected CPlugWeatherModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) => this.state = state;
-    private protected static void SetBitmapSpecularDir(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSpecularDir", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BitmapSpecularDir = value);
-    private protected static void SetBitmapSpecularDirReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapSpecularDir", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapSpecularDir.CopyFrom(reference));
-    private protected static void SetBitmapWaterFog(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BitmapWaterFog = value);
-    private protected static void SetBitmapWaterFogReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapWaterFog", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapWaterFog.CopyFrom(reference));
-    private protected static void SetFuncDayTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Function.CFuncDayTime? value) => state.Set<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FuncDayTime = value);
-    private protected static void SetFuncDayTimeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime>>("FuncDayTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FuncDayTime.CopyFrom(reference));
-    private protected static void SetMoodSetting(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Plug.CPlugMoodSetting? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MoodSetting = value);
-    private protected static void SetMoodSettingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting>>("MoodSetting", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MoodSetting.CopyFrom(reference));
-    private protected static void SetWeathers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>?>("Weathers", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Weathers = value);
+    private protected static void SetBitmapSpecularDir(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapSpecularDirAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapSpecularDirReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapSpecularDirReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapWaterFog(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapWaterFogAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBitmapWaterFogReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetBitmapWaterFogReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFuncDayTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Function.CFuncDayTime? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetFuncDayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFuncDayTimeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetFuncDayTimeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMoodSetting(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, global::GBX.NET.Engines.Plug.CPlugMoodSetting? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetMoodSettingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMoodSettingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetMoodSettingReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetWeathers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugWeather>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugWeatherModelBuilderAssignments.GetWeathersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapSpecularDir
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSpecularDir");
@@ -80,8 +80,94 @@ public abstract class CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWea
         return WithWeathers(values.ToArray());
     }
 }
+public abstract class CPlugWeatherModelBuilderMembers1<TSelf> : CPlugWeatherModelBuilderBase<TSelf> where TSelf : CPlugWeatherModelBuilderMembers1<TSelf>
+{
+    private protected CPlugWeatherModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapWaterFog
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog");
+        set => SetBitmapWaterFog(state, value);
+    }
+    public TSelf WithBitmapWaterFog(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
+    {
+        BitmapWaterFog = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBitmapWaterFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetBitmapWaterFogReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime");
+        set => SetFuncDayTime(state, value);
+    }
+    public TSelf WithFuncDayTime(global::GBX.NET.Engines.Function.CFuncDayTime? value)
+    {
+        FuncDayTime = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFuncDayTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFuncDayTimeReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting");
+        set => SetMoodSetting(state, value);
+    }
+    public TSelf WithMoodSetting(global::GBX.NET.Engines.Plug.CPlugMoodSetting? value)
+    {
+        MoodSetting = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMoodSettingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetMoodSettingReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPlugWeatherModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugWeatherModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
+        var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
+        node.Chunks.Add(chunk090BF001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugWeatherModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugWeatherModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
+        var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
+        node.Chunks.Add(chunk090BF001);
+        var chunk090BF002 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002();
+        node.Chunks.Add(chunk090BF002);
+        var chunk090BF003 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003();
+        node.Chunks.Add(chunk090BF003);
+        var chunk090BF004 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004();
+        node.Chunks.Add(chunk090BF004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugWeatherModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090BF004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugWeatherModel node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -101,7 +187,7 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         }
         public TMSX WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>(values, false));
         }
         public TMSX WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX> values)
         {
@@ -110,13 +196,12 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
+            var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk090BF001 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -132,7 +217,7 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         }
         public TMNESWC WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>(values, false));
         }
         public TMNESWC WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC> values)
         {
@@ -141,13 +226,12 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
+            var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk090BF001 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -163,7 +247,7 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         }
         public VSK5 WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>(values, false));
         }
         public VSK5 WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5> values)
         {
@@ -172,13 +256,12 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
+            var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090BF001 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -194,7 +277,7 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         }
         public TMF WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>(values, false));
         }
         public TMF WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF> values)
         {
@@ -203,81 +286,32 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
+            var node = CPlugWeatherModelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090BF001 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
-    public partial class MP3 : CPlugWeatherModelBuilderBase<MP3>
+    public partial class MP3 : CPlugWeatherModelBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) : base(state) { }
         public MP3 WithBitmapSpecularDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value)
         {
             return base.WithBitmapSpecularDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapWaterFog
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog");
-            set => SetBitmapWaterFog(state, value);
-        }
-        public MP3 WithBitmapWaterFog(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapWaterFog = value;
-            return this;
-        }
-        public MP3 WithBitmapWaterFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapWaterFogReference(state, value);
-            return this;
-        }
         public MP3 WithBitmapWaterFog(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value)
         {
-            return WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime");
-            set => SetFuncDayTime(state, value);
-        }
-        public MP3 WithFuncDayTime(global::GBX.NET.Engines.Function.CFuncDayTime? value)
-        {
-            FuncDayTime = value;
-            return this;
-        }
-        public MP3 WithFuncDayTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncDayTimeReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting");
-            set => SetMoodSetting(state, value);
-        }
-        public MP3 WithMoodSetting(global::GBX.NET.Engines.Plug.CPlugMoodSetting? value)
-        {
-            MoodSetting = value;
-            return this;
-        }
-        public MP3 WithMoodSettingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMoodSettingReference(state, value);
-            return this;
+            return base.WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>(values, false));
         }
         public MP3 WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3> values)
         {
@@ -286,90 +320,32 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
-            var chunk090BF002 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002();
-            node.Chunks.Add(chunk090BF002);
-            var chunk090BF003 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003();
-            node.Chunks.Add(chunk090BF003);
-            var chunk090BF004 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004();
-            node.Chunks.Add(chunk090BF004);
+            var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090BF001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090BF002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090BF003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090BF004 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
-    public partial class TMT : CPlugWeatherModelBuilderBase<TMT>
+    public partial class TMT : CPlugWeatherModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) : base(state) { }
         public TMT WithBitmapSpecularDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value)
         {
             return base.WithBitmapSpecularDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapWaterFog
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog");
-            set => SetBitmapWaterFog(state, value);
-        }
-        public TMT WithBitmapWaterFog(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapWaterFog = value;
-            return this;
-        }
-        public TMT WithBitmapWaterFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapWaterFogReference(state, value);
-            return this;
-        }
         public TMT WithBitmapWaterFog(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value)
         {
-            return WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime");
-            set => SetFuncDayTime(state, value);
-        }
-        public TMT WithFuncDayTime(global::GBX.NET.Engines.Function.CFuncDayTime? value)
-        {
-            FuncDayTime = value;
-            return this;
-        }
-        public TMT WithFuncDayTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncDayTimeReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting");
-            set => SetMoodSetting(state, value);
-        }
-        public TMT WithMoodSetting(global::GBX.NET.Engines.Plug.CPlugMoodSetting? value)
-        {
-            MoodSetting = value;
-            return this;
-        }
-        public TMT WithMoodSettingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMoodSettingReference(state, value);
-            return this;
+            return base.WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>(values, false));
         }
         public TMT WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT> values)
         {
@@ -378,90 +354,32 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
-            var chunk090BF002 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002();
-            node.Chunks.Add(chunk090BF002);
-            var chunk090BF003 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003();
-            node.Chunks.Add(chunk090BF003);
-            var chunk090BF004 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004();
-            node.Chunks.Add(chunk090BF004);
+            var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090BF001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090BF002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090BF003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090BF004 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
-    public partial class MP4 : CPlugWeatherModelBuilderBase<MP4>
+    public partial class MP4 : CPlugWeatherModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) : base(state) { }
         public MP4 WithBitmapSpecularDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
         {
             return base.WithBitmapSpecularDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapWaterFog
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog");
-            set => SetBitmapWaterFog(state, value);
-        }
-        public MP4 WithBitmapWaterFog(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapWaterFog = value;
-            return this;
-        }
-        public MP4 WithBitmapWaterFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapWaterFogReference(state, value);
-            return this;
-        }
         public MP4 WithBitmapWaterFog(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
         {
-            return WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime");
-            set => SetFuncDayTime(state, value);
-        }
-        public MP4 WithFuncDayTime(global::GBX.NET.Engines.Function.CFuncDayTime? value)
-        {
-            FuncDayTime = value;
-            return this;
-        }
-        public MP4 WithFuncDayTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncDayTimeReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting");
-            set => SetMoodSetting(state, value);
-        }
-        public MP4 WithMoodSetting(global::GBX.NET.Engines.Plug.CPlugMoodSetting? value)
-        {
-            MoodSetting = value;
-            return this;
-        }
-        public MP4 WithMoodSettingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMoodSettingReference(state, value);
-            return this;
+            return base.WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>(values, false));
         }
         public MP4 WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4> values)
         {
@@ -470,90 +388,32 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
-            var chunk090BF002 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002();
-            node.Chunks.Add(chunk090BF002);
-            var chunk090BF003 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003();
-            node.Chunks.Add(chunk090BF003);
-            var chunk090BF004 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004();
-            node.Chunks.Add(chunk090BF004);
+            var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090BF001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090BF002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090BF003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090BF004 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugWeatherModel node);
     }
-    public partial class TM2020 : CPlugWeatherModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugWeatherModelBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugWeatherModel> state) : base(state) { }
         public TM2020 WithBitmapSpecularDir(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)
         {
             return base.WithBitmapSpecularDir(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapWaterFog
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapWaterFog");
-            set => SetBitmapWaterFog(state, value);
-        }
-        public TM2020 WithBitmapWaterFog(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapWaterFog = value;
-            return this;
-        }
-        public TM2020 WithBitmapWaterFogReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapWaterFogReference(state, value);
-            return this;
-        }
         public TM2020 WithBitmapWaterFog(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)
         {
-            return WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncDayTime?>("FuncDayTime");
-            set => SetFuncDayTime(state, value);
-        }
-        public TM2020 WithFuncDayTime(global::GBX.NET.Engines.Function.CFuncDayTime? value)
-        {
-            FuncDayTime = value;
-            return this;
-        }
-        public TM2020 WithFuncDayTimeReference(NodeRef<global::GBX.NET.Engines.Function.CFuncDayTime> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncDayTimeReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodSetting?>("MoodSetting");
-            set => SetMoodSetting(state, value);
-        }
-        public TM2020 WithMoodSetting(global::GBX.NET.Engines.Plug.CPlugMoodSetting? value)
-        {
-            MoodSetting = value;
-            return this;
-        }
-        public TM2020 WithMoodSettingReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodSetting> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMoodSettingReference(state, value);
-            return this;
+            return base.WithBitmapWaterFog(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithWeathers(params global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020[] values)
         {
-            return base.WithWeathers(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugWeather node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithWeathers(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugWeather, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>(values, false));
         }
         public TM2020 WithWeathers(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020> values)
         {
@@ -562,22 +422,12 @@ public partial class CPlugWeatherModelBuilder : CPlugWeatherModelBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugWeatherModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugWeatherModel();
-            var chunk090BF001 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001();
-            node.Chunks.Add(chunk090BF001);
-            var chunk090BF002 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002();
-            node.Chunks.Add(chunk090BF002);
-            var chunk090BF003 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003();
-            node.Chunks.Add(chunk090BF003);
-            var chunk090BF004 = new global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004();
-            node.Chunks.Add(chunk090BF004);
+            var node = CPlugWeatherModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090BF001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090BF002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090BF003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugWeatherModel.Chunk090BF004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090BF004 is missing or has an incompatible version.");
+            CPlugWeatherModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugWeatherModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

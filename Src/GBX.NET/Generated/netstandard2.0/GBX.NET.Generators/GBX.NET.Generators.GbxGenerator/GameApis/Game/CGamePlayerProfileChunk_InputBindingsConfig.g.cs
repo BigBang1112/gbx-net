@@ -39,7 +39,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : global::GBX.N
         get => Config;
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMP3.Config
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP3? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP3>.Config
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : global::GBX.N
         }
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigTMT.Config
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT>.Config
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : global::GBX.N
         }
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMP4.Config
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4>.Config
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfig : global::GBX.N
         }
         set => Config = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigTM2020.Config
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020? global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>.Config
     {
         get
         {

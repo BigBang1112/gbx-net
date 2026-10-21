@@ -40,50 +40,40 @@ public partial interface ISceneToy : IClassVersion<global::GBX.NET.Engines.Scene
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneToyTM10 : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneToyTMPU : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneToyTMSX : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneToyTMNESWC : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneToyVSK5 : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneToyTMF : ISceneToy, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
 }

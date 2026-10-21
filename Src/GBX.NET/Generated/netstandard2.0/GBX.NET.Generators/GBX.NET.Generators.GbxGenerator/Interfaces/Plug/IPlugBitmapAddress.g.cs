@@ -31,6 +31,29 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapAddressMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress
+{
+    bool AreUVProjected { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugBitmap.EGxUVGenerate GenerateUV { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapAddressMembers2 : global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress
+{
+    global::GBX.NET.Engines.Plug.CPlugBitmapAddress.SMapFxDescOld[]? MapFxDescs { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapAddressMembers3 : global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress
+{
+    float BumpEnvScale { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapAddressMembers4 : global::GBX.NET.Interfaces.Plug.IPlugBitmapAddress
+{
+    uint AddressFlags { get; set; }
+    bool DirectTransfo { get; set; }
+    bool UseBitmapTcScale { get; set; }
+}
 public partial interface IPlugBitmapAddress : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>, global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -45,121 +68,43 @@ public partial interface IPlugBitmapAddress : IClassVersion<global::GBX.NET.Engi
     Mat4? UVTransfoMat4 { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTM10 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM10
+public partial interface IPlugBitmapAddressTM10 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers2
 {
-    bool AreUVProjected { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? Bitmap { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmap.EGxUVGenerate GenerateUV { get; set; }
-    new uint LegacyFlags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAddress.SMapFxDescOld[]? MapFxDescs { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTMPU : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMPU
+public partial interface IPlugBitmapAddressTMPU : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers2
 {
-    bool AreUVProjected { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? Bitmap { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmap.EGxUVGenerate GenerateUV { get; set; }
-    new uint LegacyFlags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAddress.SMapFxDescOld[]? MapFxDescs { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTMSX : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX
+public partial interface IPlugBitmapAddressTMSX : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers2, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? Bitmap { get; set; }
-    float BumpEnvScale { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint LegacyFlags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAddress.SMapFxDescOld[]? MapFxDescs { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTMNESWC : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC
+public partial interface IPlugBitmapAddressTMNESWC : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers2, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? Bitmap { get; set; }
-    float BumpEnvScale { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint LegacyFlags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugBitmapAddress.SMapFxDescOld[]? MapFxDescs { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressVSK5 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5
+public partial interface IPlugBitmapAddressVSK5 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? Bitmap { get; set; }
-    float BumpEnvScale { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint LegacyFlags { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTMF : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF
+public partial interface IPlugBitmapAddressTMF : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? Bitmap { get; set; }
-    new uint BorderColor { get; set; }
-    float BumpEnvScale { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint LegacyFlags { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressMP3 : IPlugBitmapAddress
+public partial interface IPlugBitmapAddressMP3 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    float BumpEnvScale { get; set; }
-    bool DirectTransfo { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTMT : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT
+public partial interface IPlugBitmapAddressTMT : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Bitmap { get; set; }
-    new uint BorderColor { get; set; }
-    float BumpEnvScale { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint Flags { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressMP4 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4
+public partial interface IPlugBitmapAddressMP4 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Bitmap { get; set; }
-    new uint BorderColor { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint Flags { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 
-public partial interface IPlugBitmapAddressTM2020 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM2020
+public partial interface IPlugBitmapAddressTM2020 : IPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMembers4
 {
-    uint AddressFlags { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Bitmap { get; set; }
-    new uint BorderColor { get; set; }
-    bool DirectTransfo { get; set; }
-    new uint Flags { get; set; }
-    new float MipMapLodBias { get; set; }
-    new string? Name { get; set; }
-    bool UseBitmapTcScale { get; set; }
 }
 

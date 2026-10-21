@@ -36,31 +36,31 @@ public abstract class CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state;
     private protected CSceneMobilLeavesBuilderBase() => state = new();
     private protected CSceneMobilLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) => this.state = state;
-    private protected static void SetCurvature(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("Curvature", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Curvature = value);
-    private protected static void SetFarZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("FarZ", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FarZ = value);
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsItem?>("Item", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Item = value);
-    private protected static void SetLeafAlphaSpeedMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafAlphaSpeedMax", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafAlphaSpeedMax = value);
-    private protected static void SetLeafBetaSpeedlMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafBetaSpeedlMax", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafBetaSpeedlMax = value);
-    private protected static void SetLeafEmitterMaxCount(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, int value) => state.Set<int>("LeafEmitterMaxCount", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafEmitterMaxCount = value);
-    private protected static void SetLeafFallingSpeedBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafFallingSpeedBase", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafFallingSpeedBase = value);
-    private protected static void SetLeafFallingSpeedRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafFallingSpeedRandom", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafFallingSpeedRandom = value);
-    private protected static void SetLeafMaxCount(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, int value) => state.Set<int>("LeafMaxCount", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafMaxCount = value);
-    private protected static void SetLeafOscillationAmplitudeBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafOscillationAmplitudeBase", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafOscillationAmplitudeBase = value);
-    private protected static void SetLeafOscillationAmplitudeRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafOscillationAmplitudeRandom", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafOscillationAmplitudeRandom = value);
-    private protected static void SetLeafOscillationPeriodBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafOscillationPeriodBase", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafOscillationPeriodBase = value);
-    private protected static void SetLeafOscillationPeriodRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafOscillationPeriodRandom", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafOscillationPeriodRandom = value);
-    private protected static void SetLeafRadiusBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafRadiusBase", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafRadiusBase = value);
-    private protected static void SetLeafRadiusRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("LeafRadiusRandom", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafRadiusRandom = value);
-    private protected static void SetLeafShader(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LeafShader = value);
-    private protected static void SetLeafShaderReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>("LeafShader", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LeafShader.CopyFrom(reference));
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MessageHandler = value);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler>>("MessageHandler", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MessageHandler.CopyFrom(reference));
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set<global::GBX.NET.Engines.Motion.CMotion?>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Motion = value);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotion>>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotion>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Motion.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.ObjectLink = value);
-    private protected static void SetRespawnPeriod(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set<float>("RespawnPeriod", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RespawnPeriod = value);
-    private protected static void SetWind(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, Vec3 value) => state.Set<Vec3>("Wind", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Wind = value);
+    private protected static void SetCurvature(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetCurvatureAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFarZ(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetFarZAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafAlphaSpeedMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafAlphaSpeedMaxAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafBetaSpeedlMax(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafBetaSpeedlMaxAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafEmitterMaxCount(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafEmitterMaxCountAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafFallingSpeedBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafFallingSpeedBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafFallingSpeedRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafFallingSpeedRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafMaxCount(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafMaxCountAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafOscillationAmplitudeBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationAmplitudeBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafOscillationAmplitudeRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationAmplitudeRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafOscillationPeriodBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationPeriodBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafOscillationPeriodRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafOscillationPeriodRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafRadiusBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafRadiusBaseAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafRadiusRandom(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafRadiusRandomAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafShader(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafShaderAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLeafShaderReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetLeafShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRespawnPeriod(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetRespawnPeriodAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetWind(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilLeavesBuilderAssignments.GetWindAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Hms.CHmsItem? Item
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsItem?>("Item");
@@ -116,8 +116,312 @@ public abstract class CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMo
         return WithObjectLink(values.ToArray());
     }
 }
+public abstract class CSceneMobilLeavesBuilderMembers1<TSelf> : CSceneMobilLeavesBuilderBase<TSelf> where TSelf : CSceneMobilLeavesBuilderMembers1<TSelf>
+{
+    private protected CSceneMobilLeavesBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
+    public float Curvature
+    {
+        get => state.Get<float>("Curvature");
+        set => SetCurvature(state, value);
+    }
+    public TSelf WithCurvature(float value)
+    {
+        Curvature = value;
+        return (TSelf)this;
+    }
+    public float FarZ
+    {
+        get => state.Get<float>("FarZ");
+        set => SetFarZ(state, value);
+    }
+    public TSelf WithFarZ(float value)
+    {
+        FarZ = value;
+        return (TSelf)this;
+    }
+    public float LeafAlphaSpeedMax
+    {
+        get => state.Get<float>("LeafAlphaSpeedMax");
+        set => SetLeafAlphaSpeedMax(state, value);
+    }
+    public TSelf WithLeafAlphaSpeedMax(float value)
+    {
+        LeafAlphaSpeedMax = value;
+        return (TSelf)this;
+    }
+    public float LeafBetaSpeedlMax
+    {
+        get => state.Get<float>("LeafBetaSpeedlMax");
+        set => SetLeafBetaSpeedlMax(state, value);
+    }
+    public TSelf WithLeafBetaSpeedlMax(float value)
+    {
+        LeafBetaSpeedlMax = value;
+        return (TSelf)this;
+    }
+    public int LeafEmitterMaxCount
+    {
+        get => state.Get<int>("LeafEmitterMaxCount");
+        set => SetLeafEmitterMaxCount(state, value);
+    }
+    public TSelf WithLeafEmitterMaxCount(int value)
+    {
+        LeafEmitterMaxCount = value;
+        return (TSelf)this;
+    }
+    public float LeafFallingSpeedBase
+    {
+        get => state.Get<float>("LeafFallingSpeedBase");
+        set => SetLeafFallingSpeedBase(state, value);
+    }
+    public TSelf WithLeafFallingSpeedBase(float value)
+    {
+        LeafFallingSpeedBase = value;
+        return (TSelf)this;
+    }
+    public float LeafFallingSpeedRandom
+    {
+        get => state.Get<float>("LeafFallingSpeedRandom");
+        set => SetLeafFallingSpeedRandom(state, value);
+    }
+    public TSelf WithLeafFallingSpeedRandom(float value)
+    {
+        LeafFallingSpeedRandom = value;
+        return (TSelf)this;
+    }
+    public int LeafMaxCount
+    {
+        get => state.Get<int>("LeafMaxCount");
+        set => SetLeafMaxCount(state, value);
+    }
+    public TSelf WithLeafMaxCount(int value)
+    {
+        LeafMaxCount = value;
+        return (TSelf)this;
+    }
+    public float LeafOscillationAmplitudeBase
+    {
+        get => state.Get<float>("LeafOscillationAmplitudeBase");
+        set => SetLeafOscillationAmplitudeBase(state, value);
+    }
+    public TSelf WithLeafOscillationAmplitudeBase(float value)
+    {
+        LeafOscillationAmplitudeBase = value;
+        return (TSelf)this;
+    }
+    public float LeafOscillationAmplitudeRandom
+    {
+        get => state.Get<float>("LeafOscillationAmplitudeRandom");
+        set => SetLeafOscillationAmplitudeRandom(state, value);
+    }
+    public TSelf WithLeafOscillationAmplitudeRandom(float value)
+    {
+        LeafOscillationAmplitudeRandom = value;
+        return (TSelf)this;
+    }
+    public float LeafOscillationPeriodBase
+    {
+        get => state.Get<float>("LeafOscillationPeriodBase");
+        set => SetLeafOscillationPeriodBase(state, value);
+    }
+    public TSelf WithLeafOscillationPeriodBase(float value)
+    {
+        LeafOscillationPeriodBase = value;
+        return (TSelf)this;
+    }
+    public float LeafOscillationPeriodRandom
+    {
+        get => state.Get<float>("LeafOscillationPeriodRandom");
+        set => SetLeafOscillationPeriodRandom(state, value);
+    }
+    public TSelf WithLeafOscillationPeriodRandom(float value)
+    {
+        LeafOscillationPeriodRandom = value;
+        return (TSelf)this;
+    }
+    public float LeafRadiusBase
+    {
+        get => state.Get<float>("LeafRadiusBase");
+        set => SetLeafRadiusBase(state, value);
+    }
+    public TSelf WithLeafRadiusBase(float value)
+    {
+        LeafRadiusBase = value;
+        return (TSelf)this;
+    }
+    public float LeafRadiusRandom
+    {
+        get => state.Get<float>("LeafRadiusRandom");
+        set => SetLeafRadiusRandom(state, value);
+    }
+    public TSelf WithLeafRadiusRandom(float value)
+    {
+        LeafRadiusRandom = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
+        set => SetLeafShader(state, value);
+    }
+    public TSelf WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
+    {
+        LeafShader = value;
+        return (TSelf)this;
+    }
+    public TSelf WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetLeafShaderReference(state, value);
+        return (TSelf)this;
+    }
+    public float RespawnPeriod
+    {
+        get => state.Get<float>("RespawnPeriod");
+        set => SetRespawnPeriod(state, value);
+    }
+    public TSelf WithRespawnPeriod(float value)
+    {
+        RespawnPeriod = value;
+        return (TSelf)this;
+    }
+    public Vec3 Wind
+    {
+        get => state.Get<Vec3>("Wind");
+        set => SetWind(state, value);
+    }
+    public TSelf WithWind(Vec3 value)
+    {
+        Wind = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CSceneMobilLeavesBuilderMembers2<TSelf> : CSceneMobilLeavesBuilderMembers1<TSelf> where TSelf : CSceneMobilLeavesBuilderMembers2<TSelf>
+{
+    private protected CSceneMobilLeavesBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
+    public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
+    {
+        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
+        set => SetMessageHandler(state, value);
+    }
+    public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
+    {
+        MessageHandler = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetMessageHandlerReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSceneMobilLeavesBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneMobilLeaves CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
+        var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
+        node.Chunks.Add(chunk0A05E003);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
+        node.Chunks.Add(chunk0A011004);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
+        node.Chunks.Add(chunk0A011006);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
+        node.Chunks.Add(chunk0A005004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A05E003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneMobilLeaves CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
+        var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
+        node.Chunks.Add(chunk0A05E003);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
+        node.Chunks.Add(chunk0A011006);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A05E003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneMobilLeaves CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
+        var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
+        node.Chunks.Add(chunk0A05E003);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A05E003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneMobilLeaves CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -130,188 +434,16 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CSceneMobilLeavesBuilderBase<TM10>
+    public partial class TM10 : CSceneMobilLeavesBuilderMembers2<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public TM10 WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public TM10 WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public TM10 WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public TM10 WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public TM10 WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public TM10 WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public TM10 WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public TM10 WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public TM10 WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public TM10 WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public TM10 WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public TM10 WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public TM10 WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public TM10 WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public TM10 WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public TM10 WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public TM10 WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TM10 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TM10 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value)
         {
@@ -319,251 +451,37 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public TM10 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(values, false));
         }
         public TM10 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public TM10 WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public TM10 WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class TMPU : CSceneMobilLeavesBuilderBase<TMPU>
+    public partial class TMPU : CSceneMobilLeavesBuilderMembers2<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public TMPU WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public TMPU WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public TMPU WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public TMPU WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public TMPU WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public TMPU WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public TMPU WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public TMPU WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public TMPU WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public TMPU WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public TMPU WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public TMPU WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public TMPU WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public TMPU WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public TMPU WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public TMPU WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public TMPU WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TMPU WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TMPU WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value)
         {
@@ -571,251 +489,37 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public TMPU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(values, false));
         }
         public TMPU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public TMPU WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public TMPU WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class TMSX : CSceneMobilLeavesBuilderBase<TMSX>
+    public partial class TMSX : CSceneMobilLeavesBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public TMSX WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public TMSX WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public TMSX WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public TMSX WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public TMSX WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public TMSX WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public TMSX WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public TMSX WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public TMSX WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public TMSX WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public TMSX WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public TMSX WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public TMSX WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public TMSX WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public TMSX WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public TMSX WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public TMSX WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TMSX WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TMSX WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMSX? value)
         {
@@ -823,251 +527,37 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public TMSX WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(values, false));
         }
         public TMSX WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public TMSX WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public TMSX WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class TMNESWC : CSceneMobilLeavesBuilderBase<TMNESWC>
+    public partial class TMNESWC : CSceneMobilLeavesBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public TMNESWC WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public TMNESWC WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public TMNESWC WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public TMNESWC WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public TMNESWC WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public TMNESWC WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public TMNESWC WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public TMNESWC WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public TMNESWC WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public TMNESWC WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public TMNESWC WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public TMNESWC WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public TMNESWC WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public TMNESWC WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public TMNESWC WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public TMNESWC WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public TMNESWC WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TMNESWC WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TMNESWC WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMNESWC WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value)
         {
@@ -1075,251 +565,37 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public TMNESWC WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(values, false));
         }
         public TMNESWC WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public TMNESWC WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public TMNESWC WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class VSK5 : CSceneMobilLeavesBuilderBase<VSK5>
+    public partial class VSK5 : CSceneMobilLeavesBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public VSK5 WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public VSK5 WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public VSK5 WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public VSK5 WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public VSK5 WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public VSK5 WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public VSK5 WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public VSK5 WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public VSK5 WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public VSK5 WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public VSK5 WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public VSK5 WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public VSK5 WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public VSK5 WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public VSK5 WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public VSK5 WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public VSK5 WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public VSK5 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public VSK5 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionVSK5? value)
         {
@@ -1327,245 +603,37 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public VSK5 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(values, false));
         }
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public VSK5 WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public VSK5 WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class TMF : CSceneMobilLeavesBuilderBase<TMF>
+    public partial class TMF : CSceneMobilLeavesBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public TMF WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public TMF WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public TMF WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public TMF WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public TMF WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public TMF WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public TMF WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public TMF WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public TMF WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public TMF WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public TMF WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public TMF WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public TMF WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public TMF WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public TMF WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public TMF WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public TMF WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TMF WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TMF WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMF? value)
         {
@@ -1573,225 +641,33 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public TMF WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(values, false));
         }
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public TMF WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public TMF WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class MP3 : CSceneMobilLeavesBuilderBase<MP3>
+    public partial class MP3 : CSceneMobilLeavesBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public MP3 WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public MP3 WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public MP3 WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public MP3 WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public MP3 WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public MP3 WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public MP3 WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public MP3 WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public MP3 WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public MP3 WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public MP3 WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public MP3 WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public MP3 WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public MP3 WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public MP3 WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public MP3 WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public MP3 WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionMP3? value)
         {
@@ -1799,222 +675,33 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public MP3 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(values, false));
         }
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public MP3 WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public MP3 WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneMobilLeaves node);
     }
-    public partial class TMT : CSceneMobilLeavesBuilderBase<TMT>
+    public partial class TMT : CSceneMobilLeavesBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> state) : base(state) { }
-        public float Curvature
-        {
-            get => state.Get<float>("Curvature");
-            set => SetCurvature(state, value);
-        }
-        public TMT WithCurvature(float value)
-        {
-            Curvature = value;
-            return this;
-        }
-        public float FarZ
-        {
-            get => state.Get<float>("FarZ");
-            set => SetFarZ(state, value);
-        }
-        public TMT WithFarZ(float value)
-        {
-            FarZ = value;
-            return this;
-        }
-        public float LeafAlphaSpeedMax
-        {
-            get => state.Get<float>("LeafAlphaSpeedMax");
-            set => SetLeafAlphaSpeedMax(state, value);
-        }
-        public TMT WithLeafAlphaSpeedMax(float value)
-        {
-            LeafAlphaSpeedMax = value;
-            return this;
-        }
-        public float LeafBetaSpeedlMax
-        {
-            get => state.Get<float>("LeafBetaSpeedlMax");
-            set => SetLeafBetaSpeedlMax(state, value);
-        }
-        public TMT WithLeafBetaSpeedlMax(float value)
-        {
-            LeafBetaSpeedlMax = value;
-            return this;
-        }
-        public int LeafEmitterMaxCount
-        {
-            get => state.Get<int>("LeafEmitterMaxCount");
-            set => SetLeafEmitterMaxCount(state, value);
-        }
-        public TMT WithLeafEmitterMaxCount(int value)
-        {
-            LeafEmitterMaxCount = value;
-            return this;
-        }
-        public float LeafFallingSpeedBase
-        {
-            get => state.Get<float>("LeafFallingSpeedBase");
-            set => SetLeafFallingSpeedBase(state, value);
-        }
-        public TMT WithLeafFallingSpeedBase(float value)
-        {
-            LeafFallingSpeedBase = value;
-            return this;
-        }
-        public float LeafFallingSpeedRandom
-        {
-            get => state.Get<float>("LeafFallingSpeedRandom");
-            set => SetLeafFallingSpeedRandom(state, value);
-        }
-        public TMT WithLeafFallingSpeedRandom(float value)
-        {
-            LeafFallingSpeedRandom = value;
-            return this;
-        }
-        public int LeafMaxCount
-        {
-            get => state.Get<int>("LeafMaxCount");
-            set => SetLeafMaxCount(state, value);
-        }
-        public TMT WithLeafMaxCount(int value)
-        {
-            LeafMaxCount = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeBase
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeBase");
-            set => SetLeafOscillationAmplitudeBase(state, value);
-        }
-        public TMT WithLeafOscillationAmplitudeBase(float value)
-        {
-            LeafOscillationAmplitudeBase = value;
-            return this;
-        }
-        public float LeafOscillationAmplitudeRandom
-        {
-            get => state.Get<float>("LeafOscillationAmplitudeRandom");
-            set => SetLeafOscillationAmplitudeRandom(state, value);
-        }
-        public TMT WithLeafOscillationAmplitudeRandom(float value)
-        {
-            LeafOscillationAmplitudeRandom = value;
-            return this;
-        }
-        public float LeafOscillationPeriodBase
-        {
-            get => state.Get<float>("LeafOscillationPeriodBase");
-            set => SetLeafOscillationPeriodBase(state, value);
-        }
-        public TMT WithLeafOscillationPeriodBase(float value)
-        {
-            LeafOscillationPeriodBase = value;
-            return this;
-        }
-        public float LeafOscillationPeriodRandom
-        {
-            get => state.Get<float>("LeafOscillationPeriodRandom");
-            set => SetLeafOscillationPeriodRandom(state, value);
-        }
-        public TMT WithLeafOscillationPeriodRandom(float value)
-        {
-            LeafOscillationPeriodRandom = value;
-            return this;
-        }
-        public float LeafRadiusBase
-        {
-            get => state.Get<float>("LeafRadiusBase");
-            set => SetLeafRadiusBase(state, value);
-        }
-        public TMT WithLeafRadiusBase(float value)
-        {
-            LeafRadiusBase = value;
-            return this;
-        }
-        public float LeafRadiusRandom
-        {
-            get => state.Get<float>("LeafRadiusRandom");
-            set => SetLeafRadiusRandom(state, value);
-        }
-        public TMT WithLeafRadiusRandom(float value)
-        {
-            LeafRadiusRandom = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugShader? LeafShader
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShader?>("LeafShader");
-            set => SetLeafShader(state, value);
-        }
-        public TMT WithLeafShader(global::GBX.NET.Engines.Plug.CPlugShader? value)
-        {
-            LeafShader = value;
-            return this;
-        }
-        public TMT WithLeafShaderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLeafShaderReference(state, value);
-            return this;
-        }
         public TMT WithLeafShader(global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? value)
         {
-            return WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithLeafShader(value is null ? (global::GBX.NET.Engines.Plug.CPlugShader?)null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMT? value)
         {
@@ -2022,54 +709,21 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public TMT WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(values, false));
         }
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public float RespawnPeriod
-        {
-            get => state.Get<float>("RespawnPeriod");
-            set => SetRespawnPeriod(state, value);
-        }
-        public TMT WithRespawnPeriod(float value)
-        {
-            RespawnPeriod = value;
-            return this;
-        }
-        public Vec3 Wind
-        {
-            get => state.Get<Vec3>("Wind");
-            set => SetWind(state, value);
-        }
-        public TMT WithWind(Vec3 value)
-        {
-            Wind = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A05E003 = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003();
-            node.Chunks.Add(chunk0A05E003);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobilLeaves.Chunk0A05E003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A05E003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -2085,7 +739,7 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         }
         public MP4 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(values, false));
         }
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values)
         {
@@ -2094,22 +748,12 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -2126,22 +770,12 @@ public partial class CSceneMobilLeavesBuilder : CSceneMobilLeavesBuilderBase<CSc
         public global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneMobilLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneMobilLeaves();
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneMobilLeavesBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneMobilLeavesBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneMobilLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

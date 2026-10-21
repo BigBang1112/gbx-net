@@ -36,8 +36,8 @@ public abstract class CGameCtnMediaBlockTurretBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state;
     private protected CGameCtnMediaBlockTurretBuilderBase() => state = new();
     private protected CGameCtnMediaBlockTurretBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state) => this.state = state;
-    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DataTape = value);
-    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape>>("DataTape", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.DataTape.CopyFrom(reference));
+    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockTurretBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
@@ -57,6 +57,21 @@ public abstract class CGameCtnMediaBlockTurretBuilderBase<TSelf> where TSelf : C
 }
 public partial class CGameCtnMediaBlockTurretBuilder : CGameCtnMediaBlockTurretBuilderBase<CGameCtnMediaBlockTurretBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret();
+        var chunk03294000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000();
+        chunk03294000.Version = 0;
+        node.Chunks.Add(chunk03294000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03294000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -71,14 +86,12 @@ public partial class CGameCtnMediaBlockTurretBuilder : CGameCtnMediaBlockTurretB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret();
-            var chunk03294000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000();
-            chunk03294000.Version = 0;
-            node.Chunks.Add(chunk03294000);
+            var node = CGameCtnMediaBlockTurretBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03294000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTurretBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockTurretBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -95,14 +108,12 @@ public partial class CGameCtnMediaBlockTurretBuilder : CGameCtnMediaBlockTurretB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret();
-            var chunk03294000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000();
-            chunk03294000.Version = 0;
-            node.Chunks.Add(chunk03294000);
+            var node = CGameCtnMediaBlockTurretBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret.Chunk03294000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03294000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockTurretBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockTurretBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

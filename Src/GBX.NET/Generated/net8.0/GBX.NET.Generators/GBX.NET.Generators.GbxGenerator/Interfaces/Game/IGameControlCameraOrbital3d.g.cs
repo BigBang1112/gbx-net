@@ -31,6 +31,35 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraOrbital3dMembers1 : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d
+{
+    float DefaultRadius { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraOrbital3dMembers2 : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d
+{
+    float ZoomKeySensitivity { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameControlCameraOrbital3dMembers3 : global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3d
+{
+    float FovKeySensitivity { get; set; }
+    float Latitude { get; set; }
+    float LatitudeMax { get; set; }
+    float LatitudeMin { get; set; }
+    float Longitude { get; set; }
+    float MouseBorderMoveSize { get; set; }
+    float OcclusionDistFromHit { get; set; }
+    bool OcclusionIsEnable { get; set; }
+    float OcclusionTargetRadius { get; set; }
+    float Radius { get; set; }
+    float RadiusMax { get; set; }
+    float RadiusMin { get; set; }
+    Vec3 RadiusScale { get; set; }
+    Vec2 RotateSpeed { get; set; }
+    float WheelSensitivity { get; set; }
+}
 public partial interface IGameControlCameraOrbital3d : IClassVersion<global::GBX.NET.Engines.Game.CGameControlCameraOrbital3d>, global::GBX.NET.Interfaces.Game.IGameControlCameraTarget
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,255 +69,39 @@ public partial interface IGameControlCameraOrbital3d : IClassVersion<global::GBX
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool Interpolate { get; set; }
-    new bool IsUpLinked { get; set; }
-    new Iso4 Location { get; set; }
-    new float LookAtFactor { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dTMSX : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX
+public partial interface IGameControlCameraOrbital3dTMSX : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMSX, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFov { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new float Fov { get; set; }
-    float FovKeySensitivity { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    float Latitude { get; set; }
-    float LatitudeMax { get; set; }
-    float LatitudeMin { get; set; }
-    float Longitude { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    float MouseBorderMoveSize { get; set; }
-    float OcclusionDistFromHit { get; set; }
-    bool OcclusionIsEnable { get; set; }
-    float OcclusionTargetRadius { get; set; }
-    new float PlaneDist { get; set; }
-    float Radius { get; set; }
-    float RadiusMax { get; set; }
-    float RadiusMin { get; set; }
-    Vec3 RadiusScale { get; set; }
-    new Vec3 RelativeTargetPos { get; set; }
-    Vec2 RotateSpeed { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    float WheelSensitivity { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dTMNESWC : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC
+public partial interface IGameControlCameraOrbital3dTMNESWC : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMNESWC, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float DefaultRadius { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float FovKeySensitivity { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    float Latitude { get; set; }
-    float LatitudeMax { get; set; }
-    float LatitudeMin { get; set; }
-    float Longitude { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MouseBorderMoveSize { get; set; }
-    float OcclusionDistFromHit { get; set; }
-    bool OcclusionIsEnable { get; set; }
-    float OcclusionTargetRadius { get; set; }
-    new float PlaneDist { get; set; }
-    float Radius { get; set; }
-    float RadiusMax { get; set; }
-    float RadiusMin { get; set; }
-    Vec3 RadiusScale { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    Vec2 RotateSpeed { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    float WheelSensitivity { get; set; }
-    float ZoomKeySensitivity { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dVSK5 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5
+public partial interface IGameControlCameraOrbital3dVSK5 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetVSK5, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float DefaultRadius { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float FovKeySensitivity { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    float Latitude { get; set; }
-    float LatitudeMax { get; set; }
-    float LatitudeMin { get; set; }
-    float Longitude { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MouseBorderMoveSize { get; set; }
-    float OcclusionDistFromHit { get; set; }
-    bool OcclusionIsEnable { get; set; }
-    float OcclusionTargetRadius { get; set; }
-    new float PlaneDist { get; set; }
-    float Radius { get; set; }
-    float RadiusMax { get; set; }
-    float RadiusMin { get; set; }
-    Vec3 RadiusScale { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    Vec2 RotateSpeed { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    float WheelSensitivity { get; set; }
-    float ZoomKeySensitivity { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dTMF : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF
+public partial interface IGameControlCameraOrbital3dTMF : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMF, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
-    new bool CanCameraMove { get; set; }
-    new bool CanUseRelativeTargetLocation { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float DefaultRadius { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float FovKeySensitivity { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    float Latitude { get; set; }
-    float LatitudeMax { get; set; }
-    float LatitudeMin { get; set; }
-    float Longitude { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MouseBorderMoveSize { get; set; }
-    float OcclusionDistFromHit { get; set; }
-    bool OcclusionIsEnable { get; set; }
-    float OcclusionTargetRadius { get; set; }
-    new float PlaneDist { get; set; }
-    float Radius { get; set; }
-    float RadiusMax { get; set; }
-    float RadiusMin { get; set; }
-    Vec3 RadiusScale { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
-    Vec2 RotateSpeed { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    float WheelSensitivity { get; set; }
-    float ZoomKeySensitivity { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dMP3 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3
+public partial interface IGameControlCameraOrbital3dMP3 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP3, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
-    new bool CanUseRelativeTargetLocation { get; set; }
-    float DefaultRadius { get; set; }
-    float FovKeySensitivity { get; set; }
-    float Latitude { get; set; }
-    float LatitudeMax { get; set; }
-    float LatitudeMin { get; set; }
-    float Longitude { get; set; }
-    float MouseBorderMoveSize { get; set; }
-    float OcclusionDistFromHit { get; set; }
-    bool OcclusionIsEnable { get; set; }
-    float OcclusionTargetRadius { get; set; }
-    float Radius { get; set; }
-    float RadiusMax { get; set; }
-    float RadiusMin { get; set; }
-    Vec3 RadiusScale { get; set; }
-    Vec2 RotateSpeed { get; set; }
-    float WheelSensitivity { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dTMT : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT
+public partial interface IGameControlCameraOrbital3dTMT : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTMT, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1
 {
-    float DefaultRadius { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dMP4 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP4
+public partial interface IGameControlCameraOrbital3dMP4 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetMP4, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers2, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers3
 {
-    new bool CanCameraMove { get; set; }
-    new float DefaultFarZ { get; set; }
-    new float DefaultFov { get; set; }
-    new float DefaultNearZ { get; set; }
-    float DefaultRadius { get; set; }
-    new Iso4 ForcedLocation { get; set; }
-    new Vec3 ForcedUp { get; set; }
-    new float Fov { get; set; }
-    float FovKeySensitivity { get; set; }
-    new bool IsFirstPerson { get; set; }
-    new bool IsFollowing { get; set; }
-    float Latitude { get; set; }
-    float LatitudeMax { get; set; }
-    float LatitudeMin { get; set; }
-    float Longitude { get; set; }
-    new float MaxDist { get; set; }
-    new float MaxFarZ { get; set; }
-    new float MaxFov { get; set; }
-    new float MaxNearZ { get; set; }
-    new float MaxSpeed { get; set; }
-    new float MinDist { get; set; }
-    new float MinFarZ { get; set; }
-    new float MinFov { get; set; }
-    new float MinNearZ { get; set; }
-    float MouseBorderMoveSize { get; set; }
-    float OcclusionDistFromHit { get; set; }
-    bool OcclusionIsEnable { get; set; }
-    float OcclusionTargetRadius { get; set; }
-    new float PlaneDist { get; set; }
-    float Radius { get; set; }
-    float RadiusMax { get; set; }
-    float RadiusMin { get; set; }
-    Vec3 RadiusScale { get; set; }
-    new Vec3 RelativeFollowedPos { get; set; }
     Iso4 RelativeTargetLocation { get; set; }
-    Vec2 RotateSpeed { get; set; }
     bool UseAutoRadiusFromTargets { get; set; }
-    new bool UseForcedLocation { get; set; }
-    new bool UseForcedUp { get; set; }
-    new bool UseOnlyFollowedMobilPosition { get; set; }
-    float WheelSensitivity { get; set; }
-    float ZoomKeySensitivity { get; set; }
 }
 
-public partial interface IGameControlCameraOrbital3dTM2020 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTM2020
+public partial interface IGameControlCameraOrbital3dTM2020 : IGameControlCameraOrbital3d, global::GBX.NET.Interfaces.Game.IGameControlCameraTargetTM2020, global::GBX.NET.Interfaces.Game.IGameControlCameraOrbital3dMembers1
 {
-    float DefaultRadius { get; set; }
 }
 

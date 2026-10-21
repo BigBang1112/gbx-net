@@ -36,11 +36,11 @@ public abstract class CSceneSoundSourceBuilderBase<TSelf> where TSelf : CSceneSo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state;
     private protected CSceneSoundSourceBuilderBase() => state = new();
     private protected CSceneSoundSourceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) => this.state = state;
-    private protected static void SetIsActive(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, bool value) => state.Set<bool>("IsActive", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsActive = value);
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set<global::GBX.NET.Engines.Motion.CMotion?>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Motion = value);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotion>>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotion>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Motion.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetSoundSource(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, global::GBX.NET.Engines.Hms.CHmsSoundSource? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.SoundSource = value);
+    private protected static void SetIsActive(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CScenePocBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSoundSource(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state, global::GBX.NET.Engines.Hms.CHmsSoundSource? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneSoundSourceBuilderAssignments.GetSoundSourceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public bool IsActive
     {
         get => state.Get<bool>("IsActive");
@@ -78,8 +78,85 @@ public abstract class CSceneSoundSourceBuilderBase<TSelf> where TSelf : CSceneSo
         return (TSelf)this;
     }
 }
+public abstract class CSceneSoundSourceBuilderMembers1<TSelf> : CSceneSoundSourceBuilderBase<TSelf> where TSelf : CSceneSoundSourceBuilderMembers1<TSelf>
+{
+    private protected CSceneSoundSourceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
+    public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
+        set => SetSoundSource(state, value);
+    }
+    public TSelf WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
+    {
+        SoundSource = value;
+        return (TSelf)this;
+    }
+}
 public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSceneSoundSourceBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneSoundSource CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
+        var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
+        node.Chunks.Add(chunk0A00E000);
+        var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
+        node.Chunks.Add(chunk0A009000);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
+        node.Chunks.Add(chunk0A005004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneSoundSource node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00E000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneSoundSource CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
+        var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
+        node.Chunks.Add(chunk0A00E000);
+        var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
+        node.Chunks.Add(chunk0A009000);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneSoundSource node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00E000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneSoundSource CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
+        var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
+        node.Chunks.Add(chunk0A009000);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Scene.CSceneSoundSource node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneSoundSource node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -92,306 +169,154 @@ public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSc
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CSceneSoundSourceBuilderBase<TM10>
+    public partial class TM10 : CSceneSoundSourceBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public TM10 WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneSoundSourceBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
-    public partial class TMPU : CSceneSoundSourceBuilderBase<TMPU>
+    public partial class TMPU : CSceneSoundSourceBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public TMPU WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneSoundSourceBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
-    public partial class TMSX : CSceneSoundSourceBuilderBase<TMSX>
+    public partial class TMSX : CSceneSoundSourceBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public TMSX WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMSX? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public TMSX WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneSoundSourceBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
-    public partial class TMNESWC : CSceneSoundSourceBuilderBase<TMNESWC>
+    public partial class TMNESWC : CSceneSoundSourceBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public TMNESWC WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public TMNESWC WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneSoundSourceBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
-    public partial class VSK5 : CSceneSoundSourceBuilderBase<VSK5>
+    public partial class VSK5 : CSceneSoundSourceBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public VSK5 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionVSK5? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public VSK5 WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneSoundSourceBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
-    public partial class TMF : CSceneSoundSourceBuilderBase<TMF>
+    public partial class TMF : CSceneSoundSourceBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public TMF WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMF? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public TMF WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneSoundSourceBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneSoundSource node);
     }
-    public partial class MP3 : CSceneSoundSourceBuilderBase<MP3>
+    public partial class MP3 : CSceneSoundSourceBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneSoundSource> state) : base(state) { }
         public MP3 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionMP3? value)
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Hms.CHmsSoundSource? SoundSource
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsSoundSource?>("SoundSource");
-            set => SetSoundSource(state, value);
-        }
-        public MP3 WithSoundSource(global::GBX.NET.Engines.Hms.CHmsSoundSource? value)
-        {
-            SoundSource = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A00E000 = new global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000();
-            node.Chunks.Add(chunk0A00E000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneSoundSourceBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneSoundSource.Chunk0A00E000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A00E000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -408,19 +333,12 @@ public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSc
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneSoundSourceBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -437,19 +355,12 @@ public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSc
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneSoundSourceBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -466,19 +377,12 @@ public partial class CSceneSoundSourceBuilder : CSceneSoundSourceBuilderBase<CSc
         public global::GBX.NET.Interfaces.Scene.ISceneSoundSourceTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneSoundSource Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneSoundSource();
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneSoundSourceBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneSoundSourceBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneSoundSourceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

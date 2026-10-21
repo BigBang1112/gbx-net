@@ -36,10 +36,10 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state;
     private protected CPlugTrafficPathSquaresBuilderBase() => state = new();
     private protected CPlugTrafficPathSquaresBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state) => this.state = state;
-    private protected static void SetBaseHeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, float value) => state.Set<float>("BaseHeight", value, GameVersion.TMT, static value => value, static (node, value) => node.BaseHeight = value);
-    private protected static void SetPathId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, string value) => state.Set<string>("PathId", value, GameVersion.TMT, static value => value, static (node, value) => node.PathId = value);
-    private protected static void SetSquareSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, Vec3 value) => state.Set<Vec3>("SquareSize", value, GameVersion.TMT, static value => value, static (node, value) => node.SquareSize = value);
-    private protected static void SetSquares(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, Int3[]? value) => state.Set<Int3[]?>("Squares", value, GameVersion.TMT, static value => value is null ? null! : (Int3[])value.Clone(), static (node, value) => node.Squares = value);
+    private protected static void SetBaseHeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetBaseHeightAssignment(), value, GameVersion.TMT);
+    private protected static void SetPathId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetPathIdAssignment(), value, GameVersion.TMT);
+    private protected static void SetSquareSize(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquareSizeAssignment(), value, GameVersion.TMT);
+    private protected static void SetSquares(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> state, Int3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficPathSquaresBuilderAssignments.GetSquaresAssignment(), value, GameVersion.TMT);
     public float BaseHeight
     {
         get => state.Get<float>("BaseHeight");
@@ -87,6 +87,24 @@ public abstract class CPlugTrafficPathSquaresBuilderBase<TSelf> where TSelf : CP
 }
 public partial class CPlugTrafficPathSquaresBuilder : CPlugTrafficPathSquaresBuilderBase<CPlugTrafficPathSquaresBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares();
+        var chunk090D0000 = new global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0000();
+        node.Chunks.Add(chunk090D0000);
+        var chunk090D0001 = new global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0001(game);
+        node.Chunks.Add(chunk090D0001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090D0000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D0001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node, GameVersion game)
+    {
+        if (node.PathId is null) throw new MemberNullException("PathId");
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public partial class TMT : CPlugTrafficPathSquaresBuilderBase<TMT>
     {
@@ -94,17 +112,12 @@ public partial class CPlugTrafficPathSquaresBuilder : CPlugTrafficPathSquaresBui
         public global::GBX.NET.Interfaces.Plug.IPlugTrafficPathSquaresTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares();
-            var chunk090D0000 = new global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0000();
-            node.Chunks.Add(chunk090D0000);
-            var chunk090D0001 = new global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0001(GameVersion.TMT);
-            node.Chunks.Add(chunk090D0001);
+            var node = CPlugTrafficPathSquaresBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090D0000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares.Chunk090D0001>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk090D0001 is missing or has an incompatible version.");
+            CPlugTrafficPathSquaresBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.PathId is null) throw new MemberNullException("PathId");
+            CPlugTrafficPathSquaresBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }

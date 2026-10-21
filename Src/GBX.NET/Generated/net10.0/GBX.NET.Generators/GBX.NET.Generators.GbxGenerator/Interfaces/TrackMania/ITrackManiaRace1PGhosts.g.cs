@@ -40,7 +40,6 @@ public partial interface ITrackManiaRace1PGhosts : IClassVersion<global::GBX.NET
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface ITrackManiaRace1PGhostsTM10 : ITrackManiaRace1PGhosts, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PTM10
@@ -65,7 +64,6 @@ public partial interface ITrackManiaRace1PGhostsVSK5 : ITrackManiaRace1PGhosts, 
 
 public partial interface ITrackManiaRace1PGhostsTMF : ITrackManiaRace1PGhosts, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PTMF
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? InterfaceFid { get; set; }
 }
 
 public partial interface ITrackManiaRace1PGhostsMP3 : ITrackManiaRace1PGhosts, global::GBX.NET.Interfaces.TrackMania.ITrackManiaRace1PMP3

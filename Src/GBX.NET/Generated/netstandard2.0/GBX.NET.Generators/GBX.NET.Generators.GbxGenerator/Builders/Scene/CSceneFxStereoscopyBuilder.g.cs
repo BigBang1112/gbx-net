@@ -36,10 +36,10 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state;
     private protected CSceneFxStereoscopyBuilderBase() => state = new();
     private protected CSceneFxStereoscopyBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state) => this.state = state;
-    private protected static void SetShader_DebugBlend(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_DebugBlend", value, GameVersion.TM2020, static value => value, static (node, value) => node.Shader_DebugBlend = value);
-    private protected static void SetShader_DebugBlendReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("Shader_DebugBlend", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shader_DebugBlend.CopyFrom(reference));
-    private protected static void SetShader_Interlaced(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_Interlaced", value, GameVersion.TM2020, static value => value, static (node, value) => node.Shader_Interlaced = value);
-    private protected static void SetShader_InterlacedReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("Shader_Interlaced", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shader_Interlaced.CopyFrom(reference));
+    private protected static void SetShader_DebugBlend(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendAssignment(), value, GameVersion.TM2020);
+    private protected static void SetShader_DebugBlendReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_DebugBlendReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetShader_Interlaced(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedAssignment(), value, GameVersion.TM2020);
+    private protected static void SetShader_InterlacedReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxStereoscopyBuilderAssignments.GetShader_InterlacedReferenceAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.MwFoundations.CMwNod? Shader_DebugBlend
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Shader_DebugBlend");
@@ -75,6 +75,20 @@ public abstract class CSceneFxStereoscopyBuilderBase<TSelf> where TSelf : CScene
 }
 public partial class CSceneFxStereoscopyBuilder : CSceneFxStereoscopyBuilderBase<CSceneFxStereoscopyBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneFxStereoscopy CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy();
+        var chunk0A043002 = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043002(game);
+        node.Chunks.Add(chunk0A043002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0A043002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxStereoscopy node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CSceneFxStereoscopyBuilderBase<TM2020>
     {
@@ -82,13 +96,12 @@ public partial class CSceneFxStereoscopyBuilder : CSceneFxStereoscopyBuilderBase
         public global::GBX.NET.Interfaces.Scene.ISceneFxStereoscopyTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneFxStereoscopy Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy();
-            var chunk0A043002 = new global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043002(GameVersion.TM2020);
-            node.Chunks.Add(chunk0A043002);
+            var node = CSceneFxStereoscopyBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxStereoscopy.Chunk0A043002>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0A043002 is missing or has an incompatible version.");
+            CSceneFxStereoscopyBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneFxStereoscopyBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

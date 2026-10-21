@@ -31,6 +31,50 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationAudioMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio where T0 : class where T1 : class
+{
+    T0? AudioBalance_Overlay_Far { get; set; }
+    T0? AudioBalance_Overlay_Underground { get; set; }
+    T0? AudioBalance_PlaygroundLoud { get; set; }
+    T0? AudioBalance_PlaygroundSoft { get; set; }
+    T0? AudioBalance_Podium { get; set; }
+    T0? AudioBalance_ReplayLoud { get; set; }
+    T0? AudioBalance_ReplaySoft { get; set; }
+    T0? AudioBalance_SM_EvtFire { get; set; }
+    T0? AudioBalance_SM_EvtHit { get; set; }
+    T0? AudioBalance_SM_EvtHitEliminated { get; set; }
+    T0? AudioBalance_SM_EvtSpawn { get; set; }
+    T0? AudioBalance_SM_EvtUnspawn { get; set; }
+    T0? AudioBalance_TM_EvtCheckpoint { get; set; }
+    T0? AudioBalance_TM_EvtCrash { get; set; }
+    T0? AudioBalance_TM_EvtFlying { get; set; }
+    T0? AudioBalance_TM_EvtRespawn { get; set; }
+    T0? AudioBalance_TM_EvtStartLine { get; set; }
+    T1? AudioEnvUndergroundEnclosed { get; set; }
+    T1? AudioEnvUndergroundOpen { get; set; }
+    float CameraWooshMinSpeedKmh { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileText? ModifierXmlFile { get; set; }
+    float[]? ReverbMaterialGains { get; set; }
+    float ReverbMaxBlockDist { get; set; }
+    float ReverbMinBlockDist { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationAudioMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio
+{
+    float SoundAttenuationInEditor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationAudioMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio where T0 : class
+{
+    new T0? AudioEnvOutsideEnclosed { get; set; }
+    new T0? AudioEnvOutsideOpen { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationAudioMembers4<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudio where T0 : class
+{
+    T0? AudioBalance_TM_EvtSwimming { get; set; }
+}
 public partial interface IGameCtnDecorationAudio : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationAudio>
 {
     global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironment? AudioEnvOutsideEnclosed { get; set; }
@@ -39,158 +83,39 @@ public partial interface IGameCtnDecorationAudio : IClassVersion<global::GBX.NET
     global::System.Collections.Generic.Dictionary<string, global::GBX.NET.NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>? Sounds { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioTMSX : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioTMSX : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMSX? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMSX? AudioEnvOutsideOpen { get; set; }
-    float SoundAttenuationInEditor { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioTMNESWC : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioTMNESWC : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMNESWC? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMNESWC? AudioEnvOutsideOpen { get; set; }
-    float SoundAttenuationInEditor { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioVSK5 : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioVSK5 : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentVSK5? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentVSK5? AudioEnvOutsideOpen { get; set; }
-    float SoundAttenuationInEditor { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioTMF : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioTMF : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF? AudioEnvOutsideOpen { get; set; }
-    float SoundAttenuationInEditor { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioMP3 : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioMP3 : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_Overlay_Far { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_Overlay_Underground { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_PlaygroundLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_PlaygroundSoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_Podium { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_ReplayLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_ReplaySoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_SM_EvtFire { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_SM_EvtHit { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_SM_EvtHitEliminated { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_SM_EvtSpawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_SM_EvtUnspawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_TM_EvtCheckpoint { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_TM_EvtCrash { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_TM_EvtFlying { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_TM_EvtRespawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3? AudioBalance_TM_EvtStartLine { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3? AudioEnvOutsideOpen { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3? AudioEnvUndergroundEnclosed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3? AudioEnvUndergroundOpen { get; set; }
-    float CameraWooshMinSpeedKmh { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileText? ModifierXmlFile { get; set; }
-    float[]? ReverbMaterialGains { get; set; }
-    float ReverbMaxBlockDist { get; set; }
-    float ReverbMinBlockDist { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioTMT : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioTMT : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers4<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_Overlay_Far { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_Overlay_Underground { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_PlaygroundLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_PlaygroundSoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_Podium { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_ReplayLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_ReplaySoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_SM_EvtFire { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_SM_EvtHit { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_SM_EvtHitEliminated { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_SM_EvtSpawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_SM_EvtUnspawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_TM_EvtCheckpoint { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_TM_EvtCrash { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_TM_EvtFlying { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_TM_EvtRespawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_TM_EvtStartLine { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT? AudioBalance_TM_EvtSwimming { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? AudioEnvOutsideOpen { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? AudioEnvUndergroundEnclosed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? AudioEnvUndergroundOpen { get; set; }
-    float CameraWooshMinSpeedKmh { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileText? ModifierXmlFile { get; set; }
-    float[]? ReverbMaterialGains { get; set; }
-    float ReverbMaxBlockDist { get; set; }
-    float ReverbMinBlockDist { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioMP4 : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioMP4 : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers4<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Overlay_Far { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Overlay_Underground { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_PlaygroundLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_PlaygroundSoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_Podium { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_ReplayLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_ReplaySoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_SM_EvtFire { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_SM_EvtHit { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_SM_EvtHitEliminated { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_SM_EvtSpawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_SM_EvtUnspawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_TM_EvtCheckpoint { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_TM_EvtCrash { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_TM_EvtFlying { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_TM_EvtRespawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_TM_EvtStartLine { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4? AudioBalance_TM_EvtSwimming { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? AudioEnvOutsideOpen { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? AudioEnvUndergroundEnclosed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? AudioEnvUndergroundOpen { get; set; }
-    float CameraWooshMinSpeedKmh { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileText? ModifierXmlFile { get; set; }
-    float[]? ReverbMaterialGains { get; set; }
-    float ReverbMaxBlockDist { get; set; }
-    float ReverbMinBlockDist { get; set; }
 }
 
-public partial interface IGameCtnDecorationAudioTM2020 : IGameCtnDecorationAudio
+public partial interface IGameCtnDecorationAudioTM2020 : IGameCtnDecorationAudio, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers1<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020, global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers3<global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMembers4<global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_Overlay_Far { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_Overlay_Underground { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_PlaygroundLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_PlaygroundSoft { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_Podium { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_ReplayLoud { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_ReplaySoft { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtBoost { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtBulletTime { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtFire { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtHit { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtHitEliminated { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtSpawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_SM_EvtUnspawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_TM_EvtCheckpoint { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_TM_EvtCrash { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_TM_EvtFlying { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_TM_EvtRespawn { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_TM_EvtStartLine { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020? AudioBalance_TM_EvtSwimming { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvOutsideEnclosed { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvOutsideOpen { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvUndergroundEnclosed { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvUndergroundOpen { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? AudioEnvUnderwater { get; set; }
-    float CameraWooshMinSpeedKmh { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFileText? DefaultWooshDecoItems { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileText? ModifierXmlFile { get; set; }
-    float[]? ReverbMaterialGains { get; set; }
-    float ReverbMaxBlockDist { get; set; }
-    float ReverbMinBlockDist { get; set; }
 }
 

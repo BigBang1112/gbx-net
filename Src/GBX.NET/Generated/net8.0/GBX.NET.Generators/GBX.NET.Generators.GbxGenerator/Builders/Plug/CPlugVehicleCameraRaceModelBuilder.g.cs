@@ -36,15 +36,15 @@ public abstract class CPlugVehicleCameraRaceModelBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state;
     private protected CPlugVehicleCameraRaceModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraRaceModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state) => this.state = state;
-    private protected static void SetCameraId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, string? value) => state.Set<string?>("CameraId", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CameraId = value);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set<float>("Fov", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Fov = value);
-    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set<float>("LookAtFactor", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.LookAtFactor = value);
-    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set<float>("MaxDist", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.MaxDist = value);
-    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set<float>("MinDist", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.MinDist = value);
-    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set<float>("PlaneDist", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.PlaneDist = value);
-    private protected static void SetRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, Iso4 value) => state.Set<Iso4>("RelativeTargetLocation", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.RelativeTargetLocation = value);
-    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Shake = value);
-    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel>>("Shake", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shake.CopyFrom(reference));
+    private protected static void SetCameraId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetCameraIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilderAssignments.GetRelativeTargetLocationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
@@ -62,8 +62,112 @@ public abstract class CPlugVehicleCameraRaceModelBuilderBase<TSelf> where TSelf 
         return (TSelf)this;
     }
 }
+public abstract class CPlugVehicleCameraRaceModelBuilderMembers1<TSelf> : CPlugVehicleCameraRaceModelBuilderBase<TSelf> where TSelf : CPlugVehicleCameraRaceModelBuilderMembers1<TSelf>
+{
+    private protected CPlugVehicleCameraRaceModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state) : base(state) { }
+    public string? CameraId
+    {
+        get => state.Get<string?>("CameraId");
+        set => SetCameraId(state, value);
+    }
+    public TSelf WithCameraId(string? value)
+    {
+        CameraId = value;
+        return (TSelf)this;
+    }
+    public float Fov
+    {
+        get => state.Get<float>("Fov");
+        set => SetFov(state, value);
+    }
+    public TSelf WithFov(float value)
+    {
+        Fov = value;
+        return (TSelf)this;
+    }
+    public float LookAtFactor
+    {
+        get => state.Get<float>("LookAtFactor");
+        set => SetLookAtFactor(state, value);
+    }
+    public TSelf WithLookAtFactor(float value)
+    {
+        LookAtFactor = value;
+        return (TSelf)this;
+    }
+    public float MaxDist
+    {
+        get => state.Get<float>("MaxDist");
+        set => SetMaxDist(state, value);
+    }
+    public TSelf WithMaxDist(float value)
+    {
+        MaxDist = value;
+        return (TSelf)this;
+    }
+    public float MinDist
+    {
+        get => state.Get<float>("MinDist");
+        set => SetMinDist(state, value);
+    }
+    public TSelf WithMinDist(float value)
+    {
+        MinDist = value;
+        return (TSelf)this;
+    }
+    public float PlaneDist
+    {
+        get => state.Get<float>("PlaneDist");
+        set => SetPlaneDist(state, value);
+    }
+    public TSelf WithPlaneDist(float value)
+    {
+        PlaneDist = value;
+        return (TSelf)this;
+    }
+    public Iso4 RelativeTargetLocation
+    {
+        get => state.Get<Iso4>("RelativeTargetLocation");
+        set => SetRelativeTargetLocation(state, value);
+    }
+    public TSelf WithRelativeTargetLocation(Iso4 value)
+    {
+        RelativeTargetLocation = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugVehicleCameraRaceModelBuilder : CPlugVehicleCameraRaceModelBuilderBase<CPlugVehicleCameraRaceModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel();
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel();
+        var chunk09112001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel.Chunk09112001(game);
+        node.Chunks.Add(chunk09112001);
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel.Chunk09112001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09112001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -79,93 +183,21 @@ public partial class CPlugVehicleCameraRaceModelBuilder : CPlugVehicleCameraRace
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel();
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraRaceModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraRaceModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugVehicleCameraRaceModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node);
     }
-    public partial class MP4 : CPlugVehicleCameraRaceModelBuilderBase<MP4>
+    public partial class MP4 : CPlugVehicleCameraRaceModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state) : base(state) { }
-        public string? CameraId
-        {
-            get => state.Get<string?>("CameraId");
-            set => SetCameraId(state, value);
-        }
-        public MP4 WithCameraId(string? value)
-        {
-            CameraId = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public MP4 WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public float LookAtFactor
-        {
-            get => state.Get<float>("LookAtFactor");
-            set => SetLookAtFactor(state, value);
-        }
-        public MP4 WithLookAtFactor(float value)
-        {
-            LookAtFactor = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public MP4 WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public MP4 WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public MP4 WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
-        public Iso4 RelativeTargetLocation
-        {
-            get => state.Get<Iso4>("RelativeTargetLocation");
-            set => SetRelativeTargetLocation(state, value);
-        }
-        public MP4 WithRelativeTargetLocation(Iso4 value)
-        {
-            RelativeTargetLocation = value;
-            return this;
-        }
         public MP4 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? value)
         {
             return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -173,96 +205,21 @@ public partial class CPlugVehicleCameraRaceModelBuilder : CPlugVehicleCameraRace
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel();
-            var chunk09112001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel.Chunk09112001(GameVersion.MP4);
-            node.Chunks.Add(chunk09112001);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraRaceModelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel.Chunk09112001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk09112001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraRaceModelBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleCameraRaceModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel node);
     }
-    public partial class TM2020 : CPlugVehicleCameraRaceModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVehicleCameraRaceModelBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel> state) : base(state) { }
-        public string? CameraId
-        {
-            get => state.Get<string?>("CameraId");
-            set => SetCameraId(state, value);
-        }
-        public TM2020 WithCameraId(string? value)
-        {
-            CameraId = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public TM2020 WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public float LookAtFactor
-        {
-            get => state.Get<float>("LookAtFactor");
-            set => SetLookAtFactor(state, value);
-        }
-        public TM2020 WithLookAtFactor(float value)
-        {
-            LookAtFactor = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public TM2020 WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public TM2020 WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public TM2020 WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
-        public Iso4 RelativeTargetLocation
-        {
-            get => state.Get<Iso4>("RelativeTargetLocation");
-            set => SetRelativeTargetLocation(state, value);
-        }
-        public TM2020 WithRelativeTargetLocation(Iso4 value)
-        {
-            RelativeTargetLocation = value;
-            return this;
-        }
         public TM2020 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? value)
         {
             return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -270,17 +227,12 @@ public partial class CPlugVehicleCameraRaceModelBuilder : CPlugVehicleCameraRace
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel();
-            var chunk09112001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel.Chunk09112001(GameVersion.TM2020);
-            node.Chunks.Add(chunk09112001);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraRaceModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRaceModel.Chunk09112001>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09112001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraRaceModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleCameraRaceModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

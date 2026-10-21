@@ -36,7 +36,7 @@ public abstract class CPlugPointsInSphereOptBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state;
     private protected CPlugPointsInSphereOptBuilderBase() => state = new();
     private protected CPlugPointsInSphereOptBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state) => this.state = state;
-    private protected static void SetPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state, global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]?>("Packs", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[])value.Clone(), static (node, value) => node.Packs = value);
+    private protected static void SetPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt> state, global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugPointsInSphereOptBuilderAssignments.GetPacksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]? Packs
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Pack[]?>("Packs");
@@ -54,6 +54,20 @@ public abstract class CPlugPointsInSphereOptBuilderBase<TSelf> where TSelf : CPl
 }
 public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuilderBase<CPlugPointsInSphereOptBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
+        var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
+        node.Chunks.Add(chunk09066000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09066000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -70,13 +84,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -89,13 +102,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -108,13 +120,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -127,13 +138,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -146,13 +156,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -165,13 +174,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -184,13 +192,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -203,13 +210,12 @@ public partial class CPlugPointsInSphereOptBuilder : CPlugPointsInSphereOptBuild
         public global::GBX.NET.Interfaces.Plug.IPlugPointsInSphereOptTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt();
-            var chunk09066000 = new global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000();
-            node.Chunks.Add(chunk09066000);
+            var node = CPlugPointsInSphereOptBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugPointsInSphereOpt.Chunk09066000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09066000 is missing or has an incompatible version.");
+            CPlugPointsInSphereOptBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugPointsInSphereOptBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

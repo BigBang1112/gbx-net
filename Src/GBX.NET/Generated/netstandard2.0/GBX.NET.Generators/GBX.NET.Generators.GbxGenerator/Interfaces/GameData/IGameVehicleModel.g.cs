@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameVehicleModelMembers1<T0, T1> : global::GBX.NET.Interfaces.GameData.IGameVehicleModel where T0 : class where T1 : class
+{
+    new T0? PhyModel { get; set; }
+    new T1? VisModel { get; set; }
+}
 public partial interface IGameVehicleModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameVehicleModel>
 {
     global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? ItemOccupantSlotModels { get; set; }
@@ -38,15 +44,11 @@ public partial interface IGameVehicleModel : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModel? VisModel { get; set; }
 }
 
-public partial interface IGameVehicleModelMP4 : IGameVehicleModel
+public partial interface IGameVehicleModelMP4 : IGameVehicleModel, global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4? PhyModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4? VisModel { get; set; }
 }
 
-public partial interface IGameVehicleModelTM2020 : IGameVehicleModel
+public partial interface IGameVehicleModelTM2020 : IGameVehicleModel, global::GBX.NET.Interfaces.GameData.IGameVehicleModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020? PhyModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020? VisModel { get; set; }
 }
 

@@ -39,7 +39,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         get => Tunings;
         set => Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP3.RefBuffer
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.RefBuffer
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => SurfSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP3.Tunings
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3>.Tunings
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4.PhyShape
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>.PhyShape
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => PhyShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4.RefBuffer
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.RefBuffer
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMP4.Tunings
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4>.Tunings
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => Tunings = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020.PhyShape
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.PhyShape
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugVehiclePhyModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => PhyShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelTM2020.Tunings
+    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020>.Tunings
     {
         get
         {

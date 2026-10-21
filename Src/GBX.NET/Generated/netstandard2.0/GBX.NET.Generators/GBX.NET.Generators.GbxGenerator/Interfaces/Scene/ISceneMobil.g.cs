@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMobilMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneMobil where T0 : class
+{
+    T0? MessageHandler { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMobilMembers2<T0> : global::GBX.NET.Interfaces.Scene.ISceneMobil where T0 : class
+{
+    new IReadOnlyList<T0>? ObjectLink { get; set; }
+}
 public partial interface ISceneMobil : IClassVersion<global::GBX.NET.Engines.Scene.CSceneMobil>, global::GBX.NET.Interfaces.Scene.ISceneObject
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,64 +56,49 @@ public partial interface ISceneMobil : IClassVersion<global::GBX.NET.Engines.Sce
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilTM10 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10
+public partial interface ISceneMobilTM10 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilTMPU : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU
+public partial interface ISceneMobilTMPU : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilTMSX : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX
+public partial interface ISceneMobilTMSX : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilTMNESWC : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC
+public partial interface ISceneMobilTMNESWC : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilVSK5 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5
+public partial interface ISceneMobilVSK5 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilTMF : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF
+public partial interface ISceneMobilTMF : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers1<global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF>, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilMP3 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3
+public partial interface ISceneMobilMP3 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilTMT : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT
+public partial interface ISceneMobilTMT : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilMP4 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4
+public partial interface ISceneMobilMP4 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneMobilMembers2<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>
 {
     new global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneMobilTM2020 : ISceneMobil, global::GBX.NET.Interfaces.Scene.ISceneObjectTM2020

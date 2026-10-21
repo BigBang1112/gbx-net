@@ -31,19 +31,22 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleCarPhyShapeMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShape where T0 : class
+{
+    new T0? MoveShape { get; set; }
+}
 public partial interface IPlugVehicleCarPhyShape : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape>
 {
     BoxAligned CarVsCarShapeBox { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSurface? MoveShape { get; set; }
 }
 
-public partial interface IPlugVehicleCarPhyShapeMP4 : IPlugVehicleCarPhyShape
+public partial interface IPlugVehicleCarPhyShapeMP4 : IPlugVehicleCarPhyShape, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? MoveShape { get; set; }
 }
 
-public partial interface IPlugVehicleCarPhyShapeTM2020 : IPlugVehicleCarPhyShape
+public partial interface IPlugVehicleCarPhyShapeTM2020 : IPlugVehicleCarPhyShape, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? MoveShape { get; set; }
 }
 

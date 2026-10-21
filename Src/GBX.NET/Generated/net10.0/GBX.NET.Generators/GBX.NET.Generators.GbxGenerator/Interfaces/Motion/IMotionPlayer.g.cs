@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionPlayerMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionPlayer where T0 : class
+{
+    new T0? Base { get; set; }
+}
 public partial interface IMotionPlayer : IClassVersion<global::GBX.NET.Engines.Motion.CMotionPlayer>, global::GBX.NET.Interfaces.Motion.IMotion
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -47,55 +52,39 @@ public partial interface IMotionPlayer : IClassVersion<global::GBX.NET.Engines.M
     NodeRefList<global::GBX.NET.Engines.Motion.CMotionTrack>? Tracks { get; set; }
 }
 
-public partial interface IMotionPlayerTM10 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTM10
+public partial interface IMotionPlayerTM10 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTM10, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTM10>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTM10? Base { get; set; }
 }
 
-public partial interface IMotionPlayerTMPU : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMPU
+public partial interface IMotionPlayerTMPU : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMPU, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMPU>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMPU? Base { get; set; }
 }
 
-public partial interface IMotionPlayerTMSX : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMSX
+public partial interface IMotionPlayerTMSX : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMSX, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMSX>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMSX? Base { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionPlayerTMNESWC : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC
+public partial interface IMotionPlayerTMNESWC : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC? Base { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionPlayerVSK5 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionVSK5
+public partial interface IMotionPlayerVSK5 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionVSK5, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseVSK5>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseVSK5? Base { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionPlayerTMF : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMF
+public partial interface IMotionPlayerTMF : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMF, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMF>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMF? Base { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionPlayerMP3 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionMP3
+public partial interface IMotionPlayerMP3 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionMP3, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP3>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP3? Base { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionPlayerTMT : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMT
+public partial interface IMotionPlayerTMT : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionTMT, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMT>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMT? Base { get; set; }
-    new string? Name { get; set; }
 }
 
-public partial interface IMotionPlayerMP4 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionMP4
+public partial interface IMotionPlayerMP4 : IMotionPlayer, global::GBX.NET.Interfaces.Motion.IMotionMP4, global::GBX.NET.Interfaces.Motion.IMotionPlayerMembers1<global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP4>
 {
-    new global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP4? Base { get; set; }
-    new string? Name { get; set; }
 }
 

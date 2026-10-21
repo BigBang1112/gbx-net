@@ -39,7 +39,7 @@ public partial class CSmArenaResource : global::GBX.NET.Interfaces.ShootMania.IS
         get => RefBuffer;
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4.RefBuffer
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.RefBuffer
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CSmArenaResource : global::GBX.NET.Interfaces.ShootMania.IS
         }
         set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020.RefBuffer
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.RefBuffer
     {
         get
         {

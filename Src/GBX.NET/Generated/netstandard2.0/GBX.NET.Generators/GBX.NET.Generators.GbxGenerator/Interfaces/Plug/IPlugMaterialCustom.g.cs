@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialCustomMembers1 : global::GBX.NET.Interfaces.Plug.IPlugMaterialCustom
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
+}
 public partial interface IPlugMaterialCustom : IClassVersion<global::GBX.NET.Engines.Plug.CPlugMaterialCustom>
 {
     global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxs1 { get; set; }
@@ -46,33 +51,27 @@ public partial interface IPlugMaterialCustomTMNESWC : IPlugMaterialCustom
 {
 }
 
-public partial interface IPlugMaterialCustomVSK5 : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomVSK5 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
 }
 
-public partial interface IPlugMaterialCustomTMF : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomTMF : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
 }
 
-public partial interface IPlugMaterialCustomMP3 : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomMP3 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
 }
 
-public partial interface IPlugMaterialCustomTMT : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomTMT : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
 }
 
-public partial interface IPlugMaterialCustomMP4 : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomMP4 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
 }
 
-public partial interface IPlugMaterialCustomTM2020 : IPlugMaterialCustom
+public partial interface IPlugMaterialCustomTM2020 : IPlugMaterialCustom, global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers { get; set; }
 }
 

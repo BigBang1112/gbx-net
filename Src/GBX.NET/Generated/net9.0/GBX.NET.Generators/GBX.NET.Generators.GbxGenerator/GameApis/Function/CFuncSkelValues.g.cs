@@ -39,7 +39,7 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         get => Skel;
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTM10? global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTM10? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTM10>.Skel
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMPU? global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMPU? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMPU>.Skel
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMSX? global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMSX? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMSX>.Skel
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC>.Skel
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelVSK5? global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelVSK5? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelVSK5>.Skel
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CFuncSkelValues : global::GBX.NET.Interfaces.Function.IFunc
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMF? global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMF? global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMF>.Skel
     {
         get
         {

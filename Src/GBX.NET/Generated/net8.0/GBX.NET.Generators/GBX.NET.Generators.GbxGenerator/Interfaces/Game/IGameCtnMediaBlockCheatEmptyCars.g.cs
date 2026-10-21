@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockCheatEmptyCarsMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCheatEmptyCars where T0 : class
+{
+    new T0? DataTape { get; set; }
+}
 public partial interface IGameCtnMediaBlockCheatEmptyCars : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCheatEmptyCars>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -45,13 +50,11 @@ public partial interface IGameCtnMediaBlockCheatEmptyCars : IClassVersion<global
     TimeSingle Start { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCheatEmptyCarsTMT : IGameCtnMediaBlockCheatEmptyCars, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockCheatEmptyCarsTMT : IGameCtnMediaBlockCheatEmptyCars, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCheatEmptyCarsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT? DataTape { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCheatEmptyCarsMP4 : IGameCtnMediaBlockCheatEmptyCars, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockCheatEmptyCarsMP4 : IGameCtnMediaBlockCheatEmptyCars, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCheatEmptyCarsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? DataTape { get; set; }
 }
 

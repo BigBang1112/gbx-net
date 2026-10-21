@@ -34,35 +34,10 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameControlCardNetOnlineNews : global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews, global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNewsTMF
 {
     public static new global::GBX.NET.Builders.Engines.Game.CGameControlCardNetOnlineNewsBuilder Create() => new();
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.CreateScript
-    {
-        get => CreateScript;
-        set => CreateScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlLayout? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.Layout
-    {
-        get => Layout;
-        set => Layout = value is null ? null : value is global::GBX.NET.Engines.Control.CControlLayout node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Control.IControlStyle? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.LegacyStyle
-    {
-        get => LegacyStyle;
-        set => LegacyStyle = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Scene.ISceneMessageHandler? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.MessageHandler
     {
         get => MessageHandler;
         set => MessageHandler = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Motion.IMotion? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.Motion
-    {
-        get => Motion;
-        set => Motion = value is null ? null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.ObjectLink
-    {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLink>(() => ObjectLink, static node => node ?? throw new MemberNullException("ObjectLink"));
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
     }
     global::GBX.NET.Interfaces.Control.IControlStyle? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNews.Style
     {
@@ -121,8 +96,8 @@ public partial class CGameControlCardNetOnlineNews : global::GBX.NET.Interfaces.
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNewsTMF.ObjectLink
     {
-        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(() => ObjectLink, static node => { if (node is null) throw new MemberNullException("ObjectLink"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ObjectLink is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(GetObjectLinkBuilderReferences, GameVersion.TMF, true, "ObjectLink");
+        set => ObjectLink = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Control.IControlStyleTMF? global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNewsTMF.Style
     {
@@ -134,4 +109,5 @@ public partial class CGameControlCardNetOnlineNews : global::GBX.NET.Interfaces.
         }
         set => Style = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? GetObjectLinkBuilderReferences() => ObjectLink;
 }

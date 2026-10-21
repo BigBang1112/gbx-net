@@ -31,39 +31,38 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMessageHandlerMembers1 : global::GBX.NET.Interfaces.Scene.ISceneMessageHandler
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
+}
 public partial interface ISceneMessageHandler : IClassVersion<global::GBX.NET.Engines.Scene.CSceneMessageHandler>
 {
     global::GBX.NET.Engines.MwFoundations.CMwNod? OnContactScript { get; set; }
 }
 
-public partial interface ISceneMessageHandlerTM10 : ISceneMessageHandler
+public partial interface ISceneMessageHandlerTM10 : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
 }
 
-public partial interface ISceneMessageHandlerTMPU : ISceneMessageHandler
+public partial interface ISceneMessageHandlerTMPU : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
 }
 
-public partial interface ISceneMessageHandlerTMSX : ISceneMessageHandler
+public partial interface ISceneMessageHandlerTMSX : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
 }
 
-public partial interface ISceneMessageHandlerTMNESWC : ISceneMessageHandler
+public partial interface ISceneMessageHandlerTMNESWC : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
 }
 
-public partial interface ISceneMessageHandlerVSK5 : ISceneMessageHandler
+public partial interface ISceneMessageHandlerVSK5 : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
 }
 
-public partial interface ISceneMessageHandlerTMF : ISceneMessageHandler
+public partial interface ISceneMessageHandlerTMF : ISceneMessageHandler, global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerMembers1
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? OnClickScript { get; set; }
 }
 
 public partial interface ISceneMessageHandlerMP4 : ISceneMessageHandler

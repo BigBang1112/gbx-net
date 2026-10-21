@@ -31,6 +31,53 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers1<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class where T1 : class where T2 : class
+{
+    global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids { get; set; }
+    float EditorHelperHdrScale { get; set; }
+    bool EnableStars { get; set; }
+    T0? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
+    T1? FxHdrScalesT3 { get; set; }
+    T2? FxLightning { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
+    float LocalLightScale { get; set; }
+    float SunMoonIntensity { get; set; }
+    Vec3 Tech3Bloom { get; set; }
+    Vec3 Tech3SpecularFake_ExpScaleMax { get; set; }
+    Vec2 Tech3SpecularLocal { get; set; }
+    Vec4 Tech3ToneMapAutoExp { get; set; }
+    T0? ToneMapAutoExp_FidAvgLumiToKeyValue { get; set; }
+    float ToneMapExposureStaticBase { get; set; }
+    int ToneMapFilmCurve { get; set; }
+    bool WaterReflectFakeCube { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood
+{
+    global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
+{
+    T0? HmsAmbientOcc { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood
+{
+    bool SolidLightAreSkinned { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
+{
+    new T0? Remapping { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMoodMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationMood where T0 : class
+{
+    T0? HmsLightMap { get; set; }
+}
 public partial interface IGameCtnDecorationMood : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationMood>
 {
     bool BackgroundIsLocallyLighted { get; set; }
@@ -49,130 +96,35 @@ public partial interface IGameCtnDecorationMood : IClassVersion<global::GBX.NET.
     TimeInt32 TimeSunRise { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodTMSX : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodTMSX : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX? Remapping { get; set; }
-    bool SolidLightAreSkinned { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodTMNESWC : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodTMNESWC : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC? Remapping { get; set; }
-    bool SolidLightAreSkinned { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodVSK5 : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodVSK5 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5>
 {
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5? HmsLightMap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodTMF : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodTMF : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF>
 {
-    global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF? HmsAmbientOcc { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF? HmsLightMap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF? Remapping { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodMP3 : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodMP3 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3>
 {
-    global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids { get; set; }
-    float EditorHelperHdrScale { get; set; }
-    bool EnableStars { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3? FxHdrScalesT3 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3? FxLightning { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3? HmsAmbientOcc { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3? HmsLightMap { get; set; }
-    float LocalLightScale { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? Remapping { get; set; }
-    float SunMoonIntensity { get; set; }
-    Vec3 Tech3Bloom { get; set; }
-    Vec3 Tech3SpecularFake_ExpScaleMax { get; set; }
-    Vec2 Tech3SpecularLocal { get; set; }
-    Vec4 Tech3ToneMapAutoExp { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? ToneMapAutoExp_FidAvgLumiToKeyValue { get; set; }
-    float ToneMapExposureStaticBase { get; set; }
-    int ToneMapFilmCurve { get; set; }
-    bool WaterReflectFakeCube { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodTMT : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodTMT : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT>
 {
-    global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids { get; set; }
-    float EditorHelperHdrScale { get; set; }
-    bool EnableStars { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT? FxHdrScalesT3 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT? FxLightning { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT? HmsAmbientOcc { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT? HmsLightMap { get; set; }
-    float LocalLightScale { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? Remapping { get; set; }
-    float SunMoonIntensity { get; set; }
-    Vec3 Tech3Bloom { get; set; }
-    Vec3 Tech3SpecularFake_ExpScaleMax { get; set; }
-    Vec2 Tech3SpecularLocal { get; set; }
-    Vec4 Tech3ToneMapAutoExp { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? ToneMapAutoExp_FidAvgLumiToKeyValue { get; set; }
-    float ToneMapExposureStaticBase { get; set; }
-    int ToneMapFilmCurve { get; set; }
-    bool WaterReflectFakeCube { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodMP4 : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodMP4 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4>
 {
-    global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids { get; set; }
-    float EditorHelperHdrScale { get; set; }
-    bool EnableStars { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4? FxHdrScalesT3 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4? FxLightning { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4? HmsAmbientOcc { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4? HmsLightMap { get; set; }
-    float LocalLightScale { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? Remapping { get; set; }
-    float SunMoonIntensity { get; set; }
-    Vec3 Tech3Bloom { get; set; }
-    Vec3 Tech3SpecularFake_ExpScaleMax { get; set; }
-    Vec2 Tech3SpecularLocal { get; set; }
-    Vec4 Tech3ToneMapAutoExp { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? ToneMapAutoExp_FidAvgLumiToKeyValue { get; set; }
-    float ToneMapExposureStaticBase { get; set; }
-    int ToneMapFilmCurve { get; set; }
-    bool WaterReflectFakeCube { get; set; }
 }
 
-public partial interface IGameCtnDecorationMoodTM2020 : IGameCtnDecorationMood
+public partial interface IGameCtnDecorationMoodTM2020 : IGameCtnDecorationMood, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020, global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020, global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers3<global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers5<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMembers6<global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020>
 {
-    global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids { get; set; }
-    float EditorHelperHdrScale { get; set; }
-    bool EnableStars { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? FxBloom_FidFuncIntensAtHdrNorm { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020? FxHdrScalesT3 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020? FxLightning { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020? HmsAmbientOcc { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020? HmsLightMap { get; set; }
-    float LocalLightScale { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? Remapping { get; set; }
-    float SunMoonIntensity { get; set; }
-    Vec3 Tech3Bloom { get; set; }
-    Vec3 Tech3SpecularFake_ExpScaleMax { get; set; }
-    Vec2 Tech3SpecularLocal { get; set; }
-    Vec4 Tech3ToneMapAutoExp { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? ToneMapAutoExp_FidAvgLumiToKeyValue { get; set; }
-    float ToneMapExposureStaticBase { get; set; }
-    int ToneMapFilmCurve { get; set; }
-    bool WaterReflectFakeCube { get; set; }
 }
 

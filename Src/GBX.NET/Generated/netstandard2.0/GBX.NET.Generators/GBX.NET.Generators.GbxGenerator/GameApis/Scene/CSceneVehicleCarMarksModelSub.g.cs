@@ -39,7 +39,7 @@ public partial class CSceneVehicleCarMarksModelSub : global::GBX.NET.Interfaces.
         get => Material;
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTMT.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.Material
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CSceneVehicleCarMarksModelSub : global::GBX.NET.Interfaces.
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMP4.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.Material
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CSceneVehicleCarMarksModelSub : global::GBX.NET.Interfaces.
         }
         set => Material = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubTM2020.Material
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.Material
     {
         get
         {

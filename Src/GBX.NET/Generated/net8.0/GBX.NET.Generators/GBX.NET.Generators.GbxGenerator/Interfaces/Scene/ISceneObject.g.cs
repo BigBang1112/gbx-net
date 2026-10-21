@@ -31,68 +31,54 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneObjectMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneObject where T0 : class
+{
+    T0? Motion { get; set; }
+    string? Name { get; set; }
+}
 public partial interface ISceneObject : IClassVersion<global::GBX.NET.Engines.Scene.CSceneObject>
 {
 }
 
-public partial interface ISceneObjectTM10 : ISceneObject
+public partial interface ISceneObjectTM10 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM10>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectTMPU : ISceneObject
+public partial interface ISceneObjectTMPU : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMPU>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectTMSX : ISceneObject
+public partial interface ISceneObjectTMSX : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMSX>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectTMNESWC : ISceneObject
+public partial interface ISceneObjectTMNESWC : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMNESWC>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectVSK5 : ISceneObject
+public partial interface ISceneObjectVSK5 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionVSK5>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectTMF : ISceneObject
+public partial interface ISceneObjectTMF : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMF>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectMP3 : ISceneObject
+public partial interface ISceneObjectMP3 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP3>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectTMT : ISceneObject
+public partial interface ISceneObjectTMT : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTMT>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectMP4 : ISceneObject
+public partial interface ISceneObjectMP4 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionMP4>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionMP4? Motion { get; set; }
-    string? Name { get; set; }
 }
 
-public partial interface ISceneObjectTM2020 : ISceneObject
+public partial interface ISceneObjectTM2020 : ISceneObject, global::GBX.NET.Interfaces.Scene.ISceneObjectMembers1<global::GBX.NET.Interfaces.Motion.IMotionTM2020>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionTM2020? Motion { get; set; }
-    string? Name { get; set; }
 }
 
 public partial interface ISceneObjectTMU : ISceneObject

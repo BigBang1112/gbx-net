@@ -40,20 +40,7 @@ public partial interface IPlugTreeVisualMip : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTree>? Children { get; set; }
-    new ulong Flags { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncTree? FuncTree { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator? Generator { get; set; }
-    new bool HasModel { get; }
-    new bool IsCustomBBox { get; set; }
     global::System.Collections.Generic.List<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Level> Levels { get; set; }
-    new Iso4? Location { get; set; }
-    new string? ModelPlugId { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid? ModelSolid { get; set; }
-    new string PlugId { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlug? Shader { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlug? Surface { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVisual? Visual { get; set; }
 }
 
 public partial interface IPlugTreeVisualMipTM10 : IPlugTreeVisualMip, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10
@@ -62,7 +49,6 @@ public partial interface IPlugTreeVisualMipTM10 : IPlugTreeVisualMip, global::GB
     new global::GBX.NET.Interfaces.Function.IFuncTreeTM10? FuncTree { get; set; }
     new global::GBX.NET.Engines.Plug.CPlugTreeGenerator? Generator { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? ModelSolid { get; set; }
-    new string[] NodParameterIds { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugVisualTM10? Visual { get; set; }
 }
 
@@ -72,7 +58,6 @@ public partial interface IPlugTreeVisualMipTMPU : IPlugTreeVisualMip, global::GB
     new global::GBX.NET.Interfaces.Function.IFuncTreeTMPU? FuncTree { get; set; }
     new global::GBX.NET.Engines.Plug.CPlugTreeGenerator? Generator { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? ModelSolid { get; set; }
-    new string[] NodParameterIds { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugVisualTMPU? Visual { get; set; }
 }
 
@@ -82,8 +67,6 @@ public partial interface IPlugTreeVisualMipTMSX : IPlugTreeVisualMip, global::GB
     new global::GBX.NET.Interfaces.Function.IFuncTreeTMSX? FuncTree { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMSX? Generator { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? ModelSolid { get; set; }
-    new string[] NodParameterIds { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? RefBuffer { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugVisualTMSX? Visual { get; set; }
 }
 
@@ -93,7 +76,6 @@ public partial interface IPlugTreeVisualMipTMNESWC : IPlugTreeVisualMip, global:
     new global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC? FuncTree { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC? Generator { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? ModelSolid { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? RefBuffer { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? Visual { get; set; }
 }
 

@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncPlugMembers1 : global::GBX.NET.Interfaces.Function.IFuncPlug
+{
+    string? InputValId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncPlugMembers2 : global::GBX.NET.Interfaces.Function.IFuncPlug
+{
+    bool RandomizePhase { get; set; }
+}
 public partial interface IFuncPlug : IClassVersion<global::GBX.NET.Engines.Function.CFuncPlug>, global::GBX.NET.Interfaces.Function.IFunc
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -49,53 +59,39 @@ public partial interface IFuncPlugTM10 : IFuncPlug, global::GBX.NET.Interfaces.F
 {
 }
 
-public partial interface IFuncPlugTMPU : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMPU
+public partial interface IFuncPlugTMPU : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMPU, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugTMSX : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMSX
+public partial interface IFuncPlugTMSX : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMSX, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugTMNESWC : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMNESWC
+public partial interface IFuncPlugTMNESWC : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMNESWC, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugVSK5 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncVSK5
+public partial interface IFuncPlugVSK5 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugTMF : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMF
+public partial interface IFuncPlugTMF : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Function.IFuncPlugMembers1, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    string? InputValId { get; set; }
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugMP3 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncMP3
+public partial interface IFuncPlugMP3 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncMP3, global::GBX.NET.Interfaces.Function.IFuncPlugMembers1, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    string? InputValId { get; set; }
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugTMT : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMT
+public partial interface IFuncPlugTMT : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTMT, global::GBX.NET.Interfaces.Function.IFuncPlugMembers1, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    string? InputValId { get; set; }
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugMP4 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncMP4
+public partial interface IFuncPlugMP4 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncMP4, global::GBX.NET.Interfaces.Function.IFuncPlugMembers1, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    string? InputValId { get; set; }
-    bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncPlugTM2020 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTM2020
+public partial interface IFuncPlugTM2020 : IFuncPlug, global::GBX.NET.Interfaces.Function.IFuncTM2020, global::GBX.NET.Interfaces.Function.IFuncPlugMembers1, global::GBX.NET.Interfaces.Function.IFuncPlugMembers2
 {
-    string? InputValId { get; set; }
-    bool RandomizePhase { get; set; }
 }
 

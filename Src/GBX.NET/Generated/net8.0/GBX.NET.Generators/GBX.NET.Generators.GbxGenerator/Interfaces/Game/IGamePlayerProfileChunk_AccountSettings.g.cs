@@ -31,6 +31,19 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileChunk_AccountSettingsMembers1 : global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettings
+{
+    string? YoutubeRefreshToken { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileChunk_AccountSettingsMembers2<T0> : global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettings where T0 : class
+{
+    new IReadOnlyList<T0>? InboxMessages { get; set; }
+    new IReadOnlyList<T0>? OutboxMessages { get; set; }
+    new IReadOnlyList<T0>? ReadMessages { get; set; }
+}
 public partial interface IGamePlayerProfileChunk_AccountSettings : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings>
 {
     int Age { get; set; }
@@ -90,38 +103,20 @@ public partial interface IGamePlayerProfileChunk_AccountSettings : IClassVersion
     ulong SteamId { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_AccountSettingsMP3 : IGamePlayerProfileChunk_AccountSettings
+public partial interface IGamePlayerProfileChunk_AccountSettingsMP3 : IGamePlayerProfileChunk_AccountSettings, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? InboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? OutboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>? ReadMessages { get; set; }
-    string? YoutubeRefreshToken { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_AccountSettingsTMT : IGamePlayerProfileChunk_AccountSettings
+public partial interface IGamePlayerProfileChunk_AccountSettingsTMT : IGamePlayerProfileChunk_AccountSettings, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? InboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? OutboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>? ReadMessages { get; set; }
-    string? YoutubeRefreshToken { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_AccountSettingsMP4 : IGamePlayerProfileChunk_AccountSettings
+public partial interface IGamePlayerProfileChunk_AccountSettingsMP4 : IGamePlayerProfileChunk_AccountSettings, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers1, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? InboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? OutboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>? ReadMessages { get; set; }
-    string? YoutubeRefreshToken { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_AccountSettingsTM2020 : IGamePlayerProfileChunk_AccountSettings
+public partial interface IGamePlayerProfileChunk_AccountSettingsTM2020 : IGamePlayerProfileChunk_AccountSettings, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMembers2<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? InboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? OutboxMessages { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>? ReadMessages { get; set; }
     string? Trigram { get; set; }
 }
 

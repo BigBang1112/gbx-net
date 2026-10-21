@@ -40,12 +40,6 @@ public partial interface IGxLightNotAmbient : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new Vec3 Color { get; set; }
-    new global::GBX.NET.Engines.Graphic.GxLight.EFlags Flags { get; set; }
-    new float FlareIntensity { get; set; }
-    new float Intensity { get; set; }
-    new float ShadowIntensity { get; set; }
-    new Vec3 ShadowRGB { get; set; }
 }
 
 public partial interface IGxLightNotAmbientTM10 : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTM10
@@ -66,41 +60,25 @@ public partial interface IGxLightNotAmbientTMNESWC : IGxLightNotAmbient, global:
 
 public partial interface IGxLightNotAmbientVSK5 : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightVSK5
 {
-    new float DiffuseIntensity { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightNotAmbientTMF : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMF
 {
-    new float DiffuseIntensity { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightNotAmbientMP3 : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightMP3
 {
-    new float DiffuseIntensity { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightNotAmbientTMT : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTMT
 {
-    new float DiffuseIntensity { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightNotAmbientMP4 : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightMP4
 {
-    new float DiffuseIntensity { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightNotAmbientTM2020 : IGxLightNotAmbient, global::GBX.NET.Interfaces.Graphic.IGxLightTM2020
 {
-    new float DiffuseIntensity { get; set; }
 }
 

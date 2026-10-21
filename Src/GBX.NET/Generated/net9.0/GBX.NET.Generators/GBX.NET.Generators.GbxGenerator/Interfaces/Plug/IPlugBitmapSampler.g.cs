@@ -31,6 +31,26 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapSamplerMembers1 : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler
+{
+    uint LegacyFlags { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapSamplerMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler where T0 : class
+{
+    new T0? Bitmap { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapSamplerMembers3 : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler
+{
+    uint BorderColor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapSamplerMembers4 : global::GBX.NET.Interfaces.Plug.IPlugBitmapSampler
+{
+    uint Flags { get; set; }
+}
 public partial interface IPlugBitmapSampler : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? Bitmap { get; set; }
@@ -38,61 +58,39 @@ public partial interface IPlugBitmapSampler : IClassVersion<global::GBX.NET.Engi
     string? Name { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTM10 : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTM10 : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? Bitmap { get; set; }
-    uint LegacyFlags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTMPU : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTMPU : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? Bitmap { get; set; }
-    uint LegacyFlags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTMSX : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTMSX : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? Bitmap { get; set; }
-    uint LegacyFlags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTMNESWC : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTMNESWC : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? Bitmap { get; set; }
-    uint LegacyFlags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerVSK5 : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerVSK5 : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? Bitmap { get; set; }
-    uint LegacyFlags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTMF : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTMF : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers1, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? Bitmap { get; set; }
-    uint BorderColor { get; set; }
-    uint LegacyFlags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTMT : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTMT : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Bitmap { get; set; }
-    uint BorderColor { get; set; }
-    uint Flags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerMP4 : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerMP4 : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Bitmap { get; set; }
-    uint BorderColor { get; set; }
-    uint Flags { get; set; }
 }
 
-public partial interface IPlugBitmapSamplerTM2020 : IPlugBitmapSampler
+public partial interface IPlugBitmapSamplerTM2020 : IPlugBitmapSampler, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers3, global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMembers4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Bitmap { get; set; }
-    uint BorderColor { get; set; }
-    uint Flags { get; set; }
 }
 

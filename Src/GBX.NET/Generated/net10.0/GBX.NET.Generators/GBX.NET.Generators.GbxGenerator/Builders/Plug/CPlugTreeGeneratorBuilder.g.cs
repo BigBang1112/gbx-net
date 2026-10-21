@@ -36,9 +36,9 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> where TSelf : CPlugTr
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state;
     private protected CPlugTreeGeneratorBuilderBase() => state = new();
     private protected CPlugTreeGeneratorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state) => this.state = state;
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, uint value) => state.Set<uint>("Flags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetIsSaveGenerated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, bool value) => state.Set<bool>("IsSaveGenerated", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsSaveGenerated = value);
-    private protected static void SetIsToKeepInSaveAsRelease(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, bool value) => state.Set<bool>("IsToKeepInSaveAsRelease", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsToKeepInSaveAsRelease = value);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsSaveGenerated(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsSaveGeneratedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsToKeepInSaveAsRelease(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeGeneratorBuilderAssignments.GetIsToKeepInSaveAsReleaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public uint Flags
     {
         get => state.Get<uint>("Flags");
@@ -72,6 +72,20 @@ public abstract class CPlugTreeGeneratorBuilderBase<TSelf> where TSelf : CPlugTr
 }
 public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<CPlugTreeGeneratorBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugTreeGenerator CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
+        var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
+        node.Chunks.Add(chunk09051000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09051000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTreeGenerator node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -88,13 +102,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -107,13 +120,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -126,13 +138,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -145,13 +156,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -164,13 +174,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -183,13 +192,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -202,13 +210,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -221,13 +228,12 @@ public partial class CPlugTreeGeneratorBuilder : CPlugTreeGeneratorBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeGeneratorTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeGenerator Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator();
-            var chunk09051000 = new global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000();
-            node.Chunks.Add(chunk09051000);
+            var node = CPlugTreeGeneratorBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeGenerator.Chunk09051000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09051000 is missing or has an incompatible version.");
+            CPlugTreeGeneratorBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugTreeGeneratorBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

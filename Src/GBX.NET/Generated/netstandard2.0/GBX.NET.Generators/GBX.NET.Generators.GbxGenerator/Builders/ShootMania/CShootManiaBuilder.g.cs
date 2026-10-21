@@ -36,11 +36,11 @@ public abstract class CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state;
     private protected CShootManiaBuilderBase() => state = new();
     private protected CShootManiaBuilderBase(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) => this.state = state;
-    private protected static void SetArenaInterfaceUI(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, global::GBX.NET.Engines.Scene.CScene2d? value) => state.Set<global::GBX.NET.Engines.Scene.CScene2d?>("ArenaInterfaceUI", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ArenaInterfaceUI = value);
-    private protected static void SetArenaInterfaceUIReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CScene2d>>("ArenaInterfaceUI", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CScene2d>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ArenaInterfaceUI.CopyFrom(reference));
-    private protected static void SetArenaResources(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, global::GBX.NET.Engines.ShootMania.CSmArenaResource? value) => state.Set<global::GBX.NET.Engines.ShootMania.CSmArenaResource?>("ArenaResources", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ArenaResources = value);
-    private protected static void SetArenaResourcesReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value) => state.Set<NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource>>("ArenaResources", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ArenaResources.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
+    private protected static void SetArenaInterfaceUI(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, global::GBX.NET.Engines.Scene.CScene2d? value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetArenaInterfaceUIReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaInterfaceUIReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetArenaResources(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, global::GBX.NET.Engines.ShootMania.CSmArenaResource? value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetArenaResourcesReference(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value) => state.Set(global::GBX.NET.Builders.Engines.ShootMania.CShootManiaBuilderAssignments.GetArenaResourcesReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameNodBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public string? Name
     {
         get => state.Get<string?>("Name");
@@ -52,8 +52,72 @@ public abstract class CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBui
         return (TSelf)this;
     }
 }
+public abstract class CShootManiaBuilderMembers1<TSelf> : CShootManiaBuilderBase<TSelf> where TSelf : CShootManiaBuilderMembers1<TSelf>
+{
+    private protected CShootManiaBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
+    public global::GBX.NET.Engines.Scene.CScene2d? ArenaInterfaceUI
+    {
+        get => state.Get<global::GBX.NET.Engines.Scene.CScene2d?>("ArenaInterfaceUI");
+        set => SetArenaInterfaceUI(state, value);
+    }
+    public TSelf WithArenaInterfaceUI(global::GBX.NET.Engines.Scene.CScene2d? value)
+    {
+        ArenaInterfaceUI = value;
+        return (TSelf)this;
+    }
+    public TSelf WithArenaInterfaceUIReference(NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetArenaInterfaceUIReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.ShootMania.CSmArenaResource? ArenaResources
+    {
+        get => state.Get<global::GBX.NET.Engines.ShootMania.CSmArenaResource?>("ArenaResources");
+        set => SetArenaResources(state, value);
+    }
+    public TSelf WithArenaResources(global::GBX.NET.Engines.ShootMania.CSmArenaResource? value)
+    {
+        ArenaResources = value;
+        return (TSelf)this;
+    }
+    public TSelf WithArenaResourcesReference(NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetArenaResourcesReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuilder>
 {
+    private static global::GBX.NET.Engines.ShootMania.CShootMania CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
+        var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
+        node.Chunks.Add(chunk03008000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.ShootMania.CShootMania node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.ShootMania.CShootMania CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
+        var chunk2D000000 = new global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000(game);
+        node.Chunks.Add(chunk2D000000);
+        var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
+        node.Chunks.Add(chunk03008000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.ShootMania.CShootMania node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk2D000000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03008000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.ShootMania.CShootMania node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -72,13 +136,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -91,13 +154,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -110,13 +172,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -129,13 +190,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -148,13 +208,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -167,13 +226,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -186,13 +244,12 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -205,137 +262,64 @@ public partial class CShootManiaBuilder : CShootManiaBuilderBase<CShootManiaBuil
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
         partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
-    public partial class MP4 : CShootManiaBuilderBase<MP4>
+    public partial class MP4 : CShootManiaBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
-        public global::GBX.NET.Engines.Scene.CScene2d? ArenaInterfaceUI
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CScene2d?>("ArenaInterfaceUI");
-            set => SetArenaInterfaceUI(state, value);
-        }
-        public MP4 WithArenaInterfaceUI(global::GBX.NET.Engines.Scene.CScene2d? value)
-        {
-            ArenaInterfaceUI = value;
-            return this;
-        }
-        public MP4 WithArenaInterfaceUIReference(NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetArenaInterfaceUIReference(state, value);
-            return this;
-        }
         public MP4 WithArenaInterfaceUI(global::GBX.NET.Interfaces.Scene.IScene2dMP4? value)
         {
-            return WithArenaInterfaceUI(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.ShootMania.CSmArenaResource? ArenaResources
-        {
-            get => state.Get<global::GBX.NET.Engines.ShootMania.CSmArenaResource?>("ArenaResources");
-            set => SetArenaResources(state, value);
-        }
-        public MP4 WithArenaResources(global::GBX.NET.Engines.ShootMania.CSmArenaResource? value)
-        {
-            ArenaResources = value;
-            return this;
-        }
-        public MP4 WithArenaResourcesReference(NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetArenaResourcesReference(state, value);
-            return this;
+            return base.WithArenaInterfaceUI(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithArenaResources(global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMP4? value)
         {
-            return WithArenaResources(value is null ? (global::GBX.NET.Engines.ShootMania.CSmArenaResource?)null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithArenaResources(value is null ? (global::GBX.NET.Engines.ShootMania.CSmArenaResource?)null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk2D000000 = new global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000(GameVersion.MP4);
-            node.Chunks.Add(chunk2D000000);
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk2D000000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
         partial void ValidateNode(global::GBX.NET.Engines.ShootMania.CShootMania node);
     }
-    public partial class TM2020 : CShootManiaBuilderBase<TM2020>
+    public partial class TM2020 : CShootManiaBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.ShootMania.CShootMania> state) : base(state) { }
-        public global::GBX.NET.Engines.Scene.CScene2d? ArenaInterfaceUI
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CScene2d?>("ArenaInterfaceUI");
-            set => SetArenaInterfaceUI(state, value);
-        }
-        public TM2020 WithArenaInterfaceUI(global::GBX.NET.Engines.Scene.CScene2d? value)
-        {
-            ArenaInterfaceUI = value;
-            return this;
-        }
-        public TM2020 WithArenaInterfaceUIReference(NodeRef<global::GBX.NET.Engines.Scene.CScene2d> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetArenaInterfaceUIReference(state, value);
-            return this;
-        }
         public TM2020 WithArenaInterfaceUI(global::GBX.NET.Interfaces.Scene.IScene2dTM2020? value)
         {
-            return WithArenaInterfaceUI(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.ShootMania.CSmArenaResource? ArenaResources
-        {
-            get => state.Get<global::GBX.NET.Engines.ShootMania.CSmArenaResource?>("ArenaResources");
-            set => SetArenaResources(state, value);
-        }
-        public TM2020 WithArenaResources(global::GBX.NET.Engines.ShootMania.CSmArenaResource? value)
-        {
-            ArenaResources = value;
-            return this;
-        }
-        public TM2020 WithArenaResourcesReference(NodeRef<global::GBX.NET.Engines.ShootMania.CSmArenaResource> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetArenaResourcesReference(state, value);
-            return this;
+            return base.WithArenaInterfaceUI(value is null ? (global::GBX.NET.Engines.Scene.CScene2d?)null : value is global::GBX.NET.Engines.Scene.CScene2d node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithArenaResources(global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceTM2020? value)
         {
-            return WithArenaResources(value is null ? (global::GBX.NET.Engines.ShootMania.CSmArenaResource?)null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithArenaResources(value is null ? (global::GBX.NET.Engines.ShootMania.CSmArenaResource?)null : value is global::GBX.NET.Engines.ShootMania.CSmArenaResource node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.ShootMania.IShootManiaTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.ShootMania.CShootMania Build()
         {
-            var node = new global::GBX.NET.Engines.ShootMania.CShootMania();
-            var chunk2D000000 = new global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000(GameVersion.TM2020);
-            node.Chunks.Add(chunk2D000000);
-            var chunk03008000 = new global::GBX.NET.Engines.Game.CGameNod.Chunk03008000();
-            node.Chunks.Add(chunk03008000);
+            var node = CShootManiaBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.ShootMania.CShootMania.Chunk2D000000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2D000000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameNod.Chunk03008000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03008000 is missing or has an incompatible version.");
+            CShootManiaBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CShootManiaBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

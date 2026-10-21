@@ -31,6 +31,182 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks { get; set; }
+    string? ChallengeScript { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers2<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+{
+    IReadOnlyList<T0>? AnchoredObjects { get; set; }
+    string? AuthorExtraInfo { get; set; }
+    string? AuthorNickname { get; set; }
+    int AuthorVersion { get; set; }
+    string? AuthorZone { get; set; }
+    global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
+    List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths { get; set; }
+    string? BuildVersion { get; set; }
+    IReadOnlyList<T1>? CarMarksBuffer { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds { get; set; }
+    byte[]? ChallengeDecals { get; set; }
+    T2? ClipAmbiance { get; set; }
+    T2? ClipPodium { get; set; }
+    Int3 ClipTriggerSize { get; set; }
+    int DecoBaseHeightOffset { get; set; }
+    global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs { get; set; }
+    byte[]? EmbeddedZipData { get; set; }
+    bool HasLightmaps { get; set; }
+    T3? LightmapCache { get; set; }
+    global::GBX.NET.ZlibData? LightmapCacheData { get; set; }
+    ulong LightmapCacheUid { get; set; }
+    global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames { get; set; }
+    int? LightmapVersion { get; set; }
+    string? MapStyle { get; set; }
+    string? MapType { get; set; }
+    int? NbBakedBlocks { get; }
+    int NbCheckpoints { get; set; }
+    string? ObjectiveTextAuthor { get; set; }
+    string? ObjectiveTextBronze { get; set; }
+    string? ObjectiveTextGold { get; set; }
+    string? ObjectiveTextSilver { get; set; }
+    Int3 OffzoneTriggerSize { get; set; }
+    List<BoxInt3>? Offzones { get; set; }
+    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
+    global::GBX.NET.Vec3 ThumbnailPitchYawRoll { get; set; }
+    string? TitleId { get; set; }
+    IReadOnlyList<T4>? ZoneGenealogy { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers3<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
+{
+    global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers { get; set; }
+    IReadOnlyList<T0>? BakedBlocks { get; set; }
+    T1? ChallengeAnimation { get; set; }
+    TimeInt32? DayDuration { get; set; }
+    TimeSpan? DayTime { get; set; }
+    bool DynamicDaylight { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths { get; set; }
+    Vec3 WorldDistortScales { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers4<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class where T1 : class
+{
+    new T0? BlockStock { get; set; }
+    new T1? ChallengeParameters { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers5 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
+    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
+    global::TmEssentials.TimeInt32? GoldTime { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
+    global::TmEssentials.TimeInt32? SilverTime { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
+{
+    new IReadOnlyList<T0>? Blocks { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    uint Crc32 { get; set; }
+    bool CreatedWithSimpleEditor { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor { get; set; }
+    global::GBX.NET.Checksum128? HashedPassword { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers8<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
+{
+    T0? ClipGlobal { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers9 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers10 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    int Cost { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers11 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    string? Password { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers12 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    int? AuthorScore { get; set; }
+    bool HasClones { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers13<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
+{
+    T0? ClipIntro { get; set; }
+    PackDesc? CustomMusicPackDesc { get; set; }
+    Vec2 MapCoordOrigin { get; set; }
+    Vec2 MapCoordTarget { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers14<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallenge where T0 : class
+{
+    T0? ClipGroupEndRace { get; set; }
+    T0? ClipGroupInGame { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers15 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    string? Xml { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers16 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    List<Int3>? Checkpoints { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers17 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    bool IsLapRace { get; set; }
+    PackDesc? ModPackDesc { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
+    int NbLaps { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers18 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
+    new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers19 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers20 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    UInt128 PackMask { get; set; }
+    byte[]? Thumbnail { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeMembers21 : global::GBX.NET.Interfaces.Game.IGameCtnChallenge
+{
+    string? Comments { get; set; }
+    bool HasCustomCamThumbnail { get; set; }
+    float ThumbnailFarClipPlane { get; set; }
+    float ThumbnailFov { get; set; }
+    float ThumbnailNearClipPlane { get; set; }
+    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
+    Mat3 ThumbnailRotationMatrix { get; set; }
+}
 public partial interface IGameCtnChallenge : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnChallenge>
 {
     string AuthorLogin { get; set; }
@@ -47,589 +223,73 @@ public partial interface IGameCtnChallenge : IClassVersion<global::GBX.NET.Engin
     global::GBX.NET.Int3 Size { get; set; }
 }
 
-public partial interface IGameCtnChallengeTM10 : IGameCtnChallenge
+public partial interface IGameCtnChallengeTM10 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>
 {
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10? BlockStock { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10? ChallengeParameters { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMPU : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMPU : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11
 {
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU? ChallengeParameters { get; set; }
-    int Cost { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMS : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMS : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19
 {
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro { get; set; }
-    int Cost { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    string? Xml { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMO : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMO : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18
 {
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    int Cost { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    string? Xml { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMSX : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMSX : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17
 {
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX? BlockStock { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX? ClipIntro { get; set; }
-    int Cost { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    string? Xml { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMNESWC : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMNESWC : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17
 {
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? ClipIntro { get; set; }
-    int Cost { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    string? Xml { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMU : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMU : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers18, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers19, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnCollectorList? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? ClipGlobal { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? ClipIntro { get; set; }
-    string? Comments { get; set; }
-    int Cost { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    UInt128 PackMask { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    byte[]? Thumbnail { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
-    string? Xml { get; set; }
 }
 
-public partial interface IGameCtnChallengeVSK5 : IGameCtnChallenge
+public partial interface IGameCtnChallengeVSK5 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListVSK5? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersVSK5? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupVSK5? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipVSK5? ClipIntro { get; set; }
-    string? Comments { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    bool IsLapRace { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    string? Password { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMF : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMF : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers16, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF? BlockStock { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>? Blocks { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF? ChallengeParameters { get; set; }
-    List<Int3>? Checkpoints { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? ClipIntro { get; set; }
-    string? Comments { get; set; }
-    int Cost { get; set; }
-    uint Crc32 { get; set; }
-    bool CreatedWithSimpleEditor { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    global::GBX.NET.Checksum128? HashedPassword { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int NbLaps { get; set; }
-    UInt128 PackMask { get; set; }
-    string? Password { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    byte[]? Thumbnail { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
-    string? Xml { get; set; }
 }
 
-public partial interface IGameCtnChallengeMP3 : IGameCtnChallenge
+public partial interface IGameCtnChallengeMP3 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>? AnchoredObjects { get; set; }
-    string? AuthorExtraInfo { get; set; }
-    string? AuthorNickname { get; set; }
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    int AuthorVersion { get; set; }
-    string? AuthorZone { get; set; }
-    global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks { get; set; }
-    global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    string? BuildVersion { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3>? CarMarksBuffer { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds { get; set; }
-    byte[]? ChallengeDecals { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3? ChallengeParameters { get; set; }
-    string? ChallengeScript { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? ClipAmbiance { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? ClipIntro { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? ClipPodium { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    string? Comments { get; set; }
-    int Cost { get; set; }
-    uint Crc32 { get; set; }
-    bool CreatedWithSimpleEditor { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    int DecoBaseHeightOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor { get; set; }
-    global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs { get; set; }
-    byte[]? EmbeddedZipData { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    bool HasLightmaps { get; set; }
-    global::GBX.NET.Checksum128? HashedPassword { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3? LightmapCache { get; set; }
-    global::GBX.NET.ZlibData? LightmapCacheData { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames { get; set; }
-    int? LightmapVersion { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int? NbBakedBlocks { get; }
-    int NbCheckpoints { get; set; }
-    int NbLaps { get; set; }
-    string? ObjectiveTextAuthor { get; set; }
-    string? ObjectiveTextBronze { get; set; }
-    string? ObjectiveTextGold { get; set; }
-    string? ObjectiveTextSilver { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    List<BoxInt3>? Offzones { get; set; }
-    UInt128 PackMask { get; set; }
-    string? Password { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    byte[]? Thumbnail { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPitchYawRoll { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
-    string? TitleId { get; set; }
     NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines { get; set; }
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares { get; set; }
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares { get; set; }
-    string? Xml { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>? ZoneGenealogy { get; set; }
 }
 
-public partial interface IGameCtnChallengeTMT : IGameCtnChallenge
+public partial interface IGameCtnChallengeTMT : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers9, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>? AnchoredObjects { get; set; }
-    string? AuthorExtraInfo { get; set; }
-    string? AuthorNickname { get; set; }
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    int AuthorVersion { get; set; }
-    string? AuthorZone { get; set; }
-    global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks { get; set; }
-    global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT? BlockStock { get; set; }
-    new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? Blocks { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    string? BuildVersion { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT>? CarMarksBuffer { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds { get; set; }
-    byte[]? ChallengeDecals { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT? ChallengeParameters { get; set; }
-    string? ChallengeScript { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? ClipAmbiance { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? ClipIntro { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? ClipPodium { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    string? Comments { get; set; }
-    int Cost { get; set; }
-    uint Crc32 { get; set; }
-    bool CreatedWithSimpleEditor { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    int DecoBaseHeightOffset { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor { get; set; }
-    global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs { get; set; }
-    byte[]? EmbeddedZipData { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    bool HasLightmaps { get; set; }
-    global::GBX.NET.Checksum128? HashedPassword { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT? LightmapCache { get; set; }
-    global::GBX.NET.ZlibData? LightmapCacheData { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames { get; set; }
-    int? LightmapVersion { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int? NbBakedBlocks { get; }
-    int NbCheckpoints { get; set; }
-    int NbLaps { get; set; }
-    string? ObjectiveTextAuthor { get; set; }
-    string? ObjectiveTextBronze { get; set; }
-    string? ObjectiveTextGold { get; set; }
-    string? ObjectiveTextSilver { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    List<BoxInt3>? Offzones { get; set; }
-    UInt128 PackMask { get; set; }
-    string? Password { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
-    byte[]? Thumbnail { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPitchYawRoll { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
-    string? TitleId { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT>? TrafficElemDescs { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTrafficPathSquaresTMT>? TrafficPathSquares { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTrafficZoneSquaresTMT>? TrafficZoneSquares { get; set; }
-    string? Xml { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>? ZoneGenealogy { get; set; }
 }
 
-public partial interface IGameCtnChallengeMP4 : IGameCtnChallenge
+public partial interface IGameCtnChallengeMP4 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>? AnchoredObjects { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers { get; set; }
-    string? AuthorExtraInfo { get; set; }
-    string? AuthorNickname { get; set; }
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    int AuthorVersion { get; set; }
-    string? AuthorZone { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>? BakedBlocks { get; set; }
-    global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4? BlockStock { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>? Blocks { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    string? BuildVersion { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4>? CarMarksBuffer { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? ChallengeAnimation { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds { get; set; }
-    byte[]? ChallengeDecals { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4? ChallengeParameters { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? ClipAmbiance { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? ClipGroupInGame { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? ClipIntro { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? ClipPodium { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    string? Comments { get; set; }
-    int Cost { get; set; }
-    uint Crc32 { get; set; }
-    bool CreatedWithSimpleEditor { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    TimeInt32? DayDuration { get; set; }
-    TimeSpan? DayTime { get; set; }
-    int DecoBaseHeightOffset { get; set; }
-    bool DynamicDaylight { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor { get; set; }
-    global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs { get; set; }
-    byte[]? EmbeddedZipData { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    bool HasLightmaps { get; set; }
-    global::GBX.NET.Checksum128? HashedPassword { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4? LightmapCache { get; set; }
-    global::GBX.NET.ZlibData? LightmapCacheData { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames { get; set; }
-    int? LightmapVersion { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int? NbBakedBlocks { get; }
-    int NbCheckpoints { get; set; }
-    int NbLaps { get; set; }
-    string? ObjectiveTextAuthor { get; set; }
-    string? ObjectiveTextBronze { get; set; }
-    string? ObjectiveTextGold { get; set; }
-    string? ObjectiveTextSilver { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    List<BoxInt3>? Offzones { get; set; }
-    UInt128 PackMask { get; set; }
-    string? Password { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? SubMapsInfos { get; set; }
-    byte[]? Thumbnail { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPitchYawRoll { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
-    string? TitleId { get; set; }
-    Vec3 WorldDistortScales { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ { get; set; }
-    string? Xml { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>? ZoneGenealogy { get; set; }
 }
 
-public partial interface IGameCtnChallengeTM2020 : IGameCtnChallenge
+public partial interface IGameCtnChallengeTM2020 : IGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers2<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020, global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers4<global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020, global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers7, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers8<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers11, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers12, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers13<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers14<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers15, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers17, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers20, global::GBX.NET.Interfaces.Game.IGameCtnChallengeMembers21
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>? AnchoredObjects { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers { get; set; }
-    string? AuthorExtraInfo { get; set; }
-    string? AuthorNickname { get; set; }
-    int? AuthorScore { get; set; }
-    global::TmEssentials.TimeInt32? AuthorTime { get; set; }
-    int AuthorVersion { get; set; }
-    string? AuthorZone { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>? BakedBlocks { get; set; }
-    global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? BlockOctree { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM2020? BlockStock { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>? Blocks { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths { get; set; }
-    global::TmEssentials.TimeInt32? BronzeTime { get; set; }
-    string? BuildVersion { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020>? CarMarksBuffer { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? ChallengeAnimation { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds { get; set; }
-    byte[]? ChallengeDecals { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020? ChallengeParameters { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? ClipAmbiance { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? ClipGlobal { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? ClipGroupInGame { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>? ClipGroups { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? ClipIntro { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? ClipPodium { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    string? Comments { get; set; }
-    int Cost { get; set; }
-    uint Crc32 { get; set; }
     bool CreatedWithGamepadEditor { get; set; }
-    bool CreatedWithSimpleEditor { get; set; }
-    PackDesc? CustomMusicPackDesc { get; set; }
-    TimeInt32? DayDuration { get; set; }
-    TimeSpan? DayTime { get; set; }
-    int DecoBaseHeightOffset { get; set; }
-    bool DynamicDaylight { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor { get; set; }
-    global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs { get; set; }
-    byte[]? EmbeddedZipData { get; set; }
-    global::TmEssentials.TimeInt32? GoldTime { get; set; }
-    bool HasClones { get; set; }
-    bool HasCustomCamThumbnail { get; set; }
-    bool HasLightmaps { get; set; }
-    global::GBX.NET.Checksum128? HashedPassword { get; set; }
-    bool IsLapRace { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader { get; set; }
     global::GBX.NET.Interfaces.Game.IGameSaveLaunchedCheckpointsTM2020? LaunchedCheckpoints { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]? LegacyMacroblocks { get; set; }
-    global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020? LightmapCache { get; set; }
-    global::GBX.NET.ZlibData? LightmapCacheData { get; set; }
-    ulong LightmapCacheUid { get; set; }
-    global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames { get; set; }
-    int? LightmapVersion { get; set; }
     global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? MacroblockInstances { get; set; }
-    Vec2 MapCoordOrigin { get; set; }
-    Vec2 MapCoordTarget { get; set; }
-    string? MapStyle { get; set; }
-    string? MapType { get; set; }
-    PackDesc? ModPackDesc { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode { get; set; }
-    int? NbBakedBlocks { get; }
-    int NbCheckpoints { get; set; }
-    int NbLaps { get; set; }
-    string? ObjectiveTextAuthor { get; set; }
-    string? ObjectiveTextBronze { get; set; }
-    string? ObjectiveTextGold { get; set; }
-    string? ObjectiveTextSilver { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    List<BoxInt3>? Offzones { get; set; }
-    UInt128 PackMask { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor Palette { get; set; }
-    string? Password { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    global::TmEssentials.TimeInt32? SilverTime { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? Spectators { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData? SubMapSectorGrid { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]? SubMapSectors { get; set; }
-    byte[]? Thumbnail { get; set; }
-    float ThumbnailFarClipPlane { get; set; }
-    float ThumbnailFov { get; set; }
-    float ThumbnailNearClipPlane { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPitchYawRoll { get; set; }
-    global::GBX.NET.Vec3 ThumbnailPosition { get; set; }
-    Mat3 ThumbnailRotationMatrix { get; set; }
-    string? TitleId { get; set; }
-    Vec3 WorldDistortScales { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ { get; set; }
-    string? Xml { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>? ZoneGenealogy { get; set; }
 }
 

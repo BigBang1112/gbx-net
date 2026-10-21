@@ -44,7 +44,7 @@ public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFont
         get => FallbackFont;
         set => FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4.CustomMaterialModel
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>.CustomMaterialModel
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFont
         }
         set => CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4.FallbackFont
+    global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4>.FallbackFont
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFont
         }
         set => FallbackFont = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFontBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020.CustomMaterialModel
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>.CustomMaterialModel
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugFontBitmap : global::GBX.NET.Interfaces.Plug.IPlugFont
         }
         set => CustomMaterialModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020.FallbackFont
+    global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020>.FallbackFont
     {
         get
         {

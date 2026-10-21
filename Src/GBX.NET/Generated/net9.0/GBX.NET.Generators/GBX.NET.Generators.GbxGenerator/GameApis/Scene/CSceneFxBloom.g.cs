@@ -36,12 +36,13 @@ public partial class CSceneFxBloom : global::GBX.NET.Interfaces.Scene.ISceneFxBl
     public static global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>? global::GBX.NET.Interfaces.Scene.ISceneFxBloom.Datas
     {
-        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>(() => Datas, static node => node ?? throw new MemberNullException("Datas"));
-        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneFxBloomData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>(GetDatasBuilderReferences, GameVersion.Unspecified, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomData>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>? global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF.Datas
     {
-        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(() => Datas, static node => { if (node is null) throw new MemberNullException("Datas"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(value.Select(static item => item is global::GBX.NET.Engines.Scene.CSceneFxBloomData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(GetDatasBuilderReferences, GameVersion.TMF, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? GetDatasBuilderReferences() => Datas;
 }

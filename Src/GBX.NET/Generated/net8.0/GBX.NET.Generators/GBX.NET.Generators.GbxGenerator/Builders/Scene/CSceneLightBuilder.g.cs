@@ -36,11 +36,11 @@ public abstract class CSceneLightBuilderBase<TSelf> where TSelf : CSceneLightBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state;
     private protected CSceneLightBuilderBase() => state = new();
     private protected CSceneLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state) => this.state = state;
-    private protected static void SetIsActive(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, bool value) => state.Set<bool>("IsActive", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsActive = value);
-    private protected static void SetLight(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, global::GBX.NET.Engines.Hms.CHmsLight? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLight?>("Light", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Light = value);
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set<global::GBX.NET.Engines.Motion.CMotion?>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Motion = value);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotion>>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotion>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Motion.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
+    private protected static void SetIsActive(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CScenePocBuilderAssignments.GetIsActiveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLight(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, global::GBX.NET.Engines.Hms.CHmsLight? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneLightBuilderAssignments.GetLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneLight> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool IsActive
     {
         get => state.Get<bool>("IsActive");
@@ -90,6 +90,52 @@ public abstract class CSceneLightBuilderBase<TSelf> where TSelf : CSceneLightBui
 }
 public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneLight CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneLight();
+        var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
+        node.Chunks.Add(chunk0A00B000);
+        var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
+        node.Chunks.Add(chunk0A009000);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
+        node.Chunks.Add(chunk0A005004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneLight node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneLight CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneLight();
+        var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
+        node.Chunks.Add(chunk0A00B000);
+        var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
+        node.Chunks.Add(chunk0A009000);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneLight node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A009000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneLight node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -112,25 +158,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -147,25 +180,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -182,25 +202,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -217,25 +224,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CSceneLightBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005004 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -252,22 +246,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneLightBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -284,22 +268,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneLightBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -316,22 +290,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneLightBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -348,22 +312,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneLightBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -380,22 +334,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneLightBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -412,22 +356,12 @@ public partial class CSceneLightBuilder : CSceneLightBuilderBase<CSceneLightBuil
         public global::GBX.NET.Interfaces.Scene.ISceneLightTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneLight Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneLight();
-            var chunk0A00B000 = new global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000();
-            node.Chunks.Add(chunk0A00B000);
-            var chunk0A009000 = new global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000();
-            node.Chunks.Add(chunk0A009000);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CSceneLightBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneLight.Chunk0A00B000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A00B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CScenePoc.Chunk0A009000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A009000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CSceneLightBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CSceneLightBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

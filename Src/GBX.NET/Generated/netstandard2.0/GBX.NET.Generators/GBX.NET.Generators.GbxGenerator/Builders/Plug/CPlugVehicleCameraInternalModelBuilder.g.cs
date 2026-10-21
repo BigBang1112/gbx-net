@@ -36,21 +36,21 @@ public abstract class CPlugVehicleCameraInternalModelBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state;
     private protected CPlugVehicleCameraInternalModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraInternalModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) => this.state = state;
-    private protected static void SetBulletTimeFovSmoothDelta_m_Delta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set<float>("BulletTimeFovSmoothDelta_m_Delta", value, GameVersion.TM2020, static value => value, static (node, value) => node.BulletTimeFovSmoothDelta_m_Delta = value);
-    private protected static void SetBulletTimeFovSmoothDelta_m_TimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set<int>("BulletTimeFovSmoothDelta_m_TimeDown", value, GameVersion.TM2020, static value => value, static (node, value) => node.BulletTimeFovSmoothDelta_m_TimeDown = value);
-    private protected static void SetBulletTimeFovSmoothDelta_m_TimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set<int>("BulletTimeFovSmoothDelta_m_TimeUp", value, GameVersion.TM2020, static value => value, static (node, value) => node.BulletTimeFovSmoothDelta_m_TimeUp = value);
-    private protected static void SetCamBlendEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, bool value) => state.Set<bool>("CamBlendEnabled", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CamBlendEnabled = value);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float? value) => state.Set<float?>("Fov", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Fov = value);
-    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, bool value) => state.Set<bool>("IsFirstPerson", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IsFirstPerson = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetPilotHeadCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set<float>("PilotHeadCoef", value, GameVersion.TM2020, static value => value, static (node, value) => node.PilotHeadCoef = value);
-    private protected static void SetPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, Vec3 value) => state.Set<Vec3>("PitchYawRoll", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PitchYawRoll = value);
-    private protected static void SetRelativePos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, Vec3 value) => state.Set<Vec3>("RelativePos", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RelativePos = value);
-    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Shake = value);
-    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel>>("Shake", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shake.CopyFrom(reference));
-    private protected static void SetSuperBulletTimeFovSmoothMultiplier(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set<float>("SuperBulletTimeFovSmoothMultiplier", value, GameVersion.TM2020, static value => value, static (node, value) => node.SuperBulletTimeFovSmoothMultiplier = value);
-    private protected static void SetSuperBulletTimeFovSmoothMultiplier_m_TimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set<int>("SuperBulletTimeFovSmoothMultiplier_m_TimeDown", value, GameVersion.TM2020, static value => value, static (node, value) => node.SuperBulletTimeFovSmoothMultiplier_m_TimeDown = value);
-    private protected static void SetSuperBulletTimeFovSmoothMultiplier_m_TimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set<int>("SuperBulletTimeFovSmoothMultiplier_m_TimeUp", value, GameVersion.TM2020, static value => value, static (node, value) => node.SuperBulletTimeFovSmoothMultiplier_m_TimeUp = value);
+    private protected static void SetBulletTimeFovSmoothDelta_m_Delta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_DeltaAssignment(), value, GameVersion.TM2020);
+    private protected static void SetBulletTimeFovSmoothDelta_m_TimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_TimeDownAssignment(), value, GameVersion.TM2020);
+    private protected static void SetBulletTimeFovSmoothDelta_m_TimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetBulletTimeFovSmoothDelta_m_TimeUpAssignment(), value, GameVersion.TM2020);
+    private protected static void SetCamBlendEnabled(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetCamBlendEnabledAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPilotHeadCoef(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetPilotHeadCoefAssignment(), value, GameVersion.TM2020);
+    private protected static void SetPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetPitchYawRollAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRelativePos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetRelativePosAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSuperBulletTimeFovSmoothMultiplier(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplierAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSuperBulletTimeFovSmoothMultiplier_m_TimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplier_m_TimeDownAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSuperBulletTimeFovSmoothMultiplier_m_TimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilderAssignments.GetSuperBulletTimeFovSmoothMultiplier_m_TimeUpAssignment(), value, GameVersion.TM2020);
     public float? Fov
     {
         get => state.Get<float?>("Fov");
@@ -82,8 +82,121 @@ public abstract class CPlugVehicleCameraInternalModelBuilderBase<TSelf> where TS
         return (TSelf)this;
     }
 }
+public abstract class CPlugVehicleCameraInternalModelBuilderMembers1<TSelf> : CPlugVehicleCameraInternalModelBuilderBase<TSelf> where TSelf : CPlugVehicleCameraInternalModelBuilderMembers1<TSelf>
+{
+    private protected CPlugVehicleCameraInternalModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) : base(state) { }
+    public bool IsFirstPerson
+    {
+        get => state.Get<bool>("IsFirstPerson");
+        set => SetIsFirstPerson(state, value);
+    }
+    public TSelf WithIsFirstPerson(bool value)
+    {
+        IsFirstPerson = value;
+        return (TSelf)this;
+    }
+    public Vec3 PitchYawRoll
+    {
+        get => state.Get<Vec3>("PitchYawRoll");
+        set => SetPitchYawRoll(state, value);
+    }
+    public TSelf WithPitchYawRoll(Vec3 value)
+    {
+        PitchYawRoll = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
+        set => SetShake(state, value);
+    }
+    public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
+    {
+        Shake = value;
+        return (TSelf)this;
+    }
+    public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetShakeReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVehicleCameraInternalModelBuilderMembers2<TSelf> : CPlugVehicleCameraInternalModelBuilderMembers1<TSelf> where TSelf : CPlugVehicleCameraInternalModelBuilderMembers2<TSelf>
+{
+    private protected CPlugVehicleCameraInternalModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) : base(state) { }
+    public bool CamBlendEnabled
+    {
+        get => state.Get<bool>("CamBlendEnabled");
+        set => SetCamBlendEnabled(state, value);
+    }
+    public TSelf WithCamBlendEnabled(bool value)
+    {
+        CamBlendEnabled = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCameraInternalModelBuilderBase<CPlugVehicleCameraInternalModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
+        var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(game);
+        node.Chunks.Add(chunk090F7000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F7000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
+        var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(game);
+        node.Chunks.Add(chunk090F7000);
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F7000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
+        var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(game);
+        node.Chunks.Add(chunk090F7000);
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F7000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
+        var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(game);
+        node.Chunks.Add(chunk090F7000);
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F7000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -96,156 +209,63 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
-            var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(GameVersion.MP3);
-            node.Chunks.Add(chunk090F7000);
+            var node = CPlugVehicleCameraInternalModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP3 chunk Chunk090F7000 is missing or has an incompatible version.");
+            CPlugVehicleCameraInternalModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugVehicleCameraInternalModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node);
     }
-    public partial class TMT : CPlugVehicleCameraInternalModelBuilderBase<TMT>
+    public partial class TMT : CPlugVehicleCameraInternalModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) : base(state) { }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TMT WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public Vec3 PitchYawRoll
-        {
-            get => state.Get<Vec3>("PitchYawRoll");
-            set => SetPitchYawRoll(state, value);
-        }
-        public TMT WithPitchYawRoll(Vec3 value)
-        {
-            PitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-            set => SetShake(state, value);
-        }
-        public TMT WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
-        {
-            Shake = value;
-            return this;
-        }
-        public TMT WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShakeReference(state, value);
-            return this;
-        }
         public TMT WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? value)
         {
-            return WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
-            var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(GameVersion.TMT);
-            node.Chunks.Add(chunk090F7000);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraInternalModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 4 }) throw new InvalidOperationException("Required TMT chunk Chunk090F7000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraInternalModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugVehicleCameraInternalModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node);
     }
-    public partial class MP4 : CPlugVehicleCameraInternalModelBuilderBase<MP4>
+    public partial class MP4 : CPlugVehicleCameraInternalModelBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) : base(state) { }
-        public bool CamBlendEnabled
-        {
-            get => state.Get<bool>("CamBlendEnabled");
-            set => SetCamBlendEnabled(state, value);
-        }
-        public MP4 WithCamBlendEnabled(bool value)
-        {
-            CamBlendEnabled = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public MP4 WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public Vec3 PitchYawRoll
-        {
-            get => state.Get<Vec3>("PitchYawRoll");
-            set => SetPitchYawRoll(state, value);
-        }
-        public MP4 WithPitchYawRoll(Vec3 value)
-        {
-            PitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-            set => SetShake(state, value);
-        }
-        public MP4 WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
-        {
-            Shake = value;
-            return this;
-        }
-        public MP4 WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShakeReference(state, value);
-            return this;
-        }
         public MP4 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? value)
         {
-            return WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
-            var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(GameVersion.MP4);
-            node.Chunks.Add(chunk090F7000);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraInternalModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk090F7000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraInternalModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleCameraInternalModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel node);
     }
-    public partial class TM2020 : CPlugVehicleCameraInternalModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVehicleCameraInternalModelBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel> state) : base(state) { }
         public float BulletTimeFovSmoothDelta_m_Delta
@@ -278,26 +298,6 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
             BulletTimeFovSmoothDelta_m_TimeUp = value;
             return this;
         }
-        public bool CamBlendEnabled
-        {
-            get => state.Get<bool>("CamBlendEnabled");
-            set => SetCamBlendEnabled(state, value);
-        }
-        public TM2020 WithCamBlendEnabled(bool value)
-        {
-            CamBlendEnabled = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TM2020 WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
         public float PilotHeadCoef
         {
             get => state.Get<float>("PilotHeadCoef");
@@ -308,35 +308,9 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
             PilotHeadCoef = value;
             return this;
         }
-        public Vec3 PitchYawRoll
-        {
-            get => state.Get<Vec3>("PitchYawRoll");
-            set => SetPitchYawRoll(state, value);
-        }
-        public TM2020 WithPitchYawRoll(Vec3 value)
-        {
-            PitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-            set => SetShake(state, value);
-        }
-        public TM2020 WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
-        {
-            Shake = value;
-            return this;
-        }
-        public TM2020 WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShakeReference(state, value);
-            return this;
-        }
         public TM2020 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? value)
         {
-            return WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public float SuperBulletTimeFovSmoothMultiplier
         {
@@ -371,17 +345,12 @@ public partial class CPlugVehicleCameraInternalModelBuilder : CPlugVehicleCamera
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel();
-            var chunk090F7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090F7000);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraInternalModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraInternalModel.Chunk090F7000>() is not { Version: 8 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090F7000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraInternalModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleCameraInternalModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

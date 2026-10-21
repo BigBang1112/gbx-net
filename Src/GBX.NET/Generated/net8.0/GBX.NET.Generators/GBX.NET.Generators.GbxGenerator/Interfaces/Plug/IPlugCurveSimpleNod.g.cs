@@ -40,71 +40,42 @@ public partial interface IPlugCurveSimpleNod : IClassVersion<global::GBX.NET.Eng
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new float[]? Xs { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTM10 : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM10
 {
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTMPU : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMPU
 {
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTMSX : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX
 {
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTMNESWC : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC
 {
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodVSK5 : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5
 {
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTMF : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF
 {
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodMP3 : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3
 {
-    new bool ForceTangentMaxX { get; set; }
-    new bool ForceTangentMinX { get; set; }
-    new float ForcedTangentMaxX { get; set; }
-    new float ForcedTangentMinX { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTMT : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT
 {
-    new bool ForceTangentMaxX { get; set; }
-    new bool ForceTangentMinX { get; set; }
-    new float ForcedTangentMaxX { get; set; }
-    new float ForcedTangentMinX { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodMP4 : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4
 {
-    new bool ForceTangentMaxX { get; set; }
-    new bool ForceTangentMinX { get; set; }
-    new float ForcedTangentMaxX { get; set; }
-    new float ForcedTangentMinX { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    new float[]? Ys { get; set; }
 }
 
 public partial interface IPlugCurveSimpleNodTM2020 : IPlugCurveSimpleNod, global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020

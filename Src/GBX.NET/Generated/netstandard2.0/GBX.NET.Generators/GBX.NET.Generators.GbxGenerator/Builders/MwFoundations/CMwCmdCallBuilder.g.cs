@@ -36,7 +36,7 @@ public abstract class CMwCmdCallBuilderBase<TSelf> where TSelf : CMwCmdCallBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdCall> state;
     private protected CMwCmdCallBuilderBase() => state = new();
     private protected CMwCmdCallBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdCall> state) => this.state = state;
-    private protected static void SetParameter(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdCall> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter", value, GameVersion.TMF, static value => value, static (node, value) => node.Parameter = value);
+    private protected static void SetParameter(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdCall> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdCallBuilderAssignments.GetParameterAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive? Parameter
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExpClassParam.ParamArchive?>("Parameter");
@@ -50,6 +50,20 @@ public abstract class CMwCmdCallBuilderBase<TSelf> where TSelf : CMwCmdCallBuild
 }
 public partial class CMwCmdCallBuilder : CMwCmdCallBuilderBase<CMwCmdCallBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdCall CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdCall();
+        var chunk01034001 = new global::GBX.NET.Engines.MwFoundations.CMwCmdCall.Chunk01034001();
+        node.Chunks.Add(chunk01034001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdCall node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdCall.Chunk01034001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01034001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdCall node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdCallBuilderBase<TMF>
     {
@@ -57,13 +71,12 @@ public partial class CMwCmdCallBuilder : CMwCmdCallBuilderBase<CMwCmdCallBuilder
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdCallTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdCall Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdCall();
-            var chunk01034001 = new global::GBX.NET.Engines.MwFoundations.CMwCmdCall.Chunk01034001();
-            node.Chunks.Add(chunk01034001);
+            var node = CMwCmdCallBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdCall.Chunk01034001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01034001 is missing or has an incompatible version.");
+            CMwCmdCallBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdCallBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

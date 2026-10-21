@@ -36,9 +36,9 @@ public abstract class CMwCmdExpNumBuilderBase<TSelf> where TSelf : CMwCmdExpNumB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state;
     private protected CMwCmdExpNumBuilderBase() => state = new();
     private protected CMwCmdExpNumBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state) => this.state = state;
-    private protected static void SetInteger(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, int value) => state.Set<int>("Integer", value, GameVersion.TMF, static value => value, static (node, value) => node.Integer = value);
-    private protected static void SetReal(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, float value) => state.Set<float>("Real", value, GameVersion.TMF, static value => value, static (node, value) => node.Real = value);
-    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, int value) => state.Set<int>("Type", value, GameVersion.TMF, static value => value, static (node, value) => node.Type = value);
+    private protected static void SetInteger(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetIntegerAssignment(), value, GameVersion.TMF);
+    private protected static void SetReal(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, float value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetRealAssignment(), value, GameVersion.TMF);
+    private protected static void SetType(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum> state, int value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumBuilderAssignments.GetTypeAssignment(), value, GameVersion.TMF);
     public int Integer
     {
         get => state.Get<int>("Integer");
@@ -72,6 +72,20 @@ public abstract class CMwCmdExpNumBuilderBase<TSelf> where TSelf : CMwCmdExpNumB
 }
 public partial class CMwCmdExpNumBuilder : CMwCmdExpNumBuilderBase<CMwCmdExpNumBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum();
+        var chunk01046000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000();
+        node.Chunks.Add(chunk01046000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01046000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpNumBuilderBase<TMF>
     {
@@ -79,13 +93,12 @@ public partial class CMwCmdExpNumBuilder : CMwCmdExpNumBuilderBase<CMwCmdExpNumB
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum();
-            var chunk01046000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000();
-            node.Chunks.Add(chunk01046000);
+            var node = CMwCmdExpNumBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNum.Chunk01046000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01046000 is missing or has an incompatible version.");
+            CMwCmdExpNumBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdExpNumBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

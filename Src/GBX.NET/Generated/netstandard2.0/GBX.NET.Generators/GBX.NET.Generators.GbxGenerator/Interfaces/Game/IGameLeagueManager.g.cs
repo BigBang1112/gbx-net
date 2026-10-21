@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameLeagueManagerMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameLeagueManager where T0 : class
+{
+    new IReadOnlyList<T0>? Leagues { get; set; }
+}
 public partial interface IGameLeagueManager : IClassVersion<global::GBX.NET.Engines.Game.CGameLeagueManager>
 {
     int CacheDuration { get; set; }
@@ -39,23 +44,19 @@ public partial interface IGameLeagueManager : IClassVersion<global::GBX.NET.Engi
     bool Updated { get; set; }
 }
 
-public partial interface IGameLeagueManagerMP3 : IGameLeagueManager
+public partial interface IGameLeagueManagerMP3 : IGameLeagueManager, global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueMP3>? Leagues { get; set; }
 }
 
-public partial interface IGameLeagueManagerTMT : IGameLeagueManager
+public partial interface IGameLeagueManagerTMT : IGameLeagueManager, global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMT>? Leagues { get; set; }
 }
 
-public partial interface IGameLeagueManagerMP4 : IGameLeagueManager
+public partial interface IGameLeagueManagerMP4 : IGameLeagueManager, global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueMP4>? Leagues { get; set; }
 }
 
-public partial interface IGameLeagueManagerTM2020 : IGameLeagueManager
+public partial interface IGameLeagueManagerTM2020 : IGameLeagueManager, global::GBX.NET.Interfaces.Game.IGameLeagueManagerMembers1<global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTM2020>? Leagues { get; set; }
 }
 

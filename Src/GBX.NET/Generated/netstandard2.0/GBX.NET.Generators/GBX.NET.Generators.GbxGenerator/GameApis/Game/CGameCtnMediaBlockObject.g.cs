@@ -39,7 +39,7 @@ public partial class CGameCtnMediaBlockObject : global::GBX.NET.Interfaces.Game.
         get => VisData;
         set => VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectTMT.VisData
+    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT>.VisData
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnMediaBlockObject : global::GBX.NET.Interfaces.Game.
         }
         set => VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMP4.VisData
+    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4>.VisData
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameCtnMediaBlockObject : global::GBX.NET.Interfaces.Game.
         }
         set => VisData = value is null ? null : value is global::GBX.NET.Engines.Game.CGameReplayObjectVisData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectTM2020.VisData
+    global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020>.VisData
     {
         get
         {

@@ -31,69 +31,54 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugWeatherModel where T0 : class
+{
+    T0? BitmapWaterFog { get; set; }
+    global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugWeatherModelMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugWeatherModel where T0 : class where T1 : class
+{
+    new T0? BitmapSpecularDir { get; set; }
+    new IReadOnlyList<T1>? Weathers { get; set; }
+}
 public partial interface IPlugWeatherModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugWeatherModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapSpecularDir { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeather>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelTMSX : IPlugWeatherModel
+public partial interface IPlugWeatherModelTMSX : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapSpecularDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelTMNESWC : IPlugWeatherModel
+public partial interface IPlugWeatherModelTMNESWC : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapSpecularDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelVSK5 : IPlugWeatherModel
+public partial interface IPlugWeatherModelVSK5 : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapSpecularDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelTMF : IPlugWeatherModel
+public partial interface IPlugWeatherModelTMF : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapSpecularDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelMP3 : IPlugWeatherModel
+public partial interface IPlugWeatherModelMP3 : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSpecularDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapWaterFog { get; set; }
-    global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelTMT : IPlugWeatherModel
+public partial interface IPlugWeatherModelTMT : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSpecularDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapWaterFog { get; set; }
-    global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelMP4 : IPlugWeatherModel
+public partial interface IPlugWeatherModelMP4 : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapSpecularDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapWaterFog { get; set; }
-    global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4>? Weathers { get; set; }
 }
 
-public partial interface IPlugWeatherModelTM2020 : IPlugWeatherModel
+public partial interface IPlugWeatherModelTM2020 : IPlugWeatherModel, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSpecularDir { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapWaterFog { get; set; }
-    global::GBX.NET.Engines.Function.CFuncDayTime? FuncDayTime { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMoodSetting? MoodSetting { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020>? Weathers { get; set; }
 }
 

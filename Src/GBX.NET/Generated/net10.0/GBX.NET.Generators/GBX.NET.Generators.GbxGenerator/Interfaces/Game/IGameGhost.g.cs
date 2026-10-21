@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameGhostMembers1 : global::GBX.NET.Interfaces.Game.IGameGhost
+{
+    uint? SavedMobilClassId { get; set; }
+}
 public partial interface IGameGhost : IClassVersion<global::GBX.NET.Engines.Game.CGameGhost>
 {
     global::GBX.NET.Engines.Game.CGameGhost.Data SampleData { get; }
@@ -44,19 +49,16 @@ public partial interface IGameGhostTMPU : IGameGhost
 {
 }
 
-public partial interface IGameGhostTMS : IGameGhost
+public partial interface IGameGhostTMS : IGameGhost, global::GBX.NET.Interfaces.Game.IGameGhostMembers1
 {
-    uint? SavedMobilClassId { get; set; }
 }
 
-public partial interface IGameGhostTMSX : IGameGhost
+public partial interface IGameGhostTMSX : IGameGhost, global::GBX.NET.Interfaces.Game.IGameGhostMembers1
 {
-    uint? SavedMobilClassId { get; set; }
 }
 
-public partial interface IGameGhostTMNESWC : IGameGhost
+public partial interface IGameGhostTMNESWC : IGameGhost, global::GBX.NET.Interfaces.Game.IGameGhostMembers1
 {
-    uint? SavedMobilClassId { get; set; }
 }
 
 public partial interface IGameGhostTMU : IGameGhost

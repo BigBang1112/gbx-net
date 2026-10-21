@@ -36,102 +36,102 @@ public abstract class CGameControlCameraTrackManiaRace2BuilderBase<TSelf> where 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state;
     private protected CGameControlCameraTrackManiaRace2BuilderBase() => state = new();
     private protected CGameControlCameraTrackManiaRace2BuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) => this.state = state;
-    private protected static void SetCanCameraMove(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("CanCameraMove", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.CanCameraMove = value);
-    private protected static void SetCanUseRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("CanUseRelativeTargetLocation", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.CanUseRelativeTargetLocation = value);
-    private protected static void SetDefaultFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DefaultFarZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultFarZ = value);
-    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DefaultFov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultFov = value);
-    private protected static void SetDefaultNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DefaultNearZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultNearZ = value);
-    private protected static void SetDeltaDistDamperKa(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DeltaDistDamperKa", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DeltaDistDamperKa = value);
-    private protected static void SetDeltaDistDamperKi(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DeltaDistDamperKi", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DeltaDistDamperKi = value);
-    private protected static void SetDeltaLookAtFactorDamperKa(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DeltaLookAtFactorDamperKa", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DeltaLookAtFactorDamperKa = value);
-    private protected static void SetDeltaLookAtFactorDamperKi(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("DeltaLookAtFactorDamperKi", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DeltaLookAtFactorDamperKi = value);
-    private protected static void SetEventBurningDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("EventBurningDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventBurningDistDelta = value);
-    private protected static void SetEventBurningDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventBurningDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventBurningDistTimeDown = value);
-    private protected static void SetEventBurningDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventBurningDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventBurningDistTimeUp = value);
-    private protected static void SetEventBurningLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("EventBurningLookAtFactorDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventBurningLookAtFactorDelta = value);
-    private protected static void SetEventBurningLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventBurningLookAtFactorTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventBurningLookAtFactorTimeDown = value);
-    private protected static void SetEventBurningLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventBurningLookAtFactorTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventBurningLookAtFactorTimeUp = value);
-    private protected static void SetEventChangeGearDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("EventChangeGearDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventChangeGearDistDelta = value);
-    private protected static void SetEventChangeGearDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventChangeGearDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventChangeGearDistTimeDown = value);
-    private protected static void SetEventChangeGearDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventChangeGearDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventChangeGearDistTimeUp = value);
-    private protected static void SetEventTurboDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("EventTurboDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventTurboDistDelta = value);
-    private protected static void SetEventTurboDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventTurboDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventTurboDistTimeDown = value);
-    private protected static void SetEventTurboDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventTurboDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventTurboDistTimeUp = value);
-    private protected static void SetEventTurboFovDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("EventTurboFovDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventTurboFovDelta = value);
-    private protected static void SetEventTurboFovTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventTurboFovTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventTurboFovTimeDown = value);
-    private protected static void SetEventTurboFovTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("EventTurboFovTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EventTurboFovTimeUp = value);
-    private protected static void SetForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Iso4 value) => state.Set<Iso4>("ForcedLocation", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ForcedLocation = value);
-    private protected static void SetForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Vec3 value) => state.Set<Vec3>("ForcedUp", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.ForcedUp = value);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("Fov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Fov = value);
-    private protected static void SetInputBrakeDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputBrakeDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputBrakeDistDelta = value);
-    private protected static void SetInputBrakeDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputBrakeDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputBrakeDistTimeDown = value);
-    private protected static void SetInputBrakeDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputBrakeDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputBrakeDistTimeUp = value);
-    private protected static void SetInputGasDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputGasDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputGasDistDelta = value);
-    private protected static void SetInputGasDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputGasDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputGasDistTimeDown = value);
-    private protected static void SetInputGasDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputGasDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputGasDistTimeUp = value);
-    private protected static void SetInputLeftSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputLeftSteerRollDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputLeftSteerRollDelta = value);
-    private protected static void SetInputLeftSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputLeftSteerRollTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputLeftSteerRollTimeDown = value);
-    private protected static void SetInputLeftSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputLeftSteerRollTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputLeftSteerRollTimeUp = value);
-    private protected static void SetInputLeftSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputLeftSteerYawDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputLeftSteerYawDelta = value);
-    private protected static void SetInputLeftSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputLeftSteerYawTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputLeftSteerYawTimeDown = value);
-    private protected static void SetInputLeftSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputLeftSteerYawTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputLeftSteerYawTimeUp = value);
-    private protected static void SetInputNoSteerDurationBeforeReset(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputNoSteerDurationBeforeReset", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputNoSteerDurationBeforeReset = value);
-    private protected static void SetInputRightSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputRightSteerRollDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputRightSteerRollDelta = value);
-    private protected static void SetInputRightSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputRightSteerRollTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputRightSteerRollTimeDown = value);
-    private protected static void SetInputRightSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputRightSteerRollTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputRightSteerRollTimeUp = value);
-    private protected static void SetInputRightSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputRightSteerYawDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputRightSteerYawDelta = value);
-    private protected static void SetInputRightSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputRightSteerYawTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputRightSteerYawTimeDown = value);
-    private protected static void SetInputRightSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputRightSteerYawTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputRightSteerYawTimeUp = value);
-    private protected static void SetInputSteerDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("InputSteerDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputSteerDistDelta = value);
-    private protected static void SetInputSteerDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputSteerDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputSteerDistTimeDown = value);
-    private protected static void SetInputSteerDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputSteerDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputSteerDistTimeUp = value);
-    private protected static void SetInputSteerDurationBeforeAnticipatingTurnTriggered(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputSteerDurationBeforeAnticipatingTurnTriggered", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputSteerDurationBeforeAnticipatingTurnTriggered = value);
-    private protected static void SetInputSteerDurationBeforeBurnoutShowView(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputSteerDurationBeforeBurnoutShowView", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputSteerDurationBeforeBurnoutShowView = value);
-    private protected static void SetInputSteerDurationBeforeRollTriggered(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("InputSteerDurationBeforeRollTriggered", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.InputSteerDurationBeforeRollTriggered = value);
-    private protected static void SetInterpolate(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("Interpolate", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Interpolate = value);
-    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("IsFirstPerson", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.IsFirstPerson = value);
-    private protected static void SetIsFollowing(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("IsFollowing", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.IsFollowing = value);
-    private protected static void SetIsRollFromInput(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("IsRollFromInput", value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.IsRollFromInput = value);
-    private protected static void SetIsUpLinked(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("IsUpLinked", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsUpLinked = value);
-    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Iso4 value) => state.Set<Iso4>("Location", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Location = value);
-    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("LookAtFactor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LookAtFactor = value);
-    private protected static void SetLookAtFactorFromUpSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set<global::GBX.NET.Engines.Function.CFuncKeysReal?>("LookAtFactorFromUpSpeedRatio", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.LookAtFactorFromUpSpeedRatio = value);
-    private protected static void SetLookAtFactorFromUpSpeedRatioReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>("LookAtFactorFromUpSpeedRatio", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LookAtFactorFromUpSpeedRatio.CopyFrom(reference));
-    private protected static void SetMaxDeltaFovStep(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxDeltaFovStep", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MaxDeltaFovStep = value);
-    private protected static void SetMaxDeltaPlaneDistStep(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxDeltaPlaneDistStep", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MaxDeltaPlaneDistStep = value);
-    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxDist", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MaxDist = value);
-    private protected static void SetMaxFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxFarZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MaxFarZ = value);
-    private protected static void SetMaxFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxFov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MaxFov = value);
-    private protected static void SetMaxNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxNearZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MaxNearZ = value);
-    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MaxSpeed", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MaxSpeed = value);
-    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MinDist", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MinDist = value);
-    private protected static void SetMinFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MinFarZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MinFarZ = value);
-    private protected static void SetMinFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MinFov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MinFov = value);
-    private protected static void SetMinNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MinNearZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MinNearZ = value);
-    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("MinSpeed", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MinSpeed = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("PlaneDist", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.PlaneDist = value);
-    private protected static void SetRelativeFollowedPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Vec3 value) => state.Set<Vec3>("RelativeFollowedPos", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.RelativeFollowedPos = value);
-    private protected static void SetRelativeTargetPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Vec3 value) => state.Set<Vec3>("RelativeTargetPos", value, GameVersion.TMSX, static value => value, static (node, value) => node.RelativeTargetPos = value);
-    private protected static void SetRollFromSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RollFromSpeed", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.RollFromSpeed = value);
-    private protected static void SetRollFromSpeedReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>("RollFromSpeed", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.RollFromSpeed.CopyFrom(reference));
-    private protected static void SetStateFlyingDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("StateFlyingDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingDistDelta = value);
-    private protected static void SetStateFlyingDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingDistTimeDown = value);
-    private protected static void SetStateFlyingDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingDistTimeUp = value);
-    private protected static void SetStateFlyingDurationBeforeCameraMove(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingDurationBeforeCameraMove", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingDurationBeforeCameraMove = value);
-    private protected static void SetStateFlyingDurationBeforeFlyingMode(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingDurationBeforeFlyingMode", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingDurationBeforeFlyingMode = value);
-    private protected static void SetStateFlyingLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("StateFlyingLookAtFactorDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingLookAtFactorDelta = value);
-    private protected static void SetStateFlyingLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingLookAtFactorTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingLookAtFactorTimeDown = value);
-    private protected static void SetStateFlyingLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingLookAtFactorTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingLookAtFactorTimeUp = value);
-    private protected static void SetStateFlyingLookAtStep(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("StateFlyingLookAtStep", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingLookAtStep = value);
-    private protected static void SetStateFlyingPlaneDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set<float>("StateFlyingPlaneDistDelta", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingPlaneDistDelta = value);
-    private protected static void SetStateFlyingPlaneDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingPlaneDistTimeDown", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingPlaneDistTimeDown = value);
-    private protected static void SetStateFlyingPlaneDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set<int>("StateFlyingPlaneDistTimeUp", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.StateFlyingPlaneDistTimeUp = value);
-    private protected static void SetUseForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("UseForcedLocation", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.UseForcedLocation = value);
-    private protected static void SetUseForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("UseForcedUp", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.UseForcedUp = value);
-    private protected static void SetUseOnlyFollowedMobilPosition(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set<bool>("UseOnlyFollowedMobilPosition", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.UseOnlyFollowedMobilPosition = value);
-    private protected static void SetYawFromSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set<global::GBX.NET.Engines.Function.CFuncKeysReal?>("YawFromSpeed", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.YawFromSpeed = value);
-    private protected static void SetYawFromSpeedReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>("YawFromSpeed", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.YawFromSpeed.CopyFrom(reference));
+    private protected static void SetCanCameraMove(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetCanCameraMoveAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetCanUseRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDefaultFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDefaultNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetDeltaDistDamperKa(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaDistDamperKaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDeltaDistDamperKi(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaDistDamperKiAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDeltaLookAtFactorDamperKa(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaLookAtFactorDamperKaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDeltaLookAtFactorDamperKi(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetDeltaLookAtFactorDamperKiAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventBurningDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventBurningDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventBurningDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventBurningDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventBurningDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventBurningDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventBurningLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventBurningLookAtFactorDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventBurningLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventBurningLookAtFactorTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventBurningLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventBurningLookAtFactorTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventChangeGearDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventChangeGearDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventChangeGearDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventChangeGearDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventChangeGearDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventChangeGearDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventTurboDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventTurboDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventTurboDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventTurboDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventTurboDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventTurboDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventTurboFovDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventTurboFovDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventTurboFovTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventTurboFovTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEventTurboFovTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetEventTurboFovTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputBrakeDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputBrakeDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputBrakeDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputBrakeDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputBrakeDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputBrakeDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputGasDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputGasDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputGasDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputGasDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputGasDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputGasDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputLeftSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputLeftSteerRollDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputLeftSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputLeftSteerRollTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputLeftSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputLeftSteerRollTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputLeftSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputLeftSteerYawDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputLeftSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputLeftSteerYawTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputLeftSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputLeftSteerYawTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputNoSteerDurationBeforeReset(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputNoSteerDurationBeforeResetAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputRightSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputRightSteerRollDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputRightSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputRightSteerRollTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputRightSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputRightSteerRollTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputRightSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputRightSteerYawDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputRightSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputRightSteerYawTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputRightSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputRightSteerYawTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputSteerDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputSteerDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputSteerDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputSteerDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputSteerDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputSteerDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputSteerDurationBeforeAnticipatingTurnTriggered(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputSteerDurationBeforeAnticipatingTurnTriggeredAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputSteerDurationBeforeBurnoutShowView(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputSteerDurationBeforeBurnoutShowViewAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInputSteerDurationBeforeRollTriggered(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetInputSteerDurationBeforeRollTriggeredAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInterpolate(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetIsFollowing(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFollowingAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetIsRollFromInput(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetIsUpLinked(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLookAtFactorFromUpSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetLookAtFactorFromUpSpeedRatioAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetLookAtFactorFromUpSpeedRatioReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetLookAtFactorFromUpSpeedRatioReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMaxDeltaFovStep(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetMaxDeltaFovStepAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMaxDeltaPlaneDistStep(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetMaxDeltaPlaneDistStepAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMaxFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMaxFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMaxNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMinFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMinFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMinNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRelativeFollowedPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetRelativeTargetPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
+    private protected static void SetRollFromSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetRollFromSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRollFromSpeedReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetRollFromSpeedReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingDurationBeforeCameraMove(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingDurationBeforeCameraMoveAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingDurationBeforeFlyingMode(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingDurationBeforeFlyingModeAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingLookAtFactorDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingLookAtFactorTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingLookAtFactorTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingLookAtStep(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingLookAtStepAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingPlaneDistDelta(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingPlaneDistDeltaAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingPlaneDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingPlaneDistTimeDownAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetStateFlyingPlaneDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetStateFlyingPlaneDistTimeUpAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetUseForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetUseForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetUseOnlyFollowedMobilPosition(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseOnlyFollowedMobilPositionAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetYawFromSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetYawFromSpeedAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetYawFromSpeedReference(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRace2BuilderAssignments.GetYawFromSpeedReferenceAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
     public bool Interpolate
     {
         get => state.Get<bool>("Interpolate");
@@ -183,8 +183,930 @@ public abstract class CGameControlCameraTrackManiaRace2BuilderBase<TSelf> where 
         return (TSelf)this;
     }
 }
+public abstract class CGameControlCameraTrackManiaRace2BuilderMembers1<TSelf> : CGameControlCameraTrackManiaRace2BuilderBase<TSelf> where TSelf : CGameControlCameraTrackManiaRace2BuilderMembers1<TSelf>
+{
+    private protected CGameControlCameraTrackManiaRace2BuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
+    public bool CanCameraMove
+    {
+        get => state.Get<bool>("CanCameraMove");
+        set => SetCanCameraMove(state, value);
+    }
+    public TSelf WithCanCameraMove(bool value)
+    {
+        CanCameraMove = value;
+        return (TSelf)this;
+    }
+    public float DefaultFov
+    {
+        get => state.Get<float>("DefaultFov");
+        set => SetDefaultFov(state, value);
+    }
+    public TSelf WithDefaultFov(float value)
+    {
+        DefaultFov = value;
+        return (TSelf)this;
+    }
+    public Iso4 ForcedLocation
+    {
+        get => state.Get<Iso4>("ForcedLocation");
+        set => SetForcedLocation(state, value);
+    }
+    public TSelf WithForcedLocation(Iso4 value)
+    {
+        ForcedLocation = value;
+        return (TSelf)this;
+    }
+    public float Fov
+    {
+        get => state.Get<float>("Fov");
+        set => SetFov(state, value);
+    }
+    public TSelf WithFov(float value)
+    {
+        Fov = value;
+        return (TSelf)this;
+    }
+    public bool IsFirstPerson
+    {
+        get => state.Get<bool>("IsFirstPerson");
+        set => SetIsFirstPerson(state, value);
+    }
+    public TSelf WithIsFirstPerson(bool value)
+    {
+        IsFirstPerson = value;
+        return (TSelf)this;
+    }
+    public bool IsFollowing
+    {
+        get => state.Get<bool>("IsFollowing");
+        set => SetIsFollowing(state, value);
+    }
+    public TSelf WithIsFollowing(bool value)
+    {
+        IsFollowing = value;
+        return (TSelf)this;
+    }
+    public float MaxDist
+    {
+        get => state.Get<float>("MaxDist");
+        set => SetMaxDist(state, value);
+    }
+    public TSelf WithMaxDist(float value)
+    {
+        MaxDist = value;
+        return (TSelf)this;
+    }
+    public float MaxSpeed
+    {
+        get => state.Get<float>("MaxSpeed");
+        set => SetMaxSpeed(state, value);
+    }
+    public TSelf WithMaxSpeed(float value)
+    {
+        MaxSpeed = value;
+        return (TSelf)this;
+    }
+    public float MinDist
+    {
+        get => state.Get<float>("MinDist");
+        set => SetMinDist(state, value);
+    }
+    public TSelf WithMinDist(float value)
+    {
+        MinDist = value;
+        return (TSelf)this;
+    }
+    public float PlaneDist
+    {
+        get => state.Get<float>("PlaneDist");
+        set => SetPlaneDist(state, value);
+    }
+    public TSelf WithPlaneDist(float value)
+    {
+        PlaneDist = value;
+        return (TSelf)this;
+    }
+    public bool UseForcedLocation
+    {
+        get => state.Get<bool>("UseForcedLocation");
+        set => SetUseForcedLocation(state, value);
+    }
+    public TSelf WithUseForcedLocation(bool value)
+    {
+        UseForcedLocation = value;
+        return (TSelf)this;
+    }
+    public bool UseOnlyFollowedMobilPosition
+    {
+        get => state.Get<bool>("UseOnlyFollowedMobilPosition");
+        set => SetUseOnlyFollowedMobilPosition(state, value);
+    }
+    public TSelf WithUseOnlyFollowedMobilPosition(bool value)
+    {
+        UseOnlyFollowedMobilPosition = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameControlCameraTrackManiaRace2BuilderMembers2<TSelf> : CGameControlCameraTrackManiaRace2BuilderMembers1<TSelf> where TSelf : CGameControlCameraTrackManiaRace2BuilderMembers2<TSelf>
+{
+    private protected CGameControlCameraTrackManiaRace2BuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
+    public bool CanUseRelativeTargetLocation
+    {
+        get => state.Get<bool>("CanUseRelativeTargetLocation");
+        set => SetCanUseRelativeTargetLocation(state, value);
+    }
+    public TSelf WithCanUseRelativeTargetLocation(bool value)
+    {
+        CanUseRelativeTargetLocation = value;
+        return (TSelf)this;
+    }
+    public float DeltaDistDamperKa
+    {
+        get => state.Get<float>("DeltaDistDamperKa");
+        set => SetDeltaDistDamperKa(state, value);
+    }
+    public TSelf WithDeltaDistDamperKa(float value)
+    {
+        DeltaDistDamperKa = value;
+        return (TSelf)this;
+    }
+    public float DeltaDistDamperKi
+    {
+        get => state.Get<float>("DeltaDistDamperKi");
+        set => SetDeltaDistDamperKi(state, value);
+    }
+    public TSelf WithDeltaDistDamperKi(float value)
+    {
+        DeltaDistDamperKi = value;
+        return (TSelf)this;
+    }
+    public float DeltaLookAtFactorDamperKa
+    {
+        get => state.Get<float>("DeltaLookAtFactorDamperKa");
+        set => SetDeltaLookAtFactorDamperKa(state, value);
+    }
+    public TSelf WithDeltaLookAtFactorDamperKa(float value)
+    {
+        DeltaLookAtFactorDamperKa = value;
+        return (TSelf)this;
+    }
+    public float DeltaLookAtFactorDamperKi
+    {
+        get => state.Get<float>("DeltaLookAtFactorDamperKi");
+        set => SetDeltaLookAtFactorDamperKi(state, value);
+    }
+    public TSelf WithDeltaLookAtFactorDamperKi(float value)
+    {
+        DeltaLookAtFactorDamperKi = value;
+        return (TSelf)this;
+    }
+    public float EventBurningDistDelta
+    {
+        get => state.Get<float>("EventBurningDistDelta");
+        set => SetEventBurningDistDelta(state, value);
+    }
+    public TSelf WithEventBurningDistDelta(float value)
+    {
+        EventBurningDistDelta = value;
+        return (TSelf)this;
+    }
+    public int EventBurningDistTimeDown
+    {
+        get => state.Get<int>("EventBurningDistTimeDown");
+        set => SetEventBurningDistTimeDown(state, value);
+    }
+    public TSelf WithEventBurningDistTimeDown(int value)
+    {
+        EventBurningDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int EventBurningDistTimeUp
+    {
+        get => state.Get<int>("EventBurningDistTimeUp");
+        set => SetEventBurningDistTimeUp(state, value);
+    }
+    public TSelf WithEventBurningDistTimeUp(int value)
+    {
+        EventBurningDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public float EventBurningLookAtFactorDelta
+    {
+        get => state.Get<float>("EventBurningLookAtFactorDelta");
+        set => SetEventBurningLookAtFactorDelta(state, value);
+    }
+    public TSelf WithEventBurningLookAtFactorDelta(float value)
+    {
+        EventBurningLookAtFactorDelta = value;
+        return (TSelf)this;
+    }
+    public int EventBurningLookAtFactorTimeDown
+    {
+        get => state.Get<int>("EventBurningLookAtFactorTimeDown");
+        set => SetEventBurningLookAtFactorTimeDown(state, value);
+    }
+    public TSelf WithEventBurningLookAtFactorTimeDown(int value)
+    {
+        EventBurningLookAtFactorTimeDown = value;
+        return (TSelf)this;
+    }
+    public int EventBurningLookAtFactorTimeUp
+    {
+        get => state.Get<int>("EventBurningLookAtFactorTimeUp");
+        set => SetEventBurningLookAtFactorTimeUp(state, value);
+    }
+    public TSelf WithEventBurningLookAtFactorTimeUp(int value)
+    {
+        EventBurningLookAtFactorTimeUp = value;
+        return (TSelf)this;
+    }
+    public float EventChangeGearDistDelta
+    {
+        get => state.Get<float>("EventChangeGearDistDelta");
+        set => SetEventChangeGearDistDelta(state, value);
+    }
+    public TSelf WithEventChangeGearDistDelta(float value)
+    {
+        EventChangeGearDistDelta = value;
+        return (TSelf)this;
+    }
+    public int EventChangeGearDistTimeDown
+    {
+        get => state.Get<int>("EventChangeGearDistTimeDown");
+        set => SetEventChangeGearDistTimeDown(state, value);
+    }
+    public TSelf WithEventChangeGearDistTimeDown(int value)
+    {
+        EventChangeGearDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int EventChangeGearDistTimeUp
+    {
+        get => state.Get<int>("EventChangeGearDistTimeUp");
+        set => SetEventChangeGearDistTimeUp(state, value);
+    }
+    public TSelf WithEventChangeGearDistTimeUp(int value)
+    {
+        EventChangeGearDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public float EventTurboDistDelta
+    {
+        get => state.Get<float>("EventTurboDistDelta");
+        set => SetEventTurboDistDelta(state, value);
+    }
+    public TSelf WithEventTurboDistDelta(float value)
+    {
+        EventTurboDistDelta = value;
+        return (TSelf)this;
+    }
+    public int EventTurboDistTimeDown
+    {
+        get => state.Get<int>("EventTurboDistTimeDown");
+        set => SetEventTurboDistTimeDown(state, value);
+    }
+    public TSelf WithEventTurboDistTimeDown(int value)
+    {
+        EventTurboDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int EventTurboDistTimeUp
+    {
+        get => state.Get<int>("EventTurboDistTimeUp");
+        set => SetEventTurboDistTimeUp(state, value);
+    }
+    public TSelf WithEventTurboDistTimeUp(int value)
+    {
+        EventTurboDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public float EventTurboFovDelta
+    {
+        get => state.Get<float>("EventTurboFovDelta");
+        set => SetEventTurboFovDelta(state, value);
+    }
+    public TSelf WithEventTurboFovDelta(float value)
+    {
+        EventTurboFovDelta = value;
+        return (TSelf)this;
+    }
+    public int EventTurboFovTimeDown
+    {
+        get => state.Get<int>("EventTurboFovTimeDown");
+        set => SetEventTurboFovTimeDown(state, value);
+    }
+    public TSelf WithEventTurboFovTimeDown(int value)
+    {
+        EventTurboFovTimeDown = value;
+        return (TSelf)this;
+    }
+    public int EventTurboFovTimeUp
+    {
+        get => state.Get<int>("EventTurboFovTimeUp");
+        set => SetEventTurboFovTimeUp(state, value);
+    }
+    public TSelf WithEventTurboFovTimeUp(int value)
+    {
+        EventTurboFovTimeUp = value;
+        return (TSelf)this;
+    }
+    public float InputBrakeDistDelta
+    {
+        get => state.Get<float>("InputBrakeDistDelta");
+        set => SetInputBrakeDistDelta(state, value);
+    }
+    public TSelf WithInputBrakeDistDelta(float value)
+    {
+        InputBrakeDistDelta = value;
+        return (TSelf)this;
+    }
+    public int InputBrakeDistTimeDown
+    {
+        get => state.Get<int>("InputBrakeDistTimeDown");
+        set => SetInputBrakeDistTimeDown(state, value);
+    }
+    public TSelf WithInputBrakeDistTimeDown(int value)
+    {
+        InputBrakeDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputBrakeDistTimeUp
+    {
+        get => state.Get<int>("InputBrakeDistTimeUp");
+        set => SetInputBrakeDistTimeUp(state, value);
+    }
+    public TSelf WithInputBrakeDistTimeUp(int value)
+    {
+        InputBrakeDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public float InputGasDistDelta
+    {
+        get => state.Get<float>("InputGasDistDelta");
+        set => SetInputGasDistDelta(state, value);
+    }
+    public TSelf WithInputGasDistDelta(float value)
+    {
+        InputGasDistDelta = value;
+        return (TSelf)this;
+    }
+    public int InputGasDistTimeDown
+    {
+        get => state.Get<int>("InputGasDistTimeDown");
+        set => SetInputGasDistTimeDown(state, value);
+    }
+    public TSelf WithInputGasDistTimeDown(int value)
+    {
+        InputGasDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputGasDistTimeUp
+    {
+        get => state.Get<int>("InputGasDistTimeUp");
+        set => SetInputGasDistTimeUp(state, value);
+    }
+    public TSelf WithInputGasDistTimeUp(int value)
+    {
+        InputGasDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public float InputLeftSteerRollDelta
+    {
+        get => state.Get<float>("InputLeftSteerRollDelta");
+        set => SetInputLeftSteerRollDelta(state, value);
+    }
+    public TSelf WithInputLeftSteerRollDelta(float value)
+    {
+        InputLeftSteerRollDelta = value;
+        return (TSelf)this;
+    }
+    public int InputLeftSteerRollTimeDown
+    {
+        get => state.Get<int>("InputLeftSteerRollTimeDown");
+        set => SetInputLeftSteerRollTimeDown(state, value);
+    }
+    public TSelf WithInputLeftSteerRollTimeDown(int value)
+    {
+        InputLeftSteerRollTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputLeftSteerRollTimeUp
+    {
+        get => state.Get<int>("InputLeftSteerRollTimeUp");
+        set => SetInputLeftSteerRollTimeUp(state, value);
+    }
+    public TSelf WithInputLeftSteerRollTimeUp(int value)
+    {
+        InputLeftSteerRollTimeUp = value;
+        return (TSelf)this;
+    }
+    public float InputLeftSteerYawDelta
+    {
+        get => state.Get<float>("InputLeftSteerYawDelta");
+        set => SetInputLeftSteerYawDelta(state, value);
+    }
+    public TSelf WithInputLeftSteerYawDelta(float value)
+    {
+        InputLeftSteerYawDelta = value;
+        return (TSelf)this;
+    }
+    public int InputLeftSteerYawTimeDown
+    {
+        get => state.Get<int>("InputLeftSteerYawTimeDown");
+        set => SetInputLeftSteerYawTimeDown(state, value);
+    }
+    public TSelf WithInputLeftSteerYawTimeDown(int value)
+    {
+        InputLeftSteerYawTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputLeftSteerYawTimeUp
+    {
+        get => state.Get<int>("InputLeftSteerYawTimeUp");
+        set => SetInputLeftSteerYawTimeUp(state, value);
+    }
+    public TSelf WithInputLeftSteerYawTimeUp(int value)
+    {
+        InputLeftSteerYawTimeUp = value;
+        return (TSelf)this;
+    }
+    public int InputNoSteerDurationBeforeReset
+    {
+        get => state.Get<int>("InputNoSteerDurationBeforeReset");
+        set => SetInputNoSteerDurationBeforeReset(state, value);
+    }
+    public TSelf WithInputNoSteerDurationBeforeReset(int value)
+    {
+        InputNoSteerDurationBeforeReset = value;
+        return (TSelf)this;
+    }
+    public float InputRightSteerRollDelta
+    {
+        get => state.Get<float>("InputRightSteerRollDelta");
+        set => SetInputRightSteerRollDelta(state, value);
+    }
+    public TSelf WithInputRightSteerRollDelta(float value)
+    {
+        InputRightSteerRollDelta = value;
+        return (TSelf)this;
+    }
+    public int InputRightSteerRollTimeDown
+    {
+        get => state.Get<int>("InputRightSteerRollTimeDown");
+        set => SetInputRightSteerRollTimeDown(state, value);
+    }
+    public TSelf WithInputRightSteerRollTimeDown(int value)
+    {
+        InputRightSteerRollTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputRightSteerRollTimeUp
+    {
+        get => state.Get<int>("InputRightSteerRollTimeUp");
+        set => SetInputRightSteerRollTimeUp(state, value);
+    }
+    public TSelf WithInputRightSteerRollTimeUp(int value)
+    {
+        InputRightSteerRollTimeUp = value;
+        return (TSelf)this;
+    }
+    public float InputRightSteerYawDelta
+    {
+        get => state.Get<float>("InputRightSteerYawDelta");
+        set => SetInputRightSteerYawDelta(state, value);
+    }
+    public TSelf WithInputRightSteerYawDelta(float value)
+    {
+        InputRightSteerYawDelta = value;
+        return (TSelf)this;
+    }
+    public int InputRightSteerYawTimeDown
+    {
+        get => state.Get<int>("InputRightSteerYawTimeDown");
+        set => SetInputRightSteerYawTimeDown(state, value);
+    }
+    public TSelf WithInputRightSteerYawTimeDown(int value)
+    {
+        InputRightSteerYawTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputRightSteerYawTimeUp
+    {
+        get => state.Get<int>("InputRightSteerYawTimeUp");
+        set => SetInputRightSteerYawTimeUp(state, value);
+    }
+    public TSelf WithInputRightSteerYawTimeUp(int value)
+    {
+        InputRightSteerYawTimeUp = value;
+        return (TSelf)this;
+    }
+    public float InputSteerDistDelta
+    {
+        get => state.Get<float>("InputSteerDistDelta");
+        set => SetInputSteerDistDelta(state, value);
+    }
+    public TSelf WithInputSteerDistDelta(float value)
+    {
+        InputSteerDistDelta = value;
+        return (TSelf)this;
+    }
+    public int InputSteerDistTimeDown
+    {
+        get => state.Get<int>("InputSteerDistTimeDown");
+        set => SetInputSteerDistTimeDown(state, value);
+    }
+    public TSelf WithInputSteerDistTimeDown(int value)
+    {
+        InputSteerDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int InputSteerDistTimeUp
+    {
+        get => state.Get<int>("InputSteerDistTimeUp");
+        set => SetInputSteerDistTimeUp(state, value);
+    }
+    public TSelf WithInputSteerDistTimeUp(int value)
+    {
+        InputSteerDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public int InputSteerDurationBeforeAnticipatingTurnTriggered
+    {
+        get => state.Get<int>("InputSteerDurationBeforeAnticipatingTurnTriggered");
+        set => SetInputSteerDurationBeforeAnticipatingTurnTriggered(state, value);
+    }
+    public TSelf WithInputSteerDurationBeforeAnticipatingTurnTriggered(int value)
+    {
+        InputSteerDurationBeforeAnticipatingTurnTriggered = value;
+        return (TSelf)this;
+    }
+    public int InputSteerDurationBeforeBurnoutShowView
+    {
+        get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
+        set => SetInputSteerDurationBeforeBurnoutShowView(state, value);
+    }
+    public TSelf WithInputSteerDurationBeforeBurnoutShowView(int value)
+    {
+        InputSteerDurationBeforeBurnoutShowView = value;
+        return (TSelf)this;
+    }
+    public int InputSteerDurationBeforeRollTriggered
+    {
+        get => state.Get<int>("InputSteerDurationBeforeRollTriggered");
+        set => SetInputSteerDurationBeforeRollTriggered(state, value);
+    }
+    public TSelf WithInputSteerDurationBeforeRollTriggered(int value)
+    {
+        InputSteerDurationBeforeRollTriggered = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncKeysReal? LookAtFactorFromUpSpeedRatio
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("LookAtFactorFromUpSpeedRatio");
+        set => SetLookAtFactorFromUpSpeedRatio(state, value);
+    }
+    public TSelf WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
+    {
+        LookAtFactorFromUpSpeedRatio = value;
+        return (TSelf)this;
+    }
+    public TSelf WithLookAtFactorFromUpSpeedRatioReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetLookAtFactorFromUpSpeedRatioReference(state, value);
+        return (TSelf)this;
+    }
+    public float MaxDeltaFovStep
+    {
+        get => state.Get<float>("MaxDeltaFovStep");
+        set => SetMaxDeltaFovStep(state, value);
+    }
+    public TSelf WithMaxDeltaFovStep(float value)
+    {
+        MaxDeltaFovStep = value;
+        return (TSelf)this;
+    }
+    public float MaxDeltaPlaneDistStep
+    {
+        get => state.Get<float>("MaxDeltaPlaneDistStep");
+        set => SetMaxDeltaPlaneDistStep(state, value);
+    }
+    public TSelf WithMaxDeltaPlaneDistStep(float value)
+    {
+        MaxDeltaPlaneDistStep = value;
+        return (TSelf)this;
+    }
+    public float MinSpeed
+    {
+        get => state.Get<float>("MinSpeed");
+        set => SetMinSpeed(state, value);
+    }
+    public TSelf WithMinSpeed(float value)
+    {
+        MinSpeed = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncKeysReal? RollFromSpeed
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RollFromSpeed");
+        set => SetRollFromSpeed(state, value);
+    }
+    public TSelf WithRollFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
+    {
+        RollFromSpeed = value;
+        return (TSelf)this;
+    }
+    public TSelf WithRollFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetRollFromSpeedReference(state, value);
+        return (TSelf)this;
+    }
+    public float StateFlyingDistDelta
+    {
+        get => state.Get<float>("StateFlyingDistDelta");
+        set => SetStateFlyingDistDelta(state, value);
+    }
+    public TSelf WithStateFlyingDistDelta(float value)
+    {
+        StateFlyingDistDelta = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingDistTimeDown
+    {
+        get => state.Get<int>("StateFlyingDistTimeDown");
+        set => SetStateFlyingDistTimeDown(state, value);
+    }
+    public TSelf WithStateFlyingDistTimeDown(int value)
+    {
+        StateFlyingDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingDistTimeUp
+    {
+        get => state.Get<int>("StateFlyingDistTimeUp");
+        set => SetStateFlyingDistTimeUp(state, value);
+    }
+    public TSelf WithStateFlyingDistTimeUp(int value)
+    {
+        StateFlyingDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingDurationBeforeCameraMove
+    {
+        get => state.Get<int>("StateFlyingDurationBeforeCameraMove");
+        set => SetStateFlyingDurationBeforeCameraMove(state, value);
+    }
+    public TSelf WithStateFlyingDurationBeforeCameraMove(int value)
+    {
+        StateFlyingDurationBeforeCameraMove = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingDurationBeforeFlyingMode
+    {
+        get => state.Get<int>("StateFlyingDurationBeforeFlyingMode");
+        set => SetStateFlyingDurationBeforeFlyingMode(state, value);
+    }
+    public TSelf WithStateFlyingDurationBeforeFlyingMode(int value)
+    {
+        StateFlyingDurationBeforeFlyingMode = value;
+        return (TSelf)this;
+    }
+    public float StateFlyingLookAtFactorDelta
+    {
+        get => state.Get<float>("StateFlyingLookAtFactorDelta");
+        set => SetStateFlyingLookAtFactorDelta(state, value);
+    }
+    public TSelf WithStateFlyingLookAtFactorDelta(float value)
+    {
+        StateFlyingLookAtFactorDelta = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingLookAtFactorTimeDown
+    {
+        get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
+        set => SetStateFlyingLookAtFactorTimeDown(state, value);
+    }
+    public TSelf WithStateFlyingLookAtFactorTimeDown(int value)
+    {
+        StateFlyingLookAtFactorTimeDown = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingLookAtFactorTimeUp
+    {
+        get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
+        set => SetStateFlyingLookAtFactorTimeUp(state, value);
+    }
+    public TSelf WithStateFlyingLookAtFactorTimeUp(int value)
+    {
+        StateFlyingLookAtFactorTimeUp = value;
+        return (TSelf)this;
+    }
+    public float StateFlyingLookAtStep
+    {
+        get => state.Get<float>("StateFlyingLookAtStep");
+        set => SetStateFlyingLookAtStep(state, value);
+    }
+    public TSelf WithStateFlyingLookAtStep(float value)
+    {
+        StateFlyingLookAtStep = value;
+        return (TSelf)this;
+    }
+    public float StateFlyingPlaneDistDelta
+    {
+        get => state.Get<float>("StateFlyingPlaneDistDelta");
+        set => SetStateFlyingPlaneDistDelta(state, value);
+    }
+    public TSelf WithStateFlyingPlaneDistDelta(float value)
+    {
+        StateFlyingPlaneDistDelta = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingPlaneDistTimeDown
+    {
+        get => state.Get<int>("StateFlyingPlaneDistTimeDown");
+        set => SetStateFlyingPlaneDistTimeDown(state, value);
+    }
+    public TSelf WithStateFlyingPlaneDistTimeDown(int value)
+    {
+        StateFlyingPlaneDistTimeDown = value;
+        return (TSelf)this;
+    }
+    public int StateFlyingPlaneDistTimeUp
+    {
+        get => state.Get<int>("StateFlyingPlaneDistTimeUp");
+        set => SetStateFlyingPlaneDistTimeUp(state, value);
+    }
+    public TSelf WithStateFlyingPlaneDistTimeUp(int value)
+    {
+        StateFlyingPlaneDistTimeUp = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncKeysReal? YawFromSpeed
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("YawFromSpeed");
+        set => SetYawFromSpeed(state, value);
+    }
+    public TSelf WithYawFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
+    {
+        YawFromSpeed = value;
+        return (TSelf)this;
+    }
+    public TSelf WithYawFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetYawFromSpeedReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCameraTrackManiaRace2BuilderBase<CGameControlCameraTrackManiaRace2Builder>
 {
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
+        node.Chunks.Add(chunk24086000);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B001 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001();
+        node.Chunks.Add(chunk0306B001);
+        var chunk0306B002 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002();
+        node.Chunks.Add(chunk0306B002);
+        var chunk0306B003 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003();
+        node.Chunks.Add(chunk0306B003);
+        var chunk0306B004 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004();
+        node.Chunks.Add(chunk0306B004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24086000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
+        node.Chunks.Add(chunk24086000);
+        var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
+        node.Chunks.Add(chunk24086001);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
+        node.Chunks.Add(chunk0306B009);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24086000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24086001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
+        node.Chunks.Add(chunk24086000);
+        var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
+        node.Chunks.Add(chunk24086001);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        var chunk0306B00B = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B();
+        node.Chunks.Add(chunk0306B00B);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24086000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24086001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00B is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        var chunk0306B00C = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C();
+        node.Chunks.Add(chunk0306B00C);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00C is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
+        var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
+        node.Chunks.Add(chunk24086001);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24086001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -195,608 +1117,12 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TMSX : CGameControlCameraTrackManiaRace2BuilderBase<TMSX>
+    public partial class TMSX : CGameControlCameraTrackManiaRace2BuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public TMSX WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
-        }
-        public TMSX WithCanUseRelativeTargetLocation(bool value)
-        {
-            CanUseRelativeTargetLocation = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public TMSX WithDefaultFov(float value)
-        {
-            DefaultFov = value;
-            return this;
-        }
-        public float DeltaDistDamperKa
-        {
-            get => state.Get<float>("DeltaDistDamperKa");
-            set => SetDeltaDistDamperKa(state, value);
-        }
-        public TMSX WithDeltaDistDamperKa(float value)
-        {
-            DeltaDistDamperKa = value;
-            return this;
-        }
-        public float DeltaDistDamperKi
-        {
-            get => state.Get<float>("DeltaDistDamperKi");
-            set => SetDeltaDistDamperKi(state, value);
-        }
-        public TMSX WithDeltaDistDamperKi(float value)
-        {
-            DeltaDistDamperKi = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKa
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKa");
-            set => SetDeltaLookAtFactorDamperKa(state, value);
-        }
-        public TMSX WithDeltaLookAtFactorDamperKa(float value)
-        {
-            DeltaLookAtFactorDamperKa = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKi
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKi");
-            set => SetDeltaLookAtFactorDamperKi(state, value);
-        }
-        public TMSX WithDeltaLookAtFactorDamperKi(float value)
-        {
-            DeltaLookAtFactorDamperKi = value;
-            return this;
-        }
-        public float EventBurningDistDelta
-        {
-            get => state.Get<float>("EventBurningDistDelta");
-            set => SetEventBurningDistDelta(state, value);
-        }
-        public TMSX WithEventBurningDistDelta(float value)
-        {
-            EventBurningDistDelta = value;
-            return this;
-        }
-        public int EventBurningDistTimeDown
-        {
-            get => state.Get<int>("EventBurningDistTimeDown");
-            set => SetEventBurningDistTimeDown(state, value);
-        }
-        public TMSX WithEventBurningDistTimeDown(int value)
-        {
-            EventBurningDistTimeDown = value;
-            return this;
-        }
-        public int EventBurningDistTimeUp
-        {
-            get => state.Get<int>("EventBurningDistTimeUp");
-            set => SetEventBurningDistTimeUp(state, value);
-        }
-        public TMSX WithEventBurningDistTimeUp(int value)
-        {
-            EventBurningDistTimeUp = value;
-            return this;
-        }
-        public float EventBurningLookAtFactorDelta
-        {
-            get => state.Get<float>("EventBurningLookAtFactorDelta");
-            set => SetEventBurningLookAtFactorDelta(state, value);
-        }
-        public TMSX WithEventBurningLookAtFactorDelta(float value)
-        {
-            EventBurningLookAtFactorDelta = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeDown
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeDown");
-            set => SetEventBurningLookAtFactorTimeDown(state, value);
-        }
-        public TMSX WithEventBurningLookAtFactorTimeDown(int value)
-        {
-            EventBurningLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeUp
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeUp");
-            set => SetEventBurningLookAtFactorTimeUp(state, value);
-        }
-        public TMSX WithEventBurningLookAtFactorTimeUp(int value)
-        {
-            EventBurningLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float EventChangeGearDistDelta
-        {
-            get => state.Get<float>("EventChangeGearDistDelta");
-            set => SetEventChangeGearDistDelta(state, value);
-        }
-        public TMSX WithEventChangeGearDistDelta(float value)
-        {
-            EventChangeGearDistDelta = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeDown
-        {
-            get => state.Get<int>("EventChangeGearDistTimeDown");
-            set => SetEventChangeGearDistTimeDown(state, value);
-        }
-        public TMSX WithEventChangeGearDistTimeDown(int value)
-        {
-            EventChangeGearDistTimeDown = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeUp
-        {
-            get => state.Get<int>("EventChangeGearDistTimeUp");
-            set => SetEventChangeGearDistTimeUp(state, value);
-        }
-        public TMSX WithEventChangeGearDistTimeUp(int value)
-        {
-            EventChangeGearDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboDistDelta
-        {
-            get => state.Get<float>("EventTurboDistDelta");
-            set => SetEventTurboDistDelta(state, value);
-        }
-        public TMSX WithEventTurboDistDelta(float value)
-        {
-            EventTurboDistDelta = value;
-            return this;
-        }
-        public int EventTurboDistTimeDown
-        {
-            get => state.Get<int>("EventTurboDistTimeDown");
-            set => SetEventTurboDistTimeDown(state, value);
-        }
-        public TMSX WithEventTurboDistTimeDown(int value)
-        {
-            EventTurboDistTimeDown = value;
-            return this;
-        }
-        public int EventTurboDistTimeUp
-        {
-            get => state.Get<int>("EventTurboDistTimeUp");
-            set => SetEventTurboDistTimeUp(state, value);
-        }
-        public TMSX WithEventTurboDistTimeUp(int value)
-        {
-            EventTurboDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboFovDelta
-        {
-            get => state.Get<float>("EventTurboFovDelta");
-            set => SetEventTurboFovDelta(state, value);
-        }
-        public TMSX WithEventTurboFovDelta(float value)
-        {
-            EventTurboFovDelta = value;
-            return this;
-        }
-        public int EventTurboFovTimeDown
-        {
-            get => state.Get<int>("EventTurboFovTimeDown");
-            set => SetEventTurboFovTimeDown(state, value);
-        }
-        public TMSX WithEventTurboFovTimeDown(int value)
-        {
-            EventTurboFovTimeDown = value;
-            return this;
-        }
-        public int EventTurboFovTimeUp
-        {
-            get => state.Get<int>("EventTurboFovTimeUp");
-            set => SetEventTurboFovTimeUp(state, value);
-        }
-        public TMSX WithEventTurboFovTimeUp(int value)
-        {
-            EventTurboFovTimeUp = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public TMSX WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public TMSX WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public float InputBrakeDistDelta
-        {
-            get => state.Get<float>("InputBrakeDistDelta");
-            set => SetInputBrakeDistDelta(state, value);
-        }
-        public TMSX WithInputBrakeDistDelta(float value)
-        {
-            InputBrakeDistDelta = value;
-            return this;
-        }
-        public int InputBrakeDistTimeDown
-        {
-            get => state.Get<int>("InputBrakeDistTimeDown");
-            set => SetInputBrakeDistTimeDown(state, value);
-        }
-        public TMSX WithInputBrakeDistTimeDown(int value)
-        {
-            InputBrakeDistTimeDown = value;
-            return this;
-        }
-        public int InputBrakeDistTimeUp
-        {
-            get => state.Get<int>("InputBrakeDistTimeUp");
-            set => SetInputBrakeDistTimeUp(state, value);
-        }
-        public TMSX WithInputBrakeDistTimeUp(int value)
-        {
-            InputBrakeDistTimeUp = value;
-            return this;
-        }
-        public float InputGasDistDelta
-        {
-            get => state.Get<float>("InputGasDistDelta");
-            set => SetInputGasDistDelta(state, value);
-        }
-        public TMSX WithInputGasDistDelta(float value)
-        {
-            InputGasDistDelta = value;
-            return this;
-        }
-        public int InputGasDistTimeDown
-        {
-            get => state.Get<int>("InputGasDistTimeDown");
-            set => SetInputGasDistTimeDown(state, value);
-        }
-        public TMSX WithInputGasDistTimeDown(int value)
-        {
-            InputGasDistTimeDown = value;
-            return this;
-        }
-        public int InputGasDistTimeUp
-        {
-            get => state.Get<int>("InputGasDistTimeUp");
-            set => SetInputGasDistTimeUp(state, value);
-        }
-        public TMSX WithInputGasDistTimeUp(int value)
-        {
-            InputGasDistTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerRollDelta
-        {
-            get => state.Get<float>("InputLeftSteerRollDelta");
-            set => SetInputLeftSteerRollDelta(state, value);
-        }
-        public TMSX WithInputLeftSteerRollDelta(float value)
-        {
-            InputLeftSteerRollDelta = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeDown");
-            set => SetInputLeftSteerRollTimeDown(state, value);
-        }
-        public TMSX WithInputLeftSteerRollTimeDown(int value)
-        {
-            InputLeftSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeUp");
-            set => SetInputLeftSteerRollTimeUp(state, value);
-        }
-        public TMSX WithInputLeftSteerRollTimeUp(int value)
-        {
-            InputLeftSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerYawDelta
-        {
-            get => state.Get<float>("InputLeftSteerYawDelta");
-            set => SetInputLeftSteerYawDelta(state, value);
-        }
-        public TMSX WithInputLeftSteerYawDelta(float value)
-        {
-            InputLeftSteerYawDelta = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeDown");
-            set => SetInputLeftSteerYawTimeDown(state, value);
-        }
-        public TMSX WithInputLeftSteerYawTimeDown(int value)
-        {
-            InputLeftSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeUp");
-            set => SetInputLeftSteerYawTimeUp(state, value);
-        }
-        public TMSX WithInputLeftSteerYawTimeUp(int value)
-        {
-            InputLeftSteerYawTimeUp = value;
-            return this;
-        }
-        public int InputNoSteerDurationBeforeReset
-        {
-            get => state.Get<int>("InputNoSteerDurationBeforeReset");
-            set => SetInputNoSteerDurationBeforeReset(state, value);
-        }
-        public TMSX WithInputNoSteerDurationBeforeReset(int value)
-        {
-            InputNoSteerDurationBeforeReset = value;
-            return this;
-        }
-        public float InputRightSteerRollDelta
-        {
-            get => state.Get<float>("InputRightSteerRollDelta");
-            set => SetInputRightSteerRollDelta(state, value);
-        }
-        public TMSX WithInputRightSteerRollDelta(float value)
-        {
-            InputRightSteerRollDelta = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeDown
-        {
-            get => state.Get<int>("InputRightSteerRollTimeDown");
-            set => SetInputRightSteerRollTimeDown(state, value);
-        }
-        public TMSX WithInputRightSteerRollTimeDown(int value)
-        {
-            InputRightSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeUp
-        {
-            get => state.Get<int>("InputRightSteerRollTimeUp");
-            set => SetInputRightSteerRollTimeUp(state, value);
-        }
-        public TMSX WithInputRightSteerRollTimeUp(int value)
-        {
-            InputRightSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputRightSteerYawDelta
-        {
-            get => state.Get<float>("InputRightSteerYawDelta");
-            set => SetInputRightSteerYawDelta(state, value);
-        }
-        public TMSX WithInputRightSteerYawDelta(float value)
-        {
-            InputRightSteerYawDelta = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeDown
-        {
-            get => state.Get<int>("InputRightSteerYawTimeDown");
-            set => SetInputRightSteerYawTimeDown(state, value);
-        }
-        public TMSX WithInputRightSteerYawTimeDown(int value)
-        {
-            InputRightSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeUp
-        {
-            get => state.Get<int>("InputRightSteerYawTimeUp");
-            set => SetInputRightSteerYawTimeUp(state, value);
-        }
-        public TMSX WithInputRightSteerYawTimeUp(int value)
-        {
-            InputRightSteerYawTimeUp = value;
-            return this;
-        }
-        public float InputSteerDistDelta
-        {
-            get => state.Get<float>("InputSteerDistDelta");
-            set => SetInputSteerDistDelta(state, value);
-        }
-        public TMSX WithInputSteerDistDelta(float value)
-        {
-            InputSteerDistDelta = value;
-            return this;
-        }
-        public int InputSteerDistTimeDown
-        {
-            get => state.Get<int>("InputSteerDistTimeDown");
-            set => SetInputSteerDistTimeDown(state, value);
-        }
-        public TMSX WithInputSteerDistTimeDown(int value)
-        {
-            InputSteerDistTimeDown = value;
-            return this;
-        }
-        public int InputSteerDistTimeUp
-        {
-            get => state.Get<int>("InputSteerDistTimeUp");
-            set => SetInputSteerDistTimeUp(state, value);
-        }
-        public TMSX WithInputSteerDistTimeUp(int value)
-        {
-            InputSteerDistTimeUp = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeAnticipatingTurnTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeAnticipatingTurnTriggered");
-            set => SetInputSteerDurationBeforeAnticipatingTurnTriggered(state, value);
-        }
-        public TMSX WithInputSteerDurationBeforeAnticipatingTurnTriggered(int value)
-        {
-            InputSteerDurationBeforeAnticipatingTurnTriggered = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeBurnoutShowView
-        {
-            get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
-            set => SetInputSteerDurationBeforeBurnoutShowView(state, value);
-        }
-        public TMSX WithInputSteerDurationBeforeBurnoutShowView(int value)
-        {
-            InputSteerDurationBeforeBurnoutShowView = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeRollTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeRollTriggered");
-            set => SetInputSteerDurationBeforeRollTriggered(state, value);
-        }
-        public TMSX WithInputSteerDurationBeforeRollTriggered(int value)
-        {
-            InputSteerDurationBeforeRollTriggered = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TMSX WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public TMSX WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? LookAtFactorFromUpSpeedRatio
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("LookAtFactorFromUpSpeedRatio");
-            set => SetLookAtFactorFromUpSpeedRatio(state, value);
-        }
-        public TMSX WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            LookAtFactorFromUpSpeedRatio = value;
-            return this;
-        }
-        public TMSX WithLookAtFactorFromUpSpeedRatioReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLookAtFactorFromUpSpeedRatioReference(state, value);
-            return this;
-        }
         public TMSX WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? value)
         {
-            return WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float MaxDeltaFovStep
-        {
-            get => state.Get<float>("MaxDeltaFovStep");
-            set => SetMaxDeltaFovStep(state, value);
-        }
-        public TMSX WithMaxDeltaFovStep(float value)
-        {
-            MaxDeltaFovStep = value;
-            return this;
-        }
-        public float MaxDeltaPlaneDistStep
-        {
-            get => state.Get<float>("MaxDeltaPlaneDistStep");
-            set => SetMaxDeltaPlaneDistStep(state, value);
-        }
-        public TMSX WithMaxDeltaPlaneDistStep(float value)
-        {
-            MaxDeltaPlaneDistStep = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public TMSX WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMSX WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public TMSX WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMSX WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public TMSX WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
+            return base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public Vec3 RelativeTargetPos
         {
@@ -808,243 +1134,32 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             RelativeTargetPos = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? RollFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RollFromSpeed");
-            set => SetRollFromSpeed(state, value);
-        }
-        public TMSX WithRollFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            RollFromSpeed = value;
-            return this;
-        }
-        public TMSX WithRollFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRollFromSpeedReference(state, value);
-            return this;
-        }
         public TMSX WithRollFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? value)
         {
-            return WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float StateFlyingDistDelta
-        {
-            get => state.Get<float>("StateFlyingDistDelta");
-            set => SetStateFlyingDistDelta(state, value);
-        }
-        public TMSX WithStateFlyingDistDelta(float value)
-        {
-            StateFlyingDistDelta = value;
-            return this;
-        }
-        public int StateFlyingDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingDistTimeDown");
-            set => SetStateFlyingDistTimeDown(state, value);
-        }
-        public TMSX WithStateFlyingDistTimeDown(int value)
-        {
-            StateFlyingDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingDistTimeUp");
-            set => SetStateFlyingDistTimeUp(state, value);
-        }
-        public TMSX WithStateFlyingDistTimeUp(int value)
-        {
-            StateFlyingDistTimeUp = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeCameraMove
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeCameraMove");
-            set => SetStateFlyingDurationBeforeCameraMove(state, value);
-        }
-        public TMSX WithStateFlyingDurationBeforeCameraMove(int value)
-        {
-            StateFlyingDurationBeforeCameraMove = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeFlyingMode
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeFlyingMode");
-            set => SetStateFlyingDurationBeforeFlyingMode(state, value);
-        }
-        public TMSX WithStateFlyingDurationBeforeFlyingMode(int value)
-        {
-            StateFlyingDurationBeforeFlyingMode = value;
-            return this;
-        }
-        public float StateFlyingLookAtFactorDelta
-        {
-            get => state.Get<float>("StateFlyingLookAtFactorDelta");
-            set => SetStateFlyingLookAtFactorDelta(state, value);
-        }
-        public TMSX WithStateFlyingLookAtFactorDelta(float value)
-        {
-            StateFlyingLookAtFactorDelta = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeDown
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
-            set => SetStateFlyingLookAtFactorTimeDown(state, value);
-        }
-        public TMSX WithStateFlyingLookAtFactorTimeDown(int value)
-        {
-            StateFlyingLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeUp
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
-            set => SetStateFlyingLookAtFactorTimeUp(state, value);
-        }
-        public TMSX WithStateFlyingLookAtFactorTimeUp(int value)
-        {
-            StateFlyingLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float StateFlyingLookAtStep
-        {
-            get => state.Get<float>("StateFlyingLookAtStep");
-            set => SetStateFlyingLookAtStep(state, value);
-        }
-        public TMSX WithStateFlyingLookAtStep(float value)
-        {
-            StateFlyingLookAtStep = value;
-            return this;
-        }
-        public float StateFlyingPlaneDistDelta
-        {
-            get => state.Get<float>("StateFlyingPlaneDistDelta");
-            set => SetStateFlyingPlaneDistDelta(state, value);
-        }
-        public TMSX WithStateFlyingPlaneDistDelta(float value)
-        {
-            StateFlyingPlaneDistDelta = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeDown");
-            set => SetStateFlyingPlaneDistTimeDown(state, value);
-        }
-        public TMSX WithStateFlyingPlaneDistTimeDown(int value)
-        {
-            StateFlyingPlaneDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeUp");
-            set => SetStateFlyingPlaneDistTimeUp(state, value);
-        }
-        public TMSX WithStateFlyingPlaneDistTimeUp(int value)
-        {
-            StateFlyingPlaneDistTimeUp = value;
-            return this;
-        }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public TMSX WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
-        }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public TMSX WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? YawFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("YawFromSpeed");
-            set => SetYawFromSpeed(state, value);
-        }
-        public TMSX WithYawFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            YawFromSpeed = value;
-            return this;
-        }
-        public TMSX WithYawFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetYawFromSpeedReference(state, value);
-            return this;
+            return base.WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithYawFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? value)
         {
-            return WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
-            node.Chunks.Add(chunk24086000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B001 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001();
-            node.Chunks.Add(chunk0306B001);
-            var chunk0306B002 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002();
-            node.Chunks.Add(chunk0306B002);
-            var chunk0306B003 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003();
-            node.Chunks.Add(chunk0306B003);
-            var chunk0306B004 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004();
-            node.Chunks.Add(chunk0306B004);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk24086000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B004 is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
     }
-    public partial class TMNESWC : CGameControlCameraTrackManiaRace2BuilderBase<TMNESWC>
+    public partial class TMNESWC : CGameControlCameraTrackManiaRace2BuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public TMNESWC WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
-        }
-        public TMNESWC WithCanUseRelativeTargetLocation(bool value)
-        {
-            CanUseRelativeTargetLocation = value;
-            return this;
-        }
         public float DefaultFarZ
         {
             get => state.Get<float>("DefaultFarZ");
@@ -1053,16 +1168,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMNESWC WithDefaultFarZ(float value)
         {
             DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public TMNESWC WithDefaultFov(float value)
-        {
-            DefaultFov = value;
             return this;
         }
         public float DefaultNearZ
@@ -1075,206 +1180,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             DefaultNearZ = value;
             return this;
         }
-        public float DeltaDistDamperKa
-        {
-            get => state.Get<float>("DeltaDistDamperKa");
-            set => SetDeltaDistDamperKa(state, value);
-        }
-        public TMNESWC WithDeltaDistDamperKa(float value)
-        {
-            DeltaDistDamperKa = value;
-            return this;
-        }
-        public float DeltaDistDamperKi
-        {
-            get => state.Get<float>("DeltaDistDamperKi");
-            set => SetDeltaDistDamperKi(state, value);
-        }
-        public TMNESWC WithDeltaDistDamperKi(float value)
-        {
-            DeltaDistDamperKi = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKa
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKa");
-            set => SetDeltaLookAtFactorDamperKa(state, value);
-        }
-        public TMNESWC WithDeltaLookAtFactorDamperKa(float value)
-        {
-            DeltaLookAtFactorDamperKa = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKi
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKi");
-            set => SetDeltaLookAtFactorDamperKi(state, value);
-        }
-        public TMNESWC WithDeltaLookAtFactorDamperKi(float value)
-        {
-            DeltaLookAtFactorDamperKi = value;
-            return this;
-        }
-        public float EventBurningDistDelta
-        {
-            get => state.Get<float>("EventBurningDistDelta");
-            set => SetEventBurningDistDelta(state, value);
-        }
-        public TMNESWC WithEventBurningDistDelta(float value)
-        {
-            EventBurningDistDelta = value;
-            return this;
-        }
-        public int EventBurningDistTimeDown
-        {
-            get => state.Get<int>("EventBurningDistTimeDown");
-            set => SetEventBurningDistTimeDown(state, value);
-        }
-        public TMNESWC WithEventBurningDistTimeDown(int value)
-        {
-            EventBurningDistTimeDown = value;
-            return this;
-        }
-        public int EventBurningDistTimeUp
-        {
-            get => state.Get<int>("EventBurningDistTimeUp");
-            set => SetEventBurningDistTimeUp(state, value);
-        }
-        public TMNESWC WithEventBurningDistTimeUp(int value)
-        {
-            EventBurningDistTimeUp = value;
-            return this;
-        }
-        public float EventBurningLookAtFactorDelta
-        {
-            get => state.Get<float>("EventBurningLookAtFactorDelta");
-            set => SetEventBurningLookAtFactorDelta(state, value);
-        }
-        public TMNESWC WithEventBurningLookAtFactorDelta(float value)
-        {
-            EventBurningLookAtFactorDelta = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeDown
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeDown");
-            set => SetEventBurningLookAtFactorTimeDown(state, value);
-        }
-        public TMNESWC WithEventBurningLookAtFactorTimeDown(int value)
-        {
-            EventBurningLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeUp
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeUp");
-            set => SetEventBurningLookAtFactorTimeUp(state, value);
-        }
-        public TMNESWC WithEventBurningLookAtFactorTimeUp(int value)
-        {
-            EventBurningLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float EventChangeGearDistDelta
-        {
-            get => state.Get<float>("EventChangeGearDistDelta");
-            set => SetEventChangeGearDistDelta(state, value);
-        }
-        public TMNESWC WithEventChangeGearDistDelta(float value)
-        {
-            EventChangeGearDistDelta = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeDown
-        {
-            get => state.Get<int>("EventChangeGearDistTimeDown");
-            set => SetEventChangeGearDistTimeDown(state, value);
-        }
-        public TMNESWC WithEventChangeGearDistTimeDown(int value)
-        {
-            EventChangeGearDistTimeDown = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeUp
-        {
-            get => state.Get<int>("EventChangeGearDistTimeUp");
-            set => SetEventChangeGearDistTimeUp(state, value);
-        }
-        public TMNESWC WithEventChangeGearDistTimeUp(int value)
-        {
-            EventChangeGearDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboDistDelta
-        {
-            get => state.Get<float>("EventTurboDistDelta");
-            set => SetEventTurboDistDelta(state, value);
-        }
-        public TMNESWC WithEventTurboDistDelta(float value)
-        {
-            EventTurboDistDelta = value;
-            return this;
-        }
-        public int EventTurboDistTimeDown
-        {
-            get => state.Get<int>("EventTurboDistTimeDown");
-            set => SetEventTurboDistTimeDown(state, value);
-        }
-        public TMNESWC WithEventTurboDistTimeDown(int value)
-        {
-            EventTurboDistTimeDown = value;
-            return this;
-        }
-        public int EventTurboDistTimeUp
-        {
-            get => state.Get<int>("EventTurboDistTimeUp");
-            set => SetEventTurboDistTimeUp(state, value);
-        }
-        public TMNESWC WithEventTurboDistTimeUp(int value)
-        {
-            EventTurboDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboFovDelta
-        {
-            get => state.Get<float>("EventTurboFovDelta");
-            set => SetEventTurboFovDelta(state, value);
-        }
-        public TMNESWC WithEventTurboFovDelta(float value)
-        {
-            EventTurboFovDelta = value;
-            return this;
-        }
-        public int EventTurboFovTimeDown
-        {
-            get => state.Get<int>("EventTurboFovTimeDown");
-            set => SetEventTurboFovTimeDown(state, value);
-        }
-        public TMNESWC WithEventTurboFovTimeDown(int value)
-        {
-            EventTurboFovTimeDown = value;
-            return this;
-        }
-        public int EventTurboFovTimeUp
-        {
-            get => state.Get<int>("EventTurboFovTimeUp");
-            set => SetEventTurboFovTimeUp(state, value);
-        }
-        public TMNESWC WithEventTurboFovTimeUp(int value)
-        {
-            EventTurboFovTimeUp = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public TMNESWC WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
         public Vec3 ForcedUp
         {
             get => state.Get<Vec3>("ForcedUp");
@@ -1283,286 +1188,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMNESWC WithForcedUp(Vec3 value)
         {
             ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public TMNESWC WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public float InputBrakeDistDelta
-        {
-            get => state.Get<float>("InputBrakeDistDelta");
-            set => SetInputBrakeDistDelta(state, value);
-        }
-        public TMNESWC WithInputBrakeDistDelta(float value)
-        {
-            InputBrakeDistDelta = value;
-            return this;
-        }
-        public int InputBrakeDistTimeDown
-        {
-            get => state.Get<int>("InputBrakeDistTimeDown");
-            set => SetInputBrakeDistTimeDown(state, value);
-        }
-        public TMNESWC WithInputBrakeDistTimeDown(int value)
-        {
-            InputBrakeDistTimeDown = value;
-            return this;
-        }
-        public int InputBrakeDistTimeUp
-        {
-            get => state.Get<int>("InputBrakeDistTimeUp");
-            set => SetInputBrakeDistTimeUp(state, value);
-        }
-        public TMNESWC WithInputBrakeDistTimeUp(int value)
-        {
-            InputBrakeDistTimeUp = value;
-            return this;
-        }
-        public float InputGasDistDelta
-        {
-            get => state.Get<float>("InputGasDistDelta");
-            set => SetInputGasDistDelta(state, value);
-        }
-        public TMNESWC WithInputGasDistDelta(float value)
-        {
-            InputGasDistDelta = value;
-            return this;
-        }
-        public int InputGasDistTimeDown
-        {
-            get => state.Get<int>("InputGasDistTimeDown");
-            set => SetInputGasDistTimeDown(state, value);
-        }
-        public TMNESWC WithInputGasDistTimeDown(int value)
-        {
-            InputGasDistTimeDown = value;
-            return this;
-        }
-        public int InputGasDistTimeUp
-        {
-            get => state.Get<int>("InputGasDistTimeUp");
-            set => SetInputGasDistTimeUp(state, value);
-        }
-        public TMNESWC WithInputGasDistTimeUp(int value)
-        {
-            InputGasDistTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerRollDelta
-        {
-            get => state.Get<float>("InputLeftSteerRollDelta");
-            set => SetInputLeftSteerRollDelta(state, value);
-        }
-        public TMNESWC WithInputLeftSteerRollDelta(float value)
-        {
-            InputLeftSteerRollDelta = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeDown");
-            set => SetInputLeftSteerRollTimeDown(state, value);
-        }
-        public TMNESWC WithInputLeftSteerRollTimeDown(int value)
-        {
-            InputLeftSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeUp");
-            set => SetInputLeftSteerRollTimeUp(state, value);
-        }
-        public TMNESWC WithInputLeftSteerRollTimeUp(int value)
-        {
-            InputLeftSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerYawDelta
-        {
-            get => state.Get<float>("InputLeftSteerYawDelta");
-            set => SetInputLeftSteerYawDelta(state, value);
-        }
-        public TMNESWC WithInputLeftSteerYawDelta(float value)
-        {
-            InputLeftSteerYawDelta = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeDown");
-            set => SetInputLeftSteerYawTimeDown(state, value);
-        }
-        public TMNESWC WithInputLeftSteerYawTimeDown(int value)
-        {
-            InputLeftSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeUp");
-            set => SetInputLeftSteerYawTimeUp(state, value);
-        }
-        public TMNESWC WithInputLeftSteerYawTimeUp(int value)
-        {
-            InputLeftSteerYawTimeUp = value;
-            return this;
-        }
-        public int InputNoSteerDurationBeforeReset
-        {
-            get => state.Get<int>("InputNoSteerDurationBeforeReset");
-            set => SetInputNoSteerDurationBeforeReset(state, value);
-        }
-        public TMNESWC WithInputNoSteerDurationBeforeReset(int value)
-        {
-            InputNoSteerDurationBeforeReset = value;
-            return this;
-        }
-        public float InputRightSteerRollDelta
-        {
-            get => state.Get<float>("InputRightSteerRollDelta");
-            set => SetInputRightSteerRollDelta(state, value);
-        }
-        public TMNESWC WithInputRightSteerRollDelta(float value)
-        {
-            InputRightSteerRollDelta = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeDown
-        {
-            get => state.Get<int>("InputRightSteerRollTimeDown");
-            set => SetInputRightSteerRollTimeDown(state, value);
-        }
-        public TMNESWC WithInputRightSteerRollTimeDown(int value)
-        {
-            InputRightSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeUp
-        {
-            get => state.Get<int>("InputRightSteerRollTimeUp");
-            set => SetInputRightSteerRollTimeUp(state, value);
-        }
-        public TMNESWC WithInputRightSteerRollTimeUp(int value)
-        {
-            InputRightSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputRightSteerYawDelta
-        {
-            get => state.Get<float>("InputRightSteerYawDelta");
-            set => SetInputRightSteerYawDelta(state, value);
-        }
-        public TMNESWC WithInputRightSteerYawDelta(float value)
-        {
-            InputRightSteerYawDelta = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeDown
-        {
-            get => state.Get<int>("InputRightSteerYawTimeDown");
-            set => SetInputRightSteerYawTimeDown(state, value);
-        }
-        public TMNESWC WithInputRightSteerYawTimeDown(int value)
-        {
-            InputRightSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeUp
-        {
-            get => state.Get<int>("InputRightSteerYawTimeUp");
-            set => SetInputRightSteerYawTimeUp(state, value);
-        }
-        public TMNESWC WithInputRightSteerYawTimeUp(int value)
-        {
-            InputRightSteerYawTimeUp = value;
-            return this;
-        }
-        public float InputSteerDistDelta
-        {
-            get => state.Get<float>("InputSteerDistDelta");
-            set => SetInputSteerDistDelta(state, value);
-        }
-        public TMNESWC WithInputSteerDistDelta(float value)
-        {
-            InputSteerDistDelta = value;
-            return this;
-        }
-        public int InputSteerDistTimeDown
-        {
-            get => state.Get<int>("InputSteerDistTimeDown");
-            set => SetInputSteerDistTimeDown(state, value);
-        }
-        public TMNESWC WithInputSteerDistTimeDown(int value)
-        {
-            InputSteerDistTimeDown = value;
-            return this;
-        }
-        public int InputSteerDistTimeUp
-        {
-            get => state.Get<int>("InputSteerDistTimeUp");
-            set => SetInputSteerDistTimeUp(state, value);
-        }
-        public TMNESWC WithInputSteerDistTimeUp(int value)
-        {
-            InputSteerDistTimeUp = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeAnticipatingTurnTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeAnticipatingTurnTriggered");
-            set => SetInputSteerDurationBeforeAnticipatingTurnTriggered(state, value);
-        }
-        public TMNESWC WithInputSteerDurationBeforeAnticipatingTurnTriggered(int value)
-        {
-            InputSteerDurationBeforeAnticipatingTurnTriggered = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeBurnoutShowView
-        {
-            get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
-            set => SetInputSteerDurationBeforeBurnoutShowView(state, value);
-        }
-        public TMNESWC WithInputSteerDurationBeforeBurnoutShowView(int value)
-        {
-            InputSteerDurationBeforeBurnoutShowView = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeRollTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeRollTriggered");
-            set => SetInputSteerDurationBeforeRollTriggered(state, value);
-        }
-        public TMNESWC WithInputSteerDurationBeforeRollTriggered(int value)
-        {
-            InputSteerDurationBeforeRollTriggered = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TMNESWC WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public TMNESWC WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
             return this;
         }
         public bool IsRollFromInput
@@ -1575,55 +1200,9 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             IsRollFromInput = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? LookAtFactorFromUpSpeedRatio
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("LookAtFactorFromUpSpeedRatio");
-            set => SetLookAtFactorFromUpSpeedRatio(state, value);
-        }
-        public TMNESWC WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            LookAtFactorFromUpSpeedRatio = value;
-            return this;
-        }
-        public TMNESWC WithLookAtFactorFromUpSpeedRatioReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLookAtFactorFromUpSpeedRatioReference(state, value);
-            return this;
-        }
         public TMNESWC WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? value)
         {
-            return WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float MaxDeltaFovStep
-        {
-            get => state.Get<float>("MaxDeltaFovStep");
-            set => SetMaxDeltaFovStep(state, value);
-        }
-        public TMNESWC WithMaxDeltaFovStep(float value)
-        {
-            MaxDeltaFovStep = value;
-            return this;
-        }
-        public float MaxDeltaPlaneDistStep
-        {
-            get => state.Get<float>("MaxDeltaPlaneDistStep");
-            set => SetMaxDeltaPlaneDistStep(state, value);
-        }
-        public TMNESWC WithMaxDeltaPlaneDistStep(float value)
-        {
-            MaxDeltaPlaneDistStep = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public TMNESWC WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
+            return base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public float MaxFarZ
         {
@@ -1653,26 +1232,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMNESWC WithMaxNearZ(float value)
         {
             MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMNESWC WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public TMNESWC WithMinDist(float value)
-        {
-            MinDist = value;
             return this;
         }
         public float MinFarZ
@@ -1705,26 +1264,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             MinNearZ = value;
             return this;
         }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMNESWC WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public TMNESWC WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
         public Vec3 RelativeFollowedPos
         {
             get => state.Get<Vec3>("RelativeFollowedPos");
@@ -1735,155 +1274,9 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             RelativeFollowedPos = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? RollFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RollFromSpeed");
-            set => SetRollFromSpeed(state, value);
-        }
-        public TMNESWC WithRollFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            RollFromSpeed = value;
-            return this;
-        }
-        public TMNESWC WithRollFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRollFromSpeedReference(state, value);
-            return this;
-        }
         public TMNESWC WithRollFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? value)
         {
-            return WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float StateFlyingDistDelta
-        {
-            get => state.Get<float>("StateFlyingDistDelta");
-            set => SetStateFlyingDistDelta(state, value);
-        }
-        public TMNESWC WithStateFlyingDistDelta(float value)
-        {
-            StateFlyingDistDelta = value;
-            return this;
-        }
-        public int StateFlyingDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingDistTimeDown");
-            set => SetStateFlyingDistTimeDown(state, value);
-        }
-        public TMNESWC WithStateFlyingDistTimeDown(int value)
-        {
-            StateFlyingDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingDistTimeUp");
-            set => SetStateFlyingDistTimeUp(state, value);
-        }
-        public TMNESWC WithStateFlyingDistTimeUp(int value)
-        {
-            StateFlyingDistTimeUp = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeCameraMove
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeCameraMove");
-            set => SetStateFlyingDurationBeforeCameraMove(state, value);
-        }
-        public TMNESWC WithStateFlyingDurationBeforeCameraMove(int value)
-        {
-            StateFlyingDurationBeforeCameraMove = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeFlyingMode
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeFlyingMode");
-            set => SetStateFlyingDurationBeforeFlyingMode(state, value);
-        }
-        public TMNESWC WithStateFlyingDurationBeforeFlyingMode(int value)
-        {
-            StateFlyingDurationBeforeFlyingMode = value;
-            return this;
-        }
-        public float StateFlyingLookAtFactorDelta
-        {
-            get => state.Get<float>("StateFlyingLookAtFactorDelta");
-            set => SetStateFlyingLookAtFactorDelta(state, value);
-        }
-        public TMNESWC WithStateFlyingLookAtFactorDelta(float value)
-        {
-            StateFlyingLookAtFactorDelta = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeDown
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
-            set => SetStateFlyingLookAtFactorTimeDown(state, value);
-        }
-        public TMNESWC WithStateFlyingLookAtFactorTimeDown(int value)
-        {
-            StateFlyingLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeUp
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
-            set => SetStateFlyingLookAtFactorTimeUp(state, value);
-        }
-        public TMNESWC WithStateFlyingLookAtFactorTimeUp(int value)
-        {
-            StateFlyingLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float StateFlyingLookAtStep
-        {
-            get => state.Get<float>("StateFlyingLookAtStep");
-            set => SetStateFlyingLookAtStep(state, value);
-        }
-        public TMNESWC WithStateFlyingLookAtStep(float value)
-        {
-            StateFlyingLookAtStep = value;
-            return this;
-        }
-        public float StateFlyingPlaneDistDelta
-        {
-            get => state.Get<float>("StateFlyingPlaneDistDelta");
-            set => SetStateFlyingPlaneDistDelta(state, value);
-        }
-        public TMNESWC WithStateFlyingPlaneDistDelta(float value)
-        {
-            StateFlyingPlaneDistDelta = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeDown");
-            set => SetStateFlyingPlaneDistTimeDown(state, value);
-        }
-        public TMNESWC WithStateFlyingPlaneDistTimeDown(int value)
-        {
-            StateFlyingPlaneDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeUp");
-            set => SetStateFlyingPlaneDistTimeUp(state, value);
-        }
-        public TMNESWC WithStateFlyingPlaneDistTimeUp(int value)
-        {
-            StateFlyingPlaneDistTimeUp = value;
-            return this;
-        }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public TMNESWC WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
+            return base.WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public bool UseForcedUp
         {
@@ -1895,87 +1288,28 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             UseForcedUp = value;
             return this;
         }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public TMNESWC WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? YawFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("YawFromSpeed");
-            set => SetYawFromSpeed(state, value);
-        }
-        public TMNESWC WithYawFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            YawFromSpeed = value;
-            return this;
-        }
-        public TMNESWC WithYawFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetYawFromSpeedReference(state, value);
-            return this;
-        }
         public TMNESWC WithYawFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? value)
         {
-            return WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
-            node.Chunks.Add(chunk24086000);
-            var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
-            node.Chunks.Add(chunk24086001);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
-            node.Chunks.Add(chunk0306B009);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk24086000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk24086001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0306B009 is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
     }
-    public partial class VSK5 : CGameControlCameraTrackManiaRace2BuilderBase<VSK5>
+    public partial class VSK5 : CGameControlCameraTrackManiaRace2BuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public VSK5 WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
-        }
-        public VSK5 WithCanUseRelativeTargetLocation(bool value)
-        {
-            CanUseRelativeTargetLocation = value;
-            return this;
-        }
         public float DefaultFarZ
         {
             get => state.Get<float>("DefaultFarZ");
@@ -1984,16 +1318,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public VSK5 WithDefaultFarZ(float value)
         {
             DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public VSK5 WithDefaultFov(float value)
-        {
-            DefaultFov = value;
             return this;
         }
         public float DefaultNearZ
@@ -2006,206 +1330,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             DefaultNearZ = value;
             return this;
         }
-        public float DeltaDistDamperKa
-        {
-            get => state.Get<float>("DeltaDistDamperKa");
-            set => SetDeltaDistDamperKa(state, value);
-        }
-        public VSK5 WithDeltaDistDamperKa(float value)
-        {
-            DeltaDistDamperKa = value;
-            return this;
-        }
-        public float DeltaDistDamperKi
-        {
-            get => state.Get<float>("DeltaDistDamperKi");
-            set => SetDeltaDistDamperKi(state, value);
-        }
-        public VSK5 WithDeltaDistDamperKi(float value)
-        {
-            DeltaDistDamperKi = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKa
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKa");
-            set => SetDeltaLookAtFactorDamperKa(state, value);
-        }
-        public VSK5 WithDeltaLookAtFactorDamperKa(float value)
-        {
-            DeltaLookAtFactorDamperKa = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKi
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKi");
-            set => SetDeltaLookAtFactorDamperKi(state, value);
-        }
-        public VSK5 WithDeltaLookAtFactorDamperKi(float value)
-        {
-            DeltaLookAtFactorDamperKi = value;
-            return this;
-        }
-        public float EventBurningDistDelta
-        {
-            get => state.Get<float>("EventBurningDistDelta");
-            set => SetEventBurningDistDelta(state, value);
-        }
-        public VSK5 WithEventBurningDistDelta(float value)
-        {
-            EventBurningDistDelta = value;
-            return this;
-        }
-        public int EventBurningDistTimeDown
-        {
-            get => state.Get<int>("EventBurningDistTimeDown");
-            set => SetEventBurningDistTimeDown(state, value);
-        }
-        public VSK5 WithEventBurningDistTimeDown(int value)
-        {
-            EventBurningDistTimeDown = value;
-            return this;
-        }
-        public int EventBurningDistTimeUp
-        {
-            get => state.Get<int>("EventBurningDistTimeUp");
-            set => SetEventBurningDistTimeUp(state, value);
-        }
-        public VSK5 WithEventBurningDistTimeUp(int value)
-        {
-            EventBurningDistTimeUp = value;
-            return this;
-        }
-        public float EventBurningLookAtFactorDelta
-        {
-            get => state.Get<float>("EventBurningLookAtFactorDelta");
-            set => SetEventBurningLookAtFactorDelta(state, value);
-        }
-        public VSK5 WithEventBurningLookAtFactorDelta(float value)
-        {
-            EventBurningLookAtFactorDelta = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeDown
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeDown");
-            set => SetEventBurningLookAtFactorTimeDown(state, value);
-        }
-        public VSK5 WithEventBurningLookAtFactorTimeDown(int value)
-        {
-            EventBurningLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeUp
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeUp");
-            set => SetEventBurningLookAtFactorTimeUp(state, value);
-        }
-        public VSK5 WithEventBurningLookAtFactorTimeUp(int value)
-        {
-            EventBurningLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float EventChangeGearDistDelta
-        {
-            get => state.Get<float>("EventChangeGearDistDelta");
-            set => SetEventChangeGearDistDelta(state, value);
-        }
-        public VSK5 WithEventChangeGearDistDelta(float value)
-        {
-            EventChangeGearDistDelta = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeDown
-        {
-            get => state.Get<int>("EventChangeGearDistTimeDown");
-            set => SetEventChangeGearDistTimeDown(state, value);
-        }
-        public VSK5 WithEventChangeGearDistTimeDown(int value)
-        {
-            EventChangeGearDistTimeDown = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeUp
-        {
-            get => state.Get<int>("EventChangeGearDistTimeUp");
-            set => SetEventChangeGearDistTimeUp(state, value);
-        }
-        public VSK5 WithEventChangeGearDistTimeUp(int value)
-        {
-            EventChangeGearDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboDistDelta
-        {
-            get => state.Get<float>("EventTurboDistDelta");
-            set => SetEventTurboDistDelta(state, value);
-        }
-        public VSK5 WithEventTurboDistDelta(float value)
-        {
-            EventTurboDistDelta = value;
-            return this;
-        }
-        public int EventTurboDistTimeDown
-        {
-            get => state.Get<int>("EventTurboDistTimeDown");
-            set => SetEventTurboDistTimeDown(state, value);
-        }
-        public VSK5 WithEventTurboDistTimeDown(int value)
-        {
-            EventTurboDistTimeDown = value;
-            return this;
-        }
-        public int EventTurboDistTimeUp
-        {
-            get => state.Get<int>("EventTurboDistTimeUp");
-            set => SetEventTurboDistTimeUp(state, value);
-        }
-        public VSK5 WithEventTurboDistTimeUp(int value)
-        {
-            EventTurboDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboFovDelta
-        {
-            get => state.Get<float>("EventTurboFovDelta");
-            set => SetEventTurboFovDelta(state, value);
-        }
-        public VSK5 WithEventTurboFovDelta(float value)
-        {
-            EventTurboFovDelta = value;
-            return this;
-        }
-        public int EventTurboFovTimeDown
-        {
-            get => state.Get<int>("EventTurboFovTimeDown");
-            set => SetEventTurboFovTimeDown(state, value);
-        }
-        public VSK5 WithEventTurboFovTimeDown(int value)
-        {
-            EventTurboFovTimeDown = value;
-            return this;
-        }
-        public int EventTurboFovTimeUp
-        {
-            get => state.Get<int>("EventTurboFovTimeUp");
-            set => SetEventTurboFovTimeUp(state, value);
-        }
-        public VSK5 WithEventTurboFovTimeUp(int value)
-        {
-            EventTurboFovTimeUp = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public VSK5 WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
         public Vec3 ForcedUp
         {
             get => state.Get<Vec3>("ForcedUp");
@@ -2214,286 +1338,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public VSK5 WithForcedUp(Vec3 value)
         {
             ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public VSK5 WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public float InputBrakeDistDelta
-        {
-            get => state.Get<float>("InputBrakeDistDelta");
-            set => SetInputBrakeDistDelta(state, value);
-        }
-        public VSK5 WithInputBrakeDistDelta(float value)
-        {
-            InputBrakeDistDelta = value;
-            return this;
-        }
-        public int InputBrakeDistTimeDown
-        {
-            get => state.Get<int>("InputBrakeDistTimeDown");
-            set => SetInputBrakeDistTimeDown(state, value);
-        }
-        public VSK5 WithInputBrakeDistTimeDown(int value)
-        {
-            InputBrakeDistTimeDown = value;
-            return this;
-        }
-        public int InputBrakeDistTimeUp
-        {
-            get => state.Get<int>("InputBrakeDistTimeUp");
-            set => SetInputBrakeDistTimeUp(state, value);
-        }
-        public VSK5 WithInputBrakeDistTimeUp(int value)
-        {
-            InputBrakeDistTimeUp = value;
-            return this;
-        }
-        public float InputGasDistDelta
-        {
-            get => state.Get<float>("InputGasDistDelta");
-            set => SetInputGasDistDelta(state, value);
-        }
-        public VSK5 WithInputGasDistDelta(float value)
-        {
-            InputGasDistDelta = value;
-            return this;
-        }
-        public int InputGasDistTimeDown
-        {
-            get => state.Get<int>("InputGasDistTimeDown");
-            set => SetInputGasDistTimeDown(state, value);
-        }
-        public VSK5 WithInputGasDistTimeDown(int value)
-        {
-            InputGasDistTimeDown = value;
-            return this;
-        }
-        public int InputGasDistTimeUp
-        {
-            get => state.Get<int>("InputGasDistTimeUp");
-            set => SetInputGasDistTimeUp(state, value);
-        }
-        public VSK5 WithInputGasDistTimeUp(int value)
-        {
-            InputGasDistTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerRollDelta
-        {
-            get => state.Get<float>("InputLeftSteerRollDelta");
-            set => SetInputLeftSteerRollDelta(state, value);
-        }
-        public VSK5 WithInputLeftSteerRollDelta(float value)
-        {
-            InputLeftSteerRollDelta = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeDown");
-            set => SetInputLeftSteerRollTimeDown(state, value);
-        }
-        public VSK5 WithInputLeftSteerRollTimeDown(int value)
-        {
-            InputLeftSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeUp");
-            set => SetInputLeftSteerRollTimeUp(state, value);
-        }
-        public VSK5 WithInputLeftSteerRollTimeUp(int value)
-        {
-            InputLeftSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerYawDelta
-        {
-            get => state.Get<float>("InputLeftSteerYawDelta");
-            set => SetInputLeftSteerYawDelta(state, value);
-        }
-        public VSK5 WithInputLeftSteerYawDelta(float value)
-        {
-            InputLeftSteerYawDelta = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeDown");
-            set => SetInputLeftSteerYawTimeDown(state, value);
-        }
-        public VSK5 WithInputLeftSteerYawTimeDown(int value)
-        {
-            InputLeftSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeUp");
-            set => SetInputLeftSteerYawTimeUp(state, value);
-        }
-        public VSK5 WithInputLeftSteerYawTimeUp(int value)
-        {
-            InputLeftSteerYawTimeUp = value;
-            return this;
-        }
-        public int InputNoSteerDurationBeforeReset
-        {
-            get => state.Get<int>("InputNoSteerDurationBeforeReset");
-            set => SetInputNoSteerDurationBeforeReset(state, value);
-        }
-        public VSK5 WithInputNoSteerDurationBeforeReset(int value)
-        {
-            InputNoSteerDurationBeforeReset = value;
-            return this;
-        }
-        public float InputRightSteerRollDelta
-        {
-            get => state.Get<float>("InputRightSteerRollDelta");
-            set => SetInputRightSteerRollDelta(state, value);
-        }
-        public VSK5 WithInputRightSteerRollDelta(float value)
-        {
-            InputRightSteerRollDelta = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeDown
-        {
-            get => state.Get<int>("InputRightSteerRollTimeDown");
-            set => SetInputRightSteerRollTimeDown(state, value);
-        }
-        public VSK5 WithInputRightSteerRollTimeDown(int value)
-        {
-            InputRightSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeUp
-        {
-            get => state.Get<int>("InputRightSteerRollTimeUp");
-            set => SetInputRightSteerRollTimeUp(state, value);
-        }
-        public VSK5 WithInputRightSteerRollTimeUp(int value)
-        {
-            InputRightSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputRightSteerYawDelta
-        {
-            get => state.Get<float>("InputRightSteerYawDelta");
-            set => SetInputRightSteerYawDelta(state, value);
-        }
-        public VSK5 WithInputRightSteerYawDelta(float value)
-        {
-            InputRightSteerYawDelta = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeDown
-        {
-            get => state.Get<int>("InputRightSteerYawTimeDown");
-            set => SetInputRightSteerYawTimeDown(state, value);
-        }
-        public VSK5 WithInputRightSteerYawTimeDown(int value)
-        {
-            InputRightSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeUp
-        {
-            get => state.Get<int>("InputRightSteerYawTimeUp");
-            set => SetInputRightSteerYawTimeUp(state, value);
-        }
-        public VSK5 WithInputRightSteerYawTimeUp(int value)
-        {
-            InputRightSteerYawTimeUp = value;
-            return this;
-        }
-        public float InputSteerDistDelta
-        {
-            get => state.Get<float>("InputSteerDistDelta");
-            set => SetInputSteerDistDelta(state, value);
-        }
-        public VSK5 WithInputSteerDistDelta(float value)
-        {
-            InputSteerDistDelta = value;
-            return this;
-        }
-        public int InputSteerDistTimeDown
-        {
-            get => state.Get<int>("InputSteerDistTimeDown");
-            set => SetInputSteerDistTimeDown(state, value);
-        }
-        public VSK5 WithInputSteerDistTimeDown(int value)
-        {
-            InputSteerDistTimeDown = value;
-            return this;
-        }
-        public int InputSteerDistTimeUp
-        {
-            get => state.Get<int>("InputSteerDistTimeUp");
-            set => SetInputSteerDistTimeUp(state, value);
-        }
-        public VSK5 WithInputSteerDistTimeUp(int value)
-        {
-            InputSteerDistTimeUp = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeAnticipatingTurnTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeAnticipatingTurnTriggered");
-            set => SetInputSteerDurationBeforeAnticipatingTurnTriggered(state, value);
-        }
-        public VSK5 WithInputSteerDurationBeforeAnticipatingTurnTriggered(int value)
-        {
-            InputSteerDurationBeforeAnticipatingTurnTriggered = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeBurnoutShowView
-        {
-            get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
-            set => SetInputSteerDurationBeforeBurnoutShowView(state, value);
-        }
-        public VSK5 WithInputSteerDurationBeforeBurnoutShowView(int value)
-        {
-            InputSteerDurationBeforeBurnoutShowView = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeRollTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeRollTriggered");
-            set => SetInputSteerDurationBeforeRollTriggered(state, value);
-        }
-        public VSK5 WithInputSteerDurationBeforeRollTriggered(int value)
-        {
-            InputSteerDurationBeforeRollTriggered = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public VSK5 WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public VSK5 WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
             return this;
         }
         public bool IsRollFromInput
@@ -2506,55 +1350,9 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             IsRollFromInput = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? LookAtFactorFromUpSpeedRatio
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("LookAtFactorFromUpSpeedRatio");
-            set => SetLookAtFactorFromUpSpeedRatio(state, value);
-        }
-        public VSK5 WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            LookAtFactorFromUpSpeedRatio = value;
-            return this;
-        }
-        public VSK5 WithLookAtFactorFromUpSpeedRatioReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLookAtFactorFromUpSpeedRatioReference(state, value);
-            return this;
-        }
         public VSK5 WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? value)
         {
-            return WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float MaxDeltaFovStep
-        {
-            get => state.Get<float>("MaxDeltaFovStep");
-            set => SetMaxDeltaFovStep(state, value);
-        }
-        public VSK5 WithMaxDeltaFovStep(float value)
-        {
-            MaxDeltaFovStep = value;
-            return this;
-        }
-        public float MaxDeltaPlaneDistStep
-        {
-            get => state.Get<float>("MaxDeltaPlaneDistStep");
-            set => SetMaxDeltaPlaneDistStep(state, value);
-        }
-        public VSK5 WithMaxDeltaPlaneDistStep(float value)
-        {
-            MaxDeltaPlaneDistStep = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public VSK5 WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
+            return base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public float MaxFarZ
         {
@@ -2584,26 +1382,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public VSK5 WithMaxNearZ(float value)
         {
             MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public VSK5 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public VSK5 WithMinDist(float value)
-        {
-            MinDist = value;
             return this;
         }
         public float MinFarZ
@@ -2636,26 +1414,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             MinNearZ = value;
             return this;
         }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public VSK5 WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public VSK5 WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
         public Vec3 RelativeFollowedPos
         {
             get => state.Get<Vec3>("RelativeFollowedPos");
@@ -2666,155 +1424,9 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             RelativeFollowedPos = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? RollFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RollFromSpeed");
-            set => SetRollFromSpeed(state, value);
-        }
-        public VSK5 WithRollFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            RollFromSpeed = value;
-            return this;
-        }
-        public VSK5 WithRollFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRollFromSpeedReference(state, value);
-            return this;
-        }
         public VSK5 WithRollFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? value)
         {
-            return WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float StateFlyingDistDelta
-        {
-            get => state.Get<float>("StateFlyingDistDelta");
-            set => SetStateFlyingDistDelta(state, value);
-        }
-        public VSK5 WithStateFlyingDistDelta(float value)
-        {
-            StateFlyingDistDelta = value;
-            return this;
-        }
-        public int StateFlyingDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingDistTimeDown");
-            set => SetStateFlyingDistTimeDown(state, value);
-        }
-        public VSK5 WithStateFlyingDistTimeDown(int value)
-        {
-            StateFlyingDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingDistTimeUp");
-            set => SetStateFlyingDistTimeUp(state, value);
-        }
-        public VSK5 WithStateFlyingDistTimeUp(int value)
-        {
-            StateFlyingDistTimeUp = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeCameraMove
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeCameraMove");
-            set => SetStateFlyingDurationBeforeCameraMove(state, value);
-        }
-        public VSK5 WithStateFlyingDurationBeforeCameraMove(int value)
-        {
-            StateFlyingDurationBeforeCameraMove = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeFlyingMode
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeFlyingMode");
-            set => SetStateFlyingDurationBeforeFlyingMode(state, value);
-        }
-        public VSK5 WithStateFlyingDurationBeforeFlyingMode(int value)
-        {
-            StateFlyingDurationBeforeFlyingMode = value;
-            return this;
-        }
-        public float StateFlyingLookAtFactorDelta
-        {
-            get => state.Get<float>("StateFlyingLookAtFactorDelta");
-            set => SetStateFlyingLookAtFactorDelta(state, value);
-        }
-        public VSK5 WithStateFlyingLookAtFactorDelta(float value)
-        {
-            StateFlyingLookAtFactorDelta = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeDown
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
-            set => SetStateFlyingLookAtFactorTimeDown(state, value);
-        }
-        public VSK5 WithStateFlyingLookAtFactorTimeDown(int value)
-        {
-            StateFlyingLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeUp
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
-            set => SetStateFlyingLookAtFactorTimeUp(state, value);
-        }
-        public VSK5 WithStateFlyingLookAtFactorTimeUp(int value)
-        {
-            StateFlyingLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float StateFlyingLookAtStep
-        {
-            get => state.Get<float>("StateFlyingLookAtStep");
-            set => SetStateFlyingLookAtStep(state, value);
-        }
-        public VSK5 WithStateFlyingLookAtStep(float value)
-        {
-            StateFlyingLookAtStep = value;
-            return this;
-        }
-        public float StateFlyingPlaneDistDelta
-        {
-            get => state.Get<float>("StateFlyingPlaneDistDelta");
-            set => SetStateFlyingPlaneDistDelta(state, value);
-        }
-        public VSK5 WithStateFlyingPlaneDistDelta(float value)
-        {
-            StateFlyingPlaneDistDelta = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeDown");
-            set => SetStateFlyingPlaneDistTimeDown(state, value);
-        }
-        public VSK5 WithStateFlyingPlaneDistTimeDown(int value)
-        {
-            StateFlyingPlaneDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeUp");
-            set => SetStateFlyingPlaneDistTimeUp(state, value);
-        }
-        public VSK5 WithStateFlyingPlaneDistTimeUp(int value)
-        {
-            StateFlyingPlaneDistTimeUp = value;
-            return this;
-        }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public VSK5 WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
+            return base.WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public bool UseForcedUp
         {
@@ -2826,87 +1438,28 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             UseForcedUp = value;
             return this;
         }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public VSK5 WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? YawFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("YawFromSpeed");
-            set => SetYawFromSpeed(state, value);
-        }
-        public VSK5 WithYawFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            YawFromSpeed = value;
-            return this;
-        }
-        public VSK5 WithYawFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetYawFromSpeedReference(state, value);
-            return this;
-        }
         public VSK5 WithYawFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? value)
         {
-            return WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2VSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
-            node.Chunks.Add(chunk24086000);
-            var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
-            node.Chunks.Add(chunk24086001);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
-            node.Chunks.Add(chunk0306B009);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk24086000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk24086001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0306B009 is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
     }
-    public partial class TMF : CGameControlCameraTrackManiaRace2BuilderBase<TMF>
+    public partial class TMF : CGameControlCameraTrackManiaRace2BuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public TMF WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
-        }
-        public TMF WithCanUseRelativeTargetLocation(bool value)
-        {
-            CanUseRelativeTargetLocation = value;
-            return this;
-        }
         public float DefaultFarZ
         {
             get => state.Get<float>("DefaultFarZ");
@@ -2915,16 +1468,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMF WithDefaultFarZ(float value)
         {
             DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public TMF WithDefaultFov(float value)
-        {
-            DefaultFov = value;
             return this;
         }
         public float DefaultNearZ
@@ -2937,206 +1480,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             DefaultNearZ = value;
             return this;
         }
-        public float DeltaDistDamperKa
-        {
-            get => state.Get<float>("DeltaDistDamperKa");
-            set => SetDeltaDistDamperKa(state, value);
-        }
-        public TMF WithDeltaDistDamperKa(float value)
-        {
-            DeltaDistDamperKa = value;
-            return this;
-        }
-        public float DeltaDistDamperKi
-        {
-            get => state.Get<float>("DeltaDistDamperKi");
-            set => SetDeltaDistDamperKi(state, value);
-        }
-        public TMF WithDeltaDistDamperKi(float value)
-        {
-            DeltaDistDamperKi = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKa
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKa");
-            set => SetDeltaLookAtFactorDamperKa(state, value);
-        }
-        public TMF WithDeltaLookAtFactorDamperKa(float value)
-        {
-            DeltaLookAtFactorDamperKa = value;
-            return this;
-        }
-        public float DeltaLookAtFactorDamperKi
-        {
-            get => state.Get<float>("DeltaLookAtFactorDamperKi");
-            set => SetDeltaLookAtFactorDamperKi(state, value);
-        }
-        public TMF WithDeltaLookAtFactorDamperKi(float value)
-        {
-            DeltaLookAtFactorDamperKi = value;
-            return this;
-        }
-        public float EventBurningDistDelta
-        {
-            get => state.Get<float>("EventBurningDistDelta");
-            set => SetEventBurningDistDelta(state, value);
-        }
-        public TMF WithEventBurningDistDelta(float value)
-        {
-            EventBurningDistDelta = value;
-            return this;
-        }
-        public int EventBurningDistTimeDown
-        {
-            get => state.Get<int>("EventBurningDistTimeDown");
-            set => SetEventBurningDistTimeDown(state, value);
-        }
-        public TMF WithEventBurningDistTimeDown(int value)
-        {
-            EventBurningDistTimeDown = value;
-            return this;
-        }
-        public int EventBurningDistTimeUp
-        {
-            get => state.Get<int>("EventBurningDistTimeUp");
-            set => SetEventBurningDistTimeUp(state, value);
-        }
-        public TMF WithEventBurningDistTimeUp(int value)
-        {
-            EventBurningDistTimeUp = value;
-            return this;
-        }
-        public float EventBurningLookAtFactorDelta
-        {
-            get => state.Get<float>("EventBurningLookAtFactorDelta");
-            set => SetEventBurningLookAtFactorDelta(state, value);
-        }
-        public TMF WithEventBurningLookAtFactorDelta(float value)
-        {
-            EventBurningLookAtFactorDelta = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeDown
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeDown");
-            set => SetEventBurningLookAtFactorTimeDown(state, value);
-        }
-        public TMF WithEventBurningLookAtFactorTimeDown(int value)
-        {
-            EventBurningLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int EventBurningLookAtFactorTimeUp
-        {
-            get => state.Get<int>("EventBurningLookAtFactorTimeUp");
-            set => SetEventBurningLookAtFactorTimeUp(state, value);
-        }
-        public TMF WithEventBurningLookAtFactorTimeUp(int value)
-        {
-            EventBurningLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float EventChangeGearDistDelta
-        {
-            get => state.Get<float>("EventChangeGearDistDelta");
-            set => SetEventChangeGearDistDelta(state, value);
-        }
-        public TMF WithEventChangeGearDistDelta(float value)
-        {
-            EventChangeGearDistDelta = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeDown
-        {
-            get => state.Get<int>("EventChangeGearDistTimeDown");
-            set => SetEventChangeGearDistTimeDown(state, value);
-        }
-        public TMF WithEventChangeGearDistTimeDown(int value)
-        {
-            EventChangeGearDistTimeDown = value;
-            return this;
-        }
-        public int EventChangeGearDistTimeUp
-        {
-            get => state.Get<int>("EventChangeGearDistTimeUp");
-            set => SetEventChangeGearDistTimeUp(state, value);
-        }
-        public TMF WithEventChangeGearDistTimeUp(int value)
-        {
-            EventChangeGearDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboDistDelta
-        {
-            get => state.Get<float>("EventTurboDistDelta");
-            set => SetEventTurboDistDelta(state, value);
-        }
-        public TMF WithEventTurboDistDelta(float value)
-        {
-            EventTurboDistDelta = value;
-            return this;
-        }
-        public int EventTurboDistTimeDown
-        {
-            get => state.Get<int>("EventTurboDistTimeDown");
-            set => SetEventTurboDistTimeDown(state, value);
-        }
-        public TMF WithEventTurboDistTimeDown(int value)
-        {
-            EventTurboDistTimeDown = value;
-            return this;
-        }
-        public int EventTurboDistTimeUp
-        {
-            get => state.Get<int>("EventTurboDistTimeUp");
-            set => SetEventTurboDistTimeUp(state, value);
-        }
-        public TMF WithEventTurboDistTimeUp(int value)
-        {
-            EventTurboDistTimeUp = value;
-            return this;
-        }
-        public float EventTurboFovDelta
-        {
-            get => state.Get<float>("EventTurboFovDelta");
-            set => SetEventTurboFovDelta(state, value);
-        }
-        public TMF WithEventTurboFovDelta(float value)
-        {
-            EventTurboFovDelta = value;
-            return this;
-        }
-        public int EventTurboFovTimeDown
-        {
-            get => state.Get<int>("EventTurboFovTimeDown");
-            set => SetEventTurboFovTimeDown(state, value);
-        }
-        public TMF WithEventTurboFovTimeDown(int value)
-        {
-            EventTurboFovTimeDown = value;
-            return this;
-        }
-        public int EventTurboFovTimeUp
-        {
-            get => state.Get<int>("EventTurboFovTimeUp");
-            set => SetEventTurboFovTimeUp(state, value);
-        }
-        public TMF WithEventTurboFovTimeUp(int value)
-        {
-            EventTurboFovTimeUp = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public TMF WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
         public Vec3 ForcedUp
         {
             get => state.Get<Vec3>("ForcedUp");
@@ -3145,286 +1488,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMF WithForcedUp(Vec3 value)
         {
             ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public TMF WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public float InputBrakeDistDelta
-        {
-            get => state.Get<float>("InputBrakeDistDelta");
-            set => SetInputBrakeDistDelta(state, value);
-        }
-        public TMF WithInputBrakeDistDelta(float value)
-        {
-            InputBrakeDistDelta = value;
-            return this;
-        }
-        public int InputBrakeDistTimeDown
-        {
-            get => state.Get<int>("InputBrakeDistTimeDown");
-            set => SetInputBrakeDistTimeDown(state, value);
-        }
-        public TMF WithInputBrakeDistTimeDown(int value)
-        {
-            InputBrakeDistTimeDown = value;
-            return this;
-        }
-        public int InputBrakeDistTimeUp
-        {
-            get => state.Get<int>("InputBrakeDistTimeUp");
-            set => SetInputBrakeDistTimeUp(state, value);
-        }
-        public TMF WithInputBrakeDistTimeUp(int value)
-        {
-            InputBrakeDistTimeUp = value;
-            return this;
-        }
-        public float InputGasDistDelta
-        {
-            get => state.Get<float>("InputGasDistDelta");
-            set => SetInputGasDistDelta(state, value);
-        }
-        public TMF WithInputGasDistDelta(float value)
-        {
-            InputGasDistDelta = value;
-            return this;
-        }
-        public int InputGasDistTimeDown
-        {
-            get => state.Get<int>("InputGasDistTimeDown");
-            set => SetInputGasDistTimeDown(state, value);
-        }
-        public TMF WithInputGasDistTimeDown(int value)
-        {
-            InputGasDistTimeDown = value;
-            return this;
-        }
-        public int InputGasDistTimeUp
-        {
-            get => state.Get<int>("InputGasDistTimeUp");
-            set => SetInputGasDistTimeUp(state, value);
-        }
-        public TMF WithInputGasDistTimeUp(int value)
-        {
-            InputGasDistTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerRollDelta
-        {
-            get => state.Get<float>("InputLeftSteerRollDelta");
-            set => SetInputLeftSteerRollDelta(state, value);
-        }
-        public TMF WithInputLeftSteerRollDelta(float value)
-        {
-            InputLeftSteerRollDelta = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeDown");
-            set => SetInputLeftSteerRollTimeDown(state, value);
-        }
-        public TMF WithInputLeftSteerRollTimeDown(int value)
-        {
-            InputLeftSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerRollTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerRollTimeUp");
-            set => SetInputLeftSteerRollTimeUp(state, value);
-        }
-        public TMF WithInputLeftSteerRollTimeUp(int value)
-        {
-            InputLeftSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputLeftSteerYawDelta
-        {
-            get => state.Get<float>("InputLeftSteerYawDelta");
-            set => SetInputLeftSteerYawDelta(state, value);
-        }
-        public TMF WithInputLeftSteerYawDelta(float value)
-        {
-            InputLeftSteerYawDelta = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeDown
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeDown");
-            set => SetInputLeftSteerYawTimeDown(state, value);
-        }
-        public TMF WithInputLeftSteerYawTimeDown(int value)
-        {
-            InputLeftSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputLeftSteerYawTimeUp
-        {
-            get => state.Get<int>("InputLeftSteerYawTimeUp");
-            set => SetInputLeftSteerYawTimeUp(state, value);
-        }
-        public TMF WithInputLeftSteerYawTimeUp(int value)
-        {
-            InputLeftSteerYawTimeUp = value;
-            return this;
-        }
-        public int InputNoSteerDurationBeforeReset
-        {
-            get => state.Get<int>("InputNoSteerDurationBeforeReset");
-            set => SetInputNoSteerDurationBeforeReset(state, value);
-        }
-        public TMF WithInputNoSteerDurationBeforeReset(int value)
-        {
-            InputNoSteerDurationBeforeReset = value;
-            return this;
-        }
-        public float InputRightSteerRollDelta
-        {
-            get => state.Get<float>("InputRightSteerRollDelta");
-            set => SetInputRightSteerRollDelta(state, value);
-        }
-        public TMF WithInputRightSteerRollDelta(float value)
-        {
-            InputRightSteerRollDelta = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeDown
-        {
-            get => state.Get<int>("InputRightSteerRollTimeDown");
-            set => SetInputRightSteerRollTimeDown(state, value);
-        }
-        public TMF WithInputRightSteerRollTimeDown(int value)
-        {
-            InputRightSteerRollTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerRollTimeUp
-        {
-            get => state.Get<int>("InputRightSteerRollTimeUp");
-            set => SetInputRightSteerRollTimeUp(state, value);
-        }
-        public TMF WithInputRightSteerRollTimeUp(int value)
-        {
-            InputRightSteerRollTimeUp = value;
-            return this;
-        }
-        public float InputRightSteerYawDelta
-        {
-            get => state.Get<float>("InputRightSteerYawDelta");
-            set => SetInputRightSteerYawDelta(state, value);
-        }
-        public TMF WithInputRightSteerYawDelta(float value)
-        {
-            InputRightSteerYawDelta = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeDown
-        {
-            get => state.Get<int>("InputRightSteerYawTimeDown");
-            set => SetInputRightSteerYawTimeDown(state, value);
-        }
-        public TMF WithInputRightSteerYawTimeDown(int value)
-        {
-            InputRightSteerYawTimeDown = value;
-            return this;
-        }
-        public int InputRightSteerYawTimeUp
-        {
-            get => state.Get<int>("InputRightSteerYawTimeUp");
-            set => SetInputRightSteerYawTimeUp(state, value);
-        }
-        public TMF WithInputRightSteerYawTimeUp(int value)
-        {
-            InputRightSteerYawTimeUp = value;
-            return this;
-        }
-        public float InputSteerDistDelta
-        {
-            get => state.Get<float>("InputSteerDistDelta");
-            set => SetInputSteerDistDelta(state, value);
-        }
-        public TMF WithInputSteerDistDelta(float value)
-        {
-            InputSteerDistDelta = value;
-            return this;
-        }
-        public int InputSteerDistTimeDown
-        {
-            get => state.Get<int>("InputSteerDistTimeDown");
-            set => SetInputSteerDistTimeDown(state, value);
-        }
-        public TMF WithInputSteerDistTimeDown(int value)
-        {
-            InputSteerDistTimeDown = value;
-            return this;
-        }
-        public int InputSteerDistTimeUp
-        {
-            get => state.Get<int>("InputSteerDistTimeUp");
-            set => SetInputSteerDistTimeUp(state, value);
-        }
-        public TMF WithInputSteerDistTimeUp(int value)
-        {
-            InputSteerDistTimeUp = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeAnticipatingTurnTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeAnticipatingTurnTriggered");
-            set => SetInputSteerDurationBeforeAnticipatingTurnTriggered(state, value);
-        }
-        public TMF WithInputSteerDurationBeforeAnticipatingTurnTriggered(int value)
-        {
-            InputSteerDurationBeforeAnticipatingTurnTriggered = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeBurnoutShowView
-        {
-            get => state.Get<int>("InputSteerDurationBeforeBurnoutShowView");
-            set => SetInputSteerDurationBeforeBurnoutShowView(state, value);
-        }
-        public TMF WithInputSteerDurationBeforeBurnoutShowView(int value)
-        {
-            InputSteerDurationBeforeBurnoutShowView = value;
-            return this;
-        }
-        public int InputSteerDurationBeforeRollTriggered
-        {
-            get => state.Get<int>("InputSteerDurationBeforeRollTriggered");
-            set => SetInputSteerDurationBeforeRollTriggered(state, value);
-        }
-        public TMF WithInputSteerDurationBeforeRollTriggered(int value)
-        {
-            InputSteerDurationBeforeRollTriggered = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TMF WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public TMF WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
             return this;
         }
         public bool IsRollFromInput
@@ -3437,55 +1500,9 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             IsRollFromInput = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? LookAtFactorFromUpSpeedRatio
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("LookAtFactorFromUpSpeedRatio");
-            set => SetLookAtFactorFromUpSpeedRatio(state, value);
-        }
-        public TMF WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            LookAtFactorFromUpSpeedRatio = value;
-            return this;
-        }
-        public TMF WithLookAtFactorFromUpSpeedRatioReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLookAtFactorFromUpSpeedRatioReference(state, value);
-            return this;
-        }
         public TMF WithLookAtFactorFromUpSpeedRatio(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? value)
         {
-            return WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float MaxDeltaFovStep
-        {
-            get => state.Get<float>("MaxDeltaFovStep");
-            set => SetMaxDeltaFovStep(state, value);
-        }
-        public TMF WithMaxDeltaFovStep(float value)
-        {
-            MaxDeltaFovStep = value;
-            return this;
-        }
-        public float MaxDeltaPlaneDistStep
-        {
-            get => state.Get<float>("MaxDeltaPlaneDistStep");
-            set => SetMaxDeltaPlaneDistStep(state, value);
-        }
-        public TMF WithMaxDeltaPlaneDistStep(float value)
-        {
-            MaxDeltaPlaneDistStep = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public TMF WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
+            return base.WithLookAtFactorFromUpSpeedRatio(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public float MaxFarZ
         {
@@ -3515,26 +1532,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public TMF WithMaxNearZ(float value)
         {
             MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMF WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public TMF WithMinDist(float value)
-        {
-            MinDist = value;
             return this;
         }
         public float MinFarZ
@@ -3567,26 +1564,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             MinNearZ = value;
             return this;
         }
-        public float MinSpeed
-        {
-            get => state.Get<float>("MinSpeed");
-            set => SetMinSpeed(state, value);
-        }
-        public TMF WithMinSpeed(float value)
-        {
-            MinSpeed = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public TMF WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
         public Vec3 RelativeFollowedPos
         {
             get => state.Get<Vec3>("RelativeFollowedPos");
@@ -3597,155 +1574,9 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             RelativeFollowedPos = value;
             return this;
         }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? RollFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("RollFromSpeed");
-            set => SetRollFromSpeed(state, value);
-        }
-        public TMF WithRollFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            RollFromSpeed = value;
-            return this;
-        }
-        public TMF WithRollFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRollFromSpeedReference(state, value);
-            return this;
-        }
         public TMF WithRollFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? value)
         {
-            return WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float StateFlyingDistDelta
-        {
-            get => state.Get<float>("StateFlyingDistDelta");
-            set => SetStateFlyingDistDelta(state, value);
-        }
-        public TMF WithStateFlyingDistDelta(float value)
-        {
-            StateFlyingDistDelta = value;
-            return this;
-        }
-        public int StateFlyingDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingDistTimeDown");
-            set => SetStateFlyingDistTimeDown(state, value);
-        }
-        public TMF WithStateFlyingDistTimeDown(int value)
-        {
-            StateFlyingDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingDistTimeUp");
-            set => SetStateFlyingDistTimeUp(state, value);
-        }
-        public TMF WithStateFlyingDistTimeUp(int value)
-        {
-            StateFlyingDistTimeUp = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeCameraMove
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeCameraMove");
-            set => SetStateFlyingDurationBeforeCameraMove(state, value);
-        }
-        public TMF WithStateFlyingDurationBeforeCameraMove(int value)
-        {
-            StateFlyingDurationBeforeCameraMove = value;
-            return this;
-        }
-        public int StateFlyingDurationBeforeFlyingMode
-        {
-            get => state.Get<int>("StateFlyingDurationBeforeFlyingMode");
-            set => SetStateFlyingDurationBeforeFlyingMode(state, value);
-        }
-        public TMF WithStateFlyingDurationBeforeFlyingMode(int value)
-        {
-            StateFlyingDurationBeforeFlyingMode = value;
-            return this;
-        }
-        public float StateFlyingLookAtFactorDelta
-        {
-            get => state.Get<float>("StateFlyingLookAtFactorDelta");
-            set => SetStateFlyingLookAtFactorDelta(state, value);
-        }
-        public TMF WithStateFlyingLookAtFactorDelta(float value)
-        {
-            StateFlyingLookAtFactorDelta = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeDown
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeDown");
-            set => SetStateFlyingLookAtFactorTimeDown(state, value);
-        }
-        public TMF WithStateFlyingLookAtFactorTimeDown(int value)
-        {
-            StateFlyingLookAtFactorTimeDown = value;
-            return this;
-        }
-        public int StateFlyingLookAtFactorTimeUp
-        {
-            get => state.Get<int>("StateFlyingLookAtFactorTimeUp");
-            set => SetStateFlyingLookAtFactorTimeUp(state, value);
-        }
-        public TMF WithStateFlyingLookAtFactorTimeUp(int value)
-        {
-            StateFlyingLookAtFactorTimeUp = value;
-            return this;
-        }
-        public float StateFlyingLookAtStep
-        {
-            get => state.Get<float>("StateFlyingLookAtStep");
-            set => SetStateFlyingLookAtStep(state, value);
-        }
-        public TMF WithStateFlyingLookAtStep(float value)
-        {
-            StateFlyingLookAtStep = value;
-            return this;
-        }
-        public float StateFlyingPlaneDistDelta
-        {
-            get => state.Get<float>("StateFlyingPlaneDistDelta");
-            set => SetStateFlyingPlaneDistDelta(state, value);
-        }
-        public TMF WithStateFlyingPlaneDistDelta(float value)
-        {
-            StateFlyingPlaneDistDelta = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeDown
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeDown");
-            set => SetStateFlyingPlaneDistTimeDown(state, value);
-        }
-        public TMF WithStateFlyingPlaneDistTimeDown(int value)
-        {
-            StateFlyingPlaneDistTimeDown = value;
-            return this;
-        }
-        public int StateFlyingPlaneDistTimeUp
-        {
-            get => state.Get<int>("StateFlyingPlaneDistTimeUp");
-            set => SetStateFlyingPlaneDistTimeUp(state, value);
-        }
-        public TMF WithStateFlyingPlaneDistTimeUp(int value)
-        {
-            StateFlyingPlaneDistTimeUp = value;
-            return this;
-        }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public TMF WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
+            return base.WithRollFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public bool UseForcedUp
         {
@@ -3757,61 +1588,19 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             UseForcedUp = value;
             return this;
         }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public TMF WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? YawFromSpeed
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("YawFromSpeed");
-            set => SetYawFromSpeed(state, value);
-        }
-        public TMF WithYawFromSpeed(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            YawFromSpeed = value;
-            return this;
-        }
-        public TMF WithYawFromSpeedReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetYawFromSpeedReference(state, value);
-            return this;
-        }
         public TMF WithYawFromSpeed(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? value)
         {
-            return WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithYawFromSpeed(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TMF BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk24086000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000();
-            node.Chunks.Add(chunk24086000);
-            var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
-            node.Chunks.Add(chunk24086001);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
-            var chunk0306B00B = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B();
-            node.Chunks.Add(chunk0306B00B);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk24086000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk24086001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0306B00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0306B00B is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -3834,19 +1623,12 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2MP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0306B00A is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -3859,35 +1641,21 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TMT BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0306B00A is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe4(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 node);
     }
-    public partial class MP4 : CGameControlCameraTrackManiaRace2BuilderBase<MP4>
+    public partial class MP4 : CGameControlCameraTrackManiaRace2BuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public MP4 WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
         public float DefaultFarZ
         {
             get => state.Get<float>("DefaultFarZ");
@@ -3896,16 +1664,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public MP4 WithDefaultFarZ(float value)
         {
             DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public MP4 WithDefaultFov(float value)
-        {
-            DefaultFov = value;
             return this;
         }
         public float DefaultNearZ
@@ -3918,16 +1676,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             DefaultNearZ = value;
             return this;
         }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public MP4 WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
         public Vec3 ForcedUp
         {
             get => state.Get<Vec3>("ForcedUp");
@@ -3936,46 +1684,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public MP4 WithForcedUp(Vec3 value)
         {
             ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public MP4 WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public MP4 WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public MP4 WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public MP4 WithMaxDist(float value)
-        {
-            MaxDist = value;
             return this;
         }
         public float MaxFarZ
@@ -4008,26 +1716,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             MaxNearZ = value;
             return this;
         }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public MP4 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public MP4 WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
         public float MinFarZ
         {
             get => state.Get<float>("MinFarZ");
@@ -4058,16 +1746,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             MinNearZ = value;
             return this;
         }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public MP4 WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
         public Vec3 RelativeFollowedPos
         {
             get => state.Get<Vec3>("RelativeFollowedPos");
@@ -4076,16 +1754,6 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public MP4 WithRelativeFollowedPos(Vec3 value)
         {
             RelativeFollowedPos = value;
-            return this;
-        }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public MP4 WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
             return this;
         }
         public bool UseForcedUp
@@ -4098,32 +1766,15 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
             UseForcedUp = value;
             return this;
         }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public MP4 WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2MP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
-            var chunk0306B00C = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C();
-            node.Chunks.Add(chunk0306B00C);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0306B00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0306B00C is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe5(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -4146,19 +1797,12 @@ public partial class CGameControlCameraTrackManiaRace2Builder : CGameControlCame
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRace2TM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2 Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2();
-            var chunk24086001 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001();
-            node.Chunks.Add(chunk24086001);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
+            var node = CGameControlCameraTrackManiaRace2Builder.CreateRecipe6(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace2.Chunk24086001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk24086001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0306B00A is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRace2Builder.ValidateRecipe6(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameControlCameraTrackManiaRace2Builder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

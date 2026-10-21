@@ -31,6 +31,19 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCloudsMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugClouds where T0 : class
+{
+    float BottomFarZ { get; set; }
+    float BottomNearZ { get; set; }
+    int HeightCenter { get; set; }
+    Vec2 HeightCenterXZ { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin { get; set; }
+    int Lighting { get; set; }
+    IReadOnlyList<T0>? SolidFids { get; set; }
+    float SpeedScale { get; set; }
+}
 public partial interface IPlugClouds : IClassVersion<global::GBX.NET.Engines.Plug.CPlugClouds>, global::GBX.NET.Interfaces.Function.IFunc
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -47,29 +60,11 @@ public partial interface IPlugCloudsTMNESWC : IPlugClouds, global::GBX.NET.Inter
 {
 }
 
-public partial interface IPlugCloudsVSK5 : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncVSK5
+public partial interface IPlugCloudsVSK5 : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>
 {
-    float BottomFarZ { get; set; }
-    float BottomNearZ { get; set; }
-    int HeightCenter { get; set; }
-    Vec2 HeightCenterXZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin { get; set; }
-    int Lighting { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>? SolidFids { get; set; }
-    float SpeedScale { get; set; }
 }
 
-public partial interface IPlugCloudsTMF : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMF
+public partial interface IPlugCloudsTMF : IPlugClouds, global::GBX.NET.Interfaces.Function.IFuncTMF, global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>
 {
-    float BottomFarZ { get; set; }
-    float BottomNearZ { get; set; }
-    int HeightCenter { get; set; }
-    Vec2 HeightCenterXZ { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMax { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? ImageColorMin { get; set; }
-    int Lighting { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>? SolidFids { get; set; }
-    float SpeedScale { get; set; }
 }
 

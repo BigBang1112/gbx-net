@@ -36,13 +36,13 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state;
     private protected CPlugTrafficObjectParamsBuilderBase() => state = new();
     private protected CPlugTrafficObjectParamsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state) => this.state = state;
-    private protected static void SetBaseOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, Iso4 value) => state.Set<Iso4>("BaseOffset", value, GameVersion.TMT, static value => value, static (node, value) => node.BaseOffset = value);
-    private protected static void SetDefaultAcceleration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set<float>("DefaultAcceleration", value, GameVersion.TMT, static value => value, static (node, value) => node.DefaultAcceleration = value);
-    private protected static void SetDefaultDecceleration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set<float>("DefaultDecceleration", value, GameVersion.TMT, static value => value, static (node, value) => node.DefaultDecceleration = value);
-    private protected static void SetDefaultSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set<float>("DefaultSpeed", value, GameVersion.TMT, static value => value, static (node, value) => node.DefaultSpeed = value);
-    private protected static void SetPointDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, TimeInt32 value) => state.Set<TimeInt32>("PointDelay", value, GameVersion.TMT, static value => value, static (node, value) => node.PointDelay = value);
-    private protected static void SetTrafficModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, int value) => state.Set<int>("TrafficModel", value, GameVersion.TMT, static value => value, static (node, value) => node.TrafficModel = value);
-    private protected static void SetTrafficPathType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, int value) => state.Set<int>("TrafficPathType", value, GameVersion.TMT, static value => value, static (node, value) => node.TrafficPathType = value);
+    private protected static void SetBaseOffset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetBaseOffsetAssignment(), value, GameVersion.TMT);
+    private protected static void SetDefaultAcceleration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultAccelerationAssignment(), value, GameVersion.TMT);
+    private protected static void SetDefaultDecceleration(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultDeccelerationAssignment(), value, GameVersion.TMT);
+    private protected static void SetDefaultSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetDefaultSpeedAssignment(), value, GameVersion.TMT);
+    private protected static void SetPointDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetPointDelayAssignment(), value, GameVersion.TMT);
+    private protected static void SetTrafficModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficModelAssignment(), value, GameVersion.TMT);
+    private protected static void SetTrafficPathType(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTrafficObjectParamsBuilderAssignments.GetTrafficPathTypeAssignment(), value, GameVersion.TMT);
     public Iso4 BaseOffset
     {
         get => state.Get<Iso4>("BaseOffset");
@@ -116,6 +116,23 @@ public abstract class CPlugTrafficObjectParamsBuilderBase<TSelf> where TSelf : C
 }
 public partial class CPlugTrafficObjectParamsBuilder : CPlugTrafficObjectParamsBuilderBase<CPlugTrafficObjectParamsBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams();
+        var chunk090D1000 = new global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1000();
+        node.Chunks.Add(chunk090D1000);
+        var chunk090D1001 = new global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1001(game);
+        node.Chunks.Add(chunk090D1001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090D1000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1001>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D1001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public partial class TMT : CPlugTrafficObjectParamsBuilderBase<TMT>
     {
@@ -123,16 +140,12 @@ public partial class CPlugTrafficObjectParamsBuilder : CPlugTrafficObjectParamsB
         public global::GBX.NET.Interfaces.Plug.IPlugTrafficObjectParamsTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams();
-            var chunk090D1000 = new global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1000();
-            node.Chunks.Add(chunk090D1000);
-            var chunk090D1001 = new global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1001(GameVersion.TMT);
-            node.Chunks.Add(chunk090D1001);
+            var node = CPlugTrafficObjectParamsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090D1000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams.Chunk090D1001>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk Chunk090D1001 is missing or has an incompatible version.");
+            CPlugTrafficObjectParamsBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugTrafficObjectParamsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }

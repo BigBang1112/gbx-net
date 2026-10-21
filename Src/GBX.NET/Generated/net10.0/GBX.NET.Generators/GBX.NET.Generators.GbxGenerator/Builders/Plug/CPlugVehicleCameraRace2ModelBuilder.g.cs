@@ -36,76 +36,76 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state;
     private protected CPlugVehicleCameraRace2ModelBuilderBase() => state = new();
     private protected CPlugVehicleCameraRace2ModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state) => this.state = state;
-    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("DefaultFov", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DefaultFov = value);
-    private protected static void SetDeltaDistDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("DeltaDistDamperKa", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DeltaDistDamperKa = value);
-    private protected static void SetDeltaDistDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("DeltaDistDamperKi", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DeltaDistDamperKi = value);
-    private protected static void SetDeltaLookAtFactorDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("DeltaLookAtFactorDamperKa", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DeltaLookAtFactorDamperKa = value);
-    private protected static void SetDeltaLookAtFactorDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("DeltaLookAtFactorDamperKi", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DeltaLookAtFactorDamperKi = value);
-    private protected static void SetEventBurningDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("EventBurningDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventBurningDistDelta = value);
-    private protected static void SetEventBurningDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventBurningDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventBurningDistTimeDown = value);
-    private protected static void SetEventBurningDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventBurningDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventBurningDistTimeUp = value);
-    private protected static void SetEventBurningLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("EventBurningLookAtFactorDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventBurningLookAtFactorDelta = value);
-    private protected static void SetEventBurningLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventBurningLookAtFactorTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventBurningLookAtFactorTimeDown = value);
-    private protected static void SetEventBurningLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventBurningLookAtFactorTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventBurningLookAtFactorTimeUp = value);
-    private protected static void SetEventChangeGearDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("EventChangeGearDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventChangeGearDistDelta = value);
-    private protected static void SetEventChangeGearDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventChangeGearDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventChangeGearDistTimeDown = value);
-    private protected static void SetEventChangeGearDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventChangeGearDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventChangeGearDistTimeUp = value);
-    private protected static void SetEventTurboDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("EventTurboDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventTurboDistDelta = value);
-    private protected static void SetEventTurboDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventTurboDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventTurboDistTimeDown = value);
-    private protected static void SetEventTurboDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventTurboDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventTurboDistTimeUp = value);
-    private protected static void SetEventTurboFovDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("EventTurboFovDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventTurboFovDelta = value);
-    private protected static void SetEventTurboFovTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventTurboFovTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventTurboFovTimeDown = value);
-    private protected static void SetEventTurboFovTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("EventTurboFovTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EventTurboFovTimeUp = value);
-    private protected static void SetInputBrakeDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputBrakeDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputBrakeDistDelta = value);
-    private protected static void SetInputBrakeDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputBrakeDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputBrakeDistTimeDown = value);
-    private protected static void SetInputBrakeDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputBrakeDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputBrakeDistTimeUp = value);
-    private protected static void SetInputGasDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputGasDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputGasDistDelta = value);
-    private protected static void SetInputGasDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputGasDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputGasDistTimeDown = value);
-    private protected static void SetInputGasDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputGasDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputGasDistTimeUp = value);
-    private protected static void SetInputLeftSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputLeftSteerRollDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputLeftSteerRollDelta = value);
-    private protected static void SetInputLeftSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputLeftSteerRollTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputLeftSteerRollTimeDown = value);
-    private protected static void SetInputLeftSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputLeftSteerRollTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputLeftSteerRollTimeUp = value);
-    private protected static void SetInputLeftSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputLeftSteerYawDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputLeftSteerYawDelta = value);
-    private protected static void SetInputLeftSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputLeftSteerYawTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputLeftSteerYawTimeDown = value);
-    private protected static void SetInputLeftSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputLeftSteerYawTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputLeftSteerYawTimeUp = value);
-    private protected static void SetInputNoSteerDurationBeforeReset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputNoSteerDurationBeforeReset", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputNoSteerDurationBeforeReset = value);
-    private protected static void SetInputRightSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputRightSteerRollDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputRightSteerRollDelta = value);
-    private protected static void SetInputRightSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputRightSteerRollTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputRightSteerRollTimeDown = value);
-    private protected static void SetInputRightSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputRightSteerRollTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputRightSteerRollTimeUp = value);
-    private protected static void SetInputRightSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputRightSteerYawDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputRightSteerYawDelta = value);
-    private protected static void SetInputRightSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputRightSteerYawTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputRightSteerYawTimeDown = value);
-    private protected static void SetInputRightSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputRightSteerYawTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputRightSteerYawTimeUp = value);
-    private protected static void SetInputSteerDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("InputSteerDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputSteerDistDelta = value);
-    private protected static void SetInputSteerDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputSteerDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputSteerDistTimeDown = value);
-    private protected static void SetInputSteerDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputSteerDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputSteerDistTimeUp = value);
-    private protected static void SetInputSteerDurationBeforeAnticipatingTurnTriggered(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputSteerDurationBeforeAnticipatingTurnTriggered", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputSteerDurationBeforeAnticipatingTurnTriggered = value);
-    private protected static void SetInputSteerDurationBeforeBurnoutShowView(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputSteerDurationBeforeBurnoutShowView", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputSteerDurationBeforeBurnoutShowView = value);
-    private protected static void SetInputSteerDurationBeforeRollTriggered(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("InputSteerDurationBeforeRollTriggered", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InputSteerDurationBeforeRollTriggered = value);
-    private protected static void SetIsRollFromInput(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, bool value) => state.Set<bool>("IsRollFromInput", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IsRollFromInput = value);
-    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("LookAtFactor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LookAtFactor = value);
-    private protected static void SetLookAtFactorFromUpSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set<PlugCurve?>("LookAtFactorFromUpSpeedRatio", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LookAtFactorFromUpSpeedRatio = value);
-    private protected static void SetMaxDeltaFovStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("MaxDeltaFovStep", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MaxDeltaFovStep = value);
-    private protected static void SetMaxDeltaPlaneDistStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("MaxDeltaPlaneDistStep", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MaxDeltaPlaneDistStep = value);
-    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("MaxDist", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MaxDist = value);
-    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("MinDist", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MinDist = value);
-    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("MinSpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MinSpeed = value);
-    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("PlaneDist", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PlaneDist = value);
-    private protected static void SetRollFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set<PlugCurve?>("RollFromSpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RollFromSpeed = value);
-    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Shake = value);
-    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel>>("Shake", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shake.CopyFrom(reference));
-    private protected static void SetStateFlyingDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("StateFlyingDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingDistDelta = value);
-    private protected static void SetStateFlyingDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingDistTimeDown = value);
-    private protected static void SetStateFlyingDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingDistTimeUp = value);
-    private protected static void SetStateFlyingDurationBeforeCameraMove(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingDurationBeforeCameraMove", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingDurationBeforeCameraMove = value);
-    private protected static void SetStateFlyingDurationBeforeFlyingMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingDurationBeforeFlyingMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingDurationBeforeFlyingMode = value);
-    private protected static void SetStateFlyingLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("StateFlyingLookAtFactorDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingLookAtFactorDelta = value);
-    private protected static void SetStateFlyingLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingLookAtFactorTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingLookAtFactorTimeDown = value);
-    private protected static void SetStateFlyingLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingLookAtFactorTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingLookAtFactorTimeUp = value);
-    private protected static void SetStateFlyingLookAtStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("StateFlyingLookAtStep", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingLookAtStep = value);
-    private protected static void SetStateFlyingPlaneDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set<float>("StateFlyingPlaneDistDelta", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingPlaneDistDelta = value);
-    private protected static void SetStateFlyingPlaneDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingPlaneDistTimeDown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingPlaneDistTimeDown = value);
-    private protected static void SetStateFlyingPlaneDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set<int>("StateFlyingPlaneDistTimeUp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.StateFlyingPlaneDistTimeUp = value);
-    private protected static void SetYawFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set<PlugCurve?>("YawFromSpeed", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.YawFromSpeed = value);
+    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDeltaDistDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaDistDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDeltaDistDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaDistDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDeltaLookAtFactorDamperKa(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaLookAtFactorDamperKaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDeltaLookAtFactorDamperKi(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetDeltaLookAtFactorDamperKiAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventBurningDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventBurningDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventBurningDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventBurningLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventBurningLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventBurningLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventBurningLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventChangeGearDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventChangeGearDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventChangeGearDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventChangeGearDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventTurboDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventTurboDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventTurboDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventTurboFovDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventTurboFovTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEventTurboFovTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetEventTurboFovTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputBrakeDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputBrakeDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputBrakeDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputBrakeDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputGasDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputGasDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputGasDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputGasDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputLeftSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputLeftSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputLeftSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerRollTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputLeftSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputLeftSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputLeftSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputLeftSteerYawTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputNoSteerDurationBeforeReset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputNoSteerDurationBeforeResetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputRightSteerRollDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputRightSteerRollTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputRightSteerRollTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerRollTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputRightSteerYawDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputRightSteerYawTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputRightSteerYawTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputRightSteerYawTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputSteerDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputSteerDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputSteerDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputSteerDurationBeforeAnticipatingTurnTriggered(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeAnticipatingTurnTriggeredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputSteerDurationBeforeBurnoutShowView(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeBurnoutShowViewAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInputSteerDurationBeforeRollTriggered(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetInputSteerDurationBeforeRollTriggeredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIsRollFromInput(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetIsRollFromInputAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLookAtFactorFromUpSpeedRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetLookAtFactorFromUpSpeedRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaxDeltaFovStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDeltaFovStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaxDeltaPlaneDistStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDeltaPlaneDistStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMinSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRollFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetRollFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShake(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShakeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCamControlModelBuilderAssignments.GetShakeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingDurationBeforeCameraMove(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDurationBeforeCameraMoveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingDurationBeforeFlyingMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingDurationBeforeFlyingModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingLookAtFactorDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingLookAtFactorTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingLookAtFactorTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtFactorTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingLookAtStep(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingLookAtStepAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingPlaneDistDelta(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistDeltaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingPlaneDistTimeDown(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistTimeDownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateFlyingPlaneDistTimeUp(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetStateFlyingPlaneDistTimeUpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetYawFromSpeed(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state, PlugCurve? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRace2ModelBuilderAssignments.GetYawFromSpeedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float DefaultFov
     {
         get => state.Get<float>("DefaultFov");
@@ -787,8 +787,87 @@ public abstract class CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf
         return (TSelf)this;
     }
 }
+public abstract class CPlugVehicleCameraRace2ModelBuilderMembers1<TSelf> : CPlugVehicleCameraRace2ModelBuilderBase<TSelf> where TSelf : CPlugVehicleCameraRace2ModelBuilderMembers1<TSelf>
+{
+    private protected CPlugVehicleCameraRace2ModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
+        set => SetShake(state, value);
+    }
+    public TSelf WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
+    {
+        Shake = value;
+        return (TSelf)this;
+    }
+    public TSelf WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetShakeReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CPlugVehicleCameraRace2ModelBuilder : CPlugVehicleCameraRace2ModelBuilderBase<CPlugVehicleCameraRace2ModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
+        var chunk090F6000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000();
+        node.Chunks.Add(chunk090F6000);
+        var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
+        node.Chunks.Add(chunk090F6001);
+        var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(game);
+        node.Chunks.Add(chunk090F6002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F6000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F6001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F6002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
+        var chunk090F6000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000();
+        node.Chunks.Add(chunk090F6000);
+        var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
+        node.Chunks.Add(chunk090F6001);
+        var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(game);
+        node.Chunks.Add(chunk090F6002);
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F6000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F6001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F6002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
+        var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
+        node.Chunks.Add(chunk090F6001);
+        var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(game);
+        node.Chunks.Add(chunk090F6002);
+        var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
+        chunk0910C000.Version = 0;
+        node.Chunks.Add(chunk0910C000);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090F6001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F6002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0910C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -801,163 +880,78 @@ public partial class CPlugVehicleCameraRace2ModelBuilder : CPlugVehicleCameraRac
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace2ModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
-            var chunk090F6000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000();
-            node.Chunks.Add(chunk090F6000);
-            var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
-            node.Chunks.Add(chunk090F6001);
-            var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(GameVersion.MP3);
-            node.Chunks.Add(chunk090F6002);
+            var node = CPlugVehicleCameraRace2ModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090F6000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090F6001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk090F6002 is missing or has an incompatible version.");
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node);
     }
-    public partial class TMT : CPlugVehicleCameraRace2ModelBuilderBase<TMT>
+    public partial class TMT : CPlugVehicleCameraRace2ModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-            set => SetShake(state, value);
-        }
-        public TMT WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
-        {
-            Shake = value;
-            return this;
-        }
-        public TMT WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShakeReference(state, value);
-            return this;
-        }
         public TMT WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? value)
         {
-            return WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace2ModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
-            var chunk090F6000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000();
-            node.Chunks.Add(chunk090F6000);
-            var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
-            node.Chunks.Add(chunk090F6001);
-            var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(GameVersion.TMT);
-            node.Chunks.Add(chunk090F6002);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraRace2ModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090F6000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090F6001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk090F6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node);
     }
-    public partial class MP4 : CPlugVehicleCameraRace2ModelBuilderBase<MP4>
+    public partial class MP4 : CPlugVehicleCameraRace2ModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-            set => SetShake(state, value);
-        }
-        public MP4 WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
-        {
-            Shake = value;
-            return this;
-        }
-        public MP4 WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShakeReference(state, value);
-            return this;
-        }
         public MP4 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? value)
         {
-            return WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace2ModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
-            var chunk090F6000 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000();
-            node.Chunks.Add(chunk090F6000);
-            var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
-            node.Chunks.Add(chunk090F6001);
-            var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(GameVersion.MP4);
-            node.Chunks.Add(chunk090F6002);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraRace2ModelBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090F6000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090F6001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk090F6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model node);
     }
-    public partial class TM2020 : CPlugVehicleCameraRace2ModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVehicleCameraRace2ModelBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugCamShakeModel? Shake
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugCamShakeModel?>("Shake");
-            set => SetShake(state, value);
-        }
-        public TM2020 WithShake(global::GBX.NET.Engines.Plug.CPlugCamShakeModel? value)
-        {
-            Shake = value;
-            return this;
-        }
-        public TM2020 WithShakeReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugCamShakeModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShakeReference(state, value);
-            return this;
-        }
         public TM2020 WithShake(global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? value)
         {
-            return WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithShake(value is null ? (global::GBX.NET.Engines.Plug.CPlugCamShakeModel?)null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRace2ModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model();
-            var chunk090F6001 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001();
-            node.Chunks.Add(chunk090F6001);
-            var chunk090F6002 = new global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002(GameVersion.TM2020);
-            node.Chunks.Add(chunk090F6002);
-            var chunk0910C000 = new global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000();
-            chunk0910C000.Version = 0;
-            node.Chunks.Add(chunk0910C000);
+            var node = CPlugVehicleCameraRace2ModelBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090F6001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleCameraRace2Model.Chunk090F6002>() is not { Version: 4 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090F6002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCamControlModel.Chunk0910C000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0910C000 is missing or has an incompatible version.");
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleCameraRace2ModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

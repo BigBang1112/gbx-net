@@ -31,6 +31,17 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationSizeMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize
+{
+    int BaseHeightOffset { get; set; }
+    bool OffsetBlockY { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationSizeMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecorationSize where T0 : class
+{
+    new T0? Scene { get; set; }
+}
 public partial interface IGameCtnDecorationSize : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecorationSize>
 {
     int BaseHeightBase { get; set; }
@@ -40,51 +51,35 @@ public partial interface IGameCtnDecorationSize : IClassVersion<global::GBX.NET.
     Int3 Size { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeTMSX : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeTMSX : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutTMSX? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeTMNESWC : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeTMNESWC : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutTMNESWC? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeVSK5 : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeVSK5 : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutVSK5? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeTMF : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeTMF : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutTMF? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeMP3 : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeMP3 : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3>
 {
-    int BaseHeightOffset { get; set; }
-    bool OffsetBlockY { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutMP3? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeTMT : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeTMT : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT>
 {
-    int BaseHeightOffset { get; set; }
-    bool OffsetBlockY { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutTMT? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeMP4 : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeMP4 : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4>
 {
-    int BaseHeightOffset { get; set; }
-    bool OffsetBlockY { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutMP4? Scene { get; set; }
 }
 
-public partial interface IGameCtnDecorationSizeTM2020 : IGameCtnDecorationSize
+public partial interface IGameCtnDecorationSizeTM2020 : IGameCtnDecorationSize, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers1, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMembers2<global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020>
 {
-    int BaseHeightOffset { get; set; }
-    bool OffsetBlockY { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneLayoutTM2020? Scene { get; set; }
 }
 

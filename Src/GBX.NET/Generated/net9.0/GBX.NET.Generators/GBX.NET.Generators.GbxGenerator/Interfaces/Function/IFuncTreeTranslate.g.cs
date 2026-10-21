@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncTreeTranslateMembers1 : global::GBX.NET.Interfaces.Function.IFuncTreeTranslate
+{
+    Vec3 EndPoint { get; set; }
+    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
+    Vec3 StartPoint { get; set; }
+}
 public partial interface IFuncTreeTranslate : IClassVersion<global::GBX.NET.Engines.Function.CFuncTreeTranslate>, global::GBX.NET.Interfaces.Function.IFuncTree
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,89 +47,45 @@ public partial interface IFuncTreeTranslate : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
-public partial interface IFuncTreeTranslateTM10 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTM10
+public partial interface IFuncTreeTranslateTM10 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTM10, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateTMPU : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMPU
+public partial interface IFuncTreeTranslateTMPU : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMPU, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateTMSX : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMSX
+public partial interface IFuncTreeTranslateTMSX : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMSX, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateTMNESWC : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC
+public partial interface IFuncTreeTranslateTMNESWC : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateVSK5 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5
+public partial interface IFuncTreeTranslateVSK5 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateTMF : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMF
+public partial interface IFuncTreeTranslateTMF : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMF, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateMP3 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeMP3
+public partial interface IFuncTreeTranslateMP3 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeMP3, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateTMT : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMT
+public partial interface IFuncTreeTranslateTMT : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTMT, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
-public partial interface IFuncTreeTranslateMP4 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeMP4
+public partial interface IFuncTreeTranslateMP4 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeMP4, global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMembers1
 {
-    Vec3 EndPoint { get; set; }
-    global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    Vec3 StartPoint { get; set; }
 }
 
 public partial interface IFuncTreeTranslateTM2020 : IFuncTreeTranslate, global::GBX.NET.Interfaces.Function.IFuncTreeTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

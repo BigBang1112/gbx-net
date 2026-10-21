@@ -36,49 +36,49 @@ public abstract class CHmsLightMapCacheBuilderBase<TSelf> where TSelf : CHmsLigh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state;
     private protected CHmsLightMapCacheBuilderBase() => state = new();
     private protected CHmsLightMapCacheBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) => this.state = state;
-    private protected static void SetAllocMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EAllocMode value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EAllocMode>("AllocMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AllocMode = value);
-    private protected static void SetAllocModeT3(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("AllocModeT3", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AllocModeT3 = value);
-    private protected static void SetAllocatedTexelByMeter(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set<float>("AllocatedTexelByMeter", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.AllocatedTexelByMeter = value);
-    private protected static void SetBounceFactorLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set<float>("BounceFactorLegacy", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.BounceFactorLegacy = value);
-    private protected static void SetBump(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("Bump", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Bump = value);
-    private protected static void SetBumpMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("BumpMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BumpMode = value);
-    private protected static void SetBumpNorm(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("BumpNorm", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BumpNorm = value);
-    private protected static void SetCanFlipU(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("CanFlipU", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CanFlipU = value);
-    private protected static void SetChallengeIdLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, string? value) => state.Set<string?>("ChallengeIdLegacy", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.ChallengeIdLegacy = value);
-    private protected static void SetChallengeMapUid(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, string? value) => state.Set<string?>("ChallengeMapUid", value, GameVersion.TM2020, static value => value, static (node, value) => node.ChallengeMapUid = value);
-    private protected static void SetCollection(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Id value) => state.Set<global::GBX.NET.Id>("Collection", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Collection = value);
-    private protected static void SetCompressMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode>("CompressMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CompressMode = value);
-    private protected static void SetDecal2D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("Decal2D", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Decal2D = value);
-    private protected static void SetDecal3D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("Decal3D", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Decal3D = value);
-    private protected static void SetDecoration(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, string? value) => state.Set<string?>("Decoration", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Decoration = value);
-    private protected static void SetDynamicTime(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, uint value) => state.Set<uint>("DynamicTime", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DynamicTime = value);
-    private protected static void SetDynamicTimeVersion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("DynamicTimeVersion", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DynamicTimeVersion = value);
-    private protected static void SetFrames(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]?>("Frames", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[])value.Clone(), static (node, value) => node.Frames = value);
-    private protected static void SetGpuPlatform(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform>("GpuPlatform", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.GpuPlatform = value);
-    private protected static void SetHasBumpLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set<bool>("HasBumpLegacy", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.HasBumpLegacy = value);
-    private protected static void SetIsOnlyIndirectDir0(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set<bool>("IsOnlyIndirectDir0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IsOnlyIndirectDir0 = value);
-    private protected static void SetIsSpriteLDirInAlpha(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set<bool>("IsSpriteLDirInAlpha", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IsSpriteLDirInAlpha = value);
-    private protected static void SetLightAmbSampleCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("LightAmbSampleCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LightAmbSampleCount = value);
-    private protected static void SetLightDirSampleCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("LightDirSampleCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LightDirSampleCount = value);
-    private protected static void SetLightPntSampleCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("LightPntSampleCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LightPntSampleCount = value);
-    private protected static void SetLightmapCacheUid(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, ulong value) => state.Set<ulong>("LightmapCacheUid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LightmapCacheUid = value);
-    private protected static void SetMapT3s(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float[]? value) => state.Set<float[]?>("MapT3s", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (float[])value.Clone(), static (node, value) => node.MapT3s = value);
-    private protected static void SetMapping(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping?>("Mapping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Mapping = value);
-    private protected static void SetMaps(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[])value.Clone(), static (node, value) => node.Maps = value);
-    private protected static void SetMapsLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[]? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[]?>("MapsLegacy", value, GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[])value.Clone(), static (node, value) => node.MapsLegacy = value);
-    private protected static void SetMaxHDRLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set<float>("MaxHDRLegacy", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.MaxHDRLegacy = value);
-    private protected static void SetMaxHDRMoodLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set<float>("MaxHDRMoodLegacy", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.MaxHDRMoodLegacy = value);
-    private protected static void SetQuality(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality>("Quality", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Quality = value);
-    private protected static void SetQualityVer(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer>("QualityVer", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.QualityVer = value);
-    private protected static void SetSkyFactorLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set<float>("SkyFactorLegacy", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.SkyFactorLegacy = value);
-    private protected static void SetSkyUseCloudsLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set<bool>("SkyUseCloudsLegacy", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.SkyUseCloudsLegacy = value);
-    private protected static void SetSortMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.ESortMode value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ESortMode>("SortMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SortMode = value);
-    private protected static void SetSpriteOriginY_WasWronglyTop(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set<bool>("SpriteOriginY_WasWronglyTop", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpriteOriginY_WasWronglyTop = value);
-    private protected static void SetTimeOfDay(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, TimeSpan? value) => state.Set<TimeSpan?>("TimeOfDay", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.TimeOfDay = value);
-    private protected static void SetTimeOfDayVersion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set<int>("TimeOfDayVersion", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.TimeOfDayVersion = value);
-    private protected static void SetTimeWriteMostRecentBlock(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, DateTime? value) => state.Set<DateTime?>("TimeWriteMostRecentBlock", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TimeWriteMostRecentBlock = value);
-    private protected static void SetTimeWriteMostRecentSolid(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, DateTime? value) => state.Set<DateTime?>("TimeWriteMostRecentSolid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TimeWriteMostRecentSolid = value);
-    private protected static void SetVersion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion>("Version", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Version = value);
+    private protected static void SetAllocMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EAllocMode value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetAllocModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAllocModeT3(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetAllocModeT3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAllocatedTexelByMeter(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetAllocatedTexelByMeterAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetBounceFactorLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetBounceFactorLegacyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetBump(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetBumpAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetBumpMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetBumpModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBumpNorm(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetBumpNormAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCanFlipU(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetCanFlipUAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetChallengeIdLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetChallengeIdLegacyAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+    private protected static void SetChallengeMapUid(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetChallengeMapUidAssignment(), value, GameVersion.TM2020);
+    private protected static void SetCollection(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Id value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetCollectionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCompressMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetCompressModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDecal2D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetDecal2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDecal3D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetDecal3DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDecoration(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetDecorationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDynamicTime(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetDynamicTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDynamicTimeVersion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetDynamicTimeVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFrames(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetFramesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetGpuPlatform(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetGpuPlatformAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetHasBumpLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetHasBumpLegacyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetIsOnlyIndirectDir0(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetIsOnlyIndirectDir0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIsSpriteLDirInAlpha(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetIsSpriteLDirInAlphaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLightAmbSampleCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetLightAmbSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLightDirSampleCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetLightDirSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLightPntSampleCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetLightPntSampleCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLightmapCacheUid(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetLightmapCacheUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMapT3s(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float[]? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetMapT3sAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMapping(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetMappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaps(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetMapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetMapsLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapOld1[]? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetMapsLegacyAssignment(), value, GameVersion.VSK5);
+    private protected static void SetMaxHDRLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetMaxHDRLegacyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetMaxHDRMoodLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetMaxHDRMoodLegacyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetQuality(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetQualityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetQualityVer(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetQualityVerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSkyFactorLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetSkyFactorLegacyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetSkyUseCloudsLegacy(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetSkyUseCloudsLegacyAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetSortMode(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.ESortMode value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetSortModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSpriteOriginY_WasWronglyTop(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetSpriteOriginY_WasWronglyTopAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTimeOfDay(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, TimeSpan? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetTimeOfDayAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetTimeOfDayVersion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetTimeOfDayVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetTimeWriteMostRecentBlock(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetTimeWriteMostRecentBlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTimeWriteMostRecentSolid(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetTimeWriteMostRecentSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetVersion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightMapCacheBuilderAssignments.GetVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EAllocMode AllocMode
     {
         get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EAllocMode>("AllocMode");
@@ -140,8 +140,545 @@ public abstract class CHmsLightMapCacheBuilderBase<TSelf> where TSelf : CHmsLigh
         return (TSelf)this;
     }
 }
+public abstract class CHmsLightMapCacheBuilderMembers1<TSelf> : CHmsLightMapCacheBuilderBase<TSelf> where TSelf : CHmsLightMapCacheBuilderMembers1<TSelf>
+{
+    private protected CHmsLightMapCacheBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps");
+        set => SetMaps(state, value);
+    }
+    public TSelf WithMaps(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value)
+    {
+        Maps = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMaps(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap> values)
+    {
+        return WithMaps(values.ToArray());
+    }
+}
+public abstract class CHmsLightMapCacheBuilderMembers2<TSelf> : CHmsLightMapCacheBuilderMembers1<TSelf> where TSelf : CHmsLightMapCacheBuilderMembers2<TSelf>
+{
+    private protected CHmsLightMapCacheBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
+    public int AllocModeT3
+    {
+        get => state.Get<int>("AllocModeT3");
+        set => SetAllocModeT3(state, value);
+    }
+    public TSelf WithAllocModeT3(int value)
+    {
+        AllocModeT3 = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("BumpMode");
+        set => SetBumpMode(state, value);
+    }
+    public TSelf WithBumpMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
+    {
+        BumpMode = value;
+        return (TSelf)this;
+    }
+    public int BumpNorm
+    {
+        get => state.Get<int>("BumpNorm");
+        set => SetBumpNorm(state, value);
+    }
+    public TSelf WithBumpNorm(int value)
+    {
+        BumpNorm = value;
+        return (TSelf)this;
+    }
+    public int CanFlipU
+    {
+        get => state.Get<int>("CanFlipU");
+        set => SetCanFlipU(state, value);
+    }
+    public TSelf WithCanFlipU(int value)
+    {
+        CanFlipU = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Id Collection
+    {
+        get => state.Get<global::GBX.NET.Id>("Collection");
+        set => SetCollection(state, value);
+    }
+    public TSelf WithCollection(global::GBX.NET.Id value)
+    {
+        Collection = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode>("CompressMode");
+        set => SetCompressMode(state, value);
+    }
+    public TSelf WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value)
+    {
+        CompressMode = value;
+        return (TSelf)this;
+    }
+    public int Decal2D
+    {
+        get => state.Get<int>("Decal2D");
+        set => SetDecal2D(state, value);
+    }
+    public TSelf WithDecal2D(int value)
+    {
+        Decal2D = value;
+        return (TSelf)this;
+    }
+    public int Decal3D
+    {
+        get => state.Get<int>("Decal3D");
+        set => SetDecal3D(state, value);
+    }
+    public TSelf WithDecal3D(int value)
+    {
+        Decal3D = value;
+        return (TSelf)this;
+    }
+    public bool IsOnlyIndirectDir0
+    {
+        get => state.Get<bool>("IsOnlyIndirectDir0");
+        set => SetIsOnlyIndirectDir0(state, value);
+    }
+    public TSelf WithIsOnlyIndirectDir0(bool value)
+    {
+        IsOnlyIndirectDir0 = value;
+        return (TSelf)this;
+    }
+    public bool IsSpriteLDirInAlpha
+    {
+        get => state.Get<bool>("IsSpriteLDirInAlpha");
+        set => SetIsSpriteLDirInAlpha(state, value);
+    }
+    public TSelf WithIsSpriteLDirInAlpha(bool value)
+    {
+        IsSpriteLDirInAlpha = value;
+        return (TSelf)this;
+    }
+    public ulong LightmapCacheUid
+    {
+        get => state.Get<ulong>("LightmapCacheUid");
+        set => SetLightmapCacheUid(state, value);
+    }
+    public TSelf WithLightmapCacheUid(ulong value)
+    {
+        LightmapCacheUid = value;
+        return (TSelf)this;
+    }
+    public float[]? MapT3s
+    {
+        get => state.Get<float[]?>("MapT3s");
+        set => SetMapT3s(state, value);
+    }
+    public TSelf WithMapT3s(params float[]? value)
+    {
+        MapT3s = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMapT3s(IEnumerable<float> values)
+    {
+        return WithMapT3s(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping?>("Mapping");
+        set => SetMapping(state, value);
+    }
+    public TSelf WithMapping(global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value)
+    {
+        Mapping = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality>("Quality");
+        set => SetQuality(state, value);
+    }
+    public TSelf WithQuality(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value)
+    {
+        Quality = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer>("QualityVer");
+        set => SetQualityVer(state, value);
+    }
+    public TSelf WithQualityVer(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value)
+    {
+        QualityVer = value;
+        return (TSelf)this;
+    }
+    public bool SpriteOriginY_WasWronglyTop
+    {
+        get => state.Get<bool>("SpriteOriginY_WasWronglyTop");
+        set => SetSpriteOriginY_WasWronglyTop(state, value);
+    }
+    public TSelf WithSpriteOriginY_WasWronglyTop(bool value)
+    {
+        SpriteOriginY_WasWronglyTop = value;
+        return (TSelf)this;
+    }
+    public DateTime? TimeWriteMostRecentBlock
+    {
+        get => state.Get<DateTime?>("TimeWriteMostRecentBlock");
+        set => SetTimeWriteMostRecentBlock(state, value);
+    }
+    public TSelf WithTimeWriteMostRecentBlock(DateTime? value)
+    {
+        TimeWriteMostRecentBlock = value;
+        return (TSelf)this;
+    }
+    public DateTime? TimeWriteMostRecentSolid
+    {
+        get => state.Get<DateTime?>("TimeWriteMostRecentSolid");
+        set => SetTimeWriteMostRecentSolid(state, value);
+    }
+    public TSelf WithTimeWriteMostRecentSolid(DateTime? value)
+    {
+        TimeWriteMostRecentSolid = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion>("Version");
+        set => SetVersion(state, value);
+    }
+    public TSelf WithVersion(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value)
+    {
+        Version = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CHmsLightMapCacheBuilderMembers3<TSelf> : CHmsLightMapCacheBuilderMembers2<TSelf> where TSelf : CHmsLightMapCacheBuilderMembers3<TSelf>
+{
+    private protected CHmsLightMapCacheBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform>("GpuPlatform");
+        set => SetGpuPlatform(state, value);
+    }
+    public TSelf WithGpuPlatform(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform value)
+    {
+        GpuPlatform = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CHmsLightMapCacheBuilderMembers4<TSelf> : CHmsLightMapCacheBuilderMembers2<TSelf> where TSelf : CHmsLightMapCacheBuilderMembers4<TSelf>
+{
+    private protected CHmsLightMapCacheBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
+    public float BounceFactorLegacy
+    {
+        get => state.Get<float>("BounceFactorLegacy");
+        set => SetBounceFactorLegacy(state, value);
+    }
+    public TSelf WithBounceFactorLegacy(float value)
+    {
+        BounceFactorLegacy = value;
+        return (TSelf)this;
+    }
+    public bool HasBumpLegacy
+    {
+        get => state.Get<bool>("HasBumpLegacy");
+        set => SetHasBumpLegacy(state, value);
+    }
+    public TSelf WithHasBumpLegacy(bool value)
+    {
+        HasBumpLegacy = value;
+        return (TSelf)this;
+    }
+    public float MaxHDRLegacy
+    {
+        get => state.Get<float>("MaxHDRLegacy");
+        set => SetMaxHDRLegacy(state, value);
+    }
+    public TSelf WithMaxHDRLegacy(float value)
+    {
+        MaxHDRLegacy = value;
+        return (TSelf)this;
+    }
+    public float MaxHDRMoodLegacy
+    {
+        get => state.Get<float>("MaxHDRMoodLegacy");
+        set => SetMaxHDRMoodLegacy(state, value);
+    }
+    public TSelf WithMaxHDRMoodLegacy(float value)
+    {
+        MaxHDRMoodLegacy = value;
+        return (TSelf)this;
+    }
+    public float SkyFactorLegacy
+    {
+        get => state.Get<float>("SkyFactorLegacy");
+        set => SetSkyFactorLegacy(state, value);
+    }
+    public TSelf WithSkyFactorLegacy(float value)
+    {
+        SkyFactorLegacy = value;
+        return (TSelf)this;
+    }
+    public bool SkyUseCloudsLegacy
+    {
+        get => state.Get<bool>("SkyUseCloudsLegacy");
+        set => SetSkyUseCloudsLegacy(state, value);
+    }
+    public TSelf WithSkyUseCloudsLegacy(bool value)
+    {
+        SkyUseCloudsLegacy = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CHmsLightMapCacheBuilderMembers5<TSelf> : CHmsLightMapCacheBuilderMembers3<TSelf> where TSelf : CHmsLightMapCacheBuilderMembers5<TSelf>
+{
+    private protected CHmsLightMapCacheBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
+    public float AllocatedTexelByMeter
+    {
+        get => state.Get<float>("AllocatedTexelByMeter");
+        set => SetAllocatedTexelByMeter(state, value);
+    }
+    public TSelf WithAllocatedTexelByMeter(float value)
+    {
+        AllocatedTexelByMeter = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump Bump
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("Bump");
+        set => SetBump(state, value);
+    }
+    public TSelf WithBump(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
+    {
+        Bump = value;
+        return (TSelf)this;
+    }
+    public uint DynamicTime
+    {
+        get => state.Get<uint>("DynamicTime");
+        set => SetDynamicTime(state, value);
+    }
+    public TSelf WithDynamicTime(uint value)
+    {
+        DynamicTime = value;
+        return (TSelf)this;
+    }
+    public int DynamicTimeVersion
+    {
+        get => state.Get<int>("DynamicTimeVersion");
+        set => SetDynamicTimeVersion(state, value);
+    }
+    public TSelf WithDynamicTimeVersion(int value)
+    {
+        DynamicTimeVersion = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? Frames
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]?>("Frames");
+        set => SetFrames(state, value);
+    }
+    public TSelf WithFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? value)
+    {
+        Frames = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame> values)
+    {
+        return WithFrames(values.ToArray());
+    }
+    public TimeSpan? TimeOfDay
+    {
+        get => state.Get<TimeSpan?>("TimeOfDay");
+        set => SetTimeOfDay(state, value);
+    }
+    public TSelf WithTimeOfDay(TimeSpan? value)
+    {
+        TimeOfDay = value;
+        return (TSelf)this;
+    }
+    public int TimeOfDayVersion
+    {
+        get => state.Get<int>("TimeOfDayVersion");
+        set => SetTimeOfDayVersion(state, value);
+    }
+    public TSelf WithTimeOfDayVersion(int value)
+    {
+        TimeOfDayVersion = value;
+        return (TSelf)this;
+    }
+}
 public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHmsLightMapCacheBuilder>
 {
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
+        var chunk06022005 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022005();
+        node.Chunks.Add(chunk06022005);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
+        var chunk06022007 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022007();
+        node.Chunks.Add(chunk06022007);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022007 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
+        var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
+        node.Chunks.Add(chunk0602200B);
+        var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
+        node.Chunks.Add(chunk0602200F);
+        var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
+        node.Chunks.Add(chunk06022013);
+        var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game);
+        node.Chunks.Add(chunk06022015);
+        var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
+        node.Chunks.Add(chunk06022016);
+        var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
+        node.Chunks.Add(chunk06022017);
+        var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
+        node.Chunks.Add(chunk06022018);
+        var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
+        node.Chunks.Add(chunk06022019);
+        var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game);
+        node.Chunks.Add(chunk0602201A);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk06022015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602201A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
+        var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
+        node.Chunks.Add(chunk0602200B);
+        var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
+        node.Chunks.Add(chunk0602200F);
+        var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
+        node.Chunks.Add(chunk06022013);
+        var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game);
+        node.Chunks.Add(chunk06022015);
+        var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
+        node.Chunks.Add(chunk06022016);
+        var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
+        node.Chunks.Add(chunk06022017);
+        var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
+        node.Chunks.Add(chunk06022018);
+        var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
+        node.Chunks.Add(chunk06022019);
+        var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game);
+        node.Chunks.Add(chunk0602201A);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk06022015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602201A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
+        var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
+        node.Chunks.Add(chunk0602200B);
+        var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
+        node.Chunks.Add(chunk0602200F);
+        var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
+        node.Chunks.Add(chunk06022013);
+        var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game);
+        node.Chunks.Add(chunk06022015);
+        var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
+        node.Chunks.Add(chunk06022016);
+        var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
+        node.Chunks.Add(chunk06022017);
+        var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
+        node.Chunks.Add(chunk06022018);
+        var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
+        node.Chunks.Add(chunk06022019);
+        var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game);
+        node.Chunks.Add(chunk0602201A);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk06022015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602201A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsLightMapCache CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
+        var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
+        node.Chunks.Add(chunk0602200B);
+        var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
+        node.Chunks.Add(chunk0602200F);
+        var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
+        node.Chunks.Add(chunk06022013);
+        var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(game);
+        node.Chunks.Add(chunk06022015);
+        var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
+        node.Chunks.Add(chunk06022016);
+        var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
+        node.Chunks.Add(chunk06022017);
+        var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
+        node.Chunks.Add(chunk06022018);
+        var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
+        node.Chunks.Add(chunk06022019);
+        var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(game);
+        node.Chunks.Add(chunk0602201A);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0602200F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk06022015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06022019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 15 }) throw new InvalidOperationException($"Required {game} chunk Chunk0602201A is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsLightMapCache node, GameVersion game)
+    {
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -180,20 +717,19 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-            var chunk06022005 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022005();
-            node.Chunks.Add(chunk06022005);
+            var node = CHmsLightMapCacheBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06022005 is missing or has an incompatible version.");
+            CHmsLightMapCacheBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CHmsLightMapCacheBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
-    public partial class TMF : CHmsLightMapCacheBuilderBase<TMF>
+    public partial class TMF : CHmsLightMapCacheBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
         public string? ChallengeIdLegacy
@@ -206,440 +742,42 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
             ChallengeIdLegacy = value;
             return this;
         }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps");
-            set => SetMaps(state, value);
-        }
-        public TMF WithMaps(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value)
-        {
-            Maps = value;
-            return this;
-        }
-        public TMF WithMaps(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap> values)
-        {
-            return WithMaps(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-            var chunk06022007 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022007();
-            node.Chunks.Add(chunk06022007);
+            var node = CHmsLightMapCacheBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022007>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06022007 is missing or has an incompatible version.");
+            CHmsLightMapCacheBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CHmsLightMapCacheBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
-    public partial class MP3 : CHmsLightMapCacheBuilderBase<MP3>
+    public partial class MP3 : CHmsLightMapCacheBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
-        public int AllocModeT3
-        {
-            get => state.Get<int>("AllocModeT3");
-            set => SetAllocModeT3(state, value);
-        }
-        public MP3 WithAllocModeT3(int value)
-        {
-            AllocModeT3 = value;
-            return this;
-        }
-        public float BounceFactorLegacy
-        {
-            get => state.Get<float>("BounceFactorLegacy");
-            set => SetBounceFactorLegacy(state, value);
-        }
-        public MP3 WithBounceFactorLegacy(float value)
-        {
-            BounceFactorLegacy = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("BumpMode");
-            set => SetBumpMode(state, value);
-        }
-        public MP3 WithBumpMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
-        {
-            BumpMode = value;
-            return this;
-        }
-        public int BumpNorm
-        {
-            get => state.Get<int>("BumpNorm");
-            set => SetBumpNorm(state, value);
-        }
-        public MP3 WithBumpNorm(int value)
-        {
-            BumpNorm = value;
-            return this;
-        }
-        public int CanFlipU
-        {
-            get => state.Get<int>("CanFlipU");
-            set => SetCanFlipU(state, value);
-        }
-        public MP3 WithCanFlipU(int value)
-        {
-            CanFlipU = value;
-            return this;
-        }
-        public global::GBX.NET.Id Collection
-        {
-            get => state.Get<global::GBX.NET.Id>("Collection");
-            set => SetCollection(state, value);
-        }
-        public MP3 WithCollection(global::GBX.NET.Id value)
-        {
-            Collection = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode>("CompressMode");
-            set => SetCompressMode(state, value);
-        }
-        public MP3 WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value)
-        {
-            CompressMode = value;
-            return this;
-        }
-        public int Decal2D
-        {
-            get => state.Get<int>("Decal2D");
-            set => SetDecal2D(state, value);
-        }
-        public MP3 WithDecal2D(int value)
-        {
-            Decal2D = value;
-            return this;
-        }
-        public int Decal3D
-        {
-            get => state.Get<int>("Decal3D");
-            set => SetDecal3D(state, value);
-        }
-        public MP3 WithDecal3D(int value)
-        {
-            Decal3D = value;
-            return this;
-        }
-        public bool HasBumpLegacy
-        {
-            get => state.Get<bool>("HasBumpLegacy");
-            set => SetHasBumpLegacy(state, value);
-        }
-        public MP3 WithHasBumpLegacy(bool value)
-        {
-            HasBumpLegacy = value;
-            return this;
-        }
-        public bool IsOnlyIndirectDir0
-        {
-            get => state.Get<bool>("IsOnlyIndirectDir0");
-            set => SetIsOnlyIndirectDir0(state, value);
-        }
-        public MP3 WithIsOnlyIndirectDir0(bool value)
-        {
-            IsOnlyIndirectDir0 = value;
-            return this;
-        }
-        public bool IsSpriteLDirInAlpha
-        {
-            get => state.Get<bool>("IsSpriteLDirInAlpha");
-            set => SetIsSpriteLDirInAlpha(state, value);
-        }
-        public MP3 WithIsSpriteLDirInAlpha(bool value)
-        {
-            IsSpriteLDirInAlpha = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public MP3 WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public float[]? MapT3s
-        {
-            get => state.Get<float[]?>("MapT3s");
-            set => SetMapT3s(state, value);
-        }
-        public MP3 WithMapT3s(params float[]? value)
-        {
-            MapT3s = value;
-            return this;
-        }
-        public MP3 WithMapT3s(IEnumerable<float> values)
-        {
-            return WithMapT3s(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping?>("Mapping");
-            set => SetMapping(state, value);
-        }
-        public MP3 WithMapping(global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value)
-        {
-            Mapping = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps");
-            set => SetMaps(state, value);
-        }
-        public MP3 WithMaps(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value)
-        {
-            Maps = value;
-            return this;
-        }
-        public MP3 WithMaps(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap> values)
-        {
-            return WithMaps(values.ToArray());
-        }
-        public float MaxHDRLegacy
-        {
-            get => state.Get<float>("MaxHDRLegacy");
-            set => SetMaxHDRLegacy(state, value);
-        }
-        public MP3 WithMaxHDRLegacy(float value)
-        {
-            MaxHDRLegacy = value;
-            return this;
-        }
-        public float MaxHDRMoodLegacy
-        {
-            get => state.Get<float>("MaxHDRMoodLegacy");
-            set => SetMaxHDRMoodLegacy(state, value);
-        }
-        public MP3 WithMaxHDRMoodLegacy(float value)
-        {
-            MaxHDRMoodLegacy = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality>("Quality");
-            set => SetQuality(state, value);
-        }
-        public MP3 WithQuality(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value)
-        {
-            Quality = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer>("QualityVer");
-            set => SetQualityVer(state, value);
-        }
-        public MP3 WithQualityVer(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value)
-        {
-            QualityVer = value;
-            return this;
-        }
-        public float SkyFactorLegacy
-        {
-            get => state.Get<float>("SkyFactorLegacy");
-            set => SetSkyFactorLegacy(state, value);
-        }
-        public MP3 WithSkyFactorLegacy(float value)
-        {
-            SkyFactorLegacy = value;
-            return this;
-        }
-        public bool SkyUseCloudsLegacy
-        {
-            get => state.Get<bool>("SkyUseCloudsLegacy");
-            set => SetSkyUseCloudsLegacy(state, value);
-        }
-        public MP3 WithSkyUseCloudsLegacy(bool value)
-        {
-            SkyUseCloudsLegacy = value;
-            return this;
-        }
-        public bool SpriteOriginY_WasWronglyTop
-        {
-            get => state.Get<bool>("SpriteOriginY_WasWronglyTop");
-            set => SetSpriteOriginY_WasWronglyTop(state, value);
-        }
-        public MP3 WithSpriteOriginY_WasWronglyTop(bool value)
-        {
-            SpriteOriginY_WasWronglyTop = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentBlock
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentBlock");
-            set => SetTimeWriteMostRecentBlock(state, value);
-        }
-        public MP3 WithTimeWriteMostRecentBlock(DateTime? value)
-        {
-            TimeWriteMostRecentBlock = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentSolid
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentSolid");
-            set => SetTimeWriteMostRecentSolid(state, value);
-        }
-        public MP3 WithTimeWriteMostRecentSolid(DateTime? value)
-        {
-            TimeWriteMostRecentSolid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion>("Version");
-            set => SetVersion(state, value);
-        }
-        public MP3 WithVersion(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value)
-        {
-            Version = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-            var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
-            node.Chunks.Add(chunk0602200B);
-            var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
-            node.Chunks.Add(chunk0602200F);
-            var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
-            node.Chunks.Add(chunk06022013);
-            var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(GameVersion.MP3);
-            node.Chunks.Add(chunk06022015);
-            var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
-            node.Chunks.Add(chunk06022016);
-            var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
-            node.Chunks.Add(chunk06022017);
-            var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
-            node.Chunks.Add(chunk06022018);
-            var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
-            node.Chunks.Add(chunk06022019);
-            var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(GameVersion.MP3);
-            node.Chunks.Add(chunk0602201A);
+            var node = CHmsLightMapCacheBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0602200B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0602200F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06022013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk06022015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06022016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06022017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06022018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06022019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0602201A is missing or has an incompatible version.");
+            CHmsLightMapCacheBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CHmsLightMapCacheBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
-    public partial class TMT : CHmsLightMapCacheBuilderBase<TMT>
+    public partial class TMT : CHmsLightMapCacheBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
-        public int AllocModeT3
-        {
-            get => state.Get<int>("AllocModeT3");
-            set => SetAllocModeT3(state, value);
-        }
-        public TMT WithAllocModeT3(int value)
-        {
-            AllocModeT3 = value;
-            return this;
-        }
-        public float BounceFactorLegacy
-        {
-            get => state.Get<float>("BounceFactorLegacy");
-            set => SetBounceFactorLegacy(state, value);
-        }
-        public TMT WithBounceFactorLegacy(float value)
-        {
-            BounceFactorLegacy = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("BumpMode");
-            set => SetBumpMode(state, value);
-        }
-        public TMT WithBumpMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
-        {
-            BumpMode = value;
-            return this;
-        }
-        public int BumpNorm
-        {
-            get => state.Get<int>("BumpNorm");
-            set => SetBumpNorm(state, value);
-        }
-        public TMT WithBumpNorm(int value)
-        {
-            BumpNorm = value;
-            return this;
-        }
-        public int CanFlipU
-        {
-            get => state.Get<int>("CanFlipU");
-            set => SetCanFlipU(state, value);
-        }
-        public TMT WithCanFlipU(int value)
-        {
-            CanFlipU = value;
-            return this;
-        }
-        public global::GBX.NET.Id Collection
-        {
-            get => state.Get<global::GBX.NET.Id>("Collection");
-            set => SetCollection(state, value);
-        }
-        public TMT WithCollection(global::GBX.NET.Id value)
-        {
-            Collection = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode>("CompressMode");
-            set => SetCompressMode(state, value);
-        }
-        public TMT WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value)
-        {
-            CompressMode = value;
-            return this;
-        }
-        public int Decal2D
-        {
-            get => state.Get<int>("Decal2D");
-            set => SetDecal2D(state, value);
-        }
-        public TMT WithDecal2D(int value)
-        {
-            Decal2D = value;
-            return this;
-        }
-        public int Decal3D
-        {
-            get => state.Get<int>("Decal3D");
-            set => SetDecal3D(state, value);
-        }
-        public TMT WithDecal3D(int value)
-        {
-            Decal3D = value;
-            return this;
-        }
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform
         {
             get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform>("GpuPlatform");
@@ -650,622 +788,42 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
             GpuPlatform = value;
             return this;
         }
-        public bool HasBumpLegacy
-        {
-            get => state.Get<bool>("HasBumpLegacy");
-            set => SetHasBumpLegacy(state, value);
-        }
-        public TMT WithHasBumpLegacy(bool value)
-        {
-            HasBumpLegacy = value;
-            return this;
-        }
-        public bool IsOnlyIndirectDir0
-        {
-            get => state.Get<bool>("IsOnlyIndirectDir0");
-            set => SetIsOnlyIndirectDir0(state, value);
-        }
-        public TMT WithIsOnlyIndirectDir0(bool value)
-        {
-            IsOnlyIndirectDir0 = value;
-            return this;
-        }
-        public bool IsSpriteLDirInAlpha
-        {
-            get => state.Get<bool>("IsSpriteLDirInAlpha");
-            set => SetIsSpriteLDirInAlpha(state, value);
-        }
-        public TMT WithIsSpriteLDirInAlpha(bool value)
-        {
-            IsSpriteLDirInAlpha = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public TMT WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public float[]? MapT3s
-        {
-            get => state.Get<float[]?>("MapT3s");
-            set => SetMapT3s(state, value);
-        }
-        public TMT WithMapT3s(params float[]? value)
-        {
-            MapT3s = value;
-            return this;
-        }
-        public TMT WithMapT3s(IEnumerable<float> values)
-        {
-            return WithMapT3s(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping?>("Mapping");
-            set => SetMapping(state, value);
-        }
-        public TMT WithMapping(global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value)
-        {
-            Mapping = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps");
-            set => SetMaps(state, value);
-        }
-        public TMT WithMaps(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value)
-        {
-            Maps = value;
-            return this;
-        }
-        public TMT WithMaps(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap> values)
-        {
-            return WithMaps(values.ToArray());
-        }
-        public float MaxHDRLegacy
-        {
-            get => state.Get<float>("MaxHDRLegacy");
-            set => SetMaxHDRLegacy(state, value);
-        }
-        public TMT WithMaxHDRLegacy(float value)
-        {
-            MaxHDRLegacy = value;
-            return this;
-        }
-        public float MaxHDRMoodLegacy
-        {
-            get => state.Get<float>("MaxHDRMoodLegacy");
-            set => SetMaxHDRMoodLegacy(state, value);
-        }
-        public TMT WithMaxHDRMoodLegacy(float value)
-        {
-            MaxHDRMoodLegacy = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality>("Quality");
-            set => SetQuality(state, value);
-        }
-        public TMT WithQuality(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value)
-        {
-            Quality = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer>("QualityVer");
-            set => SetQualityVer(state, value);
-        }
-        public TMT WithQualityVer(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value)
-        {
-            QualityVer = value;
-            return this;
-        }
-        public float SkyFactorLegacy
-        {
-            get => state.Get<float>("SkyFactorLegacy");
-            set => SetSkyFactorLegacy(state, value);
-        }
-        public TMT WithSkyFactorLegacy(float value)
-        {
-            SkyFactorLegacy = value;
-            return this;
-        }
-        public bool SkyUseCloudsLegacy
-        {
-            get => state.Get<bool>("SkyUseCloudsLegacy");
-            set => SetSkyUseCloudsLegacy(state, value);
-        }
-        public TMT WithSkyUseCloudsLegacy(bool value)
-        {
-            SkyUseCloudsLegacy = value;
-            return this;
-        }
-        public bool SpriteOriginY_WasWronglyTop
-        {
-            get => state.Get<bool>("SpriteOriginY_WasWronglyTop");
-            set => SetSpriteOriginY_WasWronglyTop(state, value);
-        }
-        public TMT WithSpriteOriginY_WasWronglyTop(bool value)
-        {
-            SpriteOriginY_WasWronglyTop = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentBlock
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentBlock");
-            set => SetTimeWriteMostRecentBlock(state, value);
-        }
-        public TMT WithTimeWriteMostRecentBlock(DateTime? value)
-        {
-            TimeWriteMostRecentBlock = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentSolid
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentSolid");
-            set => SetTimeWriteMostRecentSolid(state, value);
-        }
-        public TMT WithTimeWriteMostRecentSolid(DateTime? value)
-        {
-            TimeWriteMostRecentSolid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion>("Version");
-            set => SetVersion(state, value);
-        }
-        public TMT WithVersion(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value)
-        {
-            Version = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-            var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
-            node.Chunks.Add(chunk0602200B);
-            var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
-            node.Chunks.Add(chunk0602200F);
-            var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
-            node.Chunks.Add(chunk06022013);
-            var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(GameVersion.TMT);
-            node.Chunks.Add(chunk06022015);
-            var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
-            node.Chunks.Add(chunk06022016);
-            var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
-            node.Chunks.Add(chunk06022017);
-            var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
-            node.Chunks.Add(chunk06022018);
-            var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
-            node.Chunks.Add(chunk06022019);
-            var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(GameVersion.TMT);
-            node.Chunks.Add(chunk0602201A);
+            var node = CHmsLightMapCacheBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0602200B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0602200F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06022013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk06022015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06022016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06022017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06022018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06022019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0602201A is missing or has an incompatible version.");
+            CHmsLightMapCacheBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CHmsLightMapCacheBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
-    public partial class MP4 : CHmsLightMapCacheBuilderBase<MP4>
+    public partial class MP4 : CHmsLightMapCacheBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
-        public int AllocModeT3
-        {
-            get => state.Get<int>("AllocModeT3");
-            set => SetAllocModeT3(state, value);
-        }
-        public MP4 WithAllocModeT3(int value)
-        {
-            AllocModeT3 = value;
-            return this;
-        }
-        public float AllocatedTexelByMeter
-        {
-            get => state.Get<float>("AllocatedTexelByMeter");
-            set => SetAllocatedTexelByMeter(state, value);
-        }
-        public MP4 WithAllocatedTexelByMeter(float value)
-        {
-            AllocatedTexelByMeter = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump Bump
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("Bump");
-            set => SetBump(state, value);
-        }
-        public MP4 WithBump(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
-        {
-            Bump = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("BumpMode");
-            set => SetBumpMode(state, value);
-        }
-        public MP4 WithBumpMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
-        {
-            BumpMode = value;
-            return this;
-        }
-        public int BumpNorm
-        {
-            get => state.Get<int>("BumpNorm");
-            set => SetBumpNorm(state, value);
-        }
-        public MP4 WithBumpNorm(int value)
-        {
-            BumpNorm = value;
-            return this;
-        }
-        public int CanFlipU
-        {
-            get => state.Get<int>("CanFlipU");
-            set => SetCanFlipU(state, value);
-        }
-        public MP4 WithCanFlipU(int value)
-        {
-            CanFlipU = value;
-            return this;
-        }
-        public global::GBX.NET.Id Collection
-        {
-            get => state.Get<global::GBX.NET.Id>("Collection");
-            set => SetCollection(state, value);
-        }
-        public MP4 WithCollection(global::GBX.NET.Id value)
-        {
-            Collection = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode>("CompressMode");
-            set => SetCompressMode(state, value);
-        }
-        public MP4 WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value)
-        {
-            CompressMode = value;
-            return this;
-        }
-        public int Decal2D
-        {
-            get => state.Get<int>("Decal2D");
-            set => SetDecal2D(state, value);
-        }
-        public MP4 WithDecal2D(int value)
-        {
-            Decal2D = value;
-            return this;
-        }
-        public int Decal3D
-        {
-            get => state.Get<int>("Decal3D");
-            set => SetDecal3D(state, value);
-        }
-        public MP4 WithDecal3D(int value)
-        {
-            Decal3D = value;
-            return this;
-        }
-        public uint DynamicTime
-        {
-            get => state.Get<uint>("DynamicTime");
-            set => SetDynamicTime(state, value);
-        }
-        public MP4 WithDynamicTime(uint value)
-        {
-            DynamicTime = value;
-            return this;
-        }
-        public int DynamicTimeVersion
-        {
-            get => state.Get<int>("DynamicTimeVersion");
-            set => SetDynamicTimeVersion(state, value);
-        }
-        public MP4 WithDynamicTimeVersion(int value)
-        {
-            DynamicTimeVersion = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? Frames
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]?>("Frames");
-            set => SetFrames(state, value);
-        }
-        public MP4 WithFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? value)
-        {
-            Frames = value;
-            return this;
-        }
-        public MP4 WithFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame> values)
-        {
-            return WithFrames(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform>("GpuPlatform");
-            set => SetGpuPlatform(state, value);
-        }
-        public MP4 WithGpuPlatform(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform value)
-        {
-            GpuPlatform = value;
-            return this;
-        }
-        public bool IsOnlyIndirectDir0
-        {
-            get => state.Get<bool>("IsOnlyIndirectDir0");
-            set => SetIsOnlyIndirectDir0(state, value);
-        }
-        public MP4 WithIsOnlyIndirectDir0(bool value)
-        {
-            IsOnlyIndirectDir0 = value;
-            return this;
-        }
-        public bool IsSpriteLDirInAlpha
-        {
-            get => state.Get<bool>("IsSpriteLDirInAlpha");
-            set => SetIsSpriteLDirInAlpha(state, value);
-        }
-        public MP4 WithIsSpriteLDirInAlpha(bool value)
-        {
-            IsSpriteLDirInAlpha = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public MP4 WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public float[]? MapT3s
-        {
-            get => state.Get<float[]?>("MapT3s");
-            set => SetMapT3s(state, value);
-        }
-        public MP4 WithMapT3s(params float[]? value)
-        {
-            MapT3s = value;
-            return this;
-        }
-        public MP4 WithMapT3s(IEnumerable<float> values)
-        {
-            return WithMapT3s(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping?>("Mapping");
-            set => SetMapping(state, value);
-        }
-        public MP4 WithMapping(global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value)
-        {
-            Mapping = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps");
-            set => SetMaps(state, value);
-        }
-        public MP4 WithMaps(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value)
-        {
-            Maps = value;
-            return this;
-        }
-        public MP4 WithMaps(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap> values)
-        {
-            return WithMaps(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality>("Quality");
-            set => SetQuality(state, value);
-        }
-        public MP4 WithQuality(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value)
-        {
-            Quality = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer>("QualityVer");
-            set => SetQualityVer(state, value);
-        }
-        public MP4 WithQualityVer(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value)
-        {
-            QualityVer = value;
-            return this;
-        }
-        public bool SpriteOriginY_WasWronglyTop
-        {
-            get => state.Get<bool>("SpriteOriginY_WasWronglyTop");
-            set => SetSpriteOriginY_WasWronglyTop(state, value);
-        }
-        public MP4 WithSpriteOriginY_WasWronglyTop(bool value)
-        {
-            SpriteOriginY_WasWronglyTop = value;
-            return this;
-        }
-        public TimeSpan? TimeOfDay
-        {
-            get => state.Get<TimeSpan?>("TimeOfDay");
-            set => SetTimeOfDay(state, value);
-        }
-        public MP4 WithTimeOfDay(TimeSpan? value)
-        {
-            TimeOfDay = value;
-            return this;
-        }
-        public int TimeOfDayVersion
-        {
-            get => state.Get<int>("TimeOfDayVersion");
-            set => SetTimeOfDayVersion(state, value);
-        }
-        public MP4 WithTimeOfDayVersion(int value)
-        {
-            TimeOfDayVersion = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentBlock
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentBlock");
-            set => SetTimeWriteMostRecentBlock(state, value);
-        }
-        public MP4 WithTimeWriteMostRecentBlock(DateTime? value)
-        {
-            TimeWriteMostRecentBlock = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentSolid
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentSolid");
-            set => SetTimeWriteMostRecentSolid(state, value);
-        }
-        public MP4 WithTimeWriteMostRecentSolid(DateTime? value)
-        {
-            TimeWriteMostRecentSolid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion>("Version");
-            set => SetVersion(state, value);
-        }
-        public MP4 WithVersion(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value)
-        {
-            Version = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-            var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
-            node.Chunks.Add(chunk0602200B);
-            var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
-            node.Chunks.Add(chunk0602200F);
-            var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
-            node.Chunks.Add(chunk06022013);
-            var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(GameVersion.MP4);
-            node.Chunks.Add(chunk06022015);
-            var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
-            node.Chunks.Add(chunk06022016);
-            var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
-            node.Chunks.Add(chunk06022017);
-            var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
-            node.Chunks.Add(chunk06022018);
-            var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
-            node.Chunks.Add(chunk06022019);
-            var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(GameVersion.MP4);
-            node.Chunks.Add(chunk0602201A);
+            var node = CHmsLightMapCacheBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0602200B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0602200F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06022013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 4 }) throw new InvalidOperationException("Required MP4 chunk Chunk06022015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06022016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06022017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06022018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06022019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 9 }) throw new InvalidOperationException("Required MP4 chunk Chunk0602201A is missing or has an incompatible version.");
+            CHmsLightMapCacheBuilder.ValidateRecipe4(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CHmsLightMapCacheBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsLightMapCache node);
     }
-    public partial class TM2020 : CHmsLightMapCacheBuilderBase<TM2020>
+    public partial class TM2020 : CHmsLightMapCacheBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLightMapCache> state) : base(state) { }
-        public int AllocModeT3
-        {
-            get => state.Get<int>("AllocModeT3");
-            set => SetAllocModeT3(state, value);
-        }
-        public TM2020 WithAllocModeT3(int value)
-        {
-            AllocModeT3 = value;
-            return this;
-        }
-        public float AllocatedTexelByMeter
-        {
-            get => state.Get<float>("AllocatedTexelByMeter");
-            set => SetAllocatedTexelByMeter(state, value);
-        }
-        public TM2020 WithAllocatedTexelByMeter(float value)
-        {
-            AllocatedTexelByMeter = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump Bump
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("Bump");
-            set => SetBump(state, value);
-        }
-        public TM2020 WithBump(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
-        {
-            Bump = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump BumpMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump>("BumpMode");
-            set => SetBumpMode(state, value);
-        }
-        public TM2020 WithBumpMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EBump value)
-        {
-            BumpMode = value;
-            return this;
-        }
-        public int BumpNorm
-        {
-            get => state.Get<int>("BumpNorm");
-            set => SetBumpNorm(state, value);
-        }
-        public TM2020 WithBumpNorm(int value)
-        {
-            BumpNorm = value;
-            return this;
-        }
-        public int CanFlipU
-        {
-            get => state.Get<int>("CanFlipU");
-            set => SetCanFlipU(state, value);
-        }
-        public TM2020 WithCanFlipU(int value)
-        {
-            CanFlipU = value;
-            return this;
-        }
         public string? ChallengeMapUid
         {
             get => state.Get<string?>("ChallengeMapUid");
@@ -1276,272 +834,15 @@ public partial class CHmsLightMapCacheBuilder : CHmsLightMapCacheBuilderBase<CHm
             ChallengeMapUid = value;
             return this;
         }
-        public global::GBX.NET.Id Collection
-        {
-            get => state.Get<global::GBX.NET.Id>("Collection");
-            set => SetCollection(state, value);
-        }
-        public TM2020 WithCollection(global::GBX.NET.Id value)
-        {
-            Collection = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode CompressMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode>("CompressMode");
-            set => SetCompressMode(state, value);
-        }
-        public TM2020 WithCompressMode(global::GBX.NET.Engines.Hms.CHmsLightMapCache.ECompressMode value)
-        {
-            CompressMode = value;
-            return this;
-        }
-        public int Decal2D
-        {
-            get => state.Get<int>("Decal2D");
-            set => SetDecal2D(state, value);
-        }
-        public TM2020 WithDecal2D(int value)
-        {
-            Decal2D = value;
-            return this;
-        }
-        public int Decal3D
-        {
-            get => state.Get<int>("Decal3D");
-            set => SetDecal3D(state, value);
-        }
-        public TM2020 WithDecal3D(int value)
-        {
-            Decal3D = value;
-            return this;
-        }
-        public uint DynamicTime
-        {
-            get => state.Get<uint>("DynamicTime");
-            set => SetDynamicTime(state, value);
-        }
-        public TM2020 WithDynamicTime(uint value)
-        {
-            DynamicTime = value;
-            return this;
-        }
-        public int DynamicTimeVersion
-        {
-            get => state.Get<int>("DynamicTimeVersion");
-            set => SetDynamicTimeVersion(state, value);
-        }
-        public TM2020 WithDynamicTimeVersion(int value)
-        {
-            DynamicTimeVersion = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? Frames
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]?>("Frames");
-            set => SetFrames(state, value);
-        }
-        public TM2020 WithFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame[]? value)
-        {
-            Frames = value;
-            return this;
-        }
-        public TM2020 WithFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SFrame> values)
-        {
-            return WithFrames(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform GpuPlatform
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform>("GpuPlatform");
-            set => SetGpuPlatform(state, value);
-        }
-        public TM2020 WithGpuPlatform(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EPlugGpuPlatform value)
-        {
-            GpuPlatform = value;
-            return this;
-        }
-        public bool IsOnlyIndirectDir0
-        {
-            get => state.Get<bool>("IsOnlyIndirectDir0");
-            set => SetIsOnlyIndirectDir0(state, value);
-        }
-        public TM2020 WithIsOnlyIndirectDir0(bool value)
-        {
-            IsOnlyIndirectDir0 = value;
-            return this;
-        }
-        public bool IsSpriteLDirInAlpha
-        {
-            get => state.Get<bool>("IsSpriteLDirInAlpha");
-            set => SetIsSpriteLDirInAlpha(state, value);
-        }
-        public TM2020 WithIsSpriteLDirInAlpha(bool value)
-        {
-            IsSpriteLDirInAlpha = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public TM2020 WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public float[]? MapT3s
-        {
-            get => state.Get<float[]?>("MapT3s");
-            set => SetMapT3s(state, value);
-        }
-        public TM2020 WithMapT3s(params float[]? value)
-        {
-            MapT3s = value;
-            return this;
-        }
-        public TM2020 WithMapT3s(IEnumerable<float> values)
-        {
-            return WithMapT3s(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? Mapping
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping?>("Mapping");
-            set => SetMapping(state, value);
-        }
-        public TM2020 WithMapping(global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMapping? value)
-        {
-            Mapping = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? Maps
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]?>("Maps");
-            set => SetMaps(state, value);
-        }
-        public TM2020 WithMaps(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap[]? value)
-        {
-            Maps = value;
-            return this;
-        }
-        public TM2020 WithMaps(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.SMap> values)
-        {
-            return WithMaps(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality Quality
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality>("Quality");
-            set => SetQuality(state, value);
-        }
-        public TM2020 WithQuality(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQuality value)
-        {
-            Quality = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer QualityVer
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer>("QualityVer");
-            set => SetQualityVer(state, value);
-        }
-        public TM2020 WithQualityVer(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EQualityVer value)
-        {
-            QualityVer = value;
-            return this;
-        }
-        public bool SpriteOriginY_WasWronglyTop
-        {
-            get => state.Get<bool>("SpriteOriginY_WasWronglyTop");
-            set => SetSpriteOriginY_WasWronglyTop(state, value);
-        }
-        public TM2020 WithSpriteOriginY_WasWronglyTop(bool value)
-        {
-            SpriteOriginY_WasWronglyTop = value;
-            return this;
-        }
-        public TimeSpan? TimeOfDay
-        {
-            get => state.Get<TimeSpan?>("TimeOfDay");
-            set => SetTimeOfDay(state, value);
-        }
-        public TM2020 WithTimeOfDay(TimeSpan? value)
-        {
-            TimeOfDay = value;
-            return this;
-        }
-        public int TimeOfDayVersion
-        {
-            get => state.Get<int>("TimeOfDayVersion");
-            set => SetTimeOfDayVersion(state, value);
-        }
-        public TM2020 WithTimeOfDayVersion(int value)
-        {
-            TimeOfDayVersion = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentBlock
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentBlock");
-            set => SetTimeWriteMostRecentBlock(state, value);
-        }
-        public TM2020 WithTimeWriteMostRecentBlock(DateTime? value)
-        {
-            TimeWriteMostRecentBlock = value;
-            return this;
-        }
-        public DateTime? TimeWriteMostRecentSolid
-        {
-            get => state.Get<DateTime?>("TimeWriteMostRecentSolid");
-            set => SetTimeWriteMostRecentSolid(state, value);
-        }
-        public TM2020 WithTimeWriteMostRecentSolid(DateTime? value)
-        {
-            TimeWriteMostRecentSolid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion Version
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion>("Version");
-            set => SetVersion(state, value);
-        }
-        public TM2020 WithVersion(global::GBX.NET.Engines.Hms.CHmsLightMapCache.EVersion value)
-        {
-            Version = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLightMapCache Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLightMapCache();
-            var chunk0602200B = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B();
-            node.Chunks.Add(chunk0602200B);
-            var chunk0602200F = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F();
-            node.Chunks.Add(chunk0602200F);
-            var chunk06022013 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013();
-            node.Chunks.Add(chunk06022013);
-            var chunk06022015 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015(GameVersion.TM2020);
-            node.Chunks.Add(chunk06022015);
-            var chunk06022016 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016();
-            node.Chunks.Add(chunk06022016);
-            var chunk06022017 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017();
-            node.Chunks.Add(chunk06022017);
-            var chunk06022018 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018();
-            node.Chunks.Add(chunk06022018);
-            var chunk06022019 = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019();
-            node.Chunks.Add(chunk06022019);
-            var chunk0602201A = new global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A(GameVersion.TM2020);
-            node.Chunks.Add(chunk0602201A);
+            var node = CHmsLightMapCacheBuilder.CreateRecipe5(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0602200B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602200F>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0602200F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022013>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06022013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022015>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk06022015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022016>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06022016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022017>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06022017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022018>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06022018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk06022019>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06022019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Chunk0602201A>() is not { Version: 15 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0602201A is missing or has an incompatible version.");
+            CHmsLightMapCacheBuilder.ValidateRecipe5(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CHmsLightMapCacheBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

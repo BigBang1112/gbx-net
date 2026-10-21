@@ -36,17 +36,18 @@ public partial class CPlugVehicleVisStyles : global::GBX.NET.Interfaces.Plug.IPl
     public static global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisStylesBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroup>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyles.RandomGroups
     {
-        get => RandomGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroup>(() => RandomGroups, static node => node ?? throw new MemberNullException("RandomGroups"));
-        set => RandomGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => RandomGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroup>(GetRandomGroupsBuilderReferences, GameVersion.Unspecified, true, "RandomGroups");
+        set => RandomGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroup>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMP4.RandomGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>.RandomGroups
     {
-        get => RandomGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>(() => RandomGroups, static node => { if (node is null) throw new MemberNullException("RandomGroups"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => RandomGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => RandomGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>(GetRandomGroupsBuilderReferences, GameVersion.MP4, true, "RandomGroups");
+        set => RandomGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesTM2020.RandomGroups
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>.RandomGroups
     {
-        get => RandomGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>(() => RandomGroups, static node => { if (node is null) throw new MemberNullException("RandomGroups"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => RandomGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => RandomGroups is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>(GetRandomGroupsBuilderReferences, GameVersion.TM2020, true, "RandomGroups");
+        set => RandomGroups = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyleRandomGroup>? GetRandomGroupsBuilderReferences() => RandomGroups;
 }

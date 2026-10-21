@@ -31,6 +31,30 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMacroBlockInfoMembers1<T0, T1> : global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfo where T0 : class where T1 : class
+{
+    IReadOnlyList<T0>? AutoTerrains { get; set; }
+    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns { get; set; }
+    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns { get; set; }
+    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns { get; set; }
+    T1? ClipGroupEndRace { get; set; }
+    T1? ClipGroupInGame { get; set; }
+    Int2[]? ObjectNeighbourPairsLegacy { get; set; }
+    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns { get; set; }
+    Int3 OffzoneOffset { get; set; }
+    Int3 OffzoneTriggerSize { get; set; }
+    BoxInt3[]? Offzones { get; set; }
+    byte[]? SceneDecals { get; set; }
+    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMacroBlockInfoMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfo
+{
+    Int3 ClipOffset { get; set; }
+    Int3 ClipTriggerSize { get; set; }
+    int IconSize { get; set; }
+}
 public partial interface IGameCtnMacroBlockInfo : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo>, global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,211 +64,45 @@ public partial interface IGameCtnMacroBlockInfo : IClassVersion<global::GBX.NET.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new int CatalogPosition { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IconFid { get; set; }
-    new global::GBX.NET.Ident Ident { get; set; }
-    new bool IsInternal { get; set; }
-    new string? PageName { get; set; }
 }
 
 public partial interface IGameCtnMacroBlockInfoTM10 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
 public partial interface IGameCtnMacroBlockInfoTMPU : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
 public partial interface IGameCtnMacroBlockInfoTMSX : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
 public partial interface IGameCtnMacroBlockInfoTMNESWC : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC
 {
-    new int CopperPrice { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
 public partial interface IGameCtnMacroBlockInfoVSK5 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5
 {
-    new int CopperPrice { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
 public partial interface IGameCtnMacroBlockInfoTMF : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
-public partial interface IGameCtnMacroBlockInfoMP3 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3
+public partial interface IGameCtnMacroBlockInfoMP3 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>? AutoTerrains { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? ClipGroupInGame { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    Int2[]? ObjectNeighbourPairsLegacy { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns { get; set; }
-    Int3 OffzoneOffset { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    BoxInt3[]? Offzones { get; set; }
-    new string? ParentCollectorId { get; set; }
-    byte[]? SceneDecals { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    new string? SkinDirectory { get; set; }
 }
 
-public partial interface IGameCtnMacroBlockInfoTMT : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT
+public partial interface IGameCtnMacroBlockInfoTMT : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT>, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers2
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>? AutoTerrains { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? ClipGroupInGame { get; set; }
-    Int3 ClipOffset { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    int IconSize { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    Int2[]? ObjectNeighbourPairsLegacy { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns { get; set; }
-    Int3 OffzoneOffset { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    BoxInt3[]? Offzones { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    byte[]? SceneDecals { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    new string? SkinDirectory { get; set; }
 }
 
-public partial interface IGameCtnMacroBlockInfoMP4 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4
+public partial interface IGameCtnMacroBlockInfoMP4 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4>, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers2
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>? AutoTerrains { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? ClipGroupInGame { get; set; }
-    Int3 ClipOffset { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    int IconSize { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    Int2[]? ObjectNeighbourPairsLegacy { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns { get; set; }
-    Int3 OffzoneOffset { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    BoxInt3[]? Offzones { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    byte[]? SceneDecals { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    new string? SkinDirectory { get; set; }
 }
 
-public partial interface IGameCtnMacroBlockInfoTM2020 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020
+public partial interface IGameCtnMacroBlockInfoTM2020 : IGameCtnMacroBlockInfo, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMembers2
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>? AutoTerrains { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSkinSpawn>? BlockSkinSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.BlockSpawn>? BlockSpawns { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.CardEventsSpawn>? CardEventsSpawns { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? ClipGroupEndRace { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? ClipGroupInGame { get; set; }
-    Int3 ClipOffset { get; set; }
-    Int3 ClipTriggerSize { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? DefaultSkinName { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new float IconPhase01 { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    int IconSize { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease { get; set; }
-    new string? Name { get; set; }
-    Int2[]? ObjectNeighbourPairsLegacy { get; set; }
-    List<global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo.ObjectSpawn>? ObjectSpawns { get; set; }
-    Int3 OffzoneOffset { get; set; }
-    Int3 OffzoneTriggerSize { get; set; }
-    BoxInt3[]? Offzones { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    byte[]? SceneDecals { get; set; }
-    global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata { get; set; }
-    new string? SkinDirectory { get; set; }
 }
 

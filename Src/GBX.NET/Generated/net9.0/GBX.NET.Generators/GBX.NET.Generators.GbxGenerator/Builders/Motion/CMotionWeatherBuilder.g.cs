@@ -36,12 +36,71 @@ public abstract class CMotionWeatherBuilderBase<TSelf> where TSelf : CMotionWeat
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state;
     private protected CMotionWeatherBuilderBase() => state = new();
     private protected CMotionWeatherBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) => this.state = state;
-    private protected static void SetLegacyModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("LegacyModel", value, GameVersion.TM10 | GameVersion.TMPU, static value => value, static (node, value) => node.LegacyModel = value);
-    private protected static void SetLegacyModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("LegacyModel", value, GameVersion.TM10 | GameVersion.TMPU, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LegacyModel.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
+    private protected static void SetLegacyModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionWeatherBuilderAssignments.GetLegacyModelAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
+    private protected static void SetLegacyModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionWeatherBuilderAssignments.GetLegacyModelReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMPU);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+}
+public abstract class CMotionWeatherBuilderMembers1<TSelf> : CMotionWeatherBuilderBase<TSelf> where TSelf : CMotionWeatherBuilderMembers1<TSelf>
+{
+    private protected CMotionWeatherBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
+    public global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel
+    {
+        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("LegacyModel");
+        set => SetLegacyModel(state, value);
+    }
+    public TSelf WithLegacyModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
+    {
+        LegacyModel = value;
+        return (TSelf)this;
+    }
+    public TSelf WithLegacyModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetLegacyModelReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CMotionWeatherBuilderMembers2<TSelf> : CMotionWeatherBuilderBase<TSelf> where TSelf : CMotionWeatherBuilderMembers2<TSelf>
+{
+    private protected CMotionWeatherBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
+    public string? Name
+    {
+        get => state.Get<string?>("Name");
+        set => SetName(state, value);
+    }
+    public TSelf WithName(string? value)
+    {
+        Name = value;
+        return (TSelf)this;
+    }
 }
 public partial class CMotionWeatherBuilder : CMotionWeatherBuilderBase<CMotionWeatherBuilder>
 {
+    private static global::GBX.NET.Engines.Motion.CMotionWeather CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
+        var chunk08054000 = new global::GBX.NET.Engines.Motion.CMotionWeather.Chunk08054000();
+        node.Chunks.Add(chunk08054000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionWeather node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionWeather.Chunk08054000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08054000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Motion.CMotionWeather CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
+        var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
+        node.Chunks.Add(chunk08001000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Motion.CMotionWeather node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionWeather node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -53,273 +112,162 @@ public partial class CMotionWeatherBuilder : CMotionWeatherBuilderBase<CMotionWe
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
-    public partial class TM10 : CMotionWeatherBuilderBase<TM10>
+    public partial class TM10 : CMotionWeatherBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("LegacyModel");
-            set => SetLegacyModel(state, value);
-        }
-        public TM10 WithLegacyModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            LegacyModel = value;
-            return this;
-        }
-        public TM10 WithLegacyModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLegacyModelReference(state, value);
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08054000 = new global::GBX.NET.Engines.Motion.CMotionWeather.Chunk08054000();
-            node.Chunks.Add(chunk08054000);
+            var node = CMotionWeatherBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionWeather.Chunk08054000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk08054000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class TMPU : CMotionWeatherBuilderBase<TMPU>
+    public partial class TMPU : CMotionWeatherBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? LegacyModel
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("LegacyModel");
-            set => SetLegacyModel(state, value);
-        }
-        public TMPU WithLegacyModel(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            LegacyModel = value;
-            return this;
-        }
-        public TMPU WithLegacyModelReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLegacyModelReference(state, value);
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08054000 = new global::GBX.NET.Engines.Motion.CMotionWeather.Chunk08054000();
-            node.Chunks.Add(chunk08054000);
+            var node = CMotionWeatherBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionWeather.Chunk08054000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk08054000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class TMSX : CMotionWeatherBuilderBase<TMSX>
+    public partial class TMSX : CMotionWeatherBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public TMSX WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class TMNESWC : CMotionWeatherBuilderBase<TMNESWC>
+    public partial class TMNESWC : CMotionWeatherBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public TMNESWC WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class VSK5 : CMotionWeatherBuilderBase<VSK5>
+    public partial class VSK5 : CMotionWeatherBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public VSK5 WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class TMF : CMotionWeatherBuilderBase<TMF>
+    public partial class TMF : CMotionWeatherBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public TMF WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class MP3 : CMotionWeatherBuilderBase<MP3>
+    public partial class MP3 : CMotionWeatherBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public MP3 WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class TMT : CMotionWeatherBuilderBase<TMT>
+    public partial class TMT : CMotionWeatherBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public TMT WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionWeather node);
     }
-    public partial class MP4 : CMotionWeatherBuilderBase<MP4>
+    public partial class MP4 : CMotionWeatherBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionWeather> state) : base(state) { }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public MP4 WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionWeatherMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionWeather Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionWeather();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionWeatherBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionWeatherBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CMotionWeatherBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

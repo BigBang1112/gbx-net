@@ -40,19 +40,6 @@ public partial interface IHmsZoneOverlay : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool FogByVertex { get; set; }
-    new float FogExpDensity { get; set; }
-    new uint FogFlags { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula FogFormula { get; set; }
-    new float FogLinearEnd { get; set; }
-    new float FogLinearStart { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>? FogPlanes { get; set; }
-    new Vec3 FogRGB { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace FogSpace { get; set; }
-    new bool MRIsForced { get; set; }
-    new Vec3 MRNormal { get; set; }
-    new Vec3 MRPoint { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>? PrecalcRenders { get; set; }
 }
 
 public partial interface IHmsZoneOverlayTM10 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM10
@@ -73,31 +60,23 @@ public partial interface IHmsZoneOverlayTMNESWC : IHmsZoneOverlay, global::GBX.N
 
 public partial interface IHmsZoneOverlayVSK5 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapCubeReflectHardSpecA { get; set; }
 }
 
 public partial interface IHmsZoneOverlayTMF : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMF
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapCubeReflectHardSpecA { get; set; }
 }
 
 public partial interface IHmsZoneOverlayMP3 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneMP3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapCubeReflectHardSpecA { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 
 public partial interface IHmsZoneOverlayTMT : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTMT
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapCubeReflectHardSpecA { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 
 public partial interface IHmsZoneOverlayMP4 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneMP4
 {
     int AdaptRatio { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeReflectHardSpecA { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeReflectHdrAlpha2 { get; set; }
     BoxAligned Frustum { get; set; }
     bool IsOrthographic { get; set; }
     bool UseZBuffer { get; set; }
@@ -105,7 +84,5 @@ public partial interface IHmsZoneOverlayMP4 : IHmsZoneOverlay, global::GBX.NET.I
 
 public partial interface IHmsZoneOverlayTM2020 : IHmsZoneOverlay, global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapCubeReflectHardSpecA { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapCubeReflectHdrAlpha2 { get; set; }
 }
 

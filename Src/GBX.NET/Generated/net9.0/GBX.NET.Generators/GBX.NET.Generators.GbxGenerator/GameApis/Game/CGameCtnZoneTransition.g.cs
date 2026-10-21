@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameCtnZoneTransition : global::GBX.NET.Interfaces.Game.IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM10, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMPU, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMSX, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionVSK5, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMF, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Game.CGameCtnZoneTransitionBuilder Create() => new();
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP3.BlockInfoTransition
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3>.BlockInfoTransition
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CGameCtnZoneTransition : global::GBX.NET.Interfaces.Game.IG
         }
         set => BlockInfoTransition = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMT? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTMT.BlockInfoTransition
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMT? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMT>.BlockInfoTransition
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CGameCtnZoneTransition : global::GBX.NET.Interfaces.Game.IG
         }
         set => BlockInfoTransition = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP4? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMP4.BlockInfoTransition
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP4? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP4>.BlockInfoTransition
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGameCtnZoneTransition : global::GBX.NET.Interfaces.Game.IG
         }
         set => BlockInfoTransition = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoTransition node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTM2020? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionTM2020.BlockInfoTransition
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTM2020? global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTM2020>.BlockInfoTransition
     {
         get
         {

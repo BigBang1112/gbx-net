@@ -36,9 +36,9 @@ public abstract class CGameCtnMediaBlockColoringCapturableBuilderBase<TSelf> whe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state;
     private protected CGameCtnMediaBlockColoringCapturableBuilderBase() => state = new();
     private protected CGameCtnMediaBlockColoringCapturableBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state) => this.state = state;
-    private protected static void SetCapturableIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state, int value) => state.Set<int>("CapturableIndex", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CapturableIndex = value);
-    private protected static void SetKeyArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state, int value) => state.Set<int>("KeyArchiveVersion", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.KeyArchiveVersion = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetCapturableIndex(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringCapturableBuilderAssignments.GetCapturableIndexAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetKeyArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringCapturableBuilderAssignments.GetKeyArchiveVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColoringCapturableBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int CapturableIndex
     {
         get => state.Get<int>("CapturableIndex");
@@ -80,6 +80,20 @@ public abstract class CGameCtnMediaBlockColoringCapturableBuilderBase<TSelf> whe
 }
 public partial class CGameCtnMediaBlockColoringCapturableBuilder : CGameCtnMediaBlockColoringCapturableBuilderBase<CGameCtnMediaBlockColoringCapturableBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable();
+        var chunk0316C000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000(game);
+        node.Chunks.Add(chunk0316C000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -91,13 +105,12 @@ public partial class CGameCtnMediaBlockColoringCapturableBuilder : CGameCtnMedia
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockColoringCapturableTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable();
-            var chunk0316C000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000(GameVersion.TMT);
-            node.Chunks.Add(chunk0316C000);
+            var node = CGameCtnMediaBlockColoringCapturableBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk0316C000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockColoringCapturableBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockColoringCapturableBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -110,13 +123,12 @@ public partial class CGameCtnMediaBlockColoringCapturableBuilder : CGameCtnMedia
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockColoringCapturableMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable();
-            var chunk0316C000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000(GameVersion.MP4);
-            node.Chunks.Add(chunk0316C000);
+            var node = CGameCtnMediaBlockColoringCapturableBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk0316C000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockColoringCapturableBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockColoringCapturableBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -129,13 +141,12 @@ public partial class CGameCtnMediaBlockColoringCapturableBuilder : CGameCtnMedia
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockColoringCapturableTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable();
-            var chunk0316C000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0316C000);
+            var node = CGameCtnMediaBlockColoringCapturableBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColoringCapturable.Chunk0316C000>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0316C000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockColoringCapturableBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockColoringCapturableBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

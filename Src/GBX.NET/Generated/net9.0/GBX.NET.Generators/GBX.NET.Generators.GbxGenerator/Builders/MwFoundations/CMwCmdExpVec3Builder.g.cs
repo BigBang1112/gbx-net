@@ -36,12 +36,12 @@ public abstract class CMwCmdExpVec3BuilderBase<TSelf> where TSelf : CMwCmdExpVec
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state;
     private protected CMwCmdExpVec3BuilderBase() => state = new();
     private protected CMwCmdExpVec3BuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state) => this.state = state;
-    private protected static void SetExp1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp1", value, GameVersion.TMF, static value => value, static (node, value) => node.Exp1 = value);
-    private protected static void SetExp1Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Exp1", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Exp1.CopyFrom(reference));
-    private protected static void SetExp2(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp2", value, GameVersion.TMF, static value => value, static (node, value) => node.Exp2 = value);
-    private protected static void SetExp2Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Exp2", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Exp2.CopyFrom(reference));
-    private protected static void SetExp3(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp3", value, GameVersion.TMF, static value => value, static (node, value) => node.Exp3 = value);
-    private protected static void SetExp3Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Exp3", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Exp3.CopyFrom(reference));
+    private protected static void SetExp1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp1Assignment(), value, GameVersion.TMF);
+    private protected static void SetExp1Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp1ReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetExp2(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp2Assignment(), value, GameVersion.TMF);
+    private protected static void SetExp2Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp2ReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetExp3(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp3Assignment(), value, GameVersion.TMF);
+    private protected static void SetExp3Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpVec3BuilderAssignments.GetExp3ReferenceAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Exp1
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Exp1");
@@ -93,6 +93,20 @@ public abstract class CMwCmdExpVec3BuilderBase<TSelf> where TSelf : CMwCmdExpVec
 }
 public partial class CMwCmdExpVec3Builder : CMwCmdExpVec3BuilderBase<CMwCmdExpVec3Builder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3 CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3();
+        var chunk0105F000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3.Chunk0105F000();
+        node.Chunks.Add(chunk0105F000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3 node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3.Chunk0105F000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0105F000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3 node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpVec3BuilderBase<TMF>
     {
@@ -100,13 +114,12 @@ public partial class CMwCmdExpVec3Builder : CMwCmdExpVec3BuilderBase<CMwCmdExpVe
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpVec3TMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3 Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3();
-            var chunk0105F000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3.Chunk0105F000();
-            node.Chunks.Add(chunk0105F000);
+            var node = CMwCmdExpVec3Builder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpVec3.Chunk0105F000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0105F000 is missing or has an incompatible version.");
+            CMwCmdExpVec3Builder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdExpVec3Builder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

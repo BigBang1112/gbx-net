@@ -36,10 +36,10 @@ public abstract class CGameCtnMediaBlockInterfaceBuilderBase<TSelf> where TSelf 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state;
     private protected CGameCtnMediaBlockInterfaceBuilderBase() => state = new();
     private protected CGameCtnMediaBlockInterfaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, TimeSingle value) => state.Set<TimeSingle>("End", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.End = value);
-    private protected static void SetManialink(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, string? value) => state.Set<string?>("Manialink", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Manialink = value);
-    private protected static void SetShowInterface(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, bool value) => state.Set<bool>("ShowInterface", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ShowInterface = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, TimeSingle value) => state.Set<TimeSingle>("Start", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Start = value);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetManialink(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetManialinkAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShowInterface(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetShowInterfaceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockInterfaceBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
@@ -83,6 +83,21 @@ public abstract class CGameCtnMediaBlockInterfaceBuilderBase<TSelf> where TSelf 
 }
 public partial class CGameCtnMediaBlockInterfaceBuilder : CGameCtnMediaBlockInterfaceBuilderBase<CGameCtnMediaBlockInterfaceBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface();
+        var chunk03195000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000();
+        chunk03195000.Version = 0;
+        node.Chunks.Add(chunk03195000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03195000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -94,14 +109,12 @@ public partial class CGameCtnMediaBlockInterfaceBuilder : CGameCtnMediaBlockInte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockInterfaceTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface();
-            var chunk03195000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000();
-            chunk03195000.Version = 0;
-            node.Chunks.Add(chunk03195000);
+            var node = CGameCtnMediaBlockInterfaceBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03195000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockInterfaceBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockInterfaceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -114,14 +127,12 @@ public partial class CGameCtnMediaBlockInterfaceBuilder : CGameCtnMediaBlockInte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockInterfaceMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface();
-            var chunk03195000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000();
-            chunk03195000.Version = 0;
-            node.Chunks.Add(chunk03195000);
+            var node = CGameCtnMediaBlockInterfaceBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03195000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockInterfaceBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockInterfaceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -134,14 +145,12 @@ public partial class CGameCtnMediaBlockInterfaceBuilder : CGameCtnMediaBlockInte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockInterfaceTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface();
-            var chunk03195000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000();
-            chunk03195000.Version = 0;
-            node.Chunks.Add(chunk03195000);
+            var node = CGameCtnMediaBlockInterfaceBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockInterface.Chunk03195000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03195000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockInterfaceBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockInterfaceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

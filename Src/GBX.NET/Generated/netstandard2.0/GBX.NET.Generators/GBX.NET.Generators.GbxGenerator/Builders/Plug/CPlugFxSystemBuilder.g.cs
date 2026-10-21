@@ -36,13 +36,13 @@ public abstract class CPlugFxSystemBuilderBase<TSelf> where TSelf : CPlugFxSyste
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state;
     private protected CPlugFxSystemBuilderBase() => state = new();
     private protected CPlugFxSystemBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state) => this.state = state;
-    private protected static void SetHasSource(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, bool value) => state.Set<bool>("HasSource", value, GameVersion.TM2020, static value => value, static (node, value) => node.HasSource = value);
-    private protected static void SetInputClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, uint value) => state.Set<uint>("InputClassId", value, GameVersion.TM2020, static value => value, static (node, value) => node.InputClassId = value);
-    private protected static void SetNodeVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, int value) => state.Set<int>("NodeVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.NodeVersion = value);
-    private protected static void SetOutputClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, uint value) => state.Set<uint>("OutputClassId", value, GameVersion.TM2020, static value => value, static (node, value) => node.OutputClassId = value);
-    private protected static void SetRoot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, global::GBX.NET.Engines.Plug.CPlugFxSystem.EffectNode? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxSystem.EffectNode?>("Root", value, GameVersion.TM2020, static value => value, static (node, value) => node.Root = value);
-    private protected static void SetVariableVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, int value) => state.Set<int>("VariableVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.VariableVersion = value);
-    private protected static void SetVariables(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, global::GBX.NET.Engines.Plug.CPlugFxSystem.Variable[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxSystem.Variable[]?>("Variables", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugFxSystem.Variable[])value.Clone(), static (node, value) => node.Variables = value);
+    private protected static void SetHasSource(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetHasSourceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetInputClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetInputClassIdAssignment(), value, GameVersion.TM2020);
+    private protected static void SetNodeVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetNodeVersionAssignment(), value, GameVersion.TM2020);
+    private protected static void SetOutputClassId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetOutputClassIdAssignment(), value, GameVersion.TM2020);
+    private protected static void SetRoot(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, global::GBX.NET.Engines.Plug.CPlugFxSystem.EffectNode? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetRootAssignment(), value, GameVersion.TM2020);
+    private protected static void SetVariableVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetVariableVersionAssignment(), value, GameVersion.TM2020);
+    private protected static void SetVariables(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFxSystem> state, global::GBX.NET.Engines.Plug.CPlugFxSystem.Variable[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFxSystemBuilderAssignments.GetVariablesAssignment(), value, GameVersion.TM2020);
     public bool HasSource
     {
         get => state.Get<bool>("HasSource");
@@ -120,6 +120,20 @@ public abstract class CPlugFxSystemBuilderBase<TSelf> where TSelf : CPlugFxSyste
 }
 public partial class CPlugFxSystemBuilder : CPlugFxSystemBuilderBase<CPlugFxSystemBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugFxSystem CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFxSystem();
+        var chunk0915C000 = new global::GBX.NET.Engines.Plug.CPlugFxSystem.Chunk0915C000(game);
+        node.Chunks.Add(chunk0915C000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFxSystem node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxSystem.Chunk0915C000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0915C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFxSystem node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugFxSystemBuilderBase<TM2020>
     {
@@ -127,13 +141,12 @@ public partial class CPlugFxSystemBuilder : CPlugFxSystemBuilderBase<CPlugFxSyst
         public global::GBX.NET.Interfaces.Plug.IPlugFxSystemTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFxSystem Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFxSystem();
-            var chunk0915C000 = new global::GBX.NET.Engines.Plug.CPlugFxSystem.Chunk0915C000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0915C000);
+            var node = CPlugFxSystemBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFxSystem.Chunk0915C000>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0915C000 is missing or has an incompatible version.");
+            CPlugFxSystemBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugFxSystemBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

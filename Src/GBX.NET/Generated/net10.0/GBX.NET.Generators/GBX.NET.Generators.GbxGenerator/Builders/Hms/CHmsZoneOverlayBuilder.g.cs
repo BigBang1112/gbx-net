@@ -36,27 +36,27 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state;
     private protected CHmsZoneOverlayBuilderBase() => state = new();
     private protected CHmsZoneOverlayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) => this.state = state;
-    private protected static void SetAdaptRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, int value) => state.Set<int>("AdaptRatio", value, GameVersion.MP4, static value => value, static (node, value) => node.AdaptRatio = value);
-    private protected static void SetBitmapCubeReflectHardSpecA(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BitmapCubeReflectHardSpecA = value);
-    private protected static void SetBitmapCubeReflectHardSpecAReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapCubeReflectHardSpecA", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapCubeReflectHardSpecA.CopyFrom(reference));
-    private protected static void SetBitmapCubeReflectHdrAlpha2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BitmapCubeReflectHdrAlpha2 = value);
-    private protected static void SetBitmapCubeReflectHdrAlpha2Reference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapCubeReflectHdrAlpha2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapCubeReflectHdrAlpha2.CopyFrom(reference));
-    private protected static void SetFogByVertex(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set<bool>("FogByVertex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogByVertex = value);
-    private protected static void SetFogExpDensity(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set<float>("FogExpDensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogExpDensity = value);
-    private protected static void SetFogFlags(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, uint value) => state.Set<uint>("FogFlags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogFlags = value);
-    private protected static void SetFogFormula(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula value) => state.Set<global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula>("FogFormula", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogFormula = value);
-    private protected static void SetFogLinearEnd(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set<float>("FogLinearEnd", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogLinearEnd = value);
-    private protected static void SetFogLinearStart(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set<float>("FogLinearStart", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogLinearStart = value);
-    private protected static void SetFogPlanes(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>?>("FogPlanes", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.FogPlanes = value);
-    private protected static void SetFogRGB(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set<Vec3>("FogRGB", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogRGB = value);
-    private protected static void SetFogSpace(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace value) => state.Set<global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace>("FogSpace", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FogSpace = value);
-    private protected static void SetFrustum(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, BoxAligned value) => state.Set<BoxAligned>("Frustum", value, GameVersion.MP4, static value => value, static (node, value) => node.Frustum = value);
-    private protected static void SetIsOrthographic(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set<bool>("IsOrthographic", value, GameVersion.MP4, static value => value, static (node, value) => node.IsOrthographic = value);
-    private protected static void SetMRIsForced(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set<bool>("MRIsForced", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MRIsForced = value);
-    private protected static void SetMRNormal(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set<Vec3>("MRNormal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MRNormal = value);
-    private protected static void SetMRPoint(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set<Vec3>("MRPoint", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MRPoint = value);
-    private protected static void SetPrecalcRenders(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>?>("PrecalcRenders", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.PrecalcRenders = value);
-    private protected static void SetUseZBuffer(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set<bool>("UseZBuffer", value, GameVersion.MP4, static value => value, static (node, value) => node.UseZBuffer = value);
+    private protected static void SetAdaptRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetAdaptRatioAssignment(), value, GameVersion.MP4);
+    private protected static void SetBitmapCubeReflectHardSpecA(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHardSpecAAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapCubeReflectHardSpecAReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHardSpecAReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapCubeReflectHdrAlpha2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHdrAlpha2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBitmapCubeReflectHdrAlpha2Reference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetBitmapCubeReflectHdrAlpha2ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFogByVertex(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogByVertexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogExpDensity(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogExpDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogFlags(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogFormula(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Hms.CHmsZone.EGxFogFormula value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogFormulaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogLinearEnd(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogLinearEndAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogLinearStart(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogLinearStartAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogPlanes(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRefList<global::GBX.NET.Engines.Hms.CHmsFogPlane>? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogPlanesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogRGB(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogRGBAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFogSpace(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, global::GBX.NET.Engines.Hms.CHmsZone.EGxFogSpace value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetFogSpaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFrustum(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetFrustumAssignment(), value, GameVersion.MP4);
+    private protected static void SetIsOrthographic(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetIsOrthographicAssignment(), value, GameVersion.MP4);
+    private protected static void SetMRIsForced(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRIsForcedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMRNormal(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRNormalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMRPoint(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetMRPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPrecalcRenders(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, NodeRefList<global::GBX.NET.Engines.Hms.CHmsPrecalcRender>? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneBuilderAssignments.GetPrecalcRendersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetUseZBuffer(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsZoneOverlayBuilderAssignments.GetUseZBufferAssignment(), value, GameVersion.MP4);
     public bool FogByVertex
     {
         get => state.Get<bool>("FogByVertex");
@@ -204,8 +204,131 @@ public abstract class CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOv
         return WithPrecalcRenders(values.ToArray());
     }
 }
+public abstract class CHmsZoneOverlayBuilderMembers1<TSelf> : CHmsZoneOverlayBuilderBase<TSelf> where TSelf : CHmsZoneOverlayBuilderMembers1<TSelf>
+{
+    private protected CHmsZoneOverlayBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
+        set => SetBitmapCubeReflectHardSpecA(state, value);
+    }
+    public TSelf WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
+    {
+        BitmapCubeReflectHardSpecA = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetBitmapCubeReflectHardSpecAReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CHmsZoneOverlayBuilderMembers2<TSelf> : CHmsZoneOverlayBuilderMembers1<TSelf> where TSelf : CHmsZoneOverlayBuilderMembers2<TSelf>
+{
+    private protected CHmsZoneOverlayBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHdrAlpha2
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2");
+        set => SetBitmapCubeReflectHdrAlpha2(state, value);
+    }
+    public TSelf WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
+    {
+        BitmapCubeReflectHdrAlpha2 = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBitmapCubeReflectHdrAlpha2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetBitmapCubeReflectHdrAlpha2Reference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZoneOverlayBuilder>
 {
+    private static global::GBX.NET.Engines.Hms.CHmsZoneOverlay CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
+        var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
+        node.Chunks.Add(chunk06004002);
+        var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
+        node.Chunks.Add(chunk06004003);
+        var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
+        node.Chunks.Add(chunk06004005);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsZoneOverlay CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
+        var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
+        node.Chunks.Add(chunk06004002);
+        var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
+        node.Chunks.Add(chunk06004003);
+        var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
+        node.Chunks.Add(chunk06004005);
+        var chunk06004006 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004006();
+        node.Chunks.Add(chunk06004006);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004006 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsZoneOverlay CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
+        var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
+        node.Chunks.Add(chunk06004002);
+        var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
+        node.Chunks.Add(chunk06004003);
+        var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
+        node.Chunks.Add(chunk06004005);
+        var chunk06004008 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008();
+        node.Chunks.Add(chunk06004008);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Hms.CHmsZoneOverlay CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
+        var chunk06009001 = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay.Chunk06009001();
+        node.Chunks.Add(chunk06009001);
+        var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
+        node.Chunks.Add(chunk06004002);
+        var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
+        node.Chunks.Add(chunk06004003);
+        var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
+        node.Chunks.Add(chunk06004005);
+        var chunk06004008 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008();
+        node.Chunks.Add(chunk06004008);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZoneOverlay.Chunk06009001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06009001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06004008 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -224,19 +347,12 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk06004005 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -249,19 +365,12 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk06004005 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -274,19 +383,12 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk06004005 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -299,258 +401,115 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk06004005 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
     }
-    public partial class VSK5 : CHmsZoneOverlayBuilderBase<VSK5>
+    public partial class VSK5 : CHmsZoneOverlayBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-            set => SetBitmapCubeReflectHardSpecA(state, value);
-        }
-        public VSK5 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHardSpecA = value;
-            return this;
-        }
-        public VSK5 WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHardSpecAReference(state, value);
-            return this;
-        }
         public VSK5 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? value)
         {
-            return WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
-            var chunk06004006 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004006();
-            node.Chunks.Add(chunk06004006);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06004005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06004006 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
     }
-    public partial class TMF : CHmsZoneOverlayBuilderBase<TMF>
+    public partial class TMF : CHmsZoneOverlayBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-            set => SetBitmapCubeReflectHardSpecA(state, value);
-        }
-        public TMF WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHardSpecA = value;
-            return this;
-        }
-        public TMF WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHardSpecAReference(state, value);
-            return this;
-        }
         public TMF WithBitmapCubeReflectHardSpecA(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? value)
         {
-            return WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
-            var chunk06004006 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004006();
-            node.Chunks.Add(chunk06004006);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06004005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06004006 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
     }
-    public partial class MP3 : CHmsZoneOverlayBuilderBase<MP3>
+    public partial class MP3 : CHmsZoneOverlayBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-            set => SetBitmapCubeReflectHardSpecA(state, value);
-        }
-        public MP3 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHardSpecA = value;
-            return this;
-        }
-        public MP3 WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHardSpecAReference(state, value);
-            return this;
-        }
         public MP3 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value)
         {
-            return WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHdrAlpha2
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2");
-            set => SetBitmapCubeReflectHdrAlpha2(state, value);
-        }
-        public MP3 WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHdrAlpha2 = value;
-            return this;
-        }
-        public MP3 WithBitmapCubeReflectHdrAlpha2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHdrAlpha2Reference(state, value);
-            return this;
+            return base.WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? value)
         {
-            return WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
-            var chunk06004008 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008();
-            node.Chunks.Add(chunk06004008);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06004005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06004008 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
     }
-    public partial class TMT : CHmsZoneOverlayBuilderBase<TMT>
+    public partial class TMT : CHmsZoneOverlayBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-            set => SetBitmapCubeReflectHardSpecA(state, value);
-        }
-        public TMT WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHardSpecA = value;
-            return this;
-        }
-        public TMT WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHardSpecAReference(state, value);
-            return this;
-        }
         public TMT WithBitmapCubeReflectHardSpecA(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value)
         {
-            return WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHdrAlpha2
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2");
-            set => SetBitmapCubeReflectHdrAlpha2(state, value);
-        }
-        public TMT WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHdrAlpha2 = value;
-            return this;
-        }
-        public TMT WithBitmapCubeReflectHdrAlpha2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHdrAlpha2Reference(state, value);
-            return this;
+            return base.WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? value)
         {
-            return WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
-            var chunk06004008 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008();
-            node.Chunks.Add(chunk06004008);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06004005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06004008 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
     }
-    public partial class MP4 : CHmsZoneOverlayBuilderBase<MP4>
+    public partial class MP4 : CHmsZoneOverlayBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
         public int AdaptRatio
@@ -563,45 +522,13 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
             AdaptRatio = value;
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-            set => SetBitmapCubeReflectHardSpecA(state, value);
-        }
-        public MP4 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHardSpecA = value;
-            return this;
-        }
-        public MP4 WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHardSpecAReference(state, value);
-            return this;
-        }
         public MP4 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
         {
-            return WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHdrAlpha2
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2");
-            set => SetBitmapCubeReflectHdrAlpha2(state, value);
-        }
-        public MP4 WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHdrAlpha2 = value;
-            return this;
-        }
-        public MP4 WithBitmapCubeReflectHdrAlpha2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHdrAlpha2Reference(state, value);
-            return this;
+            return base.WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? value)
         {
-            return WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public BoxAligned Frustum
         {
@@ -636,93 +563,38 @@ public partial class CHmsZoneOverlayBuilder : CHmsZoneOverlayBuilderBase<CHmsZon
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06009001 = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay.Chunk06009001();
-            node.Chunks.Add(chunk06009001);
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
-            var chunk06004008 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008();
-            node.Chunks.Add(chunk06004008);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZoneOverlay.Chunk06009001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06009001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06004005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06004008 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
         partial void ValidateNode(global::GBX.NET.Engines.Hms.CHmsZoneOverlay node);
     }
-    public partial class TM2020 : CHmsZoneOverlayBuilderBase<TM2020>
+    public partial class TM2020 : CHmsZoneOverlayBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsZoneOverlay> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHardSpecA
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHardSpecA");
-            set => SetBitmapCubeReflectHardSpecA(state, value);
-        }
-        public TM2020 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHardSpecA = value;
-            return this;
-        }
-        public TM2020 WithBitmapCubeReflectHardSpecAReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHardSpecAReference(state, value);
-            return this;
-        }
         public TM2020 WithBitmapCubeReflectHardSpecA(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)
         {
-            return WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapCubeReflectHdrAlpha2
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapCubeReflectHdrAlpha2");
-            set => SetBitmapCubeReflectHdrAlpha2(state, value);
-        }
-        public TM2020 WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Engines.Plug.CPlugBitmap? value)
-        {
-            BitmapCubeReflectHdrAlpha2 = value;
-            return this;
-        }
-        public TM2020 WithBitmapCubeReflectHdrAlpha2Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetBitmapCubeReflectHdrAlpha2Reference(state, value);
-            return this;
+            return base.WithBitmapCubeReflectHardSpecA(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithBitmapCubeReflectHdrAlpha2(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? value)
         {
-            return WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithBitmapCubeReflectHdrAlpha2(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Hms.IHmsZoneOverlayTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsZoneOverlay Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsZoneOverlay();
-            var chunk06004002 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002();
-            node.Chunks.Add(chunk06004002);
-            var chunk06004003 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003();
-            node.Chunks.Add(chunk06004003);
-            var chunk06004005 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005();
-            node.Chunks.Add(chunk06004005);
-            var chunk06004008 = new global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008();
-            node.Chunks.Add(chunk06004008);
+            var node = CHmsZoneOverlayBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06004002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06004003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06004005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsZone.Chunk06004008>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06004008 is missing or has an incompatible version.");
+            CHmsZoneOverlayBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CHmsZoneOverlayBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

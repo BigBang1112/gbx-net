@@ -39,6 +39,20 @@ public abstract class CPlugVehicleGearBoxBuilderBase<TSelf> where TSelf : CPlugV
 }
 public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase<CPlugVehicleGearBoxBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleGearBox CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox();
+        var chunk09094001 = new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001(game);
+        node.Chunks.Add(chunk09094001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09094001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -49,13 +63,12 @@ public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleGearBox Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox();
-            var chunk09094001 = new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001(GameVersion.MP4);
-            node.Chunks.Add(chunk09094001);
+            var node = CPlugVehicleGearBoxBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk09094001 is missing or has an incompatible version.");
+            CPlugVehicleGearBoxBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleGearBoxBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -68,13 +81,12 @@ public partial class CPlugVehicleGearBoxBuilder : CPlugVehicleGearBoxBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleGearBox Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox();
-            var chunk09094001 = new global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001(GameVersion.TM2020);
-            node.Chunks.Add(chunk09094001);
+            var node = CPlugVehicleGearBoxBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleGearBox.Chunk09094001>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09094001 is missing or has an incompatible version.");
+            CPlugVehicleGearBoxBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleGearBoxBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

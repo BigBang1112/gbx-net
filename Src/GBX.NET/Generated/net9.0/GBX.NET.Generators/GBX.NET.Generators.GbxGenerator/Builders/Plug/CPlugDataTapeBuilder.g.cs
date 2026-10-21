@@ -36,12 +36,12 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state;
     private protected CPlugDataTapeBuilderBase() => state = new();
     private protected CPlugDataTapeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state) => this.state = state;
-    private protected static void SetHeader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader?>("Header", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Header = value);
-    private protected static void SetNoticeCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int value) => state.Set<int>("NoticeCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.NoticeCount = value);
-    private protected static void SetNoticeData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, byte[] value) => state.Set<byte[]>("NoticeData", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.NoticeData = value);
-    private protected static void SetStateData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, byte[] value) => state.Set<byte[]>("StateData", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.StateData = value);
-    private protected static void SetStateOffsets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int[] value) => state.Set<int[]>("StateOffsets", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.StateOffsets = value);
-    private protected static void SetStateTimes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int[] value) => state.Set<int[]>("StateTimes", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.StateTimes = value);
+    private protected static void SetHeader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetHeaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNoticeCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetNoticeCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNoticeData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, byte[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetNoticeDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, byte[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateOffsets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateOffsetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStateTimes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugDataTape> state, int[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugDataTapeBuilderAssignments.GetStateTimesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader? Header
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape.TapeHeader?>("Header");
@@ -121,6 +121,25 @@ public abstract class CPlugDataTapeBuilderBase<TSelf> where TSelf : CPlugDataTap
 }
 public partial class CPlugDataTapeBuilder : CPlugDataTapeBuilderBase<CPlugDataTapeBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugDataTape CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugDataTape();
+        var chunk090CE001 = new global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001();
+        chunk090CE001.Version = 0;
+        node.Chunks.Add(chunk090CE001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugDataTape node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090CE001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugDataTape node, GameVersion game)
+    {
+        if (node.NoticeData is null) throw new MemberNullException("NoticeData");
+        if (node.StateData is null) throw new MemberNullException("StateData");
+        if (node.StateOffsets is null) throw new MemberNullException("StateOffsets");
+        if (node.StateTimes is null) throw new MemberNullException("StateTimes");
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -133,18 +152,12 @@ public partial class CPlugDataTapeBuilder : CPlugDataTapeBuilderBase<CPlugDataTa
         public global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDataTape Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDataTape();
-            var chunk090CE001 = new global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001();
-            chunk090CE001.Version = 0;
-            node.Chunks.Add(chunk090CE001);
+            var node = CPlugDataTapeBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk090CE001 is missing or has an incompatible version.");
+            CPlugDataTapeBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.NoticeData is null) throw new MemberNullException("NoticeData");
-            if (node.StateData is null) throw new MemberNullException("StateData");
-            if (node.StateOffsets is null) throw new MemberNullException("StateOffsets");
-            if (node.StateTimes is null) throw new MemberNullException("StateTimes");
+            CPlugDataTapeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -157,18 +170,12 @@ public partial class CPlugDataTapeBuilder : CPlugDataTapeBuilderBase<CPlugDataTa
         public global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDataTape Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDataTape();
-            var chunk090CE001 = new global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001();
-            chunk090CE001.Version = 0;
-            node.Chunks.Add(chunk090CE001);
+            var node = CPlugDataTapeBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk090CE001 is missing or has an incompatible version.");
+            CPlugDataTapeBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.NoticeData is null) throw new MemberNullException("NoticeData");
-            if (node.StateData is null) throw new MemberNullException("StateData");
-            if (node.StateOffsets is null) throw new MemberNullException("StateOffsets");
-            if (node.StateTimes is null) throw new MemberNullException("StateTimes");
+            CPlugDataTapeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -181,18 +188,12 @@ public partial class CPlugDataTapeBuilder : CPlugDataTapeBuilderBase<CPlugDataTa
         public global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDataTape Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDataTape();
-            var chunk090CE001 = new global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001();
-            chunk090CE001.Version = 0;
-            node.Chunks.Add(chunk090CE001);
+            var node = CPlugDataTapeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk090CE001 is missing or has an incompatible version.");
+            CPlugDataTapeBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.NoticeData is null) throw new MemberNullException("NoticeData");
-            if (node.StateData is null) throw new MemberNullException("StateData");
-            if (node.StateOffsets is null) throw new MemberNullException("StateOffsets");
-            if (node.StateTimes is null) throw new MemberNullException("StateTimes");
+            CPlugDataTapeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -205,18 +206,12 @@ public partial class CPlugDataTapeBuilder : CPlugDataTapeBuilderBase<CPlugDataTa
         public global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugDataTape Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugDataTape();
-            var chunk090CE001 = new global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001();
-            chunk090CE001.Version = 0;
-            node.Chunks.Add(chunk090CE001);
+            var node = CPlugDataTapeBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugDataTape.Chunk090CE001>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090CE001 is missing or has an incompatible version.");
+            CPlugDataTapeBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.NoticeData is null) throw new MemberNullException("NoticeData");
-            if (node.StateData is null) throw new MemberNullException("StateData");
-            if (node.StateOffsets is null) throw new MemberNullException("StateOffsets");
-            if (node.StateTimes is null) throw new MemberNullException("StateTimes");
+            CPlugDataTapeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

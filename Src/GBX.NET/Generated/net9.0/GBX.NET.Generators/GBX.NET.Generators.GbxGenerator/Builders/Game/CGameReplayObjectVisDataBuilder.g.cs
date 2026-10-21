@@ -36,8 +36,8 @@ public abstract class CGameReplayObjectVisDataBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state;
     private protected CGameReplayObjectVisDataBuilderBase() => state = new();
     private protected CGameReplayObjectVisDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state, List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>?>("Keys", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>(value), static (node, value) => node.Keys = value);
-    private protected static void SetVisList(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state, List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>?>("VisList", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>(value), static (node, value) => node.VisList = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state, List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetVisList(NodeBuilderState<global::GBX.NET.Engines.Game.CGameReplayObjectVisData> state, List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVis>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameReplayObjectVisDataBuilderAssignments.GetVisListAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.ObjectVisKey>?>("Keys");
@@ -77,6 +77,21 @@ public abstract class CGameReplayObjectVisDataBuilderBase<TSelf> where TSelf : C
 }
 public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataBuilderBase<CGameReplayObjectVisDataBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameReplayObjectVisData CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData();
+        var chunk031A8000 = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000();
+        chunk031A8000.Version = 0;
+        node.Chunks.Add(chunk031A8000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk031A8000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameReplayObjectVisData node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -89,14 +104,12 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
         public global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameReplayObjectVisData Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData();
-            var chunk031A8000 = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000();
-            chunk031A8000.Version = 0;
-            node.Chunks.Add(chunk031A8000);
+            var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk031A8000 is missing or has an incompatible version.");
+            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -109,14 +122,12 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
         public global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameReplayObjectVisData Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData();
-            var chunk031A8000 = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000();
-            chunk031A8000.Version = 0;
-            node.Chunks.Add(chunk031A8000);
+            var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk031A8000 is missing or has an incompatible version.");
+            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -129,14 +140,12 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
         public global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameReplayObjectVisData Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData();
-            var chunk031A8000 = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000();
-            chunk031A8000.Version = 0;
-            node.Chunks.Add(chunk031A8000);
+            var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk031A8000 is missing or has an incompatible version.");
+            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -149,14 +158,12 @@ public partial class CGameReplayObjectVisDataBuilder : CGameReplayObjectVisDataB
         public global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameReplayObjectVisData Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData();
-            var chunk031A8000 = new global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000();
-            chunk031A8000.Version = 0;
-            node.Chunks.Add(chunk031A8000);
+            var node = CGameReplayObjectVisDataBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameReplayObjectVisData.Chunk031A8000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk031A8000 is missing or has an incompatible version.");
+            CGameReplayObjectVisDataBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameReplayObjectVisDataBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -31,72 +31,60 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapShaderMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapShader where T0 : class
+{
+    IReadOnlyList<T0>? LegacyBitmaps { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapShaderMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugBitmapShader where T0 : class where T1 : class
+{
+    new T0? BitmapToSwap { get; set; }
+    new T1? Shader { get; set; }
+}
 public partial interface IPlugBitmapShader : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapShader>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapToSwap { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugShader? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTM10 : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTM10 : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapToSwap { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>? LegacyBitmaps { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTMPU : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTMPU : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapToSwap { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>? LegacyBitmaps { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTMSX : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTMSX : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapToSwap { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>? LegacyBitmaps { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTMNESWC : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTMNESWC : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderVSK5 : IPlugBitmapShader
+public partial interface IPlugBitmapShaderVSK5 : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTMF : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTMF : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderMP3 : IPlugBitmapShader
+public partial interface IPlugBitmapShaderMP3 : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTMT : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTMT : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderMP4 : IPlugBitmapShader
+public partial interface IPlugBitmapShaderMP4 : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? Shader { get; set; }
 }
 
-public partial interface IPlugBitmapShaderTM2020 : IPlugBitmapShader
+public partial interface IPlugBitmapShaderTM2020 : IPlugBitmapShader, global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapToSwap { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? Shader { get; set; }
 }
 

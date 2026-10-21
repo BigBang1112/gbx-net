@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugSurfaceMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugSurface where T0 : class
+{
+    T0? Skel { get; set; }
+}
 public partial interface IPlugSurface : IClassVersion<global::GBX.NET.Engines.Plug.CPlugSurface>
 {
     global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials { get; set; }
@@ -41,23 +46,19 @@ public partial interface IPlugSurfaceTMF : IPlugSurface
     global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF? Geom { get; set; }
 }
 
-public partial interface IPlugSurfaceMP3 : IPlugSurface
+public partial interface IPlugSurfaceMP3 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP3>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? Skel { get; set; }
 }
 
-public partial interface IPlugSurfaceTMT : IPlugSurface
+public partial interface IPlugSurfaceTMT : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelTMT>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? Skel { get; set; }
 }
 
-public partial interface IPlugSurfaceMP4 : IPlugSurface
+public partial interface IPlugSurfaceMP4 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP4>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? Skel { get; set; }
 }
 
-public partial interface IPlugSurfaceTM2020 : IPlugSurface
+public partial interface IPlugSurfaceTM2020 : IPlugSurface, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? Skel { get; set; }
 }
 

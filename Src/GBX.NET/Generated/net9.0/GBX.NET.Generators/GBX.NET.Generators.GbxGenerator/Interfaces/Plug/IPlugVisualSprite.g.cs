@@ -31,6 +31,30 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualSpriteMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVisualSprite
+{
+    Rect[]? AtlasTexCoords { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualSpriteMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVisualSprite
+{
+    bool RadiusInScreen { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
+    bool SortBackToFront { get; set; }
+    uint SpriteFlags { get; set; }
+    bool UseGlobalDir { get; set; }
+    bool UseTextureAtlas { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualSpriteMembers3 : global::GBX.NET.Interfaces.Plug.IPlugVisualSprite
+{
+    ushort AtlasGridCountU { get; set; }
+    ushort AtlasGridCountV { get; set; }
+    Vec3 GlobalDirection { get; set; }
+    Vec2 PivotPoint { get; set; }
+}
 public partial interface IPlugVisualSprite : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVisualSprite>, global::GBX.NET.Interfaces.Plug.IPlugVisual3D
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,147 +64,45 @@ public partial interface IPlugVisualSprite : IClassVersion<global::GBX.NET.Engin
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? BlendShapes { get; set; }
-    new Int3[] SubVisuals { get; set; }
-    new string? VisualId { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTM10 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM10
+public partial interface IPlugVisualSpriteTM10 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    bool RadiusInScreen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
-    bool SortBackToFront { get; set; }
-    uint SpriteFlags { get; set; }
-    bool UseGlobalDir { get; set; }
-    bool UseTextureAtlas { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTMPU : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMPU
+public partial interface IPlugVisualSpriteTMPU : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
-    bool RadiusInScreen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
-    bool SortBackToFront { get; set; }
-    uint SpriteFlags { get; set; }
-    bool UseGlobalDir { get; set; }
-    bool UseTextureAtlas { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTMSX : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMSX
+public partial interface IPlugVisualSpriteTMSX : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers3
 {
-    ushort AtlasGridCountU { get; set; }
-    ushort AtlasGridCountV { get; set; }
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    Vec3 GlobalDirection { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
-    Vec2 PivotPoint { get; set; }
-    bool RadiusInScreen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
-    bool SortBackToFront { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    uint SpriteFlags { get; set; }
-    bool UseGlobalDir { get; set; }
-    bool UseTextureAtlas { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTMNESWC : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMNESWC
+public partial interface IPlugVisualSpriteTMNESWC : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers3
 {
-    ushort AtlasGridCountU { get; set; }
-    ushort AtlasGridCountV { get; set; }
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    Vec3 GlobalDirection { get; set; }
-    new float NPatchTessLevel { get; set; }
-    Vec2 PivotPoint { get; set; }
-    bool RadiusInScreen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
-    bool SortBackToFront { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    uint SpriteFlags { get; set; }
-    bool UseGlobalDir { get; set; }
-    bool UseTextureAtlas { get; set; }
 }
 
-public partial interface IPlugVisualSpriteVSK5 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5
+public partial interface IPlugVisualSpriteVSK5 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers3
 {
-    ushort AtlasGridCountU { get; set; }
-    ushort AtlasGridCountV { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    Vec3 GlobalDirection { get; set; }
-    new float NPatchTessLevel { get; set; }
-    Vec2 PivotPoint { get; set; }
-    bool RadiusInScreen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
-    bool SortBackToFront { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    uint SpriteFlags { get; set; }
-    bool UseGlobalDir { get; set; }
-    bool UseTextureAtlas { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTMF : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMF
+public partial interface IPlugVisualSpriteTMF : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers3
 {
-    ushort AtlasGridCountU { get; set; }
-    ushort AtlasGridCountV { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    Vec3 GlobalDirection { get; set; }
-    new float NPatchTessLevel { get; set; }
-    Vec2 PivotPoint { get; set; }
-    bool RadiusInScreen { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode { get; set; }
-    bool SortBackToFront { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    uint SpriteFlags { get; set; }
-    bool UseGlobalDir { get; set; }
-    bool UseTextureAtlas { get; set; }
 }
 
-public partial interface IPlugVisualSpriteMP3 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP3
+public partial interface IPlugVisualSpriteMP3 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers1
 {
-    Rect[]? AtlasTexCoords { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTMT : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMT
+public partial interface IPlugVisualSpriteTMT : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers1
 {
-    Rect[]? AtlasTexCoords { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam { get; set; }
 }
 
-public partial interface IPlugVisualSpriteMP4 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP4
+public partial interface IPlugVisualSpriteMP4 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers1
 {
-    Rect[]? AtlasTexCoords { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam { get; set; }
 }
 
-public partial interface IPlugVisualSpriteTM2020 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM2020
+public partial interface IPlugVisualSpriteTM2020 : IPlugVisualSprite, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMembers1
 {
-    Rect[]? AtlasTexCoords { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam { get; set; }
 }
 

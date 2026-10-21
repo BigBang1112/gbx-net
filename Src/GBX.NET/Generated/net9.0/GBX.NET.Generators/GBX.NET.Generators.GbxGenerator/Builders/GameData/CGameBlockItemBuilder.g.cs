@@ -36,9 +36,9 @@ public abstract class CGameBlockItemBuilderBase<TSelf> where TSelf : CGameBlockI
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state;
     private protected CGameBlockItemBuilderBase() => state = new();
     private protected CGameBlockItemBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state) => this.state = state;
-    private protected static void SetArchetypeBlockInfoCollectionId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, global::GBX.NET.Id value) => state.Set<global::GBX.NET.Id>("ArchetypeBlockInfoCollectionId", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ArchetypeBlockInfoCollectionId = value);
-    private protected static void SetArchetypeBlockInfoId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, string value) => state.Set<string>("ArchetypeBlockInfoId", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ArchetypeBlockInfoId = value);
-    private protected static void SetCustomizedVariants(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil> value) => state.Set<global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil>>("CustomizedVariants", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : new global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil>(value), static (node, value) => node.CustomizedVariants = value);
+    private protected static void SetArchetypeBlockInfoCollectionId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, global::GBX.NET.Id value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetArchetypeBlockInfoCollectionIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetArchetypeBlockInfoId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, string value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetArchetypeBlockInfoIdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetCustomizedVariants(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameBlockItem> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.GameData.CGameBlockItem.Mobil> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameBlockItemBuilderAssignments.GetCustomizedVariantsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Id ArchetypeBlockInfoCollectionId
     {
         get => state.Get<global::GBX.NET.Id>("ArchetypeBlockInfoCollectionId");
@@ -80,6 +80,32 @@ public abstract class CGameBlockItemBuilderBase<TSelf> where TSelf : CGameBlockI
 }
 public partial class CGameBlockItemBuilder : CGameBlockItemBuilderBase<CGameBlockItemBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameBlockItem CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameBlockItem();
+        var chunk2E025000 = new global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000();
+        node.Chunks.Add(chunk2E025000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameBlockItem node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E025000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameBlockItem CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameBlockItem();
+        var chunk2E025000 = new global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000();
+        node.Chunks.Add(chunk2E025000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.GameData.CGameBlockItem node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk2E025000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameBlockItem node, GameVersion game)
+    {
+        if (node.ArchetypeBlockInfoId is null) throw new MemberNullException("ArchetypeBlockInfoId");
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -90,14 +116,12 @@ public partial class CGameBlockItemBuilder : CGameBlockItemBuilderBase<CGameBloc
         public global::GBX.NET.Interfaces.GameData.IGameBlockItemMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameBlockItem Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameBlockItem();
-            var chunk2E025000 = new global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000();
-            node.Chunks.Add(chunk2E025000);
+            var node = CGameBlockItemBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk2E025000 is missing or has an incompatible version.");
+            CGameBlockItemBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.ArchetypeBlockInfoId is null) throw new MemberNullException("ArchetypeBlockInfoId");
+            CGameBlockItemBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -110,14 +134,12 @@ public partial class CGameBlockItemBuilder : CGameBlockItemBuilderBase<CGameBloc
         public global::GBX.NET.Interfaces.GameData.IGameBlockItemTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameBlockItem Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameBlockItem();
-            var chunk2E025000 = new global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000();
-            node.Chunks.Add(chunk2E025000);
+            var node = CGameBlockItemBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameBlockItem.Chunk2E025000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk2E025000 is missing or has an incompatible version.");
+            CGameBlockItemBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.ArchetypeBlockInfoId is null) throw new MemberNullException("ArchetypeBlockInfoId");
+            CGameBlockItemBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

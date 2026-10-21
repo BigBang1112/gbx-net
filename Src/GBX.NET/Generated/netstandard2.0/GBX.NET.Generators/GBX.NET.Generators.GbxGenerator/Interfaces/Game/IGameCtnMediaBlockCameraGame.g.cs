@@ -31,6 +31,32 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockCameraGameMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGame
+{
+    int LegacySceneUId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockCameraGameMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGame
+{
+    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? GameCamOld { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockCameraGameMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGame
+{
+    float CamFarClipPlane { get; set; }
+    float CamFov { get; set; }
+    float CamNearClipPlane { get; set; }
+    Vec3 CamPitchYawRoll { get; set; }
+    Vec3 CamPosition { get; set; }
+    float CrossHairSizeScale { get; set; }
+    float FocusZ { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam GameCam { get; set; }
+    float LensSize { get; set; }
+    bool ShowCrossHair { get; set; }
+    bool ShowHUD { get; set; }
+    bool ShowPing { get; set; }
+}
 public partial interface IGameCtnMediaBlockCameraGame : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCamera
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -45,19 +71,16 @@ public partial interface IGameCtnMediaBlockCameraGame : IClassVersion<global::GB
     TimeSingle Start { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCameraGameTMSX : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMSX
+public partial interface IGameCtnMediaBlockCameraGameTMSX : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers2
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? GameCamOld { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCameraGameTMNESWC : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMNESWC
+public partial interface IGameCtnMediaBlockCameraGameTMNESWC : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers2
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? GameCamOld { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCameraGameVSK5 : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraVSK5
+public partial interface IGameCtnMediaBlockCameraGameVSK5 : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers2
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCamOld? GameCamOld { get; set; }
 }
 
 public partial interface IGameCtnMediaBlockCameraGameTMF : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMF
@@ -65,53 +88,15 @@ public partial interface IGameCtnMediaBlockCameraGameTMF : IGameCtnMediaBlockCam
     string? GameCamId { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCameraGameTMT : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMT
+public partial interface IGameCtnMediaBlockCameraGameTMT : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers3
 {
-    float CamFarClipPlane { get; set; }
-    float CamFov { get; set; }
-    float CamNearClipPlane { get; set; }
-    Vec3 CamPitchYawRoll { get; set; }
-    Vec3 CamPosition { get; set; }
-    float CrossHairSizeScale { get; set; }
-    float FocusZ { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam GameCam { get; set; }
-    float LensSize { get; set; }
-    bool ShowCrossHair { get; set; }
-    bool ShowHUD { get; set; }
-    bool ShowPing { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCameraGameMP4 : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraMP4
+public partial interface IGameCtnMediaBlockCameraGameMP4 : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers3
 {
-    float CamFarClipPlane { get; set; }
-    float CamFov { get; set; }
-    float CamNearClipPlane { get; set; }
-    Vec3 CamPitchYawRoll { get; set; }
-    Vec3 CamPosition { get; set; }
-    float CrossHairSizeScale { get; set; }
-    float FocusZ { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam GameCam { get; set; }
-    int LegacySceneUId { get; set; }
-    float LensSize { get; set; }
-    bool ShowCrossHair { get; set; }
-    bool ShowHUD { get; set; }
-    bool ShowPing { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockCameraGameTM2020 : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTM2020
+public partial interface IGameCtnMediaBlockCameraGameTM2020 : IGameCtnMediaBlockCameraGame, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraGameMembers3
 {
-    float CamFarClipPlane { get; set; }
-    float CamFov { get; set; }
-    float CamNearClipPlane { get; set; }
-    Vec3 CamPitchYawRoll { get; set; }
-    Vec3 CamPosition { get; set; }
-    float CrossHairSizeScale { get; set; }
-    float FocusZ { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraGame.EGameCam GameCam { get; set; }
-    int LegacySceneUId { get; set; }
-    float LensSize { get; set; }
-    bool ShowCrossHair { get; set; }
-    bool ShowHUD { get; set; }
-    bool ShowPing { get; set; }
 }
 

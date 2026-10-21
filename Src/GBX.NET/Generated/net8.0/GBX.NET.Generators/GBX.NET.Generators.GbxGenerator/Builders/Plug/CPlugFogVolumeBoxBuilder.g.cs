@@ -39,6 +39,36 @@ public abstract class CPlugFogVolumeBoxBuilderBase<TSelf> where TSelf : CPlugFog
 }
 public partial class CPlugFogVolumeBoxBuilder : CPlugFogVolumeBoxBuilderBase<CPlugFogVolumeBoxBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugFogVolumeBox CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox();
+        var chunk090D4001 = new global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001();
+        chunk090D4001.Version = 0;
+        node.Chunks.Add(chunk090D4001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D4001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugFogVolumeBox CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox();
+        var chunk090D5000 = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox.Chunk090D5000();
+        node.Chunks.Add(chunk090D5000);
+        var chunk090D4001 = new global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001();
+        chunk090D4001.Version = 0;
+        node.Chunks.Add(chunk090D4001);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox.Chunk090D5000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090D5000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090D4001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -51,14 +81,12 @@ public partial class CPlugFogVolumeBoxBuilder : CPlugFogVolumeBoxBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox();
-            var chunk090D4001 = new global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001();
-            chunk090D4001.Version = 0;
-            node.Chunks.Add(chunk090D4001);
+            var node = CPlugFogVolumeBoxBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk090D4001 is missing or has an incompatible version.");
+            CPlugFogVolumeBoxBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugFogVolumeBoxBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -71,14 +99,12 @@ public partial class CPlugFogVolumeBoxBuilder : CPlugFogVolumeBoxBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox();
-            var chunk090D4001 = new global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001();
-            chunk090D4001.Version = 0;
-            node.Chunks.Add(chunk090D4001);
+            var node = CPlugFogVolumeBoxBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk090D4001 is missing or has an incompatible version.");
+            CPlugFogVolumeBoxBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugFogVolumeBoxBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -91,17 +117,12 @@ public partial class CPlugFogVolumeBoxBuilder : CPlugFogVolumeBoxBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox();
-            var chunk090D5000 = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox.Chunk090D5000();
-            node.Chunks.Add(chunk090D5000);
-            var chunk090D4001 = new global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001();
-            chunk090D4001.Version = 0;
-            node.Chunks.Add(chunk090D4001);
+            var node = CPlugFogVolumeBoxBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox.Chunk090D5000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090D5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk090D4001 is missing or has an incompatible version.");
+            CPlugFogVolumeBoxBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugFogVolumeBoxBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -114,17 +135,12 @@ public partial class CPlugFogVolumeBoxBuilder : CPlugFogVolumeBoxBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFogVolumeBox Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox();
-            var chunk090D5000 = new global::GBX.NET.Engines.Plug.CPlugFogVolumeBox.Chunk090D5000();
-            node.Chunks.Add(chunk090D5000);
-            var chunk090D4001 = new global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001();
-            chunk090D4001.Version = 0;
-            node.Chunks.Add(chunk090D4001);
+            var node = CPlugFogVolumeBoxBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolumeBox.Chunk090D5000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090D5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFogVolume.Chunk090D4001>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090D4001 is missing or has an incompatible version.");
+            CPlugFogVolumeBoxBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugFogVolumeBoxBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

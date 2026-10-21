@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockBloomHdrBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr> state;
     private protected CGameCtnMediaBlockBloomHdrBuilderBase() => state = new();
     private protected CGameCtnMediaBlockBloomHdrBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockBloomHdrBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Key>?>("Keys");
@@ -58,6 +58,20 @@ public abstract class CGameCtnMediaBlockBloomHdrBuilderBase<TSelf> where TSelf :
 }
 public partial class CGameCtnMediaBlockBloomHdrBuilder : CGameCtnMediaBlockBloomHdrBuilderBase<CGameCtnMediaBlockBloomHdrBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr();
+        var chunk03128002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002();
+        node.Chunks.Add(chunk03128002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03128002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -69,13 +83,12 @@ public partial class CGameCtnMediaBlockBloomHdrBuilder : CGameCtnMediaBlockBloom
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBloomHdrTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr();
-            var chunk03128002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002();
-            node.Chunks.Add(chunk03128002);
+            var node = CGameCtnMediaBlockBloomHdrBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03128002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockBloomHdrBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockBloomHdrBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -88,13 +101,12 @@ public partial class CGameCtnMediaBlockBloomHdrBuilder : CGameCtnMediaBlockBloom
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBloomHdrMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr();
-            var chunk03128002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002();
-            node.Chunks.Add(chunk03128002);
+            var node = CGameCtnMediaBlockBloomHdrBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03128002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockBloomHdrBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockBloomHdrBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -107,13 +119,12 @@ public partial class CGameCtnMediaBlockBloomHdrBuilder : CGameCtnMediaBlockBloom
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBloomHdrTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr();
-            var chunk03128002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002();
-            node.Chunks.Add(chunk03128002);
+            var node = CGameCtnMediaBlockBloomHdrBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBloomHdr.Chunk03128002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03128002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockBloomHdrBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockBloomHdrBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

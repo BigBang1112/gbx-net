@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Function;
 public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020
 {
     public static global::GBX.NET.Builders.Engines.Function.CFuncEnumBuilder Create() => new();
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Function.IFuncEnumVSK5.IconIndexs
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>.IconIndexs
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, 
         }
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Function.IFuncEnumTMF.IconIndexs
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>.IconIndexs
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, 
         }
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Function.IFuncEnumMP3.IconIndexs
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>.IconIndexs
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, 
         }
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Function.IFuncEnumTMT.IconIndexs
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.IconIndexs
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, 
         }
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Function.IFuncEnumMP4.IconIndexs
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.IconIndexs
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CFuncEnum : global::GBX.NET.Interfaces.Function.IFuncEnum, 
         }
         set => IconIndexs = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Function.IFuncEnumTM2020.IconIndexs
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Function.IFuncEnumMembers2<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.IconIndexs
     {
         get
         {

@@ -36,64 +36,64 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state;
     private protected CGamePlayerProfileChunk_AccountSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_AccountSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) => this.state = state;
-    private protected static void SetAge(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("Age", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Age = value);
-    private protected static void SetAnalogDeadZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("AnalogDeadZone", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnalogDeadZone = value);
-    private protected static void SetAnalogSensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("AnalogSensitivity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnalogSensitivity = value);
-    private protected static void SetAvatarName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("AvatarName", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AvatarName = value);
-    private protected static void SetBroadcastAudioEnable(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set<bool>("BroadcastAudioEnable", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastAudioEnable = value);
-    private protected static void SetBroadcastAudioVolumePlayback(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("BroadcastAudioVolumePlayback", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastAudioVolumePlayback = value);
-    private protected static void SetBroadcastAudioVolumeRecorder(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("BroadcastAudioVolumeRecorder", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastAudioVolumeRecorder = value);
-    private protected static void SetBroadcastLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("BroadcastLogin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastLogin = value);
-    private protected static void SetBroadcastPasswordEncryptedHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("BroadcastPasswordEncryptedHexa", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastPasswordEncryptedHexa = value);
-    private protected static void SetBroadcastVideoCpuUsage(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BroadcastVideoCpuUsage", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastVideoCpuUsage = value);
-    private protected static void SetBroadcastVideoHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BroadcastVideoHeight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastVideoHeight = value);
-    private protected static void SetBroadcastVideoKbps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BroadcastVideoKbps", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastVideoKbps = value);
-    private protected static void SetBroadcastVideoMaxKbps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BroadcastVideoMaxKbps", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastVideoMaxKbps = value);
-    private protected static void SetBroadcastVideoTargetFps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BroadcastVideoTargetFps", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastVideoTargetFps = value);
-    private protected static void SetBroadcastVideoWidth(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BroadcastVideoWidth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BroadcastVideoWidth = value);
-    private protected static void SetBuddies(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGameBuddy[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameBuddy[]?>("Buddies", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameBuddy[])value.Clone(), static (node, value) => node.Buddies = value);
-    private protected static void SetBuddyArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("BuddyArchiveVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BuddyArchiveVersion = value);
-    private protected static void SetCenterSpringIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("CenterSpringIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CenterSpringIntensity = value);
-    private protected static void SetClubLinkUrl(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("ClubLinkUrl", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ClubLinkUrl = value);
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("Description", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Description = value);
-    private protected static void SetEncryptedKeyHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("EncryptedKeyHexa", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EncryptedKeyHexa = value);
-    private protected static void SetEulaVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("EulaVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EulaVersion = value);
-    private protected static void SetFameStars(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set<byte>("FameStars", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FameStars = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set<byte>("Flags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetFlags2(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set<byte>("Flags2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Flags2 = value);
-    private protected static void SetInboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("InboxMessages", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.InboxMessages = value);
-    private protected static void SetLastSessionId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("LastSessionId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LastSessionId = value);
-    private protected static void SetLastUsedMSAddress(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("LastUsedMSAddress", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LastUsedMSAddress = value);
-    private protected static void SetLastUsedMSPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("LastUsedMSPath", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LastUsedMSPath = value);
-    private protected static void SetLeague(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("League", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.League = value);
-    private protected static void SetMouseAccel(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set<bool>("MouseAccel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseAccel = value);
-    private protected static void SetMouseAccelQuantity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("MouseAccelQuantity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseAccelQuantity = value);
-    private protected static void SetMouseLookInvertY(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set<bool>("MouseLookInvertY", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseLookInvertY = value);
-    private protected static void SetMouseReleaseKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("MouseReleaseKey", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseReleaseKey = value);
-    private protected static void SetMouseScaleFreeLook(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("MouseScaleFreeLook", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseScaleFreeLook = value);
-    private protected static void SetMouseScaleY(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("MouseScaleY", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseScaleY = value);
-    private protected static void SetMouseSensitivities_EnableSpecific(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set<bool>("MouseSensitivities_EnableSpecific", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseSensitivities_EnableSpecific = value);
-    private protected static void SetMouseSensitivity_Default(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("MouseSensitivity_Default", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseSensitivity_Default = value);
-    private protected static void SetMouseSensitivity_Laser(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("MouseSensitivity_Laser", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MouseSensitivity_Laser = value);
-    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("NickName", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.NickName = value);
-    private protected static void SetOnlineLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("OnlineLogin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OnlineLogin = value);
-    private protected static void SetOnlinePassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("OnlinePassword", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OnlinePassword = value);
-    private protected static void SetOnlinePlanets(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("OnlinePlanets", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OnlinePlanets = value);
-    private protected static void SetOnlineRemainingNickNamesChangesCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("OnlineRemainingNickNamesChangesCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OnlineRemainingNickNamesChangesCount = value);
-    private protected static void SetOnlineSupportKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("OnlineSupportKey", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OnlineSupportKey = value);
-    private protected static void SetOnlineValidationCode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("OnlineValidationCode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OnlineValidationCode = value);
-    private protected static void SetOutboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("OutboxMessages", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.OutboxMessages = value);
-    private protected static void SetPlayerTagsConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig?>("PlayerTagsConfig", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PlayerTagsConfig = value);
-    private protected static void SetPrivacyPolicyVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set<int>("PrivacyPolicyVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PrivacyPolicyVersion = value);
-    private protected static void SetRSAPrivateKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("RSAPrivateKey", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RSAPrivateKey = value);
-    private protected static void SetReadMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>?>("ReadMessages", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.ReadMessages = value);
-    private protected static void SetReceiveNews(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set<bool>("ReceiveNews", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ReceiveNews = value);
-    private protected static void SetReceivedMessagesAt(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, DateTime? value) => state.Set<DateTime?>("ReceivedMessagesAt", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ReceivedMessagesAt = value);
-    private protected static void SetRumbleIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set<float>("RumbleIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RumbleIntensity = value);
-    private protected static void SetSteamId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, ulong value) => state.Set<ulong>("SteamId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SteamId = value);
-    private protected static void SetTrigram(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("Trigram", value, GameVersion.TM2020, static value => value, static (node, value) => node.Trigram = value);
-    private protected static void SetYoutubeRefreshToken(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set<string?>("YoutubeRefreshToken", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.YoutubeRefreshToken = value);
-    private protected static void SetYoutubeUploads(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]?>("YoutubeUploads", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[])value.Clone(), static (node, value) => node.YoutubeUploads = value);
+    private protected static void SetAge(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAgeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnalogDeadZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAnalogDeadZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnalogSensitivity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAnalogSensitivityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAvatarName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetAvatarNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastAudioEnable(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioEnableAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastAudioVolumePlayback(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioVolumePlaybackAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastAudioVolumeRecorder(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastAudioVolumeRecorderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastPasswordEncryptedHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastPasswordEncryptedHexaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastVideoCpuUsage(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoCpuUsageAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastVideoHeight(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoHeightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastVideoKbps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoKbpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastVideoMaxKbps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoMaxKbpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastVideoTargetFps(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoTargetFpsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBroadcastVideoWidth(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBroadcastVideoWidthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBuddies(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGameBuddy[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBuddiesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBuddyArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetBuddyArchiveVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCenterSpringIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetCenterSpringIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetClubLinkUrl(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetClubLinkUrlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEncryptedKeyHexa(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetEncryptedKeyHexaAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEulaVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetEulaVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFameStars(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFameStarsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFlags2(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetFlags2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetInboxMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLastSessionId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastSessionIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLastUsedMSAddress(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastUsedMSAddressAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLastUsedMSPath(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLastUsedMSPathAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLeague(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetLeagueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseAccel(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseAccelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseAccelQuantity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseAccelQuantityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseLookInvertY(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseLookInvertYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseReleaseKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseReleaseKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseScaleFreeLook(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseScaleFreeLookAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseScaleY(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseScaleYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseSensitivities_EnableSpecific(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivities_EnableSpecificAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseSensitivity_Default(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivity_DefaultAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMouseSensitivity_Laser(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetMouseSensitivity_LaserAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetNickNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOnlineLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOnlinePassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlinePasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOnlinePlanets(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlinePlanetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOnlineRemainingNickNamesChangesCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineRemainingNickNamesChangesCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOnlineSupportKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineSupportKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOnlineValidationCode(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOnlineValidationCodeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOutboxMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetOutboxMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPlayerTagsConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.SPlayerTagsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetPlayerTagsConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPrivacyPolicyVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetPrivacyPolicyVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRSAPrivateKey(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetRSAPrivateKeyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetReadMessages(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReadMessagesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetReceiveNews(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReceiveNewsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetReceivedMessagesAt(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, DateTime? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetReceivedMessagesAtAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRumbleIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetRumbleIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSteamId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetSteamIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTrigram(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetTrigramAssignment(), value, GameVersion.TM2020);
+    private protected static void SetYoutubeRefreshToken(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetYoutubeRefreshTokenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetYoutubeUploads(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state, global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_AccountSettingsBuilderAssignments.GetYoutubeUploadsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public int Age
     {
         get => state.Get<int>("Age");
@@ -673,20 +673,230 @@ public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> 
         return (TSelf)this;
     }
 }
+public abstract class CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<TSelf> : CGamePlayerProfileChunk_AccountSettingsBuilderBase<TSelf> where TSelf : CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<TSelf>
+{
+    private protected CGamePlayerProfileChunk_AccountSettingsBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) : base(state) { }
+    public string? YoutubeRefreshToken
+    {
+        get => state.Get<string?>("YoutubeRefreshToken");
+        set => SetYoutubeRefreshToken(state, value);
+    }
+    public TSelf WithYoutubeRefreshToken(string? value)
+    {
+        YoutubeRefreshToken = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]?>("YoutubeUploads");
+        set => SetYoutubeUploads(state, value);
+    }
+    public TSelf WithYoutubeUploads(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value)
+    {
+        YoutubeUploads = value;
+        return (TSelf)this;
+    }
+    public TSelf WithYoutubeUploads(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload> values)
+    {
+        return WithYoutubeUploads(values.ToArray());
+    }
+}
 public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlayerProfileChunk_AccountSettingsBuilderBase<CGamePlayerProfileChunk_AccountSettingsBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
+        var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(game);
+        node.Chunks.Add(chunk0312C000);
+        var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(game);
+        node.Chunks.Add(chunk0312C001);
+        var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(game);
+        node.Chunks.Add(chunk0312C002);
+        var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(game);
+        node.Chunks.Add(chunk0312C003);
+        var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(game);
+        node.Chunks.Add(chunk0312C004);
+        var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(game);
+        node.Chunks.Add(chunk0312C005);
+        var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(game);
+        node.Chunks.Add(chunk0312C006);
+        var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
+        chunk0312C007.Version = 0;
+        node.Chunks.Add(chunk0312C007);
+        var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(game);
+        node.Chunks.Add(chunk0312C008);
+        var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(game);
+        node.Chunks.Add(chunk0312C009);
+        var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(game);
+        node.Chunks.Add(chunk0312C00A);
+        var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(game);
+        node.Chunks.Add(chunk0312C00B);
+        var chunk0312C00C = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C();
+        chunk0312C00C.Version = 0;
+        node.Chunks.Add(chunk0312C00C);
+        var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
+        chunk0312C00D.Version = 0;
+        node.Chunks.Add(chunk0312C00D);
+        var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
+        chunk0312C00E.Version = 0;
+        node.Chunks.Add(chunk0312C00E);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00E is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
+        var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(game);
+        node.Chunks.Add(chunk0312C000);
+        var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(game);
+        node.Chunks.Add(chunk0312C001);
+        var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(game);
+        node.Chunks.Add(chunk0312C002);
+        var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(game);
+        node.Chunks.Add(chunk0312C003);
+        var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(game);
+        node.Chunks.Add(chunk0312C004);
+        var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(game);
+        node.Chunks.Add(chunk0312C005);
+        var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(game);
+        node.Chunks.Add(chunk0312C006);
+        var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
+        chunk0312C007.Version = 0;
+        node.Chunks.Add(chunk0312C007);
+        var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(game);
+        node.Chunks.Add(chunk0312C008);
+        var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(game);
+        node.Chunks.Add(chunk0312C009);
+        var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(game);
+        node.Chunks.Add(chunk0312C00A);
+        var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(game);
+        node.Chunks.Add(chunk0312C00B);
+        var chunk0312C00C = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C();
+        chunk0312C00C.Version = 0;
+        node.Chunks.Add(chunk0312C00C);
+        var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
+        chunk0312C00D.Version = 0;
+        node.Chunks.Add(chunk0312C00D);
+        var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
+        chunk0312C00E.Version = 0;
+        node.Chunks.Add(chunk0312C00E);
+        var chunk0312C00F = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F();
+        chunk0312C00F.Version = 0;
+        node.Chunks.Add(chunk0312C00F);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00F is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
+        var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(game);
+        node.Chunks.Add(chunk0312C000);
+        var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(game);
+        node.Chunks.Add(chunk0312C001);
+        var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(game);
+        node.Chunks.Add(chunk0312C002);
+        var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(game);
+        node.Chunks.Add(chunk0312C003);
+        var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(game);
+        node.Chunks.Add(chunk0312C004);
+        var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(game);
+        node.Chunks.Add(chunk0312C005);
+        var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(game);
+        node.Chunks.Add(chunk0312C006);
+        var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
+        chunk0312C007.Version = 0;
+        node.Chunks.Add(chunk0312C007);
+        var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(game);
+        node.Chunks.Add(chunk0312C008);
+        var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(game);
+        node.Chunks.Add(chunk0312C009);
+        var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(game);
+        node.Chunks.Add(chunk0312C00A);
+        var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(game);
+        node.Chunks.Add(chunk0312C00B);
+        var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
+        chunk0312C00D.Version = 0;
+        node.Chunks.Add(chunk0312C00D);
+        var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
+        chunk0312C00E.Version = 0;
+        node.Chunks.Add(chunk0312C00E);
+        var chunk0312C00F = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F();
+        chunk0312C00F.Version = 0;
+        node.Chunks.Add(chunk0312C00F);
+        var chunk0312C010 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C010();
+        chunk0312C010.Version = 0;
+        node.Chunks.Add(chunk0312C010);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312C010 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class MP3 : CGamePlayerProfileChunk_AccountSettingsBuilderBase<MP3>
+    public partial class MP3 : CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) : base(state) { }
         public MP3 WithInboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3[] values)
         {
-            return base.WithInboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithInboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(values, false));
         }
         public MP3 WithInboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3> values)
         {
@@ -694,7 +904,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public MP3 WithOutboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3[] values)
         {
-            return base.WithOutboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithOutboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(values, false));
         }
         public MP3 WithOutboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3> values)
         {
@@ -702,104 +912,33 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public MP3 WithReadMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3[] values)
         {
-            return base.WithReadMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithReadMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3>(values, false));
         }
         public MP3 WithReadMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP3> values)
         {
             return WithReadMessages(values.ToArray());
         }
-        public string? YoutubeRefreshToken
-        {
-            get => state.Get<string?>("YoutubeRefreshToken");
-            set => SetYoutubeRefreshToken(state, value);
-        }
-        public MP3 WithYoutubeRefreshToken(string? value)
-        {
-            YoutubeRefreshToken = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]?>("YoutubeUploads");
-            set => SetYoutubeUploads(state, value);
-        }
-        public MP3 WithYoutubeUploads(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value)
-        {
-            YoutubeUploads = value;
-            return this;
-        }
-        public MP3 WithYoutubeUploads(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload> values)
-        {
-            return WithYoutubeUploads(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
-            var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C000);
-            var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C001);
-            var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C002);
-            var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C003);
-            var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C004);
-            var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C005);
-            var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C006);
-            var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
-            chunk0312C007.Version = 0;
-            node.Chunks.Add(chunk0312C007);
-            var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C008);
-            var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C009);
-            var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C00A);
-            var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(GameVersion.MP3);
-            node.Chunks.Add(chunk0312C00B);
-            var chunk0312C00C = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C();
-            chunk0312C00C.Version = 0;
-            node.Chunks.Add(chunk0312C00C);
-            var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
-            chunk0312C00D.Version = 0;
-            node.Chunks.Add(chunk0312C00D);
-            var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
-            chunk0312C00E.Version = 0;
-            node.Chunks.Add(chunk0312C00E);
+            var node = CGamePlayerProfileChunk_AccountSettingsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 6 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C00B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312C00E is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node);
     }
-    public partial class TMT : CGamePlayerProfileChunk_AccountSettingsBuilderBase<TMT>
+    public partial class TMT : CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) : base(state) { }
         public TMT WithInboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT[] values)
         {
-            return base.WithInboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithInboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(values, false));
         }
         public TMT WithInboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT> values)
         {
@@ -807,7 +946,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public TMT WithOutboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT[] values)
         {
-            return base.WithOutboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithOutboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(values, false));
         }
         public TMT WithOutboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT> values)
         {
@@ -815,104 +954,33 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public TMT WithReadMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT[] values)
         {
-            return base.WithReadMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithReadMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT>(values, false));
         }
         public TMT WithReadMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMT> values)
         {
             return WithReadMessages(values.ToArray());
         }
-        public string? YoutubeRefreshToken
-        {
-            get => state.Get<string?>("YoutubeRefreshToken");
-            set => SetYoutubeRefreshToken(state, value);
-        }
-        public TMT WithYoutubeRefreshToken(string? value)
-        {
-            YoutubeRefreshToken = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]?>("YoutubeUploads");
-            set => SetYoutubeUploads(state, value);
-        }
-        public TMT WithYoutubeUploads(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value)
-        {
-            YoutubeUploads = value;
-            return this;
-        }
-        public TMT WithYoutubeUploads(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload> values)
-        {
-            return WithYoutubeUploads(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
-            var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C000);
-            var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C001);
-            var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C002);
-            var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C003);
-            var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C004);
-            var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C005);
-            var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C006);
-            var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
-            chunk0312C007.Version = 0;
-            node.Chunks.Add(chunk0312C007);
-            var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C008);
-            var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C009);
-            var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C00A);
-            var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(GameVersion.TMT);
-            node.Chunks.Add(chunk0312C00B);
-            var chunk0312C00C = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C();
-            chunk0312C00C.Version = 0;
-            node.Chunks.Add(chunk0312C00C);
-            var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
-            chunk0312C00D.Version = 0;
-            node.Chunks.Add(chunk0312C00D);
-            var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
-            chunk0312C00E.Version = 0;
-            node.Chunks.Add(chunk0312C00E);
+            var node = CGamePlayerProfileChunk_AccountSettingsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C00B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0312C00E is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings node);
     }
-    public partial class MP4 : CGamePlayerProfileChunk_AccountSettingsBuilderBase<MP4>
+    public partial class MP4 : CGamePlayerProfileChunk_AccountSettingsBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) : base(state) { }
         public MP4 WithInboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4[] values)
         {
-            return base.WithInboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithInboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(values, false));
         }
         public MP4 WithInboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4> values)
         {
@@ -920,7 +988,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public MP4 WithOutboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4[] values)
         {
-            return base.WithOutboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithOutboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(values, false));
         }
         public MP4 WithOutboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4> values)
         {
@@ -928,96 +996,21 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public MP4 WithReadMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4[] values)
         {
-            return base.WithReadMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithReadMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4>(values, false));
         }
         public MP4 WithReadMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageMP4> values)
         {
             return WithReadMessages(values.ToArray());
         }
-        public string? YoutubeRefreshToken
-        {
-            get => state.Get<string?>("YoutubeRefreshToken");
-            set => SetYoutubeRefreshToken(state, value);
-        }
-        public MP4 WithYoutubeRefreshToken(string? value)
-        {
-            YoutubeRefreshToken = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? YoutubeUploads
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]?>("YoutubeUploads");
-            set => SetYoutubeUploads(state, value);
-        }
-        public MP4 WithYoutubeUploads(params global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload[]? value)
-        {
-            YoutubeUploads = value;
-            return this;
-        }
-        public MP4 WithYoutubeUploads(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.YoutubeUpload> values)
-        {
-            return WithYoutubeUploads(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
-            var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C000);
-            var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C001);
-            var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C002);
-            var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C003);
-            var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C004);
-            var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C005);
-            var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C006);
-            var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
-            chunk0312C007.Version = 0;
-            node.Chunks.Add(chunk0312C007);
-            var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C008);
-            var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C009);
-            var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C00A);
-            var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(GameVersion.MP4);
-            node.Chunks.Add(chunk0312C00B);
-            var chunk0312C00C = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C();
-            chunk0312C00C.Version = 0;
-            node.Chunks.Add(chunk0312C00C);
-            var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
-            chunk0312C00D.Version = 0;
-            node.Chunks.Add(chunk0312C00D);
-            var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
-            chunk0312C00E.Version = 0;
-            node.Chunks.Add(chunk0312C00E);
-            var chunk0312C00F = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F();
-            chunk0312C00F.Version = 0;
-            node.Chunks.Add(chunk0312C00F);
+            var node = CGamePlayerProfileChunk_AccountSettingsBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 7 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C00B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00C>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C00E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312C00F is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -1029,7 +1022,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings> state) : base(state) { }
         public TM2020 WithInboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020[] values)
         {
-            return base.WithInboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithInboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(values, false));
         }
         public TM2020 WithInboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020> values)
         {
@@ -1037,7 +1030,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public TM2020 WithOutboxMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020[] values)
         {
-            return base.WithOutboxMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithOutboxMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(values, false));
         }
         public TM2020 WithOutboxMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020> values)
         {
@@ -1045,7 +1038,7 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         }
         public TM2020 WithReadMessages(params global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020[] values)
         {
-            return base.WithReadMessages(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithReadMessages(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020>(values, false));
         }
         public TM2020 WithReadMessages(IEnumerable<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTM2020> values)
         {
@@ -1064,63 +1057,12 @@ public partial class CGamePlayerProfileChunk_AccountSettingsBuilder : CGamePlaye
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_AccountSettingsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings();
-            var chunk0312C000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C000);
-            var chunk0312C001 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C001);
-            var chunk0312C002 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C002);
-            var chunk0312C003 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C003);
-            var chunk0312C004 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C004);
-            var chunk0312C005 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C005);
-            var chunk0312C006 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C006);
-            var chunk0312C007 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007();
-            chunk0312C007.Version = 0;
-            node.Chunks.Add(chunk0312C007);
-            var chunk0312C008 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C008);
-            var chunk0312C009 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C009);
-            var chunk0312C00A = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C00A);
-            var chunk0312C00B = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312C00B);
-            var chunk0312C00D = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D();
-            chunk0312C00D.Version = 0;
-            node.Chunks.Add(chunk0312C00D);
-            var chunk0312C00E = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E();
-            chunk0312C00E.Version = 0;
-            node.Chunks.Add(chunk0312C00E);
-            var chunk0312C00F = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F();
-            chunk0312C00F.Version = 0;
-            node.Chunks.Add(chunk0312C00F);
-            var chunk0312C010 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C010();
-            chunk0312C010.Version = 0;
-            node.Chunks.Add(chunk0312C010);
+            var node = CGamePlayerProfileChunk_AccountSettingsBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C001>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C002>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C003>() is not { Version: 7 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C004>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C005>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C006>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C007>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C008>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C009>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00A>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00B>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C00B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00D>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00E>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C00E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C00F>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_AccountSettings.Chunk0312C010>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312C010 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGamePlayerProfileChunk_AccountSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

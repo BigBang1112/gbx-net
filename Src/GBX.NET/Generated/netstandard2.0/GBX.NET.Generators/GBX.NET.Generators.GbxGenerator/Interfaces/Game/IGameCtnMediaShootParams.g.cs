@@ -31,6 +31,26 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaShootParamsMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParams
+{
+    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding { get; set; }
+    int DofSampleCount { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo { get; set; }
+    bool HqCarReflects { get; set; }
+    bool HqDOF { get; set; }
+    bool Hud3d { get; set; }
+    bool ReflectRayCast { get; set; }
+    bool ReflectSubSample { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaShootParamsMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParams
+{
+    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur MotionBlur { get; set; }
+}
 public partial interface IGameCtnMediaShootParams : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaShootParams>
 {
     bool Hq { get; set; }
@@ -48,65 +68,19 @@ public partial interface IGameCtnMediaShootParamsTMF : IGameCtnMediaShootParams
 {
 }
 
-public partial interface IGameCtnMediaShootParamsMP3 : IGameCtnMediaShootParams
+public partial interface IGameCtnMediaShootParamsMP3 : IGameCtnMediaShootParams, global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMembers1
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding { get; set; }
-    int DofSampleCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo { get; set; }
-    bool HqCarReflects { get; set; }
-    bool HqDOF { get; set; }
-    bool Hud3d { get; set; }
-    bool ReflectRayCast { get; set; }
-    bool ReflectSubSample { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate { get; set; }
 }
 
-public partial interface IGameCtnMediaShootParamsTMT : IGameCtnMediaShootParams
+public partial interface IGameCtnMediaShootParamsTMT : IGameCtnMediaShootParams, global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMembers1
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding { get; set; }
-    int DofSampleCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo { get; set; }
-    bool HqCarReflects { get; set; }
-    bool HqDOF { get; set; }
-    bool Hud3d { get; set; }
-    bool ReflectRayCast { get; set; }
-    bool ReflectSubSample { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate { get; set; }
 }
 
-public partial interface IGameCtnMediaShootParamsMP4 : IGameCtnMediaShootParams
+public partial interface IGameCtnMediaShootParamsMP4 : IGameCtnMediaShootParams, global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMembers2
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding { get; set; }
-    int DofSampleCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo { get; set; }
-    bool HqCarReflects { get; set; }
-    bool HqDOF { get; set; }
-    bool Hud3d { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur MotionBlur { get; set; }
-    bool ReflectRayCast { get; set; }
-    bool ReflectSubSample { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate { get; set; }
 }
 
-public partial interface IGameCtnMediaShootParamsTM2020 : IGameCtnMediaShootParams
+public partial interface IGameCtnMediaShootParamsTM2020 : IGameCtnMediaShootParams, global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsMembers2
 {
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.AudioEnc? AudioEncoding { get; set; }
-    int DofSampleCount { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtScreen ExtScreen { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EExtVideo ExtVideo { get; set; }
-    bool HqCarReflects { get; set; }
-    bool HqDOF { get; set; }
-    bool Hud3d { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EMotionBlur MotionBlur { get; set; }
-    bool ReflectRayCast { get; set; }
-    bool ReflectSubSample { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.VideoEnc? VideoEncoding { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnMediaShootParams.EQualityPreset WebmVideoAutoBitrate { get; set; }
 }
 

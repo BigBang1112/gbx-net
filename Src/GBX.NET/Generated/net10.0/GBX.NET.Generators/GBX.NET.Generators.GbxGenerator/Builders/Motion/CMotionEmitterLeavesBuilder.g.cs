@@ -36,14 +36,93 @@ public abstract class CMotionEmitterLeavesBuilderBase<TSelf> where TSelf : CMoti
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state;
     private protected CMotionEmitterLeavesBuilderBase() => state = new();
     private protected CMotionEmitterLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) => this.state = state;
-    private protected static void SetManagerModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value) => state.Set<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ManagerModel = value);
-    private protected static void SetManagerModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves>>("ManagerModel", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ManagerModel.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetPos(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, Vec3 value) => state.Set<Vec3>("Pos", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Pos = value);
-    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, Vec3 value) => state.Set<Vec3>("Radius", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Radius = value);
+    private protected static void SetManagerModel(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetManagerModelAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetManagerModelReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetManagerModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPos(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetPosAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRadius(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionEmitterLeavesBuilderAssignments.GetRadiusAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+}
+public abstract class CMotionEmitterLeavesBuilderMembers1<TSelf> : CMotionEmitterLeavesBuilderBase<TSelf> where TSelf : CMotionEmitterLeavesBuilderMembers1<TSelf>
+{
+    private protected CMotionEmitterLeavesBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
+    public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
+    {
+        get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
+        set => SetManagerModel(state, value);
+    }
+    public TSelf WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
+    {
+        ManagerModel = value;
+        return (TSelf)this;
+    }
+    public TSelf WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetManagerModelReference(state, value);
+        return (TSelf)this;
+    }
+    public Vec3 Pos
+    {
+        get => state.Get<Vec3>("Pos");
+        set => SetPos(state, value);
+    }
+    public TSelf WithPos(Vec3 value)
+    {
+        Pos = value;
+        return (TSelf)this;
+    }
+    public Vec3 Radius
+    {
+        get => state.Get<Vec3>("Radius");
+        set => SetRadius(state, value);
+    }
+    public TSelf WithRadius(Vec3 value)
+    {
+        Radius = value;
+        return (TSelf)this;
+    }
 }
 public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBase<CMotionEmitterLeavesBuilder>
 {
+    private static global::GBX.NET.Engines.Motion.CMotionEmitterLeaves CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
+        var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
+        node.Chunks.Add(chunk0804C001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0804C001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Motion.CMotionEmitterLeaves CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
+        var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
+        node.Chunks.Add(chunk0804C001);
+        var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
+        node.Chunks.Add(chunk08001000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0804C001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Motion.CMotionEmitterLeaves CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
+        var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
+        node.Chunks.Add(chunk08001000);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08001000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -55,146 +134,56 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
-    public partial class TM10 : CMotionEmitterLeavesBuilderBase<TM10>
+    public partial class TM10 : CMotionEmitterLeavesBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public TM10 WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public TM10 WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public TM10 WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public TM10 WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public TM10 WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0804C001 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class TMPU : CMotionEmitterLeavesBuilderBase<TMPU>
+    public partial class TMPU : CMotionEmitterLeavesBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public TMPU WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public TMPU WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public TMPU WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public TMPU WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public TMPU WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0804C001 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class TMSX : CMotionEmitterLeavesBuilderBase<TMSX>
+    public partial class TMSX : CMotionEmitterLeavesBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public TMSX WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public TMSX WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public TMSX WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public string? Name
         {
@@ -206,67 +195,27 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
             Name = value;
             return this;
         }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public TMSX WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public TMSX WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0804C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class TMNESWC : CMotionEmitterLeavesBuilderBase<TMNESWC>
+    public partial class TMNESWC : CMotionEmitterLeavesBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public TMNESWC WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public TMNESWC WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public TMNESWC WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public string? Name
         {
@@ -278,67 +227,27 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
             Name = value;
             return this;
         }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public TMNESWC WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public TMNESWC WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0804C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class VSK5 : CMotionEmitterLeavesBuilderBase<VSK5>
+    public partial class VSK5 : CMotionEmitterLeavesBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public VSK5 WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public VSK5 WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public VSK5 WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public string? Name
         {
@@ -350,67 +259,27 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
             Name = value;
             return this;
         }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public VSK5 WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public VSK5 WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0804C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class TMF : CMotionEmitterLeavesBuilderBase<TMF>
+    public partial class TMF : CMotionEmitterLeavesBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public TMF WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public TMF WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public TMF WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public string? Name
         {
@@ -422,67 +291,27 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
             Name = value;
             return this;
         }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public TMF WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public TMF WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0804C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class MP3 : CMotionEmitterLeavesBuilderBase<MP3>
+    public partial class MP3 : CMotionEmitterLeavesBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public MP3 WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public MP3 WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public MP3 WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public string? Name
         {
@@ -494,67 +323,27 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
             Name = value;
             return this;
         }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public MP3 WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public MP3 WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0804C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
         partial void ValidateNode(global::GBX.NET.Engines.Motion.CMotionEmitterLeaves node);
     }
-    public partial class TMT : CMotionEmitterLeavesBuilderBase<TMT>
+    public partial class TMT : CMotionEmitterLeavesBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves> state) : base(state) { }
-        public global::GBX.NET.Engines.Motion.CMotionManagerLeaves? ManagerModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Motion.CMotionManagerLeaves?>("ManagerModel");
-            set => SetManagerModel(state, value);
-        }
-        public TMT WithManagerModel(global::GBX.NET.Engines.Motion.CMotionManagerLeaves? value)
-        {
-            ManagerModel = value;
-            return this;
-        }
-        public TMT WithManagerModelReference(NodeRef<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetManagerModelReference(state, value);
-            return this;
-        }
         public TMT WithManagerModel(global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT? value)
         {
-            return WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithManagerModel(value is null ? (global::GBX.NET.Engines.Motion.CMotionManagerLeaves?)null : value is global::GBX.NET.Engines.Motion.CMotionManagerLeaves node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public string? Name
         {
@@ -566,39 +355,15 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
             Name = value;
             return this;
         }
-        public Vec3 Pos
-        {
-            get => state.Get<Vec3>("Pos");
-            set => SetPos(state, value);
-        }
-        public TMT WithPos(Vec3 value)
-        {
-            Pos = value;
-            return this;
-        }
-        public Vec3 Radius
-        {
-            get => state.Get<Vec3>("Radius");
-            set => SetRadius(state, value);
-        }
-        public TMT WithRadius(Vec3 value)
-        {
-            Radius = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk0804C001 = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001();
-            node.Chunks.Add(chunk0804C001);
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves.Chunk0804C001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0804C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -621,13 +386,12 @@ public partial class CMotionEmitterLeavesBuilder : CMotionEmitterLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionEmitterLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionEmitterLeaves();
-            var chunk08001000 = new global::GBX.NET.Engines.Motion.CMotion.Chunk08001000();
-            node.Chunks.Add(chunk08001000);
+            var node = CMotionEmitterLeavesBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotion.Chunk08001000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk08001000 is missing or has an incompatible version.");
+            CMotionEmitterLeavesBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CMotionEmitterLeavesBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

@@ -31,121 +31,94 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderPassMembers1 : global::GBX.NET.Interfaces.Plug.IPlugShaderPass
+{
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? DomainPipeline { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? GeometryPipeline { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? HullPipeline { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderPassMembers2 : global::GBX.NET.Interfaces.Plug.IPlugShaderPass
+{
+    int BlendDst { get; set; }
+    int BlendSrc { get; set; }
+    int CullMode { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderPassMembers3 : global::GBX.NET.Interfaces.Plug.IPlugShaderPass
+{
+    Vec4[] PixelFxValues { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] PixelLoadFxs { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileGPU? PixelShader { get; set; }
+    Vec4[] VertexFxValues { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] VertexLoadFxs { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileGPU? VertexShader { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderPassMembers4 : global::GBX.NET.Interfaces.Plug.IPlugShaderPass
+{
+    uint Flags { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderPassMembers5<T0> : global::GBX.NET.Interfaces.Plug.IPlugShaderPass where T0 : class
+{
+    IReadOnlyList<T0>? VertexTextures { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugShaderPassMembers6 : global::GBX.NET.Interfaces.Plug.IPlugShaderPass
+{
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
+    string[] SkipSamplers { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
+}
 public partial interface IPlugShaderPass : IClassVersion<global::GBX.NET.Engines.Plug.CPlugShaderPass>
 {
 }
 
-public partial interface IPlugShaderPassTM10 : IPlugShaderPass
+public partial interface IPlugShaderPassTM10 : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers2, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers3
 {
-    int BlendDst { get; set; }
-    int BlendSrc { get; set; }
-    int CullMode { get; set; }
-    Vec4[] PixelFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] PixelLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? PixelShader { get; set; }
-    Vec4[] VertexFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] VertexLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? VertexShader { get; set; }
 }
 
-public partial interface IPlugShaderPassTMPU : IPlugShaderPass
+public partial interface IPlugShaderPassTMPU : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers2, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers3
 {
-    int BlendDst { get; set; }
-    int BlendSrc { get; set; }
-    int CullMode { get; set; }
-    Vec4[] PixelFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] PixelLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? PixelShader { get; set; }
-    Vec4[] VertexFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] VertexLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? VertexShader { get; set; }
 }
 
-public partial interface IPlugShaderPassTMSX : IPlugShaderPass
+public partial interface IPlugShaderPassTMSX : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers3, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>
 {
-    uint Flags { get; set; }
-    Vec4[] PixelFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] PixelLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? PixelShader { get; set; }
-    Vec4[] VertexFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] VertexLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? VertexShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMSX>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassTMNESWC : IPlugShaderPass
+public partial interface IPlugShaderPassTMNESWC : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers3, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>
 {
-    uint Flags { get; set; }
-    Vec4[] PixelFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] PixelLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? PixelShader { get; set; }
-    Vec4[] VertexFxValues { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.GpuLoadFx[] VertexLoadFxs { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileGPU? VertexShader { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMNESWC>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassVSK5 : IPlugShaderPass
+public partial interface IPlugShaderPassVSK5 : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
-    uint Flags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
-    string[] SkipSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerVSK5>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassTMF : IPlugShaderPass
+public partial interface IPlugShaderPassTMF : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
-    uint Flags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
-    string[] SkipSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMF>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassMP3 : IPlugShaderPass
+public partial interface IPlugShaderPassMP3 : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
-    uint Flags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
-    string[] SkipSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
     NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapSampler>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassTMT : IPlugShaderPass
+public partial interface IPlugShaderPassTMT : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
-    uint Flags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
-    string[] SkipSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerTMT>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassMP4 : IPlugShaderPass
+public partial interface IPlugShaderPassMP4 : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers1, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers5<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? DomainPipeline { get; set; }
-    uint Flags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? GeometryPipeline { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? HullPipeline { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
-    string[] SkipSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugBitmapSamplerMP4>? VertexTextures { get; set; }
 }
 
-public partial interface IPlugShaderPassTM2020 : IPlugShaderPass
+public partial interface IPlugShaderPassTM2020 : IPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers1, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers4, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMembers6
 {
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? DomainPipeline { get; set; }
     global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] DomainSamplers { get; set; }
-    uint Flags { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? GeometryPipeline { get; set; }
     global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] GeometrySamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? HullPipeline { get; set; }
     global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] HullSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? PixelPipeline { get; set; }
     global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] PixelSamplers { get; set; }
-    string[] SkipSamplers { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugShaderPass.PipelineGpu? VertexPipeline { get; set; }
     global::GBX.NET.Engines.Plug.CPlugShaderPass.Sampler[] VertexSamplers { get; set; }
 }
 

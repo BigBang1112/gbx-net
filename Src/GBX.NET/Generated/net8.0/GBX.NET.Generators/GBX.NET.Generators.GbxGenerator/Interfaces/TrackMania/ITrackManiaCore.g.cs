@@ -40,7 +40,6 @@ public partial interface ITrackManiaCore : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface ITrackManiaCoreTM10 : ITrackManiaCore, global::GBX.NET.Interfaces.Game.IGameManiaTitleCoreTM10

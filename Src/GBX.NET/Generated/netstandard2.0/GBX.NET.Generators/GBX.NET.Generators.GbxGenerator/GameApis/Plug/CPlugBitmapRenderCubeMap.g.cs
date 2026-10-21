@@ -34,87 +34,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugBitmapRenderCubeMap : global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMap, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTM10, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMPU, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMSX, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapVSK5, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMF, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMP3, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMT, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugBitmapRenderCubeMapBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTM10.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMPU.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMSX.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMNESWC.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMNESWC.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapVSK5.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapVSK5.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMF.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMF.BitmapImageSpace
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapImageSpace
     {
         get
         {
@@ -124,37 +44,7 @@ public partial class CPlugBitmapRenderCubeMap : global::GBX.NET.Interfaces.Plug.
         }
         set => BitmapImageSpace = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMF.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMP3.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMT.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMT.BitmapImageSpace
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapImageSpace
     {
         get
         {
@@ -164,27 +54,7 @@ public partial class CPlugBitmapRenderCubeMap : global::GBX.NET.Interfaces.Plug.
         }
         set => BitmapImageSpace = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTMT.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMP4.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMP4.BitmapImageSpace
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapImageSpace
     {
         get
         {
@@ -194,27 +64,7 @@ public partial class CPlugBitmapRenderCubeMap : global::GBX.NET.Interfaces.Plug.
         }
         set => BitmapImageSpace = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMP4.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTM2020.BitmapClear
-    {
-        get
-        {
-            var node = BitmapClear;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => BitmapClear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTM2020.BitmapImageSpace
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapImageSpace
     {
         get
         {
@@ -223,15 +73,5 @@ public partial class CPlugBitmapRenderCubeMap : global::GBX.NET.Interfaces.Plug.
             return node;
         }
         set => BitmapImageSpace = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderSubTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderCubeMapTM2020.RenderSub
-    {
-        get
-        {
-            var node = RenderSub;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => RenderSub = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRenderSub node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

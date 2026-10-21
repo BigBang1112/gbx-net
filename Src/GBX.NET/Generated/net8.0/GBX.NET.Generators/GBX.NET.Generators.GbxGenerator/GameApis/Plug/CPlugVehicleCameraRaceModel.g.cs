@@ -34,11 +34,6 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugVehicleCameraRaceModel : global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTMT, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraRaceModelBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModel? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModel.Shake
-    {
-        get => Shake;
-        set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraRaceModelTMT.Shake
     {
         get

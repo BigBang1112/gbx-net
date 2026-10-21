@@ -36,28 +36,28 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state;
     private protected CControlEffectMasterBuilderBase() => state = new();
     private protected CControlEffectMasterBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state) => this.state = state;
-    private protected static void SetActionEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("ActionEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ActionEffect = value);
-    private protected static void SetActionEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("ActionEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ActionEffect.CopyFrom(reference));
-    private protected static void SetFocusEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("FocusEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusEffect = value);
-    private protected static void SetFocusEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("FocusEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusEffect.CopyFrom(reference));
-    private protected static void SetFocusGainedByAnotherEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("FocusGainedByAnotherEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusGainedByAnotherEffect = value);
-    private protected static void SetFocusGainedByAnotherEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("FocusGainedByAnotherEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusGainedByAnotherEffect.CopyFrom(reference));
-    private protected static void SetFocusGainedEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("FocusGainedEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusGainedEffect = value);
-    private protected static void SetFocusGainedEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("FocusGainedEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusGainedEffect.CopyFrom(reference));
-    private protected static void SetFocusLostByAnotherEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("FocusLostByAnotherEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusLostByAnotherEffect = value);
-    private protected static void SetFocusLostByAnotherEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("FocusLostByAnotherEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusLostByAnotherEffect.CopyFrom(reference));
-    private protected static void SetFocusLostEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("FocusLostEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FocusLostEffect = value);
-    private protected static void SetFocusLostEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("FocusLostEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FocusLostEffect.CopyFrom(reference));
-    private protected static void SetHidingEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("HidingEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.HidingEffect = value);
-    private protected static void SetHidingEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("HidingEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.HidingEffect.CopyFrom(reference));
-    private protected static void SetManagedEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("ManagedEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ManagedEffect = value);
-    private protected static void SetManagedEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("ManagedEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ManagedEffect.CopyFrom(reference));
-    private protected static void SetShowingEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("ShowingEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShowingEffect = value);
-    private protected static void SetShowingEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("ShowingEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ShowingEffect.CopyFrom(reference));
-    private protected static void SetSleepingEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set<global::GBX.NET.Engines.Control.CControlEffect?>("SleepingEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SleepingEffect = value);
-    private protected static void SetSleepingEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlEffect>>("SleepingEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlEffect>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SleepingEffect.CopyFrom(reference));
-    private protected static void SetSpecialEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("SpecialEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SpecialEffect = value);
-    private protected static void SetSpecialEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer>>("SpecialEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.SpecialEffect.CopyFrom(reference));
+    private protected static void SetActionEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetActionEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetActionEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusGainedByAnotherEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedByAnotherEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusGainedByAnotherEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedByAnotherEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusGainedEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusGainedEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusGainedEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusLostByAnotherEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostByAnotherEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusLostByAnotherEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostByAnotherEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusLostEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFocusLostEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetFocusLostEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetHidingEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetHidingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetHidingEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetHidingEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetManagedEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetManagedEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetManagedEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetManagedEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShowingEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetShowingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShowingEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetShowingEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSleepingEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.Control.CControlEffect? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSleepingEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSleepingEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.Control.CControlEffect> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSleepingEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSpecialEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSpecialEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSpecialEffectReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectMaster> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectMasterBuilderAssignments.GetSpecialEffectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Control.CControlEffect? ActionEffect
     {
         get => state.Get<global::GBX.NET.Engines.Control.CControlEffect?>("ActionEffect");
@@ -237,6 +237,23 @@ public abstract class CControlEffectMasterBuilderBase<TSelf> where TSelf : CCont
 }
 public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBase<CControlEffectMasterBuilder>
 {
+    private static global::GBX.NET.Engines.Control.CControlEffectMaster CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
+        var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
+        node.Chunks.Add(chunk0701C002);
+        var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
+        node.Chunks.Add(chunk0701C003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlEffectMaster node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0701C003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlEffectMaster node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -297,16 +314,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -363,16 +376,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -429,16 +438,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -495,16 +500,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -561,16 +562,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -627,16 +624,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -693,16 +686,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -759,16 +748,12 @@ public partial class CControlEffectMasterBuilder : CControlEffectMasterBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectMaster Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectMaster();
-            var chunk0701C002 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002();
-            node.Chunks.Add(chunk0701C002);
-            var chunk0701C003 = new global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003();
-            node.Chunks.Add(chunk0701C003);
+            var node = CControlEffectMasterBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectMaster.Chunk0701C003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0701C003 is missing or has an incompatible version.");
+            CControlEffectMasterBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CControlEffectMasterBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

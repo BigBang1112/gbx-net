@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.ShootMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISmArenaResourceMembers1<T0> : global::GBX.NET.Interfaces.ShootMania.ISmArenaResource where T0 : class
+{
+    new T0? RefBuffer { get; set; }
+}
 public partial interface ISmArenaResource : IClassVersion<global::GBX.NET.Engines.ShootMania.CSmArenaResource>
 {
     float AdditionalListenerDistanceNbSquares { get; set; }
@@ -38,13 +43,11 @@ public partial interface ISmArenaResource : IClassVersion<global::GBX.NET.Engine
     global::GBX.NET.Engines.ShootMania.CSmArenaResource.Resource[]? Resources { get; set; }
 }
 
-public partial interface ISmArenaResourceMP4 : ISmArenaResource
+public partial interface ISmArenaResourceMP4 : ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? RefBuffer { get; set; }
 }
 
-public partial interface ISmArenaResourceTM2020 : ISmArenaResource
+public partial interface ISmArenaResourceTM2020 : ISmArenaResource, global::GBX.NET.Interfaces.ShootMania.ISmArenaResourceMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>
 {
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? RefBuffer { get; set; }
 }
 

@@ -31,72 +31,69 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialMembers1 : global::GBX.NET.Interfaces.Plug.IPlugMaterial
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialMembers2 : global::GBX.NET.Interfaces.Plug.IPlugMaterial
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialMembers3 : global::GBX.NET.Interfaces.Plug.IPlugMaterial
+{
+    global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialMembers4<T0> : global::GBX.NET.Interfaces.Plug.IPlugMaterial where T0 : class
+{
+    T0? CustomMaterial { get; set; }
+}
 public partial interface IPlugMaterial : IClassVersion<global::GBX.NET.Engines.Plug.CPlugMaterial>
 {
 }
 
-public partial interface IPlugMaterialTM10 : IPlugMaterial
+public partial interface IPlugMaterialTM10 : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
 }
 
-public partial interface IPlugMaterialTMPU : IPlugMaterial
+public partial interface IPlugMaterialTMPU : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
 }
 
-public partial interface IPlugMaterialTMSX : IPlugMaterial
+public partial interface IPlugMaterialTMSX : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX? CustomMaterial { get; set; }
 }
 
-public partial interface IPlugMaterialTMNESWC : IPlugMaterial
+public partial interface IPlugMaterialTMNESWC : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC? CustomMaterial { get; set; }
 }
 
-public partial interface IPlugMaterialVSK5 : IPlugMaterial
+public partial interface IPlugMaterialVSK5 : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5? CustomMaterial { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
 }
 
-public partial interface IPlugMaterialTMF : IPlugMaterial
+public partial interface IPlugMaterialTMF : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF? CustomMaterial { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId { get; set; }
 }
 
-public partial interface IPlugMaterialMP3 : IPlugMaterial
+public partial interface IPlugMaterialMP3 : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3? CustomMaterial { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId { get; set; }
 }
 
-public partial interface IPlugMaterialTMT : IPlugMaterial
+public partial interface IPlugMaterialTMT : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT? CustomMaterial { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId { get; set; }
 }
 
-public partial interface IPlugMaterialMP4 : IPlugMaterial
+public partial interface IPlugMaterialMP4 : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers1, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4? CustomMaterial { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId { get; set; }
 }
 
-public partial interface IPlugMaterialTM2020 : IPlugMaterial
+public partial interface IPlugMaterialTM2020 : IPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers1, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers2, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020? CustomMaterial { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.DeviceMat[]? DeviceMaterials { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId GameplayId { get; set; }
     global::GBX.NET.Engines.Plug.CPlug? Shader { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterial.ShadingDesc? Shading { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugSurface.MaterialId SurfaceId { get; set; }
 }
 

@@ -31,6 +31,144 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.System;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers1 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool EnableD3D9_BC4_BC5 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers2 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool EnableD3D9Ex { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers3 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    int ConfigVersion { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA { get; set; }
+    bool DisableHdrCubeRenderMipMap { get; set; }
+    bool DisableShadowBufferRaw { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur { get; set; }
+    float FxMotionBlurIntens { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0 { get; set; }
+    bool IgnoreDriverCrashesRaw { get; set; }
+    bool LightMapLightIndex { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality { get; set; }
+    bool LightMapQualityUltra { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax { get; set; }
+    int MaxFps { get; set; }
+    float ParticleMaxGpuLoadMs { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality { get; set; }
+    bool TextureDecals_2D { get; set; }
+    bool TextureDecals_3D { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers4 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    string? AdapterDesc { get; set; }
+    bool AsyncRenderEnabled { get; set; }
+    bool ForceD3D11FeatureLevel10 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers5 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ { get; set; }
+    bool StereoscopyAdvanced { get; set; }
+    bool StereoscopyByDefault { get; set; }
+    bool WaterGeomStadium { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers6 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    float GeomLodScaleZ { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers7 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool WaterComplex { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers8 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    int AnisoQuality { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers9 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool ForceFxColors { get; set; }
+    bool ForceFxMotionBlur { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers10 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    float AgpUseFactor { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
+    bool Customize { get; set; }
+    bool DisableColorWMask { get; set; }
+    bool DisableZBufferRange { get; set; }
+    bool EnableFullscreenGDI { get; set; }
+    bool FastLoad { get; set; }
+    bool PostFxEnable { get; set; }
+    bool ShowBackground { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
+    int ZClipNbBlock { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers11 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    int MaxFiltering { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers12 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool DisableShadowBuffer { get; set; }
+    bool FullScreen { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
+    bool IgnoreDriverCrashes { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
+    bool VSync { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers13 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers14 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool EnableLightMap { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers15 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool ForceFxBloom { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers16 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    bool DisableWindowedAntiAlias { get; set; }
+    bool EnableCheckLags { get; set; }
+    bool EnableRenderReadBack { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
+    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISystemConfigDisplayMembers17 : global::GBX.NET.Interfaces.System.ISystemConfigDisplay
+{
+    int MultiThreadCountMax { get; set; }
+    bool MultiThreadEnable { get; set; }
+}
 public partial interface ISystemConfigDisplay : IClassVersion<global::GBX.NET.Engines.System.CSystemConfigDisplay>
 {
     global::GBX.NET.Engines.System.CSystemConfigDisplay.EAntialiasing Antialiasing { get; set; }
@@ -45,448 +183,54 @@ public partial interface ISystemConfigDisplay : IClassVersion<global::GBX.NET.En
     global::GBX.NET.Engines.System.CSystemConfigDisplay.EVertexProcess VertexProcess { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMPU : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMPU : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers11, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12
 {
-    bool DisableShadowBuffer { get; set; }
-    bool FullScreen { get; set; }
     int GfxQualityOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    int MaxFiltering { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool VSync { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMO : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMO : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers7, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers8, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers9, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers11, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12
 {
-    float AgpUseFactor { get; set; }
-    int AnisoQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    bool Customize { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableShadowBuffer { get; set; }
-    bool DisableZBufferRange { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool FastLoad { get; set; }
-    bool ForceFxColors { get; set; }
-    bool ForceFxMotionBlur { get; set; }
-    bool FullScreen { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    int MaxFiltering { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool ShowBackground { get; set; }
-    bool VSync { get; set; }
-    bool WaterComplex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMSX : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMSX : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers7, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers8, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers9, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers11, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12
 {
-    float AgpUseFactor { get; set; }
-    int AnisoQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    bool Customize { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableShadowBuffer { get; set; }
-    bool DisableZBufferRange { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool FastLoad { get; set; }
-    bool ForceFxColors { get; set; }
-    bool ForceFxMotionBlur { get; set; }
-    bool FullScreen { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    int MaxFiltering { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool ShowBackground { get; set; }
-    bool VSync { get; set; }
-    bool WaterComplex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMNESWC : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMNESWC : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers6, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers7, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers8, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers9, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers11, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12
 {
-    float AgpUseFactor { get; set; }
-    int AnisoQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    bool Customize { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableShadowBuffer { get; set; }
-    bool DisableZBufferRange { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool FastLoad { get; set; }
-    bool ForceFxColors { get; set; }
-    bool ForceFxMotionBlur { get; set; }
-    bool FullScreen { get; set; }
-    float GeomLodScaleZ { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    int MaxFiltering { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool ShowBackground { get; set; }
-    bool VSync { get; set; }
-    bool WaterComplex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMU : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMU : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers6, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers8, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers9, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers11, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers14, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers15, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16
 {
-    float AgpUseFactor { get; set; }
-    int AnisoQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    bool Customize { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableShadowBuffer { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableLightMap { get; set; }
-    bool EnableRenderReadBack { get; set; }
-    bool FastLoad { get; set; }
-    bool ForceFxBloom { get; set; }
-    bool ForceFxColors { get; set; }
-    bool ForceFxMotionBlur { get; set; }
-    bool FullScreen { get; set; }
-    float GeomLodScaleZ { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
-    int MaxFiltering { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool ShowBackground { get; set; }
-    bool VSync { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayVSK5 : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayVSK5 : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers6, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers8, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers9, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers11, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers14, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers15, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers17
 {
-    float AgpUseFactor { get; set; }
-    int AnisoQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    bool Customize { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableShadowBuffer { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableLightMap { get; set; }
-    bool EnableRenderReadBack { get; set; }
-    bool FastLoad { get; set; }
-    bool ForceFxBloom { get; set; }
-    bool ForceFxColors { get; set; }
-    bool ForceFxMotionBlur { get; set; }
-    bool FullScreen { get; set; }
-    float GeomLodScaleZ { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
-    int MaxFiltering { get; set; }
-    int MultiThreadCountMax { get; set; }
-    bool MultiThreadEnable { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool ShowBackground { get; set; }
-    bool VSync { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMF : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMF : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers5, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers6, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers9, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers12, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers15, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers17
 {
-    float AgpUseFactor { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    bool Customize { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableShadowBuffer { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableRenderReadBack { get; set; }
-    bool FastLoad { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ { get; set; }
-    bool ForceFxBloom { get; set; }
-    bool ForceFxColors { get; set; }
-    bool ForceFxMotionBlur { get; set; }
-    bool FullScreen { get; set; }
-    float GeomLodScaleZ { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSyncOld GpuSync { get; set; }
-    bool IgnoreDriverCrashes { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
     global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQualityOld LightMapQualityOld { get; set; }
-    int MultiThreadCountMax { get; set; }
-    bool MultiThreadEnable { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPresetOld PresetOld { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQualityOld ShaderQualityOld { get; set; }
-    bool ShowBackground { get; set; }
-    bool StereoscopyAdvanced { get; set; }
-    bool StereoscopyByDefault { get; set; }
     bool TreeAlwaysHq { get; set; }
-    bool VSync { get; set; }
-    bool WaterGeomStadium { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayMP3 : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayMP3 : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers1, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers2, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers3, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers5, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers17
 {
-    float AgpUseFactor { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    int ConfigVersion { get; set; }
-    bool Customize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableHdrCubeRenderMipMap { get; set; }
-    bool DisableShadowBufferRaw { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableD3D9Ex { get; set; }
-    bool EnableD3D9_BC4_BC5 { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableRenderReadBack { get; set; }
-    bool FastLoad { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur { get; set; }
-    float FxMotionBlurIntens { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0 { get; set; }
-    bool IgnoreDriverCrashesRaw { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
-    bool LightMapLightIndex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality { get; set; }
-    bool LightMapQualityUltra { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax { get; set; }
-    int MaxFps { get; set; }
-    int MultiThreadCountMax { get; set; }
-    bool MultiThreadEnable { get; set; }
-    float ParticleMaxGpuLoadMs { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality { get; set; }
-    bool ShowBackground { get; set; }
-    bool StereoscopyAdvanced { get; set; }
-    bool StereoscopyByDefault { get; set; }
-    bool TextureDecals_2D { get; set; }
-    bool TextureDecals_3D { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect { get; set; }
-    bool WaterGeomStadium { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTMT : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTMT : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers1, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers2, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers3, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers5, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers13, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers17
 {
-    float AgpUseFactor { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    int ConfigVersion { get; set; }
-    bool Customize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableHdrCubeRenderMipMap { get; set; }
-    bool DisableShadowBufferRaw { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableD3D9Ex { get; set; }
-    bool EnableD3D9_BC4_BC5 { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableRenderReadBack { get; set; }
-    bool FastLoad { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur { get; set; }
-    float FxMotionBlurIntens { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0 { get; set; }
-    bool IgnoreDriverCrashesRaw { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
-    bool LightMapLightIndex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality { get; set; }
-    bool LightMapQualityUltra { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax { get; set; }
-    int MaxFps { get; set; }
-    int MultiThreadCountMax { get; set; }
-    bool MultiThreadEnable { get; set; }
-    float ParticleMaxGpuLoadMs { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality { get; set; }
-    bool ShowBackground { get; set; }
-    bool StereoscopyAdvanced { get; set; }
-    bool StereoscopyByDefault { get; set; }
-    bool TextureDecals_2D { get; set; }
-    bool TextureDecals_3D { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect { get; set; }
-    bool WaterGeomStadium { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayMP4 : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayMP4 : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers2, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers3, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers4, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers5, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers13, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers17
 {
-    string? AdapterDesc { get; set; }
-    float AgpUseFactor { get; set; }
-    bool AsyncRenderEnabled { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
-    int ConfigVersion { get; set; }
-    bool Customize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableHdrCubeRenderMipMap { get; set; }
-    bool DisableShadowBufferRaw { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableD3D9Ex { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableRenderReadBack { get; set; }
-    bool FastLoad { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ { get; set; }
-    bool ForceD3D11FeatureLevel10 { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur { get; set; }
-    float FxMotionBlurIntens { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0 { get; set; }
-    bool IgnoreDriverCrashesRaw { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
-    bool LightMapLightIndex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality { get; set; }
-    bool LightMapQualityUltra { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax { get; set; }
-    int MaxFps { get; set; }
-    int MultiThreadCountMax { get; set; }
-    bool MultiThreadEnable { get; set; }
-    float ParticleMaxGpuLoadMs { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality { get; set; }
-    bool ShowBackground { get; set; }
-    bool StereoscopyAdvanced { get; set; }
-    bool StereoscopyByDefault { get; set; }
-    bool TextureDecals_2D { get; set; }
-    bool TextureDecals_3D { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect { get; set; }
-    bool WaterGeomStadium { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 
-public partial interface ISystemConfigDisplayTM2020 : ISystemConfigDisplay
+public partial interface ISystemConfigDisplayTM2020 : ISystemConfigDisplay, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers3, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers4, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers5, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers10, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers13, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers16, global::GBX.NET.Interfaces.System.ISystemConfigDisplayMembers17
 {
-    string? AdapterDesc { get; set; }
-    float AgpUseFactor { get; set; }
-    bool AsyncRenderEnabled { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EAutoScale AutoScale { get; set; }
     bool AutomaticEnabled { get; set; }
     int AutomaticMinFps { get; set; }
-    int ConfigVersion { get; set; }
-    bool Customize { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDeferredAA DeferredAA { get; set; }
-    bool DisableColorWMask { get; set; }
-    bool DisableHdrCubeRenderMipMap { get; set; }
-    bool DisableShadowBufferRaw { get; set; }
-    bool DisableWindowedAntiAlias { get; set; }
-    bool DisableZBufferRange { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplayMode DisplayMode { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EDisplaySync DisplaySync { get; set; }
-    bool EnableCheckLags { get; set; }
-    bool EnableFullscreenGDI { get; set; }
-    bool EnableRenderReadBack { get; set; }
     global::GBX.NET.Engines.System.CSystemConfigDisplay.EEverywhereReflect EverywhereReflect { get; set; }
-    bool FastLoad { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFilterAnisoQ FilterAnisoQ { get; set; }
-    bool ForceD3D11FeatureLevel10 { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBloomHdr FxBloomHdr { get; set; }
     global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxBlur FxBlur { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EFxMotionBlur FxMotionBlur { get; set; }
-    float FxMotionBlurIntens { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGeometryQuality GeometryQuality { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EGpuSync GpuSync0 { get; set; }
-    bool IgnoreDriverCrashesRaw { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightFromMap LightFromMap { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapCompute LightMapCompute { get; set; }
-    bool LightMapLightIndex { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapQuality LightMapQuality { get; set; }
-    bool LightMapQualityUltra { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ELightMapSizeMax LightMapSizeMax { get; set; }
-    int MaxFps { get; set; }
-    int MultiThreadCountMax { get; set; }
-    bool MultiThreadEnable { get; set; }
-    float ParticleMaxGpuLoadMs { get; set; }
-    bool PostFxEnable { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EPreset Preset { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ERenderingApi RenderingApi { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EScreenShotExt ScreenShotExt { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EShaderQ ShaderQuality { get; set; }
-    bool ShowBackground { get; set; }
-    bool StereoscopyAdvanced { get; set; }
-    bool StereoscopyByDefault { get; set; }
-    bool TextureDecals_2D { get; set; }
-    bool TextureDecals_3D { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.ETripleBuffer TripleBuffer { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EVehicleReflect VehicleReflect { get; set; }
-    bool WaterGeomStadium { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EWaterReflect WaterReflect { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClip ZClip { get; set; }
-    global::GBX.NET.Engines.System.CSystemConfigDisplay.EZClipAuto ZClipAuto { get; set; }
-    int ZClipNbBlock { get; set; }
 }
 

@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Function;
 public partial class CFuncKeysSkel : global::GBX.NET.Interfaces.Function.IFuncKeysSkel, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC, global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMP3, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMT, global::GBX.NET.Interfaces.Function.IFuncKeysSkelMP4, global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Function.CFuncKeysSkelBuilder Create() => new();
-    global::GBX.NET.Interfaces.Function.IFuncSkelTM10? global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTM10? global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTM10>.Skel
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CFuncKeysSkel : global::GBX.NET.Interfaces.Function.IFuncKe
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMPU? global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMPU? global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMPU>.Skel
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CFuncKeysSkel : global::GBX.NET.Interfaces.Function.IFuncKe
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMSX? global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMSX? global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMSX>.Skel
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CFuncKeysSkel : global::GBX.NET.Interfaces.Function.IFuncKe
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC>.Skel
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CFuncKeysSkel : global::GBX.NET.Interfaces.Function.IFuncKe
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelVSK5? global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelVSK5? global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelVSK5>.Skel
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CFuncKeysSkel : global::GBX.NET.Interfaces.Function.IFuncKe
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelTMF? global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF.Skel
+    global::GBX.NET.Interfaces.Function.IFuncSkelTMF? global::GBX.NET.Interfaces.Function.IFuncKeysSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMF>.Skel
     {
         get
         {

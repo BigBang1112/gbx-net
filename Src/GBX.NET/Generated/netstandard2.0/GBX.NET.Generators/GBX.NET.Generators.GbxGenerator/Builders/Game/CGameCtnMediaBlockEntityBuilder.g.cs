@@ -36,28 +36,28 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state;
     private protected CGameCtnMediaBlockEntityBuilderBase() => state = new();
     private protected CGameCtnMediaBlockEntityBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state) => this.state = state;
-    private protected static void SetAppearanceArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, int value) => state.Set<int>("AppearanceArchiveVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.AppearanceArchiveVersion = value);
-    private protected static void SetAppearanceColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, Vec3? value) => state.Set<Vec3?>("AppearanceColor", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.AppearanceColor = value);
-    private protected static void SetBadge(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge?>("Badge", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Badge = value);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle? value) => state.Set<TimeSingle?>("End", value, GameVersion.MP4, static value => value, static (node, value) => node.End = value);
-    private protected static void SetForceHue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set<bool>("ForceHue", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ForceHue = value);
-    private protected static void SetForceLight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set<bool>("ForceLight", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ForceLight = value);
-    private protected static void SetForceTrail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set<bool>("ForceTrail", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ForceTrail = value);
-    private protected static void SetGhostName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, string? value) => state.Set<string?>("GhostName", value, GameVersion.TM2020, static value => value, static (node, value) => node.GhostName = value);
-    private protected static void SetHasBadges(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set<bool>("HasBadges", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.HasBadges = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>?>("Keys", value, GameVersion.TM2020, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>(value), static (node, value) => node.Keys = value);
-    private protected static void SetLightTrailColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Vec3 value) => state.Set<global::GBX.NET.Vec3>("LightTrailColor", value, GameVersion.MP4, static value => value, static (node, value) => node.LightTrailColor = value);
-    private protected static void SetNoDamage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set<bool>("NoDamage", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.NoDamage = value);
-    private protected static void SetNoticeRecords(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, int[]? value) => state.Set<int[]?>("NoticeRecords", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.NoticeRecords = value);
-    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, Ident value) => state.Set<Ident>("PlayerModel", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.PlayerModel = value);
-    private protected static void SetRaceTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeInt32? value) => state.Set<TimeInt32?>("RaceTime", value, GameVersion.TM2020, static value => value, static (node, value) => node.RaceTime = value);
-    private protected static void SetRecordData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Engines.Plug.CPlugEntRecordData? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugEntRecordData?>("RecordData", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.RecordData = value);
-    private protected static void SetRecordDataReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData>>("RecordData", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.RecordData.CopyFrom(reference));
-    private protected static void SetSkinNames(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, List<PackDesc>? value) => state.Set<List<PackDesc>?>("SkinNames", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : new List<PackDesc>(value), static (node, value) => node.SkinNames = value);
-    private protected static void SetSkinOptions(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, string? value) => state.Set<string?>("SkinOptions", value, GameVersion.TM2020, static value => value, static (node, value) => node.SkinOptions = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle? value) => state.Set<TimeSingle?>("Start", value, GameVersion.MP4, static value => value, static (node, value) => node.Start = value);
-    private protected static void SetStartOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle value) => state.Set<TimeSingle>("StartOffset", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.StartOffset = value);
-    private protected static void SetTimeScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, float value) => state.Set<float>("TimeScale", value, GameVersion.TM2020, static value => value, static (node, value) => node.TimeScale = value);
+    private protected static void SetAppearanceArchiveVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetAppearanceArchiveVersionAssignment(), value, GameVersion.TM2020);
+    private protected static void SetAppearanceColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetAppearanceColorAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetBadge(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.SBadge? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetBadgeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4);
+    private protected static void SetForceHue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceHueAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetForceLight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceLightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetForceTrail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetForceTrailAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetGhostName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetGhostNameAssignment(), value, GameVersion.TM2020);
+    private protected static void SetHasBadges(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetHasBadgesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetKeysAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLightTrailColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetLightTrailColorAssignment(), value, GameVersion.MP4);
+    private protected static void SetNoDamage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetNoDamageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetNoticeRecords(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetNoticeRecordsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetRaceTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRaceTimeAssignment(), value, GameVersion.TM2020);
+    private protected static void SetRecordData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, global::GBX.NET.Engines.Plug.CPlugEntRecordData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRecordDataAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetRecordDataReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugEntRecordData> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetRecordDataReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetSkinNames(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, List<PackDesc>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetSkinNamesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetSkinOptions(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetSkinOptionsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4);
+    private protected static void SetStartOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetStartOffsetAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetTimeScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockEntityBuilderAssignments.GetTimeScaleAssignment(), value, GameVersion.TM2020);
     public Vec3? AppearanceColor
     {
         get => state.Get<Vec3?>("AppearanceColor");
@@ -199,6 +199,38 @@ public abstract class CGameCtnMediaBlockEntityBuilderBase<TSelf> where TSelf : C
 }
 public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityBuilderBase<CGameCtnMediaBlockEntityBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity();
+        var chunk0329F000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000(game);
+        node.Chunks.Add(chunk0329F000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0329F000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity();
+        var chunk0329F000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000(game);
+        node.Chunks.Add(chunk0329F000);
+        var chunk0329F002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F002();
+        node.Chunks.Add(chunk0329F002);
+        var chunk0329F003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F003();
+        node.Chunks.Add(chunk0329F003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk Chunk0329F000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0329F002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0329F003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity node, GameVersion game)
+    {
+        if (node.PlayerModel is null) throw new MemberNullException("PlayerModel");
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -243,14 +275,12 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity();
-            var chunk0329F000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000(GameVersion.MP4);
-            node.Chunks.Add(chunk0329F000);
+            var node = CGameCtnMediaBlockEntityBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk0329F000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockEntityBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.PlayerModel is null) throw new MemberNullException("PlayerModel");
+            CGameCtnMediaBlockEntityBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -335,20 +365,12 @@ public partial class CGameCtnMediaBlockEntityBuilder : CGameCtnMediaBlockEntityB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity();
-            var chunk0329F000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0329F000);
-            var chunk0329F002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F002();
-            node.Chunks.Add(chunk0329F002);
-            var chunk0329F003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F003();
-            node.Chunks.Add(chunk0329F003);
+            var node = CGameCtnMediaBlockEntityBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F000>() is not { Version: 11 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0329F000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0329F002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Chunk0329F003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0329F003 is missing or has an incompatible version.");
+            CGameCtnMediaBlockEntityBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.PlayerModel is null) throw new MemberNullException("PlayerModel");
+            CGameCtnMediaBlockEntityBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

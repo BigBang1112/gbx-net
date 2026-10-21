@@ -44,7 +44,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         get => TriggerShape;
         set => TriggerShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP3? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP3.Spawn
+    global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP3? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers1<global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP3>.Spawn
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         }
         set => Spawn = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameSpawnModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP3.TriggerShape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.TriggerShape
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         }
         set => TriggerShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelTMT.Spawn
+    global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers1<global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT>.Spawn
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         }
         set => Spawn = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameSpawnModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelTMT.TriggerShape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.TriggerShape
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         }
         set => TriggerShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP4.Spawn
+    global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers1<global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4>.Spawn
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         }
         set => Spawn = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameSpawnModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP4.TriggerShape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.TriggerShape
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CGameTeleporterModel : global::GBX.NET.Interfaces.GameData.
         }
         set => TriggerShape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelTM2020.TriggerShape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.TriggerShape
     {
         get
         {

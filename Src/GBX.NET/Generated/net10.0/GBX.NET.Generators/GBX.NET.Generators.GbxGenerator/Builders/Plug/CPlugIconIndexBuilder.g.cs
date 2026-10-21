@@ -39,6 +39,20 @@ public abstract class CPlugIconIndexBuilderBase<TSelf> where TSelf : CPlugIconIn
 }
 public partial class CPlugIconIndexBuilder : CPlugIconIndexBuilderBase<CPlugIconIndexBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugIconIndex CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugIconIndex();
+        var chunk09093003 = new global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003();
+        node.Chunks.Add(chunk09093003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugIconIndex node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09093003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugIconIndex node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -48,13 +62,12 @@ public partial class CPlugIconIndexBuilder : CPlugIconIndexBuilderBase<CPlugIcon
         public global::GBX.NET.Interfaces.Plug.IPlugIconIndexMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIconIndex Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIconIndex();
-            var chunk09093003 = new global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003();
-            node.Chunks.Add(chunk09093003);
+            var node = CPlugIconIndexBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIconIndex.Chunk09093003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09093003 is missing or has an incompatible version.");
+            CPlugIconIndexBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugIconIndexBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

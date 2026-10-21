@@ -48,14 +48,6 @@ public partial interface ITrackManiaTMF : ITrackMania, global::GBX.NET.Interface
 
 public partial interface ITrackManiaMP4 : ITrackMania, global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4
 {
-    new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? CoverFlowDesc { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? DefaultStyleSheet { get; set; }
-    new string? ManiaTitlesFolder { get; set; }
-    new bool MenuBackground_MustLoopIntro { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameResourcesMP4? Resources { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? TitleMainDefaultBgFid { get; set; }
 }
 
 public partial interface ITrackManiaTM2020 : ITrackMania, global::GBX.NET.Interfaces.Game.IGameManiaPlanetTM2020

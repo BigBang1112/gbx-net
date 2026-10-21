@@ -40,87 +40,45 @@ public partial interface IPlugVisualIndexedTriangles : IClassVersion<global::GBX
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? BlendShapes { get; set; }
-    new Int3[] SubVisuals { get; set; }
-    new string? VisualId { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTM10 : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTM10
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTMPU : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMPU
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTMSX : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMSX
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTMNESWC : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMNESWC
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesVSK5 : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedVSK5
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTMF : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMF
 {
-    new global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesMP3 : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedMP3
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTMT : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTMT
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesMP4 : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedMP4
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualIndexedTrianglesTM2020 : IPlugVisualIndexedTriangles, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedTM2020
 {
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 

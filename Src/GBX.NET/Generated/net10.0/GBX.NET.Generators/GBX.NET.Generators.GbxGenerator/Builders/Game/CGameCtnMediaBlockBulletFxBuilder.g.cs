@@ -36,10 +36,10 @@ public abstract class CGameCtnMediaBlockBulletFxBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state;
     private protected CGameCtnMediaBlockBulletFxBuilderBase() => state = new();
     private protected CGameCtnMediaBlockBulletFxBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state) => this.state = state;
-    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape", value, GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.DataTape = value);
-    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape>>("DataTape", value, GameVersion.MP4 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.DataTape.CopyFrom(reference));
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, TimeSingle value) => state.Set<TimeSingle>("End", value, GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.End = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, TimeSingle value) => state.Set<TimeSingle>("Start", value, GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.Start = value);
+    private protected static void SetDataTape(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, global::GBX.NET.Engines.Plug.CPlugDataTape? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockBulletFxBuilderAssignments.GetDataTapeAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetDataTapeReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugDataTape> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockBulletFxBuilderAssignments.GetDataTapeReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockBulletFxBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockBulletFxBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugDataTape? DataTape
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugDataTape?>("DataTape");
@@ -79,6 +79,20 @@ public abstract class CGameCtnMediaBlockBulletFxBuilderBase<TSelf> where TSelf :
 }
 public partial class CGameCtnMediaBlockBulletFxBuilder : CGameCtnMediaBlockBulletFxBuilderBase<CGameCtnMediaBlockBulletFxBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx();
+        var chunk03169000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx.Chunk03169000();
+        node.Chunks.Add(chunk03169000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx.Chunk03169000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03169000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -93,13 +107,12 @@ public partial class CGameCtnMediaBlockBulletFxBuilder : CGameCtnMediaBlockBulle
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx();
-            var chunk03169000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx.Chunk03169000();
-            node.Chunks.Add(chunk03169000);
+            var node = CGameCtnMediaBlockBulletFxBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx.Chunk03169000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03169000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockBulletFxBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockBulletFxBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -116,13 +129,12 @@ public partial class CGameCtnMediaBlockBulletFxBuilder : CGameCtnMediaBlockBulle
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx();
-            var chunk03169000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx.Chunk03169000();
-            node.Chunks.Add(chunk03169000);
+            var node = CGameCtnMediaBlockBulletFxBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockBulletFx.Chunk03169000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03169000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockBulletFxBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockBulletFxBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

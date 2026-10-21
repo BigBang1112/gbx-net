@@ -44,37 +44,30 @@ public partial interface IMotionManaged : IClassVersion<global::GBX.NET.Engines.
 
 public partial interface IMotionManagedTMSX : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMSX
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedTMNESWC : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMNESWC
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedVSK5 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionVSK5
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedTMF : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMF
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedMP3 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionMP3
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedTMT : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTMT
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedMP4 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionMP4
 {
-    new string? Name { get; set; }
 }
 
 public partial interface IMotionManagedTM10 : IMotionManaged, global::GBX.NET.Interfaces.Motion.IMotionTM10

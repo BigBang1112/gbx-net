@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugTurretMembers1<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.Plug.IPlugTurret where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+{
+    new T0? Mesh { get; set; }
+    new T1? OnFireParticle { get; set; }
+    new T2? Shape { get; set; }
+    new T3? Skel { get; set; }
+    new T4? VisEntFx { get; set; }
+}
 public partial interface IPlugTurret : IClassVersion<global::GBX.NET.Engines.Plug.CPlugTurret>
 {
     float AimAnticipation { get; set; }
@@ -81,23 +90,13 @@ public partial interface IPlugTurret : IClassVersion<global::GBX.NET.Engines.Plu
     string? VisEntFxRef { get; set; }
 }
 
-public partial interface IPlugTurretMP4 : IPlugTurret
+public partial interface IPlugTurretMP4 : IPlugTurret, global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4, global::GBX.NET.Interfaces.Plug.IPlugSkelMP4, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4>
 {
     new global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4? BulletModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? Mesh { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? OnFireParticle { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? Shape { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? Skel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMP4? VisEntFx { get; set; }
 }
 
-public partial interface IPlugTurretTM2020 : IPlugTurret
+public partial interface IPlugTurretTM2020 : IPlugTurret, global::GBX.NET.Interfaces.Plug.IPlugTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020, global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020>
 {
     new global::GBX.NET.Engines.Plug.CPlugBulletModel? BulletModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? Mesh { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? OnFireParticle { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? Shape { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? Skel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelTM2020? VisEntFx { get; set; }
 }
 

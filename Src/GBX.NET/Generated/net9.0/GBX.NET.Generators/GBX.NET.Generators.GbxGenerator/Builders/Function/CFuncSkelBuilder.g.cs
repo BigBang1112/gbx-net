@@ -36,7 +36,7 @@ public abstract class CFuncSkelBuilderBase<TSelf> where TSelf : CFuncSkelBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state;
     private protected CFuncSkelBuilderBase() => state = new();
     private protected CFuncSkelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state) => this.state = state;
-    private protected static void SetBones(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state, string[]? value) => state.Set<string[]?>("Bones", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : (string[])value.Clone(), static (node, value) => node.Bones = value);
+    private protected static void SetBones(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSkel> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSkelBuilderAssignments.GetBonesAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public string[]? Bones
     {
         get => state.Get<string[]?>("Bones");
@@ -54,6 +54,20 @@ public abstract class CFuncSkelBuilderBase<TSelf> where TSelf : CFuncSkelBuilder
 }
 public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncSkel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncSkel();
+        var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
+        node.Chunks.Add(chunk05005002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncSkel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05005002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncSkel node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -66,13 +80,12 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncSkelTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSkel();
-            var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
-            node.Chunks.Add(chunk05005002);
+            var node = CFuncSkelBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk05005002 is missing or has an incompatible version.");
+            CFuncSkelBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CFuncSkelBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -85,13 +98,12 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncSkelTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSkel();
-            var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
-            node.Chunks.Add(chunk05005002);
+            var node = CFuncSkelBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk05005002 is missing or has an incompatible version.");
+            CFuncSkelBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CFuncSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -104,13 +116,12 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncSkelTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSkel();
-            var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
-            node.Chunks.Add(chunk05005002);
+            var node = CFuncSkelBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk05005002 is missing or has an incompatible version.");
+            CFuncSkelBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CFuncSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -123,13 +134,12 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSkel();
-            var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
-            node.Chunks.Add(chunk05005002);
+            var node = CFuncSkelBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk05005002 is missing or has an incompatible version.");
+            CFuncSkelBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CFuncSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -142,13 +152,12 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncSkelVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSkel();
-            var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
-            node.Chunks.Add(chunk05005002);
+            var node = CFuncSkelBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk05005002 is missing or has an incompatible version.");
+            CFuncSkelBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CFuncSkelBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -161,13 +170,12 @@ public partial class CFuncSkelBuilder : CFuncSkelBuilderBase<CFuncSkelBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncSkelTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSkel Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSkel();
-            var chunk05005002 = new global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002();
-            node.Chunks.Add(chunk05005002);
+            var node = CFuncSkelBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSkel.Chunk05005002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk05005002 is missing or has an incompatible version.");
+            CFuncSkelBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncSkelBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

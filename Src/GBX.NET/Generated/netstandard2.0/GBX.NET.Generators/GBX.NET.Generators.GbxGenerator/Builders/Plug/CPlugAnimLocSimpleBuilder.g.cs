@@ -36,15 +36,15 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state;
     private protected CPlugAnimLocSimpleBuilderBase() => state = new();
     private protected CPlugAnimLocSimpleBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state) => this.state = state;
-    private protected static void SetAnimationVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set<int>("AnimationVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AnimationVersion = value);
-    private protected static void SetAxis(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set<int>("Axis", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Axis = value);
-    private protected static void SetRotAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, float value) => state.Set<float>("RotAngle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RotAngle = value);
-    private protected static void SetRotFunc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, byte value) => state.Set<byte>("RotFunc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RotFunc = value);
-    private protected static void SetRotPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set<int>("RotPeriod", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RotPeriod = value);
-    private protected static void SetRotPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set<int>("RotPeriodMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RotPeriodMax = value);
-    private protected static void SetTransPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set<int>("TransPeriod", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TransPeriod = value);
-    private protected static void SetTransPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set<int>("TransPeriodMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TransPeriodMax = value);
-    private protected static void SetTransY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, float value) => state.Set<float>("TransY", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TransY = value);
+    private protected static void SetAnimationVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetAnimationVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAxis(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetAxisAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRotAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRotFunc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRotPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRotPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetRotPeriodMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTransPeriod(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTransPeriodMax(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransPeriodMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTransY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimLocSimpleBuilderAssignments.GetTransYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int AnimationVersion
     {
         get => state.Get<int>("AnimationVersion");
@@ -138,6 +138,21 @@ public abstract class CPlugAnimLocSimpleBuilderBase<TSelf> where TSelf : CPlugAn
 }
 public partial class CPlugAnimLocSimpleBuilder : CPlugAnimLocSimpleBuilderBase<CPlugAnimLocSimpleBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugAnimLocSimple CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple();
+        var chunk090F8000 = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000();
+        chunk090F8000.Version = 0;
+        node.Chunks.Add(chunk090F8000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F8000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAnimLocSimple node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -150,14 +165,12 @@ public partial class CPlugAnimLocSimpleBuilder : CPlugAnimLocSimpleBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimLocSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple();
-            var chunk090F8000 = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000();
-            chunk090F8000.Version = 0;
-            node.Chunks.Add(chunk090F8000);
+            var node = CPlugAnimLocSimpleBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk090F8000 is missing or has an incompatible version.");
+            CPlugAnimLocSimpleBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugAnimLocSimpleBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -170,14 +183,12 @@ public partial class CPlugAnimLocSimpleBuilder : CPlugAnimLocSimpleBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimLocSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple();
-            var chunk090F8000 = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000();
-            chunk090F8000.Version = 0;
-            node.Chunks.Add(chunk090F8000);
+            var node = CPlugAnimLocSimpleBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk090F8000 is missing or has an incompatible version.");
+            CPlugAnimLocSimpleBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugAnimLocSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -190,14 +201,12 @@ public partial class CPlugAnimLocSimpleBuilder : CPlugAnimLocSimpleBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimLocSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple();
-            var chunk090F8000 = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000();
-            chunk090F8000.Version = 0;
-            node.Chunks.Add(chunk090F8000);
+            var node = CPlugAnimLocSimpleBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk090F8000 is missing or has an incompatible version.");
+            CPlugAnimLocSimpleBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugAnimLocSimpleBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -210,14 +219,12 @@ public partial class CPlugAnimLocSimpleBuilder : CPlugAnimLocSimpleBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimLocSimple Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple();
-            var chunk090F8000 = new global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000();
-            chunk090F8000.Version = 0;
-            node.Chunks.Add(chunk090F8000);
+            var node = CPlugAnimLocSimpleBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimLocSimple.Chunk090F8000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090F8000 is missing or has an incompatible version.");
+            CPlugAnimLocSimpleBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugAnimLocSimpleBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

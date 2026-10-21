@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncLightMembers1 : global::GBX.NET.Interfaces.Function.IFuncLight
+{
+    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
+    int FlickCount { get; set; }
+    float FlickPeriod { get; set; }
+}
 public partial interface IFuncLight : IClassVersion<global::GBX.NET.Engines.Function.CFuncLight>, global::GBX.NET.Interfaces.Function.IFuncPlug
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,89 +47,45 @@ public partial interface IFuncLight : IClassVersion<global::GBX.NET.Engines.Func
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
-public partial interface IFuncLightTM10 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTM10
+public partial interface IFuncLightTM10 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTM10, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
 }
 
-public partial interface IFuncLightTMPU : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMPU
+public partial interface IFuncLightTMPU : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMPU, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightTMSX : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMSX
+public partial interface IFuncLightTMSX : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMSX, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightTMNESWC : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC
+public partial interface IFuncLightTMNESWC : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightVSK5 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5
+public partial interface IFuncLightVSK5 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightTMF : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMF
+public partial interface IFuncLightTMF : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMF, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightMP3 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugMP3
+public partial interface IFuncLightMP3 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugMP3, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightTMT : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMT
+public partial interface IFuncLightTMT : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTMT, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightMP4 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugMP4
+public partial interface IFuncLightMP4 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugMP4, global::GBX.NET.Interfaces.Function.IFuncLightMembers1
 {
-    global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    int FlickCount { get; set; }
-    float FlickPeriod { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncLightTM2020 : IFuncLight, global::GBX.NET.Interfaces.Function.IFuncPlugTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

@@ -36,28 +36,53 @@ public abstract class CGameCommonItemEntityModelBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state;
     private protected CGameCommonItemEntityModelBuilderBase() => state = new();
     private protected CGameCommonItemEntityModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state) => this.state = state;
-    private protected static void SetActions(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>?>("Actions", value, GameVersion.TM2020, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Actions = value);
-    private protected static void SetLightBallStates(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]?>("LightBallStates", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[])value.Clone(), static (node, value) => node.LightBallStates = value);
-    private protected static void SetParticleEmitterModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel?>("ParticleEmitterModel", value, GameVersion.TM2020, static value => value, static (node, value) => node.ParticleEmitterModel = value);
-    private protected static void SetParticleEmitterModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>>("ParticleEmitterModel", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ParticleEmitterModel.CopyFrom(reference));
-    private protected static void SetPhyModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("PhyModel", value, GameVersion.MP4, static value => value, static (node, value) => node.PhyModel = value);
-    private protected static void SetPhyModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("PhyModel", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.PhyModel.CopyFrom(reference));
-    private protected static void SetSoundLocPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, Iso4 value) => state.Set<Iso4>("SoundLocPermanent", value, GameVersion.TM2020, static value => value, static (node, value) => node.SoundLocPermanent = value);
-    private protected static void SetSoundRefGrab(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set<string?>("SoundRefGrab", value, GameVersion.TM2020, static value => value, static (node, value) => node.SoundRefGrab = value);
-    private protected static void SetSoundRefPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set<string?>("SoundRefPermanent", value, GameVersion.TM2020, static value => value, static (node, value) => node.SoundRefPermanent = value);
-    private protected static void SetSoundRefSmashed(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set<string?>("SoundRefSmashed", value, GameVersion.TM2020, static value => value, static (node, value) => node.SoundRefSmashed = value);
-    private protected static void SetSoundRefSpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set<string?>("SoundRefSpawn", value, GameVersion.TM2020, static value => value, static (node, value) => node.SoundRefSpawn = value);
-    private protected static void SetSoundRefUnspawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set<string?>("SoundRefUnspawn", value, GameVersion.TM2020, static value => value, static (node, value) => node.SoundRefUnspawn = value);
-    private protected static void SetSpawnLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, Iso4 value) => state.Set<Iso4>("SpawnLoc", value, GameVersion.TM2020, static value => value, static (node, value) => node.SpawnLoc = value);
-    private protected static void SetStaticObject(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.Plug.CPlugStaticObjectModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugStaticObjectModel?>("StaticObject", value, GameVersion.TM2020, static value => value, static (node, value) => node.StaticObject = value);
-    private protected static void SetStaticObjectReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugStaticObjectModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugStaticObjectModel>>("StaticObject", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugStaticObjectModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.StaticObject.CopyFrom(reference));
-    private protected static void SetTriggerShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("TriggerShape", value, GameVersion.TM2020, static value => value, static (node, value) => node.TriggerShape = value);
-    private protected static void SetTriggerShapeReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("TriggerShape", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.TriggerShape.CopyFrom(reference));
-    private protected static void SetVisModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("VisModel", value, GameVersion.MP4, static value => value, static (node, value) => node.VisModel = value);
-    private protected static void SetVisModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("VisModel", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.VisModel.CopyFrom(reference));
+    private protected static void SetActions(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRefList<global::GBX.NET.Engines.GameData.CGameActionModel>? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetActionsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLightBallStates(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.LightBallStateSimple[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetLightBallStatesAssignment(), value, GameVersion.TM2020);
+    private protected static void SetParticleEmitterModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetParticleEmitterModelAssignment(), value, GameVersion.TM2020);
+    private protected static void SetParticleEmitterModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetParticleEmitterModelReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetPhyModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetPhyModelAssignment(), value, GameVersion.MP4);
+    private protected static void SetPhyModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetPhyModelReferenceAssignment(), value, GameVersion.MP4);
+    private protected static void SetSoundLocPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSoundLocPermanentAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSoundRefGrab(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSoundRefGrabAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSoundRefPermanent(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSoundRefPermanentAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSoundRefSmashed(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSoundRefSmashedAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSoundRefSpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSoundRefSpawnAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSoundRefUnspawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSoundRefUnspawnAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSpawnLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetSpawnLocAssignment(), value, GameVersion.TM2020);
+    private protected static void SetStaticObject(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.Plug.CPlugStaticObjectModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetStaticObjectAssignment(), value, GameVersion.TM2020);
+    private protected static void SetStaticObjectReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugStaticObjectModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetStaticObjectReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetTriggerShape(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetTriggerShapeAssignment(), value, GameVersion.TM2020);
+    private protected static void SetTriggerShapeReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetTriggerShapeReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetVisModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetVisModelAssignment(), value, GameVersion.MP4);
+    private protected static void SetVisModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameCommonItemEntityModelBuilderAssignments.GetVisModelReferenceAssignment(), value, GameVersion.MP4);
 }
 public partial class CGameCommonItemEntityModelBuilder : CGameCommonItemEntityModelBuilderBase<CGameCommonItemEntityModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel();
+        var chunk2E027000 = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000(game);
+        node.Chunks.Add(chunk2E027000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E027000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel();
+        var chunk2E027000 = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000(game);
+        node.Chunks.Add(chunk2E027000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E027000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -100,13 +125,12 @@ public partial class CGameCommonItemEntityModelBuilder : CGameCommonItemEntityMo
         public global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel();
-            var chunk2E027000 = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000(GameVersion.MP4);
-            node.Chunks.Add(chunk2E027000);
+            var node = CGameCommonItemEntityModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E027000 is missing or has an incompatible version.");
+            CGameCommonItemEntityModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCommonItemEntityModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -136,7 +160,7 @@ public partial class CGameCommonItemEntityModelBuilder : CGameCommonItemEntityMo
         }
         public TM2020 WithActions(params global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020[] values)
         {
-            return WithActions(values.Select(static value => value is global::GBX.NET.Engines.GameData.CGameActionModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return WithActions(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.GameData.CGameActionModel, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>(values, false));
         }
         public TM2020 WithActions(IEnumerable<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020> values)
         {
@@ -281,13 +305,12 @@ public partial class CGameCommonItemEntityModelBuilder : CGameCommonItemEntityMo
         public global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel();
-            var chunk2E027000 = new global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000(GameVersion.TM2020);
-            node.Chunks.Add(chunk2E027000);
+            var node = CGameCommonItemEntityModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModel.Chunk2E027000>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E027000 is missing or has an incompatible version.");
+            CGameCommonItemEntityModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCommonItemEntityModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

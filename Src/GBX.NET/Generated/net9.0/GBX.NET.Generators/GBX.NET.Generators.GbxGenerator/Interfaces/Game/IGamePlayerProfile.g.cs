@@ -31,155 +31,119 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers1 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? OldProfileChunks { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? ProfileChunks { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers2<T0> : global::GBX.NET.Interfaces.Game.IGamePlayerProfile where T0 : class
+{
+    T0? BindingsForCompatConfig { get; set; }
+    string? NickName { get; set; }
+    bool UnlockAllCheat { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers3 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies { get; set; }
+    string? CurrentSoloPlaylistName { get; set; }
+    string? CurrentSoloPlaylistPath { get; set; }
+    bool LoginValidated { get; set; }
+    string? OnlineLogin { get; set; }
+    bool RememberOnlinePassword { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers4 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    bool AllowDownload { get; set; }
+    bool EnableAvatars { get; set; }
+    string? ServerName { get; set; }
+    bool ShowEditorHelp { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers5 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    byte MaxPlayerCount { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers6 : global::GBX.NET.Interfaces.Game.IGamePlayerProfile
+{
+    int BindingsForCompatVersion { get; set; }
+    string? Description { get; set; }
+    bool EnableCarSkinGeom { get; set; }
+    Vec3 PainterCustomColor1 { get; set; }
+    Vec3 PainterCustomColor2 { get; set; }
+    Vec3 PainterCustomColor3 { get; set; }
+    Vec3 PainterCustomColor4 { get; set; }
+    Vec3 PainterCustomColor5 { get; set; }
+    Vec3 TrailColor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileMembers7<T0, T1> : global::GBX.NET.Interfaces.Game.IGamePlayerProfile where T0 : class where T1 : class
+{
+    bool AutoConnect { get; set; }
+    T0? BindingsConfig { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents { get; set; }
+    bool EnableChat { get; set; }
+    IReadOnlyList<T1>? InboxMessages { get; set; }
+    bool IsShowPlayerGhost { get; set; }
+    int LadderMode { get; set; }
+    byte MaxSpectatorCount { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? MultiLocalProfileHeaders { get; set; }
+    int NetworkGameMode { get; set; }
+    IReadOnlyList<T1>? OutboxMessages { get; set; }
+    IReadOnlyList<T1>? ReadMessages { get; set; }
+    string? ServerComment { get; set; }
+    bool ShowAdvancedServerSettings { get; set; }
+    DateTime? UpdatedAt { get; set; }
+    int VehicleNetQuality { get; set; }
+    global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? VehicleProfiles { get; set; }
+}
 public partial interface IGamePlayerProfile : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfile>
 {
     string? ProfileId { get; set; }
     string? ProfileName { get; set; }
 }
 
-public partial interface IGamePlayerProfileTM10 : IGamePlayerProfile
+public partial interface IGamePlayerProfileTM10 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10>
 {
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10? BindingsForCompatConfig { get; set; }
-    string? NickName { get; set; }
-    bool UnlockAllCheat { get; set; }
 }
 
-public partial interface IGamePlayerProfileTMPU : IGamePlayerProfile
+public partial interface IGamePlayerProfileTMPU : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5
 {
-    bool AllowDownload { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU? BindingsForCompatConfig { get; set; }
-    bool EnableAvatars { get; set; }
-    byte MaxPlayerCount { get; set; }
-    string? NickName { get; set; }
-    string? ServerName { get; set; }
-    bool ShowEditorHelp { get; set; }
-    bool UnlockAllCheat { get; set; }
 }
 
-public partial interface IGamePlayerProfileTMSX : IGamePlayerProfile
+public partial interface IGamePlayerProfileTMSX : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6
 {
-    bool AllowDownload { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX? BindingsForCompatConfig { get; set; }
-    int BindingsForCompatVersion { get; set; }
-    string? Description { get; set; }
-    bool EnableAvatars { get; set; }
-    bool EnableCarSkinGeom { get; set; }
-    string? NickName { get; set; }
-    Vec3 PainterCustomColor1 { get; set; }
-    Vec3 PainterCustomColor2 { get; set; }
-    Vec3 PainterCustomColor3 { get; set; }
-    Vec3 PainterCustomColor4 { get; set; }
-    Vec3 PainterCustomColor5 { get; set; }
-    string? ServerName { get; set; }
-    bool ShowEditorHelp { get; set; }
-    Vec3 TrailColor { get; set; }
-    bool UnlockAllCheat { get; set; }
 }
 
-public partial interface IGamePlayerProfileTMNESWC : IGamePlayerProfile
+public partial interface IGamePlayerProfileTMNESWC : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6
 {
-    bool AllowDownload { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC? BindingsForCompatConfig { get; set; }
-    int BindingsForCompatVersion { get; set; }
-    global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies { get; set; }
-    string? CurrentSoloPlaylistName { get; set; }
-    string? CurrentSoloPlaylistPath { get; set; }
-    string? Description { get; set; }
-    bool EnableAvatars { get; set; }
-    bool EnableCarSkinGeom { get; set; }
-    bool LoginValidated { get; set; }
-    string? NickName { get; set; }
-    string? OnlineLogin { get; set; }
     string? OnlinePassword { get; set; }
-    Vec3 PainterCustomColor1 { get; set; }
-    Vec3 PainterCustomColor2 { get; set; }
-    Vec3 PainterCustomColor3 { get; set; }
-    Vec3 PainterCustomColor4 { get; set; }
-    Vec3 PainterCustomColor5 { get; set; }
-    bool RememberOnlinePassword { get; set; }
-    string? ServerName { get; set; }
-    bool ShowEditorHelp { get; set; }
-    Vec3 TrailColor { get; set; }
-    bool UnlockAllCheat { get; set; }
 }
 
-public partial interface IGamePlayerProfileVSK5 : IGamePlayerProfile
+public partial interface IGamePlayerProfileVSK5 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>
 {
-    bool AllowDownload { get; set; }
-    bool AutoConnect { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5? BindingsConfig { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5? BindingsForCompatConfig { get; set; }
-    int BindingsForCompatVersion { get; set; }
-    global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents { get; set; }
-    string? CurrentSoloPlaylistName { get; set; }
-    string? CurrentSoloPlaylistPath { get; set; }
-    string? Description { get; set; }
-    bool EnableAvatars { get; set; }
-    bool EnableCarSkinGeom { get; set; }
-    bool EnableChat { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? InboxMessages { get; set; }
-    bool IsShowPlayerGhost { get; set; }
-    int LadderMode { get; set; }
     string? LegacyOnlineValidationCode { get; set; }
-    bool LoginValidated { get; set; }
-    byte MaxPlayerCount { get; set; }
-    byte MaxSpectatorCount { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? MultiLocalProfileHeaders { get; set; }
-    int NetworkGameMode { get; set; }
-    string? NickName { get; set; }
-    string? OnlineLogin { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? OutboxMessages { get; set; }
-    Vec3 PainterCustomColor1 { get; set; }
-    Vec3 PainterCustomColor2 { get; set; }
-    Vec3 PainterCustomColor3 { get; set; }
-    Vec3 PainterCustomColor4 { get; set; }
-    Vec3 PainterCustomColor5 { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? ReadMessages { get; set; }
-    bool RememberOnlinePassword { get; set; }
-    string? ServerComment { get; set; }
-    string? ServerName { get; set; }
-    bool ShowAdvancedServerSettings { get; set; }
-    bool ShowEditorHelp { get; set; }
-    Vec3 TrailColor { get; set; }
-    bool UnlockAllCheat { get; set; }
-    DateTime? UpdatedAt { get; set; }
-    int VehicleNetQuality { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? VehicleProfiles { get; set; }
 }
 
-public partial interface IGamePlayerProfileTMF : IGamePlayerProfile
+public partial interface IGamePlayerProfileTMF : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF>, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers6, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>
 {
-    bool AllowDownload { get; set; }
     bool AskForAccountConversion { get; set; }
     bool AskOpponents { get; set; }
-    bool AutoConnect { get; set; }
     string? AvatarName { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF? BindingsConfig { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF? BindingsForCompatConfig { get; set; }
-    int BindingsForCompatVersion { get; set; }
-    global::GBX.NET.Engines.Game.CGameBuddy[]? Buddies { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.CampaignUnlock[]? CampaignUnlocks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.ChallengeOpponent[]? ChallengeOpponents { get; set; }
     bool ClickedOnShare { get; set; }
     Checksum128 CryptedPassword { get; set; }
-    string? CurrentSoloPlaylistName { get; set; }
-    string? CurrentSoloPlaylistPath { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>? CustomCampaigns { get; set; }
-    string? Description { get; set; }
     int DynamicLoadScreenIndex { get; set; }
-    bool EnableAvatars { get; set; }
-    bool EnableCarSkinGeom { get; set; }
-    bool EnableChat { get; set; }
     bool EnableUnlimitedHorns { get; set; }
     byte[]? EncryptedPassword { get; set; }
     int EncryptedPasswordLength { get; set; }
     bool HasLeagueCache { get; set; }
     string? HornName { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? InboxMessages { get; set; }
-    bool IsShowPlayerGhost { get; set; }
-    int LadderMode { get; set; }
     string? LastUsedMSAddress { get; set; }
     string? LastUsedMSPath { get; set; }
     int LeagueCacheDuration { get; set; }
@@ -187,68 +151,36 @@ public partial interface IGamePlayerProfileTMF : IGamePlayerProfile
     string? LeaguePath { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMF>? Leagues { get; set; }
     bool LockHigherDifficulties { get; set; }
-    bool LoginValidated { get; set; }
-    byte MaxPlayerCount { get; set; }
-    byte MaxSpectatorCount { get; set; }
     int MenuInternetView { get; set; }
     string? MenuLeagueFilter { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.MultiLocalProfileHeader[]? MultiLocalProfileHeaders { get; set; }
-    int NetworkGameMode { get; set; }
-    string? NickName { get; set; }
-    string? OnlineLogin { get; set; }
     int? OnlineRemainingNickNamesChangesCount { get; set; }
     string? OnlineSupportKeyHexa { get; set; }
     string? OnlineValidationKeyHexa { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? OutboxMessages { get; set; }
-    Vec3 PainterCustomColor1 { get; set; }
-    Vec3 PainterCustomColor2 { get; set; }
-    Vec3 PainterCustomColor3 { get; set; }
-    Vec3 PainterCustomColor4 { get; set; }
-    Vec3 PainterCustomColor5 { get; set; }
     int PlayTime { get; set; }
     global::GBX.NET.Engines.Game.CGamePlayerProfile.PlayerTagConfig[]? PlayerTags { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? ReadMessages { get; set; }
     bool ReceiveNews { get; set; }
     DateTime? ReceivedMessagesAt { get; set; }
-    bool RememberOnlinePassword { get; set; }
     float RumbleIntensity { get; set; }
-    string? ServerComment { get; set; }
-    string? ServerName { get; set; }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTMF? ShootParams { get; set; }
-    bool ShowAdvancedServerSettings { get; set; }
-    bool ShowEditorHelp { get; set; }
     float StereoscopyAdvancedScreenDist { get; set; }
     float StereoscopyAdvancedSeparation { get; set; }
     float StereoscopyStrength01 { get; set; }
     int[]? TagDisplayList { get; set; }
-    Vec3 TrailColor { get; set; }
-    bool UnlockAllCheat { get; set; }
-    DateTime? UpdatedAt { get; set; }
-    int VehicleNetQuality { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfile.VehicleProfile[]? VehicleProfiles { get; set; }
 }
 
-public partial interface IGamePlayerProfileMP3 : IGamePlayerProfile
+public partial interface IGamePlayerProfileMP3 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? OldProfileChunks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? ProfileChunks { get; set; }
 }
 
-public partial interface IGamePlayerProfileTMT : IGamePlayerProfile
+public partial interface IGamePlayerProfileTMT : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? OldProfileChunks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? ProfileChunks { get; set; }
 }
 
-public partial interface IGamePlayerProfileMP4 : IGamePlayerProfile
+public partial interface IGamePlayerProfileMP4 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? OldProfileChunks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? ProfileChunks { get; set; }
 }
 
-public partial interface IGamePlayerProfileTM2020 : IGamePlayerProfile
+public partial interface IGamePlayerProfileTM2020 : IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers1
 {
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? OldProfileChunks { get; set; }
-    global::GBX.NET.Engines.Game.CGamePlayerProfileChunk[]? ProfileChunks { get; set; }
 }
 

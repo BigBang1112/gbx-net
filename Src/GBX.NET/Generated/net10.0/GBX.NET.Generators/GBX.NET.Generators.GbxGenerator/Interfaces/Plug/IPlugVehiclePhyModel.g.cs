@@ -31,12 +31,28 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehiclePhyModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel where T0 : class
+{
+    T0? RefBuffer { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehiclePhyModelMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel where T0 : class
+{
+    new T0? Tunings { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehiclePhyModelMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModel where T0 : class
+{
+    global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? OccupantSlots { get; set; }
+    T0? PhyShape { get; set; }
+}
 public partial interface IPlugVehiclePhyModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTunings? Tunings { get; set; }
 }
 
-public partial interface IPlugVehiclePhyModelMP3 : IPlugVehiclePhyModel
+public partial interface IPlugVehiclePhyModelMP3 : IPlugVehiclePhyModel, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3>
 {
     float BackWheelHalfWidth { get; set; }
     float BackWheelRadius { get; set; }
@@ -57,30 +73,21 @@ public partial interface IPlugVehiclePhyModelMP3 : IPlugVehiclePhyModel
     float OffsetX { get; set; }
     float PenetrationDepthMax { get; set; }
     float PlayerAgstTrafficMinRelVelToPhysicallize { get; set; }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? RefBuffer { get; set; }
     BoxAligned SimplifiedCarShapeBox { get; set; }
     float SmallCollisionSpringStiffness { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? SurfSolid { get; set; }
     float TrafficAgstTrafficMinRelVelToPhysicallize { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3? Tunings { get; set; }
     bool UsePenetration_InSpringCompute { get; set; }
     bool UseRelVel_InSpringCompute { get; set; }
     bool UseSimplifiedCarModel { get; set; }
     global::GBX.NET.Engines.Plug.CPlugVehicleWheelPhyModel[]? Wheels { get; set; }
 }
 
-public partial interface IPlugVehiclePhyModelMP4 : IPlugVehiclePhyModel
+public partial interface IPlugVehiclePhyModelMP4 : IPlugVehiclePhyModel, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers1<global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4>, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>
 {
-    global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? OccupantSlots { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? PhyShape { get; set; }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? RefBuffer { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4? Tunings { get; set; }
 }
 
-public partial interface IPlugVehiclePhyModelTM2020 : IPlugVehiclePhyModel
+public partial interface IPlugVehiclePhyModelTM2020 : IPlugVehiclePhyModel, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020>, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>
 {
-    global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel.OccupantSlot[]? OccupantSlots { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020? PhyShape { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020? Tunings { get; set; }
 }
 

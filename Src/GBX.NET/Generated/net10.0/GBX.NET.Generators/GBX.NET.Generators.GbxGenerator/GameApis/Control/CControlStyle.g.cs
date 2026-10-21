@@ -74,7 +74,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         get => FocusSound;
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.ActionSound
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.DefaultShader
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.EntrySound
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.EnumListShader
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.EnumSound
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.FocusGainedScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>.FocusGainedScript
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.FocusLostScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>.FocusLostScript
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleTM10.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>.FocusSound
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.ActionSound
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.DefaultShader
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.EntrySound
     {
         get
         {
@@ -184,7 +184,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.EnumListShader
     {
         get
         {
@@ -194,7 +194,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.EnumSound
     {
         get
         {
@@ -204,7 +204,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.FocusGainedScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>.FocusGainedScript
     {
         get
         {
@@ -214,7 +214,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.FocusLostScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>.FocusLostScript
     {
         get
         {
@@ -224,7 +224,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleTMPU.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>.FocusSound
     {
         get
         {
@@ -234,7 +234,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.ActionSound
     {
         get
         {
@@ -244,7 +244,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.DefaultShader
     {
         get
         {
@@ -254,7 +254,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX>.EffectMaster
     {
         get
         {
@@ -264,7 +264,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.EntrySound
     {
         get
         {
@@ -274,7 +274,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.EnumListShader
     {
         get
         {
@@ -284,7 +284,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.EnumSound
     {
         get
         {
@@ -294,7 +294,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.FocusGainedScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>.FocusGainedScript
     {
         get
         {
@@ -304,7 +304,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.FocusLostScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>.FocusLostScript
     {
         get
         {
@@ -314,7 +314,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleTMSX.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>.FocusSound
     {
         get
         {
@@ -324,7 +324,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.ActionSound
     {
         get
         {
@@ -334,7 +334,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.ButtonDefaultIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>.ButtonDefaultIcons
     {
         get
         {
@@ -344,7 +344,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.DefaultShader
     {
         get
         {
@@ -354,7 +354,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC>.EffectMaster
     {
         get
         {
@@ -364,7 +364,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.EntrySound
     {
         get
         {
@@ -374,7 +374,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>.EnumForceIcons
     {
         get
         {
@@ -384,7 +384,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.EnumListShader
     {
         get
         {
@@ -394,7 +394,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.EnumSound
     {
         get
         {
@@ -404,7 +404,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.FocusGainedScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>.FocusGainedScript
     {
         get
         {
@@ -414,7 +414,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.FocusLostScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>.FocusLostScript
     {
         get
         {
@@ -424,7 +424,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>.FocusSound
     {
         get
         {
@@ -434,7 +434,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.ActionSound
     {
         get
         {
@@ -444,7 +444,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.ButtonDefaultIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.ButtonDefaultIcons
     {
         get
         {
@@ -454,7 +454,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.DefaultShader
     {
         get
         {
@@ -464,7 +464,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5>.EffectMaster
     {
         get
         {
@@ -474,7 +474,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.EntrySound
     {
         get
         {
@@ -484,7 +484,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>.EnumForceIcons
     {
         get
         {
@@ -494,7 +494,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.EnumListShader
     {
         get
         {
@@ -504,7 +504,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.EnumSound
     {
         get
         {
@@ -514,7 +514,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterial
     {
         get
         {
@@ -524,7 +524,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterialFocused
     {
         get
         {
@@ -534,7 +534,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterialReadOnly
     {
         get
         {
@@ -544,7 +544,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaMaterialSelected
     {
         get
         {
@@ -554,7 +554,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusAreaSolid
+    global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusAreaSolid
     {
         get
         {
@@ -564,7 +564,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusGainedScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>.FocusGainedScript
     {
         get
         {
@@ -574,7 +574,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusLostScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>.FocusLostScript
     {
         get
         {
@@ -584,7 +584,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.FocusSound
     {
         get
         {
@@ -594,7 +594,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.SliderBarIcons
     {
         get
         {
@@ -604,7 +604,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.SliderCursorIcons
     {
         get
         {
@@ -614,7 +614,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleVSK5.SliderSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>.SliderSound
     {
         get
         {
@@ -624,7 +624,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.ActionSound
     {
         get
         {
@@ -634,7 +634,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.ButtonDefaultIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.ButtonDefaultIcons
     {
         get
         {
@@ -644,7 +644,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.DefaultShader
     {
         get
         {
@@ -654,7 +654,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF>.EffectMaster
     {
         get
         {
@@ -664,7 +664,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.EntrySound
     {
         get
         {
@@ -674,7 +674,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>.EnumForceIcons
     {
         get
         {
@@ -684,7 +684,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.EnumListShader
     {
         get
         {
@@ -694,7 +694,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.EnumSound
     {
         get
         {
@@ -704,7 +704,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterial
     {
         get
         {
@@ -714,7 +714,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterialFocused
     {
         get
         {
@@ -724,7 +724,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterialReadOnly
     {
         get
         {
@@ -734,7 +734,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaMaterialSelected
     {
         get
         {
@@ -744,7 +744,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusAreaSolid
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusAreaSolid
     {
         get
         {
@@ -754,7 +754,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusGainedScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>.FocusGainedScript
     {
         get
         {
@@ -764,7 +764,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusGainedScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusLostScript
+    global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>.FocusLostScript
     {
         get
         {
@@ -774,7 +774,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusLostScript = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.FocusSound
     {
         get
         {
@@ -784,7 +784,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.SliderBarIcons
     {
         get
         {
@@ -794,7 +794,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.SliderCursorIcons
     {
         get
         {
@@ -804,7 +804,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleTMF.SliderSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>.SliderSound
     {
         get
         {
@@ -814,7 +814,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.DefaultShader
     {
         get
         {
@@ -824,7 +824,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3>.EffectMaster
     {
         get
         {
@@ -834,7 +834,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.EntrySound
     {
         get
         {
@@ -844,7 +844,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP3>.EnumForceIcons
     {
         get
         {
@@ -854,7 +854,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.EnumListShader
     {
         get
         {
@@ -864,7 +864,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.EnumSound
     {
         get
         {
@@ -874,7 +874,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterial
     {
         get
         {
@@ -884,7 +884,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterialFocused
     {
         get
         {
@@ -894,7 +894,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterialReadOnly
     {
         get
         {
@@ -904,7 +904,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaMaterialSelected
     {
         get
         {
@@ -914,7 +914,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.FocusAreaSolid
+    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusAreaSolid
     {
         get
         {
@@ -924,7 +924,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.FocusSound
     {
         get
         {
@@ -934,7 +934,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SliderBarIcons
     {
         get
         {
@@ -944,7 +944,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SliderCursorIcons
     {
         get
         {
@@ -954,7 +954,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMP3.SliderSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SliderSound
     {
         get
         {
@@ -964,7 +964,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.DefaultShader
     {
         get
         {
@@ -974,7 +974,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT>.EffectMaster
     {
         get
         {
@@ -984,7 +984,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.EntrySound
     {
         get
         {
@@ -994,7 +994,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>.EnumForceIcons
     {
         get
         {
@@ -1004,7 +1004,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.EnumListShader
     {
         get
         {
@@ -1014,7 +1014,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.EnumSound
     {
         get
         {
@@ -1024,7 +1024,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterial
     {
         get
         {
@@ -1034,7 +1034,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterialFocused
     {
         get
         {
@@ -1044,7 +1044,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterialReadOnly
     {
         get
         {
@@ -1054,7 +1054,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaMaterialSelected
     {
         get
         {
@@ -1064,7 +1064,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.FocusAreaSolid
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusAreaSolid
     {
         get
         {
@@ -1074,7 +1074,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.FocusSound
     {
         get
         {
@@ -1084,7 +1084,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SliderBarIcons
     {
         get
         {
@@ -1094,7 +1094,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SliderCursorIcons
     {
         get
         {
@@ -1104,7 +1104,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleTMT.SliderSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SliderSound
     {
         get
         {
@@ -1124,7 +1124,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionBackSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.ActionSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ActionSound
     {
         get
         {
@@ -1134,7 +1134,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ActionSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.ButtonDefaultIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.ButtonDefaultIcons
     {
         get
         {
@@ -1144,7 +1144,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => ButtonDefaultIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.DefaultShader
     {
         get
         {
@@ -1154,7 +1154,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4>.EffectMaster
     {
         get
         {
@@ -1164,7 +1164,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.EntrySound
     {
         get
         {
@@ -1174,7 +1174,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>.EnumForceIcons
     {
         get
         {
@@ -1184,7 +1184,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.EnumListShader
     {
         get
         {
@@ -1194,7 +1194,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.EnumSound
     {
         get
         {
@@ -1204,7 +1204,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterial
     {
         get
         {
@@ -1214,7 +1214,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterialFocused
     {
         get
         {
@@ -1224,7 +1224,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterialReadOnly
     {
         get
         {
@@ -1234,7 +1234,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaMaterialSelected
     {
         get
         {
@@ -1244,7 +1244,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.FocusAreaSolid
+    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusAreaSolid
     {
         get
         {
@@ -1254,7 +1254,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.FocusSound
     {
         get
         {
@@ -1264,7 +1264,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SliderBarIcons
     {
         get
         {
@@ -1274,7 +1274,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SliderCursorIcons
     {
         get
         {
@@ -1284,7 +1284,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMP4.SliderSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SliderSound
     {
         get
         {
@@ -1294,7 +1294,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.DefaultShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.DefaultShader
     {
         get
         {
@@ -1304,7 +1304,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => DefaultShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.EffectMaster
+    global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020>.EffectMaster
     {
         get
         {
@@ -1314,7 +1314,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EffectMaster = value is null ? null : value is global::GBX.NET.Engines.Control.CControlEffectMaster node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.EntrySound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.EntrySound
     {
         get
         {
@@ -1324,7 +1324,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EntrySound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.EnumForceIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>.EnumForceIcons
     {
         get
         {
@@ -1334,7 +1334,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumForceIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.EnumListShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.EnumListShader
     {
         get
         {
@@ -1344,7 +1344,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumListShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.EnumSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.EnumSound
     {
         get
         {
@@ -1354,7 +1354,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => EnumSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.FocusAreaMaterial
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterial
     {
         get
         {
@@ -1364,7 +1364,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterial = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.FocusAreaMaterialFocused
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterialFocused
     {
         get
         {
@@ -1374,7 +1374,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialFocused = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.FocusAreaMaterialReadOnly
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterialReadOnly
     {
         get
         {
@@ -1384,7 +1384,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialReadOnly = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.FocusAreaMaterialSelected
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaMaterialSelected
     {
         get
         {
@@ -1394,7 +1394,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaMaterialSelected = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.FocusAreaSolid
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusAreaSolid
     {
         get
         {
@@ -1404,7 +1404,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusAreaSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.FocusSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.FocusSound
     {
         get
         {
@@ -1414,7 +1414,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => FocusSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.SliderBarIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SliderBarIcons
     {
         get
         {
@@ -1424,7 +1424,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderBarIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.SliderCursorIcons
+    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SliderCursorIcons
     {
         get
         {
@@ -1434,7 +1434,7 @@ public partial class CControlStyle : global::GBX.NET.Interfaces.Control.IControl
         }
         set => SliderCursorIcons = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncEnum node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleTM2020.SliderSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SliderSound
     {
         get
         {

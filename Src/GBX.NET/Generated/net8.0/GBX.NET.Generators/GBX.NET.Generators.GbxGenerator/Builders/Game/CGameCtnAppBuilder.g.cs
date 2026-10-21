@@ -36,15 +36,72 @@ public abstract class CGameCtnAppBuilderBase<TSelf> where TSelf : CGameCtnAppBui
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state;
     private protected CGameCtnAppBuilderBase() => state = new();
     private protected CGameCtnAppBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state) => this.state = state;
-    private protected static void SetAdditionalSkinsFids(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("AdditionalSkinsFids", value, GameVersion.MP4, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.AdditionalSkinsFids = value);
-    private protected static void SetAdvertising(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Advertising", value, GameVersion.MP4, static value => value, static (node, value) => node.Advertising = value);
-    private protected static void SetAdvertisingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("Advertising", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Advertising.CopyFrom(reference));
-    private protected static void SetMenuBackground_MustLoopIntro(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, bool value) => state.Set<bool>("MenuBackground_MustLoopIntro", value, GameVersion.MP4, static value => value, static (node, value) => node.MenuBackground_MustLoopIntro = value);
-    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, global::GBX.NET.Engines.Game.CGameResources? value) => state.Set<global::GBX.NET.Engines.Game.CGameResources?>("Resources", value, GameVersion.MP4, static value => value, static (node, value) => node.Resources = value);
-    private protected static void SetResourcesReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameResources>>("Resources", value, GameVersion.MP4, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameResources>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Resources.CopyFrom(reference));
+    private protected static void SetAdditionalSkinsFids(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdditionalSkinsFidsAssignment(), value, GameVersion.MP4);
+    private protected static void SetAdvertising(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingAssignment(), value, GameVersion.MP4);
+    private protected static void SetAdvertisingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetAdvertisingReferenceAssignment(), value, GameVersion.MP4);
+    private protected static void SetMenuBackground_MustLoopIntro(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetMenuBackground_MustLoopIntroAssignment(), value, GameVersion.MP4);
+    private protected static void SetResources(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, global::GBX.NET.Engines.Game.CGameResources? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesAssignment(), value, GameVersion.MP4);
+    private protected static void SetResourcesReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnApp> state, NodeRef<global::GBX.NET.Engines.Game.CGameResources> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAppBuilderAssignments.GetResourcesReferenceAssignment(), value, GameVersion.MP4);
 }
 public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
+        var chunk03005009 = new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009();
+        node.Chunks.Add(chunk03005009);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk03005009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03005009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
+        var chunk030D3000 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000();
+        node.Chunks.Add(chunk030D3000);
+        var chunk030D3007 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007();
+        node.Chunks.Add(chunk030D3007);
+        var chunk030D300C = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C();
+        node.Chunks.Add(chunk030D300C);
+        var chunk030D300E = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300E();
+        node.Chunks.Add(chunk030D300E);
+        var chunk030D300F = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F();
+        node.Chunks.Add(chunk030D300F);
+        var chunk030D3010 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3010();
+        node.Chunks.Add(chunk030D3010);
+        var chunk030D3012 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012();
+        node.Chunks.Add(chunk030D3012);
+        var chunk030D3013 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013();
+        node.Chunks.Add(chunk030D3013);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D300C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D300E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D300F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030D3013 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnApp CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
+        var chunk0300500B = new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B();
+        node.Chunks.Add(chunk0300500B);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0300500B is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnApp node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -56,13 +113,12 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
-            var chunk03005009 = new global::GBX.NET.Engines.Game.CGameApp.Chunk03005009();
-            node.Chunks.Add(chunk03005009);
+            var node = CGameCtnAppBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk03005009>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03005009 is missing or has an incompatible version.");
+            CGameCtnAppBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnAppBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -139,34 +195,12 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public global::GBX.NET.Interfaces.Game.IGameCtnAppMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
-            var chunk030D3000 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000();
-            node.Chunks.Add(chunk030D3000);
-            var chunk030D3007 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007();
-            node.Chunks.Add(chunk030D3007);
-            var chunk030D300C = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C();
-            node.Chunks.Add(chunk030D300C);
-            var chunk030D300E = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300E();
-            node.Chunks.Add(chunk030D300E);
-            var chunk030D300F = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F();
-            node.Chunks.Add(chunk030D300F);
-            var chunk030D3010 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3010();
-            node.Chunks.Add(chunk030D3010);
-            var chunk030D3012 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012();
-            node.Chunks.Add(chunk030D3012);
-            var chunk030D3013 = new global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013();
-            node.Chunks.Add(chunk030D3013);
+            var node = CGameCtnAppBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D3000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3007>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D3007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D300C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300E>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D300E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D300F>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D300F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3010>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D3010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3012>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D3012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnApp.Chunk030D3013>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030D3013 is missing or has an incompatible version.");
+            CGameCtnAppBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnAppBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -179,13 +213,12 @@ public partial class CGameCtnAppBuilder : CGameCtnAppBuilderBase<CGameCtnAppBuil
         public global::GBX.NET.Interfaces.Game.IGameCtnAppTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnApp Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnApp();
-            var chunk0300500B = new global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B();
-            node.Chunks.Add(chunk0300500B);
+            var node = CGameCtnAppBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameApp.Chunk0300500B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0300500B is missing or has an incompatible version.");
+            CGameCtnAppBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnAppBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

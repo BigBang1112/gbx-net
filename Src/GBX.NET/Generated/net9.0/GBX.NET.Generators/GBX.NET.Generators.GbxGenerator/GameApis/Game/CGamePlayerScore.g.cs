@@ -36,8 +36,8 @@ public partial class CGamePlayerScore : global::GBX.NET.Interfaces.Game.IGamePla
     public static global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF.CampaignPlayerScores
     {
-        get => CampaignPlayerScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(() => CampaignPlayerScores, static node => { if (node is null) throw new MemberNullException("CampaignPlayerScores"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => CampaignPlayerScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCampaignPlayerScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CampaignPlayerScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(GetCampaignPlayerScoresBuilderReferences, GameVersion.TMF, true, "CampaignPlayerScores");
+        set => CampaignPlayerScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMF? global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF.PlayerOfficialScores
     {
@@ -49,4 +49,5 @@ public partial class CGamePlayerScore : global::GBX.NET.Interfaces.Game.IGamePla
         }
         set => PlayerOfficialScores = value is null ? null : value is global::GBX.NET.Engines.Game.CGamePlayerOfficialScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? GetCampaignPlayerScoresBuilderReferences() => CampaignPlayerScores;
 }

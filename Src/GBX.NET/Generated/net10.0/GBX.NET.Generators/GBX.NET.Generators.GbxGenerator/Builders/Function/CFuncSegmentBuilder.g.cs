@@ -36,7 +36,7 @@ public abstract class CFuncSegmentBuilderBase<TSelf> where TSelf : CFuncSegmentB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state;
     private protected CFuncSegmentBuilderBase() => state = new();
     private protected CFuncSegmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state, global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => state.Set<global::GBX.NET.Engines.Function.CFuncSegment.Key[]?>("Keys", value, GameVersion.MP4 | GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Function.CFuncSegment.Key[])value.Clone(), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncSegment> state, global::GBX.NET.Engines.Function.CFuncSegment.Key[]? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncSegmentBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TMF);
     public global::GBX.NET.Engines.Function.CFuncSegment.Key[]? Keys
     {
         get => state.Get<global::GBX.NET.Engines.Function.CFuncSegment.Key[]?>("Keys");
@@ -54,6 +54,20 @@ public abstract class CFuncSegmentBuilderBase<TSelf> where TSelf : CFuncSegmentB
 }
 public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncSegment CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncSegment();
+        var chunk05037000 = new global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000();
+        node.Chunks.Add(chunk05037000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncSegment node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05037000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncSegment node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -64,13 +78,12 @@ public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentB
         public global::GBX.NET.Interfaces.Function.IFuncSegmentTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSegment Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSegment();
-            var chunk05037000 = new global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000();
-            node.Chunks.Add(chunk05037000);
+            var node = CFuncSegmentBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk05037000 is missing or has an incompatible version.");
+            CFuncSegmentBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncSegmentBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -83,13 +96,12 @@ public partial class CFuncSegmentBuilder : CFuncSegmentBuilderBase<CFuncSegmentB
         public global::GBX.NET.Interfaces.Function.IFuncSegmentMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncSegment Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncSegment();
-            var chunk05037000 = new global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000();
-            node.Chunks.Add(chunk05037000);
+            var node = CFuncSegmentBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncSegment.Chunk05037000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk05037000 is missing or has an incompatible version.");
+            CFuncSegmentBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CFuncSegmentBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockCameraPathBuilderBase<TSelf> where TSelf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath> state;
     private protected CGameCtnMediaBlockCameraPathBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraPathBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraPathBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Key>?>("Keys");
@@ -58,6 +58,53 @@ public abstract class CGameCtnMediaBlockCameraPathBuilderBase<TSelf> where TSelf
 }
 public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCameraPathBuilderBase<CGameCtnMediaBlockCameraPathBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
+        var chunk030A1000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000();
+        node.Chunks.Add(chunk030A1000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A1000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
+        var chunk030A1002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1002();
+        node.Chunks.Add(chunk030A1002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A1002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
+        var chunk030A1003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(game);
+        node.Chunks.Add(chunk030A1003);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A1003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
+        var chunk030A1003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(game);
+        node.Chunks.Add(chunk030A1003);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk030A1003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -73,13 +120,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000();
-            node.Chunks.Add(chunk030A1000);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk030A1000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -92,13 +138,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000();
-            node.Chunks.Add(chunk030A1000);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk030A1000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -111,13 +156,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000();
-            node.Chunks.Add(chunk030A1000);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk030A1000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -130,13 +174,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1002 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1002();
-            node.Chunks.Add(chunk030A1002);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk030A1002 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -149,13 +192,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(GameVersion.TMT);
-            node.Chunks.Add(chunk030A1003);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003>() is not { Version: 3 }) throw new InvalidOperationException("Required TMT chunk Chunk030A1003 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -168,13 +210,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(GameVersion.MP4);
-            node.Chunks.Add(chunk030A1003);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk030A1003 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -187,13 +228,12 @@ public partial class CGameCtnMediaBlockCameraPathBuilder : CGameCtnMediaBlockCam
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraPathTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath();
-            var chunk030A1003 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003(GameVersion.TM2020);
-            node.Chunks.Add(chunk030A1003);
+            var node = CGameCtnMediaBlockCameraPathBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraPath.Chunk030A1003>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk030A1003 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockCameraPathBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

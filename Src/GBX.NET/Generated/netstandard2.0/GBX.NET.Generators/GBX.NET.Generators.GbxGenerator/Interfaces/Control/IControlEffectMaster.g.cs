@@ -31,6 +31,21 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEffectMasterMembers1<T0, T1> : global::GBX.NET.Interfaces.Control.IControlEffectMaster where T0 : class where T1 : class
+{
+    new T0? ActionEffect { get; set; }
+    new T0? FocusEffect { get; set; }
+    new T0? FocusGainedByAnotherEffect { get; set; }
+    new T0? FocusGainedEffect { get; set; }
+    new T0? FocusLostByAnotherEffect { get; set; }
+    new T0? FocusLostEffect { get; set; }
+    new T0? HidingEffect { get; set; }
+    new T0? ManagedEffect { get; set; }
+    new T0? ShowingEffect { get; set; }
+    new T0? SleepingEffect { get; set; }
+    new T1? SpecialEffect { get; set; }
+}
 public partial interface IControlEffectMaster : IClassVersion<global::GBX.NET.Engines.Control.CControlEffectMaster>
 {
     global::GBX.NET.Interfaces.Control.IControlEffect? ActionEffect { get; set; }
@@ -46,123 +61,35 @@ public partial interface IControlEffectMaster : IClassVersion<global::GBX.NET.En
     global::GBX.NET.Interfaces.MwFoundations.IMwRefBuffer? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterTMSX : IControlEffectMaster
+public partial interface IControlEffectMasterTMSX : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMSX, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMSX? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterTMNESWC : IControlEffectMaster
+public partial interface IControlEffectMasterTMNESWC : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterVSK5 : IControlEffectMaster
+public partial interface IControlEffectMasterVSK5 : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectVSK5? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterTMF : IControlEffectMaster
+public partial interface IControlEffectMasterTMF : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMF? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterMP3 : IControlEffectMaster
+public partial interface IControlEffectMasterMP3 : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP3? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP3? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterTMT : IControlEffectMaster
+public partial interface IControlEffectMasterTMT : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTMT? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterMP4 : IControlEffectMaster
+public partial interface IControlEffectMasterMP4 : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectMP4? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? SpecialEffect { get; set; }
 }
 
-public partial interface IControlEffectMasterTM2020 : IControlEffectMaster
+public partial interface IControlEffectMasterTM2020 : IControlEffectMaster, global::GBX.NET.Interfaces.Control.IControlEffectMasterMembers1<global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? ActionEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? FocusEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? FocusGainedByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? FocusGainedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? FocusLostByAnotherEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? FocusLostEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? HidingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? ManagedEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? ShowingEffect { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlEffectTM2020? SleepingEffect { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? SpecialEffect { get; set; }
 }
 

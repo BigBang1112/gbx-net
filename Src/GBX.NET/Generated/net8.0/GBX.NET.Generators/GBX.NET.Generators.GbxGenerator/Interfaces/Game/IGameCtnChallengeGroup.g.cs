@@ -31,89 +31,75 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeGroupMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup
+{
+    int NbBronzeRequired { get; set; }
+    int NbGoldRequired { get; set; }
+    int NbSilverRequired { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeGroupMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup
+{
+    int AllBronzeValue { get; set; }
+    int AllGoldValue { get; set; }
+    int AllSilverValue { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeGroupMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup where T0 : class
+{
+    IReadOnlyList<T0>? MapFiles { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeGroupMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup
+{
+    string? AssociatedCollectionId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeGroupMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup where T0 : class
+{
+    T0? LinkedCampaign { get; set; }
+    int NbBronzeCupRequired { get; set; }
+    int NbBronzeMedalRequired { get; set; }
+    int NbGoldCupRequired { get; set; }
+    int NbGoldMedalRequired { get; set; }
+    int NbSilverCupRequired { get; set; }
+    int NbSilverMedalRequired { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnChallengeGroupMembers6 : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup
+{
+    bool UsesMapFiles { get; set; }
+}
 public partial interface IGameCtnChallengeGroup : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup>
 {
     List<global::GBX.NET.Engines.Game.CGameCtnChallengeGroup.MapInfo>? MapInfos { get; set; }
     string? Name { get; set; }
 }
 
-public partial interface IGameCtnChallengeGroupTM10 : IGameCtnChallengeGroup
+public partial interface IGameCtnChallengeGroupTM10 : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>
 {
-    int AllBronzeValue { get; set; }
-    int AllGoldValue { get; set; }
-    int AllSilverValue { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>? MapFiles { get; set; }
-    int NbBronzeRequired { get; set; }
-    int NbGoldRequired { get; set; }
-    int NbSilverRequired { get; set; }
 }
 
-public partial interface IGameCtnChallengeGroupTMPU : IGameCtnChallengeGroup
+public partial interface IGameCtnChallengeGroupTMPU : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers1, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>
 {
-    int AllBronzeValue { get; set; }
-    int AllGoldValue { get; set; }
-    int AllSilverValue { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>? MapFiles { get; set; }
-    int NbBronzeRequired { get; set; }
-    int NbGoldRequired { get; set; }
-    int NbSilverRequired { get; set; }
 }
 
-public partial interface IGameCtnChallengeGroupTMSX : IGameCtnChallengeGroup
+public partial interface IGameCtnChallengeGroupTMSX : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
 {
-    int AllBronzeValue { get; set; }
-    int AllGoldValue { get; set; }
-    int AllSilverValue { get; set; }
     global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX? AssociatedCollection { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX? LinkedCampaign { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>? MapFiles { get; set; }
-    int NbBronzeCupRequired { get; set; }
-    int NbBronzeMedalRequired { get; set; }
-    int NbGoldCupRequired { get; set; }
-    int NbGoldMedalRequired { get; set; }
-    int NbSilverCupRequired { get; set; }
-    int NbSilverMedalRequired { get; set; }
-    bool UsesMapFiles { get; set; }
 }
 
-public partial interface IGameCtnChallengeGroupTMNESWC : IGameCtnChallengeGroup
+public partial interface IGameCtnChallengeGroupTMNESWC : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
 {
-    int AllBronzeValue { get; set; }
-    int AllGoldValue { get; set; }
-    int AllSilverValue { get; set; }
-    string? AssociatedCollectionId { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC? LinkedCampaign { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>? MapFiles { get; set; }
-    int NbBronzeCupRequired { get; set; }
-    int NbBronzeMedalRequired { get; set; }
-    int NbGoldCupRequired { get; set; }
-    int NbGoldMedalRequired { get; set; }
-    int NbSilverCupRequired { get; set; }
-    int NbSilverMedalRequired { get; set; }
-    bool UsesMapFiles { get; set; }
 }
 
-public partial interface IGameCtnChallengeGroupVSK5 : IGameCtnChallengeGroup
+public partial interface IGameCtnChallengeGroupVSK5 : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers2, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
 {
-    int AllBronzeValue { get; set; }
-    int AllGoldValue { get; set; }
-    int AllSilverValue { get; set; }
-    string? AssociatedCollectionId { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5? LinkedCampaign { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>? MapFiles { get; set; }
-    int NbBronzeCupRequired { get; set; }
-    int NbBronzeMedalRequired { get; set; }
-    int NbGoldCupRequired { get; set; }
-    int NbGoldMedalRequired { get; set; }
-    int NbSilverCupRequired { get; set; }
-    int NbSilverMedalRequired { get; set; }
-    bool UsesMapFiles { get; set; }
 }
 
-public partial interface IGameCtnChallengeGroupTMF : IGameCtnChallengeGroup
+public partial interface IGameCtnChallengeGroupTMF : IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers6
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>? MapFiles { get; set; }
-    bool UsesMapFiles { get; set; }
 }
 
 public partial interface IGameCtnChallengeGroupMP3 : IGameCtnChallengeGroup

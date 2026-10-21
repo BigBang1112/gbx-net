@@ -36,9 +36,9 @@ public abstract class CPlugGameSkinAndFolderBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state;
     private protected CPlugGameSkinAndFolderBuilderBase() => state = new();
     private protected CPlugGameSkinAndFolderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state) => this.state = state;
-    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, string? value) => state.Set<string?>("RemapFolder", value, GameVersion.TM2020, static value => value, static (node, value) => node.RemapFolder = value);
-    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("Remapping", value, GameVersion.TM2020, static value => value, static (node, value) => node.Remapping = value);
-    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>("Remapping", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Remapping.CopyFrom(reference));
+    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.TM2020);
+    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemappingAssignment(), value, GameVersion.TM2020);
+    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugGameSkinAndFolderBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.TM2020);
     public string? RemapFolder
     {
         get => state.Get<string?>("RemapFolder");
@@ -68,6 +68,23 @@ public abstract class CPlugGameSkinAndFolderBuilderBase<TSelf> where TSelf : CPl
 }
 public partial class CPlugGameSkinAndFolderBuilder : CPlugGameSkinAndFolderBuilderBase<CPlugGameSkinAndFolderBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder();
+        var chunk0915D000 = new global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D000();
+        node.Chunks.Add(chunk0915D000);
+        var chunk0915D001 = new global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D001();
+        node.Chunks.Add(chunk0915D001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0915D000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0915D001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugGameSkinAndFolderBuilderBase<TM2020>
     {
@@ -79,16 +96,12 @@ public partial class CPlugGameSkinAndFolderBuilder : CPlugGameSkinAndFolderBuild
         public global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder();
-            var chunk0915D000 = new global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D000();
-            node.Chunks.Add(chunk0915D000);
-            var chunk0915D001 = new global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D001();
-            node.Chunks.Add(chunk0915D001);
+            var node = CPlugGameSkinAndFolderBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0915D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder.Chunk0915D001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0915D001 is missing or has an incompatible version.");
+            CPlugGameSkinAndFolderBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugGameSkinAndFolderBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -36,11 +36,11 @@ public abstract class CPlugBitmapShaderBuilderBase<TSelf> where TSelf : CPlugBit
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state;
     private protected CPlugBitmapShaderBuilderBase() => state = new();
     private protected CPlugBitmapShaderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) => this.state = state;
-    private protected static void SetBitmapToSwap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToSwap", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BitmapToSwap = value);
-    private protected static void SetBitmapToSwapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapToSwap", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapToSwap.CopyFrom(reference));
-    private protected static void SetLegacyBitmaps(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>?>("LegacyBitmaps", value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.LegacyBitmaps = value);
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugShader?>("Shader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Shader = value);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>>("Shader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShader>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shader.CopyFrom(reference));
+    private protected static void SetBitmapToSwap(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapToSwapReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetBitmapToSwapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLegacyBitmaps(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetLegacyBitmapsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
+    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, global::GBX.NET.Engines.Plug.CPlugShader? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShader> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapShaderBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapToSwap
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapToSwap");
@@ -74,8 +74,55 @@ public abstract class CPlugBitmapShaderBuilderBase<TSelf> where TSelf : CPlugBit
         return (TSelf)this;
     }
 }
+public abstract class CPlugBitmapShaderBuilderMembers1<TSelf> : CPlugBitmapShaderBuilderBase<TSelf> where TSelf : CPlugBitmapShaderBuilderMembers1<TSelf>
+{
+    private protected CPlugBitmapShaderBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) : base(state) { }
+    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? LegacyBitmaps
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>?>("LegacyBitmaps");
+        set => SetLegacyBitmaps(state, value);
+    }
+    public TSelf WithLegacyBitmaps(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value)
+    {
+        LegacyBitmaps = value;
+        return (TSelf)this;
+    }
+    public TSelf WithLegacyBitmaps(params global::GBX.NET.Engines.Plug.CPlugBitmap[] values)
+    {
+        return WithLegacyBitmaps(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(values));
+    }
+    public TSelf WithLegacyBitmaps(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmap> values)
+    {
+        return WithLegacyBitmaps(values.ToArray());
+    }
+}
 public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPlugBitmapShaderBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapShader CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
+        var chunk09080001 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001();
+        node.Chunks.Add(chunk09080001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugBitmapShader node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09080001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapShader CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
+        var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
+        node.Chunks.Add(chunk09080002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugBitmapShader node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09080002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugBitmapShader node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -88,34 +135,16 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugBitmapShaderBuilderBase<TM10>
+    public partial class TM10 : CPlugBitmapShaderBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) : base(state) { }
         public TM10 WithBitmapToSwap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? value)
         {
             return base.WithBitmapToSwap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? LegacyBitmaps
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>?>("LegacyBitmaps");
-            set => SetLegacyBitmaps(state, value);
-        }
-        public TM10 WithLegacyBitmaps(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value)
-        {
-            LegacyBitmaps = value;
-            return this;
-        }
-        public TM10 WithLegacyBitmaps(params global::GBX.NET.Engines.Plug.CPlugBitmap[] values)
-        {
-            return WithLegacyBitmaps(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(values));
-        }
-        public TM10 WithLegacyBitmaps(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmap> values)
-        {
-            return WithLegacyBitmaps(values.ToArray());
-        }
         public TM10 WithLegacyBitmaps(params global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10[] values)
         {
-            return WithLegacyBitmaps(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithLegacyBitmaps(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>(values, false));
         }
         public TM10 WithLegacyBitmaps(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10> values)
         {
@@ -128,47 +157,28 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080001 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001();
-            node.Chunks.Add(chunk09080001);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09080001 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapShader node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugBitmapShader node);
     }
-    public partial class TMPU : CPlugBitmapShaderBuilderBase<TMPU>
+    public partial class TMPU : CPlugBitmapShaderBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) : base(state) { }
         public TMPU WithBitmapToSwap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? value)
         {
             return base.WithBitmapToSwap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? LegacyBitmaps
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>?>("LegacyBitmaps");
-            set => SetLegacyBitmaps(state, value);
-        }
-        public TMPU WithLegacyBitmaps(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value)
-        {
-            LegacyBitmaps = value;
-            return this;
-        }
-        public TMPU WithLegacyBitmaps(params global::GBX.NET.Engines.Plug.CPlugBitmap[] values)
-        {
-            return WithLegacyBitmaps(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(values));
-        }
-        public TMPU WithLegacyBitmaps(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmap> values)
-        {
-            return WithLegacyBitmaps(values.ToArray());
-        }
         public TMPU WithLegacyBitmaps(params global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU[] values)
         {
-            return WithLegacyBitmaps(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithLegacyBitmaps(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>(values, false));
         }
         public TMPU WithLegacyBitmaps(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU> values)
         {
@@ -181,47 +191,28 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080001 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001();
-            node.Chunks.Add(chunk09080001);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09080001 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugBitmapShader node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugBitmapShader node);
     }
-    public partial class TMSX : CPlugBitmapShaderBuilderBase<TMSX>
+    public partial class TMSX : CPlugBitmapShaderBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapShader> state) : base(state) { }
         public TMSX WithBitmapToSwap(global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? value)
         {
             return base.WithBitmapToSwap(value is null ? (global::GBX.NET.Engines.Plug.CPlugBitmap?)null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? LegacyBitmaps
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>?>("LegacyBitmaps");
-            set => SetLegacyBitmaps(state, value);
-        }
-        public TMSX WithLegacyBitmaps(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>? value)
-        {
-            LegacyBitmaps = value;
-            return this;
-        }
-        public TMSX WithLegacyBitmaps(params global::GBX.NET.Engines.Plug.CPlugBitmap[] values)
-        {
-            return WithLegacyBitmaps(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmap>(values));
-        }
-        public TMSX WithLegacyBitmaps(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBitmap> values)
-        {
-            return WithLegacyBitmaps(values.ToArray());
-        }
         public TMSX WithLegacyBitmaps(params global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX[] values)
         {
-            return WithLegacyBitmaps(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithLegacyBitmaps(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmap, global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>(values, false));
         }
         public TMSX WithLegacyBitmaps(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX> values)
         {
@@ -234,13 +225,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080001 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001();
-            node.Chunks.Add(chunk09080001);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09080001 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -261,13 +251,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -288,13 +277,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -315,13 +303,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -342,13 +329,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -369,13 +355,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -396,13 +381,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -423,13 +407,12 @@ public partial class CPlugBitmapShaderBuilder : CPlugBitmapShaderBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapShaderTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapShader Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapShader();
-            var chunk09080002 = new global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002();
-            node.Chunks.Add(chunk09080002);
+            var node = CPlugBitmapShaderBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapShader.Chunk09080002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09080002 is missing or has an incompatible version.");
+            CPlugBitmapShaderBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugBitmapShaderBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

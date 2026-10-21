@@ -36,11 +36,11 @@ public abstract class CFuncPlugBuilderBase<TSelf> where TSelf : CFuncPlugBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state;
     private protected CFuncPlugBuilderBase() => state = new();
     private protected CFuncPlugBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) => this.state = state;
-    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, bool value) => state.Set<bool>("AutoCreateMotion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AutoCreateMotion = value);
-    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, string? value) => state.Set<string?>("InputValId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.InputValId = value);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, float value) => state.Set<float>("Period", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Period = value);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, float value) => state.Set<float>("Phase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Phase = value);
-    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, bool value) => state.Set<bool>("RandomizePhase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RandomizePhase = value);
+    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool AutoCreateMotion
     {
         get => state.Get<bool>("AutoCreateMotion");
@@ -72,8 +72,72 @@ public abstract class CFuncPlugBuilderBase<TSelf> where TSelf : CFuncPlugBuilder
         return (TSelf)this;
     }
 }
+public abstract class CFuncPlugBuilderMembers1<TSelf> : CFuncPlugBuilderBase<TSelf> where TSelf : CFuncPlugBuilderMembers1<TSelf>
+{
+    private protected CFuncPlugBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
+    public bool RandomizePhase
+    {
+        get => state.Get<bool>("RandomizePhase");
+        set => SetRandomizePhase(state, value);
+    }
+    public TSelf WithRandomizePhase(bool value)
+    {
+        RandomizePhase = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CFuncPlugBuilderMembers2<TSelf> : CFuncPlugBuilderMembers1<TSelf> where TSelf : CFuncPlugBuilderMembers2<TSelf>
+{
+    private protected CFuncPlugBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
+    public string? InputValId
+    {
+        get => state.Get<string?>("InputValId");
+        set => SetInputValId(state, value);
+    }
+    public TSelf WithInputValId(string? value)
+    {
+        InputValId = value;
+        return (TSelf)this;
+    }
+}
 public partial class CFuncPlugBuilder : CFuncPlugBuilderBase<CFuncPlugBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncPlug CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncPlug();
+        var chunk0500B003 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003();
+        node.Chunks.Add(chunk0500B003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncPlug node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncPlug CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncPlug();
+        var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
+        node.Chunks.Add(chunk0500B004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncPlug node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncPlug CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncPlug();
+        var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
+        node.Chunks.Add(chunk0500B005);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncPlug node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncPlug node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -92,324 +156,174 @@ public partial class CFuncPlugBuilder : CFuncPlugBuilderBase<CFuncPlugBuilder>
         public global::GBX.NET.Interfaces.Function.IFuncPlugTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B003 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003();
-            node.Chunks.Add(chunk0500B003);
+            var node = CFuncPlugBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0500B003 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class TMPU : CFuncPlugBuilderBase<TMPU>
+    public partial class TMPU : CFuncPlugBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMPU WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncPlugBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class TMSX : CFuncPlugBuilderBase<TMSX>
+    public partial class TMSX : CFuncPlugBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMSX WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncPlugBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class TMNESWC : CFuncPlugBuilderBase<TMNESWC>
+    public partial class TMNESWC : CFuncPlugBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMNESWC WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncPlugBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class VSK5 : CFuncPlugBuilderBase<VSK5>
+    public partial class VSK5 : CFuncPlugBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public VSK5 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncPlugBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class TMF : CFuncPlugBuilderBase<TMF>
+    public partial class TMF : CFuncPlugBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public TMF WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMF WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncPlugBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class MP3 : CFuncPlugBuilderBase<MP3>
+    public partial class MP3 : CFuncPlugBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public MP3 WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public MP3 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncPlugBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class TMT : CFuncPlugBuilderBase<TMT>
+    public partial class TMT : CFuncPlugBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public TMT WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMT WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncPlugBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class MP4 : CFuncPlugBuilderBase<MP4>
+    public partial class MP4 : CFuncPlugBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public MP4 WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public MP4 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncPlugBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncPlug node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncPlug node);
     }
-    public partial class TM2020 : CFuncPlugBuilderBase<TM2020>
+    public partial class TM2020 : CFuncPlugBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncPlug> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public TM2020 WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TM2020 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncPlugTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncPlug Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncPlug();
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncPlugBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncPlugBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CFuncPlugBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

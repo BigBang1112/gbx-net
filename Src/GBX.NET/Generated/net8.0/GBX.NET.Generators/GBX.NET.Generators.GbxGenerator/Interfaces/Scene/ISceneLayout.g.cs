@@ -31,6 +31,51 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers1<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class
+{
+    T0? BitmapCubeReflectHardSpecA { get; set; }
+    T0? BitmapCubeReflectHdrAlpha2 { get; set; }
+    T0? BitmapWaterFog { get; set; }
+    T1? WeatherModel { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers2 : global::GBX.NET.Interfaces.Scene.ISceneLayout
+{
+    Vec3 CameraClearColor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers3 : global::GBX.NET.Interfaces.Scene.ISceneLayout
+{
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Scene { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SceneLocations { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers4<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class
+{
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? FieldLocations { get; set; }
+    IReadOnlyList<T0>? Fields { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? Gates { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Scene.CScenePath>? Paths { get; set; }
+    T1? TrafficGraph { get; set; }
+    NodeRefList<global::GBX.NET.Engines.Scene.CSceneTrafficPath>? TrafficPaths { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers5<T0, T1, T2> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class where T1 : class where T2 : class
+{
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
+    IReadOnlyList<T0>? Lights { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LocationLocations { get; set; }
+    IReadOnlyList<T1>? Locations { get; set; }
+    IReadOnlyList<T2>? Sectors { get; set; }
+    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
+    IReadOnlyList<T1>? Sounds { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneLayoutMembers6<T0> : global::GBX.NET.Interfaces.Scene.ISceneLayout where T0 : class
+{
+    T0? SceneFxNod { get; set; }
+}
 public partial interface ISceneLayout : IClassVersion<global::GBX.NET.Engines.Scene.CSceneLayout>, global::GBX.NET.Interfaces.Scene.IScene
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -43,129 +88,45 @@ public partial interface ISceneLayout : IClassVersion<global::GBX.NET.Engines.Sc
     float CameraFarZ { get; set; }
 }
 
-public partial interface ISceneLayoutTM10 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM10
+public partial interface ISceneLayoutTM10 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM10, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
 {
-    Vec3 CameraClearColor { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneLayoutTMPU : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMPU
+public partial interface ISceneLayoutTMPU : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMPU, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
 {
-    Vec3 CameraClearColor { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneLayoutTMSX : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMSX
+public partial interface ISceneLayoutTMSX : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMSX, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
 {
-    Vec3 CameraClearColor { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX>? MotionManagerModels { get; set; }
-    new global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneLayoutTMNESWC : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC
+public partial interface ISceneLayoutTMNESWC : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2
 {
-    Vec3 CameraClearColor { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC>? MotionManagerModels { get; set; }
-    new global::GBX.NET.Engines.Scene.CScene.OldSceneMobil[]? OldMobils { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
 }
 
-public partial interface ISceneLayoutVSK5 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneVSK5
+public partial interface ISceneLayoutVSK5 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneVSK5, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5, global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5>
 {
-    Vec3 CameraClearColor { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? FieldLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? Fields { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? Gates { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightVSK5>? Lights { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LocationLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? Locations { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5>? MotionManagerModels { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CScenePath>? Paths { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodVSK5? SceneFxNod { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5>? Sectors { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>? Sounds { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphVSK5? TrafficGraph { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CSceneTrafficPath>? TrafficPaths { get; set; }
 }
 
-public partial interface ISceneLayoutTMF : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMF
+public partial interface ISceneLayoutTMF : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMF, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers4<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF, global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF>
 {
-    Vec3 CameraClearColor { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? FieldLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? Fields { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CSceneGate>? Gates { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMF>? Lights { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LocationLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? Locations { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMF>? MotionManagerModels { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CScenePath>? Paths { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Scene { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMF? SceneFxNod { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SceneLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneSectorTMF>? Sectors { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>? Sounds { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneTrafficGraphTMF? TrafficGraph { get; set; }
-    NodeRefList<global::GBX.NET.Engines.Scene.CSceneTrafficPath>? TrafficPaths { get; set; }
 }
 
-public partial interface ISceneLayoutMP3 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP3
+public partial interface ISceneLayoutMP3 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3, global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3>
 {
-    Vec3 CameraClearColor { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightMP3>? Lights { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LocationLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>? Locations { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerMP3>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Scene { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodMP3? SceneFxNod { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SceneLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneSectorMP3>? Sectors { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>? Sounds { get; set; }
 }
 
-public partial interface ISceneLayoutTMT : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMT
+public partial interface ISceneLayoutTMT : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTMT, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers2, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers3, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers5<global::GBX.NET.Interfaces.Scene.ISceneLightTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT, global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT>
 {
-    Vec3 CameraClearColor { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LightLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneLightTMT>? Lights { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? LocationLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>? Locations { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Motion.IMotionManagerTMT>? MotionManagerModels { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneMobil[]? Scene { get; set; }
-    new global::GBX.NET.Engines.Scene.CSceneConfig? SceneConfig { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTMT? SceneFxNod { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SceneLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneSectorTMT>? Sectors { get; set; }
-    global::GBX.NET.Engines.Scene.CSceneLayout.SceneLoc[]? SoundLocations { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>? Sounds { get; set; }
 }
 
-public partial interface ISceneLayoutMP4 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP4
+public partial interface ISceneLayoutMP4 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneMP4, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP4>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeReflectHardSpecA { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapCubeReflectHdrAlpha2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapWaterFog { get; set; }
     Iso4[]? ObjectLocations { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>? Objects { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodMP4? SceneFxNod { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugWeatherModelMP4? WeatherModel { get; set; }
 }
 
-public partial interface ISceneLayoutTM2020 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM2020
+public partial interface ISceneLayoutTM2020 : ISceneLayout, global::GBX.NET.Interfaces.Scene.ISceneTM2020, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020>, global::GBX.NET.Interfaces.Scene.ISceneLayoutMembers6<global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapCubeReflectHardSpecA { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapCubeReflectHdrAlpha2 { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapWaterFog { get; set; }
-    global::GBX.NET.Interfaces.Scene.ISceneFxNodTM2020? SceneFxNod { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugWeatherModelTM2020? WeatherModel { get; set; }
 }
 

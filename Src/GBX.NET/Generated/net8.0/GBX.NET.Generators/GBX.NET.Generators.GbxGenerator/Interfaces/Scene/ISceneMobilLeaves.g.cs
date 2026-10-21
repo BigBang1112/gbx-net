@@ -31,6 +31,27 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneMobilLeavesMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves where T0 : class
+{
+    float Curvature { get; set; }
+    float FarZ { get; set; }
+    float LeafAlphaSpeedMax { get; set; }
+    float LeafBetaSpeedlMax { get; set; }
+    int LeafEmitterMaxCount { get; set; }
+    float LeafFallingSpeedBase { get; set; }
+    float LeafFallingSpeedRandom { get; set; }
+    int LeafMaxCount { get; set; }
+    float LeafOscillationAmplitudeBase { get; set; }
+    float LeafOscillationAmplitudeRandom { get; set; }
+    float LeafOscillationPeriodBase { get; set; }
+    float LeafOscillationPeriodRandom { get; set; }
+    float LeafRadiusBase { get; set; }
+    float LeafRadiusRandom { get; set; }
+    T0? LeafShader { get; set; }
+    float RespawnPeriod { get; set; }
+    Vec3 Wind { get; set; }
+}
 public partial interface ISceneMobilLeaves : IClassVersion<global::GBX.NET.Engines.Scene.CSceneMobilLeaves>, global::GBX.NET.Interfaces.Scene.ISceneMobil
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,200 +61,54 @@ public partial interface ISceneMobilLeaves : IClassVersion<global::GBX.NET.Engin
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneMobilLeavesTM10 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10
+public partial interface ISceneMobilLeavesTM10 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? LeafShader { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesTMPU : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU
+public partial interface ISceneMobilLeavesTMPU : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? LeafShader { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesTMSX : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX
+public partial interface ISceneMobilLeavesTMSX : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? LeafShader { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesTMNESWC : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC
+public partial interface ISceneMobilLeavesTMNESWC : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? LeafShader { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesVSK5 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5
+public partial interface ISceneMobilLeavesVSK5 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? LeafShader { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesTMF : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF
+public partial interface ISceneMobilLeavesTMF : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? LeafShader { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesMP3 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilMP3
+public partial interface ISceneMobilLeavesMP3 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? LeafShader { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionMP3? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
-public partial interface ISceneMobilLeavesTMT : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMT
+public partial interface ISceneMobilLeavesTMT : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMembers1<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT>
 {
-    float Curvature { get; set; }
-    float FarZ { get; set; }
-    float LeafAlphaSpeedMax { get; set; }
-    float LeafBetaSpeedlMax { get; set; }
-    int LeafEmitterMaxCount { get; set; }
-    float LeafFallingSpeedBase { get; set; }
-    float LeafFallingSpeedRandom { get; set; }
-    int LeafMaxCount { get; set; }
-    float LeafOscillationAmplitudeBase { get; set; }
-    float LeafOscillationAmplitudeRandom { get; set; }
-    float LeafOscillationPeriodBase { get; set; }
-    float LeafOscillationPeriodRandom { get; set; }
-    float LeafRadiusBase { get; set; }
-    float LeafRadiusRandom { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? LeafShader { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMT? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>? ObjectLink { get; set; }
-    float RespawnPeriod { get; set; }
-    Vec3 Wind { get; set; }
 }
 
 public partial interface ISceneMobilLeavesMP4 : ISceneMobilLeaves, global::GBX.NET.Interfaces.Scene.ISceneMobilMP4

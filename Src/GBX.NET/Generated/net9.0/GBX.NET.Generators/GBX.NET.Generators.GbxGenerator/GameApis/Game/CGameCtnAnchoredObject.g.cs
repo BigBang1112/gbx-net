@@ -39,7 +39,7 @@ public partial class CGameCtnAnchoredObject : global::GBX.NET.Interfaces.Game.IG
         get => WaypointSpecialProperty;
         set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3.WaypointSpecialProperty
+    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3>.WaypointSpecialProperty
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnAnchoredObject : global::GBX.NET.Interfaces.Game.IG
         }
         set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT.WaypointSpecialProperty
+    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT>.WaypointSpecialProperty
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameCtnAnchoredObject : global::GBX.NET.Interfaces.Game.IG
         }
         set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4.WaypointSpecialProperty
+    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4>.WaypointSpecialProperty
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameCtnAnchoredObject : global::GBX.NET.Interfaces.Game.IG
         }
         set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020.WaypointSpecialProperty
+    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMembers1<global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020>.WaypointSpecialProperty
     {
         get
         {

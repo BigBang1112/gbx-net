@@ -36,7 +36,7 @@ public abstract class CPlugRecastPolyMeshDataBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state;
     private protected CPlugRecastPolyMeshDataBuilderBase() => state = new();
     private protected CPlugRecastPolyMeshDataBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state) => this.state = state;
-    private protected static void SetHeightfieldLayers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state, global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]?>("HeightfieldLayers", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[])value.Clone(), static (node, value) => node.HeightfieldLayers = value);
+    private protected static void SetHeightfieldLayers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData> state, global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugRecastPolyMeshDataBuilderAssignments.GetHeightfieldLayersAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]? HeightfieldLayers
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.HeightfieldLayer[]?>("HeightfieldLayers");
@@ -54,6 +54,20 @@ public abstract class CPlugRecastPolyMeshDataBuilderBase<TSelf> where TSelf : CP
 }
 public partial class CPlugRecastPolyMeshDataBuilder : CPlugRecastPolyMeshDataBuilderBase<CPlugRecastPolyMeshDataBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData();
+        var chunk09150000 = new global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.Chunk09150000(game);
+        node.Chunks.Add(chunk09150000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.Chunk09150000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk09150000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugRecastPolyMeshDataBuilderBase<TM2020>
     {
@@ -61,13 +75,12 @@ public partial class CPlugRecastPolyMeshDataBuilder : CPlugRecastPolyMeshDataBui
         public global::GBX.NET.Interfaces.Plug.IPlugRecastPolyMeshDataTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData();
-            var chunk09150000 = new global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.Chunk09150000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09150000);
+            var node = CPlugRecastPolyMeshDataBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRecastPolyMeshData.Chunk09150000>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09150000 is missing or has an incompatible version.");
+            CPlugRecastPolyMeshDataBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugRecastPolyMeshDataBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

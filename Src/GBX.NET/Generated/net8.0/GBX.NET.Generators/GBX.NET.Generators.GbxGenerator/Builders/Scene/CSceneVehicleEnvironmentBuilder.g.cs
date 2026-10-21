@@ -36,7 +36,7 @@ public abstract class CSceneVehicleEnvironmentBuilderBase<TSelf> where TSelf : C
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state;
     private protected CSceneVehicleEnvironmentBuilderBase() => state = new();
     private protected CSceneVehicleEnvironmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) => this.state = state;
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>?>("Materials", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Materials = value);
+    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneVehicleEnvironmentBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? Materials
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>?>("Materials");
@@ -58,6 +58,23 @@ public abstract class CSceneVehicleEnvironmentBuilderBase<TSelf> where TSelf : C
 }
 public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentBuilderBase<CSceneVehicleEnvironmentBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment();
+        var chunk0A033000 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000();
+        node.Chunks.Add(chunk0A033000);
+        var chunk0A033002 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002();
+        node.Chunks.Add(chunk0A033002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A033000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A033002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment node, GameVersion game)
+    {
+    }
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -68,7 +85,7 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) : base(state) { }
         public TMPU WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU[] values)
         {
-            return base.WithMaterials(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithMaterials(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>(values, false));
         }
         public TMPU WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU> values)
         {
@@ -77,16 +94,12 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment();
-            var chunk0A033000 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000();
-            node.Chunks.Add(chunk0A033000);
-            var chunk0A033002 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002();
-            node.Chunks.Add(chunk0A033002);
+            var node = CSceneVehicleEnvironmentBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A033000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A033002 is missing or has an incompatible version.");
+            CSceneVehicleEnvironmentBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CSceneVehicleEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -98,7 +111,7 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) : base(state) { }
         public TMSX WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX[] values)
         {
-            return base.WithMaterials(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithMaterials(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>(values, false));
         }
         public TMSX WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX> values)
         {
@@ -107,16 +120,12 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment();
-            var chunk0A033000 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000();
-            node.Chunks.Add(chunk0A033000);
-            var chunk0A033002 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002();
-            node.Chunks.Add(chunk0A033002);
+            var node = CSceneVehicleEnvironmentBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A033000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A033002 is missing or has an incompatible version.");
+            CSceneVehicleEnvironmentBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CSceneVehicleEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -128,7 +137,7 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) : base(state) { }
         public TMNESWC WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC[] values)
         {
-            return base.WithMaterials(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithMaterials(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>(values, false));
         }
         public TMNESWC WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC> values)
         {
@@ -137,16 +146,12 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment();
-            var chunk0A033000 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000();
-            node.Chunks.Add(chunk0A033000);
-            var chunk0A033002 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002();
-            node.Chunks.Add(chunk0A033002);
+            var node = CSceneVehicleEnvironmentBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A033000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A033002 is missing or has an incompatible version.");
+            CSceneVehicleEnvironmentBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CSceneVehicleEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -158,7 +163,7 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) : base(state) { }
         public VSK5 WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5[] values)
         {
-            return base.WithMaterials(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithMaterials(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>(values, false));
         }
         public VSK5 WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5> values)
         {
@@ -167,16 +172,12 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment();
-            var chunk0A033000 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000();
-            node.Chunks.Add(chunk0A033000);
-            var chunk0A033002 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002();
-            node.Chunks.Add(chunk0A033002);
+            var node = CSceneVehicleEnvironmentBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A033000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A033002 is missing or has an incompatible version.");
+            CSceneVehicleEnvironmentBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CSceneVehicleEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -188,7 +189,7 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment> state) : base(state) { }
         public TMF WithMaterials(params global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF[] values)
         {
-            return base.WithMaterials(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithMaterials(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>(values, false));
         }
         public TMF WithMaterials(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF> values)
         {
@@ -197,16 +198,12 @@ public partial class CSceneVehicleEnvironmentBuilder : CSceneVehicleEnvironmentB
         public global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment();
-            var chunk0A033000 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000();
-            node.Chunks.Add(chunk0A033000);
-            var chunk0A033002 = new global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002();
-            node.Chunks.Add(chunk0A033002);
+            var node = CSceneVehicleEnvironmentBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A033000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneVehicleEnvironment.Chunk0A033002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A033002 is missing or has an incompatible version.");
+            CSceneVehicleEnvironmentBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneVehicleEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

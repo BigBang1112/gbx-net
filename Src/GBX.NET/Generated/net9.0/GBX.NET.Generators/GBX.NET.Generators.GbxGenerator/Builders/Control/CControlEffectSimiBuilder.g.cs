@@ -36,11 +36,11 @@ public abstract class CControlEffectSimiBuilderBase<TSelf> where TSelf : CContro
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state;
     private protected CControlEffectSimiBuilderBase() => state = new();
     private protected CControlEffectSimiBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) => this.state = state;
-    private protected static void SetCentered(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, bool value) => state.Set<bool>("Centered", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Centered = value);
-    private protected static void SetColorBlendMode(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value) => state.Set<global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode>("ColorBlendMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ColorBlendMode = value);
-    private protected static void SetIsContinousEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, bool value) => state.Set<bool>("IsContinousEffect", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsContinousEffect = value);
-    private protected static void SetIsInterpolated(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, bool value) => state.Set<bool>("IsInterpolated", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.IsInterpolated = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>? value) => state.Set<List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>?>("Keys", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetCentered(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetCenteredAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetColorBlendMode(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetColorBlendModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsContinousEffect(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetIsContinousEffectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsInterpolated(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetIsInterpolatedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state, List<global::GBX.NET.Engines.Control.CControlEffectSimi.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlEffectSimiBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool Centered
     {
         get => state.Get<bool>("Centered");
@@ -70,8 +70,72 @@ public abstract class CControlEffectSimiBuilderBase<TSelf> where TSelf : CContro
         return WithKeys(values.ToArray());
     }
 }
+public abstract class CControlEffectSimiBuilderMembers1<TSelf> : CControlEffectSimiBuilderBase<TSelf> where TSelf : CControlEffectSimiBuilderMembers1<TSelf>
+{
+    private protected CControlEffectSimiBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
+    public bool IsContinousEffect
+    {
+        get => state.Get<bool>("IsContinousEffect");
+        set => SetIsContinousEffect(state, value);
+    }
+    public TSelf WithIsContinousEffect(bool value)
+    {
+        IsContinousEffect = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CControlEffectSimiBuilderMembers2<TSelf> : CControlEffectSimiBuilderMembers1<TSelf> where TSelf : CControlEffectSimiBuilderMembers2<TSelf>
+{
+    private protected CControlEffectSimiBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
+    public bool IsInterpolated
+    {
+        get => state.Get<bool>("IsInterpolated");
+        set => SetIsInterpolated(state, value);
+    }
+    public TSelf WithIsInterpolated(bool value)
+    {
+        IsInterpolated = value;
+        return (TSelf)this;
+    }
+}
 public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<CControlEffectSimiBuilder>
 {
+    private static global::GBX.NET.Engines.Control.CControlEffectSimi CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
+        var chunk07010002 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010002();
+        node.Chunks.Add(chunk07010002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07010002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlEffectSimi CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
+        var chunk07010004 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004();
+        node.Chunks.Add(chunk07010004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07010004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlEffectSimi CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
+        var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
+        node.Chunks.Add(chunk07010005);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07010005 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlEffectSimi node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -88,20 +152,19 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010002 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010002();
-            node.Chunks.Add(chunk07010002);
+            var node = CControlEffectSimiBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07010002 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class TMNESWC : CControlEffectSimiBuilderBase<TMNESWC>
+    public partial class TMNESWC : CControlEffectSimiBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -114,33 +177,22 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public TMNESWC WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010004 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004();
-            node.Chunks.Add(chunk07010004);
+            var node = CControlEffectSimiBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07010004 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class VSK5 : CControlEffectSimiBuilderBase<VSK5>
+    public partial class VSK5 : CControlEffectSimiBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -153,33 +205,22 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public VSK5 WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010004 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004();
-            node.Chunks.Add(chunk07010004);
+            var node = CControlEffectSimiBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07010004 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class TMF : CControlEffectSimiBuilderBase<TMF>
+    public partial class TMF : CControlEffectSimiBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -192,43 +233,22 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public TMF WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
-        public bool IsInterpolated
-        {
-            get => state.Get<bool>("IsInterpolated");
-            set => SetIsInterpolated(state, value);
-        }
-        public TMF WithIsInterpolated(bool value)
-        {
-            IsInterpolated = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
-            node.Chunks.Add(chunk07010005);
+            var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07010005 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class MP3 : CControlEffectSimiBuilderBase<MP3>
+    public partial class MP3 : CControlEffectSimiBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -241,43 +261,22 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public MP3 WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
-        public bool IsInterpolated
-        {
-            get => state.Get<bool>("IsInterpolated");
-            set => SetIsInterpolated(state, value);
-        }
-        public MP3 WithIsInterpolated(bool value)
-        {
-            IsInterpolated = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
-            node.Chunks.Add(chunk07010005);
+            var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07010005 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class TMT : CControlEffectSimiBuilderBase<TMT>
+    public partial class TMT : CControlEffectSimiBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -290,43 +289,22 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public TMT WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
-        public bool IsInterpolated
-        {
-            get => state.Get<bool>("IsInterpolated");
-            set => SetIsInterpolated(state, value);
-        }
-        public TMT WithIsInterpolated(bool value)
-        {
-            IsInterpolated = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
-            node.Chunks.Add(chunk07010005);
+            var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07010005 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class MP4 : CControlEffectSimiBuilderBase<MP4>
+    public partial class MP4 : CControlEffectSimiBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -339,43 +317,22 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public MP4 WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
-        public bool IsInterpolated
-        {
-            get => state.Get<bool>("IsInterpolated");
-            set => SetIsInterpolated(state, value);
-        }
-        public MP4 WithIsInterpolated(bool value)
-        {
-            IsInterpolated = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
-            node.Chunks.Add(chunk07010005);
+            var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07010005 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlEffectSimi node);
     }
-    public partial class TM2020 : CControlEffectSimiBuilderBase<TM2020>
+    public partial class TM2020 : CControlEffectSimiBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlEffectSimi> state) : base(state) { }
         public global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode
@@ -388,36 +345,15 @@ public partial class CControlEffectSimiBuilder : CControlEffectSimiBuilderBase<C
             ColorBlendMode = value;
             return this;
         }
-        public bool IsContinousEffect
-        {
-            get => state.Get<bool>("IsContinousEffect");
-            set => SetIsContinousEffect(state, value);
-        }
-        public TM2020 WithIsContinousEffect(bool value)
-        {
-            IsContinousEffect = value;
-            return this;
-        }
-        public bool IsInterpolated
-        {
-            get => state.Get<bool>("IsInterpolated");
-            set => SetIsInterpolated(state, value);
-        }
-        public TM2020 WithIsInterpolated(bool value)
-        {
-            IsInterpolated = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Control.IControlEffectSimiTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlEffectSimi Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlEffectSimi();
-            var chunk07010005 = new global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005();
-            node.Chunks.Add(chunk07010005);
+            var node = CControlEffectSimiBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlEffectSimi.Chunk07010005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07010005 is missing or has an incompatible version.");
+            CControlEffectSimiBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CControlEffectSimiBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

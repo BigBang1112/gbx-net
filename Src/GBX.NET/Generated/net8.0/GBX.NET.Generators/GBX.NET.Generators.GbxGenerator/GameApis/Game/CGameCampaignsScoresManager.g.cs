@@ -36,13 +36,13 @@ public partial class CGameCampaignsScoresManager : global::GBX.NET.Interfaces.Ga
     public static global::GBX.NET.Builders.Engines.Game.CGameCampaignsScoresManagerBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScores>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManager.CampaignScores
     {
-        get => CampaignScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScores>(() => CampaignScores, static node => node ?? throw new MemberNullException("CampaignScores"));
-        set => CampaignScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCampaignScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CampaignScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScores>(GetCampaignScoresBuilderReferences, GameVersion.Unspecified, true, "CampaignScores");
+        set => CampaignScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScores>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScores>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManager.ChallengeScores
     {
-        get => ChallengeScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScores>(() => ChallengeScores, static node => node ?? throw new MemberNullException("ChallengeScores"));
-        set => ChallengeScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameChallengeScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScores>(GetChallengeScoresBuilderReferences, GameVersion.Unspecified, true, "ChallengeScores");
+        set => ChallengeScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScores>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameGeneralScores? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManager.GeneralScores
     {
@@ -54,17 +54,17 @@ public partial class CGameCampaignsScoresManager : global::GBX.NET.Interfaces.Ga
         get => SkillScoreComputer;
         set => SkillScoreComputer = value is null ? null : value is global::GBX.NET.Engines.Game.CGameSkillScoreComputer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerTMF.CampaignScores
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF, global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF>.CampaignScores
     {
-        get => CampaignScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF>(() => CampaignScores, static node => { if (node is null) throw new MemberNullException("CampaignScores"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => CampaignScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCampaignScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CampaignScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF>(GetCampaignScoresBuilderReferences, GameVersion.TMF, true, "CampaignScores");
+        set => CampaignScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerTMF.ChallengeScores
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF, global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF>.ChallengeScores
     {
-        get => ChallengeScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF>(() => ChallengeScores, static node => { if (node is null) throw new MemberNullException("ChallengeScores"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => ChallengeScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameChallengeScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF>(GetChallengeScoresBuilderReferences, GameVersion.TMF, true, "ChallengeScores");
+        set => ChallengeScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerTMF.GeneralScores
+    global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF, global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF>.GeneralScores
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CGameCampaignsScoresManager : global::GBX.NET.Interfaces.Ga
         }
         set => GeneralScores = value is null ? null : value is global::GBX.NET.Engines.Game.CGameGeneralScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerTMF.SkillScoreComputer
+    global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresTMF, global::GBX.NET.Interfaces.Game.IGameChallengeScoresTMF, global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerTMF>.SkillScoreComputer
     {
         get
         {
@@ -84,17 +84,17 @@ public partial class CGameCampaignsScoresManager : global::GBX.NET.Interfaces.Ga
         }
         set => SkillScoreComputer = value is null ? null : value is global::GBX.NET.Engines.Game.CGameSkillScoreComputer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMP3.CampaignScores
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3, global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3>.CampaignScores
     {
-        get => CampaignScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3>(() => CampaignScores, static node => { if (node is null) throw new MemberNullException("CampaignScores"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => CampaignScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCampaignScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CampaignScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3>(GetCampaignScoresBuilderReferences, GameVersion.MP3, true, "CampaignScores");
+        set => CampaignScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignScores, global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMP3.ChallengeScores
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3>? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3, global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3>.ChallengeScores
     {
-        get => ChallengeScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3>(() => ChallengeScores, static node => { if (node is null) throw new MemberNullException("ChallengeScores"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => ChallengeScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameChallengeScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ChallengeScores is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3>(GetChallengeScoresBuilderReferences, GameVersion.MP3, true, "ChallengeScores");
+        set => ChallengeScores = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameChallengeScores, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMP3.GeneralScores
+    global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3, global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3>.GeneralScores
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CGameCampaignsScoresManager : global::GBX.NET.Interfaces.Ga
         }
         set => GeneralScores = value is null ? null : value is global::GBX.NET.Engines.Game.CGameGeneralScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMP3.SkillScoreComputer
+    global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3? global::GBX.NET.Interfaces.Game.IGameCampaignsScoresManagerMembers1<global::GBX.NET.Interfaces.Game.IGameCampaignScoresMP3, global::GBX.NET.Interfaces.Game.IGameChallengeScoresMP3, global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3, global::GBX.NET.Interfaces.Game.IGameSkillScoreComputerMP3>.SkillScoreComputer
     {
         get
         {
@@ -114,4 +114,6 @@ public partial class CGameCampaignsScoresManager : global::GBX.NET.Interfaces.Ga
         }
         set => SkillScoreComputer = value is null ? null : value is global::GBX.NET.Engines.Game.CGameSkillScoreComputer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignScores>? GetCampaignScoresBuilderReferences() => CampaignScores;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameChallengeScores>? GetChallengeScoresBuilderReferences() => ChallengeScores;
 }

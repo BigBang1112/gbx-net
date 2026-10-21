@@ -40,7 +40,6 @@ public partial interface IGameManiaTitleCore : IClassVersion<global::GBX.NET.Eng
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface IGameManiaTitleCoreTM10 : IGameManiaTitleCore, global::GBX.NET.Interfaces.Game.IGameNodTM10

@@ -36,45 +36,45 @@ public abstract class CGameActionModelBuilderBase<TSelf> where TSelf : CGameActi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state;
     private protected CGameActionModelBuilderBase() => state = new();
     private protected CGameActionModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) => this.state = state;
-    private protected static void SetActionName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string value) => state.Set<string>("ActionName", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ActionName = value);
-    private protected static void SetActionScriptEffectVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("ActionScriptEffectVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ActionScriptEffectVersion = value);
-    private protected static void SetActionScriptEffects(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.ActionScriptEffect[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameActionModel.ActionScriptEffect[]?>("ActionScriptEffects", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameActionModel.ActionScriptEffect[])value.Clone(), static (node, value) => node.ActionScriptEffects = value);
-    private protected static void SetActionType(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("ActionType", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ActionType = value);
-    private protected static void SetAnim(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("Anim", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Anim = value);
-    private protected static void SetAnimReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile>>("Anim", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Anim.CopyFrom(reference));
-    private protected static void SetBeamVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("BeamVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BeamVersion = value);
-    private protected static void SetBeams(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugCustomBeamModel[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugCustomBeamModel[]?>("Beams", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugCustomBeamModel[])value.Clone(), static (node, value) => node.Beams = value);
-    private protected static void SetBulletModels_Nadeo(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>?>("BulletModels_Nadeo", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.BulletModels_Nadeo = value);
-    private protected static void SetCooldown(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.ScriptParams? value) => state.Set<global::GBX.NET.Engines.GameData.CGameActionModel.ScriptParams?>("Cooldown", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Cooldown = value);
-    private protected static void SetCrossHair(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFileImg?>("CrossHair", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CrossHair = value);
-    private protected static void SetCrossHairReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>("CrossHair", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.CrossHair.CopyFrom(reference));
-    private protected static void SetCrossHairRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set<string?>("CrossHairRef", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CrossHairRef = value);
-    private protected static void SetCustomBulletVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("CustomBulletVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CustomBulletVersion = value);
-    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set<string?>("Description", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Description = value);
-    private protected static void SetGaugeId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string value) => state.Set<string>("GaugeId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.GaugeId = value);
-    private protected static void SetIcon(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFileImg?>("Icon", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Icon = value);
-    private protected static void SetIconReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>>("Icon", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Icon.CopyFrom(reference));
-    private protected static void SetIconRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set<string?>("IconRef", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IconRef = value);
-    private protected static void SetInventoryItemClass(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("InventoryItemClass", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.InventoryItemClass = value);
-    private protected static void SetIsCustom(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set<bool>("IsCustom", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.IsCustom = value);
-    private protected static void SetIsLockModeActive(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set<bool>("IsLockModeActive", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.IsLockModeActive = value);
-    private protected static void SetLegacyFlag(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set<bool>("LegacyFlag", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LegacyFlag = value);
-    private protected static void SetLegacyInventoryValues(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int[]? value) => state.Set<int[]?>("LegacyInventoryValues", value, GameVersion.TMT, static value => value is null ? null! : (int[])value.Clone(), static (node, value) => node.LegacyInventoryValues = value);
-    private protected static void SetLegacyText(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set<string?>("LegacyText", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LegacyText = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetParticleBlockVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("ParticleBlockVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ParticleBlockVersion = value);
-    private protected static void SetParticleBlocks(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.ParticleBlock[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameActionModel.ParticleBlock[]?>("ParticleBlocks", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameActionModel.ParticleBlock[])value.Clone(), static (node, value) => node.ParticleBlocks = value);
-    private protected static void SetProjectiles(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugCustomBulletModel[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugCustomBulletModel[]?>("Projectiles", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugCustomBulletModel[])value.Clone(), static (node, value) => node.Projectiles = value);
-    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugScriptWithSettings? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?>("Script", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Script = value);
-    private protected static void SetScriptReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings>>("Script", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Script.CopyFrom(reference));
-    private protected static void SetScriptParamsVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("ScriptParamsVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ScriptParamsVersion = value);
-    private protected static void SetShieldModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugShieldModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugShieldModel?>("ShieldModel", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ShieldModel = value);
-    private protected static void SetShieldModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel>>("ShieldModel", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ShieldModel.CopyFrom(reference));
-    private protected static void SetSoundBlockVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("SoundBlockVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundBlockVersion = value);
-    private protected static void SetSoundBlocks(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.SoundBlock[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameActionModel.SoundBlock[]?>("SoundBlocks", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameActionModel.SoundBlock[])value.Clone(), static (node, value) => node.SoundBlocks = value);
-    private protected static void SetSpriteBlockVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set<int>("SpriteBlockVersion", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpriteBlockVersion = value);
-    private protected static void SetSpriteBlocks(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]?>("SpriteBlocks", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[])value.Clone(), static (node, value) => node.SpriteBlocks = value);
-    private protected static void SetUseVehicleGuns(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set<bool>("UseVehicleGuns", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.UseVehicleGuns = value);
+    private protected static void SetActionName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetActionScriptEffectVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionScriptEffectVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetActionScriptEffects(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.ActionScriptEffect[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionScriptEffectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetActionType(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetActionTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnim(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetAnimAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetAnimReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBeamVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBeamVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBeams(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugCustomBeamModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBeamsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBulletModels_Nadeo(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetBulletModels_NadeoAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetCooldown(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.ScriptParams? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCooldownAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCrossHair(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCrossHairAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCrossHairReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCrossHairReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCrossHairRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCrossHairRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCustomBulletVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetCustomBulletVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDescription(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetDescriptionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetGaugeId(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetGaugeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIcon(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugFileImg? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIconReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileImg> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIconRef(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIconRefAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetInventoryItemClass(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetInventoryItemClassAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIsCustom(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIsCustomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIsLockModeActive(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetIsLockModeActiveAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLegacyFlag(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyFlagAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLegacyInventoryValues(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyInventoryValuesAssignment(), value, GameVersion.TMT);
+    private protected static void SetLegacyText(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetLegacyTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetParticleBlockVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetParticleBlockVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetParticleBlocks(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.ParticleBlock[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetParticleBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetProjectiles(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugCustomBulletModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetProjectilesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugScriptWithSettings? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetScriptReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetScriptReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetScriptParamsVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetScriptParamsVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShieldModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.Plug.CPlugShieldModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetShieldModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetShieldModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetSoundBlockVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSoundBlockVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundBlocks(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.SoundBlock[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSoundBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSpriteBlockVersion(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlockVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSpriteBlocks(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetSpriteBlocksAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetUseVehicleGuns(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameActionModelBuilderAssignments.GetUseVehicleGunsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public string ActionName
     {
         get => state.Get<string>("ActionName");
@@ -360,8 +360,173 @@ public abstract class CGameActionModelBuilderBase<TSelf> where TSelf : CGameActi
         return WithSoundBlocks(values.ToArray());
     }
 }
+public abstract class CGameActionModelBuilderMembers1<TSelf> : CGameActionModelBuilderBase<TSelf> where TSelf : CGameActionModelBuilderMembers1<TSelf>
+{
+    private protected CGameActionModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
+    public int InventoryItemClass
+    {
+        get => state.Get<int>("InventoryItemClass");
+        set => SetInventoryItemClass(state, value);
+    }
+    public TSelf WithInventoryItemClass(int value)
+    {
+        InventoryItemClass = value;
+        return (TSelf)this;
+    }
+    public bool LegacyFlag
+    {
+        get => state.Get<bool>("LegacyFlag");
+        set => SetLegacyFlag(state, value);
+    }
+    public TSelf WithLegacyFlag(bool value)
+    {
+        LegacyFlag = value;
+        return (TSelf)this;
+    }
+    public int SpriteBlockVersion
+    {
+        get => state.Get<int>("SpriteBlockVersion");
+        set => SetSpriteBlockVersion(state, value);
+    }
+    public TSelf WithSpriteBlockVersion(int value)
+    {
+        SpriteBlockVersion = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks
+    {
+        get => state.Get<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]?>("SpriteBlocks");
+        set => SetSpriteBlocks(state, value);
+    }
+    public TSelf WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value)
+    {
+        SpriteBlocks = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values)
+    {
+        return WithSpriteBlocks(values.ToArray());
+    }
+}
+public abstract class CGameActionModelBuilderMembers2<TSelf> : CGameActionModelBuilderMembers1<TSelf> where TSelf : CGameActionModelBuilderMembers2<TSelf>
+{
+    private protected CGameActionModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
+    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? BulletModels_Nadeo
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>?>("BulletModels_Nadeo");
+        set => SetBulletModels_Nadeo(state, value);
+    }
+    public TSelf WithBulletModels_Nadeo(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value)
+    {
+        BulletModels_Nadeo = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBulletModels_Nadeo(params global::GBX.NET.Engines.Plug.CPlugBulletModel[] values)
+    {
+        return WithBulletModels_Nadeo(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(values));
+    }
+    public TSelf WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBulletModel> values)
+    {
+        return WithBulletModels_Nadeo(values.ToArray());
+    }
+    public bool IsLockModeActive
+    {
+        get => state.Get<bool>("IsLockModeActive");
+        set => SetIsLockModeActive(state, value);
+    }
+    public TSelf WithIsLockModeActive(bool value)
+    {
+        IsLockModeActive = value;
+        return (TSelf)this;
+    }
+    public string? Name
+    {
+        get => state.Get<string?>("Name");
+        set => SetName(state, value);
+    }
+    public TSelf WithName(string? value)
+    {
+        Name = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugShieldModel? ShieldModel
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugShieldModel?>("ShieldModel");
+        set => SetShieldModel(state, value);
+    }
+    public TSelf WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value)
+    {
+        ShieldModel = value;
+        return (TSelf)this;
+    }
+    public TSelf WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetShieldModelReference(state, value);
+        return (TSelf)this;
+    }
+    public bool UseVehicleGuns
+    {
+        get => state.Get<bool>("UseVehicleGuns");
+        set => SetUseVehicleGuns(state, value);
+    }
+    public TSelf WithUseVehicleGuns(bool value)
+    {
+        UseVehicleGuns = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGameActionModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
+        var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game);
+        node.Chunks.Add(chunk2E008000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameActionModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 18 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E008000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
+        var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game);
+        node.Chunks.Add(chunk2E008000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.GameData.CGameActionModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 22 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E008000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
+        var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game);
+        node.Chunks.Add(chunk2E008000);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.GameData.CGameActionModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 31 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E008000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameActionModel CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
+        var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(game);
+        node.Chunks.Add(chunk2E008000);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.GameData.CGameActionModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 44 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E008000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameActionModel node, GameVersion game)
+    {
+        if (node.ActionName is null) throw new MemberNullException("ActionName");
+        if (node.GaugeId is null) throw new MemberNullException("GaugeId");
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -378,47 +543,24 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         public global::GBX.NET.Interfaces.GameData.IGameActionModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-            var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(GameVersion.MP3);
-            node.Chunks.Add(chunk2E008000);
+            var node = CGameActionModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 18 }) throw new InvalidOperationException("Required MP3 chunk Chunk2E008000 is missing or has an incompatible version.");
+            CGameActionModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.ActionName is null) throw new MemberNullException("ActionName");
-            if (node.GaugeId is null) throw new MemberNullException("GaugeId");
+            CGameActionModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
         partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
-    public partial class TMT : CGameActionModelBuilderBase<TMT>
+    public partial class TMT : CGameActionModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
         public TMT WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTMT? value)
         {
             return base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public int InventoryItemClass
-        {
-            get => state.Get<int>("InventoryItemClass");
-            set => SetInventoryItemClass(state, value);
-        }
-        public TMT WithInventoryItemClass(int value)
-        {
-            InventoryItemClass = value;
-            return this;
-        }
-        public bool LegacyFlag
-        {
-            get => state.Get<bool>("LegacyFlag");
-            set => SetLegacyFlag(state, value);
-        }
-        public TMT WithLegacyFlag(bool value)
-        {
-            LegacyFlag = value;
-            return this;
         }
         public int[]? LegacyInventoryValues
         {
@@ -434,332 +576,83 @@ public partial class CGameActionModelBuilder : CGameActionModelBuilderBase<CGame
         {
             return WithLegacyInventoryValues(values.ToArray());
         }
-        public int SpriteBlockVersion
-        {
-            get => state.Get<int>("SpriteBlockVersion");
-            set => SetSpriteBlockVersion(state, value);
-        }
-        public TMT WithSpriteBlockVersion(int value)
-        {
-            SpriteBlockVersion = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]?>("SpriteBlocks");
-            set => SetSpriteBlocks(state, value);
-        }
-        public TMT WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value)
-        {
-            SpriteBlocks = value;
-            return this;
-        }
-        public TMT WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values)
-        {
-            return WithSpriteBlocks(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.GameData.IGameActionModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-            var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(GameVersion.TMT);
-            node.Chunks.Add(chunk2E008000);
+            var node = CGameActionModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 22 }) throw new InvalidOperationException("Required TMT chunk Chunk2E008000 is missing or has an incompatible version.");
+            CGameActionModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.ActionName is null) throw new MemberNullException("ActionName");
-            if (node.GaugeId is null) throw new MemberNullException("GaugeId");
+            CGameActionModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
         partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
-    public partial class MP4 : CGameActionModelBuilderBase<MP4>
+    public partial class MP4 : CGameActionModelBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
         public MP4 WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? value)
         {
             return base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? BulletModels_Nadeo
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>?>("BulletModels_Nadeo");
-            set => SetBulletModels_Nadeo(state, value);
-        }
-        public MP4 WithBulletModels_Nadeo(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value)
-        {
-            BulletModels_Nadeo = value;
-            return this;
-        }
-        public MP4 WithBulletModels_Nadeo(params global::GBX.NET.Engines.Plug.CPlugBulletModel[] values)
-        {
-            return WithBulletModels_Nadeo(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(values));
-        }
-        public MP4 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBulletModel> values)
-        {
-            return WithBulletModels_Nadeo(values.ToArray());
-        }
         public MP4 WithBulletModels_Nadeo(params global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4[] values)
         {
-            return WithBulletModels_Nadeo(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBulletModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBulletModels_Nadeo(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBulletModel, global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4>(values, false));
         }
         public MP4 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBulletModelMP4> values)
         {
             return WithBulletModels_Nadeo(values.ToArray());
         }
-        public int InventoryItemClass
-        {
-            get => state.Get<int>("InventoryItemClass");
-            set => SetInventoryItemClass(state, value);
-        }
-        public MP4 WithInventoryItemClass(int value)
-        {
-            InventoryItemClass = value;
-            return this;
-        }
-        public bool IsLockModeActive
-        {
-            get => state.Get<bool>("IsLockModeActive");
-            set => SetIsLockModeActive(state, value);
-        }
-        public MP4 WithIsLockModeActive(bool value)
-        {
-            IsLockModeActive = value;
-            return this;
-        }
-        public bool LegacyFlag
-        {
-            get => state.Get<bool>("LegacyFlag");
-            set => SetLegacyFlag(state, value);
-        }
-        public MP4 WithLegacyFlag(bool value)
-        {
-            LegacyFlag = value;
-            return this;
-        }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public MP4 WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public MP4 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4? value)
         {
             return base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugShieldModel? ShieldModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShieldModel?>("ShieldModel");
-            set => SetShieldModel(state, value);
-        }
-        public MP4 WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value)
-        {
-            ShieldModel = value;
-            return this;
-        }
-        public MP4 WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShieldModelReference(state, value);
-            return this;
-        }
         public MP4 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelMP4? value)
         {
-            return WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public int SpriteBlockVersion
-        {
-            get => state.Get<int>("SpriteBlockVersion");
-            set => SetSpriteBlockVersion(state, value);
-        }
-        public MP4 WithSpriteBlockVersion(int value)
-        {
-            SpriteBlockVersion = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]?>("SpriteBlocks");
-            set => SetSpriteBlocks(state, value);
-        }
-        public MP4 WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value)
-        {
-            SpriteBlocks = value;
-            return this;
-        }
-        public MP4 WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values)
-        {
-            return WithSpriteBlocks(values.ToArray());
-        }
-        public bool UseVehicleGuns
-        {
-            get => state.Get<bool>("UseVehicleGuns");
-            set => SetUseVehicleGuns(state, value);
-        }
-        public MP4 WithUseVehicleGuns(bool value)
-        {
-            UseVehicleGuns = value;
-            return this;
+            return base.WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.GameData.IGameActionModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-            var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(GameVersion.MP4);
-            node.Chunks.Add(chunk2E008000);
+            var node = CGameActionModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 31 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E008000 is missing or has an incompatible version.");
+            CGameActionModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.ActionName is null) throw new MemberNullException("ActionName");
-            if (node.GaugeId is null) throw new MemberNullException("GaugeId");
+            CGameActionModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
         partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameActionModel node);
     }
-    public partial class TM2020 : CGameActionModelBuilderBase<TM2020>
+    public partial class TM2020 : CGameActionModelBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameActionModel> state) : base(state) { }
         public TM2020 WithAnim(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? value)
         {
             return base.WithAnim(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? BulletModels_Nadeo
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>?>("BulletModels_Nadeo");
-            set => SetBulletModels_Nadeo(state, value);
-        }
-        public TM2020 WithBulletModels_Nadeo(NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>? value)
-        {
-            BulletModels_Nadeo = value;
-            return this;
-        }
-        public TM2020 WithBulletModels_Nadeo(params global::GBX.NET.Engines.Plug.CPlugBulletModel[] values)
-        {
-            return WithBulletModels_Nadeo(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugBulletModel>(values));
-        }
-        public TM2020 WithBulletModels_Nadeo(IEnumerable<global::GBX.NET.Engines.Plug.CPlugBulletModel> values)
-        {
-            return WithBulletModels_Nadeo(values.ToArray());
-        }
-        public int InventoryItemClass
-        {
-            get => state.Get<int>("InventoryItemClass");
-            set => SetInventoryItemClass(state, value);
-        }
-        public TM2020 WithInventoryItemClass(int value)
-        {
-            InventoryItemClass = value;
-            return this;
-        }
-        public bool IsLockModeActive
-        {
-            get => state.Get<bool>("IsLockModeActive");
-            set => SetIsLockModeActive(state, value);
-        }
-        public TM2020 WithIsLockModeActive(bool value)
-        {
-            IsLockModeActive = value;
-            return this;
-        }
-        public bool LegacyFlag
-        {
-            get => state.Get<bool>("LegacyFlag");
-            set => SetLegacyFlag(state, value);
-        }
-        public TM2020 WithLegacyFlag(bool value)
-        {
-            LegacyFlag = value;
-            return this;
-        }
-        public string? Name
-        {
-            get => state.Get<string?>("Name");
-            set => SetName(state, value);
-        }
-        public TM2020 WithName(string? value)
-        {
-            Name = value;
-            return this;
-        }
         public TM2020 WithScript(global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020? value)
         {
             return base.WithScript(value is null ? (global::GBX.NET.Engines.Plug.CPlugScriptWithSettings?)null : value is global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugShieldModel? ShieldModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugShieldModel?>("ShieldModel");
-            set => SetShieldModel(state, value);
-        }
-        public TM2020 WithShieldModel(global::GBX.NET.Engines.Plug.CPlugShieldModel? value)
-        {
-            ShieldModel = value;
-            return this;
-        }
-        public TM2020 WithShieldModelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugShieldModel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetShieldModelReference(state, value);
-            return this;
-        }
         public TM2020 WithShieldModel(global::GBX.NET.Interfaces.Plug.IPlugShieldModelTM2020? value)
         {
-            return WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public int SpriteBlockVersion
-        {
-            get => state.Get<int>("SpriteBlockVersion");
-            set => SetSpriteBlockVersion(state, value);
-        }
-        public TM2020 WithSpriteBlockVersion(int value)
-        {
-            SpriteBlockVersion = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? SpriteBlocks
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]?>("SpriteBlocks");
-            set => SetSpriteBlocks(state, value);
-        }
-        public TM2020 WithSpriteBlocks(params global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock[]? value)
-        {
-            SpriteBlocks = value;
-            return this;
-        }
-        public TM2020 WithSpriteBlocks(IEnumerable<global::GBX.NET.Engines.GameData.CGameActionModel.SpriteBlock> values)
-        {
-            return WithSpriteBlocks(values.ToArray());
-        }
-        public bool UseVehicleGuns
-        {
-            get => state.Get<bool>("UseVehicleGuns");
-            set => SetUseVehicleGuns(state, value);
-        }
-        public TM2020 WithUseVehicleGuns(bool value)
-        {
-            UseVehicleGuns = value;
-            return this;
+            return base.WithShieldModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugShieldModel?)null : value is global::GBX.NET.Engines.Plug.CPlugShieldModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameActionModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameActionModel();
-            var chunk2E008000 = new global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000(GameVersion.TM2020);
-            node.Chunks.Add(chunk2E008000);
+            var node = CGameActionModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameActionModel.Chunk2E008000>() is not { Version: 44 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E008000 is missing or has an incompatible version.");
+            CGameActionModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.ActionName is null) throw new MemberNullException("ActionName");
-            if (node.GaugeId is null) throw new MemberNullException("GaugeId");
+            CGameActionModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

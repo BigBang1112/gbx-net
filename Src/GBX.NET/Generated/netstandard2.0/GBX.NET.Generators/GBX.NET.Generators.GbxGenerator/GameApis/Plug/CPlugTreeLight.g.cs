@@ -34,40 +34,15 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeLight, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugTreeLightBuilder Create() => new();
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTree>? global::GBX.NET.Interfaces.Plug.IPlugTreeLight.Children
-    {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTree>(() => Children, static node => node ?? throw new MemberNullException("Children"));
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Function.IFuncTree? global::GBX.NET.Interfaces.Plug.IPlugTreeLight.FuncTree
-    {
-        get => FuncTree;
-        set => FuncTree = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeGenerator? global::GBX.NET.Interfaces.Plug.IPlugTreeLight.Generator
-    {
-        get => Generator;
-        set => Generator = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTreeGenerator node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid? global::GBX.NET.Interfaces.Plug.IPlugTreeLight.ModelSolid
-    {
-        get => ModelSolid;
-        set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Plug.IPlugLight? global::GBX.NET.Interfaces.Plug.IPlugTreeLight.PlugLight
     {
         get => PlugLight;
         set => PlugLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVisual? global::GBX.NET.Interfaces.Plug.IPlugTreeLight.Visual
-    {
-        get => Visual;
-        set => Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM10.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>(GetChildrenBuilderReferences, GameVersion.TM10, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTM10? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM10.FuncTree
     {
@@ -89,7 +64,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTM10? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM10.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTM10? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTM10>.PlugLight
     {
         get
         {
@@ -111,8 +86,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMPU.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>(GetChildrenBuilderReferences, GameVersion.TMPU, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTMPU? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMPU.FuncTree
     {
@@ -134,7 +109,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMPU? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMPU.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMPU? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTMPU>.PlugLight
     {
         get
         {
@@ -156,8 +131,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>(GetChildrenBuilderReferences, GameVersion.TMSX, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTMSX? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX.FuncTree
     {
@@ -189,7 +164,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMSX? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMSX? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTMSX>.PlugLight
     {
         get
         {
@@ -198,16 +173,6 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
             return node;
         }
         set => PlugLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX.RefBuffer
-    {
-        get
-        {
-            var node = RefBuffer;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVisualTMSX? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMSX.Visual
     {
@@ -221,8 +186,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>(GetChildrenBuilderReferences, GameVersion.TMNESWC, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC.FuncTree
     {
@@ -254,7 +219,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC>.PlugLight
     {
         get
         {
@@ -263,16 +228,6 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
             return node;
         }
         set => PlugLight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC.RefBuffer
-    {
-        get
-        {
-            var node = RefBuffer;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => RefBuffer = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
     global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC.Visual
     {
@@ -286,8 +241,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>(GetChildrenBuilderReferences, GameVersion.VSK5, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeVSK5? global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5.FuncTree
     {
@@ -319,7 +274,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightVSK5>.PlugLight
     {
         get
         {
@@ -341,8 +296,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>(GetChildrenBuilderReferences, GameVersion.TMF, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTMF? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF.FuncTree
     {
@@ -374,7 +329,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMF? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTMF>.PlugLight
     {
         get
         {
@@ -396,8 +351,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>(GetChildrenBuilderReferences, GameVersion.MP3, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeMP3? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3.FuncTree
     {
@@ -429,7 +384,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightMP3? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightMP3? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightMP3>.PlugLight
     {
         get
         {
@@ -451,8 +406,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>(GetChildrenBuilderReferences, GameVersion.TMT, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTMT? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT.FuncTree
     {
@@ -484,7 +439,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTMT? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTMT? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTMT>.PlugLight
     {
         get
         {
@@ -506,8 +461,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>(GetChildrenBuilderReferences, GameVersion.MP4, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeMP4? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4.FuncTree
     {
@@ -539,7 +494,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightMP4? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightMP4? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightMP4>.PlugLight
     {
         get
         {
@@ -561,8 +516,8 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020.Children
     {
-        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>(() => Children, static node => { if (node is null) throw new MemberNullException("Children"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Children is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>(GetChildrenBuilderReferences, GameVersion.TM2020, true, "Children");
+        set => Children = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Function.IFuncTreeTM2020? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020.FuncTree
     {
@@ -594,7 +549,7 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => ModelSolid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020.PlugLight
+    global::GBX.NET.Interfaces.Plug.IPlugLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugTreeLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugLightTM2020>.PlugLight
     {
         get
         {
@@ -614,4 +569,5 @@ public partial class CPlugTreeLight : global::GBX.NET.Interfaces.Plug.IPlugTreeL
         }
         set => Visual = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? GetChildrenBuilderReferences() => Children;
 }

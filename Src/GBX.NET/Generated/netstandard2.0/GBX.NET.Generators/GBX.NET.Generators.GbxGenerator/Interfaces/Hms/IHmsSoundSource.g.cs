@@ -31,6 +31,23 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsSoundSourceMembers1<T0> : global::GBX.NET.Interfaces.Hms.IHmsSoundSource where T0 : class
+{
+    new T0? PlugSound { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsSoundSourceMembers2 : global::GBX.NET.Interfaces.Hms.IHmsSoundSource
+{
+    Vec3 VolumicSize { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsSoundSourceMembers3 : global::GBX.NET.Interfaces.Hms.IHmsSoundSource
+{
+    float PriorityAdjustement { get; set; }
+    float RpmOrSpeed { get; set; }
+    bool UseLowQuality { get; set; }
+}
 public partial interface IHmsSoundSource : IClassVersion<global::GBX.NET.Engines.Hms.CHmsSoundSource>
 {
     float Pitch { get; set; }
@@ -38,57 +55,31 @@ public partial interface IHmsSoundSource : IClassVersion<global::GBX.NET.Engines
     float Volume { get; set; }
 }
 
-public partial interface IHmsSoundSourceTM10 : IHmsSoundSource
+public partial interface IHmsSoundSourceTM10 : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? PlugSound { get; set; }
 }
 
-public partial interface IHmsSoundSourceTMPU : IHmsSoundSource
+public partial interface IHmsSoundSourceTMPU : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? PlugSound { get; set; }
 }
 
-public partial interface IHmsSoundSourceTMSX : IHmsSoundSource
+public partial interface IHmsSoundSourceTMSX : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? PlugSound { get; set; }
-    float PriorityAdjustement { get; set; }
-    float RpmOrSpeed { get; set; }
-    bool UseLowQuality { get; set; }
 }
 
-public partial interface IHmsSoundSourceTMNESWC : IHmsSoundSource
+public partial interface IHmsSoundSourceTMNESWC : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers2, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? PlugSound { get; set; }
-    float PriorityAdjustement { get; set; }
-    float RpmOrSpeed { get; set; }
-    bool UseLowQuality { get; set; }
-    Vec3 VolumicSize { get; set; }
 }
 
-public partial interface IHmsSoundSourceVSK5 : IHmsSoundSource
+public partial interface IHmsSoundSourceVSK5 : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers2, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? PlugSound { get; set; }
-    float PriorityAdjustement { get; set; }
-    float RpmOrSpeed { get; set; }
-    bool UseLowQuality { get; set; }
-    Vec3 VolumicSize { get; set; }
 }
 
-public partial interface IHmsSoundSourceTMF : IHmsSoundSource
+public partial interface IHmsSoundSourceTMF : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers2, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? PlugSound { get; set; }
-    float PriorityAdjustement { get; set; }
-    float RpmOrSpeed { get; set; }
-    bool UseLowQuality { get; set; }
-    Vec3 VolumicSize { get; set; }
 }
 
-public partial interface IHmsSoundSourceMP3 : IHmsSoundSource
+public partial interface IHmsSoundSourceMP3 : IHmsSoundSource, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers2, global::GBX.NET.Interfaces.Hms.IHmsSoundSourceMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? PlugSound { get; set; }
-    float PriorityAdjustement { get; set; }
-    float RpmOrSpeed { get; set; }
-    bool UseLowQuality { get; set; }
-    Vec3 VolumicSize { get; set; }
 }
 

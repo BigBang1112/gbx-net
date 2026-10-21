@@ -36,12 +36,12 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state;
     private protected CFuncFullColorGradientBuilderBase() => state = new();
     private protected CFuncFullColorGradientBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state) => this.state = state;
-    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, float value) => state.Set<float>("KeyFramePos1", value, GameVersion.TMF, static value => value, static (node, value) => node.KeyFramePos1 = value);
-    private protected static void SetKeyFramePos2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, float value) => state.Set<float>("KeyFramePos2", value, GameVersion.TMF, static value => value, static (node, value) => node.KeyFramePos2 = value);
-    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set<Vec3>("KeyFrameValue0", value, GameVersion.TMF, static value => value, static (node, value) => node.KeyFrameValue0 = value);
-    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set<Vec3>("KeyFrameValue1", value, GameVersion.TMF, static value => value, static (node, value) => node.KeyFrameValue1 = value);
-    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set<Vec3>("KeyFrameValue2", value, GameVersion.TMF, static value => value, static (node, value) => node.KeyFrameValue2 = value);
-    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set<Vec3>("KeyFrameValue3", value, GameVersion.TMF, static value => value, static (node, value) => node.KeyFrameValue3 = value);
+    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.TMF);
+    private protected static void SetKeyFramePos2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFramePos2Assignment(), value, GameVersion.TMF);
+    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.TMF);
+    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.TMF);
+    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.TMF);
+    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncFullColorGradient> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncFullColorGradientBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.TMF);
     public float KeyFramePos1
     {
         get => state.Get<float>("KeyFramePos1");
@@ -105,6 +105,20 @@ public abstract class CFuncFullColorGradientBuilderBase<TSelf> where TSelf : CFu
 }
 public partial class CFuncFullColorGradientBuilder : CFuncFullColorGradientBuilderBase<CFuncFullColorGradientBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncFullColorGradient CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncFullColorGradient();
+        var chunk05039000 = new global::GBX.NET.Engines.Function.CFuncFullColorGradient.Chunk05039000();
+        node.Chunks.Add(chunk05039000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncFullColorGradient node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncFullColorGradient.Chunk05039000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05039000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncFullColorGradient node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CFuncFullColorGradientBuilderBase<TMF>
     {
@@ -112,13 +126,12 @@ public partial class CFuncFullColorGradientBuilder : CFuncFullColorGradientBuild
         public global::GBX.NET.Interfaces.Function.IFuncFullColorGradientTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncFullColorGradient Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncFullColorGradient();
-            var chunk05039000 = new global::GBX.NET.Engines.Function.CFuncFullColorGradient.Chunk05039000();
-            node.Chunks.Add(chunk05039000);
+            var node = CFuncFullColorGradientBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncFullColorGradient.Chunk05039000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk05039000 is missing or has an incompatible version.");
+            CFuncFullColorGradientBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncFullColorGradientBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

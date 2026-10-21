@@ -36,9 +36,9 @@ public abstract class CInputReplayBuilderBase<TSelf> where TSelf : CInputReplayB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state;
     private protected CInputReplayBuilderBase() => state = new();
     private protected CInputReplayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state) => this.state = state;
-    private protected static void SetActionIds(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, string[]? value) => state.Set<string[]?>("ActionIds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (string[])value.Clone(), static (node, value) => node.ActionIds = value);
-    private protected static void SetEvents(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, global::GBX.NET.Engines.Input.CInputReplay.Event[]? value) => state.Set<global::GBX.NET.Engines.Input.CInputReplay.Event[]?>("Events", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Input.CInputReplay.Event[])value.Clone(), static (node, value) => node.Events = value);
-    private protected static void SetMaxEventCount(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, uint value) => state.Set<uint>("MaxEventCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MaxEventCount = value);
+    private protected static void SetActionIds(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetActionIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEvents(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, global::GBX.NET.Engines.Input.CInputReplay.Event[]? value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetEventsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMaxEventCount(NodeBuilderState<global::GBX.NET.Engines.Input.CInputReplay> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Input.CInputReplayBuilderAssignments.GetMaxEventCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string[]? ActionIds
     {
         get => state.Get<string[]?>("ActionIds");
@@ -80,6 +80,20 @@ public abstract class CInputReplayBuilderBase<TSelf> where TSelf : CInputReplayB
 }
 public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayBuilder>
 {
+    private static global::GBX.NET.Engines.Input.CInputReplay CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Input.CInputReplay();
+        var chunk1300D000 = new global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000(game);
+        node.Chunks.Add(chunk1300D000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Input.CInputReplay node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk1300D000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Input.CInputReplay node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -92,13 +106,12 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
         public global::GBX.NET.Interfaces.Input.IInputReplayMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Input.CInputReplay Build()
         {
-            var node = new global::GBX.NET.Engines.Input.CInputReplay();
-            var chunk1300D000 = new global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000(GameVersion.MP3);
-            node.Chunks.Add(chunk1300D000);
+            var node = CInputReplayBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk1300D000 is missing or has an incompatible version.");
+            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -111,13 +124,12 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
         public global::GBX.NET.Interfaces.Input.IInputReplayTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Input.CInputReplay Build()
         {
-            var node = new global::GBX.NET.Engines.Input.CInputReplay();
-            var chunk1300D000 = new global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000(GameVersion.TMT);
-            node.Chunks.Add(chunk1300D000);
+            var node = CInputReplayBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk1300D000 is missing or has an incompatible version.");
+            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -130,13 +142,12 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
         public global::GBX.NET.Interfaces.Input.IInputReplayMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Input.CInputReplay Build()
         {
-            var node = new global::GBX.NET.Engines.Input.CInputReplay();
-            var chunk1300D000 = new global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000(GameVersion.MP4);
-            node.Chunks.Add(chunk1300D000);
+            var node = CInputReplayBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk1300D000 is missing or has an incompatible version.");
+            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -149,13 +160,12 @@ public partial class CInputReplayBuilder : CInputReplayBuilderBase<CInputReplayB
         public global::GBX.NET.Interfaces.Input.IInputReplayTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Input.CInputReplay Build()
         {
-            var node = new global::GBX.NET.Engines.Input.CInputReplay();
-            var chunk1300D000 = new global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000(GameVersion.TM2020);
-            node.Chunks.Add(chunk1300D000);
+            var node = CInputReplayBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Input.CInputReplay.Chunk1300D000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk1300D000 is missing or has an incompatible version.");
+            CInputReplayBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CInputReplayBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

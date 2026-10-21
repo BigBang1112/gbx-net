@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.TrackMania;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ICtnMediaBlockEventTrackManiaMembers1 : global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackMania
+{
+    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? Events { get; set; }
+}
 public partial interface ICtnMediaBlockEventTrackMania : IClassVersion<global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania>
 {
     TimeSingle End { get; set; }
@@ -42,13 +47,11 @@ public partial interface ICtnMediaBlockEventTrackManiaTMSX : ICtnMediaBlockEvent
     global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Stunt[]? Stunts { get; set; }
 }
 
-public partial interface ICtnMediaBlockEventTrackManiaTMNESWC : ICtnMediaBlockEventTrackMania
+public partial interface ICtnMediaBlockEventTrackManiaTMNESWC : ICtnMediaBlockEventTrackMania, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaMembers1
 {
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? Events { get; set; }
 }
 
-public partial interface ICtnMediaBlockEventTrackManiaVSK5 : ICtnMediaBlockEventTrackMania
+public partial interface ICtnMediaBlockEventTrackManiaVSK5 : ICtnMediaBlockEventTrackMania, global::GBX.NET.Interfaces.TrackMania.ICtnMediaBlockEventTrackManiaMembers1
 {
-    global::GBX.NET.Engines.TrackMania.CCtnMediaBlockEventTrackMania.Event[]? Events { get; set; }
 }
 

@@ -36,7 +36,7 @@ public abstract class CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase<TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state;
     private protected CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state) => this.state = state;
-    private protected static void SetServerParametersVersion(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state, int value) => state.Set<int>("ServerParametersVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ServerParametersVersion = value);
+    private protected static void SetServerParametersVersion(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettingsBuilderAssignments.GetServerParametersVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public int ServerParametersVersion
     {
         get => state.Get<int>("ServerParametersVersion");
@@ -50,6 +50,32 @@ public abstract class CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase<TSel
 }
 public partial class CGamePlayerProfileChunk_TrackManiaSettingsBuilder : CGamePlayerProfileChunk_TrackManiaSettingsBuilderBase<CGamePlayerProfileChunk_TrackManiaSettingsBuilder>
 {
+    private static global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings();
+        var chunk240D5000 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000(game);
+        node.Chunks.Add(chunk240D5000);
+        var chunk240D5001 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001(game);
+        node.Chunks.Add(chunk240D5001);
+        var chunk240D5002 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002(game);
+        node.Chunks.Add(chunk240D5002);
+        var chunk240D5003 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003(game);
+        node.Chunks.Add(chunk240D5003);
+        var chunk240D5004 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004(game);
+        node.Chunks.Add(chunk240D5004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk240D5000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk240D5001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk240D5002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk240D5003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk240D5004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -62,25 +88,12 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettingsBuilder : CGamePl
         public global::GBX.NET.Interfaces.TrackMania.IGamePlayerProfileChunk_TrackManiaSettingsMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings();
-            var chunk240D5000 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000(GameVersion.MP3);
-            node.Chunks.Add(chunk240D5000);
-            var chunk240D5001 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001(GameVersion.MP3);
-            node.Chunks.Add(chunk240D5001);
-            var chunk240D5002 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002(GameVersion.MP3);
-            node.Chunks.Add(chunk240D5002);
-            var chunk240D5003 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003(GameVersion.MP3);
-            node.Chunks.Add(chunk240D5003);
-            var chunk240D5004 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004(GameVersion.MP3);
-            node.Chunks.Add(chunk240D5004);
+            var node = CGamePlayerProfileChunk_TrackManiaSettingsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk240D5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk240D5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk240D5002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk240D5003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk240D5004 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -93,25 +106,12 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettingsBuilder : CGamePl
         public global::GBX.NET.Interfaces.TrackMania.IGamePlayerProfileChunk_TrackManiaSettingsTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings();
-            var chunk240D5000 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000(GameVersion.TMT);
-            node.Chunks.Add(chunk240D5000);
-            var chunk240D5001 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001(GameVersion.TMT);
-            node.Chunks.Add(chunk240D5001);
-            var chunk240D5002 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002(GameVersion.TMT);
-            node.Chunks.Add(chunk240D5002);
-            var chunk240D5003 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003(GameVersion.TMT);
-            node.Chunks.Add(chunk240D5003);
-            var chunk240D5004 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004(GameVersion.TMT);
-            node.Chunks.Add(chunk240D5004);
+            var node = CGamePlayerProfileChunk_TrackManiaSettingsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk240D5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk240D5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk240D5002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk240D5003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk240D5004 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -124,25 +124,12 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettingsBuilder : CGamePl
         public global::GBX.NET.Interfaces.TrackMania.IGamePlayerProfileChunk_TrackManiaSettingsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings();
-            var chunk240D5000 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000(GameVersion.MP4);
-            node.Chunks.Add(chunk240D5000);
-            var chunk240D5001 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001(GameVersion.MP4);
-            node.Chunks.Add(chunk240D5001);
-            var chunk240D5002 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002(GameVersion.MP4);
-            node.Chunks.Add(chunk240D5002);
-            var chunk240D5003 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003(GameVersion.MP4);
-            node.Chunks.Add(chunk240D5003);
-            var chunk240D5004 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004(GameVersion.MP4);
-            node.Chunks.Add(chunk240D5004);
+            var node = CGamePlayerProfileChunk_TrackManiaSettingsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk240D5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk240D5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk240D5002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk240D5003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk240D5004 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -155,25 +142,12 @@ public partial class CGamePlayerProfileChunk_TrackManiaSettingsBuilder : CGamePl
         public global::GBX.NET.Interfaces.TrackMania.IGamePlayerProfileChunk_TrackManiaSettingsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings();
-            var chunk240D5000 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000(GameVersion.TM2020);
-            node.Chunks.Add(chunk240D5000);
-            var chunk240D5001 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001(GameVersion.TM2020);
-            node.Chunks.Add(chunk240D5001);
-            var chunk240D5002 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002(GameVersion.TM2020);
-            node.Chunks.Add(chunk240D5002);
-            var chunk240D5003 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003(GameVersion.TM2020);
-            node.Chunks.Add(chunk240D5003);
-            var chunk240D5004 = new global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004(GameVersion.TM2020);
-            node.Chunks.Add(chunk240D5004);
+            var node = CGamePlayerProfileChunk_TrackManiaSettingsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk240D5000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5001>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk240D5001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5002>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk240D5002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5003>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk240D5003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGamePlayerProfileChunk_TrackManiaSettings.Chunk240D5004>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk240D5004 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGamePlayerProfileChunk_TrackManiaSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

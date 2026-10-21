@@ -36,7 +36,7 @@ public abstract class CPlugBitmapApplyArrayBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state;
     private protected CPlugBitmapApplyArrayBuilderBase() => state = new();
     private protected CPlugBitmapApplyArrayBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state) => this.state = state;
-    private protected static void SetBitmapAddresses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("BitmapAddresses", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.BitmapAddresses = value);
+    private protected static void SetBitmapAddresses(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapApplyArrayBuilderAssignments.GetBitmapAddressesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>? BitmapAddresses
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugBitmapAddress>?>("BitmapAddresses");
@@ -58,6 +58,20 @@ public abstract class CPlugBitmapApplyArrayBuilderBase<TSelf> where TSelf : CPlu
 }
 public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilderBase<CPlugBitmapApplyArrayBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray();
+        var chunk090B8000 = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000();
+        node.Chunks.Add(chunk090B8000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090B8000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -68,7 +82,7 @@ public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilder
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state) : base(state) { }
         public TMT WithBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT[] values)
         {
-            return base.WithBitmapAddresses(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBitmapAddress node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBitmapAddresses(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT>(values, false));
         }
         public TMT WithBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTMT> values)
         {
@@ -77,13 +91,12 @@ public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray();
-            var chunk090B8000 = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000();
-            node.Chunks.Add(chunk090B8000);
+            var node = CPlugBitmapApplyArrayBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk090B8000 is missing or has an incompatible version.");
+            CPlugBitmapApplyArrayBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugBitmapApplyArrayBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -95,7 +108,7 @@ public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilder
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state) : base(state) { }
         public MP4 WithBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4[] values)
         {
-            return base.WithBitmapAddresses(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBitmapAddress node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBitmapAddresses(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4>(values, false));
         }
         public MP4 WithBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressMP4> values)
         {
@@ -104,13 +117,12 @@ public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray();
-            var chunk090B8000 = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000();
-            node.Chunks.Add(chunk090B8000);
+            var node = CPlugBitmapApplyArrayBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090B8000 is missing or has an incompatible version.");
+            CPlugBitmapApplyArrayBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugBitmapApplyArrayBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -122,7 +134,7 @@ public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilder
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray> state) : base(state) { }
         public TM2020 WithBitmapAddresses(params global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020[] values)
         {
-            return base.WithBitmapAddresses(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugBitmapAddress node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBitmapAddresses(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugBitmapAddress, global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020>(values, false));
         }
         public TM2020 WithBitmapAddresses(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugBitmapAddressTM2020> values)
         {
@@ -131,13 +143,12 @@ public partial class CPlugBitmapApplyArrayBuilder : CPlugBitmapApplyArrayBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyArrayTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray();
-            var chunk090B8000 = new global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000();
-            node.Chunks.Add(chunk090B8000);
+            var node = CPlugBitmapApplyArrayBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapApplyArray.Chunk090B8000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090B8000 is missing or has an incompatible version.");
+            CPlugBitmapApplyArrayBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugBitmapApplyArrayBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -36,8 +36,8 @@ public abstract class CMotionManagerLeavesBuilderBase<TSelf> where TSelf : CMoti
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state;
     private protected CMotionManagerLeavesBuilderBase() => state = new();
     private protected CMotionManagerLeavesBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state) => this.state = state;
-    private protected static void SetMobilLeaves(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state, global::GBX.NET.Engines.Scene.CSceneMobilLeaves? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneMobilLeaves?>("MobilLeaves", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MobilLeaves = value);
-    private protected static void SetMobilLeavesReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves>>("MobilLeaves", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MobilLeaves.CopyFrom(reference));
+    private protected static void SetMobilLeaves(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state, global::GBX.NET.Engines.Scene.CSceneMobilLeaves? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMobilLeavesReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionManagerLeaves> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobilLeaves> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionManagerLeavesBuilderAssignments.GetMobilLeavesReferenceAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Scene.CSceneMobilLeaves? MobilLeaves
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobilLeaves?>("MobilLeaves");
@@ -57,6 +57,20 @@ public abstract class CMotionManagerLeavesBuilderBase<TSelf> where TSelf : CMoti
 }
 public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBase<CMotionManagerLeavesBuilder>
 {
+    private static global::GBX.NET.Engines.Motion.CMotionManagerLeaves CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
+        var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
+        node.Chunks.Add(chunk0804C000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0804C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionManagerLeaves node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -75,13 +89,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -98,13 +111,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -121,13 +133,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -144,13 +155,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -167,13 +177,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -190,13 +199,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -213,13 +221,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -236,13 +243,12 @@ public partial class CMotionManagerLeavesBuilder : CMotionManagerLeavesBuilderBa
         public global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionManagerLeaves Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves();
-            var chunk0804C000 = new global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000();
-            node.Chunks.Add(chunk0804C000);
+            var node = CMotionManagerLeavesBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionManagerLeaves.Chunk0804C000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0804C000 is missing or has an incompatible version.");
+            CMotionManagerLeavesBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CMotionManagerLeavesBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }

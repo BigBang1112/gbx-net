@@ -36,11 +36,11 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state;
     private protected CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state) => this.state = state;
-    private protected static void SetAutoFocus(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set<bool>("AutoFocus", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AutoFocus = value);
-    private protected static void SetAutoZoom(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set<bool>("AutoZoom", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AutoZoom = value);
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, TimeSingle value) => state.Set<TimeSingle>("End", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.End = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, TimeSingle value) => state.Set<TimeSingle>("Start", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Start = value);
-    private protected static void SetTracking(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set<bool>("Tracking", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Tracking = value);
+    private protected static void SetAutoFocus(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoFocusAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAutoZoom(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetAutoZoomAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTracking(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTrackingBuilderAssignments.GetTrackingAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool AutoFocus
     {
         get => state.Get<bool>("AutoFocus");
@@ -94,6 +94,21 @@ public abstract class CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<
 }
 public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGameCtnMediaBlockCameraEffectInertialTrackingBuilderBase<CGameCtnMediaBlockCameraEffectInertialTrackingBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking();
+        var chunk03166000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000();
+        chunk03166000.Version = 0;
+        node.Chunks.Add(chunk03166000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03166000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -105,14 +120,12 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectInertialTrackingTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking();
-            var chunk03166000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000();
-            chunk03166000.Version = 0;
-            node.Chunks.Add(chunk03166000);
+            var node = CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03166000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -125,14 +138,12 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectInertialTrackingMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking();
-            var chunk03166000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000();
-            chunk03166000.Version = 0;
-            node.Chunks.Add(chunk03166000);
+            var node = CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03166000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -145,14 +156,12 @@ public partial class CGameCtnMediaBlockCameraEffectInertialTrackingBuilder : CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectInertialTrackingTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking();
-            var chunk03166000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000();
-            chunk03166000.Version = 0;
-            node.Chunks.Add(chunk03166000);
+            var node = CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectInertialTracking.Chunk03166000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03166000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockCameraEffectInertialTrackingBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

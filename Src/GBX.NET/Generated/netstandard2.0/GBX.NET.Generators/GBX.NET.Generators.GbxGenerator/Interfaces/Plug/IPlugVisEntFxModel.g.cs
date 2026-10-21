@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisEntFxModelMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModel where T0 : class where T1 : class
+{
+    new T0? Part_Deactivated { get; set; }
+    new T0? Part_DeactivatedShot { get; set; }
+    new T0? Part_TeleportSpawn { get; set; }
+    new T0? Part_TeleportUnspawn { get; set; }
+    new T1? TacticalLight { get; set; }
+}
 public partial interface IPlugVisEntFxModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVisEntFxModel>
 {
     PlugCurve? EliminatedHighlight { get; set; }
@@ -43,21 +52,11 @@ public partial interface IPlugVisEntFxModel : IClassVersion<global::GBX.NET.Engi
     global::GBX.NET.Interfaces.Graphic.IGxLightBall? TacticalLight { get; set; }
 }
 
-public partial interface IPlugVisEntFxModelMP4 : IPlugVisEntFxModel
+public partial interface IPlugVisEntFxModelMP4 : IPlugVisEntFxModel, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Part_Deactivated { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Part_DeactivatedShot { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Part_TeleportSpawn { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Part_TeleportUnspawn { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4? TacticalLight { get; set; }
 }
 
-public partial interface IPlugVisEntFxModelTM2020 : IPlugVisEntFxModel
+public partial interface IPlugVisEntFxModelTM2020 : IPlugVisEntFxModel, global::GBX.NET.Interfaces.Plug.IPlugVisEntFxModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? Part_Deactivated { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? Part_DeactivatedShot { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? Part_TeleportSpawn { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? Part_TeleportUnspawn { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020? TacticalLight { get; set; }
 }
 

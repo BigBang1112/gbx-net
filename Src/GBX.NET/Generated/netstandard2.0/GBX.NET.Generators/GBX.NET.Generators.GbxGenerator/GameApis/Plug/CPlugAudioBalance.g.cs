@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMSX, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceVSK5, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMF, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020
 {
     public static global::GBX.NET.Builders.Engines.Plug.CPlugAudioBalanceBuilder Create() => new();
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3.PitchFromDistance_BengsGuns_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.PitchFromDistance_BengsGuns_Focused
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3.PitchFromDistance_BengsGuns_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.PitchFromDistance_BengsGuns_Others
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3.PitchFromDistance_Player_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.PitchFromDistance_Player_Focused
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3.PitchFromDistance_Player_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.PitchFromDistance_Player_Others
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP3.RolloffFromMusicVolume
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>.RolloffFromMusicVolume
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => RolloffFromMusicVolume = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT.PitchFromDistance_BengsGuns_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.PitchFromDistance_BengsGuns_Focused
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT.PitchFromDistance_BengsGuns_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.PitchFromDistance_BengsGuns_Others
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT.PitchFromDistance_Player_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.PitchFromDistance_Player_Focused
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT.PitchFromDistance_Player_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.PitchFromDistance_Player_Others
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTMT.RolloffFromMusicVolume
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>.RolloffFromMusicVolume
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => RolloffFromMusicVolume = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4.PitchFromDistance_BengsGuns_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.PitchFromDistance_BengsGuns_Focused
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4.PitchFromDistance_BengsGuns_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.PitchFromDistance_BengsGuns_Others
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4.PitchFromDistance_Player_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.PitchFromDistance_Player_Focused
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4.PitchFromDistance_Player_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.PitchFromDistance_Player_Others
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMP4.RolloffFromMusicVolume
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>.RolloffFromMusicVolume
     {
         get
         {
@@ -184,7 +184,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => RolloffFromMusicVolume = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020.PitchFromDistance_BengsGuns_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.PitchFromDistance_BengsGuns_Focused
     {
         get
         {
@@ -194,7 +194,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020.PitchFromDistance_BengsGuns_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.PitchFromDistance_BengsGuns_Others
     {
         get
         {
@@ -204,7 +204,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_BengsGuns_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020.PitchFromDistance_Player_Focused
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.PitchFromDistance_Player_Focused
     {
         get
         {
@@ -214,7 +214,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Focused = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020.PitchFromDistance_Player_Others
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.PitchFromDistance_Player_Others
     {
         get
         {
@@ -224,7 +224,7 @@ public partial class CPlugAudioBalance : global::GBX.NET.Interfaces.Plug.IPlugAu
         }
         set => PitchFromDistance_Player_Others = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceTM2020.RolloffFromMusicVolume
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>.RolloffFromMusicVolume
     {
         get
         {

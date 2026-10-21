@@ -40,8 +40,6 @@ public partial interface IGameCtnMediaBlockUiSimpleEvtsDisplay : IClassVersion<g
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new TimeSingle End { get; set; }
-    new TimeSingle Start { get; set; }
 }
 
 public partial interface IGameCtnMediaBlockUiSimpleEvtsDisplayTMNESWC : IGameCtnMediaBlockUiSimpleEvtsDisplay, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockUiTMNESWC

@@ -36,10 +36,10 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state;
     private protected CPlugScriptWithSettingsBuilderBase() => state = new();
     private protected CPlugScriptWithSettingsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state) => this.state = state;
-    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, global::GBX.NET.Engines.Plug.CPlugFileTextScript? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFileTextScript?>("Script", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Script = value);
-    private protected static void SetScriptReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript>>("Script", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Script.CopyFrom(reference));
-    private protected static void SetSettings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, global::GBX.NET.Engines.Script.CScriptSetting[]? value) => state.Set<global::GBX.NET.Engines.Script.CScriptSetting[]?>("Settings", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Script.CScriptSetting[])value.Clone(), static (node, value) => node.Settings = value);
-    private protected static void SetSettingsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, int value) => state.Set<int>("SettingsVersion", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.SettingsVersion = value);
+    private protected static void SetScript(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, global::GBX.NET.Engines.Plug.CPlugFileTextScript? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetScriptReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFileTextScript> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetScriptReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetSettings(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, global::GBX.NET.Engines.Script.CScriptSetting[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetSettingsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugScriptWithSettingsBuilderAssignments.GetSettingsVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugFileTextScript? Script
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugFileTextScript?>("Script");
@@ -83,6 +83,20 @@ public abstract class CPlugScriptWithSettingsBuilderBase<TSelf> where TSelf : CP
 }
 public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBuilderBase<CPlugScriptWithSettingsBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugScriptWithSettings CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings();
+        var chunk09083000 = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000();
+        node.Chunks.Add(chunk09083000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09083000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugScriptWithSettings node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -93,13 +107,12 @@ public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBui
         public global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugScriptWithSettings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings();
-            var chunk09083000 = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000();
-            node.Chunks.Add(chunk09083000);
+            var node = CPlugScriptWithSettingsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09083000 is missing or has an incompatible version.");
+            CPlugScriptWithSettingsBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugScriptWithSettingsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -112,13 +125,12 @@ public partial class CPlugScriptWithSettingsBuilder : CPlugScriptWithSettingsBui
         public global::GBX.NET.Interfaces.Plug.IPlugScriptWithSettingsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugScriptWithSettings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings();
-            var chunk09083000 = new global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000();
-            node.Chunks.Add(chunk09083000);
+            var node = CPlugScriptWithSettingsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugScriptWithSettings.Chunk09083000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09083000 is missing or has an incompatible version.");
+            CPlugScriptWithSettingsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugScriptWithSettingsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

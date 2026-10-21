@@ -31,6 +31,14 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMapMoodMembers1 : global::GBX.NET.Interfaces.Hms.IHmsLightMapMood
+{
+    float BounceFactor { get; set; }
+    float MaxHDR { get; set; }
+    float SkyFactor { get; set; }
+    bool SkyUseClouds { get; set; }
+}
 public partial interface IHmsLightMapMood : IClassVersion<global::GBX.NET.Engines.Hms.CHmsLightMapMood>
 {
     Vec2 AmbientRange { get; set; }
@@ -45,31 +53,19 @@ public partial interface IHmsLightMapMoodTMF : IHmsLightMapMood
 {
 }
 
-public partial interface IHmsLightMapMoodMP3 : IHmsLightMapMood
+public partial interface IHmsLightMapMoodMP3 : IHmsLightMapMood, global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMembers1
 {
-    float BounceFactor { get; set; }
-    float MaxHDR { get; set; }
-    float SkyFactor { get; set; }
-    bool SkyUseClouds { get; set; }
 }
 
-public partial interface IHmsLightMapMoodTMT : IHmsLightMapMood
+public partial interface IHmsLightMapMoodTMT : IHmsLightMapMood, global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMembers1
 {
-    float BounceFactor { get; set; }
-    float MaxHDR { get; set; }
-    float SkyFactor { get; set; }
-    bool SkyUseClouds { get; set; }
 }
 
 public partial interface IHmsLightMapMoodMP4 : IHmsLightMapMood
 {
 }
 
-public partial interface IHmsLightMapMoodTM2020 : IHmsLightMapMood
+public partial interface IHmsLightMapMoodTM2020 : IHmsLightMapMood, global::GBX.NET.Interfaces.Hms.IHmsLightMapMoodMembers1
 {
-    float BounceFactor { get; set; }
-    float MaxHDR { get; set; }
-    float SkyFactor { get; set; }
-    bool SkyUseClouds { get; set; }
 }
 

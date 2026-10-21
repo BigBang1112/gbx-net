@@ -36,13 +36,13 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObj
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state;
     private protected CSceneObjectLinkBuilderBase() => state = new();
     private protected CSceneObjectLinkBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) => this.state = state;
-    private protected static void SetMobil(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, global::GBX.NET.Engines.Scene.CSceneMobil? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneMobil?>("Mobil", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Mobil = value);
-    private protected static void SetMobilReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>>("Mobil", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Mobil.CopyFrom(reference));
-    private protected static void SetMobilTreeId(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, string? value) => state.Set<string?>("MobilTreeId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MobilTreeId = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetObject(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, global::GBX.NET.Engines.Scene.CSceneObject? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneObject?>("Object", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Object = value);
-    private protected static void SetObjectReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>>("Object", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneObject>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Object.CopyFrom(reference));
-    private protected static void SetRelativeLocation(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, Iso4 value) => state.Set<Iso4>("RelativeLocation", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RelativeLocation = value);
+    private protected static void SetMobil(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, global::GBX.NET.Engines.Scene.CSceneMobil? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMobilReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMobil> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMobilTreeId(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetMobilTreeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetObject(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, global::GBX.NET.Engines.Scene.CSceneObject? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetObjectReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneObject> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetObjectReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRelativeLocation(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectLinkBuilderAssignments.GetRelativeLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Scene.CSceneMobil? Mobil
     {
         get => state.Get<global::GBX.NET.Engines.Scene.CSceneMobil?>("Mobil");
@@ -96,8 +96,76 @@ public abstract class CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObj
         return (TSelf)this;
     }
 }
+public abstract class CSceneObjectLinkBuilderMembers1<TSelf> : CSceneObjectLinkBuilderBase<TSelf> where TSelf : CSceneObjectLinkBuilderMembers1<TSelf>
+{
+    private protected CSceneObjectLinkBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
+    public string? MobilTreeId
+    {
+        get => state.Get<string?>("MobilTreeId");
+        set => SetMobilTreeId(state, value);
+    }
+    public TSelf WithMobilTreeId(string? value)
+    {
+        MobilTreeId = value;
+        return (TSelf)this;
+    }
+}
 public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CSceneObjectLinkBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneObjectLink CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
+        var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
+        node.Chunks.Add(chunk0A014001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneObjectLink node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneObjectLink CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
+        var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
+        node.Chunks.Add(chunk0A014001);
+        var chunk0A00F001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F001();
+        node.Chunks.Add(chunk0A00F001);
+        var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
+        node.Chunks.Add(chunk0A014002);
+        var chunk0A00F002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F002();
+        node.Chunks.Add(chunk0A00F002);
+        var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
+        node.Chunks.Add(chunk0A014003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Scene.CSceneObjectLink node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00F001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A00F002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Scene.CSceneObjectLink CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
+        var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
+        node.Chunks.Add(chunk0A014001);
+        var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
+        node.Chunks.Add(chunk0A014002);
+        var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
+        node.Chunks.Add(chunk0A014003);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Scene.CSceneObjectLink node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A014003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneObjectLink node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -123,13 +191,12 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
+            var node = CSceneObjectLinkBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A014001 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -150,35 +217,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
+            var node = CSceneObjectLinkBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A014001 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class TMSX : CSceneObjectLinkBuilderBase<TMSX>
+    public partial class TMSX : CSceneObjectLinkBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public TMSX WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public TMSX WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public TMSX WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX? value)
         {
@@ -187,47 +243,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A00F001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F001();
-            node.Chunks.Add(chunk0A00F001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A00F002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F002();
-            node.Chunks.Add(chunk0A00F002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A00F001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A00F002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class TMNESWC : CSceneObjectLinkBuilderBase<TMNESWC>
+    public partial class TMNESWC : CSceneObjectLinkBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public TMNESWC WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public TMNESWC WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public TMNESWC WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC? value)
         {
@@ -236,47 +269,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A00F001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F001();
-            node.Chunks.Add(chunk0A00F001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A00F002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F002();
-            node.Chunks.Add(chunk0A00F002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A00F001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A00F002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A00F002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class VSK5 : CSceneObjectLinkBuilderBase<VSK5>
+    public partial class VSK5 : CSceneObjectLinkBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public VSK5 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public VSK5 WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public VSK5 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5? value)
         {
@@ -285,41 +295,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class TMF : CSceneObjectLinkBuilderBase<TMF>
+    public partial class TMF : CSceneObjectLinkBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public TMF WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public TMF WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public TMF WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMF? value)
         {
@@ -328,41 +321,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class MP3 : CSceneObjectLinkBuilderBase<MP3>
+    public partial class MP3 : CSceneObjectLinkBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public MP3 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public MP3 WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public MP3 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectMP3? value)
         {
@@ -371,41 +347,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class TMT : CSceneObjectLinkBuilderBase<TMT>
+    public partial class TMT : CSceneObjectLinkBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public TMT WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public TMT WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public TMT WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectTMT? value)
         {
@@ -414,41 +373,24 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
         partial void ValidateNode(global::GBX.NET.Engines.Scene.CSceneObjectLink node);
     }
-    public partial class MP4 : CSceneObjectLinkBuilderBase<MP4>
+    public partial class MP4 : CSceneObjectLinkBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneObjectLink> state) : base(state) { }
         public MP4 WithMobil(global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? value)
         {
             return base.WithMobil(value is null ? (global::GBX.NET.Engines.Scene.CSceneMobil?)null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? MobilTreeId
-        {
-            get => state.Get<string?>("MobilTreeId");
-            set => SetMobilTreeId(state, value);
-        }
-        public MP4 WithMobilTreeId(string? value)
-        {
-            MobilTreeId = value;
-            return this;
         }
         public MP4 WithObject(global::GBX.NET.Interfaces.Scene.ISceneObjectMP4? value)
         {
@@ -457,19 +399,12 @@ public partial class CSceneObjectLinkBuilder : CSceneObjectLinkBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneObjectLink Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneObjectLink();
-            var chunk0A014001 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001();
-            node.Chunks.Add(chunk0A014001);
-            var chunk0A014002 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002();
-            node.Chunks.Add(chunk0A014002);
-            var chunk0A014003 = new global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003();
-            node.Chunks.Add(chunk0A014003);
+            var node = CSceneObjectLinkBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A014001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A014002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObjectLink.Chunk0A014003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A014003 is missing or has an incompatible version.");
+            CSceneObjectLinkBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CSceneObjectLinkBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

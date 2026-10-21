@@ -36,16 +36,16 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state;
     private protected CPlugLightUserModelBuilderBase() => state = new();
     private protected CPlugLightUserModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state) => this.state = state;
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, Vec3 value) => state.Set<Vec3>("Color", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Color = value);
-    private protected static void SetDistance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("Distance", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Distance = value);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("Intensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Intensity = value);
-    private protected static void SetNightOnly(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, bool value) => state.Set<bool>("NightOnly", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.NightOnly = value);
-    private protected static void SetPointEmissionLength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("PointEmissionLength", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PointEmissionLength = value);
-    private protected static void SetPointEmissionRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("PointEmissionRadius", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.PointEmissionRadius = value);
-    private protected static void SetSpotEmissionSizeX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("SpotEmissionSizeX", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpotEmissionSizeX = value);
-    private protected static void SetSpotEmissionSizeY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("SpotEmissionSizeY", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpotEmissionSizeY = value);
-    private protected static void SetSpotInnerAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("SpotInnerAngle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpotInnerAngle = value);
-    private protected static void SetSpotOuterAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set<float>("SpotOuterAngle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpotOuterAngle = value);
+    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetColorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDistance(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetDistanceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNightOnly(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetNightOnlyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPointEmissionLength(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetPointEmissionLengthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPointEmissionRadius(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetPointEmissionRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSpotEmissionSizeX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotEmissionSizeXAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSpotEmissionSizeY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotEmissionSizeYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSpotInnerAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotInnerAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSpotOuterAngle(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLightUserModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLightUserModelBuilderAssignments.GetSpotOuterAngleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Vec3 Color
     {
         get => state.Get<Vec3>("Color");
@@ -149,6 +149,20 @@ public abstract class CPlugLightUserModelBuilderBase<TSelf> where TSelf : CPlugL
 }
 public partial class CPlugLightUserModelBuilder : CPlugLightUserModelBuilderBase<CPlugLightUserModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugLightUserModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugLightUserModel();
+        var chunk090F9000 = new global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000(game);
+        node.Chunks.Add(chunk090F9000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugLightUserModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090F9000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugLightUserModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -161,13 +175,12 @@ public partial class CPlugLightUserModelBuilder : CPlugLightUserModelBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLightUserModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLightUserModel();
-            var chunk090F9000 = new global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000(GameVersion.MP3);
-            node.Chunks.Add(chunk090F9000);
+            var node = CPlugLightUserModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk090F9000 is missing or has an incompatible version.");
+            CPlugLightUserModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugLightUserModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -180,13 +193,12 @@ public partial class CPlugLightUserModelBuilder : CPlugLightUserModelBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLightUserModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLightUserModel();
-            var chunk090F9000 = new global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000(GameVersion.TMT);
-            node.Chunks.Add(chunk090F9000);
+            var node = CPlugLightUserModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk090F9000 is missing or has an incompatible version.");
+            CPlugLightUserModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugLightUserModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -199,13 +211,12 @@ public partial class CPlugLightUserModelBuilder : CPlugLightUserModelBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugLightUserModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLightUserModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLightUserModel();
-            var chunk090F9000 = new global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000(GameVersion.MP4);
-            node.Chunks.Add(chunk090F9000);
+            var node = CPlugLightUserModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk090F9000 is missing or has an incompatible version.");
+            CPlugLightUserModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugLightUserModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -218,13 +229,12 @@ public partial class CPlugLightUserModelBuilder : CPlugLightUserModelBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugLightUserModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLightUserModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLightUserModel();
-            var chunk090F9000 = new global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090F9000);
+            var node = CPlugLightUserModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLightUserModel.Chunk090F9000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090F9000 is missing or has an incompatible version.");
+            CPlugLightUserModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugLightUserModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

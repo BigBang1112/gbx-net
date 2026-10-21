@@ -36,59 +36,59 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state;
     private protected CPlugAudioEnvironmentBuilderBase() => state = new();
     private protected CPlugAudioEnvironmentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) => this.state = state;
-    private protected static void SetAirAbsorbtionHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("AirAbsorbtionHF", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.AirAbsorbtionHF = value);
-    private protected static void SetAirAbsorptionGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("AirAbsorptionGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.AirAbsorptionGainHF = value);
-    private protected static void SetDecayHFLimit(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("DecayHFLimit", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.DecayHFLimit = value);
-    private protected static void SetDecayHFLimitScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("DecayHFLimitScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DecayHFLimitScale = value);
-    private protected static void SetDecayHFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("DecayHFRatio", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DecayHFRatio = value);
-    private protected static void SetDecayLFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("DecayLFRatio", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DecayLFRatio = value);
-    private protected static void SetDecayTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("DecayTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DecayTime = value);
-    private protected static void SetDecayTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("DecayTimeScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DecayTimeScale = value);
-    private protected static void SetDensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("Density", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.Density = value);
-    private protected static void SetDiffusion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("Diffusion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Diffusion = value);
-    private protected static void SetDopplerFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("DopplerFactor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DopplerFactor = value);
-    private protected static void SetEAXPreset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EAXPreset = value);
-    private protected static void SetEchoDepth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("EchoDepth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EchoDepth = value);
-    private protected static void SetEchoTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("EchoTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EchoTime = value);
-    private protected static void SetEchoTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("EchoTimeScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.EchoTimeScale = value);
-    private protected static void SetGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("Gain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.Gain = value);
-    private protected static void SetGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("GainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.GainHF = value);
-    private protected static void SetGainLF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("GainLF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.GainLF = value);
-    private protected static void SetHFReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("HFReference", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.HFReference = value);
-    private protected static void SetLFReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("LFReference", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LFReference = value);
-    private protected static void SetLateReverbDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("LateReverbDelay", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.LateReverbDelay = value);
-    private protected static void SetLateReverbGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("LateReverbGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.LateReverbGain = value);
-    private protected static void SetLowPassGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("LowPassGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LowPassGain = value);
-    private protected static void SetLowPassGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("LowPassGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LowPassGainHF = value);
-    private protected static void SetModulationDepth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("ModulationDepth", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ModulationDepth = value);
-    private protected static void SetModulationTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("ModulationTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ModulationTime = value);
-    private protected static void SetModulationTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("ModulationTimeScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ModulationTimeScale = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, string value) => state.Set<string>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetReflections(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("Reflections", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Reflections = value);
-    private protected static void SetReflectionsDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("ReflectionsDelay", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ReflectionsDelay = value);
-    private protected static void SetReflectionsDelayScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("ReflectionsDelayScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ReflectionsDelayScale = value);
-    private protected static void SetReflectionsGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("ReflectionsGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.ReflectionsGain = value);
-    private protected static void SetReflectionsScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("ReflectionsScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ReflectionsScale = value);
-    private protected static void SetReverb(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("Reverb", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Reverb = value);
-    private protected static void SetReverbDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("ReverbDelay", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ReverbDelay = value);
-    private protected static void SetReverbDelayScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("ReverbDelayScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ReverbDelayScale = value);
-    private protected static void SetReverbScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set<bool>("ReverbScale", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ReverbScale = value);
-    private protected static void SetRolloffFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RolloffFactor", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.RolloffFactor = value);
-    private protected static void SetRoom(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("Room", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Room = value);
-    private protected static void SetRoomFxHighGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxHighGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxHighGain = value);
-    private protected static void SetRoomFxHighGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxHighGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxHighGainHF = value);
-    private protected static void SetRoomFxLowGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxLowGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxLowGain = value);
-    private protected static void SetRoomFxLowGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxLowGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxLowGainHF = value);
-    private protected static void SetRoomFxMidGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxMidGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxMidGain = value);
-    private protected static void SetRoomFxMidGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxMidGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxMidGainHF = value);
-    private protected static void SetRoomFxMusicGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxMusicGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxMusicGain = value);
-    private protected static void SetRoomFxMusicGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxMusicGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxMusicGainHF = value);
-    private protected static void SetRoomFxUIGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxUIGain", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxUIGain = value);
-    private protected static void SetRoomFxUIGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomFxUIGainHF", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.RoomFxUIGainHF = value);
-    private protected static void SetRoomHFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomHFRatio", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.RoomHFRatio = value);
-    private protected static void SetRoomLFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomLFRatio", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.RoomLFRatio = value);
-    private protected static void SetRoomRolloffFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("RoomRolloffFactor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.RoomRolloffFactor = value);
-    private protected static void SetSizeFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set<float>("SizeFactor", value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.SizeFactor = value);
+    private protected static void SetAirAbsorbtionHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetAirAbsorbtionHFAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetAirAbsorptionGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetAirAbsorptionGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetDecayHFLimit(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFLimitAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetDecayHFLimitScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFLimitScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDecayHFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayHFRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDecayLFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayLFRatioAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDecayTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDecayTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDecayTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDensity(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetDiffusion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDiffusionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDopplerFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetDopplerFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEAXPreset(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEAXPresetAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetEchoDepth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEchoTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEchoTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetEchoTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetGainLF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetGainLFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetHFReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetHFReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLFReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLFReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLateReverbDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLateReverbDelayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetLateReverbGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLateReverbGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetLowPassGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLowPassGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLowPassGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetLowPassGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetModulationDepth(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationDepthAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetModulationTime(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetModulationTimeScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetModulationTimeScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetReflections(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetReflectionsDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsDelayAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetReflectionsDelayScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsDelayScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetReflectionsGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetReflectionsScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReflectionsScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetReverb(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetReverbDelay(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbDelayAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetReverbDelayScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbDelayScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetReverbScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetReverbScaleAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRolloffFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRolloffFactorAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRoom(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRoomFxHighGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxHighGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxHighGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxHighGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxLowGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxLowGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxLowGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxLowGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxMidGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMidGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxMidGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMidGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxMusicGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMusicGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxMusicGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxMusicGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxUIGain(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxUIGainAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomFxUIGainHF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomFxUIGainHFAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetRoomHFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomHFRatioAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRoomLFRatio(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomLFRatioAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRoomRolloffFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetRoomRolloffFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetSizeFactor(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAudioEnvironmentBuilderAssignments.GetSizeFactorAssignment(), value, GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public float DecayHFRatio
     {
         get => state.Get<float>("DecayHFRatio");
@@ -200,8 +200,513 @@ public abstract class CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlu
         return (TSelf)this;
     }
 }
+public abstract class CPlugAudioEnvironmentBuilderMembers1<TSelf> : CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlugAudioEnvironmentBuilderMembers1<TSelf>
+{
+    private protected CPlugAudioEnvironmentBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
+    public float DopplerFactor
+    {
+        get => state.Get<float>("DopplerFactor");
+        set => SetDopplerFactor(state, value);
+    }
+    public TSelf WithDopplerFactor(float value)
+    {
+        DopplerFactor = value;
+        return (TSelf)this;
+    }
+    public string Name
+    {
+        get => state.Get<string>("Name");
+        set => SetName(state, value);
+    }
+    public TSelf WithName(string value)
+    {
+        Name = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugAudioEnvironmentBuilderMembers2<TSelf> : CPlugAudioEnvironmentBuilderMembers1<TSelf> where TSelf : CPlugAudioEnvironmentBuilderMembers2<TSelf>
+{
+    private protected CPlugAudioEnvironmentBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
+    public float AirAbsorptionGainHF
+    {
+        get => state.Get<float>("AirAbsorptionGainHF");
+        set => SetAirAbsorptionGainHF(state, value);
+    }
+    public TSelf WithAirAbsorptionGainHF(float value)
+    {
+        AirAbsorptionGainHF = value;
+        return (TSelf)this;
+    }
+    public bool DecayHFLimit
+    {
+        get => state.Get<bool>("DecayHFLimit");
+        set => SetDecayHFLimit(state, value);
+    }
+    public TSelf WithDecayHFLimit(bool value)
+    {
+        DecayHFLimit = value;
+        return (TSelf)this;
+    }
+    public float Density
+    {
+        get => state.Get<float>("Density");
+        set => SetDensity(state, value);
+    }
+    public TSelf WithDensity(float value)
+    {
+        Density = value;
+        return (TSelf)this;
+    }
+    public float Gain
+    {
+        get => state.Get<float>("Gain");
+        set => SetGain(state, value);
+    }
+    public TSelf WithGain(float value)
+    {
+        Gain = value;
+        return (TSelf)this;
+    }
+    public float GainHF
+    {
+        get => state.Get<float>("GainHF");
+        set => SetGainHF(state, value);
+    }
+    public TSelf WithGainHF(float value)
+    {
+        GainHF = value;
+        return (TSelf)this;
+    }
+    public float GainLF
+    {
+        get => state.Get<float>("GainLF");
+        set => SetGainLF(state, value);
+    }
+    public TSelf WithGainLF(float value)
+    {
+        GainLF = value;
+        return (TSelf)this;
+    }
+    public float LateReverbDelay
+    {
+        get => state.Get<float>("LateReverbDelay");
+        set => SetLateReverbDelay(state, value);
+    }
+    public TSelf WithLateReverbDelay(float value)
+    {
+        LateReverbDelay = value;
+        return (TSelf)this;
+    }
+    public float LateReverbGain
+    {
+        get => state.Get<float>("LateReverbGain");
+        set => SetLateReverbGain(state, value);
+    }
+    public TSelf WithLateReverbGain(float value)
+    {
+        LateReverbGain = value;
+        return (TSelf)this;
+    }
+    public float ReflectionsGain
+    {
+        get => state.Get<float>("ReflectionsGain");
+        set => SetReflectionsGain(state, value);
+    }
+    public TSelf WithReflectionsGain(float value)
+    {
+        ReflectionsGain = value;
+        return (TSelf)this;
+    }
+    public float RoomRolloffFactor
+    {
+        get => state.Get<float>("RoomRolloffFactor");
+        set => SetRoomRolloffFactor(state, value);
+    }
+    public TSelf WithRoomRolloffFactor(float value)
+    {
+        RoomRolloffFactor = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugAudioEnvironmentBuilderMembers3<TSelf> : CPlugAudioEnvironmentBuilderBase<TSelf> where TSelf : CPlugAudioEnvironmentBuilderMembers3<TSelf>
+{
+    private protected CPlugAudioEnvironmentBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
+    public float AirAbsorbtionHF
+    {
+        get => state.Get<float>("AirAbsorbtionHF");
+        set => SetAirAbsorbtionHF(state, value);
+    }
+    public TSelf WithAirAbsorbtionHF(float value)
+    {
+        AirAbsorbtionHF = value;
+        return (TSelf)this;
+    }
+    public bool DecayHFLimitScale
+    {
+        get => state.Get<bool>("DecayHFLimitScale");
+        set => SetDecayHFLimitScale(state, value);
+    }
+    public TSelf WithDecayHFLimitScale(bool value)
+    {
+        DecayHFLimitScale = value;
+        return (TSelf)this;
+    }
+    public bool DecayTimeScale
+    {
+        get => state.Get<bool>("DecayTimeScale");
+        set => SetDecayTimeScale(state, value);
+    }
+    public TSelf WithDecayTimeScale(bool value)
+    {
+        DecayTimeScale = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset EAXPreset
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset");
+        set => SetEAXPreset(state, value);
+    }
+    public TSelf WithEAXPreset(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value)
+    {
+        EAXPreset = value;
+        return (TSelf)this;
+    }
+    public bool EchoTimeScale
+    {
+        get => state.Get<bool>("EchoTimeScale");
+        set => SetEchoTimeScale(state, value);
+    }
+    public TSelf WithEchoTimeScale(bool value)
+    {
+        EchoTimeScale = value;
+        return (TSelf)this;
+    }
+    public bool ModulationTimeScale
+    {
+        get => state.Get<bool>("ModulationTimeScale");
+        set => SetModulationTimeScale(state, value);
+    }
+    public TSelf WithModulationTimeScale(bool value)
+    {
+        ModulationTimeScale = value;
+        return (TSelf)this;
+    }
+    public float Reflections
+    {
+        get => state.Get<float>("Reflections");
+        set => SetReflections(state, value);
+    }
+    public TSelf WithReflections(float value)
+    {
+        Reflections = value;
+        return (TSelf)this;
+    }
+    public bool ReflectionsDelayScale
+    {
+        get => state.Get<bool>("ReflectionsDelayScale");
+        set => SetReflectionsDelayScale(state, value);
+    }
+    public TSelf WithReflectionsDelayScale(bool value)
+    {
+        ReflectionsDelayScale = value;
+        return (TSelf)this;
+    }
+    public bool ReflectionsScale
+    {
+        get => state.Get<bool>("ReflectionsScale");
+        set => SetReflectionsScale(state, value);
+    }
+    public TSelf WithReflectionsScale(bool value)
+    {
+        ReflectionsScale = value;
+        return (TSelf)this;
+    }
+    public float Reverb
+    {
+        get => state.Get<float>("Reverb");
+        set => SetReverb(state, value);
+    }
+    public TSelf WithReverb(float value)
+    {
+        Reverb = value;
+        return (TSelf)this;
+    }
+    public float ReverbDelay
+    {
+        get => state.Get<float>("ReverbDelay");
+        set => SetReverbDelay(state, value);
+    }
+    public TSelf WithReverbDelay(float value)
+    {
+        ReverbDelay = value;
+        return (TSelf)this;
+    }
+    public bool ReverbDelayScale
+    {
+        get => state.Get<bool>("ReverbDelayScale");
+        set => SetReverbDelayScale(state, value);
+    }
+    public TSelf WithReverbDelayScale(bool value)
+    {
+        ReverbDelayScale = value;
+        return (TSelf)this;
+    }
+    public bool ReverbScale
+    {
+        get => state.Get<bool>("ReverbScale");
+        set => SetReverbScale(state, value);
+    }
+    public TSelf WithReverbScale(bool value)
+    {
+        ReverbScale = value;
+        return (TSelf)this;
+    }
+    public float RolloffFactor
+    {
+        get => state.Get<float>("RolloffFactor");
+        set => SetRolloffFactor(state, value);
+    }
+    public TSelf WithRolloffFactor(float value)
+    {
+        RolloffFactor = value;
+        return (TSelf)this;
+    }
+    public float Room
+    {
+        get => state.Get<float>("Room");
+        set => SetRoom(state, value);
+    }
+    public TSelf WithRoom(float value)
+    {
+        Room = value;
+        return (TSelf)this;
+    }
+    public float RoomHFRatio
+    {
+        get => state.Get<float>("RoomHFRatio");
+        set => SetRoomHFRatio(state, value);
+    }
+    public TSelf WithRoomHFRatio(float value)
+    {
+        RoomHFRatio = value;
+        return (TSelf)this;
+    }
+    public float RoomLFRatio
+    {
+        get => state.Get<float>("RoomLFRatio");
+        set => SetRoomLFRatio(state, value);
+    }
+    public TSelf WithRoomLFRatio(float value)
+    {
+        RoomLFRatio = value;
+        return (TSelf)this;
+    }
+    public float SizeFactor
+    {
+        get => state.Get<float>("SizeFactor");
+        set => SetSizeFactor(state, value);
+    }
+    public TSelf WithSizeFactor(float value)
+    {
+        SizeFactor = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugAudioEnvironmentBuilderMembers4<TSelf> : CPlugAudioEnvironmentBuilderMembers2<TSelf> where TSelf : CPlugAudioEnvironmentBuilderMembers4<TSelf>
+{
+    private protected CPlugAudioEnvironmentBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
+    public float LowPassGain
+    {
+        get => state.Get<float>("LowPassGain");
+        set => SetLowPassGain(state, value);
+    }
+    public TSelf WithLowPassGain(float value)
+    {
+        LowPassGain = value;
+        return (TSelf)this;
+    }
+    public float LowPassGainHF
+    {
+        get => state.Get<float>("LowPassGainHF");
+        set => SetLowPassGainHF(state, value);
+    }
+    public TSelf WithLowPassGainHF(float value)
+    {
+        LowPassGainHF = value;
+        return (TSelf)this;
+    }
+    public float RoomFxHighGain
+    {
+        get => state.Get<float>("RoomFxHighGain");
+        set => SetRoomFxHighGain(state, value);
+    }
+    public TSelf WithRoomFxHighGain(float value)
+    {
+        RoomFxHighGain = value;
+        return (TSelf)this;
+    }
+    public float RoomFxHighGainHF
+    {
+        get => state.Get<float>("RoomFxHighGainHF");
+        set => SetRoomFxHighGainHF(state, value);
+    }
+    public TSelf WithRoomFxHighGainHF(float value)
+    {
+        RoomFxHighGainHF = value;
+        return (TSelf)this;
+    }
+    public float RoomFxLowGain
+    {
+        get => state.Get<float>("RoomFxLowGain");
+        set => SetRoomFxLowGain(state, value);
+    }
+    public TSelf WithRoomFxLowGain(float value)
+    {
+        RoomFxLowGain = value;
+        return (TSelf)this;
+    }
+    public float RoomFxLowGainHF
+    {
+        get => state.Get<float>("RoomFxLowGainHF");
+        set => SetRoomFxLowGainHF(state, value);
+    }
+    public TSelf WithRoomFxLowGainHF(float value)
+    {
+        RoomFxLowGainHF = value;
+        return (TSelf)this;
+    }
+    public float RoomFxMidGain
+    {
+        get => state.Get<float>("RoomFxMidGain");
+        set => SetRoomFxMidGain(state, value);
+    }
+    public TSelf WithRoomFxMidGain(float value)
+    {
+        RoomFxMidGain = value;
+        return (TSelf)this;
+    }
+    public float RoomFxMidGainHF
+    {
+        get => state.Get<float>("RoomFxMidGainHF");
+        set => SetRoomFxMidGainHF(state, value);
+    }
+    public TSelf WithRoomFxMidGainHF(float value)
+    {
+        RoomFxMidGainHF = value;
+        return (TSelf)this;
+    }
+    public float RoomFxMusicGain
+    {
+        get => state.Get<float>("RoomFxMusicGain");
+        set => SetRoomFxMusicGain(state, value);
+    }
+    public TSelf WithRoomFxMusicGain(float value)
+    {
+        RoomFxMusicGain = value;
+        return (TSelf)this;
+    }
+    public float RoomFxMusicGainHF
+    {
+        get => state.Get<float>("RoomFxMusicGainHF");
+        set => SetRoomFxMusicGainHF(state, value);
+    }
+    public TSelf WithRoomFxMusicGainHF(float value)
+    {
+        RoomFxMusicGainHF = value;
+        return (TSelf)this;
+    }
+    public float RoomFxUIGain
+    {
+        get => state.Get<float>("RoomFxUIGain");
+        set => SetRoomFxUIGain(state, value);
+    }
+    public TSelf WithRoomFxUIGain(float value)
+    {
+        RoomFxUIGain = value;
+        return (TSelf)this;
+    }
+    public float RoomFxUIGainHF
+    {
+        get => state.Get<float>("RoomFxUIGainHF");
+        set => SetRoomFxUIGainHF(state, value);
+    }
+    public TSelf WithRoomFxUIGainHF(float value)
+    {
+        RoomFxUIGainHF = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilderBase<CPlugAudioEnvironmentBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugAudioEnvironment CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(game);
+        var chunk09039000 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000();
+        node.Chunks.Add(chunk09039000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugAudioEnvironment CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(game);
+        var chunk09039000 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000();
+        node.Chunks.Add(chunk09039000);
+        var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
+        node.Chunks.Add(chunk09039001);
+        var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
+        node.Chunks.Add(chunk09001001);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09001001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugAudioEnvironment CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(game);
+        var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
+        node.Chunks.Add(chunk09039001);
+        var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
+        node.Chunks.Add(chunk09039002);
+        var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
+        node.Chunks.Add(chunk09001001);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09001001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugAudioEnvironment CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(game);
+        var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
+        node.Chunks.Add(chunk09039001);
+        var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
+        node.Chunks.Add(chunk09039002);
+        var chunk09039004 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004(game);
+        node.Chunks.Add(chunk09039004);
+        var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
+        node.Chunks.Add(chunk09001001);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09039002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09039004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09001001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node, GameVersion game)
+    {
+        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5)) != 0 && node.Name is null) throw new MemberNullException("Name");
+    }
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -213,238 +718,27 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TMPU : CPlugAudioEnvironmentBuilderBase<TMPU>
+    public partial class TMPU : CPlugAudioEnvironmentBuilderMembers3<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorbtionHF
-        {
-            get => state.Get<float>("AirAbsorbtionHF");
-            set => SetAirAbsorbtionHF(state, value);
-        }
-        public TMPU WithAirAbsorbtionHF(float value)
-        {
-            AirAbsorbtionHF = value;
-            return this;
-        }
-        public bool DecayHFLimitScale
-        {
-            get => state.Get<bool>("DecayHFLimitScale");
-            set => SetDecayHFLimitScale(state, value);
-        }
-        public TMPU WithDecayHFLimitScale(bool value)
-        {
-            DecayHFLimitScale = value;
-            return this;
-        }
-        public bool DecayTimeScale
-        {
-            get => state.Get<bool>("DecayTimeScale");
-            set => SetDecayTimeScale(state, value);
-        }
-        public TMPU WithDecayTimeScale(bool value)
-        {
-            DecayTimeScale = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset EAXPreset
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset");
-            set => SetEAXPreset(state, value);
-        }
-        public TMPU WithEAXPreset(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value)
-        {
-            EAXPreset = value;
-            return this;
-        }
-        public bool EchoTimeScale
-        {
-            get => state.Get<bool>("EchoTimeScale");
-            set => SetEchoTimeScale(state, value);
-        }
-        public TMPU WithEchoTimeScale(bool value)
-        {
-            EchoTimeScale = value;
-            return this;
-        }
-        public bool ModulationTimeScale
-        {
-            get => state.Get<bool>("ModulationTimeScale");
-            set => SetModulationTimeScale(state, value);
-        }
-        public TMPU WithModulationTimeScale(bool value)
-        {
-            ModulationTimeScale = value;
-            return this;
-        }
-        public float Reflections
-        {
-            get => state.Get<float>("Reflections");
-            set => SetReflections(state, value);
-        }
-        public TMPU WithReflections(float value)
-        {
-            Reflections = value;
-            return this;
-        }
-        public bool ReflectionsDelayScale
-        {
-            get => state.Get<bool>("ReflectionsDelayScale");
-            set => SetReflectionsDelayScale(state, value);
-        }
-        public TMPU WithReflectionsDelayScale(bool value)
-        {
-            ReflectionsDelayScale = value;
-            return this;
-        }
-        public bool ReflectionsScale
-        {
-            get => state.Get<bool>("ReflectionsScale");
-            set => SetReflectionsScale(state, value);
-        }
-        public TMPU WithReflectionsScale(bool value)
-        {
-            ReflectionsScale = value;
-            return this;
-        }
-        public float Reverb
-        {
-            get => state.Get<float>("Reverb");
-            set => SetReverb(state, value);
-        }
-        public TMPU WithReverb(float value)
-        {
-            Reverb = value;
-            return this;
-        }
-        public float ReverbDelay
-        {
-            get => state.Get<float>("ReverbDelay");
-            set => SetReverbDelay(state, value);
-        }
-        public TMPU WithReverbDelay(float value)
-        {
-            ReverbDelay = value;
-            return this;
-        }
-        public bool ReverbDelayScale
-        {
-            get => state.Get<bool>("ReverbDelayScale");
-            set => SetReverbDelayScale(state, value);
-        }
-        public TMPU WithReverbDelayScale(bool value)
-        {
-            ReverbDelayScale = value;
-            return this;
-        }
-        public bool ReverbScale
-        {
-            get => state.Get<bool>("ReverbScale");
-            set => SetReverbScale(state, value);
-        }
-        public TMPU WithReverbScale(bool value)
-        {
-            ReverbScale = value;
-            return this;
-        }
-        public float RolloffFactor
-        {
-            get => state.Get<float>("RolloffFactor");
-            set => SetRolloffFactor(state, value);
-        }
-        public TMPU WithRolloffFactor(float value)
-        {
-            RolloffFactor = value;
-            return this;
-        }
-        public float Room
-        {
-            get => state.Get<float>("Room");
-            set => SetRoom(state, value);
-        }
-        public TMPU WithRoom(float value)
-        {
-            Room = value;
-            return this;
-        }
-        public float RoomHFRatio
-        {
-            get => state.Get<float>("RoomHFRatio");
-            set => SetRoomHFRatio(state, value);
-        }
-        public TMPU WithRoomHFRatio(float value)
-        {
-            RoomHFRatio = value;
-            return this;
-        }
-        public float RoomLFRatio
-        {
-            get => state.Get<float>("RoomLFRatio");
-            set => SetRoomLFRatio(state, value);
-        }
-        public TMPU WithRoomLFRatio(float value)
-        {
-            RoomLFRatio = value;
-            return this;
-        }
-        public float SizeFactor
-        {
-            get => state.Get<float>("SizeFactor");
-            set => SetSizeFactor(state, value);
-        }
-        public TMPU WithSizeFactor(float value)
-        {
-            SizeFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.TMPU);
-            var chunk09039000 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000();
-            node.Chunks.Add(chunk09039000);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09039000 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class TMSX : CPlugAudioEnvironmentBuilderBase<TMSX>
+    public partial class TMSX : CPlugAudioEnvironmentBuilderMembers3<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorbtionHF
-        {
-            get => state.Get<float>("AirAbsorbtionHF");
-            set => SetAirAbsorbtionHF(state, value);
-        }
-        public TMSX WithAirAbsorbtionHF(float value)
-        {
-            AirAbsorbtionHF = value;
-            return this;
-        }
-        public bool DecayHFLimitScale
-        {
-            get => state.Get<bool>("DecayHFLimitScale");
-            set => SetDecayHFLimitScale(state, value);
-        }
-        public TMSX WithDecayHFLimitScale(bool value)
-        {
-            DecayHFLimitScale = value;
-            return this;
-        }
-        public bool DecayTimeScale
-        {
-            get => state.Get<bool>("DecayTimeScale");
-            set => SetDecayTimeScale(state, value);
-        }
-        public TMSX WithDecayTimeScale(bool value)
-        {
-            DecayTimeScale = value;
-            return this;
-        }
         public float DopplerFactor
         {
             get => state.Get<float>("DopplerFactor");
@@ -453,36 +747,6 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public TMSX WithDopplerFactor(float value)
         {
             DopplerFactor = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset EAXPreset
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset");
-            set => SetEAXPreset(state, value);
-        }
-        public TMSX WithEAXPreset(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value)
-        {
-            EAXPreset = value;
-            return this;
-        }
-        public bool EchoTimeScale
-        {
-            get => state.Get<bool>("EchoTimeScale");
-            set => SetEchoTimeScale(state, value);
-        }
-        public TMSX WithEchoTimeScale(bool value)
-        {
-            EchoTimeScale = value;
-            return this;
-        }
-        public bool ModulationTimeScale
-        {
-            get => state.Get<bool>("ModulationTimeScale");
-            set => SetModulationTimeScale(state, value);
-        }
-        public TMSX WithModulationTimeScale(bool value)
-        {
-            ModulationTimeScale = value;
             return this;
         }
         public string Name
@@ -495,182 +759,24 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
             Name = value;
             return this;
         }
-        public float Reflections
-        {
-            get => state.Get<float>("Reflections");
-            set => SetReflections(state, value);
-        }
-        public TMSX WithReflections(float value)
-        {
-            Reflections = value;
-            return this;
-        }
-        public bool ReflectionsDelayScale
-        {
-            get => state.Get<bool>("ReflectionsDelayScale");
-            set => SetReflectionsDelayScale(state, value);
-        }
-        public TMSX WithReflectionsDelayScale(bool value)
-        {
-            ReflectionsDelayScale = value;
-            return this;
-        }
-        public bool ReflectionsScale
-        {
-            get => state.Get<bool>("ReflectionsScale");
-            set => SetReflectionsScale(state, value);
-        }
-        public TMSX WithReflectionsScale(bool value)
-        {
-            ReflectionsScale = value;
-            return this;
-        }
-        public float Reverb
-        {
-            get => state.Get<float>("Reverb");
-            set => SetReverb(state, value);
-        }
-        public TMSX WithReverb(float value)
-        {
-            Reverb = value;
-            return this;
-        }
-        public float ReverbDelay
-        {
-            get => state.Get<float>("ReverbDelay");
-            set => SetReverbDelay(state, value);
-        }
-        public TMSX WithReverbDelay(float value)
-        {
-            ReverbDelay = value;
-            return this;
-        }
-        public bool ReverbDelayScale
-        {
-            get => state.Get<bool>("ReverbDelayScale");
-            set => SetReverbDelayScale(state, value);
-        }
-        public TMSX WithReverbDelayScale(bool value)
-        {
-            ReverbDelayScale = value;
-            return this;
-        }
-        public bool ReverbScale
-        {
-            get => state.Get<bool>("ReverbScale");
-            set => SetReverbScale(state, value);
-        }
-        public TMSX WithReverbScale(bool value)
-        {
-            ReverbScale = value;
-            return this;
-        }
-        public float RolloffFactor
-        {
-            get => state.Get<float>("RolloffFactor");
-            set => SetRolloffFactor(state, value);
-        }
-        public TMSX WithRolloffFactor(float value)
-        {
-            RolloffFactor = value;
-            return this;
-        }
-        public float Room
-        {
-            get => state.Get<float>("Room");
-            set => SetRoom(state, value);
-        }
-        public TMSX WithRoom(float value)
-        {
-            Room = value;
-            return this;
-        }
-        public float RoomHFRatio
-        {
-            get => state.Get<float>("RoomHFRatio");
-            set => SetRoomHFRatio(state, value);
-        }
-        public TMSX WithRoomHFRatio(float value)
-        {
-            RoomHFRatio = value;
-            return this;
-        }
-        public float RoomLFRatio
-        {
-            get => state.Get<float>("RoomLFRatio");
-            set => SetRoomLFRatio(state, value);
-        }
-        public TMSX WithRoomLFRatio(float value)
-        {
-            RoomLFRatio = value;
-            return this;
-        }
-        public float SizeFactor
-        {
-            get => state.Get<float>("SizeFactor");
-            set => SetSizeFactor(state, value);
-        }
-        public TMSX WithSizeFactor(float value)
-        {
-            SizeFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.TMSX);
-            var chunk09039000 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000();
-            node.Chunks.Add(chunk09039000);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09039000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class TMNESWC : CPlugAudioEnvironmentBuilderBase<TMNESWC>
+    public partial class TMNESWC : CPlugAudioEnvironmentBuilderMembers3<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorbtionHF
-        {
-            get => state.Get<float>("AirAbsorbtionHF");
-            set => SetAirAbsorbtionHF(state, value);
-        }
-        public TMNESWC WithAirAbsorbtionHF(float value)
-        {
-            AirAbsorbtionHF = value;
-            return this;
-        }
-        public bool DecayHFLimitScale
-        {
-            get => state.Get<bool>("DecayHFLimitScale");
-            set => SetDecayHFLimitScale(state, value);
-        }
-        public TMNESWC WithDecayHFLimitScale(bool value)
-        {
-            DecayHFLimitScale = value;
-            return this;
-        }
-        public bool DecayTimeScale
-        {
-            get => state.Get<bool>("DecayTimeScale");
-            set => SetDecayTimeScale(state, value);
-        }
-        public TMNESWC WithDecayTimeScale(bool value)
-        {
-            DecayTimeScale = value;
-            return this;
-        }
         public float DopplerFactor
         {
             get => state.Get<float>("DopplerFactor");
@@ -679,36 +785,6 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public TMNESWC WithDopplerFactor(float value)
         {
             DopplerFactor = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset EAXPreset
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset");
-            set => SetEAXPreset(state, value);
-        }
-        public TMNESWC WithEAXPreset(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value)
-        {
-            EAXPreset = value;
-            return this;
-        }
-        public bool EchoTimeScale
-        {
-            get => state.Get<bool>("EchoTimeScale");
-            set => SetEchoTimeScale(state, value);
-        }
-        public TMNESWC WithEchoTimeScale(bool value)
-        {
-            EchoTimeScale = value;
-            return this;
-        }
-        public bool ModulationTimeScale
-        {
-            get => state.Get<bool>("ModulationTimeScale");
-            set => SetModulationTimeScale(state, value);
-        }
-        public TMNESWC WithModulationTimeScale(bool value)
-        {
-            ModulationTimeScale = value;
             return this;
         }
         public string Name
@@ -721,182 +797,24 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
             Name = value;
             return this;
         }
-        public float Reflections
-        {
-            get => state.Get<float>("Reflections");
-            set => SetReflections(state, value);
-        }
-        public TMNESWC WithReflections(float value)
-        {
-            Reflections = value;
-            return this;
-        }
-        public bool ReflectionsDelayScale
-        {
-            get => state.Get<bool>("ReflectionsDelayScale");
-            set => SetReflectionsDelayScale(state, value);
-        }
-        public TMNESWC WithReflectionsDelayScale(bool value)
-        {
-            ReflectionsDelayScale = value;
-            return this;
-        }
-        public bool ReflectionsScale
-        {
-            get => state.Get<bool>("ReflectionsScale");
-            set => SetReflectionsScale(state, value);
-        }
-        public TMNESWC WithReflectionsScale(bool value)
-        {
-            ReflectionsScale = value;
-            return this;
-        }
-        public float Reverb
-        {
-            get => state.Get<float>("Reverb");
-            set => SetReverb(state, value);
-        }
-        public TMNESWC WithReverb(float value)
-        {
-            Reverb = value;
-            return this;
-        }
-        public float ReverbDelay
-        {
-            get => state.Get<float>("ReverbDelay");
-            set => SetReverbDelay(state, value);
-        }
-        public TMNESWC WithReverbDelay(float value)
-        {
-            ReverbDelay = value;
-            return this;
-        }
-        public bool ReverbDelayScale
-        {
-            get => state.Get<bool>("ReverbDelayScale");
-            set => SetReverbDelayScale(state, value);
-        }
-        public TMNESWC WithReverbDelayScale(bool value)
-        {
-            ReverbDelayScale = value;
-            return this;
-        }
-        public bool ReverbScale
-        {
-            get => state.Get<bool>("ReverbScale");
-            set => SetReverbScale(state, value);
-        }
-        public TMNESWC WithReverbScale(bool value)
-        {
-            ReverbScale = value;
-            return this;
-        }
-        public float RolloffFactor
-        {
-            get => state.Get<float>("RolloffFactor");
-            set => SetRolloffFactor(state, value);
-        }
-        public TMNESWC WithRolloffFactor(float value)
-        {
-            RolloffFactor = value;
-            return this;
-        }
-        public float Room
-        {
-            get => state.Get<float>("Room");
-            set => SetRoom(state, value);
-        }
-        public TMNESWC WithRoom(float value)
-        {
-            Room = value;
-            return this;
-        }
-        public float RoomHFRatio
-        {
-            get => state.Get<float>("RoomHFRatio");
-            set => SetRoomHFRatio(state, value);
-        }
-        public TMNESWC WithRoomHFRatio(float value)
-        {
-            RoomHFRatio = value;
-            return this;
-        }
-        public float RoomLFRatio
-        {
-            get => state.Get<float>("RoomLFRatio");
-            set => SetRoomLFRatio(state, value);
-        }
-        public TMNESWC WithRoomLFRatio(float value)
-        {
-            RoomLFRatio = value;
-            return this;
-        }
-        public float SizeFactor
-        {
-            get => state.Get<float>("SizeFactor");
-            set => SetSizeFactor(state, value);
-        }
-        public TMNESWC WithSizeFactor(float value)
-        {
-            SizeFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.TMNESWC);
-            var chunk09039000 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000();
-            node.Chunks.Add(chunk09039000);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09039000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class VSK5 : CPlugAudioEnvironmentBuilderBase<VSK5>
+    public partial class VSK5 : CPlugAudioEnvironmentBuilderMembers3<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorbtionHF
-        {
-            get => state.Get<float>("AirAbsorbtionHF");
-            set => SetAirAbsorbtionHF(state, value);
-        }
-        public VSK5 WithAirAbsorbtionHF(float value)
-        {
-            AirAbsorbtionHF = value;
-            return this;
-        }
-        public bool DecayHFLimitScale
-        {
-            get => state.Get<bool>("DecayHFLimitScale");
-            set => SetDecayHFLimitScale(state, value);
-        }
-        public VSK5 WithDecayHFLimitScale(bool value)
-        {
-            DecayHFLimitScale = value;
-            return this;
-        }
-        public bool DecayTimeScale
-        {
-            get => state.Get<bool>("DecayTimeScale");
-            set => SetDecayTimeScale(state, value);
-        }
-        public VSK5 WithDecayTimeScale(bool value)
-        {
-            DecayTimeScale = value;
-            return this;
-        }
         public float DopplerFactor
         {
             get => state.Get<float>("DopplerFactor");
@@ -905,36 +823,6 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
         public VSK5 WithDopplerFactor(float value)
         {
             DopplerFactor = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset EAXPreset
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset>("EAXPreset");
-            set => SetEAXPreset(state, value);
-        }
-        public VSK5 WithEAXPreset(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.EEAXPreset value)
-        {
-            EAXPreset = value;
-            return this;
-        }
-        public bool EchoTimeScale
-        {
-            get => state.Get<bool>("EchoTimeScale");
-            set => SetEchoTimeScale(state, value);
-        }
-        public VSK5 WithEchoTimeScale(bool value)
-        {
-            EchoTimeScale = value;
-            return this;
-        }
-        public bool ModulationTimeScale
-        {
-            get => state.Get<bool>("ModulationTimeScale");
-            set => SetModulationTimeScale(state, value);
-        }
-        public VSK5 WithModulationTimeScale(bool value)
-        {
-            ModulationTimeScale = value;
             return this;
         }
         public string Name
@@ -947,1365 +835,105 @@ public partial class CPlugAudioEnvironmentBuilder : CPlugAudioEnvironmentBuilder
             Name = value;
             return this;
         }
-        public float Reflections
-        {
-            get => state.Get<float>("Reflections");
-            set => SetReflections(state, value);
-        }
-        public VSK5 WithReflections(float value)
-        {
-            Reflections = value;
-            return this;
-        }
-        public bool ReflectionsDelayScale
-        {
-            get => state.Get<bool>("ReflectionsDelayScale");
-            set => SetReflectionsDelayScale(state, value);
-        }
-        public VSK5 WithReflectionsDelayScale(bool value)
-        {
-            ReflectionsDelayScale = value;
-            return this;
-        }
-        public bool ReflectionsScale
-        {
-            get => state.Get<bool>("ReflectionsScale");
-            set => SetReflectionsScale(state, value);
-        }
-        public VSK5 WithReflectionsScale(bool value)
-        {
-            ReflectionsScale = value;
-            return this;
-        }
-        public float Reverb
-        {
-            get => state.Get<float>("Reverb");
-            set => SetReverb(state, value);
-        }
-        public VSK5 WithReverb(float value)
-        {
-            Reverb = value;
-            return this;
-        }
-        public float ReverbDelay
-        {
-            get => state.Get<float>("ReverbDelay");
-            set => SetReverbDelay(state, value);
-        }
-        public VSK5 WithReverbDelay(float value)
-        {
-            ReverbDelay = value;
-            return this;
-        }
-        public bool ReverbDelayScale
-        {
-            get => state.Get<bool>("ReverbDelayScale");
-            set => SetReverbDelayScale(state, value);
-        }
-        public VSK5 WithReverbDelayScale(bool value)
-        {
-            ReverbDelayScale = value;
-            return this;
-        }
-        public bool ReverbScale
-        {
-            get => state.Get<bool>("ReverbScale");
-            set => SetReverbScale(state, value);
-        }
-        public VSK5 WithReverbScale(bool value)
-        {
-            ReverbScale = value;
-            return this;
-        }
-        public float RolloffFactor
-        {
-            get => state.Get<float>("RolloffFactor");
-            set => SetRolloffFactor(state, value);
-        }
-        public VSK5 WithRolloffFactor(float value)
-        {
-            RolloffFactor = value;
-            return this;
-        }
-        public float Room
-        {
-            get => state.Get<float>("Room");
-            set => SetRoom(state, value);
-        }
-        public VSK5 WithRoom(float value)
-        {
-            Room = value;
-            return this;
-        }
-        public float RoomHFRatio
-        {
-            get => state.Get<float>("RoomHFRatio");
-            set => SetRoomHFRatio(state, value);
-        }
-        public VSK5 WithRoomHFRatio(float value)
-        {
-            RoomHFRatio = value;
-            return this;
-        }
-        public float RoomLFRatio
-        {
-            get => state.Get<float>("RoomLFRatio");
-            set => SetRoomLFRatio(state, value);
-        }
-        public VSK5 WithRoomLFRatio(float value)
-        {
-            RoomLFRatio = value;
-            return this;
-        }
-        public float SizeFactor
-        {
-            get => state.Get<float>("SizeFactor");
-            set => SetSizeFactor(state, value);
-        }
-        public VSK5 WithSizeFactor(float value)
-        {
-            SizeFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.VSK5);
-            var chunk09039000 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000();
-            node.Chunks.Add(chunk09039000);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09039000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class TMF : CPlugAudioEnvironmentBuilderBase<TMF>
+    public partial class TMF : CPlugAudioEnvironmentBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorptionGainHF
-        {
-            get => state.Get<float>("AirAbsorptionGainHF");
-            set => SetAirAbsorptionGainHF(state, value);
-        }
-        public TMF WithAirAbsorptionGainHF(float value)
-        {
-            AirAbsorptionGainHF = value;
-            return this;
-        }
-        public bool DecayHFLimit
-        {
-            get => state.Get<bool>("DecayHFLimit");
-            set => SetDecayHFLimit(state, value);
-        }
-        public TMF WithDecayHFLimit(bool value)
-        {
-            DecayHFLimit = value;
-            return this;
-        }
-        public float Density
-        {
-            get => state.Get<float>("Density");
-            set => SetDensity(state, value);
-        }
-        public TMF WithDensity(float value)
-        {
-            Density = value;
-            return this;
-        }
-        public float DopplerFactor
-        {
-            get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
-        }
-        public TMF WithDopplerFactor(float value)
-        {
-            DopplerFactor = value;
-            return this;
-        }
-        public float Gain
-        {
-            get => state.Get<float>("Gain");
-            set => SetGain(state, value);
-        }
-        public TMF WithGain(float value)
-        {
-            Gain = value;
-            return this;
-        }
-        public float GainHF
-        {
-            get => state.Get<float>("GainHF");
-            set => SetGainHF(state, value);
-        }
-        public TMF WithGainHF(float value)
-        {
-            GainHF = value;
-            return this;
-        }
-        public float GainLF
-        {
-            get => state.Get<float>("GainLF");
-            set => SetGainLF(state, value);
-        }
-        public TMF WithGainLF(float value)
-        {
-            GainLF = value;
-            return this;
-        }
-        public float LateReverbDelay
-        {
-            get => state.Get<float>("LateReverbDelay");
-            set => SetLateReverbDelay(state, value);
-        }
-        public TMF WithLateReverbDelay(float value)
-        {
-            LateReverbDelay = value;
-            return this;
-        }
-        public float LateReverbGain
-        {
-            get => state.Get<float>("LateReverbGain");
-            set => SetLateReverbGain(state, value);
-        }
-        public TMF WithLateReverbGain(float value)
-        {
-            LateReverbGain = value;
-            return this;
-        }
-        public string Name
-        {
-            get => state.Get<string>("Name");
-            set => SetName(state, value);
-        }
-        public TMF WithName(string value)
-        {
-            Name = value;
-            return this;
-        }
-        public float ReflectionsGain
-        {
-            get => state.Get<float>("ReflectionsGain");
-            set => SetReflectionsGain(state, value);
-        }
-        public TMF WithReflectionsGain(float value)
-        {
-            ReflectionsGain = value;
-            return this;
-        }
-        public float RoomRolloffFactor
-        {
-            get => state.Get<float>("RoomRolloffFactor");
-            set => SetRoomRolloffFactor(state, value);
-        }
-        public TMF WithRoomRolloffFactor(float value)
-        {
-            RoomRolloffFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.TMF);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
-            node.Chunks.Add(chunk09039002);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09039002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class MP3 : CPlugAudioEnvironmentBuilderBase<MP3>
+    public partial class MP3 : CPlugAudioEnvironmentBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorptionGainHF
-        {
-            get => state.Get<float>("AirAbsorptionGainHF");
-            set => SetAirAbsorptionGainHF(state, value);
-        }
-        public MP3 WithAirAbsorptionGainHF(float value)
-        {
-            AirAbsorptionGainHF = value;
-            return this;
-        }
-        public bool DecayHFLimit
-        {
-            get => state.Get<bool>("DecayHFLimit");
-            set => SetDecayHFLimit(state, value);
-        }
-        public MP3 WithDecayHFLimit(bool value)
-        {
-            DecayHFLimit = value;
-            return this;
-        }
-        public float Density
-        {
-            get => state.Get<float>("Density");
-            set => SetDensity(state, value);
-        }
-        public MP3 WithDensity(float value)
-        {
-            Density = value;
-            return this;
-        }
-        public float DopplerFactor
-        {
-            get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
-        }
-        public MP3 WithDopplerFactor(float value)
-        {
-            DopplerFactor = value;
-            return this;
-        }
-        public float Gain
-        {
-            get => state.Get<float>("Gain");
-            set => SetGain(state, value);
-        }
-        public MP3 WithGain(float value)
-        {
-            Gain = value;
-            return this;
-        }
-        public float GainHF
-        {
-            get => state.Get<float>("GainHF");
-            set => SetGainHF(state, value);
-        }
-        public MP3 WithGainHF(float value)
-        {
-            GainHF = value;
-            return this;
-        }
-        public float GainLF
-        {
-            get => state.Get<float>("GainLF");
-            set => SetGainLF(state, value);
-        }
-        public MP3 WithGainLF(float value)
-        {
-            GainLF = value;
-            return this;
-        }
-        public float LateReverbDelay
-        {
-            get => state.Get<float>("LateReverbDelay");
-            set => SetLateReverbDelay(state, value);
-        }
-        public MP3 WithLateReverbDelay(float value)
-        {
-            LateReverbDelay = value;
-            return this;
-        }
-        public float LateReverbGain
-        {
-            get => state.Get<float>("LateReverbGain");
-            set => SetLateReverbGain(state, value);
-        }
-        public MP3 WithLateReverbGain(float value)
-        {
-            LateReverbGain = value;
-            return this;
-        }
-        public float LowPassGain
-        {
-            get => state.Get<float>("LowPassGain");
-            set => SetLowPassGain(state, value);
-        }
-        public MP3 WithLowPassGain(float value)
-        {
-            LowPassGain = value;
-            return this;
-        }
-        public float LowPassGainHF
-        {
-            get => state.Get<float>("LowPassGainHF");
-            set => SetLowPassGainHF(state, value);
-        }
-        public MP3 WithLowPassGainHF(float value)
-        {
-            LowPassGainHF = value;
-            return this;
-        }
-        public string Name
-        {
-            get => state.Get<string>("Name");
-            set => SetName(state, value);
-        }
-        public MP3 WithName(string value)
-        {
-            Name = value;
-            return this;
-        }
-        public float ReflectionsGain
-        {
-            get => state.Get<float>("ReflectionsGain");
-            set => SetReflectionsGain(state, value);
-        }
-        public MP3 WithReflectionsGain(float value)
-        {
-            ReflectionsGain = value;
-            return this;
-        }
-        public float RoomFxHighGain
-        {
-            get => state.Get<float>("RoomFxHighGain");
-            set => SetRoomFxHighGain(state, value);
-        }
-        public MP3 WithRoomFxHighGain(float value)
-        {
-            RoomFxHighGain = value;
-            return this;
-        }
-        public float RoomFxHighGainHF
-        {
-            get => state.Get<float>("RoomFxHighGainHF");
-            set => SetRoomFxHighGainHF(state, value);
-        }
-        public MP3 WithRoomFxHighGainHF(float value)
-        {
-            RoomFxHighGainHF = value;
-            return this;
-        }
-        public float RoomFxLowGain
-        {
-            get => state.Get<float>("RoomFxLowGain");
-            set => SetRoomFxLowGain(state, value);
-        }
-        public MP3 WithRoomFxLowGain(float value)
-        {
-            RoomFxLowGain = value;
-            return this;
-        }
-        public float RoomFxLowGainHF
-        {
-            get => state.Get<float>("RoomFxLowGainHF");
-            set => SetRoomFxLowGainHF(state, value);
-        }
-        public MP3 WithRoomFxLowGainHF(float value)
-        {
-            RoomFxLowGainHF = value;
-            return this;
-        }
-        public float RoomFxMidGain
-        {
-            get => state.Get<float>("RoomFxMidGain");
-            set => SetRoomFxMidGain(state, value);
-        }
-        public MP3 WithRoomFxMidGain(float value)
-        {
-            RoomFxMidGain = value;
-            return this;
-        }
-        public float RoomFxMidGainHF
-        {
-            get => state.Get<float>("RoomFxMidGainHF");
-            set => SetRoomFxMidGainHF(state, value);
-        }
-        public MP3 WithRoomFxMidGainHF(float value)
-        {
-            RoomFxMidGainHF = value;
-            return this;
-        }
-        public float RoomFxMusicGain
-        {
-            get => state.Get<float>("RoomFxMusicGain");
-            set => SetRoomFxMusicGain(state, value);
-        }
-        public MP3 WithRoomFxMusicGain(float value)
-        {
-            RoomFxMusicGain = value;
-            return this;
-        }
-        public float RoomFxMusicGainHF
-        {
-            get => state.Get<float>("RoomFxMusicGainHF");
-            set => SetRoomFxMusicGainHF(state, value);
-        }
-        public MP3 WithRoomFxMusicGainHF(float value)
-        {
-            RoomFxMusicGainHF = value;
-            return this;
-        }
-        public float RoomFxUIGain
-        {
-            get => state.Get<float>("RoomFxUIGain");
-            set => SetRoomFxUIGain(state, value);
-        }
-        public MP3 WithRoomFxUIGain(float value)
-        {
-            RoomFxUIGain = value;
-            return this;
-        }
-        public float RoomFxUIGainHF
-        {
-            get => state.Get<float>("RoomFxUIGainHF");
-            set => SetRoomFxUIGainHF(state, value);
-        }
-        public MP3 WithRoomFxUIGainHF(float value)
-        {
-            RoomFxUIGainHF = value;
-            return this;
-        }
-        public float RoomRolloffFactor
-        {
-            get => state.Get<float>("RoomRolloffFactor");
-            set => SetRoomRolloffFactor(state, value);
-        }
-        public MP3 WithRoomRolloffFactor(float value)
-        {
-            RoomRolloffFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.MP3);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
-            node.Chunks.Add(chunk09039002);
-            var chunk09039004 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004(GameVersion.MP3);
-            node.Chunks.Add(chunk09039004);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09039002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004>() is not { Version: 3 }) throw new InvalidOperationException("Required MP3 chunk Chunk09039004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class TMT : CPlugAudioEnvironmentBuilderBase<TMT>
+    public partial class TMT : CPlugAudioEnvironmentBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorptionGainHF
-        {
-            get => state.Get<float>("AirAbsorptionGainHF");
-            set => SetAirAbsorptionGainHF(state, value);
-        }
-        public TMT WithAirAbsorptionGainHF(float value)
-        {
-            AirAbsorptionGainHF = value;
-            return this;
-        }
-        public bool DecayHFLimit
-        {
-            get => state.Get<bool>("DecayHFLimit");
-            set => SetDecayHFLimit(state, value);
-        }
-        public TMT WithDecayHFLimit(bool value)
-        {
-            DecayHFLimit = value;
-            return this;
-        }
-        public float Density
-        {
-            get => state.Get<float>("Density");
-            set => SetDensity(state, value);
-        }
-        public TMT WithDensity(float value)
-        {
-            Density = value;
-            return this;
-        }
-        public float DopplerFactor
-        {
-            get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
-        }
-        public TMT WithDopplerFactor(float value)
-        {
-            DopplerFactor = value;
-            return this;
-        }
-        public float Gain
-        {
-            get => state.Get<float>("Gain");
-            set => SetGain(state, value);
-        }
-        public TMT WithGain(float value)
-        {
-            Gain = value;
-            return this;
-        }
-        public float GainHF
-        {
-            get => state.Get<float>("GainHF");
-            set => SetGainHF(state, value);
-        }
-        public TMT WithGainHF(float value)
-        {
-            GainHF = value;
-            return this;
-        }
-        public float GainLF
-        {
-            get => state.Get<float>("GainLF");
-            set => SetGainLF(state, value);
-        }
-        public TMT WithGainLF(float value)
-        {
-            GainLF = value;
-            return this;
-        }
-        public float LateReverbDelay
-        {
-            get => state.Get<float>("LateReverbDelay");
-            set => SetLateReverbDelay(state, value);
-        }
-        public TMT WithLateReverbDelay(float value)
-        {
-            LateReverbDelay = value;
-            return this;
-        }
-        public float LateReverbGain
-        {
-            get => state.Get<float>("LateReverbGain");
-            set => SetLateReverbGain(state, value);
-        }
-        public TMT WithLateReverbGain(float value)
-        {
-            LateReverbGain = value;
-            return this;
-        }
-        public float LowPassGain
-        {
-            get => state.Get<float>("LowPassGain");
-            set => SetLowPassGain(state, value);
-        }
-        public TMT WithLowPassGain(float value)
-        {
-            LowPassGain = value;
-            return this;
-        }
-        public float LowPassGainHF
-        {
-            get => state.Get<float>("LowPassGainHF");
-            set => SetLowPassGainHF(state, value);
-        }
-        public TMT WithLowPassGainHF(float value)
-        {
-            LowPassGainHF = value;
-            return this;
-        }
-        public string Name
-        {
-            get => state.Get<string>("Name");
-            set => SetName(state, value);
-        }
-        public TMT WithName(string value)
-        {
-            Name = value;
-            return this;
-        }
-        public float ReflectionsGain
-        {
-            get => state.Get<float>("ReflectionsGain");
-            set => SetReflectionsGain(state, value);
-        }
-        public TMT WithReflectionsGain(float value)
-        {
-            ReflectionsGain = value;
-            return this;
-        }
-        public float RoomFxHighGain
-        {
-            get => state.Get<float>("RoomFxHighGain");
-            set => SetRoomFxHighGain(state, value);
-        }
-        public TMT WithRoomFxHighGain(float value)
-        {
-            RoomFxHighGain = value;
-            return this;
-        }
-        public float RoomFxHighGainHF
-        {
-            get => state.Get<float>("RoomFxHighGainHF");
-            set => SetRoomFxHighGainHF(state, value);
-        }
-        public TMT WithRoomFxHighGainHF(float value)
-        {
-            RoomFxHighGainHF = value;
-            return this;
-        }
-        public float RoomFxLowGain
-        {
-            get => state.Get<float>("RoomFxLowGain");
-            set => SetRoomFxLowGain(state, value);
-        }
-        public TMT WithRoomFxLowGain(float value)
-        {
-            RoomFxLowGain = value;
-            return this;
-        }
-        public float RoomFxLowGainHF
-        {
-            get => state.Get<float>("RoomFxLowGainHF");
-            set => SetRoomFxLowGainHF(state, value);
-        }
-        public TMT WithRoomFxLowGainHF(float value)
-        {
-            RoomFxLowGainHF = value;
-            return this;
-        }
-        public float RoomFxMidGain
-        {
-            get => state.Get<float>("RoomFxMidGain");
-            set => SetRoomFxMidGain(state, value);
-        }
-        public TMT WithRoomFxMidGain(float value)
-        {
-            RoomFxMidGain = value;
-            return this;
-        }
-        public float RoomFxMidGainHF
-        {
-            get => state.Get<float>("RoomFxMidGainHF");
-            set => SetRoomFxMidGainHF(state, value);
-        }
-        public TMT WithRoomFxMidGainHF(float value)
-        {
-            RoomFxMidGainHF = value;
-            return this;
-        }
-        public float RoomFxMusicGain
-        {
-            get => state.Get<float>("RoomFxMusicGain");
-            set => SetRoomFxMusicGain(state, value);
-        }
-        public TMT WithRoomFxMusicGain(float value)
-        {
-            RoomFxMusicGain = value;
-            return this;
-        }
-        public float RoomFxMusicGainHF
-        {
-            get => state.Get<float>("RoomFxMusicGainHF");
-            set => SetRoomFxMusicGainHF(state, value);
-        }
-        public TMT WithRoomFxMusicGainHF(float value)
-        {
-            RoomFxMusicGainHF = value;
-            return this;
-        }
-        public float RoomFxUIGain
-        {
-            get => state.Get<float>("RoomFxUIGain");
-            set => SetRoomFxUIGain(state, value);
-        }
-        public TMT WithRoomFxUIGain(float value)
-        {
-            RoomFxUIGain = value;
-            return this;
-        }
-        public float RoomFxUIGainHF
-        {
-            get => state.Get<float>("RoomFxUIGainHF");
-            set => SetRoomFxUIGainHF(state, value);
-        }
-        public TMT WithRoomFxUIGainHF(float value)
-        {
-            RoomFxUIGainHF = value;
-            return this;
-        }
-        public float RoomRolloffFactor
-        {
-            get => state.Get<float>("RoomRolloffFactor");
-            set => SetRoomRolloffFactor(state, value);
-        }
-        public TMT WithRoomRolloffFactor(float value)
-        {
-            RoomRolloffFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.TMT);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
-            node.Chunks.Add(chunk09039002);
-            var chunk09039004 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004(GameVersion.TMT);
-            node.Chunks.Add(chunk09039004);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09039002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004>() is not { Version: 3 }) throw new InvalidOperationException("Required TMT chunk Chunk09039004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class MP4 : CPlugAudioEnvironmentBuilderBase<MP4>
+    public partial class MP4 : CPlugAudioEnvironmentBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorptionGainHF
-        {
-            get => state.Get<float>("AirAbsorptionGainHF");
-            set => SetAirAbsorptionGainHF(state, value);
-        }
-        public MP4 WithAirAbsorptionGainHF(float value)
-        {
-            AirAbsorptionGainHF = value;
-            return this;
-        }
-        public bool DecayHFLimit
-        {
-            get => state.Get<bool>("DecayHFLimit");
-            set => SetDecayHFLimit(state, value);
-        }
-        public MP4 WithDecayHFLimit(bool value)
-        {
-            DecayHFLimit = value;
-            return this;
-        }
-        public float Density
-        {
-            get => state.Get<float>("Density");
-            set => SetDensity(state, value);
-        }
-        public MP4 WithDensity(float value)
-        {
-            Density = value;
-            return this;
-        }
-        public float DopplerFactor
-        {
-            get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
-        }
-        public MP4 WithDopplerFactor(float value)
-        {
-            DopplerFactor = value;
-            return this;
-        }
-        public float Gain
-        {
-            get => state.Get<float>("Gain");
-            set => SetGain(state, value);
-        }
-        public MP4 WithGain(float value)
-        {
-            Gain = value;
-            return this;
-        }
-        public float GainHF
-        {
-            get => state.Get<float>("GainHF");
-            set => SetGainHF(state, value);
-        }
-        public MP4 WithGainHF(float value)
-        {
-            GainHF = value;
-            return this;
-        }
-        public float GainLF
-        {
-            get => state.Get<float>("GainLF");
-            set => SetGainLF(state, value);
-        }
-        public MP4 WithGainLF(float value)
-        {
-            GainLF = value;
-            return this;
-        }
-        public float LateReverbDelay
-        {
-            get => state.Get<float>("LateReverbDelay");
-            set => SetLateReverbDelay(state, value);
-        }
-        public MP4 WithLateReverbDelay(float value)
-        {
-            LateReverbDelay = value;
-            return this;
-        }
-        public float LateReverbGain
-        {
-            get => state.Get<float>("LateReverbGain");
-            set => SetLateReverbGain(state, value);
-        }
-        public MP4 WithLateReverbGain(float value)
-        {
-            LateReverbGain = value;
-            return this;
-        }
-        public float LowPassGain
-        {
-            get => state.Get<float>("LowPassGain");
-            set => SetLowPassGain(state, value);
-        }
-        public MP4 WithLowPassGain(float value)
-        {
-            LowPassGain = value;
-            return this;
-        }
-        public float LowPassGainHF
-        {
-            get => state.Get<float>("LowPassGainHF");
-            set => SetLowPassGainHF(state, value);
-        }
-        public MP4 WithLowPassGainHF(float value)
-        {
-            LowPassGainHF = value;
-            return this;
-        }
-        public string Name
-        {
-            get => state.Get<string>("Name");
-            set => SetName(state, value);
-        }
-        public MP4 WithName(string value)
-        {
-            Name = value;
-            return this;
-        }
-        public float ReflectionsGain
-        {
-            get => state.Get<float>("ReflectionsGain");
-            set => SetReflectionsGain(state, value);
-        }
-        public MP4 WithReflectionsGain(float value)
-        {
-            ReflectionsGain = value;
-            return this;
-        }
-        public float RoomFxHighGain
-        {
-            get => state.Get<float>("RoomFxHighGain");
-            set => SetRoomFxHighGain(state, value);
-        }
-        public MP4 WithRoomFxHighGain(float value)
-        {
-            RoomFxHighGain = value;
-            return this;
-        }
-        public float RoomFxHighGainHF
-        {
-            get => state.Get<float>("RoomFxHighGainHF");
-            set => SetRoomFxHighGainHF(state, value);
-        }
-        public MP4 WithRoomFxHighGainHF(float value)
-        {
-            RoomFxHighGainHF = value;
-            return this;
-        }
-        public float RoomFxLowGain
-        {
-            get => state.Get<float>("RoomFxLowGain");
-            set => SetRoomFxLowGain(state, value);
-        }
-        public MP4 WithRoomFxLowGain(float value)
-        {
-            RoomFxLowGain = value;
-            return this;
-        }
-        public float RoomFxLowGainHF
-        {
-            get => state.Get<float>("RoomFxLowGainHF");
-            set => SetRoomFxLowGainHF(state, value);
-        }
-        public MP4 WithRoomFxLowGainHF(float value)
-        {
-            RoomFxLowGainHF = value;
-            return this;
-        }
-        public float RoomFxMidGain
-        {
-            get => state.Get<float>("RoomFxMidGain");
-            set => SetRoomFxMidGain(state, value);
-        }
-        public MP4 WithRoomFxMidGain(float value)
-        {
-            RoomFxMidGain = value;
-            return this;
-        }
-        public float RoomFxMidGainHF
-        {
-            get => state.Get<float>("RoomFxMidGainHF");
-            set => SetRoomFxMidGainHF(state, value);
-        }
-        public MP4 WithRoomFxMidGainHF(float value)
-        {
-            RoomFxMidGainHF = value;
-            return this;
-        }
-        public float RoomFxMusicGain
-        {
-            get => state.Get<float>("RoomFxMusicGain");
-            set => SetRoomFxMusicGain(state, value);
-        }
-        public MP4 WithRoomFxMusicGain(float value)
-        {
-            RoomFxMusicGain = value;
-            return this;
-        }
-        public float RoomFxMusicGainHF
-        {
-            get => state.Get<float>("RoomFxMusicGainHF");
-            set => SetRoomFxMusicGainHF(state, value);
-        }
-        public MP4 WithRoomFxMusicGainHF(float value)
-        {
-            RoomFxMusicGainHF = value;
-            return this;
-        }
-        public float RoomFxUIGain
-        {
-            get => state.Get<float>("RoomFxUIGain");
-            set => SetRoomFxUIGain(state, value);
-        }
-        public MP4 WithRoomFxUIGain(float value)
-        {
-            RoomFxUIGain = value;
-            return this;
-        }
-        public float RoomFxUIGainHF
-        {
-            get => state.Get<float>("RoomFxUIGainHF");
-            set => SetRoomFxUIGainHF(state, value);
-        }
-        public MP4 WithRoomFxUIGainHF(float value)
-        {
-            RoomFxUIGainHF = value;
-            return this;
-        }
-        public float RoomRolloffFactor
-        {
-            get => state.Get<float>("RoomRolloffFactor");
-            set => SetRoomRolloffFactor(state, value);
-        }
-        public MP4 WithRoomRolloffFactor(float value)
-        {
-            RoomRolloffFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.MP4);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
-            node.Chunks.Add(chunk09039002);
-            var chunk09039004 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004(GameVersion.MP4);
-            node.Chunks.Add(chunk09039004);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09039002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk09039004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node);
     }
-    public partial class TM2020 : CPlugAudioEnvironmentBuilderBase<TM2020>
+    public partial class TM2020 : CPlugAudioEnvironmentBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> state) : base(state) { }
-        public float AirAbsorptionGainHF
-        {
-            get => state.Get<float>("AirAbsorptionGainHF");
-            set => SetAirAbsorptionGainHF(state, value);
-        }
-        public TM2020 WithAirAbsorptionGainHF(float value)
-        {
-            AirAbsorptionGainHF = value;
-            return this;
-        }
-        public bool DecayHFLimit
-        {
-            get => state.Get<bool>("DecayHFLimit");
-            set => SetDecayHFLimit(state, value);
-        }
-        public TM2020 WithDecayHFLimit(bool value)
-        {
-            DecayHFLimit = value;
-            return this;
-        }
-        public float Density
-        {
-            get => state.Get<float>("Density");
-            set => SetDensity(state, value);
-        }
-        public TM2020 WithDensity(float value)
-        {
-            Density = value;
-            return this;
-        }
-        public float DopplerFactor
-        {
-            get => state.Get<float>("DopplerFactor");
-            set => SetDopplerFactor(state, value);
-        }
-        public TM2020 WithDopplerFactor(float value)
-        {
-            DopplerFactor = value;
-            return this;
-        }
-        public float Gain
-        {
-            get => state.Get<float>("Gain");
-            set => SetGain(state, value);
-        }
-        public TM2020 WithGain(float value)
-        {
-            Gain = value;
-            return this;
-        }
-        public float GainHF
-        {
-            get => state.Get<float>("GainHF");
-            set => SetGainHF(state, value);
-        }
-        public TM2020 WithGainHF(float value)
-        {
-            GainHF = value;
-            return this;
-        }
-        public float GainLF
-        {
-            get => state.Get<float>("GainLF");
-            set => SetGainLF(state, value);
-        }
-        public TM2020 WithGainLF(float value)
-        {
-            GainLF = value;
-            return this;
-        }
-        public float LateReverbDelay
-        {
-            get => state.Get<float>("LateReverbDelay");
-            set => SetLateReverbDelay(state, value);
-        }
-        public TM2020 WithLateReverbDelay(float value)
-        {
-            LateReverbDelay = value;
-            return this;
-        }
-        public float LateReverbGain
-        {
-            get => state.Get<float>("LateReverbGain");
-            set => SetLateReverbGain(state, value);
-        }
-        public TM2020 WithLateReverbGain(float value)
-        {
-            LateReverbGain = value;
-            return this;
-        }
-        public float LowPassGain
-        {
-            get => state.Get<float>("LowPassGain");
-            set => SetLowPassGain(state, value);
-        }
-        public TM2020 WithLowPassGain(float value)
-        {
-            LowPassGain = value;
-            return this;
-        }
-        public float LowPassGainHF
-        {
-            get => state.Get<float>("LowPassGainHF");
-            set => SetLowPassGainHF(state, value);
-        }
-        public TM2020 WithLowPassGainHF(float value)
-        {
-            LowPassGainHF = value;
-            return this;
-        }
-        public string Name
-        {
-            get => state.Get<string>("Name");
-            set => SetName(state, value);
-        }
-        public TM2020 WithName(string value)
-        {
-            Name = value;
-            return this;
-        }
-        public float ReflectionsGain
-        {
-            get => state.Get<float>("ReflectionsGain");
-            set => SetReflectionsGain(state, value);
-        }
-        public TM2020 WithReflectionsGain(float value)
-        {
-            ReflectionsGain = value;
-            return this;
-        }
-        public float RoomFxHighGain
-        {
-            get => state.Get<float>("RoomFxHighGain");
-            set => SetRoomFxHighGain(state, value);
-        }
-        public TM2020 WithRoomFxHighGain(float value)
-        {
-            RoomFxHighGain = value;
-            return this;
-        }
-        public float RoomFxHighGainHF
-        {
-            get => state.Get<float>("RoomFxHighGainHF");
-            set => SetRoomFxHighGainHF(state, value);
-        }
-        public TM2020 WithRoomFxHighGainHF(float value)
-        {
-            RoomFxHighGainHF = value;
-            return this;
-        }
-        public float RoomFxLowGain
-        {
-            get => state.Get<float>("RoomFxLowGain");
-            set => SetRoomFxLowGain(state, value);
-        }
-        public TM2020 WithRoomFxLowGain(float value)
-        {
-            RoomFxLowGain = value;
-            return this;
-        }
-        public float RoomFxLowGainHF
-        {
-            get => state.Get<float>("RoomFxLowGainHF");
-            set => SetRoomFxLowGainHF(state, value);
-        }
-        public TM2020 WithRoomFxLowGainHF(float value)
-        {
-            RoomFxLowGainHF = value;
-            return this;
-        }
-        public float RoomFxMidGain
-        {
-            get => state.Get<float>("RoomFxMidGain");
-            set => SetRoomFxMidGain(state, value);
-        }
-        public TM2020 WithRoomFxMidGain(float value)
-        {
-            RoomFxMidGain = value;
-            return this;
-        }
-        public float RoomFxMidGainHF
-        {
-            get => state.Get<float>("RoomFxMidGainHF");
-            set => SetRoomFxMidGainHF(state, value);
-        }
-        public TM2020 WithRoomFxMidGainHF(float value)
-        {
-            RoomFxMidGainHF = value;
-            return this;
-        }
-        public float RoomFxMusicGain
-        {
-            get => state.Get<float>("RoomFxMusicGain");
-            set => SetRoomFxMusicGain(state, value);
-        }
-        public TM2020 WithRoomFxMusicGain(float value)
-        {
-            RoomFxMusicGain = value;
-            return this;
-        }
-        public float RoomFxMusicGainHF
-        {
-            get => state.Get<float>("RoomFxMusicGainHF");
-            set => SetRoomFxMusicGainHF(state, value);
-        }
-        public TM2020 WithRoomFxMusicGainHF(float value)
-        {
-            RoomFxMusicGainHF = value;
-            return this;
-        }
-        public float RoomFxUIGain
-        {
-            get => state.Get<float>("RoomFxUIGain");
-            set => SetRoomFxUIGain(state, value);
-        }
-        public TM2020 WithRoomFxUIGain(float value)
-        {
-            RoomFxUIGain = value;
-            return this;
-        }
-        public float RoomFxUIGainHF
-        {
-            get => state.Get<float>("RoomFxUIGainHF");
-            set => SetRoomFxUIGainHF(state, value);
-        }
-        public TM2020 WithRoomFxUIGainHF(float value)
-        {
-            RoomFxUIGainHF = value;
-            return this;
-        }
-        public float RoomRolloffFactor
-        {
-            get => state.Get<float>("RoomRolloffFactor");
-            set => SetRoomRolloffFactor(state, value);
-        }
-        public TM2020 WithRoomRolloffFactor(float value)
-        {
-            RoomRolloffFactor = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment(GameVersion.TM2020);
-            var chunk09039001 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001();
-            node.Chunks.Add(chunk09039001);
-            var chunk09039002 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002();
-            node.Chunks.Add(chunk09039002);
-            var chunk09039004 = new global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004(GameVersion.TM2020);
-            node.Chunks.Add(chunk09039004);
-            var chunk09001001 = new global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001();
-            node.Chunks.Add(chunk09001001);
+            var node = CPlugAudioEnvironmentBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09039001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09039002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment.Chunk09039004>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09039004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAudio.Chunk09001001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09001001 is missing or has an incompatible version.");
+            CPlugAudioEnvironmentBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CPlugAudioEnvironmentBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

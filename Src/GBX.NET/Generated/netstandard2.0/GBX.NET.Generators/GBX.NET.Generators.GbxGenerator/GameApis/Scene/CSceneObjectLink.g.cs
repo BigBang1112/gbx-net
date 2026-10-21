@@ -44,7 +44,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         get => Object;
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10>.Mobil
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTM10? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10>.Object
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU>.Mobil
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU>.Object
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX>.Mobil
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX>.Object
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC>.Mobil
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC>.Object
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Mobil
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>.Object
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Mobil
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectTMF? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTMF? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>.Object
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Mobil
     {
         get
         {
@@ -174,7 +174,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectMP3? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectMP3? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>.Object
     {
         get
         {
@@ -184,7 +184,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Mobil
     {
         get
         {
@@ -194,7 +194,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectTMT? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectTMT? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>.Object
     {
         get
         {
@@ -204,7 +204,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Object = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4.Mobil
+    global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>.Mobil
     {
         get
         {
@@ -214,7 +214,7 @@ public partial class CSceneObjectLink : global::GBX.NET.Interfaces.Scene.ISceneO
         }
         set => Mobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Scene.ISceneObjectMP4? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4.Object
+    global::GBX.NET.Interfaces.Scene.ISceneObjectMP4? global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>.Object
     {
         get
         {

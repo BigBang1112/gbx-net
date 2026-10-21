@@ -36,8 +36,8 @@ public abstract class CPlugVehiclePhyTuningsBuilderBase<TSelf> where TSelf : CPl
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state;
     private protected CPlugVehiclePhyTuningsBuilderBase() => state = new();
     private protected CPlugVehiclePhyTuningsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) => this.state = state;
-    private protected static void SetTuning(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>?>("Tuning", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Tuning = value);
-    private protected static void SetTuningIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state, int value) => state.Set<int>("TuningIndex", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.TuningIndex = value);
+    private protected static void SetTuning(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilderAssignments.GetTuningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetTuningIndex(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehiclePhyTuningsBuilderAssignments.GetTuningIndexAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>? Tuning
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning>?>("Tuning");
@@ -69,6 +69,20 @@ public abstract class CPlugVehiclePhyTuningsBuilderBase<TSelf> where TSelf : CPl
 }
 public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuilderBase<CPlugVehiclePhyTuningsBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
+        var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
+        node.Chunks.Add(chunk090EC000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk090EC000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -86,13 +100,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -105,13 +118,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -124,13 +136,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -143,13 +154,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -161,7 +171,7 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) : base(state) { }
         public VSK5 WithTuning(params global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5[] values)
         {
-            return base.WithTuning(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTuning(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5>(values, false));
         }
         public VSK5 WithTuning(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningVSK5> values)
         {
@@ -170,13 +180,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -188,7 +197,7 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) : base(state) { }
         public TMF WithTuning(params global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF[] values)
         {
-            return base.WithTuning(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTuning(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF>(values, false));
         }
         public TMF WithTuning(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTMF> values)
         {
@@ -197,13 +206,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -215,7 +223,7 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) : base(state) { }
         public MP3 WithTuning(params global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3[] values)
         {
-            return base.WithTuning(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTuning(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3>(values, false));
         }
         public MP3 WithTuning(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP3> values)
         {
@@ -224,13 +232,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -242,7 +249,7 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) : base(state) { }
         public MP4 WithTuning(params global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4[] values)
         {
-            return base.WithTuning(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTuning(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4>(values, false));
         }
         public MP4 WithTuning(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningMP4> values)
         {
@@ -251,13 +258,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -269,7 +275,7 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings> state) : base(state) { }
         public TM2020 WithTuning(params global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020[] values)
         {
-            return base.WithTuning(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTuning(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020>(values, false));
         }
         public TM2020 WithTuning(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningTM2020> values)
         {
@@ -278,13 +284,12 @@ public partial class CPlugVehiclePhyTuningsBuilder : CPlugVehiclePhyTuningsBuild
         public global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings();
-            var chunk090EC000 = new global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000();
-            node.Chunks.Add(chunk090EC000);
+            var node = CPlugVehiclePhyTuningsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehiclePhyTunings.Chunk090EC000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk090EC000 is missing or has an incompatible version.");
+            CPlugVehiclePhyTuningsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehiclePhyTuningsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

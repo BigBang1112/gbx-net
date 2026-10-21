@@ -36,14 +36,14 @@ public abstract class CFuncTreeTranslateBuilderBase<TSelf> where TSelf : CFuncTr
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state;
     private protected CFuncTreeTranslateBuilderBase() => state = new();
     private protected CFuncTreeTranslateBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) => this.state = state;
-    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, bool value) => state.Set<bool>("AutoCreateMotion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AutoCreateMotion = value);
-    private protected static void SetEndPoint(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, Vec3 value) => state.Set<Vec3>("EndPoint", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.EndPoint = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value) => state.Set<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, string? value) => state.Set<string?>("InputValId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.InputValId = value);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, float value) => state.Set<float>("Period", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Period = value);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, float value) => state.Set<float>("Phase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Phase = value);
-    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, bool value) => state.Set<bool>("RandomizePhase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RandomizePhase = value);
-    private protected static void SetStartPoint(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, Vec3 value) => state.Set<Vec3>("StartPoint", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.StartPoint = value);
+    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEndPoint(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeTranslateBuilderAssignments.GetEndPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeTranslateBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStartPoint(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeTranslateBuilderAssignments.GetStartPointAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool AutoCreateMotion
     {
         get => state.Get<bool>("AutoCreateMotion");
@@ -75,8 +75,107 @@ public abstract class CFuncTreeTranslateBuilderBase<TSelf> where TSelf : CFuncTr
         return (TSelf)this;
     }
 }
+public abstract class CFuncTreeTranslateBuilderMembers1<TSelf> : CFuncTreeTranslateBuilderBase<TSelf> where TSelf : CFuncTreeTranslateBuilderMembers1<TSelf>
+{
+    private protected CFuncTreeTranslateBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
+    public Vec3 EndPoint
+    {
+        get => state.Get<Vec3>("EndPoint");
+        set => SetEndPoint(state, value);
+    }
+    public TSelf WithEndPoint(Vec3 value)
+    {
+        EndPoint = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
+        set => SetFlags(state, value);
+    }
+    public TSelf WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
+    {
+        Flags = value;
+        return (TSelf)this;
+    }
+    public Vec3 StartPoint
+    {
+        get => state.Get<Vec3>("StartPoint");
+        set => SetStartPoint(state, value);
+    }
+    public TSelf WithStartPoint(Vec3 value)
+    {
+        StartPoint = value;
+        return (TSelf)this;
+    }
+}
 public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<CFuncTreeTranslateBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncTreeTranslate CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
+        var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
+        node.Chunks.Add(chunk0500D000);
+        var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
+        node.Chunks.Add(chunk0500D001);
+        var chunk0500B003 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003();
+        node.Chunks.Add(chunk0500B003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncTreeTranslate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500D000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500D001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncTreeTranslate CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
+        var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
+        node.Chunks.Add(chunk0500D000);
+        var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
+        node.Chunks.Add(chunk0500D001);
+        var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
+        node.Chunks.Add(chunk0500B004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncTreeTranslate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500D000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500D001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncTreeTranslate CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
+        var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
+        node.Chunks.Add(chunk0500D000);
+        var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
+        node.Chunks.Add(chunk0500D001);
+        var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
+        node.Chunks.Add(chunk0500B005);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncTreeTranslate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500D000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500D001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncTreeTranslate CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
+        var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
+        node.Chunks.Add(chunk0500B005);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Function.CFuncTreeTranslate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncTreeTranslate node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -89,84 +188,27 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CFuncTreeTranslateBuilderBase<TM10>
+    public partial class TM10 : CFuncTreeTranslateBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public TM10 WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TM10 WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public TM10 WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B003 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003();
-            node.Chunks.Add(chunk0500B003);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0500B003 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class TMPU : CFuncTreeTranslateBuilderBase<TMPU>
+    public partial class TMPU : CFuncTreeTranslateBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public TMPU WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMPU WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
@@ -177,61 +219,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public TMPU WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class TMSX : CFuncTreeTranslateBuilderBase<TMSX>
+    public partial class TMSX : CFuncTreeTranslateBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public TMSX WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMSX WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
@@ -242,61 +247,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public TMSX WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class TMNESWC : CFuncTreeTranslateBuilderBase<TMNESWC>
+    public partial class TMNESWC : CFuncTreeTranslateBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public TMNESWC WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMNESWC WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
@@ -307,61 +275,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public TMNESWC WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class VSK5 : CFuncTreeTranslateBuilderBase<VSK5>
+    public partial class VSK5 : CFuncTreeTranslateBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public VSK5 WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public VSK5 WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public bool RandomizePhase
         {
             get => state.Get<bool>("RandomizePhase");
@@ -372,61 +303,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public VSK5 WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class TMF : CFuncTreeTranslateBuilderBase<TMF>
+    public partial class TMF : CFuncTreeTranslateBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public TMF WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMF WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
@@ -447,61 +341,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public TMF WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class MP3 : CFuncTreeTranslateBuilderBase<MP3>
+    public partial class MP3 : CFuncTreeTranslateBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public MP3 WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public MP3 WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
@@ -522,61 +379,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public MP3 WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class TMT : CFuncTreeTranslateBuilderBase<TMT>
+    public partial class TMT : CFuncTreeTranslateBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public TMT WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public TMT WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
@@ -597,61 +417,24 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public TMT WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeTranslate node);
     }
-    public partial class MP4 : CFuncTreeTranslateBuilderBase<MP4>
+    public partial class MP4 : CFuncTreeTranslateBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeTranslate> state) : base(state) { }
-        public Vec3 EndPoint
-        {
-            get => state.Get<Vec3>("EndPoint");
-            set => SetEndPoint(state, value);
-        }
-        public MP4 WithEndPoint(Vec3 value)
-        {
-            EndPoint = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags Flags
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags>("Flags");
-            set => SetFlags(state, value);
-        }
-        public MP4 WithFlags(global::GBX.NET.Engines.Function.CFuncTreeTranslate.EFlags value)
-        {
-            Flags = value;
-            return this;
-        }
         public string? InputValId
         {
             get => state.Get<string?>("InputValId");
@@ -672,32 +455,15 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
             RandomizePhase = value;
             return this;
         }
-        public Vec3 StartPoint
-        {
-            get => state.Get<Vec3>("StartPoint");
-            set => SetStartPoint(state, value);
-        }
-        public MP4 WithStartPoint(Vec3 value)
-        {
-            StartPoint = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500D000 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000();
-            node.Chunks.Add(chunk0500D000);
-            var chunk0500D001 = new global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001();
-            node.Chunks.Add(chunk0500D001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500D000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeTranslate.Chunk0500D001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500D001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -730,13 +496,12 @@ public partial class CFuncTreeTranslateBuilder : CFuncTreeTranslateBuilderBase<C
         public global::GBX.NET.Interfaces.Function.IFuncTreeTranslateTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeTranslate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeTranslate();
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeTranslateBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeTranslateBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CFuncTreeTranslateBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

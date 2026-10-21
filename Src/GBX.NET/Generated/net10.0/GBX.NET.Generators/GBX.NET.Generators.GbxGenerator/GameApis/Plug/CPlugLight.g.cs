@@ -39,7 +39,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         get => Light;
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugLightTM10.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Function.IFuncLightTM10>.BitmapFlare
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugLightTM10.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Function.IFuncLightTM10>.BitmapProjector
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightTM10? global::GBX.NET.Interfaces.Plug.IPlugLightTM10.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightTM10? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Function.IFuncLightTM10>.FuncLight
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTM10? global::GBX.NET.Interfaces.Plug.IPlugLightTM10.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTM10? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTM10>.Light
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightTMPU.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Function.IFuncLightTMPU>.BitmapFlare
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightTMPU.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Function.IFuncLightTMPU>.BitmapProjector
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightTMPU.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Function.IFuncLightTMPU>.FuncLight
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightTMPU.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMPU? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMPU>.Light
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightTMSX.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Function.IFuncLightTMSX>.BitmapFlare
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightTMSX.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Function.IFuncLightTMSX>.BitmapProjector
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightTMSX.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Function.IFuncLightTMSX>.FuncLight
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightTMSX.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMSX? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMSX>.Light
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC>.BitmapFlare
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC>.BitmapProjector
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC>.FuncLight
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightTMNESWC.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC>.Light
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightVSK5.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Function.IFuncLightVSK5>.BitmapFlare
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightVSK5.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Function.IFuncLightVSK5>.BitmapProjector
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightVSK5.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Function.IFuncLightVSK5>.FuncLight
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightVSK5.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightVSK5? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightVSK5>.Light
     {
         get
         {
@@ -239,7 +239,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugLightTMF.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Function.IFuncLightTMF>.BitmapFlare
     {
         get
         {
@@ -249,7 +249,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugLightTMF.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Function.IFuncLightTMF>.BitmapProjector
     {
         get
         {
@@ -259,7 +259,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMF? global::GBX.NET.Interfaces.Plug.IPlugLightTMF.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightTMF? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Function.IFuncLightTMF>.FuncLight
     {
         get
         {
@@ -269,7 +269,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTMF? global::GBX.NET.Interfaces.Plug.IPlugLightTMF.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMF? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMF>.Light
     {
         get
         {
@@ -279,7 +279,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMP3.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Function.IFuncLightMP3>.BitmapFlare
     {
         get
         {
@@ -289,7 +289,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMP3.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Function.IFuncLightMP3>.BitmapProjector
     {
         get
         {
@@ -299,7 +299,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMP3.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Function.IFuncLightMP3>.FuncLight
     {
         get
         {
@@ -309,7 +309,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMP3.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightMP3? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightMP3>.Light
     {
         get
         {
@@ -319,7 +319,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugLightTMT.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Function.IFuncLightTMT>.BitmapFlare
     {
         get
         {
@@ -329,7 +329,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugLightTMT.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Function.IFuncLightTMT>.BitmapProjector
     {
         get
         {
@@ -339,7 +339,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightTMT? global::GBX.NET.Interfaces.Plug.IPlugLightTMT.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightTMT? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Function.IFuncLightTMT>.FuncLight
     {
         get
         {
@@ -349,7 +349,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTMT? global::GBX.NET.Interfaces.Plug.IPlugLightTMT.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTMT? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTMT>.Light
     {
         get
         {
@@ -359,7 +359,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMP4.BitmapFlare
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Function.IFuncLightMP4>.BitmapFlare
     {
         get
         {
@@ -369,7 +369,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapFlare = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMP4.BitmapProjector
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Function.IFuncLightMP4>.BitmapProjector
     {
         get
         {
@@ -379,7 +379,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => BitmapProjector = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncLightMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMP4.FuncLight
+    global::GBX.NET.Interfaces.Function.IFuncLightMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Function.IFuncLightMP4>.FuncLight
     {
         get
         {
@@ -389,7 +389,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => FuncLight = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMP4.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightMP4? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightMP4>.Light
     {
         get
         {
@@ -399,7 +399,7 @@ public partial class CPlugLight : global::GBX.NET.Interfaces.Plug.IPlugLight, gl
         }
         set => Light = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxLight node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugLightTM2020.Light
+    global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? global::GBX.NET.Interfaces.Plug.IPlugLightMembers2<global::GBX.NET.Interfaces.Graphic.IGxLightTM2020>.Light
     {
         get
         {

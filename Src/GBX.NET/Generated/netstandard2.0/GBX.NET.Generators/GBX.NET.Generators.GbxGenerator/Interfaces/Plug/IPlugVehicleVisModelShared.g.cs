@@ -31,48 +31,51 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared
+{
+    global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+{
+    IReadOnlyList<T0>? VehicleEmitters { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisModelSharedMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelShared where T0 : class
+{
+    IReadOnlyList<T0>? VehicleMaterialGroups { get; set; }
+}
 public partial interface IPlugVehicleVisModelShared : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared>
 {
 }
 
-public partial interface IPlugVehicleVisModelSharedTMNESWC : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedTMNESWC : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1
 {
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelSharedVSK5 : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedVSK5 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>
 {
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelVSK5>? VehicleEmitters { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupVSK5>? VehicleMaterialGroups { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelSharedTMF : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedTMF : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers1, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>
 {
-    global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.SimulationWheel[]? SimulationWheels { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelTMF>? VehicleEmitters { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMF>? VehicleMaterialGroups { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelSharedMP3 : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedMP3 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers2<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisEmitterModelMP3>? VehicleEmitters { get; set; }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP3>? VehicleMaterialGroups { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelSharedTMT : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedTMT : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTMT>? VehicleMaterialGroups { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelSharedMP4 : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedMP4 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupMP4>? VehicleMaterialGroups { get; set; }
 }
 
-public partial interface IPlugVehicleVisModelSharedTM2020 : IPlugVehicleVisModelShared
+public partial interface IPlugVehicleVisModelSharedTM2020 : IPlugVehicleVisModelShared, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMembers3<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialGroupTM2020>? VehicleMaterialGroups { get; set; }
     string[]? WheelNames { get; set; }
     global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared.WheelSetting[]? WheelSettings { get; set; }
 }

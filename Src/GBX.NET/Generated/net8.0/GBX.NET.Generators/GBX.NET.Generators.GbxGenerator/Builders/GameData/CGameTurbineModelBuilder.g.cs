@@ -36,10 +36,10 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state;
     private protected CGameTurbineModelBuilderBase() => state = new();
     private protected CGameTurbineModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state) => this.state = state;
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, Iso4 value) => state.Set<Iso4>("Loc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Loc = value);
-    private protected static void SetSilencerBubble_OnlyPlayerSounds(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, bool value) => state.Set<bool>("SilencerBubble_OnlyPlayerSounds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SilencerBubble_OnlyPlayerSounds = value);
-    private protected static void SetSilencerBubble_RadiusFade(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, float value) => state.Set<float>("SilencerBubble_RadiusFade", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SilencerBubble_RadiusFade = value);
-    private protected static void SetSilencerBubble_RadiusMute(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, float value) => state.Set<float>("SilencerBubble_RadiusMute", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SilencerBubble_RadiusMute = value);
+    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSilencerBubble_OnlyPlayerSounds(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_OnlyPlayerSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSilencerBubble_RadiusFade(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusFadeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSilencerBubble_RadiusMute(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameTurbineModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameTurbineModelBuilderAssignments.GetSilencerBubble_RadiusMuteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
@@ -83,6 +83,21 @@ public abstract class CGameTurbineModelBuilderBase<TSelf> where TSelf : CGameTur
 }
 public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGameTurbineModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameTurbineModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameTurbineModel();
+        var chunk2E010000 = new global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000();
+        chunk2E010000.Version = 0;
+        node.Chunks.Add(chunk2E010000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameTurbineModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E010000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameTurbineModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -95,14 +110,12 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
         public global::GBX.NET.Interfaces.GameData.IGameTurbineModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameTurbineModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameTurbineModel();
-            var chunk2E010000 = new global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000();
-            chunk2E010000.Version = 0;
-            node.Chunks.Add(chunk2E010000);
+            var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk2E010000 is missing or has an incompatible version.");
+            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -115,14 +128,12 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
         public global::GBX.NET.Interfaces.GameData.IGameTurbineModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameTurbineModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameTurbineModel();
-            var chunk2E010000 = new global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000();
-            chunk2E010000.Version = 0;
-            node.Chunks.Add(chunk2E010000);
+            var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk2E010000 is missing or has an incompatible version.");
+            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -135,14 +146,12 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
         public global::GBX.NET.Interfaces.GameData.IGameTurbineModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameTurbineModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameTurbineModel();
-            var chunk2E010000 = new global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000();
-            chunk2E010000.Version = 0;
-            node.Chunks.Add(chunk2E010000);
+            var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E010000 is missing or has an incompatible version.");
+            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -155,14 +164,12 @@ public partial class CGameTurbineModelBuilder : CGameTurbineModelBuilderBase<CGa
         public global::GBX.NET.Interfaces.GameData.IGameTurbineModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameTurbineModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameTurbineModel();
-            var chunk2E010000 = new global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000();
-            chunk2E010000.Version = 0;
-            node.Chunks.Add(chunk2E010000);
+            var node = CGameTurbineModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameTurbineModel.Chunk2E010000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E010000 is missing or has an incompatible version.");
+            CGameTurbineModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameTurbineModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,17 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Graphic;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxLightMembers1 : global::GBX.NET.Interfaces.Graphic.IGxLight
+{
+    float SpecularIntens { get; set; }
+    float SpecularPower { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGxLightMembers2 : global::GBX.NET.Interfaces.Graphic.IGxLight
+{
+    float DiffuseIntensity { get; set; }
+}
 public partial interface IGxLight : IClassVersion<global::GBX.NET.Engines.Graphic.GxLight>
 {
     Vec3 Color { get; set; }
@@ -57,43 +68,27 @@ public partial interface IGxLightTMNESWC : IGxLight
 {
 }
 
-public partial interface IGxLightVSK5 : IGxLight
+public partial interface IGxLightVSK5 : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers1, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
-    float DiffuseIntensity { get; set; }
-    float SpecularIntens { get; set; }
-    float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightTMF : IGxLight
+public partial interface IGxLightTMF : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers1, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
-    float DiffuseIntensity { get; set; }
-    float SpecularIntens { get; set; }
-    float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightMP3 : IGxLight
+public partial interface IGxLightMP3 : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers1, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
-    float DiffuseIntensity { get; set; }
-    float SpecularIntens { get; set; }
-    float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightTMT : IGxLight
+public partial interface IGxLightTMT : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers1, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
-    float DiffuseIntensity { get; set; }
-    float SpecularIntens { get; set; }
-    float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightMP4 : IGxLight
+public partial interface IGxLightMP4 : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers1, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
-    float DiffuseIntensity { get; set; }
-    float SpecularIntens { get; set; }
-    float SpecularPower { get; set; }
 }
 
-public partial interface IGxLightTM2020 : IGxLight
+public partial interface IGxLightTM2020 : IGxLight, global::GBX.NET.Interfaces.Graphic.IGxLightMembers2
 {
-    float DiffuseIntensity { get; set; }
 }
 

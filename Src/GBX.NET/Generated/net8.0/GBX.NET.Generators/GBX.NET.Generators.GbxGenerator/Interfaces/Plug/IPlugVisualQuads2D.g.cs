@@ -40,83 +40,45 @@ public partial interface IPlugVisualQuads2D : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new Int3[] SubVisuals { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] Vertices2D { get; set; }
-    new string? VisualId { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTM10 : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTM10
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTMPU : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMPU
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTMSX : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMSX
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTMNESWC : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMNESWC
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DVSK5 : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DVSK5
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTMF : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMF
 {
-    new global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DMP3 : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DMP3
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTMT : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTMT
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DMP4 : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DMP4
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualQuads2DTM2020 : IPlugVisualQuads2D, global::GBX.NET.Interfaces.Plug.IPlugVisual2DTM2020
 {
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 

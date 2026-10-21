@@ -34,9 +34,4 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugVisualIndexedLines : global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLines, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTM10, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMF, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesMP3, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMT, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesMP4, global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugVisualIndexedLinesBuilder Create() => new();
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> global::GBX.NET.Interfaces.Plug.IPlugVisualIndexedLinesTMSX.VertexStreams
-    {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>(() => VertexStreams, static node => { if (node is null) throw new MemberNullException("VertexStreams"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => VertexStreams = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
 }

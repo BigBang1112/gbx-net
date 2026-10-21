@@ -36,9 +36,9 @@ public abstract class CGameCtnAutoTerrainBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state;
     private protected CGameCtnAutoTerrainBuilderBase() => state = new();
     private protected CGameCtnAutoTerrainBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state) => this.state = state;
-    private protected static void SetGenealogy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy?>("Genealogy", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Genealogy = value);
-    private protected static void SetGenealogyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>>("Genealogy", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Genealogy.CopyFrom(reference));
-    private protected static void SetOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, Int3 value) => state.Set<Int3>("Offset", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Offset = value);
+    private protected static void SetGenealogy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetGenealogyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetGenealogyReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnAutoTerrainBuilderAssignments.GetOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy?>("Genealogy");
@@ -68,6 +68,20 @@ public abstract class CGameCtnAutoTerrainBuilderBase<TSelf> where TSelf : CGameC
 }
 public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase<CGameCtnAutoTerrainBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnAutoTerrain CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain();
+        var chunk03120001 = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001();
+        node.Chunks.Add(chunk03120001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03120001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnAutoTerrain node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -84,13 +98,12 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnAutoTerrain Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain();
-            var chunk03120001 = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001();
-            node.Chunks.Add(chunk03120001);
+            var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03120001 is missing or has an incompatible version.");
+            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -107,13 +120,12 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnAutoTerrain Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain();
-            var chunk03120001 = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001();
-            node.Chunks.Add(chunk03120001);
+            var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03120001 is missing or has an incompatible version.");
+            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -130,13 +142,12 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnAutoTerrain Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain();
-            var chunk03120001 = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001();
-            node.Chunks.Add(chunk03120001);
+            var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03120001 is missing or has an incompatible version.");
+            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -153,13 +164,12 @@ public partial class CGameCtnAutoTerrainBuilder : CGameCtnAutoTerrainBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnAutoTerrain Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain();
-            var chunk03120001 = new global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001();
-            node.Chunks.Add(chunk03120001);
+            var node = CGameCtnAutoTerrainBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnAutoTerrain.Chunk03120001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03120001 is missing or has an incompatible version.");
+            CGameCtnAutoTerrainBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnAutoTerrainBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

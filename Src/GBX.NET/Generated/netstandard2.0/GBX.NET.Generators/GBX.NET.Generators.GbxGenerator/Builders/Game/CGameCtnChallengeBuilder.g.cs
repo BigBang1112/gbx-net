@@ -36,125 +36,125 @@ public abstract class CGameCtnChallengeBuilderBase<TSelf> where TSelf : CGameCtn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state;
     private protected CGameCtnChallengeBuilderBase() => state = new();
     private protected CGameCtnChallengeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) => this.state = state;
-    private protected static void SetAnchoredObjects(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.AnchoredObjects = value);
-    private protected static void SetAnimationTriggers(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("AnimationTriggers", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugTriggerAction[])value.Clone(), static (node, value) => node.AnimationTriggers = value);
-    private protected static void SetAuthorExtraInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("AuthorExtraInfo", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AuthorExtraInfo = value);
-    private protected static void SetAuthorLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string value) => state.Set<string>("AuthorLogin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.AuthorLogin = value);
-    private protected static void SetAuthorNickname(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("AuthorNickname", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AuthorNickname = value);
-    private protected static void SetAuthorScore(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int? value) => state.Set<int?>("AuthorScore", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.AuthorScore = value);
-    private protected static void SetAuthorTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set<global::TmEssentials.TimeInt32?>("AuthorTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.AuthorTime = value);
-    private protected static void SetAuthorVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set<int>("AuthorVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AuthorVersion = value);
-    private protected static void SetAuthorZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("AuthorZone", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AuthorZone = value);
-    private protected static void SetBakedBlocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.BakedBlocks = value);
-    private protected static void SetBakedClipsAdditionalData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value) => state.Set<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>(value), static (node, value) => node.BakedClipsAdditionalData = value);
-    private protected static void SetBlockOctree(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData?>("BlockOctree", value, GameVersion.TM2020, static value => value, static (node, value) => node.BlockOctree = value);
-    private protected static void SetBlockStock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnCollectorList? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnCollectorList?>("BlockStock", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.BlockStock = value);
-    private protected static void SetBlockStockReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList>>("BlockStock", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BlockStock.CopyFrom(reference));
-    private protected static void SetBlocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("Blocks", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Blocks = value);
-    private protected static void SetBotPaths(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>(value), static (node, value) => node.BotPaths = value);
-    private protected static void SetBronzeTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set<global::TmEssentials.TimeInt32?>("BronzeTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.BronzeTime = value);
-    private protected static void SetBuildVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("BuildVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.BuildVersion = value);
-    private protected static void SetCarMarksBuffer(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.CarMarksBuffer = value);
-    private protected static void SetChallengeAnimation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("ChallengeAnimation", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.ChallengeAnimation = value);
-    private protected static void SetChallengeAnimationReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile>>("ChallengeAnimation", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ChallengeAnimation.CopyFrom(reference));
-    private protected static void SetChallengeCardEventIds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[])value.Clone(), static (node, value) => node.ChallengeCardEventIds = value);
-    private protected static void SetChallengeDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, byte[]? value) => state.Set<byte[]?>("ChallengeDecals", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.ChallengeDecals = value);
-    private protected static void SetChallengeParameters(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?>("ChallengeParameters", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ChallengeParameters = value);
-    private protected static void SetChallengeParametersReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters>>("ChallengeParameters", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ChallengeParameters.CopyFrom(reference));
-    private protected static void SetChallengeScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("ChallengeScript", value, GameVersion.MP3 | GameVersion.TMT, static value => value, static (node, value) => node.ChallengeScript = value);
-    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, List<Int3>? value) => state.Set<List<Int3>?>("Checkpoints", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5, static value => value is null ? null! : new List<Int3>(value), static (node, value) => node.Checkpoints = value);
-    private protected static void SetClipAmbiance(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ClipAmbiance = value);
-    private protected static void SetClipAmbianceReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>>("ClipAmbiance", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ClipAmbiance.CopyFrom(reference));
-    private protected static void SetClipGlobal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ClipGlobal = value);
-    private protected static void SetClipGlobalReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>>("ClipGlobal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ClipGlobal.CopyFrom(reference));
-    private protected static void SetClipGroupEndRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ClipGroupEndRace = value);
-    private protected static void SetClipGroupEndRaceReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>>("ClipGroupEndRace", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ClipGroupEndRace.CopyFrom(reference));
-    private protected static void SetClipGroupInGame(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ClipGroupInGame = value);
-    private protected static void SetClipGroupInGameReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>>("ClipGroupInGame", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ClipGroupInGame.CopyFrom(reference));
-    private protected static void SetClipGroups(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>?>("ClipGroups", value, GameVersion.TM2020, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.ClipGroups = value);
-    private protected static void SetClipIntro(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ClipIntro = value);
-    private protected static void SetClipIntroReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>>("ClipIntro", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ClipIntro.CopyFrom(reference));
-    private protected static void SetClipPodium(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ClipPodium = value);
-    private protected static void SetClipPodiumReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>>("ClipPodium", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ClipPodium.CopyFrom(reference));
-    private protected static void SetClipTriggerSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Int3 value) => state.Set<Int3>("ClipTriggerSize", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ClipTriggerSize = value);
-    private protected static void SetComments(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("Comments", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Comments = value);
-    private protected static void SetCost(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set<int>("Cost", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.Cost = value);
-    private protected static void SetCrc32(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, uint value) => state.Set<uint>("Crc32", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.Crc32 = value);
-    private protected static void SetCreatedWithGamepadEditor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("CreatedWithGamepadEditor", value, GameVersion.TM2020, static value => value, static (node, value) => node.CreatedWithGamepadEditor = value);
-    private protected static void SetCreatedWithSimpleEditor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("CreatedWithSimpleEditor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.CreatedWithSimpleEditor = value);
-    private protected static void SetCustomMusicPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, PackDesc? value) => state.Set<PackDesc?>("CustomMusicPackDesc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.CustomMusicPackDesc = value);
-    private protected static void SetDayDuration(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, TimeInt32? value) => state.Set<TimeInt32?>("DayDuration", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DayDuration = value);
-    private protected static void SetDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, TimeSpan? value) => state.Set<TimeSpan?>("DayTime", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DayTime = value);
-    private protected static void SetDecoBaseHeightOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set<int>("DecoBaseHeightOffset", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DecoBaseHeightOffset = value);
-    private protected static void SetDecoration(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Ident value) => state.Set<global::GBX.NET.Ident>("Decoration", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Decoration = value);
-    private protected static void SetDynamicDaylight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("DynamicDaylight", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DynamicDaylight = value);
-    private protected static void SetEditor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.Editor = value);
-    private protected static void SetEmbeddedItemModelsExternalDataRefs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::System.Collections.Generic.List<string>? value) => state.Set<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new global::System.Collections.Generic.List<string>(value), static (node, value) => node.EmbeddedItemModelsExternalDataRefs = value);
-    private protected static void SetEmbeddedZipData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, byte[]? value) => state.Set<byte[]?>("EmbeddedZipData", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.EmbeddedZipData = value);
-    private protected static void SetGoldTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set<global::TmEssentials.TimeInt32?>("GoldTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.GoldTime = value);
-    private protected static void SetHasClones(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("HasClones", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.HasClones = value);
-    private protected static void SetHasCustomCamThumbnail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("HasCustomCamThumbnail", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.HasCustomCamThumbnail = value);
-    private protected static void SetHasLightmaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("HasLightmaps", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.HasLightmaps = value);
-    private protected static void SetHashedPassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Checksum128? value) => state.Set<global::GBX.NET.Checksum128?>("HashedPassword", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.HashedPassword = value);
-    private protected static void SetIsLapRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("IsLapRace", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.IsLapRace = value);
-    private protected static void SetKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("Kind", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Kind = value);
-    private protected static void SetKindInHeader(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.KindInHeader = value);
-    private protected static void SetLaunchedCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints? value) => state.Set<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints?>("LaunchedCheckpoints", value, GameVersion.TM2020, static value => value, static (node, value) => node.LaunchedCheckpoints = value);
-    private protected static void SetLaunchedCheckpointsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints>>("LaunchedCheckpoints", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LaunchedCheckpoints.CopyFrom(reference));
-    private protected static void SetLegacyMacroblocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]?>("LegacyMacroblocks", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[])value.Clone(), static (node, value) => node.LegacyMacroblocks = value);
-    private protected static void SetLightmapCache(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LightmapCache = value);
-    private protected static void SetLightmapCacheReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value) => state.Set<NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache>>("LightmapCache", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LightmapCache.CopyFrom(reference));
-    private protected static void SetLightmapCacheData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.ZlibData? value) => state.Set<global::GBX.NET.ZlibData?>("LightmapCacheData", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LightmapCacheData = value);
-    private protected static void SetLightmapCacheUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, ulong value) => state.Set<ulong>("LightmapCacheUid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LightmapCacheUid = value);
-    private protected static void SetLightmapFrames(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[])value.Clone(), static (node, value) => node.LightmapFrames = value);
-    private protected static void SetLightmapVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int? value) => state.Set<int?>("LightmapVersion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LightmapVersion = value);
-    private protected static void SetMacroblockInstances(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? value) => state.Set<global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>?>("MacroblockInstances", value, GameVersion.TM2020, static value => value is null ? null! : new global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>(value), static (node, value) => node.MacroblockInstances = value);
-    private protected static void SetMapCoordOrigin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Vec2 value) => state.Set<Vec2>("MapCoordOrigin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.MapCoordOrigin = value);
-    private protected static void SetMapCoordTarget(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Vec2 value) => state.Set<Vec2>("MapCoordTarget", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.MapCoordTarget = value);
-    private protected static void SetMapInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Ident value) => state.Set<global::GBX.NET.Ident>("MapInfo", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.MapInfo = value);
-    private protected static void SetMapName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string value) => state.Set<string>("MapName", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.MapName = value);
-    private protected static void SetMapStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("MapStyle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MapStyle = value);
-    private protected static void SetMapType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("MapType", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.MapType = value);
-    private protected static void SetMapUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string value) => state.Set<string>("MapUid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.MapUid = value);
-    private protected static void SetModPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, PackDesc? value) => state.Set<PackDesc?>("ModPackDesc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ModPackDesc = value);
-    private protected static void SetMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Mode = value);
-    private protected static void SetNbCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set<int>("NbCheckpoints", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.NbCheckpoints = value);
-    private protected static void SetNbLaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set<int>("NbLaps", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.NbLaps = value);
-    private protected static void SetNeedUnlock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set<bool>("NeedUnlock", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.NeedUnlock = value);
-    private protected static void SetObjectiveTextAuthor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("ObjectiveTextAuthor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ObjectiveTextAuthor = value);
-    private protected static void SetObjectiveTextBronze(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("ObjectiveTextBronze", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ObjectiveTextBronze = value);
-    private protected static void SetObjectiveTextGold(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("ObjectiveTextGold", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ObjectiveTextGold = value);
-    private protected static void SetObjectiveTextSilver(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("ObjectiveTextSilver", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ObjectiveTextSilver = value);
-    private protected static void SetOffzoneTriggerSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Int3 value) => state.Set<Int3>("OffzoneTriggerSize", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.OffzoneTriggerSize = value);
-    private protected static void SetOffzones(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, List<BoxInt3>? value) => state.Set<List<BoxInt3>?>("Offzones", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<BoxInt3>(value), static (node, value) => node.Offzones = value);
-    private protected static void SetPackMask(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, UInt128 value) => state.Set<UInt128>("PackMask", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.PackMask = value);
-    private protected static void SetPalette(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor>("Palette", value, GameVersion.TM2020, static value => value, static (node, value) => node.Palette = value);
-    private protected static void SetPassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("Password", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Password = value);
-    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Ident? value) => state.Set<Ident?>("PlayerModel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.PlayerModel = value);
-    private protected static void SetRecordedBotPaths(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]?>("RecordedBotPaths", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[])value.Clone(), static (node, value) => node.RecordedBotPaths = value);
-    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ScriptMetadata = value);
-    private protected static void SetSilverTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set<global::TmEssentials.TimeInt32?>("SilverTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.SilverTime = value);
-    private protected static void SetSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Int3 value) => state.Set<global::GBX.NET.Int3>("Size", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.Size = value);
-    private protected static void SetSpectators(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData?>("Spectators", value, GameVersion.TM2020, static value => value, static (node, value) => node.Spectators = value);
-    private protected static void SetSubMapSectorGrid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData?>("SubMapSectorGrid", value, GameVersion.TM2020, static value => value, static (node, value) => node.SubMapSectorGrid = value);
-    private protected static void SetSubMapSectors(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]?>("SubMapSectors", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[])value.Clone(), static (node, value) => node.SubMapSectors = value);
-    private protected static void SetSubMapsInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]?>("SubMapsInfos", value, GameVersion.MP4, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[])value.Clone(), static (node, value) => node.SubMapsInfos = value);
-    private protected static void SetThumbnail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, byte[]? value) => state.Set<byte[]?>("Thumbnail", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.Thumbnail = value);
-    private protected static void SetThumbnailFarClipPlane(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, float value) => state.Set<float>("ThumbnailFarClipPlane", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ThumbnailFarClipPlane = value);
-    private protected static void SetThumbnailFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, float value) => state.Set<float>("ThumbnailFov", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ThumbnailFov = value);
-    private protected static void SetThumbnailNearClipPlane(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, float value) => state.Set<float>("ThumbnailNearClipPlane", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ThumbnailNearClipPlane = value);
-    private protected static void SetThumbnailPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Vec3 value) => state.Set<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ThumbnailPitchYawRoll = value);
-    private protected static void SetThumbnailPosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Vec3 value) => state.Set<global::GBX.NET.Vec3>("ThumbnailPosition", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ThumbnailPosition = value);
-    private protected static void SetThumbnailRotationMatrix(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Mat3 value) => state.Set<Mat3>("ThumbnailRotationMatrix", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5, static value => value, static (node, value) => node.ThumbnailRotationMatrix = value);
-    private protected static void SetTitleId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("TitleId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TitleId = value);
-    private protected static void SetTrafficElemDescs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>?>("TrafficElemDescs", value, GameVersion.MP3 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.TrafficElemDescs = value);
-    private protected static void SetTrafficPathSplines(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>?>("TrafficPathSplines", value, GameVersion.MP3 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.TrafficPathSplines = value);
-    private protected static void SetTrafficPathSquares(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>?>("TrafficPathSquares", value, GameVersion.MP3 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.TrafficPathSquares = value);
-    private protected static void SetTrafficZoneSquares(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>?>("TrafficZoneSquares", value, GameVersion.MP3 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.TrafficZoneSquares = value);
-    private protected static void SetWorldDistortScales(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Vec3 value) => state.Set<Vec3>("WorldDistortScales", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.WorldDistortScales = value);
-    private protected static void SetWorldDistortXYZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData?>("WorldDistortXYZ", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.WorldDistortXYZ = value);
-    private protected static void SetXml(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set<string?>("Xml", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU, static value => value, static (node, value) => node.Xml = value);
-    private protected static void SetZoneGenealogy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.ZoneGenealogy = value);
+    private protected static void SetAnchoredObjects(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnchoredObjectsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAnimationTriggers(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAnimationTriggersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetAuthorExtraInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorExtraInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAuthorLogin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorLoginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetAuthorNickname(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorNicknameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAuthorScore(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorScoreAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetAuthorTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetAuthorVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAuthorZone(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetAuthorZoneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBakedBlocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBakedClipsAdditionalData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBakedClipsAdditionalDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBlockOctree(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockOctreeAssignment(), value, GameVersion.TM2020);
+    private protected static void SetBlockStock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnCollectorList? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetBlockStockReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnCollectorList> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlockStockReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetBlocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBlocksAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetBotPaths(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBotPathsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBronzeTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBronzeTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetBuildVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetBuildVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCarMarksBuffer(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCarMarksBufferAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetChallengeAnimation(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Plug.CPlugAnimFile? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetChallengeAnimationReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeAnimationReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetChallengeCardEventIds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeCardEventIdsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetChallengeDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetChallengeParameters(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallengeParameters? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeParametersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetChallengeParametersReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnChallengeParameters> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeParametersReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetChallengeScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetChallengeScriptAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, List<Int3>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCheckpointsAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipAmbiance(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipAmbianceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetClipAmbianceReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipAmbianceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetClipGlobal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipGlobalReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGlobalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipGroupEndRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipGroupEndRaceReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupEndRaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipGroupInGame(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipGroupInGameReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupInGameReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipGroups(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipGroupsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetClipIntro(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipIntroReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipIntroReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetClipPodium(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnMediaClip? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipPodiumAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetClipPodiumReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipPodiumReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetClipTriggerSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetClipTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetComments(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCommentsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetCost(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCostAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetCrc32(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCrc32Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetCreatedWithGamepadEditor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCreatedWithGamepadEditorAssignment(), value, GameVersion.TM2020);
+    private protected static void SetCreatedWithSimpleEditor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCreatedWithSimpleEditorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetCustomMusicPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetCustomMusicPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetDayDuration(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDayDurationAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, TimeSpan? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDayTimeAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDecoBaseHeightOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDecoBaseHeightOffsetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDecoration(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDecorationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetDynamicDaylight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetDynamicDaylightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetEditor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEditorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetEmbeddedItemModelsExternalDataRefs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::System.Collections.Generic.List<string>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEmbeddedItemModelsExternalDataRefsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEmbeddedZipData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetEmbeddedZipDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetGoldTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetGoldTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetHasClones(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasClonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetHasCustomCamThumbnail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasCustomCamThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetHasLightmaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHasLightmapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetHashedPassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Checksum128? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetHashedPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetIsLapRace(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetIsLapRaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetKind(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetKindAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetKindInHeader(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetKindInHeaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetLaunchedCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLaunchedCheckpointsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLaunchedCheckpointsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLaunchedCheckpointsReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLegacyMacroblocks(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.MacroblockData[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLegacyMacroblocksAssignment(), value, GameVersion.TM2020);
+    private protected static void SetLightmapCache(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLightmapCacheReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLightmapCacheData(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.ZlibData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheDataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLightmapCacheUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapCacheUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLightmapFrames(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapFramesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLightmapVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetLightmapVersionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMacroblockInstances(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMacroblockInstancesAssignment(), value, GameVersion.TM2020);
+    private protected static void SetMapCoordOrigin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordOriginAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetMapCoordTarget(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapCoordTargetAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetMapInfo(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapInfoAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetMapName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetMapStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMapType(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMapUid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetMapUidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetModPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModPackDescAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetMode(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetNbCheckpoints(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbCheckpointsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNbLaps(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNbLapsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetNeedUnlock(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetNeedUnlockAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetObjectiveTextAuthor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextAuthorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetObjectiveTextBronze(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextBronzeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetObjectiveTextGold(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextGoldAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetObjectiveTextSilver(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetObjectiveTextSilverAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOffzoneTriggerSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetOffzoneTriggerSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetOffzones(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, List<BoxInt3>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetOffzonesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetPackMask(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, UInt128 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPackMaskAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetPalette(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPaletteAssignment(), value, GameVersion.TM2020);
+    private protected static void SetPassword(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPasswordAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetPlayerModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Ident? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetPlayerModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetRecordedBotPaths(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetRecordedBotPathsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetScriptMetadata(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetScriptMetadataAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSilverTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::TmEssentials.TimeInt32? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSilverTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetSize(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSizeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMPU | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetSpectators(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSpectatorsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSubMapSectorGrid(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSectorGridData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapSectorGridAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSubMapSectors(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapSector[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapSectorsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetSubMapsInfos(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetSubMapsInfosAssignment(), value, GameVersion.MP4);
+    private protected static void SetThumbnail(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetThumbnailFarClipPlane(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFarClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetThumbnailFov(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailFovAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetThumbnailNearClipPlane(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailNearClipPlaneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetThumbnailPitchYawRoll(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPitchYawRollAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetThumbnailPosition(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailPositionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetThumbnailRotationMatrix(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Mat3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetThumbnailRotationMatrixAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.TMU | GameVersion.VSK5);
+    private protected static void SetTitleId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTitleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTrafficElemDescs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficElemDescsAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetTrafficPathSplines(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSplinesAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetTrafficPathSquares(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficPathSquaresAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetTrafficZoneSquares(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetTrafficZoneSquaresAssignment(), value, GameVersion.MP3 | GameVersion.TMT);
+    private protected static void SetWorldDistortScales(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetWorldDistortScalesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetWorldDistortXYZ(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetWorldDistortXYZAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetXml(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetXmlAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMO | GameVersion.TMS | GameVersion.TMSX | GameVersion.TMT | GameVersion.TMU);
+    private protected static void SetZoneGenealogy(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeBuilderAssignments.GetZoneGenealogyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public string AuthorLogin
     {
         get => state.Get<string>("AuthorLogin");
@@ -296,8 +296,2124 @@ public abstract class CGameCtnChallengeBuilderBase<TSelf> where TSelf : CGameCtn
         return (TSelf)this;
     }
 }
+public abstract class CGameCtnChallengeBuilderMembers1<TSelf> : CGameCtnChallengeBuilderBase<TSelf> where TSelf : CGameCtnChallengeBuilderMembers1<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public global::TmEssentials.TimeInt32? AuthorTime
+    {
+        get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
+        set => SetAuthorTime(state, value);
+    }
+    public TSelf WithAuthorTime(global::TmEssentials.TimeInt32? value)
+    {
+        AuthorTime = value;
+        return (TSelf)this;
+    }
+    public global::TmEssentials.TimeInt32? BronzeTime
+    {
+        get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
+        set => SetBronzeTime(state, value);
+    }
+    public TSelf WithBronzeTime(global::TmEssentials.TimeInt32? value)
+    {
+        BronzeTime = value;
+        return (TSelf)this;
+    }
+    public global::TmEssentials.TimeInt32? GoldTime
+    {
+        get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
+        set => SetGoldTime(state, value);
+    }
+    public TSelf WithGoldTime(global::TmEssentials.TimeInt32? value)
+    {
+        GoldTime = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
+        set => SetKindInHeader(state, value);
+    }
+    public TSelf WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
+    {
+        KindInHeader = value;
+        return (TSelf)this;
+    }
+    public global::TmEssentials.TimeInt32? SilverTime
+    {
+        get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
+        set => SetSilverTime(state, value);
+    }
+    public TSelf WithSilverTime(global::TmEssentials.TimeInt32? value)
+    {
+        SilverTime = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers2<TSelf> : CGameCtnChallengeBuilderMembers1<TSelf> where TSelf : CGameCtnChallengeBuilderMembers2<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public int Cost
+    {
+        get => state.Get<int>("Cost");
+        set => SetCost(state, value);
+    }
+    public TSelf WithCost(int value)
+    {
+        Cost = value;
+        return (TSelf)this;
+    }
+    public string? Password
+    {
+        get => state.Get<string?>("Password");
+        set => SetPassword(state, value);
+    }
+    public TSelf WithPassword(string? value)
+    {
+        Password = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers3<TSelf> : CGameCtnChallengeBuilderMembers2<TSelf> where TSelf : CGameCtnChallengeBuilderMembers3<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public bool IsLapRace
+    {
+        get => state.Get<bool>("IsLapRace");
+        set => SetIsLapRace(state, value);
+    }
+    public TSelf WithIsLapRace(bool value)
+    {
+        IsLapRace = value;
+        return (TSelf)this;
+    }
+    public PackDesc? ModPackDesc
+    {
+        get => state.Get<PackDesc?>("ModPackDesc");
+        set => SetModPackDesc(state, value);
+    }
+    public TSelf WithModPackDesc(PackDesc? value)
+    {
+        ModPackDesc = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
+        set => SetMode(state, value);
+    }
+    public TSelf WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
+    {
+        Mode = value;
+        return (TSelf)this;
+    }
+    public int NbLaps
+    {
+        get => state.Get<int>("NbLaps");
+        set => SetNbLaps(state, value);
+    }
+    public TSelf WithNbLaps(int value)
+    {
+        NbLaps = value;
+        return (TSelf)this;
+    }
+    public string? Xml
+    {
+        get => state.Get<string?>("Xml");
+        set => SetXml(state, value);
+    }
+    public TSelf WithXml(string? value)
+    {
+        Xml = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers4<TSelf> : CGameCtnChallengeBuilderMembers3<TSelf> where TSelf : CGameCtnChallengeBuilderMembers4<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public int? AuthorScore
+    {
+        get => state.Get<int?>("AuthorScore");
+        set => SetAuthorScore(state, value);
+    }
+    public TSelf WithAuthorScore(int? value)
+    {
+        AuthorScore = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
+        set => SetClipGroupEndRace(state, value);
+    }
+    public TSelf WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
+    {
+        ClipGroupEndRace = value;
+        return (TSelf)this;
+    }
+    public TSelf WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetClipGroupEndRaceReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
+        set => SetClipGroupInGame(state, value);
+    }
+    public TSelf WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
+    {
+        ClipGroupInGame = value;
+        return (TSelf)this;
+    }
+    public TSelf WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetClipGroupInGameReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
+        set => SetClipIntro(state, value);
+    }
+    public TSelf WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
+    {
+        ClipIntro = value;
+        return (TSelf)this;
+    }
+    public TSelf WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetClipIntroReference(state, value);
+        return (TSelf)this;
+    }
+    public PackDesc? CustomMusicPackDesc
+    {
+        get => state.Get<PackDesc?>("CustomMusicPackDesc");
+        set => SetCustomMusicPackDesc(state, value);
+    }
+    public TSelf WithCustomMusicPackDesc(PackDesc? value)
+    {
+        CustomMusicPackDesc = value;
+        return (TSelf)this;
+    }
+    public bool HasClones
+    {
+        get => state.Get<bool>("HasClones");
+        set => SetHasClones(state, value);
+    }
+    public TSelf WithHasClones(bool value)
+    {
+        HasClones = value;
+        return (TSelf)this;
+    }
+    public Vec2 MapCoordOrigin
+    {
+        get => state.Get<Vec2>("MapCoordOrigin");
+        set => SetMapCoordOrigin(state, value);
+    }
+    public TSelf WithMapCoordOrigin(Vec2 value)
+    {
+        MapCoordOrigin = value;
+        return (TSelf)this;
+    }
+    public Vec2 MapCoordTarget
+    {
+        get => state.Get<Vec2>("MapCoordTarget");
+        set => SetMapCoordTarget(state, value);
+    }
+    public TSelf WithMapCoordTarget(Vec2 value)
+    {
+        MapCoordTarget = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers5<TSelf> : CGameCtnChallengeBuilderMembers4<TSelf> where TSelf : CGameCtnChallengeBuilderMembers5<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
+        set => SetClipGlobal(state, value);
+    }
+    public TSelf WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
+    {
+        ClipGlobal = value;
+        return (TSelf)this;
+    }
+    public TSelf WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetClipGlobalReference(state, value);
+        return (TSelf)this;
+    }
+    public string? Comments
+    {
+        get => state.Get<string?>("Comments");
+        set => SetComments(state, value);
+    }
+    public TSelf WithComments(string? value)
+    {
+        Comments = value;
+        return (TSelf)this;
+    }
+    public bool HasCustomCamThumbnail
+    {
+        get => state.Get<bool>("HasCustomCamThumbnail");
+        set => SetHasCustomCamThumbnail(state, value);
+    }
+    public TSelf WithHasCustomCamThumbnail(bool value)
+    {
+        HasCustomCamThumbnail = value;
+        return (TSelf)this;
+    }
+    public UInt128 PackMask
+    {
+        get => state.Get<UInt128>("PackMask");
+        set => SetPackMask(state, value);
+    }
+    public TSelf WithPackMask(UInt128 value)
+    {
+        PackMask = value;
+        return (TSelf)this;
+    }
+    public byte[]? Thumbnail
+    {
+        get => state.Get<byte[]?>("Thumbnail");
+        set => SetThumbnail(state, value);
+    }
+    public TSelf WithThumbnail(params byte[]? value)
+    {
+        Thumbnail = value;
+        return (TSelf)this;
+    }
+    public TSelf WithThumbnail(IEnumerable<byte> values)
+    {
+        return WithThumbnail(values.ToArray());
+    }
+    public float ThumbnailFarClipPlane
+    {
+        get => state.Get<float>("ThumbnailFarClipPlane");
+        set => SetThumbnailFarClipPlane(state, value);
+    }
+    public TSelf WithThumbnailFarClipPlane(float value)
+    {
+        ThumbnailFarClipPlane = value;
+        return (TSelf)this;
+    }
+    public float ThumbnailFov
+    {
+        get => state.Get<float>("ThumbnailFov");
+        set => SetThumbnailFov(state, value);
+    }
+    public TSelf WithThumbnailFov(float value)
+    {
+        ThumbnailFov = value;
+        return (TSelf)this;
+    }
+    public float ThumbnailNearClipPlane
+    {
+        get => state.Get<float>("ThumbnailNearClipPlane");
+        set => SetThumbnailNearClipPlane(state, value);
+    }
+    public TSelf WithThumbnailNearClipPlane(float value)
+    {
+        ThumbnailNearClipPlane = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Vec3 ThumbnailPosition
+    {
+        get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
+        set => SetThumbnailPosition(state, value);
+    }
+    public TSelf WithThumbnailPosition(global::GBX.NET.Vec3 value)
+    {
+        ThumbnailPosition = value;
+        return (TSelf)this;
+    }
+    public Mat3 ThumbnailRotationMatrix
+    {
+        get => state.Get<Mat3>("ThumbnailRotationMatrix");
+        set => SetThumbnailRotationMatrix(state, value);
+    }
+    public TSelf WithThumbnailRotationMatrix(Mat3 value)
+    {
+        ThumbnailRotationMatrix = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers6<TSelf> : CGameCtnChallengeBuilderMembers5<TSelf> where TSelf : CGameCtnChallengeBuilderMembers6<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public uint Crc32
+    {
+        get => state.Get<uint>("Crc32");
+        set => SetCrc32(state, value);
+    }
+    public TSelf WithCrc32(uint value)
+    {
+        Crc32 = value;
+        return (TSelf)this;
+    }
+    public bool CreatedWithSimpleEditor
+    {
+        get => state.Get<bool>("CreatedWithSimpleEditor");
+        set => SetCreatedWithSimpleEditor(state, value);
+    }
+    public TSelf WithCreatedWithSimpleEditor(bool value)
+    {
+        CreatedWithSimpleEditor = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
+        set => SetEditor(state, value);
+    }
+    public TSelf WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
+    {
+        Editor = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Checksum128? HashedPassword
+    {
+        get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
+        set => SetHashedPassword(state, value);
+    }
+    public TSelf WithHashedPassword(global::GBX.NET.Checksum128? value)
+    {
+        HashedPassword = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers7<TSelf> : CGameCtnChallengeBuilderMembers6<TSelf> where TSelf : CGameCtnChallengeBuilderMembers7<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? AnchoredObjects
+    {
+        get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects");
+        set => SetAnchoredObjects(state, value);
+    }
+    public TSelf WithAnchoredObjects(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value)
+    {
+        AnchoredObjects = value;
+        return (TSelf)this;
+    }
+    public TSelf WithAnchoredObjects(params global::GBX.NET.Engines.Game.CGameCtnAnchoredObject[] values)
+    {
+        return WithAnchoredObjects(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(values));
+    }
+    public TSelf WithAnchoredObjects(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> values)
+    {
+        return WithAnchoredObjects(values.ToArray());
+    }
+    public string? AuthorExtraInfo
+    {
+        get => state.Get<string?>("AuthorExtraInfo");
+        set => SetAuthorExtraInfo(state, value);
+    }
+    public TSelf WithAuthorExtraInfo(string? value)
+    {
+        AuthorExtraInfo = value;
+        return (TSelf)this;
+    }
+    public string? AuthorNickname
+    {
+        get => state.Get<string?>("AuthorNickname");
+        set => SetAuthorNickname(state, value);
+    }
+    public TSelf WithAuthorNickname(string? value)
+    {
+        AuthorNickname = value;
+        return (TSelf)this;
+    }
+    public int AuthorVersion
+    {
+        get => state.Get<int>("AuthorVersion");
+        set => SetAuthorVersion(state, value);
+    }
+    public TSelf WithAuthorVersion(int value)
+    {
+        AuthorVersion = value;
+        return (TSelf)this;
+    }
+    public string? AuthorZone
+    {
+        get => state.Get<string?>("AuthorZone");
+        set => SetAuthorZone(state, value);
+    }
+    public TSelf WithAuthorZone(string? value)
+    {
+        AuthorZone = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks
+    {
+        get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks");
+        set => SetBakedBlocks(state, value);
+    }
+    public TSelf WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
+    {
+        BakedBlocks = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBakedBlocks(params global::GBX.NET.Engines.Game.CGameCtnBlock[] values)
+    {
+        return WithBakedBlocks(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(values));
+    }
+    public TSelf WithBakedBlocks(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlock> values)
+    {
+        return WithBakedBlocks(values.ToArray());
+    }
+    public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData
+    {
+        get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData");
+        set => SetBakedClipsAdditionalData(state, value);
+    }
+    public TSelf WithBakedClipsAdditionalData(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value)
+    {
+        BakedClipsAdditionalData = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBakedClipsAdditionalData(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData[] values)
+    {
+        return WithBakedClipsAdditionalData(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>(values));
+    }
+    public TSelf WithBakedClipsAdditionalData(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData> values)
+    {
+        return WithBakedClipsAdditionalData(values.ToArray());
+    }
+    public List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths
+    {
+        get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths");
+        set => SetBotPaths(state, value);
+    }
+    public TSelf WithBotPaths(List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value)
+    {
+        BotPaths = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath[] values)
+    {
+        return WithBotPaths(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>(values));
+    }
+    public TSelf WithBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath> values)
+    {
+        return WithBotPaths(values.ToArray());
+    }
+    public string? BuildVersion
+    {
+        get => state.Get<string?>("BuildVersion");
+        set => SetBuildVersion(state, value);
+    }
+    public TSelf WithBuildVersion(string? value)
+    {
+        BuildVersion = value;
+        return (TSelf)this;
+    }
+    public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? CarMarksBuffer
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer");
+        set => SetCarMarksBuffer(state, value);
+    }
+    public TSelf WithCarMarksBuffer(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value)
+    {
+        CarMarksBuffer = value;
+        return (TSelf)this;
+    }
+    public TSelf WithCarMarksBuffer(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples[] values)
+    {
+        return WithCarMarksBuffer(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(values));
+    }
+    public TSelf WithCarMarksBuffer(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> values)
+    {
+        return WithCarMarksBuffer(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds");
+        set => SetChallengeCardEventIds(state, value);
+    }
+    public TSelf WithChallengeCardEventIds(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value)
+    {
+        ChallengeCardEventIds = value;
+        return (TSelf)this;
+    }
+    public TSelf WithChallengeCardEventIds(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds> values)
+    {
+        return WithChallengeCardEventIds(values.ToArray());
+    }
+    public byte[]? ChallengeDecals
+    {
+        get => state.Get<byte[]?>("ChallengeDecals");
+        set => SetChallengeDecals(state, value);
+    }
+    public TSelf WithChallengeDecals(params byte[]? value)
+    {
+        ChallengeDecals = value;
+        return (TSelf)this;
+    }
+    public TSelf WithChallengeDecals(IEnumerable<byte> values)
+    {
+        return WithChallengeDecals(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipAmbiance
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance");
+        set => SetClipAmbiance(state, value);
+    }
+    public TSelf WithClipAmbiance(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
+    {
+        ClipAmbiance = value;
+        return (TSelf)this;
+    }
+    public TSelf WithClipAmbianceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetClipAmbianceReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipPodium
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium");
+        set => SetClipPodium(state, value);
+    }
+    public TSelf WithClipPodium(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
+    {
+        ClipPodium = value;
+        return (TSelf)this;
+    }
+    public TSelf WithClipPodiumReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetClipPodiumReference(state, value);
+        return (TSelf)this;
+    }
+    public Int3 ClipTriggerSize
+    {
+        get => state.Get<Int3>("ClipTriggerSize");
+        set => SetClipTriggerSize(state, value);
+    }
+    public TSelf WithClipTriggerSize(Int3 value)
+    {
+        ClipTriggerSize = value;
+        return (TSelf)this;
+    }
+    public int DecoBaseHeightOffset
+    {
+        get => state.Get<int>("DecoBaseHeightOffset");
+        set => SetDecoBaseHeightOffset(state, value);
+    }
+    public TSelf WithDecoBaseHeightOffset(int value)
+    {
+        DecoBaseHeightOffset = value;
+        return (TSelf)this;
+    }
+    public global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs
+    {
+        get => state.Get<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs");
+        set => SetEmbeddedItemModelsExternalDataRefs(state, value);
+    }
+    public TSelf WithEmbeddedItemModelsExternalDataRefs(global::System.Collections.Generic.List<string>? value)
+    {
+        EmbeddedItemModelsExternalDataRefs = value;
+        return (TSelf)this;
+    }
+    public TSelf WithEmbeddedItemModelsExternalDataRefs(params string[] values)
+    {
+        return WithEmbeddedItemModelsExternalDataRefs(new List<string>(values));
+    }
+    public TSelf WithEmbeddedItemModelsExternalDataRefs(IEnumerable<string> values)
+    {
+        return WithEmbeddedItemModelsExternalDataRefs(values.ToArray());
+    }
+    public byte[]? EmbeddedZipData
+    {
+        get => state.Get<byte[]?>("EmbeddedZipData");
+        set => SetEmbeddedZipData(state, value);
+    }
+    public TSelf WithEmbeddedZipData(params byte[]? value)
+    {
+        EmbeddedZipData = value;
+        return (TSelf)this;
+    }
+    public TSelf WithEmbeddedZipData(IEnumerable<byte> values)
+    {
+        return WithEmbeddedZipData(values.ToArray());
+    }
+    public bool HasLightmaps
+    {
+        get => state.Get<bool>("HasLightmaps");
+        set => SetHasLightmaps(state, value);
+    }
+    public TSelf WithHasLightmaps(bool value)
+    {
+        HasLightmaps = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache? LightmapCache
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache");
+        set => SetLightmapCache(state, value);
+    }
+    public TSelf WithLightmapCache(global::GBX.NET.Engines.Hms.CHmsLightMapCache? value)
+    {
+        LightmapCache = value;
+        return (TSelf)this;
+    }
+    public TSelf WithLightmapCacheReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetLightmapCacheReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.ZlibData? LightmapCacheData
+    {
+        get => state.Get<global::GBX.NET.ZlibData?>("LightmapCacheData");
+        set => SetLightmapCacheData(state, value);
+    }
+    public TSelf WithLightmapCacheData(global::GBX.NET.ZlibData? value)
+    {
+        LightmapCacheData = value;
+        return (TSelf)this;
+    }
+    public ulong LightmapCacheUid
+    {
+        get => state.Get<ulong>("LightmapCacheUid");
+        set => SetLightmapCacheUid(state, value);
+    }
+    public TSelf WithLightmapCacheUid(ulong value)
+    {
+        LightmapCacheUid = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames");
+        set => SetLightmapFrames(state, value);
+    }
+    public TSelf WithLightmapFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value)
+    {
+        LightmapFrames = value;
+        return (TSelf)this;
+    }
+    public TSelf WithLightmapFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame> values)
+    {
+        return WithLightmapFrames(values.ToArray());
+    }
+    public int? LightmapVersion
+    {
+        get => state.Get<int?>("LightmapVersion");
+        set => SetLightmapVersion(state, value);
+    }
+    public TSelf WithLightmapVersion(int? value)
+    {
+        LightmapVersion = value;
+        return (TSelf)this;
+    }
+    public string? MapStyle
+    {
+        get => state.Get<string?>("MapStyle");
+        set => SetMapStyle(state, value);
+    }
+    public TSelf WithMapStyle(string? value)
+    {
+        MapStyle = value;
+        return (TSelf)this;
+    }
+    public string? MapType
+    {
+        get => state.Get<string?>("MapType");
+        set => SetMapType(state, value);
+    }
+    public TSelf WithMapType(string? value)
+    {
+        MapType = value;
+        return (TSelf)this;
+    }
+    public int NbCheckpoints
+    {
+        get => state.Get<int>("NbCheckpoints");
+        set => SetNbCheckpoints(state, value);
+    }
+    public TSelf WithNbCheckpoints(int value)
+    {
+        NbCheckpoints = value;
+        return (TSelf)this;
+    }
+    public string? ObjectiveTextAuthor
+    {
+        get => state.Get<string?>("ObjectiveTextAuthor");
+        set => SetObjectiveTextAuthor(state, value);
+    }
+    public TSelf WithObjectiveTextAuthor(string? value)
+    {
+        ObjectiveTextAuthor = value;
+        return (TSelf)this;
+    }
+    public string? ObjectiveTextBronze
+    {
+        get => state.Get<string?>("ObjectiveTextBronze");
+        set => SetObjectiveTextBronze(state, value);
+    }
+    public TSelf WithObjectiveTextBronze(string? value)
+    {
+        ObjectiveTextBronze = value;
+        return (TSelf)this;
+    }
+    public string? ObjectiveTextGold
+    {
+        get => state.Get<string?>("ObjectiveTextGold");
+        set => SetObjectiveTextGold(state, value);
+    }
+    public TSelf WithObjectiveTextGold(string? value)
+    {
+        ObjectiveTextGold = value;
+        return (TSelf)this;
+    }
+    public string? ObjectiveTextSilver
+    {
+        get => state.Get<string?>("ObjectiveTextSilver");
+        set => SetObjectiveTextSilver(state, value);
+    }
+    public TSelf WithObjectiveTextSilver(string? value)
+    {
+        ObjectiveTextSilver = value;
+        return (TSelf)this;
+    }
+    public Int3 OffzoneTriggerSize
+    {
+        get => state.Get<Int3>("OffzoneTriggerSize");
+        set => SetOffzoneTriggerSize(state, value);
+    }
+    public TSelf WithOffzoneTriggerSize(Int3 value)
+    {
+        OffzoneTriggerSize = value;
+        return (TSelf)this;
+    }
+    public List<BoxInt3>? Offzones
+    {
+        get => state.Get<List<BoxInt3>?>("Offzones");
+        set => SetOffzones(state, value);
+    }
+    public TSelf WithOffzones(List<BoxInt3>? value)
+    {
+        Offzones = value;
+        return (TSelf)this;
+    }
+    public TSelf WithOffzones(params BoxInt3[] values)
+    {
+        return WithOffzones(new List<BoxInt3>(values));
+    }
+    public TSelf WithOffzones(IEnumerable<BoxInt3> values)
+    {
+        return WithOffzones(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
+    {
+        get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
+        set => SetScriptMetadata(state, value);
+    }
+    public TSelf WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
+    {
+        ScriptMetadata = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Vec3 ThumbnailPitchYawRoll
+    {
+        get => state.Get<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll");
+        set => SetThumbnailPitchYawRoll(state, value);
+    }
+    public TSelf WithThumbnailPitchYawRoll(global::GBX.NET.Vec3 value)
+    {
+        ThumbnailPitchYawRoll = value;
+        return (TSelf)this;
+    }
+    public string? TitleId
+    {
+        get => state.Get<string?>("TitleId");
+        set => SetTitleId(state, value);
+    }
+    public TSelf WithTitleId(string? value)
+    {
+        TitleId = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? ZoneGenealogy
+    {
+        get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy");
+        set => SetZoneGenealogy(state, value);
+    }
+    public TSelf WithZoneGenealogy(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value)
+    {
+        ZoneGenealogy = value;
+        return (TSelf)this;
+    }
+    public TSelf WithZoneGenealogy(params global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy[] values)
+    {
+        return WithZoneGenealogy(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(values));
+    }
+    public TSelf WithZoneGenealogy(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> values)
+    {
+        return WithZoneGenealogy(values.ToArray());
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers8<TSelf> : CGameCtnChallengeBuilderMembers7<TSelf> where TSelf : CGameCtnChallengeBuilderMembers8<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public string? ChallengeScript
+    {
+        get => state.Get<string?>("ChallengeScript");
+        set => SetChallengeScript(state, value);
+    }
+    public TSelf WithChallengeScript(string? value)
+    {
+        ChallengeScript = value;
+        return (TSelf)this;
+    }
+    public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>?>("TrafficElemDescs");
+        set => SetTrafficElemDescs(state, value);
+    }
+    public TSelf WithTrafficElemDescs(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value)
+    {
+        TrafficElemDescs = value;
+        return (TSelf)this;
+    }
+    public TSelf WithTrafficElemDescs(params global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc[] values)
+    {
+        return WithTrafficElemDescs(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>(values));
+    }
+    public TSelf WithTrafficElemDescs(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> values)
+    {
+        return WithTrafficElemDescs(values.ToArray());
+    }
+    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>?>("TrafficPathSplines");
+        set => SetTrafficPathSplines(state, value);
+    }
+    public TSelf WithTrafficPathSplines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value)
+    {
+        TrafficPathSplines = value;
+        return (TSelf)this;
+    }
+    public TSelf WithTrafficPathSplines(params global::GBX.NET.Engines.Plug.CPlugSpline3D[] values)
+    {
+        return WithTrafficPathSplines(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>(values));
+    }
+    public TSelf WithTrafficPathSplines(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSpline3D> values)
+    {
+        return WithTrafficPathSplines(values.ToArray());
+    }
+    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>?>("TrafficPathSquares");
+        set => SetTrafficPathSquares(state, value);
+    }
+    public TSelf WithTrafficPathSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value)
+    {
+        TrafficPathSquares = value;
+        return (TSelf)this;
+    }
+    public TSelf WithTrafficPathSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares[] values)
+    {
+        return WithTrafficPathSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>(values));
+    }
+    public TSelf WithTrafficPathSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> values)
+    {
+        return WithTrafficPathSquares(values.ToArray());
+    }
+    public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares
+    {
+        get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>?>("TrafficZoneSquares");
+        set => SetTrafficZoneSquares(state, value);
+    }
+    public TSelf WithTrafficZoneSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value)
+    {
+        TrafficZoneSquares = value;
+        return (TSelf)this;
+    }
+    public TSelf WithTrafficZoneSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares[] values)
+    {
+        return WithTrafficZoneSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>(values));
+    }
+    public TSelf WithTrafficZoneSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> values)
+    {
+        return WithTrafficZoneSquares(values.ToArray());
+    }
+}
+public abstract class CGameCtnChallengeBuilderMembers9<TSelf> : CGameCtnChallengeBuilderMembers7<TSelf> where TSelf : CGameCtnChallengeBuilderMembers9<TSelf>
+{
+    private protected CGameCtnChallengeBuilderMembers9(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("AnimationTriggers");
+        set => SetAnimationTriggers(state, value);
+    }
+    public TSelf WithAnimationTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value)
+    {
+        AnimationTriggers = value;
+        return (TSelf)this;
+    }
+    public TSelf WithAnimationTriggers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTriggerAction> values)
+    {
+        return WithAnimationTriggers(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Plug.CPlugAnimFile? ChallengeAnimation
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("ChallengeAnimation");
+        set => SetChallengeAnimation(state, value);
+    }
+    public TSelf WithChallengeAnimation(global::GBX.NET.Engines.Plug.CPlugAnimFile? value)
+    {
+        ChallengeAnimation = value;
+        return (TSelf)this;
+    }
+    public TSelf WithChallengeAnimationReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetChallengeAnimationReference(state, value);
+        return (TSelf)this;
+    }
+    public TimeInt32? DayDuration
+    {
+        get => state.Get<TimeInt32?>("DayDuration");
+        set => SetDayDuration(state, value);
+    }
+    public TSelf WithDayDuration(TimeInt32? value)
+    {
+        DayDuration = value;
+        return (TSelf)this;
+    }
+    public TimeSpan? DayTime
+    {
+        get => state.Get<TimeSpan?>("DayTime");
+        set => SetDayTime(state, value);
+    }
+    public TSelf WithDayTime(TimeSpan? value)
+    {
+        DayTime = value;
+        return (TSelf)this;
+    }
+    public bool DynamicDaylight
+    {
+        get => state.Get<bool>("DynamicDaylight");
+        set => SetDynamicDaylight(state, value);
+    }
+    public TSelf WithDynamicDaylight(bool value)
+    {
+        DynamicDaylight = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]?>("RecordedBotPaths");
+        set => SetRecordedBotPaths(state, value);
+    }
+    public TSelf WithRecordedBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value)
+    {
+        RecordedBotPaths = value;
+        return (TSelf)this;
+    }
+    public TSelf WithRecordedBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath> values)
+    {
+        return WithRecordedBotPaths(values.ToArray());
+    }
+    public Vec3 WorldDistortScales
+    {
+        get => state.Get<Vec3>("WorldDistortScales");
+        set => SetWorldDistortScales(state, value);
+    }
+    public TSelf WithWorldDistortScales(Vec3 value)
+    {
+        WorldDistortScales = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData?>("WorldDistortXYZ");
+        set => SetWorldDistortXYZ(state, value);
+    }
+    public TSelf WithWorldDistortXYZ(global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value)
+    {
+        WorldDistortXYZ = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGameCtnChallengeBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk0304300F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300F();
+        node.Chunks.Add(chunk0304300F);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043012 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043012();
+        node.Chunks.Add(chunk03043012);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043012 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043013 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043013();
+        node.Chunks.Add(chunk03043013);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043013>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
+        node.Chunks.Add(chunk03043016);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
+        node.Chunks.Add(chunk03043021);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043021 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
+        node.Chunks.Add(chunk03043016);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 7 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
+        node.Chunks.Add(chunk03043016);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
+        node.Chunks.Add(chunk03043021);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043021 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
+        node.Chunks.Add(chunk03043016);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
+        node.Chunks.Add(chunk03043021);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043021 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game);
+        node.Chunks.Add(chunkHeader03043007);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
+        node.Chunks.Add(chunk03043021);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043021 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe7(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
+        node.Chunks.Add(chunk03043014);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
+        node.Chunks.Add(chunk03043021);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        return node;
+    }
+    private static void ValidateRecipe7(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043021 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe8(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game);
+        node.Chunks.Add(chunkHeader03043007);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
+        node.Chunks.Add(chunk03043017);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
+        node.Chunks.Add(chunk0304301C);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
+        node.Chunks.Add(chunk03043021);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
+        node.Chunks.Add(chunk03043029);
+        var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
+        node.Chunks.Add(chunk0304302A);
+        var chunk3F001000 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001000();
+        node.Chunks.Add(chunk3F001000);
+        var chunk3F001001 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001001();
+        node.Chunks.Add(chunk3F001001);
+        var chunk3F001002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001002();
+        node.Chunks.Add(chunk3F001002);
+        var chunk3F001003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001003();
+        node.Chunks.Add(chunk3F001003);
+        return node;
+    }
+    private static void ValidateRecipe8(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304301C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043021 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043029 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304302A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk3F001000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk3F001001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk3F001002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk3F001003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe9(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game);
+        node.Chunks.Add(chunkHeader03043007);
+        var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(game);
+        node.Chunks.Add(chunkHeader03043008);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
+        node.Chunks.Add(chunk03043029);
+        var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
+        node.Chunks.Add(chunk0304302A);
+        var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
+        node.Chunks.Add(chunk03043034);
+        var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
+        node.Chunks.Add(chunk03043036);
+        var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
+        node.Chunks.Add(chunk03043038);
+        var chunk0304303D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D();
+        node.Chunks.Add(chunk0304303D);
+        var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
+        chunk0304303E.Version = 0;
+        node.Chunks.Add(chunk0304303E);
+        var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(game);
+        node.Chunks.Add(chunk03043040);
+        var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(game);
+        node.Chunks.Add(chunk03043042);
+        var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
+        node.Chunks.Add(chunk03043043);
+        var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
+        node.Chunks.Add(chunk03043044);
+        var chunk03043047 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047();
+        chunk03043047.Version = 0;
+        node.Chunks.Add(chunk03043047);
+        var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
+        chunk03043048.Version = 0;
+        node.Chunks.Add(chunk03043048);
+        var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game);
+        node.Chunks.Add(chunk03043049);
+        var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
+        node.Chunks.Add(chunk0304304B);
+        var chunk0304304D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D(game);
+        node.Chunks.Add(chunk0304304D);
+        var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
+        node.Chunks.Add(chunk0304304F);
+        var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
+        chunk03043050.Version = 0;
+        node.Chunks.Add(chunk03043050);
+        var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
+        chunk03043051.Version = 0;
+        node.Chunks.Add(chunk03043051);
+        var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
+        chunk03043052.Version = 0;
+        node.Chunks.Add(chunk03043052);
+        var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(game);
+        node.Chunks.Add(chunk03043053);
+        var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(game);
+        node.Chunks.Add(chunk03043054);
+        var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
+        node.Chunks.Add(chunk03043055);
+        return node;
+    }
+    private static void ValidateRecipe9(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043029 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304302A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043034 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043036 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043038 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304303D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304303E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043040 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043042 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043043 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043044 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043047 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043048 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043049 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304304D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043050 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043051 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043052 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043053 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043054 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043055 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe10(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game);
+        node.Chunks.Add(chunkHeader03043007);
+        var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(game);
+        node.Chunks.Add(chunkHeader03043008);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
+        node.Chunks.Add(chunk03043029);
+        var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
+        node.Chunks.Add(chunk0304302A);
+        var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
+        node.Chunks.Add(chunk03043034);
+        var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
+        node.Chunks.Add(chunk03043036);
+        var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
+        node.Chunks.Add(chunk03043038);
+        var chunk0304303D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D();
+        node.Chunks.Add(chunk0304303D);
+        var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
+        chunk0304303E.Version = 0;
+        node.Chunks.Add(chunk0304303E);
+        var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(game);
+        node.Chunks.Add(chunk03043040);
+        var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(game);
+        node.Chunks.Add(chunk03043042);
+        var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
+        node.Chunks.Add(chunk03043043);
+        var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
+        node.Chunks.Add(chunk03043044);
+        var chunk03043047 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047();
+        chunk03043047.Version = 0;
+        node.Chunks.Add(chunk03043047);
+        var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
+        chunk03043048.Version = 0;
+        node.Chunks.Add(chunk03043048);
+        var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game);
+        node.Chunks.Add(chunk03043049);
+        var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
+        node.Chunks.Add(chunk0304304B);
+        var chunk0304304D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D(game);
+        node.Chunks.Add(chunk0304304D);
+        var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
+        node.Chunks.Add(chunk0304304F);
+        var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
+        chunk03043050.Version = 0;
+        node.Chunks.Add(chunk03043050);
+        var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
+        chunk03043051.Version = 0;
+        node.Chunks.Add(chunk03043051);
+        var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
+        chunk03043052.Version = 0;
+        node.Chunks.Add(chunk03043052);
+        var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(game);
+        node.Chunks.Add(chunk03043053);
+        var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(game);
+        node.Chunks.Add(chunk03043054);
+        var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
+        node.Chunks.Add(chunk03043055);
+        return node;
+    }
+    private static void ValidateRecipe10(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043029 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304302A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043034 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043036 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043038 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304303D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304303E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043040 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043042 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043043 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043044 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043047 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043048 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043049 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304304D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043050 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043051 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043052 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043053 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043054 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043055 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe11(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game);
+        node.Chunks.Add(chunkHeader03043007);
+        var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(game);
+        node.Chunks.Add(chunkHeader03043008);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
+        node.Chunks.Add(chunk03043029);
+        var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
+        node.Chunks.Add(chunk0304302A);
+        var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
+        node.Chunks.Add(chunk03043034);
+        var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
+        node.Chunks.Add(chunk03043036);
+        var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
+        node.Chunks.Add(chunk03043038);
+        var chunk0304303D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D();
+        node.Chunks.Add(chunk0304303D);
+        var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
+        chunk0304303E.Version = 0;
+        node.Chunks.Add(chunk0304303E);
+        var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(game);
+        node.Chunks.Add(chunk03043040);
+        var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(game);
+        node.Chunks.Add(chunk03043042);
+        var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
+        node.Chunks.Add(chunk03043043);
+        var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
+        node.Chunks.Add(chunk03043044);
+        var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
+        chunk03043048.Version = 0;
+        node.Chunks.Add(chunk03043048);
+        var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game);
+        node.Chunks.Add(chunk03043049);
+        var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
+        node.Chunks.Add(chunk0304304B);
+        var chunk0304304E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E();
+        chunk0304304E.Version = 0;
+        node.Chunks.Add(chunk0304304E);
+        var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
+        node.Chunks.Add(chunk0304304F);
+        var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
+        chunk03043050.Version = 0;
+        node.Chunks.Add(chunk03043050);
+        var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
+        chunk03043051.Version = 0;
+        node.Chunks.Add(chunk03043051);
+        var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
+        chunk03043052.Version = 0;
+        node.Chunks.Add(chunk03043052);
+        var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(game);
+        node.Chunks.Add(chunk03043053);
+        var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(game);
+        node.Chunks.Add(chunk03043054);
+        var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
+        node.Chunks.Add(chunk03043055);
+        var chunk03043056 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056(game);
+        node.Chunks.Add(chunk03043056);
+        var chunk03043057 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057(game);
+        node.Chunks.Add(chunk03043057);
+        var chunk03043058 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043058(game);
+        node.Chunks.Add(chunk03043058);
+        var chunk03043059 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059(game);
+        node.Chunks.Add(chunk03043059);
+        return node;
+    }
+    private static void ValidateRecipe11(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043029 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304302A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043034 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043036 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043038 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304303D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304303E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043040 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043042 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043043 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043044 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043048 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043049 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304304E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043050 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043051 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043052 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043053 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043054 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043055 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043056 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043057 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043058>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043058 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043059 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnChallenge CreateRecipe12(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
+        var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(game);
+        node.Chunks.Add(chunkHeader03043002);
+        var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(game);
+        node.Chunks.Add(chunkHeader03043003);
+        var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(game);
+        node.Chunks.Add(chunkHeader03043004);
+        var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
+        node.Chunks.Add(chunkHeader03043005);
+        var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(game);
+        node.Chunks.Add(chunkHeader03043007);
+        var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(game);
+        node.Chunks.Add(chunkHeader03043008);
+        var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
+        node.Chunks.Add(chunk0304300D);
+        var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
+        node.Chunks.Add(chunk03043011);
+        var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
+        node.Chunks.Add(chunk03043018);
+        var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
+        node.Chunks.Add(chunk03043019);
+        var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(game);
+        node.Chunks.Add(chunk0304301F);
+        var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
+        node.Chunks.Add(chunk03043022);
+        var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
+        node.Chunks.Add(chunk03043024);
+        var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
+        node.Chunks.Add(chunk03043025);
+        var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
+        node.Chunks.Add(chunk03043026);
+        var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
+        node.Chunks.Add(chunk03043028);
+        var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
+        node.Chunks.Add(chunk03043029);
+        var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
+        node.Chunks.Add(chunk0304302A);
+        var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
+        node.Chunks.Add(chunk03043034);
+        var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
+        node.Chunks.Add(chunk03043036);
+        var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
+        node.Chunks.Add(chunk03043038);
+        var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
+        chunk0304303E.Version = 0;
+        node.Chunks.Add(chunk0304303E);
+        var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(game);
+        node.Chunks.Add(chunk03043040);
+        var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(game);
+        node.Chunks.Add(chunk03043042);
+        var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
+        node.Chunks.Add(chunk03043043);
+        var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
+        node.Chunks.Add(chunk03043044);
+        var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
+        chunk03043048.Version = 0;
+        node.Chunks.Add(chunk03043048);
+        var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(game);
+        node.Chunks.Add(chunk03043049);
+        var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
+        node.Chunks.Add(chunk0304304B);
+        var chunk0304304E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E();
+        chunk0304304E.Version = 0;
+        node.Chunks.Add(chunk0304304E);
+        var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
+        node.Chunks.Add(chunk0304304F);
+        var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
+        chunk03043050.Version = 0;
+        node.Chunks.Add(chunk03043050);
+        var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
+        chunk03043051.Version = 0;
+        node.Chunks.Add(chunk03043051);
+        var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
+        chunk03043052.Version = 0;
+        node.Chunks.Add(chunk03043052);
+        var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(game);
+        node.Chunks.Add(chunk03043053);
+        var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(game);
+        node.Chunks.Add(chunk03043054);
+        var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
+        node.Chunks.Add(chunk03043055);
+        var chunk03043056 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056(game);
+        node.Chunks.Add(chunk03043056);
+        var chunk03043057 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057(game);
+        node.Chunks.Add(chunk03043057);
+        var chunk03043059 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059(game);
+        node.Chunks.Add(chunk03043059);
+        var chunk0304305A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305A();
+        chunk0304305A.Version = 0;
+        node.Chunks.Add(chunk0304305A);
+        var chunk0304305B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305B();
+        chunk0304305B.Version = 0;
+        node.Chunks.Add(chunk0304305B);
+        var chunk0304305C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305C(game);
+        node.Chunks.Add(chunk0304305C);
+        var chunk0304305D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305D(game);
+        node.Chunks.Add(chunk0304305D);
+        var chunk0304305E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305E(game);
+        node.Chunks.Add(chunk0304305E);
+        var chunk0304305F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305F();
+        node.Chunks.Add(chunk0304305F);
+        var chunk03043060 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043060();
+        chunk03043060.Version = 0;
+        node.Chunks.Add(chunk03043060);
+        var chunk03043061 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043061(game);
+        node.Chunks.Add(chunk03043061);
+        var chunk03043062 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043062();
+        node.Chunks.Add(chunk03043062);
+        var chunk03043063 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043063();
+        node.Chunks.Add(chunk03043063);
+        var chunk03043064 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043064();
+        chunk03043064.Version = 0;
+        node.Chunks.Add(chunk03043064);
+        var chunk03043065 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043065();
+        node.Chunks.Add(chunk03043065);
+        var chunk03043067 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043067();
+        chunk03043067.Version = 0;
+        node.Chunks.Add(chunk03043067);
+        var chunk03043068 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043068();
+        node.Chunks.Add(chunk03043068);
+        var chunk03043069 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043069();
+        chunk03043069.Version = 0;
+        node.Chunks.Add(chunk03043069);
+        var chunk0304306B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306B();
+        node.Chunks.Add(chunk0304306B);
+        var chunk0304306C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306C();
+        chunk0304306C.Version = 0;
+        node.Chunks.Add(chunk0304306C);
+        return node;
+    }
+    private static void ValidateRecipe12(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk HeaderChunk03043008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304300D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043018 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043019 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304301F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043022 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043024 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043025 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043026 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043028 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043029 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304302A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043034 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043036 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043038 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304303E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043040 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043042 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043043 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043044 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043048 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043049 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304304E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304304F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043050 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043051 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043052 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043053 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043054 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043055 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043056 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043057 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043059 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305A>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304305A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305B>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304305B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305C>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304305C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305D>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304305D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305E>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304305E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304305F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043060>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043060 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043061>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043061 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043062>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043062 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043063>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043063 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043064>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043064 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043065>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043065 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043067>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043067 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043068>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03043068 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043069>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk03043069 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0304306B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306C>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0304306C is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnChallenge node, GameVersion game)
+    {
+        if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
+        if (node.MapName is null) throw new MemberNullException("MapName");
+        if (node.MapUid is null) throw new MemberNullException("MapUid");
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMS ForTMS() => new(state.Snapshot());
@@ -313,250 +2429,69 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CGameCtnChallengeBuilderBase<TM10>
+    public partial class TM10 : CGameCtnChallengeBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TM10 WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
         public TM10 WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTM10? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM10 WithBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10[] values)
         {
-            return base.WithBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10>(values, false));
         }
         public TM10 WithBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10> values)
         {
             return WithBlocks(values.ToArray());
         }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TM10 WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
         public TM10 WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM10? value)
         {
             return base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TM10 WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TM10 WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TM10 WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TM10);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TM10);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk0304300F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300F();
-            node.Chunks.Add(chunk0304300F);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043012 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043012();
-            node.Chunks.Add(chunk03043012);
+            var node = CGameCtnChallengeBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 3 }) throw new InvalidOperationException("Required TM10 chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 0 }) throw new InvalidOperationException("Required TM10 chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300F>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0304300F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043012>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk03043012 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMPU : CGameCtnChallengeBuilderBase<TMPU>
+    public partial class TMPU : CGameCtnChallengeBuilderMembers2<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMPU WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
         public TMPU WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMPU? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMPU WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
         }
         public TMPU WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMPU? value)
         {
             return base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMPU WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMPU WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMPU WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMPU WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMPU WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMPU);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMPU);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMPU);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043013 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043013();
-            node.Chunks.Add(chunk03043013);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
+            var node = CGameCtnChallengeBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 4 }) throw new InvalidOperationException("Required TMPU chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 1 }) throw new InvalidOperationException("Required TMPU chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 2 }) throw new InvalidOperationException("Required TMPU chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043013>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk03043013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk03043014 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMS : CGameCtnChallengeBuilderBase<TMS>
+    public partial class TMS : CGameCtnChallengeBuilderMembers3<TMS>
     {
         internal TMS(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMS WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMS WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
@@ -623,187 +2558,24 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
             SetClipIntroReference(state, value);
             return this;
         }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMS WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMS WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMS WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMS WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMS WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMS WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMS WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMS WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMS WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMS WithXml(string? value)
-        {
-            Xml = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMS BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMS);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMS);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMS);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
-            var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
-            node.Chunks.Add(chunk03043016);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMS);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
-            node.Chunks.Add(chunk03043021);
+            var node = CGameCtnChallengeBuilder.CreateRecipe2(GameVersion.TMS);
             state.Apply(node, GameVersion.TMS);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 7 }) throw new InvalidOperationException("Required TMS chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 1 }) throw new InvalidOperationException("Required TMS chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 4 }) throw new InvalidOperationException("Required TMS chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMS chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMS chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required TMS chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMS chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException("Required TMS chunk Chunk03043021 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe2(node, GameVersion.TMS);
             NodeBuilderValidation.Validate(node, GameVersion.TMS);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMS);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMO : CGameCtnChallengeBuilderBase<TMO>
+    public partial class TMO : CGameCtnChallengeBuilderMembers3<TMO>
     {
         internal TMO(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMO WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMO WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
@@ -822,205 +2594,35 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithCheckpoints(values.ToArray());
         }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMO WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMO WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMO WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMO WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMO WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMO WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMO WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMO WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMO WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMO WithXml(string? value)
-        {
-            Xml = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMO BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMO);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMO);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMO);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
-            var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
-            node.Chunks.Add(chunk03043016);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMO);
-            node.Chunks.Add(chunk0304301F);
+            var node = CGameCtnChallengeBuilder.CreateRecipe3(GameVersion.TMO);
             state.Apply(node, GameVersion.TMO);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 7 }) throw new InvalidOperationException("Required TMO chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 1 }) throw new InvalidOperationException("Required TMO chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 4 }) throw new InvalidOperationException("Required TMO chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMO chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMO chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMO chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required TMO chunk Chunk03043014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException("Required TMO chunk Chunk03043016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required TMO chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMO chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMO chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required TMO chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMO chunk Chunk0304301F is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe3(node, GameVersion.TMO);
             NodeBuilderValidation.Validate(node, GameVersion.TMO);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMO);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMSX : CGameCtnChallengeBuilderBase<TMSX>
+    public partial class TMSX : CGameCtnChallengeBuilderMembers4<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public TMSX WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMSX WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
         public TMSX WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMSX? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX[] values)
         {
-            return base.WithBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX>(values, false));
         }
         public TMSX WithBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX> values)
         {
             return WithBlocks(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMSX WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
         }
         public TMSX WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMSX? value)
         {
@@ -1044,309 +2646,39 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithCheckpoints(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public TMSX WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public TMSX WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
-        }
         public TMSX WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public TMSX WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public TMSX WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMSX? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public TMSX WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public TMSX WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMSX? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMSX WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public TMSX WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMSX WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public TMSX WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMSX WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMSX WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public TMSX WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public TMSX WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMSX WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMSX WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMSX WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMSX WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMSX WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMSX WithXml(string? value)
-        {
-            Xml = value;
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMSX);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMSX);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMSX);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
-            var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
-            node.Chunks.Add(chunk03043016);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMSX);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
-            node.Chunks.Add(chunk03043021);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
+            var node = CGameCtnChallengeBuilder.CreateRecipe4(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 10 }) throw new InvalidOperationException("Required TMSX chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 4 }) throw new InvalidOperationException("Required TMSX chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 5 }) throw new InvalidOperationException("Required TMSX chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMSX chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMSX chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043021 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03043025 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe4(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMNESWC : CGameCtnChallengeBuilderBase<TMNESWC>
+    public partial class TMNESWC : CGameCtnChallengeBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public TMNESWC WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMNESWC WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
         public TMNESWC WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMNESWC? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMNESWC WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
         }
         public TMNESWC WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMNESWC? value)
         {
@@ -1390,309 +2722,36 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public TMNESWC WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public TMNESWC WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
-        }
         public TMNESWC WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public TMNESWC WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public TMNESWC WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMNESWC WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMNESWC? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public TMNESWC WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public TMNESWC WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMNESWC WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMNESWC? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMNESWC WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public TMNESWC WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMNESWC WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public TMNESWC WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMNESWC WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMNESWC WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public TMNESWC WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public TMNESWC WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMNESWC WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMNESWC WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMNESWC WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMNESWC WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMNESWC WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMNESWC WithXml(string? value)
-        {
-            Xml = value;
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMNESWC);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMNESWC);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMNESWC);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
-            var chunk03043016 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016();
-            node.Chunks.Add(chunk03043016);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMNESWC);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
-            node.Chunks.Add(chunk03043021);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
+            var node = CGameCtnChallengeBuilder.CreateRecipe5(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 10 }) throw new InvalidOperationException("Required TMNESWC chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 4 }) throw new InvalidOperationException("Required TMNESWC chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 5 }) throw new InvalidOperationException("Required TMNESWC chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMNESWC chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043016>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMNESWC chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043021 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03043026 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe5(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMU : CGameCtnChallengeBuilderBase<TMU>
+    public partial class TMU : CGameCtnChallengeBuilderMembers5<TMU>
     {
         internal TMU(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public TMU WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMU WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMU WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
         public List<Int3>? Checkpoints
         {
             get => state.Get<List<Int3>?>("Checkpoints");
@@ -1711,379 +2770,23 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithCheckpoints(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
-        }
-        public TMU WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipGlobal = value;
-            return this;
-        }
-        public TMU WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
-            return this;
-        }
         public TMU WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? value)
         {
-            return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public TMU WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public TMU WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public TMU WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public TMU WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public TMU WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public TMU WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMU WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMU? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? Comments
-        {
-            get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
-        }
-        public TMU WithComments(string? value)
-        {
-            Comments = value;
-            return this;
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMU WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public TMU WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMU WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public TMU WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool HasCustomCamThumbnail
-        {
-            get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
-        }
-        public TMU WithHasCustomCamThumbnail(bool value)
-        {
-            HasCustomCamThumbnail = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMU WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMU WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public TMU WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public TMU WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMU WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMU WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMU WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public UInt128 PackMask
-        {
-            get => state.Get<UInt128>("PackMask");
-            set => SetPackMask(state, value);
-        }
-        public TMU WithPackMask(UInt128 value)
-        {
-            PackMask = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMU WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMU WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public byte[]? Thumbnail
-        {
-            get => state.Get<byte[]?>("Thumbnail");
-            set => SetThumbnail(state, value);
-        }
-        public TMU WithThumbnail(params byte[]? value)
-        {
-            Thumbnail = value;
-            return this;
-        }
-        public TMU WithThumbnail(IEnumerable<byte> values)
-        {
-            return WithThumbnail(values.ToArray());
-        }
-        public float ThumbnailFarClipPlane
-        {
-            get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
-        }
-        public TMU WithThumbnailFarClipPlane(float value)
-        {
-            ThumbnailFarClipPlane = value;
-            return this;
-        }
-        public float ThumbnailFov
-        {
-            get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
-        }
-        public TMU WithThumbnailFov(float value)
-        {
-            ThumbnailFov = value;
-            return this;
-        }
-        public float ThumbnailNearClipPlane
-        {
-            get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
-        }
-        public TMU WithThumbnailNearClipPlane(float value)
-        {
-            ThumbnailNearClipPlane = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPosition
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
-        }
-        public TMU WithThumbnailPosition(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPosition = value;
-            return this;
-        }
-        public Mat3 ThumbnailRotationMatrix
-        {
-            get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
-        }
-        public TMU WithThumbnailRotationMatrix(Mat3 value)
-        {
-            ThumbnailRotationMatrix = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMU WithXml(string? value)
-        {
-            Xml = value;
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMU);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMU);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMU);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(GameVersion.TMU);
-            node.Chunks.Add(chunkHeader03043007);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMU);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
-            node.Chunks.Add(chunk03043021);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
+            var node = CGameCtnChallengeBuilder.CreateRecipe6(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 10 }) throw new InvalidOperationException("Required TMU chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 5 }) throw new InvalidOperationException("Required TMU chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException("Required TMU chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMU chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException("Required TMU chunk HeaderChunk03043007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMU chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required TMU chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMU chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043021 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required TMU chunk Chunk03043028 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe6(node, GameVersion.TMU);
             NodeBuilderValidation.Validate(node, GameVersion.TMU);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
             ValidateNode(node);
             return node;
         }
@@ -2352,105 +3055,32 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043014 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014();
-            node.Chunks.Add(chunk03043014);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.VSK5);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
-            node.Chunks.Add(chunk03043021);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
+            var node = CGameCtnChallengeBuilder.CreateRecipe7(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043014>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required VSK5 chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043021 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03043028 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe7(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMF : CGameCtnChallengeBuilderBase<TMF>
+    public partial class TMF : CGameCtnChallengeBuilderMembers6<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public TMF WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMF WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
         public TMF WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMF? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF[] values)
         {
-            return base.WithBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF>(values, false));
         }
         public TMF WithBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF> values)
         {
             return WithBlocks(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMF WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
         }
         public TMF WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMF? value)
         {
@@ -2474,1424 +3104,95 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithCheckpoints(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
-        }
-        public TMF WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipGlobal = value;
-            return this;
-        }
-        public TMF WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
-            return this;
-        }
         public TMF WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? value)
         {
-            return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public TMF WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public TMF WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
+            return base.WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public TMF WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public TMF WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMF? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public TMF WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public TMF WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMF? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? Comments
-        {
-            get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
-        }
-        public TMF WithComments(string? value)
-        {
-            Comments = value;
-            return this;
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMF WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public uint Crc32
-        {
-            get => state.Get<uint>("Crc32");
-            set => SetCrc32(state, value);
-        }
-        public TMF WithCrc32(uint value)
-        {
-            Crc32 = value;
-            return this;
-        }
-        public bool CreatedWithSimpleEditor
-        {
-            get => state.Get<bool>("CreatedWithSimpleEditor");
-            set => SetCreatedWithSimpleEditor(state, value);
-        }
-        public TMF WithCreatedWithSimpleEditor(bool value)
-        {
-            CreatedWithSimpleEditor = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public TMF WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
-            set => SetEditor(state, value);
-        }
-        public TMF WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
-        {
-            Editor = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMF WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public TMF WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool HasCustomCamThumbnail
-        {
-            get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
-        }
-        public TMF WithHasCustomCamThumbnail(bool value)
-        {
-            HasCustomCamThumbnail = value;
-            return this;
-        }
-        public global::GBX.NET.Checksum128? HashedPassword
-        {
-            get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
-            set => SetHashedPassword(state, value);
-        }
-        public TMF WithHashedPassword(global::GBX.NET.Checksum128? value)
-        {
-            HashedPassword = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMF WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMF WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public TMF WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public TMF WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMF WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMF WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMF WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public UInt128 PackMask
-        {
-            get => state.Get<UInt128>("PackMask");
-            set => SetPackMask(state, value);
-        }
-        public TMF WithPackMask(UInt128 value)
-        {
-            PackMask = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMF WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMF WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public byte[]? Thumbnail
-        {
-            get => state.Get<byte[]?>("Thumbnail");
-            set => SetThumbnail(state, value);
-        }
-        public TMF WithThumbnail(params byte[]? value)
-        {
-            Thumbnail = value;
-            return this;
-        }
-        public TMF WithThumbnail(IEnumerable<byte> values)
-        {
-            return WithThumbnail(values.ToArray());
-        }
-        public float ThumbnailFarClipPlane
-        {
-            get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
-        }
-        public TMF WithThumbnailFarClipPlane(float value)
-        {
-            ThumbnailFarClipPlane = value;
-            return this;
-        }
-        public float ThumbnailFov
-        {
-            get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
-        }
-        public TMF WithThumbnailFov(float value)
-        {
-            ThumbnailFov = value;
-            return this;
-        }
-        public float ThumbnailNearClipPlane
-        {
-            get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
-        }
-        public TMF WithThumbnailNearClipPlane(float value)
-        {
-            ThumbnailNearClipPlane = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPosition
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
-        }
-        public TMF WithThumbnailPosition(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPosition = value;
-            return this;
-        }
-        public Mat3 ThumbnailRotationMatrix
-        {
-            get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
-        }
-        public TMF WithThumbnailRotationMatrix(Mat3 value)
-        {
-            ThumbnailRotationMatrix = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMF WithXml(string? value)
-        {
-            Xml = value;
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMF);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMF);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMF);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(GameVersion.TMF);
-            node.Chunks.Add(chunkHeader03043007);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043017 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017();
-            node.Chunks.Add(chunk03043017);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C();
-            node.Chunks.Add(chunk0304301C);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMF);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043021 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021();
-            node.Chunks.Add(chunk03043021);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
-            var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
-            node.Chunks.Add(chunk03043029);
-            var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
-            node.Chunks.Add(chunk0304302A);
-            var chunk3F001000 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001000();
-            node.Chunks.Add(chunk3F001000);
-            var chunk3F001001 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001001();
-            node.Chunks.Add(chunk3F001001);
-            var chunk3F001002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001002();
-            node.Chunks.Add(chunk3F001002);
-            var chunk3F001003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001003();
-            node.Chunks.Add(chunk3F001003);
+            var node = CGameCtnChallengeBuilder.CreateRecipe8(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 11 }) throw new InvalidOperationException("Required TMF chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 5 }) throw new InvalidOperationException("Required TMF chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException("Required TMF chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMF chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException("Required TMF chunk HeaderChunk03043007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043017>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301C>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0304301C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMF chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043021>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043021 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043028 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03043029 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0304302A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk3F001000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk3F001001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk3F001002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk3F001003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk3F001003 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe8(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class MP3 : CGameCtnChallengeBuilderBase<MP3>
+    public partial class MP3 : CGameCtnChallengeBuilderMembers8<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? AnchoredObjects
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects");
-            set => SetAnchoredObjects(state, value);
-        }
-        public MP3 WithAnchoredObjects(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value)
-        {
-            AnchoredObjects = value;
-            return this;
-        }
-        public MP3 WithAnchoredObjects(params global::GBX.NET.Engines.Game.CGameCtnAnchoredObject[] values)
-        {
-            return WithAnchoredObjects(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(values));
-        }
-        public MP3 WithAnchoredObjects(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> values)
-        {
-            return WithAnchoredObjects(values.ToArray());
-        }
         public MP3 WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3[] values)
         {
-            return WithAnchoredObjects(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithAnchoredObjects(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3>(values, false));
         }
         public MP3 WithAnchoredObjects(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP3> values)
         {
             return WithAnchoredObjects(values.ToArray());
         }
-        public string? AuthorExtraInfo
-        {
-            get => state.Get<string?>("AuthorExtraInfo");
-            set => SetAuthorExtraInfo(state, value);
-        }
-        public MP3 WithAuthorExtraInfo(string? value)
-        {
-            AuthorExtraInfo = value;
-            return this;
-        }
-        public string? AuthorNickname
-        {
-            get => state.Get<string?>("AuthorNickname");
-            set => SetAuthorNickname(state, value);
-        }
-        public MP3 WithAuthorNickname(string? value)
-        {
-            AuthorNickname = value;
-            return this;
-        }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public MP3 WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public MP3 WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public int AuthorVersion
-        {
-            get => state.Get<int>("AuthorVersion");
-            set => SetAuthorVersion(state, value);
-        }
-        public MP3 WithAuthorVersion(int value)
-        {
-            AuthorVersion = value;
-            return this;
-        }
-        public string? AuthorZone
-        {
-            get => state.Get<string?>("AuthorZone");
-            set => SetAuthorZone(state, value);
-        }
-        public MP3 WithAuthorZone(string? value)
-        {
-            AuthorZone = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks");
-            set => SetBakedBlocks(state, value);
-        }
-        public MP3 WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
-        {
-            BakedBlocks = value;
-            return this;
-        }
-        public MP3 WithBakedBlocks(params global::GBX.NET.Engines.Game.CGameCtnBlock[] values)
-        {
-            return WithBakedBlocks(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(values));
-        }
-        public MP3 WithBakedBlocks(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlock> values)
-        {
-            return WithBakedBlocks(values.ToArray());
-        }
-        public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData
-        {
-            get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData");
-            set => SetBakedClipsAdditionalData(state, value);
-        }
-        public MP3 WithBakedClipsAdditionalData(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value)
-        {
-            BakedClipsAdditionalData = value;
-            return this;
-        }
-        public MP3 WithBakedClipsAdditionalData(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData[] values)
-        {
-            return WithBakedClipsAdditionalData(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>(values));
-        }
-        public MP3 WithBakedClipsAdditionalData(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData> values)
-        {
-            return WithBakedClipsAdditionalData(values.ToArray());
-        }
         public MP3 WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP3? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths
-        {
-            get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths");
-            set => SetBotPaths(state, value);
-        }
-        public MP3 WithBotPaths(List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value)
-        {
-            BotPaths = value;
-            return this;
-        }
-        public MP3 WithBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath[] values)
-        {
-            return WithBotPaths(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>(values));
-        }
-        public MP3 WithBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath> values)
-        {
-            return WithBotPaths(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public MP3 WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
-        public string? BuildVersion
-        {
-            get => state.Get<string?>("BuildVersion");
-            set => SetBuildVersion(state, value);
-        }
-        public MP3 WithBuildVersion(string? value)
-        {
-            BuildVersion = value;
-            return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? CarMarksBuffer
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer");
-            set => SetCarMarksBuffer(state, value);
-        }
-        public MP3 WithCarMarksBuffer(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value)
-        {
-            CarMarksBuffer = value;
-            return this;
-        }
-        public MP3 WithCarMarksBuffer(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples[] values)
-        {
-            return WithCarMarksBuffer(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(values));
-        }
-        public MP3 WithCarMarksBuffer(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> values)
-        {
-            return WithCarMarksBuffer(values.ToArray());
-        }
         public MP3 WithCarMarksBuffer(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3[] values)
         {
-            return WithCarMarksBuffer(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithCarMarksBuffer(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3>(values, false));
         }
         public MP3 WithCarMarksBuffer(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP3> values)
         {
             return WithCarMarksBuffer(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds");
-            set => SetChallengeCardEventIds(state, value);
-        }
-        public MP3 WithChallengeCardEventIds(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value)
-        {
-            ChallengeCardEventIds = value;
-            return this;
-        }
-        public MP3 WithChallengeCardEventIds(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds> values)
-        {
-            return WithChallengeCardEventIds(values.ToArray());
-        }
-        public byte[]? ChallengeDecals
-        {
-            get => state.Get<byte[]?>("ChallengeDecals");
-            set => SetChallengeDecals(state, value);
-        }
-        public MP3 WithChallengeDecals(params byte[]? value)
-        {
-            ChallengeDecals = value;
-            return this;
-        }
-        public MP3 WithChallengeDecals(IEnumerable<byte> values)
-        {
-            return WithChallengeDecals(values.ToArray());
-        }
         public MP3 WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP3? value)
         {
             return base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public string? ChallengeScript
-        {
-            get => state.Get<string?>("ChallengeScript");
-            set => SetChallengeScript(state, value);
-        }
-        public MP3 WithChallengeScript(string? value)
-        {
-            ChallengeScript = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipAmbiance
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance");
-            set => SetClipAmbiance(state, value);
-        }
-        public MP3 WithClipAmbiance(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipAmbiance = value;
-            return this;
-        }
-        public MP3 WithClipAmbianceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipAmbianceReference(state, value);
-            return this;
-        }
         public MP3 WithClipAmbiance(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? value)
         {
-            return WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
-        }
-        public MP3 WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipGlobal = value;
-            return this;
-        }
-        public MP3 WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
-            return this;
+            return base.WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? value)
         {
-            return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public MP3 WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public MP3 WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
+            return base.WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public MP3 WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public MP3 WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP3? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public MP3 WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public MP3 WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipPodium
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium");
-            set => SetClipPodium(state, value);
-        }
-        public MP3 WithClipPodium(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipPodium = value;
-            return this;
-        }
-        public MP3 WithClipPodiumReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipPodiumReference(state, value);
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithClipPodium(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP3? value)
         {
-            return WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Int3 ClipTriggerSize
-        {
-            get => state.Get<Int3>("ClipTriggerSize");
-            set => SetClipTriggerSize(state, value);
-        }
-        public MP3 WithClipTriggerSize(Int3 value)
-        {
-            ClipTriggerSize = value;
-            return this;
-        }
-        public string? Comments
-        {
-            get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
-        }
-        public MP3 WithComments(string? value)
-        {
-            Comments = value;
-            return this;
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public MP3 WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public uint Crc32
-        {
-            get => state.Get<uint>("Crc32");
-            set => SetCrc32(state, value);
-        }
-        public MP3 WithCrc32(uint value)
-        {
-            Crc32 = value;
-            return this;
-        }
-        public bool CreatedWithSimpleEditor
-        {
-            get => state.Get<bool>("CreatedWithSimpleEditor");
-            set => SetCreatedWithSimpleEditor(state, value);
-        }
-        public MP3 WithCreatedWithSimpleEditor(bool value)
-        {
-            CreatedWithSimpleEditor = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public MP3 WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public int DecoBaseHeightOffset
-        {
-            get => state.Get<int>("DecoBaseHeightOffset");
-            set => SetDecoBaseHeightOffset(state, value);
-        }
-        public MP3 WithDecoBaseHeightOffset(int value)
-        {
-            DecoBaseHeightOffset = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
-            set => SetEditor(state, value);
-        }
-        public MP3 WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
-        {
-            Editor = value;
-            return this;
-        }
-        public global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs
-        {
-            get => state.Get<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs");
-            set => SetEmbeddedItemModelsExternalDataRefs(state, value);
-        }
-        public MP3 WithEmbeddedItemModelsExternalDataRefs(global::System.Collections.Generic.List<string>? value)
-        {
-            EmbeddedItemModelsExternalDataRefs = value;
-            return this;
-        }
-        public MP3 WithEmbeddedItemModelsExternalDataRefs(params string[] values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(new List<string>(values));
-        }
-        public MP3 WithEmbeddedItemModelsExternalDataRefs(IEnumerable<string> values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(values.ToArray());
-        }
-        public byte[]? EmbeddedZipData
-        {
-            get => state.Get<byte[]?>("EmbeddedZipData");
-            set => SetEmbeddedZipData(state, value);
-        }
-        public MP3 WithEmbeddedZipData(params byte[]? value)
-        {
-            EmbeddedZipData = value;
-            return this;
-        }
-        public MP3 WithEmbeddedZipData(IEnumerable<byte> values)
-        {
-            return WithEmbeddedZipData(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public MP3 WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public MP3 WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool HasCustomCamThumbnail
-        {
-            get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
-        }
-        public MP3 WithHasCustomCamThumbnail(bool value)
-        {
-            HasCustomCamThumbnail = value;
-            return this;
-        }
-        public bool HasLightmaps
-        {
-            get => state.Get<bool>("HasLightmaps");
-            set => SetHasLightmaps(state, value);
-        }
-        public MP3 WithHasLightmaps(bool value)
-        {
-            HasLightmaps = value;
-            return this;
-        }
-        public global::GBX.NET.Checksum128? HashedPassword
-        {
-            get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
-            set => SetHashedPassword(state, value);
-        }
-        public MP3 WithHashedPassword(global::GBX.NET.Checksum128? value)
-        {
-            HashedPassword = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public MP3 WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public MP3 WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache? LightmapCache
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache");
-            set => SetLightmapCache(state, value);
-        }
-        public MP3 WithLightmapCache(global::GBX.NET.Engines.Hms.CHmsLightMapCache? value)
-        {
-            LightmapCache = value;
-            return this;
-        }
-        public MP3 WithLightmapCacheReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLightmapCacheReference(state, value);
-            return this;
+            return base.WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithLightmapCache(global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP3? value)
         {
-            return WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.ZlibData? LightmapCacheData
-        {
-            get => state.Get<global::GBX.NET.ZlibData?>("LightmapCacheData");
-            set => SetLightmapCacheData(state, value);
-        }
-        public MP3 WithLightmapCacheData(global::GBX.NET.ZlibData? value)
-        {
-            LightmapCacheData = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public MP3 WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames");
-            set => SetLightmapFrames(state, value);
-        }
-        public MP3 WithLightmapFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value)
-        {
-            LightmapFrames = value;
-            return this;
-        }
-        public MP3 WithLightmapFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame> values)
-        {
-            return WithLightmapFrames(values.ToArray());
-        }
-        public int? LightmapVersion
-        {
-            get => state.Get<int?>("LightmapVersion");
-            set => SetLightmapVersion(state, value);
-        }
-        public MP3 WithLightmapVersion(int? value)
-        {
-            LightmapVersion = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public MP3 WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public MP3 WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public string? MapStyle
-        {
-            get => state.Get<string?>("MapStyle");
-            set => SetMapStyle(state, value);
-        }
-        public MP3 WithMapStyle(string? value)
-        {
-            MapStyle = value;
-            return this;
-        }
-        public string? MapType
-        {
-            get => state.Get<string?>("MapType");
-            set => SetMapType(state, value);
-        }
-        public MP3 WithMapType(string? value)
-        {
-            MapType = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public MP3 WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public MP3 WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbCheckpoints
-        {
-            get => state.Get<int>("NbCheckpoints");
-            set => SetNbCheckpoints(state, value);
-        }
-        public MP3 WithNbCheckpoints(int value)
-        {
-            NbCheckpoints = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public MP3 WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? ObjectiveTextAuthor
-        {
-            get => state.Get<string?>("ObjectiveTextAuthor");
-            set => SetObjectiveTextAuthor(state, value);
-        }
-        public MP3 WithObjectiveTextAuthor(string? value)
-        {
-            ObjectiveTextAuthor = value;
-            return this;
-        }
-        public string? ObjectiveTextBronze
-        {
-            get => state.Get<string?>("ObjectiveTextBronze");
-            set => SetObjectiveTextBronze(state, value);
-        }
-        public MP3 WithObjectiveTextBronze(string? value)
-        {
-            ObjectiveTextBronze = value;
-            return this;
-        }
-        public string? ObjectiveTextGold
-        {
-            get => state.Get<string?>("ObjectiveTextGold");
-            set => SetObjectiveTextGold(state, value);
-        }
-        public MP3 WithObjectiveTextGold(string? value)
-        {
-            ObjectiveTextGold = value;
-            return this;
-        }
-        public string? ObjectiveTextSilver
-        {
-            get => state.Get<string?>("ObjectiveTextSilver");
-            set => SetObjectiveTextSilver(state, value);
-        }
-        public MP3 WithObjectiveTextSilver(string? value)
-        {
-            ObjectiveTextSilver = value;
-            return this;
-        }
-        public Int3 OffzoneTriggerSize
-        {
-            get => state.Get<Int3>("OffzoneTriggerSize");
-            set => SetOffzoneTriggerSize(state, value);
-        }
-        public MP3 WithOffzoneTriggerSize(Int3 value)
-        {
-            OffzoneTriggerSize = value;
-            return this;
-        }
-        public List<BoxInt3>? Offzones
-        {
-            get => state.Get<List<BoxInt3>?>("Offzones");
-            set => SetOffzones(state, value);
-        }
-        public MP3 WithOffzones(List<BoxInt3>? value)
-        {
-            Offzones = value;
-            return this;
-        }
-        public MP3 WithOffzones(params BoxInt3[] values)
-        {
-            return WithOffzones(new List<BoxInt3>(values));
-        }
-        public MP3 WithOffzones(IEnumerable<BoxInt3> values)
-        {
-            return WithOffzones(values.ToArray());
-        }
-        public UInt128 PackMask
-        {
-            get => state.Get<UInt128>("PackMask");
-            set => SetPackMask(state, value);
-        }
-        public MP3 WithPackMask(UInt128 value)
-        {
-            PackMask = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public MP3 WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
-        {
-            get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-            set => SetScriptMetadata(state, value);
-        }
-        public MP3 WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
-        {
-            ScriptMetadata = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public MP3 WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public byte[]? Thumbnail
-        {
-            get => state.Get<byte[]?>("Thumbnail");
-            set => SetThumbnail(state, value);
-        }
-        public MP3 WithThumbnail(params byte[]? value)
-        {
-            Thumbnail = value;
-            return this;
-        }
-        public MP3 WithThumbnail(IEnumerable<byte> values)
-        {
-            return WithThumbnail(values.ToArray());
-        }
-        public float ThumbnailFarClipPlane
-        {
-            get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
-        }
-        public MP3 WithThumbnailFarClipPlane(float value)
-        {
-            ThumbnailFarClipPlane = value;
-            return this;
-        }
-        public float ThumbnailFov
-        {
-            get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
-        }
-        public MP3 WithThumbnailFov(float value)
-        {
-            ThumbnailFov = value;
-            return this;
-        }
-        public float ThumbnailNearClipPlane
-        {
-            get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
-        }
-        public MP3 WithThumbnailNearClipPlane(float value)
-        {
-            ThumbnailNearClipPlane = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPitchYawRoll
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll");
-            set => SetThumbnailPitchYawRoll(state, value);
-        }
-        public MP3 WithThumbnailPitchYawRoll(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPosition
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
-        }
-        public MP3 WithThumbnailPosition(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPosition = value;
-            return this;
-        }
-        public Mat3 ThumbnailRotationMatrix
-        {
-            get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
-        }
-        public MP3 WithThumbnailRotationMatrix(Mat3 value)
-        {
-            ThumbnailRotationMatrix = value;
-            return this;
-        }
-        public string? TitleId
-        {
-            get => state.Get<string?>("TitleId");
-            set => SetTitleId(state, value);
-        }
-        public MP3 WithTitleId(string? value)
-        {
-            TitleId = value;
-            return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>?>("TrafficElemDescs");
-            set => SetTrafficElemDescs(state, value);
-        }
-        public MP3 WithTrafficElemDescs(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value)
-        {
-            TrafficElemDescs = value;
-            return this;
-        }
-        public MP3 WithTrafficElemDescs(params global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc[] values)
-        {
-            return WithTrafficElemDescs(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>(values));
-        }
-        public MP3 WithTrafficElemDescs(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> values)
-        {
-            return WithTrafficElemDescs(values.ToArray());
-        }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>?>("TrafficPathSplines");
-            set => SetTrafficPathSplines(state, value);
-        }
-        public MP3 WithTrafficPathSplines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value)
-        {
-            TrafficPathSplines = value;
-            return this;
-        }
-        public MP3 WithTrafficPathSplines(params global::GBX.NET.Engines.Plug.CPlugSpline3D[] values)
-        {
-            return WithTrafficPathSplines(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>(values));
-        }
-        public MP3 WithTrafficPathSplines(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSpline3D> values)
-        {
-            return WithTrafficPathSplines(values.ToArray());
-        }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>?>("TrafficPathSquares");
-            set => SetTrafficPathSquares(state, value);
-        }
-        public MP3 WithTrafficPathSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value)
-        {
-            TrafficPathSquares = value;
-            return this;
-        }
-        public MP3 WithTrafficPathSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares[] values)
-        {
-            return WithTrafficPathSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>(values));
-        }
-        public MP3 WithTrafficPathSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> values)
-        {
-            return WithTrafficPathSquares(values.ToArray());
-        }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>?>("TrafficZoneSquares");
-            set => SetTrafficZoneSquares(state, value);
-        }
-        public MP3 WithTrafficZoneSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value)
-        {
-            TrafficZoneSquares = value;
-            return this;
-        }
-        public MP3 WithTrafficZoneSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares[] values)
-        {
-            return WithTrafficZoneSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>(values));
-        }
-        public MP3 WithTrafficZoneSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> values)
-        {
-            return WithTrafficZoneSquares(values.ToArray());
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public MP3 WithXml(string? value)
-        {
-            Xml = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? ZoneGenealogy
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy");
-            set => SetZoneGenealogy(state, value);
-        }
-        public MP3 WithZoneGenealogy(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value)
-        {
-            ZoneGenealogy = value;
-            return this;
-        }
-        public MP3 WithZoneGenealogy(params global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy[] values)
-        {
-            return WithZoneGenealogy(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(values));
-        }
-        public MP3 WithZoneGenealogy(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> values)
-        {
-            return WithZoneGenealogy(values.ToArray());
+            return base.WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3[] values)
         {
-            return WithZoneGenealogy(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithZoneGenealogy(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>(values, false));
         }
         public MP3 WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3> values)
         {
@@ -3900,1142 +3201,100 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.MP3);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.MP3);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.MP3);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(GameVersion.MP3);
-            node.Chunks.Add(chunkHeader03043007);
-            var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(GameVersion.MP3);
-            node.Chunks.Add(chunkHeader03043008);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.MP3);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
-            var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
-            node.Chunks.Add(chunk03043029);
-            var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
-            node.Chunks.Add(chunk0304302A);
-            var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
-            node.Chunks.Add(chunk03043034);
-            var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
-            node.Chunks.Add(chunk03043036);
-            var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
-            node.Chunks.Add(chunk03043038);
-            var chunk0304303D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D();
-            node.Chunks.Add(chunk0304303D);
-            var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
-            chunk0304303E.Version = 0;
-            node.Chunks.Add(chunk0304303E);
-            var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(GameVersion.MP3);
-            node.Chunks.Add(chunk03043040);
-            var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(GameVersion.MP3);
-            node.Chunks.Add(chunk03043042);
-            var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
-            node.Chunks.Add(chunk03043043);
-            var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
-            node.Chunks.Add(chunk03043044);
-            var chunk03043047 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047();
-            chunk03043047.Version = 0;
-            node.Chunks.Add(chunk03043047);
-            var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
-            chunk03043048.Version = 0;
-            node.Chunks.Add(chunk03043048);
-            var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(GameVersion.MP3);
-            node.Chunks.Add(chunk03043049);
-            var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
-            node.Chunks.Add(chunk0304304B);
-            var chunk0304304D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D(GameVersion.MP3);
-            node.Chunks.Add(chunk0304304D);
-            var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
-            node.Chunks.Add(chunk0304304F);
-            var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
-            chunk03043050.Version = 0;
-            node.Chunks.Add(chunk03043050);
-            var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
-            chunk03043051.Version = 0;
-            node.Chunks.Add(chunk03043051);
-            var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
-            chunk03043052.Version = 0;
-            node.Chunks.Add(chunk03043052);
-            var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(GameVersion.MP3);
-            node.Chunks.Add(chunk03043053);
-            var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(GameVersion.MP3);
-            node.Chunks.Add(chunk03043054);
-            var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
-            node.Chunks.Add(chunk03043055);
+            var node = CGameCtnChallengeBuilder.CreateRecipe9(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException("Required MP3 chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException("Required MP3 chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException("Required MP3 chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required MP3 chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk HeaderChunk03043007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk HeaderChunk03043008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException("Required MP3 chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043028 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043029 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0304302A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043034 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043036 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043038 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0304303D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0304303E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043040 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043042 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043043 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043044 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043047 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043048 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043049 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0304304B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk0304304D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0304304F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043050 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043051 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043052 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043053 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk03043054 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03043055 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe9(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TMT : CGameCtnChallengeBuilderBase<TMT>
+    public partial class TMT : CGameCtnChallengeBuilderMembers8<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? AnchoredObjects
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects");
-            set => SetAnchoredObjects(state, value);
-        }
-        public TMT WithAnchoredObjects(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value)
-        {
-            AnchoredObjects = value;
-            return this;
-        }
-        public TMT WithAnchoredObjects(params global::GBX.NET.Engines.Game.CGameCtnAnchoredObject[] values)
-        {
-            return WithAnchoredObjects(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(values));
-        }
-        public TMT WithAnchoredObjects(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> values)
-        {
-            return WithAnchoredObjects(values.ToArray());
-        }
         public TMT WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT[] values)
         {
-            return WithAnchoredObjects(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithAnchoredObjects(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT>(values, false));
         }
         public TMT WithAnchoredObjects(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTMT> values)
         {
             return WithAnchoredObjects(values.ToArray());
         }
-        public string? AuthorExtraInfo
-        {
-            get => state.Get<string?>("AuthorExtraInfo");
-            set => SetAuthorExtraInfo(state, value);
-        }
-        public TMT WithAuthorExtraInfo(string? value)
-        {
-            AuthorExtraInfo = value;
-            return this;
-        }
-        public string? AuthorNickname
-        {
-            get => state.Get<string?>("AuthorNickname");
-            set => SetAuthorNickname(state, value);
-        }
-        public TMT WithAuthorNickname(string? value)
-        {
-            AuthorNickname = value;
-            return this;
-        }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public TMT WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TMT WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public int AuthorVersion
-        {
-            get => state.Get<int>("AuthorVersion");
-            set => SetAuthorVersion(state, value);
-        }
-        public TMT WithAuthorVersion(int value)
-        {
-            AuthorVersion = value;
-            return this;
-        }
-        public string? AuthorZone
-        {
-            get => state.Get<string?>("AuthorZone");
-            set => SetAuthorZone(state, value);
-        }
-        public TMT WithAuthorZone(string? value)
-        {
-            AuthorZone = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks");
-            set => SetBakedBlocks(state, value);
-        }
-        public TMT WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
-        {
-            BakedBlocks = value;
-            return this;
-        }
-        public TMT WithBakedBlocks(params global::GBX.NET.Engines.Game.CGameCtnBlock[] values)
-        {
-            return WithBakedBlocks(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(values));
-        }
-        public TMT WithBakedBlocks(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlock> values)
-        {
-            return WithBakedBlocks(values.ToArray());
-        }
-        public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData
-        {
-            get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData");
-            set => SetBakedClipsAdditionalData(state, value);
-        }
-        public TMT WithBakedClipsAdditionalData(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value)
-        {
-            BakedClipsAdditionalData = value;
-            return this;
-        }
-        public TMT WithBakedClipsAdditionalData(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData[] values)
-        {
-            return WithBakedClipsAdditionalData(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>(values));
-        }
-        public TMT WithBakedClipsAdditionalData(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData> values)
-        {
-            return WithBakedClipsAdditionalData(values.ToArray());
-        }
         public TMT WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListTMT? value)
         {
             return base.WithBlockStock(value is null ? (global::GBX.NET.Engines.Game.CGameCtnCollectorList?)null : value is global::GBX.NET.Engines.Game.CGameCtnCollectorList node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths
-        {
-            get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths");
-            set => SetBotPaths(state, value);
-        }
-        public TMT WithBotPaths(List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value)
-        {
-            BotPaths = value;
-            return this;
-        }
-        public TMT WithBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath[] values)
-        {
-            return WithBotPaths(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>(values));
-        }
-        public TMT WithBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath> values)
-        {
-            return WithBotPaths(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TMT WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
-        public string? BuildVersion
-        {
-            get => state.Get<string?>("BuildVersion");
-            set => SetBuildVersion(state, value);
-        }
-        public TMT WithBuildVersion(string? value)
-        {
-            BuildVersion = value;
-            return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? CarMarksBuffer
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer");
-            set => SetCarMarksBuffer(state, value);
-        }
-        public TMT WithCarMarksBuffer(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value)
-        {
-            CarMarksBuffer = value;
-            return this;
-        }
-        public TMT WithCarMarksBuffer(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples[] values)
-        {
-            return WithCarMarksBuffer(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(values));
-        }
-        public TMT WithCarMarksBuffer(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> values)
-        {
-            return WithCarMarksBuffer(values.ToArray());
-        }
         public TMT WithCarMarksBuffer(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT[] values)
         {
-            return WithCarMarksBuffer(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithCarMarksBuffer(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT>(values, false));
         }
         public TMT WithCarMarksBuffer(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTMT> values)
         {
             return WithCarMarksBuffer(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds");
-            set => SetChallengeCardEventIds(state, value);
-        }
-        public TMT WithChallengeCardEventIds(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value)
-        {
-            ChallengeCardEventIds = value;
-            return this;
-        }
-        public TMT WithChallengeCardEventIds(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds> values)
-        {
-            return WithChallengeCardEventIds(values.ToArray());
-        }
-        public byte[]? ChallengeDecals
-        {
-            get => state.Get<byte[]?>("ChallengeDecals");
-            set => SetChallengeDecals(state, value);
-        }
-        public TMT WithChallengeDecals(params byte[]? value)
-        {
-            ChallengeDecals = value;
-            return this;
-        }
-        public TMT WithChallengeDecals(IEnumerable<byte> values)
-        {
-            return WithChallengeDecals(values.ToArray());
-        }
         public TMT WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTMT? value)
         {
             return base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public string? ChallengeScript
-        {
-            get => state.Get<string?>("ChallengeScript");
-            set => SetChallengeScript(state, value);
-        }
-        public TMT WithChallengeScript(string? value)
-        {
-            ChallengeScript = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipAmbiance
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance");
-            set => SetClipAmbiance(state, value);
-        }
-        public TMT WithClipAmbiance(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipAmbiance = value;
-            return this;
-        }
-        public TMT WithClipAmbianceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipAmbianceReference(state, value);
-            return this;
-        }
         public TMT WithClipAmbiance(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? value)
         {
-            return WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
-        }
-        public TMT WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipGlobal = value;
-            return this;
-        }
-        public TMT WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
-            return this;
+            return base.WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? value)
         {
-            return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public TMT WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public TMT WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
+            return base.WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public TMT WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public TMT WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTMT? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public TMT WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public TMT WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipPodium
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium");
-            set => SetClipPodium(state, value);
-        }
-        public TMT WithClipPodium(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipPodium = value;
-            return this;
-        }
-        public TMT WithClipPodiumReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipPodiumReference(state, value);
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithClipPodium(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTMT? value)
         {
-            return WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Int3 ClipTriggerSize
-        {
-            get => state.Get<Int3>("ClipTriggerSize");
-            set => SetClipTriggerSize(state, value);
-        }
-        public TMT WithClipTriggerSize(Int3 value)
-        {
-            ClipTriggerSize = value;
-            return this;
-        }
-        public string? Comments
-        {
-            get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
-        }
-        public TMT WithComments(string? value)
-        {
-            Comments = value;
-            return this;
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TMT WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public uint Crc32
-        {
-            get => state.Get<uint>("Crc32");
-            set => SetCrc32(state, value);
-        }
-        public TMT WithCrc32(uint value)
-        {
-            Crc32 = value;
-            return this;
-        }
-        public bool CreatedWithSimpleEditor
-        {
-            get => state.Get<bool>("CreatedWithSimpleEditor");
-            set => SetCreatedWithSimpleEditor(state, value);
-        }
-        public TMT WithCreatedWithSimpleEditor(bool value)
-        {
-            CreatedWithSimpleEditor = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public TMT WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public int DecoBaseHeightOffset
-        {
-            get => state.Get<int>("DecoBaseHeightOffset");
-            set => SetDecoBaseHeightOffset(state, value);
-        }
-        public TMT WithDecoBaseHeightOffset(int value)
-        {
-            DecoBaseHeightOffset = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
-            set => SetEditor(state, value);
-        }
-        public TMT WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
-        {
-            Editor = value;
-            return this;
-        }
-        public global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs
-        {
-            get => state.Get<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs");
-            set => SetEmbeddedItemModelsExternalDataRefs(state, value);
-        }
-        public TMT WithEmbeddedItemModelsExternalDataRefs(global::System.Collections.Generic.List<string>? value)
-        {
-            EmbeddedItemModelsExternalDataRefs = value;
-            return this;
-        }
-        public TMT WithEmbeddedItemModelsExternalDataRefs(params string[] values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(new List<string>(values));
-        }
-        public TMT WithEmbeddedItemModelsExternalDataRefs(IEnumerable<string> values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(values.ToArray());
-        }
-        public byte[]? EmbeddedZipData
-        {
-            get => state.Get<byte[]?>("EmbeddedZipData");
-            set => SetEmbeddedZipData(state, value);
-        }
-        public TMT WithEmbeddedZipData(params byte[]? value)
-        {
-            EmbeddedZipData = value;
-            return this;
-        }
-        public TMT WithEmbeddedZipData(IEnumerable<byte> values)
-        {
-            return WithEmbeddedZipData(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TMT WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public TMT WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool HasCustomCamThumbnail
-        {
-            get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
-        }
-        public TMT WithHasCustomCamThumbnail(bool value)
-        {
-            HasCustomCamThumbnail = value;
-            return this;
-        }
-        public bool HasLightmaps
-        {
-            get => state.Get<bool>("HasLightmaps");
-            set => SetHasLightmaps(state, value);
-        }
-        public TMT WithHasLightmaps(bool value)
-        {
-            HasLightmaps = value;
-            return this;
-        }
-        public global::GBX.NET.Checksum128? HashedPassword
-        {
-            get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
-            set => SetHashedPassword(state, value);
-        }
-        public TMT WithHashedPassword(global::GBX.NET.Checksum128? value)
-        {
-            HashedPassword = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TMT WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TMT WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache? LightmapCache
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache");
-            set => SetLightmapCache(state, value);
-        }
-        public TMT WithLightmapCache(global::GBX.NET.Engines.Hms.CHmsLightMapCache? value)
-        {
-            LightmapCache = value;
-            return this;
-        }
-        public TMT WithLightmapCacheReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLightmapCacheReference(state, value);
-            return this;
+            return base.WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithLightmapCache(global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTMT? value)
         {
-            return WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.ZlibData? LightmapCacheData
-        {
-            get => state.Get<global::GBX.NET.ZlibData?>("LightmapCacheData");
-            set => SetLightmapCacheData(state, value);
-        }
-        public TMT WithLightmapCacheData(global::GBX.NET.ZlibData? value)
-        {
-            LightmapCacheData = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public TMT WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames");
-            set => SetLightmapFrames(state, value);
-        }
-        public TMT WithLightmapFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value)
-        {
-            LightmapFrames = value;
-            return this;
-        }
-        public TMT WithLightmapFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame> values)
-        {
-            return WithLightmapFrames(values.ToArray());
-        }
-        public int? LightmapVersion
-        {
-            get => state.Get<int?>("LightmapVersion");
-            set => SetLightmapVersion(state, value);
-        }
-        public TMT WithLightmapVersion(int? value)
-        {
-            LightmapVersion = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public TMT WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public TMT WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public string? MapStyle
-        {
-            get => state.Get<string?>("MapStyle");
-            set => SetMapStyle(state, value);
-        }
-        public TMT WithMapStyle(string? value)
-        {
-            MapStyle = value;
-            return this;
-        }
-        public string? MapType
-        {
-            get => state.Get<string?>("MapType");
-            set => SetMapType(state, value);
-        }
-        public TMT WithMapType(string? value)
-        {
-            MapType = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TMT WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TMT WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbCheckpoints
-        {
-            get => state.Get<int>("NbCheckpoints");
-            set => SetNbCheckpoints(state, value);
-        }
-        public TMT WithNbCheckpoints(int value)
-        {
-            NbCheckpoints = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TMT WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? ObjectiveTextAuthor
-        {
-            get => state.Get<string?>("ObjectiveTextAuthor");
-            set => SetObjectiveTextAuthor(state, value);
-        }
-        public TMT WithObjectiveTextAuthor(string? value)
-        {
-            ObjectiveTextAuthor = value;
-            return this;
-        }
-        public string? ObjectiveTextBronze
-        {
-            get => state.Get<string?>("ObjectiveTextBronze");
-            set => SetObjectiveTextBronze(state, value);
-        }
-        public TMT WithObjectiveTextBronze(string? value)
-        {
-            ObjectiveTextBronze = value;
-            return this;
-        }
-        public string? ObjectiveTextGold
-        {
-            get => state.Get<string?>("ObjectiveTextGold");
-            set => SetObjectiveTextGold(state, value);
-        }
-        public TMT WithObjectiveTextGold(string? value)
-        {
-            ObjectiveTextGold = value;
-            return this;
-        }
-        public string? ObjectiveTextSilver
-        {
-            get => state.Get<string?>("ObjectiveTextSilver");
-            set => SetObjectiveTextSilver(state, value);
-        }
-        public TMT WithObjectiveTextSilver(string? value)
-        {
-            ObjectiveTextSilver = value;
-            return this;
-        }
-        public Int3 OffzoneTriggerSize
-        {
-            get => state.Get<Int3>("OffzoneTriggerSize");
-            set => SetOffzoneTriggerSize(state, value);
-        }
-        public TMT WithOffzoneTriggerSize(Int3 value)
-        {
-            OffzoneTriggerSize = value;
-            return this;
-        }
-        public List<BoxInt3>? Offzones
-        {
-            get => state.Get<List<BoxInt3>?>("Offzones");
-            set => SetOffzones(state, value);
-        }
-        public TMT WithOffzones(List<BoxInt3>? value)
-        {
-            Offzones = value;
-            return this;
-        }
-        public TMT WithOffzones(params BoxInt3[] values)
-        {
-            return WithOffzones(new List<BoxInt3>(values));
-        }
-        public TMT WithOffzones(IEnumerable<BoxInt3> values)
-        {
-            return WithOffzones(values.ToArray());
-        }
-        public UInt128 PackMask
-        {
-            get => state.Get<UInt128>("PackMask");
-            set => SetPackMask(state, value);
-        }
-        public TMT WithPackMask(UInt128 value)
-        {
-            PackMask = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TMT WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
-        {
-            get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-            set => SetScriptMetadata(state, value);
-        }
-        public TMT WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
-        {
-            ScriptMetadata = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TMT WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
-        }
-        public byte[]? Thumbnail
-        {
-            get => state.Get<byte[]?>("Thumbnail");
-            set => SetThumbnail(state, value);
-        }
-        public TMT WithThumbnail(params byte[]? value)
-        {
-            Thumbnail = value;
-            return this;
-        }
-        public TMT WithThumbnail(IEnumerable<byte> values)
-        {
-            return WithThumbnail(values.ToArray());
-        }
-        public float ThumbnailFarClipPlane
-        {
-            get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
-        }
-        public TMT WithThumbnailFarClipPlane(float value)
-        {
-            ThumbnailFarClipPlane = value;
-            return this;
-        }
-        public float ThumbnailFov
-        {
-            get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
-        }
-        public TMT WithThumbnailFov(float value)
-        {
-            ThumbnailFov = value;
-            return this;
-        }
-        public float ThumbnailNearClipPlane
-        {
-            get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
-        }
-        public TMT WithThumbnailNearClipPlane(float value)
-        {
-            ThumbnailNearClipPlane = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPitchYawRoll
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll");
-            set => SetThumbnailPitchYawRoll(state, value);
-        }
-        public TMT WithThumbnailPitchYawRoll(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPosition
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
-        }
-        public TMT WithThumbnailPosition(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPosition = value;
-            return this;
-        }
-        public Mat3 ThumbnailRotationMatrix
-        {
-            get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
-        }
-        public TMT WithThumbnailRotationMatrix(Mat3 value)
-        {
-            ThumbnailRotationMatrix = value;
-            return this;
-        }
-        public string? TitleId
-        {
-            get => state.Get<string?>("TitleId");
-            set => SetTitleId(state, value);
-        }
-        public TMT WithTitleId(string? value)
-        {
-            TitleId = value;
-            return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? TrafficElemDescs
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>?>("TrafficElemDescs");
-            set => SetTrafficElemDescs(state, value);
-        }
-        public TMT WithTrafficElemDescs(NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>? value)
-        {
-            TrafficElemDescs = value;
-            return this;
-        }
-        public TMT WithTrafficElemDescs(params global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc[] values)
-        {
-            return WithTrafficElemDescs(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc>(values));
-        }
-        public TMT WithTrafficElemDescs(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> values)
-        {
-            return WithTrafficElemDescs(values.ToArray());
+            return base.WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithTrafficElemDescs(params global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT[] values)
         {
-            return WithTrafficElemDescs(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTrafficElemDescs(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT>(values, false));
         }
         public TMT WithTrafficElemDescs(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT> values)
         {
             return WithTrafficElemDescs(values.ToArray());
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? TrafficPathSplines
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>?>("TrafficPathSplines");
-            set => SetTrafficPathSplines(state, value);
-        }
-        public TMT WithTrafficPathSplines(NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>? value)
-        {
-            TrafficPathSplines = value;
-            return this;
-        }
-        public TMT WithTrafficPathSplines(params global::GBX.NET.Engines.Plug.CPlugSpline3D[] values)
-        {
-            return WithTrafficPathSplines(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSpline3D>(values));
-        }
-        public TMT WithTrafficPathSplines(IEnumerable<global::GBX.NET.Engines.Plug.CPlugSpline3D> values)
-        {
-            return WithTrafficPathSplines(values.ToArray());
-        }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? TrafficPathSquares
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>?>("TrafficPathSquares");
-            set => SetTrafficPathSquares(state, value);
-        }
-        public TMT WithTrafficPathSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>? value)
-        {
-            TrafficPathSquares = value;
-            return this;
-        }
-        public TMT WithTrafficPathSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares[] values)
-        {
-            return WithTrafficPathSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares>(values));
-        }
-        public TMT WithTrafficPathSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares> values)
-        {
-            return WithTrafficPathSquares(values.ToArray());
-        }
         public TMT WithTrafficPathSquares(params global::GBX.NET.Interfaces.Plug.IPlugTrafficPathSquaresTMT[] values)
         {
-            return WithTrafficPathSquares(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTrafficPathSquares(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTrafficPathSquares, global::GBX.NET.Interfaces.Plug.IPlugTrafficPathSquaresTMT>(values, false));
         }
         public TMT WithTrafficPathSquares(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTrafficPathSquaresTMT> values)
         {
             return WithTrafficPathSquares(values.ToArray());
         }
-        public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? TrafficZoneSquares
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>?>("TrafficZoneSquares");
-            set => SetTrafficZoneSquares(state, value);
-        }
-        public TMT WithTrafficZoneSquares(NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>? value)
-        {
-            TrafficZoneSquares = value;
-            return this;
-        }
-        public TMT WithTrafficZoneSquares(params global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares[] values)
-        {
-            return WithTrafficZoneSquares(new NodeRefList<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares>(values));
-        }
-        public TMT WithTrafficZoneSquares(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares> values)
-        {
-            return WithTrafficZoneSquares(values.ToArray());
-        }
         public TMT WithTrafficZoneSquares(params global::GBX.NET.Interfaces.Plug.IPlugTrafficZoneSquaresTMT[] values)
         {
-            return WithTrafficZoneSquares(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithTrafficZoneSquares(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTrafficZoneSquares, global::GBX.NET.Interfaces.Plug.IPlugTrafficZoneSquaresTMT>(values, false));
         }
         public TMT WithTrafficZoneSquares(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTrafficZoneSquaresTMT> values)
         {
             return WithTrafficZoneSquares(values.ToArray());
         }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TMT WithXml(string? value)
-        {
-            Xml = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? ZoneGenealogy
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy");
-            set => SetZoneGenealogy(state, value);
-        }
-        public TMT WithZoneGenealogy(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value)
-        {
-            ZoneGenealogy = value;
-            return this;
-        }
-        public TMT WithZoneGenealogy(params global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy[] values)
-        {
-            return WithZoneGenealogy(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(values));
-        }
-        public TMT WithZoneGenealogy(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> values)
-        {
-            return WithZoneGenealogy(values.ToArray());
-        }
         public TMT WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT[] values)
         {
-            return WithZoneGenealogy(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithZoneGenealogy(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>(values, false));
         }
         public TMT WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT> values)
         {
@@ -5044,288 +3303,36 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TMT);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TMT);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TMT);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(GameVersion.TMT);
-            node.Chunks.Add(chunkHeader03043007);
-            var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(GameVersion.TMT);
-            node.Chunks.Add(chunkHeader03043008);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TMT);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
-            var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
-            node.Chunks.Add(chunk03043029);
-            var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
-            node.Chunks.Add(chunk0304302A);
-            var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
-            node.Chunks.Add(chunk03043034);
-            var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
-            node.Chunks.Add(chunk03043036);
-            var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
-            node.Chunks.Add(chunk03043038);
-            var chunk0304303D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D();
-            node.Chunks.Add(chunk0304303D);
-            var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
-            chunk0304303E.Version = 0;
-            node.Chunks.Add(chunk0304303E);
-            var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(GameVersion.TMT);
-            node.Chunks.Add(chunk03043040);
-            var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(GameVersion.TMT);
-            node.Chunks.Add(chunk03043042);
-            var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
-            node.Chunks.Add(chunk03043043);
-            var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
-            node.Chunks.Add(chunk03043044);
-            var chunk03043047 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047();
-            chunk03043047.Version = 0;
-            node.Chunks.Add(chunk03043047);
-            var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
-            chunk03043048.Version = 0;
-            node.Chunks.Add(chunk03043048);
-            var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(GameVersion.TMT);
-            node.Chunks.Add(chunk03043049);
-            var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
-            node.Chunks.Add(chunk0304304B);
-            var chunk0304304D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D(GameVersion.TMT);
-            node.Chunks.Add(chunk0304304D);
-            var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
-            node.Chunks.Add(chunk0304304F);
-            var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
-            chunk03043050.Version = 0;
-            node.Chunks.Add(chunk03043050);
-            var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
-            chunk03043051.Version = 0;
-            node.Chunks.Add(chunk03043051);
-            var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
-            chunk03043052.Version = 0;
-            node.Chunks.Add(chunk03043052);
-            var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(GameVersion.TMT);
-            node.Chunks.Add(chunk03043053);
-            var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(GameVersion.TMT);
-            node.Chunks.Add(chunk03043054);
-            var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
-            node.Chunks.Add(chunk03043055);
+            var node = CGameCtnChallengeBuilder.CreateRecipe10(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException("Required TMT chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException("Required TMT chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TMT chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk HeaderChunk03043007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk HeaderChunk03043008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043028 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043029 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0304302A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043034 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043036 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043038 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0304303D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0304303E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 4 }) throw new InvalidOperationException("Required TMT chunk Chunk03043040 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk03043042 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043043 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043044 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043047>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03043047 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03043048 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk03043049 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0304304B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304D>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk0304304D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0304304F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03043050 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03043051 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk03043052 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException("Required TMT chunk Chunk03043053 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk03043054 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03043055 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe10(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class MP4 : CGameCtnChallengeBuilderBase<MP4>
+    public partial class MP4 : CGameCtnChallengeBuilderMembers9<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? AnchoredObjects
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects");
-            set => SetAnchoredObjects(state, value);
-        }
-        public MP4 WithAnchoredObjects(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value)
-        {
-            AnchoredObjects = value;
-            return this;
-        }
-        public MP4 WithAnchoredObjects(params global::GBX.NET.Engines.Game.CGameCtnAnchoredObject[] values)
-        {
-            return WithAnchoredObjects(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(values));
-        }
-        public MP4 WithAnchoredObjects(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> values)
-        {
-            return WithAnchoredObjects(values.ToArray());
-        }
         public MP4 WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4[] values)
         {
-            return WithAnchoredObjects(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithAnchoredObjects(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4>(values, false));
         }
         public MP4 WithAnchoredObjects(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectMP4> values)
         {
             return WithAnchoredObjects(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("AnimationTriggers");
-            set => SetAnimationTriggers(state, value);
-        }
-        public MP4 WithAnimationTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value)
-        {
-            AnimationTriggers = value;
-            return this;
-        }
-        public MP4 WithAnimationTriggers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTriggerAction> values)
-        {
-            return WithAnimationTriggers(values.ToArray());
-        }
-        public string? AuthorExtraInfo
-        {
-            get => state.Get<string?>("AuthorExtraInfo");
-            set => SetAuthorExtraInfo(state, value);
-        }
-        public MP4 WithAuthorExtraInfo(string? value)
-        {
-            AuthorExtraInfo = value;
-            return this;
-        }
-        public string? AuthorNickname
-        {
-            get => state.Get<string?>("AuthorNickname");
-            set => SetAuthorNickname(state, value);
-        }
-        public MP4 WithAuthorNickname(string? value)
-        {
-            AuthorNickname = value;
-            return this;
-        }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public MP4 WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public MP4 WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public int AuthorVersion
-        {
-            get => state.Get<int>("AuthorVersion");
-            set => SetAuthorVersion(state, value);
-        }
-        public MP4 WithAuthorVersion(int value)
-        {
-            AuthorVersion = value;
-            return this;
-        }
-        public string? AuthorZone
-        {
-            get => state.Get<string?>("AuthorZone");
-            set => SetAuthorZone(state, value);
-        }
-        public MP4 WithAuthorZone(string? value)
-        {
-            AuthorZone = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks");
-            set => SetBakedBlocks(state, value);
-        }
-        public MP4 WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
-        {
-            BakedBlocks = value;
-            return this;
-        }
-        public MP4 WithBakedBlocks(params global::GBX.NET.Engines.Game.CGameCtnBlock[] values)
-        {
-            return WithBakedBlocks(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(values));
-        }
-        public MP4 WithBakedBlocks(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlock> values)
-        {
-            return WithBakedBlocks(values.ToArray());
-        }
         public MP4 WithBakedBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4[] values)
         {
-            return WithBakedBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBakedBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>(values, false));
         }
         public MP4 WithBakedBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4> values)
         {
             return WithBakedBlocks(values.ToArray());
-        }
-        public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData
-        {
-            get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData");
-            set => SetBakedClipsAdditionalData(state, value);
-        }
-        public MP4 WithBakedClipsAdditionalData(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value)
-        {
-            BakedClipsAdditionalData = value;
-            return this;
-        }
-        public MP4 WithBakedClipsAdditionalData(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData[] values)
-        {
-            return WithBakedClipsAdditionalData(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>(values));
-        }
-        public MP4 WithBakedClipsAdditionalData(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData> values)
-        {
-            return WithBakedClipsAdditionalData(values.ToArray());
         }
         public MP4 WithBlockStock(global::GBX.NET.Interfaces.Game.IGameCtnCollectorListMP4? value)
         {
@@ -5333,725 +3340,55 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         }
         public MP4 WithBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4[] values)
         {
-            return base.WithBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4>(values, false));
         }
         public MP4 WithBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4> values)
         {
             return WithBlocks(values.ToArray());
         }
-        public List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths
-        {
-            get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths");
-            set => SetBotPaths(state, value);
-        }
-        public MP4 WithBotPaths(List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value)
-        {
-            BotPaths = value;
-            return this;
-        }
-        public MP4 WithBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath[] values)
-        {
-            return WithBotPaths(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>(values));
-        }
-        public MP4 WithBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath> values)
-        {
-            return WithBotPaths(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public MP4 WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
-        public string? BuildVersion
-        {
-            get => state.Get<string?>("BuildVersion");
-            set => SetBuildVersion(state, value);
-        }
-        public MP4 WithBuildVersion(string? value)
-        {
-            BuildVersion = value;
-            return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? CarMarksBuffer
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer");
-            set => SetCarMarksBuffer(state, value);
-        }
-        public MP4 WithCarMarksBuffer(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value)
-        {
-            CarMarksBuffer = value;
-            return this;
-        }
-        public MP4 WithCarMarksBuffer(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples[] values)
-        {
-            return WithCarMarksBuffer(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(values));
-        }
-        public MP4 WithCarMarksBuffer(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> values)
-        {
-            return WithCarMarksBuffer(values.ToArray());
-        }
         public MP4 WithCarMarksBuffer(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4[] values)
         {
-            return WithCarMarksBuffer(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithCarMarksBuffer(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4>(values, false));
         }
         public MP4 WithCarMarksBuffer(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesMP4> values)
         {
             return WithCarMarksBuffer(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugAnimFile? ChallengeAnimation
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("ChallengeAnimation");
-            set => SetChallengeAnimation(state, value);
-        }
-        public MP4 WithChallengeAnimation(global::GBX.NET.Engines.Plug.CPlugAnimFile? value)
-        {
-            ChallengeAnimation = value;
-            return this;
-        }
-        public MP4 WithChallengeAnimationReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetChallengeAnimationReference(state, value);
-            return this;
-        }
         public MP4 WithChallengeAnimation(global::GBX.NET.Interfaces.Plug.IPlugAnimFileMP4? value)
         {
-            return WithChallengeAnimation(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds");
-            set => SetChallengeCardEventIds(state, value);
-        }
-        public MP4 WithChallengeCardEventIds(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value)
-        {
-            ChallengeCardEventIds = value;
-            return this;
-        }
-        public MP4 WithChallengeCardEventIds(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds> values)
-        {
-            return WithChallengeCardEventIds(values.ToArray());
-        }
-        public byte[]? ChallengeDecals
-        {
-            get => state.Get<byte[]?>("ChallengeDecals");
-            set => SetChallengeDecals(state, value);
-        }
-        public MP4 WithChallengeDecals(params byte[]? value)
-        {
-            ChallengeDecals = value;
-            return this;
-        }
-        public MP4 WithChallengeDecals(IEnumerable<byte> values)
-        {
-            return WithChallengeDecals(values.ToArray());
+            return base.WithChallengeAnimation(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersMP4? value)
         {
             return base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipAmbiance
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance");
-            set => SetClipAmbiance(state, value);
-        }
-        public MP4 WithClipAmbiance(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipAmbiance = value;
-            return this;
-        }
-        public MP4 WithClipAmbianceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipAmbianceReference(state, value);
-            return this;
-        }
         public MP4 WithClipAmbiance(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? value)
         {
-            return WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
-        }
-        public MP4 WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipGlobal = value;
-            return this;
-        }
-        public MP4 WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
-            return this;
+            return base.WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? value)
         {
-            return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public MP4 WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public MP4 WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
+            return base.WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public MP4 WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public MP4 WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupMP4? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public MP4 WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public MP4 WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipPodium
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium");
-            set => SetClipPodium(state, value);
-        }
-        public MP4 WithClipPodium(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipPodium = value;
-            return this;
-        }
-        public MP4 WithClipPodiumReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipPodiumReference(state, value);
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithClipPodium(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipMP4? value)
         {
-            return WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Int3 ClipTriggerSize
-        {
-            get => state.Get<Int3>("ClipTriggerSize");
-            set => SetClipTriggerSize(state, value);
-        }
-        public MP4 WithClipTriggerSize(Int3 value)
-        {
-            ClipTriggerSize = value;
-            return this;
-        }
-        public string? Comments
-        {
-            get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
-        }
-        public MP4 WithComments(string? value)
-        {
-            Comments = value;
-            return this;
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public MP4 WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public uint Crc32
-        {
-            get => state.Get<uint>("Crc32");
-            set => SetCrc32(state, value);
-        }
-        public MP4 WithCrc32(uint value)
-        {
-            Crc32 = value;
-            return this;
-        }
-        public bool CreatedWithSimpleEditor
-        {
-            get => state.Get<bool>("CreatedWithSimpleEditor");
-            set => SetCreatedWithSimpleEditor(state, value);
-        }
-        public MP4 WithCreatedWithSimpleEditor(bool value)
-        {
-            CreatedWithSimpleEditor = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public MP4 WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public TimeInt32? DayDuration
-        {
-            get => state.Get<TimeInt32?>("DayDuration");
-            set => SetDayDuration(state, value);
-        }
-        public MP4 WithDayDuration(TimeInt32? value)
-        {
-            DayDuration = value;
-            return this;
-        }
-        public TimeSpan? DayTime
-        {
-            get => state.Get<TimeSpan?>("DayTime");
-            set => SetDayTime(state, value);
-        }
-        public MP4 WithDayTime(TimeSpan? value)
-        {
-            DayTime = value;
-            return this;
-        }
-        public int DecoBaseHeightOffset
-        {
-            get => state.Get<int>("DecoBaseHeightOffset");
-            set => SetDecoBaseHeightOffset(state, value);
-        }
-        public MP4 WithDecoBaseHeightOffset(int value)
-        {
-            DecoBaseHeightOffset = value;
-            return this;
-        }
-        public bool DynamicDaylight
-        {
-            get => state.Get<bool>("DynamicDaylight");
-            set => SetDynamicDaylight(state, value);
-        }
-        public MP4 WithDynamicDaylight(bool value)
-        {
-            DynamicDaylight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
-            set => SetEditor(state, value);
-        }
-        public MP4 WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
-        {
-            Editor = value;
-            return this;
-        }
-        public global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs
-        {
-            get => state.Get<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs");
-            set => SetEmbeddedItemModelsExternalDataRefs(state, value);
-        }
-        public MP4 WithEmbeddedItemModelsExternalDataRefs(global::System.Collections.Generic.List<string>? value)
-        {
-            EmbeddedItemModelsExternalDataRefs = value;
-            return this;
-        }
-        public MP4 WithEmbeddedItemModelsExternalDataRefs(params string[] values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(new List<string>(values));
-        }
-        public MP4 WithEmbeddedItemModelsExternalDataRefs(IEnumerable<string> values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(values.ToArray());
-        }
-        public byte[]? EmbeddedZipData
-        {
-            get => state.Get<byte[]?>("EmbeddedZipData");
-            set => SetEmbeddedZipData(state, value);
-        }
-        public MP4 WithEmbeddedZipData(params byte[]? value)
-        {
-            EmbeddedZipData = value;
-            return this;
-        }
-        public MP4 WithEmbeddedZipData(IEnumerable<byte> values)
-        {
-            return WithEmbeddedZipData(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public MP4 WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public MP4 WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool HasCustomCamThumbnail
-        {
-            get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
-        }
-        public MP4 WithHasCustomCamThumbnail(bool value)
-        {
-            HasCustomCamThumbnail = value;
-            return this;
-        }
-        public bool HasLightmaps
-        {
-            get => state.Get<bool>("HasLightmaps");
-            set => SetHasLightmaps(state, value);
-        }
-        public MP4 WithHasLightmaps(bool value)
-        {
-            HasLightmaps = value;
-            return this;
-        }
-        public global::GBX.NET.Checksum128? HashedPassword
-        {
-            get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
-            set => SetHashedPassword(state, value);
-        }
-        public MP4 WithHashedPassword(global::GBX.NET.Checksum128? value)
-        {
-            HashedPassword = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public MP4 WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public MP4 WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache? LightmapCache
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache");
-            set => SetLightmapCache(state, value);
-        }
-        public MP4 WithLightmapCache(global::GBX.NET.Engines.Hms.CHmsLightMapCache? value)
-        {
-            LightmapCache = value;
-            return this;
-        }
-        public MP4 WithLightmapCacheReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLightmapCacheReference(state, value);
-            return this;
+            return base.WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithLightmapCache(global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheMP4? value)
         {
-            return WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.ZlibData? LightmapCacheData
-        {
-            get => state.Get<global::GBX.NET.ZlibData?>("LightmapCacheData");
-            set => SetLightmapCacheData(state, value);
-        }
-        public MP4 WithLightmapCacheData(global::GBX.NET.ZlibData? value)
-        {
-            LightmapCacheData = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public MP4 WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames");
-            set => SetLightmapFrames(state, value);
-        }
-        public MP4 WithLightmapFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value)
-        {
-            LightmapFrames = value;
-            return this;
-        }
-        public MP4 WithLightmapFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame> values)
-        {
-            return WithLightmapFrames(values.ToArray());
-        }
-        public int? LightmapVersion
-        {
-            get => state.Get<int?>("LightmapVersion");
-            set => SetLightmapVersion(state, value);
-        }
-        public MP4 WithLightmapVersion(int? value)
-        {
-            LightmapVersion = value;
-            return this;
-        }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public MP4 WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public MP4 WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public string? MapStyle
-        {
-            get => state.Get<string?>("MapStyle");
-            set => SetMapStyle(state, value);
-        }
-        public MP4 WithMapStyle(string? value)
-        {
-            MapStyle = value;
-            return this;
-        }
-        public string? MapType
-        {
-            get => state.Get<string?>("MapType");
-            set => SetMapType(state, value);
-        }
-        public MP4 WithMapType(string? value)
-        {
-            MapType = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public MP4 WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public MP4 WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbCheckpoints
-        {
-            get => state.Get<int>("NbCheckpoints");
-            set => SetNbCheckpoints(state, value);
-        }
-        public MP4 WithNbCheckpoints(int value)
-        {
-            NbCheckpoints = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public MP4 WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? ObjectiveTextAuthor
-        {
-            get => state.Get<string?>("ObjectiveTextAuthor");
-            set => SetObjectiveTextAuthor(state, value);
-        }
-        public MP4 WithObjectiveTextAuthor(string? value)
-        {
-            ObjectiveTextAuthor = value;
-            return this;
-        }
-        public string? ObjectiveTextBronze
-        {
-            get => state.Get<string?>("ObjectiveTextBronze");
-            set => SetObjectiveTextBronze(state, value);
-        }
-        public MP4 WithObjectiveTextBronze(string? value)
-        {
-            ObjectiveTextBronze = value;
-            return this;
-        }
-        public string? ObjectiveTextGold
-        {
-            get => state.Get<string?>("ObjectiveTextGold");
-            set => SetObjectiveTextGold(state, value);
-        }
-        public MP4 WithObjectiveTextGold(string? value)
-        {
-            ObjectiveTextGold = value;
-            return this;
-        }
-        public string? ObjectiveTextSilver
-        {
-            get => state.Get<string?>("ObjectiveTextSilver");
-            set => SetObjectiveTextSilver(state, value);
-        }
-        public MP4 WithObjectiveTextSilver(string? value)
-        {
-            ObjectiveTextSilver = value;
-            return this;
-        }
-        public Int3 OffzoneTriggerSize
-        {
-            get => state.Get<Int3>("OffzoneTriggerSize");
-            set => SetOffzoneTriggerSize(state, value);
-        }
-        public MP4 WithOffzoneTriggerSize(Int3 value)
-        {
-            OffzoneTriggerSize = value;
-            return this;
-        }
-        public List<BoxInt3>? Offzones
-        {
-            get => state.Get<List<BoxInt3>?>("Offzones");
-            set => SetOffzones(state, value);
-        }
-        public MP4 WithOffzones(List<BoxInt3>? value)
-        {
-            Offzones = value;
-            return this;
-        }
-        public MP4 WithOffzones(params BoxInt3[] values)
-        {
-            return WithOffzones(new List<BoxInt3>(values));
-        }
-        public MP4 WithOffzones(IEnumerable<BoxInt3> values)
-        {
-            return WithOffzones(values.ToArray());
-        }
-        public UInt128 PackMask
-        {
-            get => state.Get<UInt128>("PackMask");
-            set => SetPackMask(state, value);
-        }
-        public MP4 WithPackMask(UInt128 value)
-        {
-            PackMask = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public MP4 WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]?>("RecordedBotPaths");
-            set => SetRecordedBotPaths(state, value);
-        }
-        public MP4 WithRecordedBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value)
-        {
-            RecordedBotPaths = value;
-            return this;
-        }
-        public MP4 WithRecordedBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath> values)
-        {
-            return WithRecordedBotPaths(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
-        {
-            get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-            set => SetScriptMetadata(state, value);
-        }
-        public MP4 WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
-        {
-            ScriptMetadata = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public MP4 WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
-            return this;
+            return base.WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.SubMapInfo[]? SubMapsInfos
         {
@@ -6067,141 +3404,9 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithSubMapsInfos(values.ToArray());
         }
-        public byte[]? Thumbnail
-        {
-            get => state.Get<byte[]?>("Thumbnail");
-            set => SetThumbnail(state, value);
-        }
-        public MP4 WithThumbnail(params byte[]? value)
-        {
-            Thumbnail = value;
-            return this;
-        }
-        public MP4 WithThumbnail(IEnumerable<byte> values)
-        {
-            return WithThumbnail(values.ToArray());
-        }
-        public float ThumbnailFarClipPlane
-        {
-            get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
-        }
-        public MP4 WithThumbnailFarClipPlane(float value)
-        {
-            ThumbnailFarClipPlane = value;
-            return this;
-        }
-        public float ThumbnailFov
-        {
-            get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
-        }
-        public MP4 WithThumbnailFov(float value)
-        {
-            ThumbnailFov = value;
-            return this;
-        }
-        public float ThumbnailNearClipPlane
-        {
-            get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
-        }
-        public MP4 WithThumbnailNearClipPlane(float value)
-        {
-            ThumbnailNearClipPlane = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPitchYawRoll
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll");
-            set => SetThumbnailPitchYawRoll(state, value);
-        }
-        public MP4 WithThumbnailPitchYawRoll(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPosition
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
-        }
-        public MP4 WithThumbnailPosition(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPosition = value;
-            return this;
-        }
-        public Mat3 ThumbnailRotationMatrix
-        {
-            get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
-        }
-        public MP4 WithThumbnailRotationMatrix(Mat3 value)
-        {
-            ThumbnailRotationMatrix = value;
-            return this;
-        }
-        public string? TitleId
-        {
-            get => state.Get<string?>("TitleId");
-            set => SetTitleId(state, value);
-        }
-        public MP4 WithTitleId(string? value)
-        {
-            TitleId = value;
-            return this;
-        }
-        public Vec3 WorldDistortScales
-        {
-            get => state.Get<Vec3>("WorldDistortScales");
-            set => SetWorldDistortScales(state, value);
-        }
-        public MP4 WithWorldDistortScales(Vec3 value)
-        {
-            WorldDistortScales = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData?>("WorldDistortXYZ");
-            set => SetWorldDistortXYZ(state, value);
-        }
-        public MP4 WithWorldDistortXYZ(global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value)
-        {
-            WorldDistortXYZ = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public MP4 WithXml(string? value)
-        {
-            Xml = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? ZoneGenealogy
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy");
-            set => SetZoneGenealogy(state, value);
-        }
-        public MP4 WithZoneGenealogy(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value)
-        {
-            ZoneGenealogy = value;
-            return this;
-        }
-        public MP4 WithZoneGenealogy(params global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy[] values)
-        {
-            return WithZoneGenealogy(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(values));
-        }
-        public MP4 WithZoneGenealogy(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> values)
-        {
-            return WithZoneGenealogy(values.ToArray());
-        }
         public MP4 WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4[] values)
         {
-            return WithZoneGenealogy(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithZoneGenealogy(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>(values, false));
         }
         public MP4 WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4> values)
         {
@@ -6210,297 +3415,36 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.MP4);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.MP4);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.MP4);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(GameVersion.MP4);
-            node.Chunks.Add(chunkHeader03043007);
-            var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(GameVersion.MP4);
-            node.Chunks.Add(chunkHeader03043008);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.MP4);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
-            var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
-            node.Chunks.Add(chunk03043029);
-            var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
-            node.Chunks.Add(chunk0304302A);
-            var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
-            node.Chunks.Add(chunk03043034);
-            var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
-            node.Chunks.Add(chunk03043036);
-            var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
-            node.Chunks.Add(chunk03043038);
-            var chunk0304303D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D();
-            node.Chunks.Add(chunk0304303D);
-            var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
-            chunk0304303E.Version = 0;
-            node.Chunks.Add(chunk0304303E);
-            var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(GameVersion.MP4);
-            node.Chunks.Add(chunk03043040);
-            var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(GameVersion.MP4);
-            node.Chunks.Add(chunk03043042);
-            var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
-            node.Chunks.Add(chunk03043043);
-            var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
-            node.Chunks.Add(chunk03043044);
-            var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
-            chunk03043048.Version = 0;
-            node.Chunks.Add(chunk03043048);
-            var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(GameVersion.MP4);
-            node.Chunks.Add(chunk03043049);
-            var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
-            node.Chunks.Add(chunk0304304B);
-            var chunk0304304E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E();
-            chunk0304304E.Version = 0;
-            node.Chunks.Add(chunk0304304E);
-            var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
-            node.Chunks.Add(chunk0304304F);
-            var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
-            chunk03043050.Version = 0;
-            node.Chunks.Add(chunk03043050);
-            var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
-            chunk03043051.Version = 0;
-            node.Chunks.Add(chunk03043051);
-            var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
-            chunk03043052.Version = 0;
-            node.Chunks.Add(chunk03043052);
-            var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(GameVersion.MP4);
-            node.Chunks.Add(chunk03043053);
-            var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(GameVersion.MP4);
-            node.Chunks.Add(chunk03043054);
-            var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
-            node.Chunks.Add(chunk03043055);
-            var chunk03043056 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056(GameVersion.MP4);
-            node.Chunks.Add(chunk03043056);
-            var chunk03043057 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057(GameVersion.MP4);
-            node.Chunks.Add(chunk03043057);
-            var chunk03043058 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043058(GameVersion.MP4);
-            node.Chunks.Add(chunk03043058);
-            var chunk03043059 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059(GameVersion.MP4);
-            node.Chunks.Add(chunk03043059);
+            var node = CGameCtnChallengeBuilder.CreateRecipe11(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException("Required MP4 chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException("Required MP4 chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException("Required MP4 chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required MP4 chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk HeaderChunk03043007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk HeaderChunk03043008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException("Required MP4 chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043028 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043029 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0304302A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043034 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043036 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043038 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303D>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0304303D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0304303E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 4 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043040 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043042 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043043 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043044 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043048 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043049 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0304304B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0304304E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0304304F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043050 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043051 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043052 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043053 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043054 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03043055 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043056 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043057 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043058>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043058 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk03043059 is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe11(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnChallenge node);
     }
-    public partial class TM2020 : CGameCtnChallengeBuilderBase<TM2020>
+    public partial class TM2020 : CGameCtnChallengeBuilderMembers9<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallenge> state) : base(state) { }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? AnchoredObjects
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>?>("AnchoredObjects");
-            set => SetAnchoredObjects(state, value);
-        }
-        public TM2020 WithAnchoredObjects(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>? value)
-        {
-            AnchoredObjects = value;
-            return this;
-        }
-        public TM2020 WithAnchoredObjects(params global::GBX.NET.Engines.Game.CGameCtnAnchoredObject[] values)
-        {
-            return WithAnchoredObjects(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject>(values));
-        }
-        public TM2020 WithAnchoredObjects(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject> values)
-        {
-            return WithAnchoredObjects(values.ToArray());
-        }
         public TM2020 WithAnchoredObjects(params global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020[] values)
         {
-            return WithAnchoredObjects(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnAnchoredObject node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithAnchoredObjects(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnAnchoredObject, global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020>(values, false));
         }
         public TM2020 WithAnchoredObjects(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnAnchoredObjectTM2020> values)
         {
             return WithAnchoredObjects(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? AnimationTriggers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugTriggerAction[]?>("AnimationTriggers");
-            set => SetAnimationTriggers(state, value);
-        }
-        public TM2020 WithAnimationTriggers(params global::GBX.NET.Engines.Plug.CPlugTriggerAction[]? value)
-        {
-            AnimationTriggers = value;
-            return this;
-        }
-        public TM2020 WithAnimationTriggers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugTriggerAction> values)
-        {
-            return WithAnimationTriggers(values.ToArray());
-        }
-        public string? AuthorExtraInfo
-        {
-            get => state.Get<string?>("AuthorExtraInfo");
-            set => SetAuthorExtraInfo(state, value);
-        }
-        public TM2020 WithAuthorExtraInfo(string? value)
-        {
-            AuthorExtraInfo = value;
-            return this;
-        }
-        public string? AuthorNickname
-        {
-            get => state.Get<string?>("AuthorNickname");
-            set => SetAuthorNickname(state, value);
-        }
-        public TM2020 WithAuthorNickname(string? value)
-        {
-            AuthorNickname = value;
-            return this;
-        }
-        public int? AuthorScore
-        {
-            get => state.Get<int?>("AuthorScore");
-            set => SetAuthorScore(state, value);
-        }
-        public TM2020 WithAuthorScore(int? value)
-        {
-            AuthorScore = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? AuthorTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("AuthorTime");
-            set => SetAuthorTime(state, value);
-        }
-        public TM2020 WithAuthorTime(global::TmEssentials.TimeInt32? value)
-        {
-            AuthorTime = value;
-            return this;
-        }
-        public int AuthorVersion
-        {
-            get => state.Get<int>("AuthorVersion");
-            set => SetAuthorVersion(state, value);
-        }
-        public TM2020 WithAuthorVersion(int value)
-        {
-            AuthorVersion = value;
-            return this;
-        }
-        public string? AuthorZone
-        {
-            get => state.Get<string?>("AuthorZone");
-            set => SetAuthorZone(state, value);
-        }
-        public TM2020 WithAuthorZone(string? value)
-        {
-            AuthorZone = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? BakedBlocks
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>?>("BakedBlocks");
-            set => SetBakedBlocks(state, value);
-        }
-        public TM2020 WithBakedBlocks(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>? value)
-        {
-            BakedBlocks = value;
-            return this;
-        }
-        public TM2020 WithBakedBlocks(params global::GBX.NET.Engines.Game.CGameCtnBlock[] values)
-        {
-            return WithBakedBlocks(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlock>(values));
-        }
-        public TM2020 WithBakedBlocks(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnBlock> values)
-        {
-            return WithBakedBlocks(values.ToArray());
-        }
         public TM2020 WithBakedBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020[] values)
         {
-            return WithBakedBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBakedBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>(values, false));
         }
         public TM2020 WithBakedBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020> values)
         {
             return WithBakedBlocks(values.ToArray());
-        }
-        public global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? BakedClipsAdditionalData
-        {
-            get => state.Get<global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>?>("BakedClipsAdditionalData");
-            set => SetBakedClipsAdditionalData(state, value);
-        }
-        public TM2020 WithBakedClipsAdditionalData(global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>? value)
-        {
-            BakedClipsAdditionalData = value;
-            return this;
-        }
-        public TM2020 WithBakedClipsAdditionalData(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData[] values)
-        {
-            return WithBakedClipsAdditionalData(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData>(values));
-        }
-        public TM2020 WithBakedClipsAdditionalData(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SBakedClipsAdditionalData> values)
-        {
-            return WithBakedClipsAdditionalData(values.ToArray());
         }
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.BlockOctreeData? BlockOctree
         {
@@ -6518,207 +3462,43 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         }
         public TM2020 WithBlocks(params global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020[] values)
         {
-            return base.WithBlocks(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnBlock node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithBlocks(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnBlock, global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020>(values, false));
         }
         public TM2020 WithBlocks(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020> values)
         {
             return WithBlocks(values.ToArray());
         }
-        public List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? BotPaths
-        {
-            get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>?>("BotPaths");
-            set => SetBotPaths(state, value);
-        }
-        public TM2020 WithBotPaths(List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>? value)
-        {
-            BotPaths = value;
-            return this;
-        }
-        public TM2020 WithBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath[] values)
-        {
-            return WithBotPaths(new List<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath>(values));
-        }
-        public TM2020 WithBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.BotPath> values)
-        {
-            return WithBotPaths(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? BronzeTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("BronzeTime");
-            set => SetBronzeTime(state, value);
-        }
-        public TM2020 WithBronzeTime(global::TmEssentials.TimeInt32? value)
-        {
-            BronzeTime = value;
-            return this;
-        }
-        public string? BuildVersion
-        {
-            get => state.Get<string?>("BuildVersion");
-            set => SetBuildVersion(state, value);
-        }
-        public TM2020 WithBuildVersion(string? value)
-        {
-            BuildVersion = value;
-            return this;
-        }
-        public NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? CarMarksBuffer
-        {
-            get => state.Get<NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>?>("CarMarksBuffer");
-            set => SetCarMarksBuffer(state, value);
-        }
-        public TM2020 WithCarMarksBuffer(NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>? value)
-        {
-            CarMarksBuffer = value;
-            return this;
-        }
-        public TM2020 WithCarMarksBuffer(params global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples[] values)
-        {
-            return WithCarMarksBuffer(new NodeRefList<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples>(values));
-        }
-        public TM2020 WithCarMarksBuffer(IEnumerable<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples> values)
-        {
-            return WithCarMarksBuffer(values.ToArray());
-        }
         public TM2020 WithCarMarksBuffer(params global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020[] values)
         {
-            return WithCarMarksBuffer(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithCarMarksBuffer(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksSamples, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020>(values, false));
         }
         public TM2020 WithCarMarksBuffer(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksSamplesTM2020> values)
         {
             return WithCarMarksBuffer(values.ToArray());
         }
-        public global::GBX.NET.Engines.Plug.CPlugAnimFile? ChallengeAnimation
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimFile?>("ChallengeAnimation");
-            set => SetChallengeAnimation(state, value);
-        }
-        public TM2020 WithChallengeAnimation(global::GBX.NET.Engines.Plug.CPlugAnimFile? value)
-        {
-            ChallengeAnimation = value;
-            return this;
-        }
-        public TM2020 WithChallengeAnimationReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimFile> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetChallengeAnimationReference(state, value);
-            return this;
-        }
         public TM2020 WithChallengeAnimation(global::GBX.NET.Interfaces.Plug.IPlugAnimFileTM2020? value)
         {
-            return WithChallengeAnimation(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? ChallengeCardEventIds
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]?>("ChallengeCardEventIds");
-            set => SetChallengeCardEventIds(state, value);
-        }
-        public TM2020 WithChallengeCardEventIds(params global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds[]? value)
-        {
-            ChallengeCardEventIds = value;
-            return this;
-        }
-        public TM2020 WithChallengeCardEventIds(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.SChallengeCardEventIds> values)
-        {
-            return WithChallengeCardEventIds(values.ToArray());
-        }
-        public byte[]? ChallengeDecals
-        {
-            get => state.Get<byte[]?>("ChallengeDecals");
-            set => SetChallengeDecals(state, value);
-        }
-        public TM2020 WithChallengeDecals(params byte[]? value)
-        {
-            ChallengeDecals = value;
-            return this;
-        }
-        public TM2020 WithChallengeDecals(IEnumerable<byte> values)
-        {
-            return WithChallengeDecals(values.ToArray());
+            return base.WithChallengeAnimation(value is null ? (global::GBX.NET.Engines.Plug.CPlugAnimFile?)null : value is global::GBX.NET.Engines.Plug.CPlugAnimFile node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithChallengeParameters(global::GBX.NET.Interfaces.Game.IGameCtnChallengeParametersTM2020? value)
         {
             return base.WithChallengeParameters(value is null ? (global::GBX.NET.Engines.Game.CGameCtnChallengeParameters?)null : value is global::GBX.NET.Engines.Game.CGameCtnChallengeParameters node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipAmbiance
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipAmbiance");
-            set => SetClipAmbiance(state, value);
-        }
-        public TM2020 WithClipAmbiance(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipAmbiance = value;
-            return this;
-        }
-        public TM2020 WithClipAmbianceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipAmbianceReference(state, value);
-            return this;
-        }
         public TM2020 WithClipAmbiance(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? value)
         {
-            return WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipGlobal
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipGlobal");
-            set => SetClipGlobal(state, value);
-        }
-        public TM2020 WithClipGlobal(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipGlobal = value;
-            return this;
-        }
-        public TM2020 WithClipGlobalReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGlobalReference(state, value);
-            return this;
+            return base.WithClipAmbiance(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithClipGlobal(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? value)
         {
-            return WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupEndRace
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupEndRace");
-            set => SetClipGroupEndRace(state, value);
-        }
-        public TM2020 WithClipGroupEndRace(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupEndRace = value;
-            return this;
-        }
-        public TM2020 WithClipGroupEndRaceReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupEndRaceReference(state, value);
-            return this;
+            return base.WithClipGlobal(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithClipGroupEndRace(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? value)
         {
-            return WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? ClipGroupInGame
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?>("ClipGroupInGame");
-            set => SetClipGroupInGame(state, value);
-        }
-        public TM2020 WithClipGroupInGame(global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup? value)
-        {
-            ClipGroupInGame = value;
-            return this;
-        }
-        public TM2020 WithClipGroupInGameReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipGroupInGameReference(state, value);
-            return this;
+            return base.WithClipGroupEndRace(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithClipGroupInGame(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020? value)
         {
-            return WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithClipGroupInGame(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup>? ClipGroups
         {
@@ -6740,91 +3520,19 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         }
         public TM2020 WithClipGroups(params global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020[] values)
         {
-            return WithClipGroups(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return WithClipGroups(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnMediaClipGroup, global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020>(values, false));
         }
         public TM2020 WithClipGroups(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnMediaClipGroupTM2020> values)
         {
             return WithClipGroups(values.ToArray());
         }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipIntro
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipIntro");
-            set => SetClipIntro(state, value);
-        }
-        public TM2020 WithClipIntro(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipIntro = value;
-            return this;
-        }
-        public TM2020 WithClipIntroReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipIntroReference(state, value);
-            return this;
-        }
         public TM2020 WithClipIntro(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? value)
         {
-            return WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnMediaClip? ClipPodium
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnMediaClip?>("ClipPodium");
-            set => SetClipPodium(state, value);
-        }
-        public TM2020 WithClipPodium(global::GBX.NET.Engines.Game.CGameCtnMediaClip? value)
-        {
-            ClipPodium = value;
-            return this;
-        }
-        public TM2020 WithClipPodiumReference(NodeRef<global::GBX.NET.Engines.Game.CGameCtnMediaClip> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetClipPodiumReference(state, value);
-            return this;
+            return base.WithClipIntro(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithClipPodium(global::GBX.NET.Interfaces.Game.IGameCtnMediaClipTM2020? value)
         {
-            return WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public Int3 ClipTriggerSize
-        {
-            get => state.Get<Int3>("ClipTriggerSize");
-            set => SetClipTriggerSize(state, value);
-        }
-        public TM2020 WithClipTriggerSize(Int3 value)
-        {
-            ClipTriggerSize = value;
-            return this;
-        }
-        public string? Comments
-        {
-            get => state.Get<string?>("Comments");
-            set => SetComments(state, value);
-        }
-        public TM2020 WithComments(string? value)
-        {
-            Comments = value;
-            return this;
-        }
-        public int Cost
-        {
-            get => state.Get<int>("Cost");
-            set => SetCost(state, value);
-        }
-        public TM2020 WithCost(int value)
-        {
-            Cost = value;
-            return this;
-        }
-        public uint Crc32
-        {
-            get => state.Get<uint>("Crc32");
-            set => SetCrc32(state, value);
-        }
-        public TM2020 WithCrc32(uint value)
-        {
-            Crc32 = value;
-            return this;
+            return base.WithClipPodium(value is null ? (global::GBX.NET.Engines.Game.CGameCtnMediaClip?)null : value is global::GBX.NET.Engines.Game.CGameCtnMediaClip node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public bool CreatedWithGamepadEditor
         {
@@ -6834,178 +3542,6 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public TM2020 WithCreatedWithGamepadEditor(bool value)
         {
             CreatedWithGamepadEditor = value;
-            return this;
-        }
-        public bool CreatedWithSimpleEditor
-        {
-            get => state.Get<bool>("CreatedWithSimpleEditor");
-            set => SetCreatedWithSimpleEditor(state, value);
-        }
-        public TM2020 WithCreatedWithSimpleEditor(bool value)
-        {
-            CreatedWithSimpleEditor = value;
-            return this;
-        }
-        public PackDesc? CustomMusicPackDesc
-        {
-            get => state.Get<PackDesc?>("CustomMusicPackDesc");
-            set => SetCustomMusicPackDesc(state, value);
-        }
-        public TM2020 WithCustomMusicPackDesc(PackDesc? value)
-        {
-            CustomMusicPackDesc = value;
-            return this;
-        }
-        public TimeInt32? DayDuration
-        {
-            get => state.Get<TimeInt32?>("DayDuration");
-            set => SetDayDuration(state, value);
-        }
-        public TM2020 WithDayDuration(TimeInt32? value)
-        {
-            DayDuration = value;
-            return this;
-        }
-        public TimeSpan? DayTime
-        {
-            get => state.Get<TimeSpan?>("DayTime");
-            set => SetDayTime(state, value);
-        }
-        public TM2020 WithDayTime(TimeSpan? value)
-        {
-            DayTime = value;
-            return this;
-        }
-        public int DecoBaseHeightOffset
-        {
-            get => state.Get<int>("DecoBaseHeightOffset");
-            set => SetDecoBaseHeightOffset(state, value);
-        }
-        public TM2020 WithDecoBaseHeightOffset(int value)
-        {
-            DecoBaseHeightOffset = value;
-            return this;
-        }
-        public bool DynamicDaylight
-        {
-            get => state.Get<bool>("DynamicDaylight");
-            set => SetDynamicDaylight(state, value);
-        }
-        public TM2020 WithDynamicDaylight(bool value)
-        {
-            DynamicDaylight = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode Editor
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode>("Editor");
-            set => SetEditor(state, value);
-        }
-        public TM2020 WithEditor(global::GBX.NET.Engines.Game.CGameCtnChallenge.EditorMode value)
-        {
-            Editor = value;
-            return this;
-        }
-        public global::System.Collections.Generic.List<string>? EmbeddedItemModelsExternalDataRefs
-        {
-            get => state.Get<global::System.Collections.Generic.List<string>?>("EmbeddedItemModelsExternalDataRefs");
-            set => SetEmbeddedItemModelsExternalDataRefs(state, value);
-        }
-        public TM2020 WithEmbeddedItemModelsExternalDataRefs(global::System.Collections.Generic.List<string>? value)
-        {
-            EmbeddedItemModelsExternalDataRefs = value;
-            return this;
-        }
-        public TM2020 WithEmbeddedItemModelsExternalDataRefs(params string[] values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(new List<string>(values));
-        }
-        public TM2020 WithEmbeddedItemModelsExternalDataRefs(IEnumerable<string> values)
-        {
-            return WithEmbeddedItemModelsExternalDataRefs(values.ToArray());
-        }
-        public byte[]? EmbeddedZipData
-        {
-            get => state.Get<byte[]?>("EmbeddedZipData");
-            set => SetEmbeddedZipData(state, value);
-        }
-        public TM2020 WithEmbeddedZipData(params byte[]? value)
-        {
-            EmbeddedZipData = value;
-            return this;
-        }
-        public TM2020 WithEmbeddedZipData(IEnumerable<byte> values)
-        {
-            return WithEmbeddedZipData(values.ToArray());
-        }
-        public global::TmEssentials.TimeInt32? GoldTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("GoldTime");
-            set => SetGoldTime(state, value);
-        }
-        public TM2020 WithGoldTime(global::TmEssentials.TimeInt32? value)
-        {
-            GoldTime = value;
-            return this;
-        }
-        public bool HasClones
-        {
-            get => state.Get<bool>("HasClones");
-            set => SetHasClones(state, value);
-        }
-        public TM2020 WithHasClones(bool value)
-        {
-            HasClones = value;
-            return this;
-        }
-        public bool HasCustomCamThumbnail
-        {
-            get => state.Get<bool>("HasCustomCamThumbnail");
-            set => SetHasCustomCamThumbnail(state, value);
-        }
-        public TM2020 WithHasCustomCamThumbnail(bool value)
-        {
-            HasCustomCamThumbnail = value;
-            return this;
-        }
-        public bool HasLightmaps
-        {
-            get => state.Get<bool>("HasLightmaps");
-            set => SetHasLightmaps(state, value);
-        }
-        public TM2020 WithHasLightmaps(bool value)
-        {
-            HasLightmaps = value;
-            return this;
-        }
-        public global::GBX.NET.Checksum128? HashedPassword
-        {
-            get => state.Get<global::GBX.NET.Checksum128?>("HashedPassword");
-            set => SetHashedPassword(state, value);
-        }
-        public TM2020 WithHashedPassword(global::GBX.NET.Checksum128? value)
-        {
-            HashedPassword = value;
-            return this;
-        }
-        public bool IsLapRace
-        {
-            get => state.Get<bool>("IsLapRace");
-            set => SetIsLapRace(state, value);
-        }
-        public TM2020 WithIsLapRace(bool value)
-        {
-            IsLapRace = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind KindInHeader
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind>("KindInHeader");
-            set => SetKindInHeader(state, value);
-        }
-        public TM2020 WithKindInHeader(global::GBX.NET.Engines.Game.CGameCtnChallenge.MapKind value)
-        {
-            KindInHeader = value;
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameSaveLaunchedCheckpoints? LaunchedCheckpoints
@@ -7042,69 +3578,9 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithLegacyMacroblocks(values.ToArray());
         }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache? LightmapCache
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache?>("LightmapCache");
-            set => SetLightmapCache(state, value);
-        }
-        public TM2020 WithLightmapCache(global::GBX.NET.Engines.Hms.CHmsLightMapCache? value)
-        {
-            LightmapCache = value;
-            return this;
-        }
-        public TM2020 WithLightmapCacheReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMapCache> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetLightmapCacheReference(state, value);
-            return this;
-        }
         public TM2020 WithLightmapCache(global::GBX.NET.Interfaces.Hms.IHmsLightMapCacheTM2020? value)
         {
-            return WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.ZlibData? LightmapCacheData
-        {
-            get => state.Get<global::GBX.NET.ZlibData?>("LightmapCacheData");
-            set => SetLightmapCacheData(state, value);
-        }
-        public TM2020 WithLightmapCacheData(global::GBX.NET.ZlibData? value)
-        {
-            LightmapCacheData = value;
-            return this;
-        }
-        public ulong LightmapCacheUid
-        {
-            get => state.Get<ulong>("LightmapCacheUid");
-            set => SetLightmapCacheUid(state, value);
-        }
-        public TM2020 WithLightmapCacheUid(ulong value)
-        {
-            LightmapCacheUid = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? LightmapFrames
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]?>("LightmapFrames");
-            set => SetLightmapFrames(state, value);
-        }
-        public TM2020 WithLightmapFrames(params global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame[]? value)
-        {
-            LightmapFrames = value;
-            return this;
-        }
-        public TM2020 WithLightmapFrames(IEnumerable<global::GBX.NET.Engines.Hms.CHmsLightMapCache.Frame> values)
-        {
-            return WithLightmapFrames(values.ToArray());
-        }
-        public int? LightmapVersion
-        {
-            get => state.Get<int?>("LightmapVersion");
-            set => SetLightmapVersion(state, value);
-        }
-        public TM2020 WithLightmapVersion(int? value)
-        {
-            LightmapVersion = value;
-            return this;
+            return base.WithLightmapCache(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMapCache?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMapCache node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::System.Collections.Generic.List<global::GBX.NET.MacroblockInstance>? MacroblockInstances
         {
@@ -7124,164 +3600,6 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithMacroblockInstances(values.ToArray());
         }
-        public Vec2 MapCoordOrigin
-        {
-            get => state.Get<Vec2>("MapCoordOrigin");
-            set => SetMapCoordOrigin(state, value);
-        }
-        public TM2020 WithMapCoordOrigin(Vec2 value)
-        {
-            MapCoordOrigin = value;
-            return this;
-        }
-        public Vec2 MapCoordTarget
-        {
-            get => state.Get<Vec2>("MapCoordTarget");
-            set => SetMapCoordTarget(state, value);
-        }
-        public TM2020 WithMapCoordTarget(Vec2 value)
-        {
-            MapCoordTarget = value;
-            return this;
-        }
-        public string? MapStyle
-        {
-            get => state.Get<string?>("MapStyle");
-            set => SetMapStyle(state, value);
-        }
-        public TM2020 WithMapStyle(string? value)
-        {
-            MapStyle = value;
-            return this;
-        }
-        public string? MapType
-        {
-            get => state.Get<string?>("MapType");
-            set => SetMapType(state, value);
-        }
-        public TM2020 WithMapType(string? value)
-        {
-            MapType = value;
-            return this;
-        }
-        public PackDesc? ModPackDesc
-        {
-            get => state.Get<PackDesc?>("ModPackDesc");
-            set => SetModPackDesc(state, value);
-        }
-        public TM2020 WithModPackDesc(PackDesc? value)
-        {
-            ModPackDesc = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode Mode
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode>("Mode");
-            set => SetMode(state, value);
-        }
-        public TM2020 WithMode(global::GBX.NET.Engines.Game.CGameCtnChallenge.PlayMode value)
-        {
-            Mode = value;
-            return this;
-        }
-        public int NbCheckpoints
-        {
-            get => state.Get<int>("NbCheckpoints");
-            set => SetNbCheckpoints(state, value);
-        }
-        public TM2020 WithNbCheckpoints(int value)
-        {
-            NbCheckpoints = value;
-            return this;
-        }
-        public int NbLaps
-        {
-            get => state.Get<int>("NbLaps");
-            set => SetNbLaps(state, value);
-        }
-        public TM2020 WithNbLaps(int value)
-        {
-            NbLaps = value;
-            return this;
-        }
-        public string? ObjectiveTextAuthor
-        {
-            get => state.Get<string?>("ObjectiveTextAuthor");
-            set => SetObjectiveTextAuthor(state, value);
-        }
-        public TM2020 WithObjectiveTextAuthor(string? value)
-        {
-            ObjectiveTextAuthor = value;
-            return this;
-        }
-        public string? ObjectiveTextBronze
-        {
-            get => state.Get<string?>("ObjectiveTextBronze");
-            set => SetObjectiveTextBronze(state, value);
-        }
-        public TM2020 WithObjectiveTextBronze(string? value)
-        {
-            ObjectiveTextBronze = value;
-            return this;
-        }
-        public string? ObjectiveTextGold
-        {
-            get => state.Get<string?>("ObjectiveTextGold");
-            set => SetObjectiveTextGold(state, value);
-        }
-        public TM2020 WithObjectiveTextGold(string? value)
-        {
-            ObjectiveTextGold = value;
-            return this;
-        }
-        public string? ObjectiveTextSilver
-        {
-            get => state.Get<string?>("ObjectiveTextSilver");
-            set => SetObjectiveTextSilver(state, value);
-        }
-        public TM2020 WithObjectiveTextSilver(string? value)
-        {
-            ObjectiveTextSilver = value;
-            return this;
-        }
-        public Int3 OffzoneTriggerSize
-        {
-            get => state.Get<Int3>("OffzoneTriggerSize");
-            set => SetOffzoneTriggerSize(state, value);
-        }
-        public TM2020 WithOffzoneTriggerSize(Int3 value)
-        {
-            OffzoneTriggerSize = value;
-            return this;
-        }
-        public List<BoxInt3>? Offzones
-        {
-            get => state.Get<List<BoxInt3>?>("Offzones");
-            set => SetOffzones(state, value);
-        }
-        public TM2020 WithOffzones(List<BoxInt3>? value)
-        {
-            Offzones = value;
-            return this;
-        }
-        public TM2020 WithOffzones(params BoxInt3[] values)
-        {
-            return WithOffzones(new List<BoxInt3>(values));
-        }
-        public TM2020 WithOffzones(IEnumerable<BoxInt3> values)
-        {
-            return WithOffzones(values.ToArray());
-        }
-        public UInt128 PackMask
-        {
-            get => state.Get<UInt128>("PackMask");
-            set => SetPackMask(state, value);
-        }
-        public TM2020 WithPackMask(UInt128 value)
-        {
-            PackMask = value;
-            return this;
-        }
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor Palette
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor>("Palette");
@@ -7290,50 +3608,6 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public TM2020 WithPalette(global::GBX.NET.Engines.Game.CGameCtnChallenge.PaletteColor value)
         {
             Palette = value;
-            return this;
-        }
-        public string? Password
-        {
-            get => state.Get<string?>("Password");
-            set => SetPassword(state, value);
-        }
-        public TM2020 WithPassword(string? value)
-        {
-            Password = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? RecordedBotPaths
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]?>("RecordedBotPaths");
-            set => SetRecordedBotPaths(state, value);
-        }
-        public TM2020 WithRecordedBotPaths(params global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath[]? value)
-        {
-            RecordedBotPaths = value;
-            return this;
-        }
-        public TM2020 WithRecordedBotPaths(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnChallenge.RecordedBotPath> values)
-        {
-            return WithRecordedBotPaths(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Script.CScriptTraitsMetadata? ScriptMetadata
-        {
-            get => state.Get<global::GBX.NET.Engines.Script.CScriptTraitsMetadata?>("ScriptMetadata");
-            set => SetScriptMetadata(state, value);
-        }
-        public TM2020 WithScriptMetadata(global::GBX.NET.Engines.Script.CScriptTraitsMetadata? value)
-        {
-            ScriptMetadata = value;
-            return this;
-        }
-        public global::TmEssentials.TimeInt32? SilverTime
-        {
-            get => state.Get<global::TmEssentials.TimeInt32?>("SilverTime");
-            set => SetSilverTime(state, value);
-        }
-        public TM2020 WithSilverTime(global::TmEssentials.TimeInt32? value)
-        {
-            SilverTime = value;
             return this;
         }
         public global::GBX.NET.Engines.Game.CGameCtnChallenge.SpectatorData? Spectators
@@ -7370,141 +3644,9 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         {
             return WithSubMapSectors(values.ToArray());
         }
-        public byte[]? Thumbnail
-        {
-            get => state.Get<byte[]?>("Thumbnail");
-            set => SetThumbnail(state, value);
-        }
-        public TM2020 WithThumbnail(params byte[]? value)
-        {
-            Thumbnail = value;
-            return this;
-        }
-        public TM2020 WithThumbnail(IEnumerable<byte> values)
-        {
-            return WithThumbnail(values.ToArray());
-        }
-        public float ThumbnailFarClipPlane
-        {
-            get => state.Get<float>("ThumbnailFarClipPlane");
-            set => SetThumbnailFarClipPlane(state, value);
-        }
-        public TM2020 WithThumbnailFarClipPlane(float value)
-        {
-            ThumbnailFarClipPlane = value;
-            return this;
-        }
-        public float ThumbnailFov
-        {
-            get => state.Get<float>("ThumbnailFov");
-            set => SetThumbnailFov(state, value);
-        }
-        public TM2020 WithThumbnailFov(float value)
-        {
-            ThumbnailFov = value;
-            return this;
-        }
-        public float ThumbnailNearClipPlane
-        {
-            get => state.Get<float>("ThumbnailNearClipPlane");
-            set => SetThumbnailNearClipPlane(state, value);
-        }
-        public TM2020 WithThumbnailNearClipPlane(float value)
-        {
-            ThumbnailNearClipPlane = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPitchYawRoll
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPitchYawRoll");
-            set => SetThumbnailPitchYawRoll(state, value);
-        }
-        public TM2020 WithThumbnailPitchYawRoll(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPitchYawRoll = value;
-            return this;
-        }
-        public global::GBX.NET.Vec3 ThumbnailPosition
-        {
-            get => state.Get<global::GBX.NET.Vec3>("ThumbnailPosition");
-            set => SetThumbnailPosition(state, value);
-        }
-        public TM2020 WithThumbnailPosition(global::GBX.NET.Vec3 value)
-        {
-            ThumbnailPosition = value;
-            return this;
-        }
-        public Mat3 ThumbnailRotationMatrix
-        {
-            get => state.Get<Mat3>("ThumbnailRotationMatrix");
-            set => SetThumbnailRotationMatrix(state, value);
-        }
-        public TM2020 WithThumbnailRotationMatrix(Mat3 value)
-        {
-            ThumbnailRotationMatrix = value;
-            return this;
-        }
-        public string? TitleId
-        {
-            get => state.Get<string?>("TitleId");
-            set => SetTitleId(state, value);
-        }
-        public TM2020 WithTitleId(string? value)
-        {
-            TitleId = value;
-            return this;
-        }
-        public Vec3 WorldDistortScales
-        {
-            get => state.Get<Vec3>("WorldDistortScales");
-            set => SetWorldDistortScales(state, value);
-        }
-        public TM2020 WithWorldDistortScales(Vec3 value)
-        {
-            WorldDistortScales = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? WorldDistortXYZ
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData?>("WorldDistortXYZ");
-            set => SetWorldDistortXYZ(state, value);
-        }
-        public TM2020 WithWorldDistortXYZ(global::GBX.NET.Engines.Game.CGameCtnChallenge.WorldDistortBitmapData? value)
-        {
-            WorldDistortXYZ = value;
-            return this;
-        }
-        public string? Xml
-        {
-            get => state.Get<string?>("Xml");
-            set => SetXml(state, value);
-        }
-        public TM2020 WithXml(string? value)
-        {
-            Xml = value;
-            return this;
-        }
-        public global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? ZoneGenealogy
-        {
-            get => state.Get<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>?>("ZoneGenealogy");
-            set => SetZoneGenealogy(state, value);
-        }
-        public TM2020 WithZoneGenealogy(global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>? value)
-        {
-            ZoneGenealogy = value;
-            return this;
-        }
-        public TM2020 WithZoneGenealogy(params global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy[] values)
-        {
-            return WithZoneGenealogy(new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy>(values));
-        }
-        public TM2020 WithZoneGenealogy(IEnumerable<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy> values)
-        {
-            return WithZoneGenealogy(values.ToArray());
-        }
         public TM2020 WithZoneGenealogy(params global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020[] values)
         {
-            return WithZoneGenealogy(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithZoneGenealogy(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy, global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>(values, false));
         }
         public TM2020 WithZoneGenealogy(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020> values)
         {
@@ -7513,197 +3655,12 @@ public partial class CGameCtnChallengeBuilder : CGameCtnChallengeBuilderBase<CGa
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallenge Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallenge();
-            var chunkHeader03043002 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002(GameVersion.TM2020);
-            node.Chunks.Add(chunkHeader03043002);
-            var chunkHeader03043003 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003(GameVersion.TM2020);
-            node.Chunks.Add(chunkHeader03043003);
-            var chunkHeader03043004 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004(GameVersion.TM2020);
-            node.Chunks.Add(chunkHeader03043004);
-            var chunkHeader03043005 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005();
-            node.Chunks.Add(chunkHeader03043005);
-            var chunkHeader03043007 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007(GameVersion.TM2020);
-            node.Chunks.Add(chunkHeader03043007);
-            var chunkHeader03043008 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008(GameVersion.TM2020);
-            node.Chunks.Add(chunkHeader03043008);
-            var chunk0304300D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D();
-            node.Chunks.Add(chunk0304300D);
-            var chunk03043011 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011();
-            node.Chunks.Add(chunk03043011);
-            var chunk03043018 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018();
-            node.Chunks.Add(chunk03043018);
-            var chunk03043019 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019();
-            node.Chunks.Add(chunk03043019);
-            var chunk0304301F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F(GameVersion.TM2020);
-            node.Chunks.Add(chunk0304301F);
-            var chunk03043022 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022();
-            node.Chunks.Add(chunk03043022);
-            var chunk03043024 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024();
-            node.Chunks.Add(chunk03043024);
-            var chunk03043025 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025();
-            node.Chunks.Add(chunk03043025);
-            var chunk03043026 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026();
-            node.Chunks.Add(chunk03043026);
-            var chunk03043028 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028();
-            node.Chunks.Add(chunk03043028);
-            var chunk03043029 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029();
-            node.Chunks.Add(chunk03043029);
-            var chunk0304302A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A();
-            node.Chunks.Add(chunk0304302A);
-            var chunk03043034 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034();
-            node.Chunks.Add(chunk03043034);
-            var chunk03043036 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036();
-            node.Chunks.Add(chunk03043036);
-            var chunk03043038 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038();
-            node.Chunks.Add(chunk03043038);
-            var chunk0304303E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E();
-            chunk0304303E.Version = 0;
-            node.Chunks.Add(chunk0304303E);
-            var chunk03043040 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043040);
-            var chunk03043042 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043042);
-            var chunk03043043 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043();
-            node.Chunks.Add(chunk03043043);
-            var chunk03043044 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044();
-            node.Chunks.Add(chunk03043044);
-            var chunk03043048 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048();
-            chunk03043048.Version = 0;
-            node.Chunks.Add(chunk03043048);
-            var chunk03043049 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043049);
-            var chunk0304304B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B();
-            node.Chunks.Add(chunk0304304B);
-            var chunk0304304E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E();
-            chunk0304304E.Version = 0;
-            node.Chunks.Add(chunk0304304E);
-            var chunk0304304F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F();
-            node.Chunks.Add(chunk0304304F);
-            var chunk03043050 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050();
-            chunk03043050.Version = 0;
-            node.Chunks.Add(chunk03043050);
-            var chunk03043051 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051();
-            chunk03043051.Version = 0;
-            node.Chunks.Add(chunk03043051);
-            var chunk03043052 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052();
-            chunk03043052.Version = 0;
-            node.Chunks.Add(chunk03043052);
-            var chunk03043053 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043053);
-            var chunk03043054 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043054);
-            var chunk03043055 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055();
-            node.Chunks.Add(chunk03043055);
-            var chunk03043056 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043056);
-            var chunk03043057 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043057);
-            var chunk03043059 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043059);
-            var chunk0304305A = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305A();
-            chunk0304305A.Version = 0;
-            node.Chunks.Add(chunk0304305A);
-            var chunk0304305B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305B();
-            chunk0304305B.Version = 0;
-            node.Chunks.Add(chunk0304305B);
-            var chunk0304305C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305C(GameVersion.TM2020);
-            node.Chunks.Add(chunk0304305C);
-            var chunk0304305D = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305D(GameVersion.TM2020);
-            node.Chunks.Add(chunk0304305D);
-            var chunk0304305E = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305E(GameVersion.TM2020);
-            node.Chunks.Add(chunk0304305E);
-            var chunk0304305F = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305F();
-            node.Chunks.Add(chunk0304305F);
-            var chunk03043060 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043060();
-            chunk03043060.Version = 0;
-            node.Chunks.Add(chunk03043060);
-            var chunk03043061 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043061(GameVersion.TM2020);
-            node.Chunks.Add(chunk03043061);
-            var chunk03043062 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043062();
-            node.Chunks.Add(chunk03043062);
-            var chunk03043063 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043063();
-            node.Chunks.Add(chunk03043063);
-            var chunk03043064 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043064();
-            chunk03043064.Version = 0;
-            node.Chunks.Add(chunk03043064);
-            var chunk03043065 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043065();
-            node.Chunks.Add(chunk03043065);
-            var chunk03043067 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043067();
-            chunk03043067.Version = 0;
-            node.Chunks.Add(chunk03043067);
-            var chunk03043068 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043068();
-            node.Chunks.Add(chunk03043068);
-            var chunk03043069 = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043069();
-            chunk03043069.Version = 0;
-            node.Chunks.Add(chunk03043069);
-            var chunk0304306B = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306B();
-            node.Chunks.Add(chunk0304306B);
-            var chunk0304306C = new global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306C();
-            chunk0304306C.Version = 0;
-            node.Chunks.Add(chunk0304306C);
+            var node = CGameCtnChallengeBuilder.CreateRecipe12(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043002>() is not { Version: 13 }) throw new InvalidOperationException("Required TM2020 chunk HeaderChunk03043002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043003>() is not { Version: 11 }) throw new InvalidOperationException("Required TM2020 chunk HeaderChunk03043003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043004>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk HeaderChunk03043004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043005>() is null) throw new InvalidOperationException("Required TM2020 chunk HeaderChunk03043005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043007>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk HeaderChunk03043007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.HeaderChunk03043008>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk HeaderChunk03043008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304300D>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0304300D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043011>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043018>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043018 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043019>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043019 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304301F>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304301F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043022>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043022 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043024>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043024 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043025>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043025 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043026>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043026 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043028>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043028 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043029>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043029 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304302A>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0304302A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043034>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043034 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043036>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043036 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043038>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043038 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304303E>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304303E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043040>() is not { Version: 8 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043040 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043042>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043042 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043043>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043043 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043044>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043044 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043048>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043048 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043049>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043049 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0304304B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304E>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304304E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304304F>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0304304F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043050>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043050 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043051>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043051 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043052>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043052 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043053>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043053 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043054>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043054 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043055>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043055 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043056>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043056 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043057>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043057 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043059>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043059 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305A>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304305A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305B>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304305B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305C>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304305C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305D>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304305D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305E>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304305E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304305F>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0304305F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043060>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043060 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043061>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043061 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043062>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043062 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043063>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043063 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043064>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043064 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043065>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043065 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043067>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043067 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043068>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03043068 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk03043069>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03043069 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0304306B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallenge.Chunk0304306C>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0304306C is missing or has an incompatible version.");
+            CGameCtnChallengeBuilder.ValidateRecipe12(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.AuthorLogin is null) throw new MemberNullException("AuthorLogin");
-            if (node.MapName is null) throw new MemberNullException("MapName");
-            if (node.MapUid is null) throw new MemberNullException("MapUid");
+            CGameCtnChallengeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

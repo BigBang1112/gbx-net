@@ -31,6 +31,15 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameUserProfileMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameUserProfile where T0 : class
+{
+    uint CamName { get; set; }
+    global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? ContextMapRecordsForProfile { get; set; }
+    global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? ContextTimes { get; set; }
+    T0? InputBindingsConfig { get; set; }
+    global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? LegacyVehicleSettings { get; set; }
+}
 public partial interface IGameUserProfile : IClassVersion<global::GBX.NET.Engines.Game.CGameUserProfile>
 {
     Vec3 BadgeColor { get; set; }
@@ -52,22 +61,12 @@ public partial interface IGameUserProfile : IClassVersion<global::GBX.NET.Engine
     bool UseBadge { get; set; }
 }
 
-public partial interface IGameUserProfileTMT : IGameUserProfile
+public partial interface IGameUserProfileTMT : IGameUserProfile, global::GBX.NET.Interfaces.Game.IGameUserProfileMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT>
 {
-    uint CamName { get; set; }
-    global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? ContextMapRecordsForProfile { get; set; }
-    global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? ContextTimes { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? InputBindingsConfig { get; set; }
-    global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? LegacyVehicleSettings { get; set; }
 }
 
-public partial interface IGameUserProfileMP4 : IGameUserProfile
+public partial interface IGameUserProfileMP4 : IGameUserProfile, global::GBX.NET.Interfaces.Game.IGameUserProfileMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4>
 {
-    uint CamName { get; set; }
-    global::GBX.NET.Engines.Game.CGameUserProfile.ContextMapRecordForProfile[]? ContextMapRecordsForProfile { get; set; }
-    global::GBX.NET.Engines.Game.CGameUserProfile.ContextTime[]? ContextTimes { get; set; }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? InputBindingsConfig { get; set; }
-    global::GBX.NET.Engines.Game.CGameUserProfile.Unknown[]? LegacyVehicleSettings { get; set; }
 }
 
 public partial interface IGameUserProfileTM2020 : IGameUserProfile

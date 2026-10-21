@@ -34,15 +34,15 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroup, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP3, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMT, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMP4, global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM2020
 {
     public static global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeGroupBuilder Create() => new();
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTM10.MapFiles
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>.MapFiles
     {
-        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>(() => MapFiles, static node => { if (node is null) throw new MemberNullException("MapFiles"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>(GetMapFilesBuilderReferences, GameVersion.TM10, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM10>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMPU.MapFiles
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>.MapFiles
     {
-        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>(() => MapFiles, static node => { if (node is null) throw new MemberNullException("MapFiles"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>(GetMapFilesBuilderReferences, GameVersion.TMPU, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMPU>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnCollectionTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX.AssociatedCollection
     {
@@ -54,7 +54,7 @@ public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IG
         }
         set => AssociatedCollection = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCollection node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX.LinkedCampaign
+    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMSX>.LinkedCampaign
     {
         get
         {
@@ -64,12 +64,12 @@ public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IG
         }
         set => LinkedCampaign = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMSX.MapFiles
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>.MapFiles
     {
-        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>(() => MapFiles, static node => { if (node is null) throw new MemberNullException("MapFiles"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>(GetMapFilesBuilderReferences, GameVersion.TMSX, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMSX>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC.LinkedCampaign
+    global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMNESWC>.LinkedCampaign
     {
         get
         {
@@ -79,12 +79,12 @@ public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IG
         }
         set => LinkedCampaign = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMNESWC.MapFiles
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>.MapFiles
     {
-        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>(() => MapFiles, static node => { if (node is null) throw new MemberNullException("MapFiles"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>(GetMapFilesBuilderReferences, GameVersion.TMNESWC, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMNESWC>(value, false));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5.LinkedCampaign
+    global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers5<global::GBX.NET.Interfaces.Game.IGameCtnCampaignVSK5>.LinkedCampaign
     {
         get
         {
@@ -94,14 +94,15 @@ public partial class CGameCtnChallengeGroup : global::GBX.NET.Interfaces.Game.IG
         }
         set => LinkedCampaign = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupVSK5.MapFiles
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>.MapFiles
     {
-        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>(() => MapFiles, static node => { if (node is null) throw new MemberNullException("MapFiles"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>(GetMapFilesBuilderReferences, GameVersion.VSK5, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupTMF.MapFiles
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>? global::GBX.NET.Interfaces.Game.IGameCtnChallengeGroupMembers3<global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>.MapFiles
     {
-        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>(() => MapFiles, static node => { if (node is null) throw new MemberNullException("MapFiles"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnChallenge node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => MapFiles is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>(GetMapFilesBuilderReferences, GameVersion.TMF, true, "MapFiles");
+        set => MapFiles = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnChallenge, global::GBX.NET.Interfaces.Game.IGameCtnChallengeTMF>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnChallenge>? GetMapFilesBuilderReferences() => MapFiles;
 }

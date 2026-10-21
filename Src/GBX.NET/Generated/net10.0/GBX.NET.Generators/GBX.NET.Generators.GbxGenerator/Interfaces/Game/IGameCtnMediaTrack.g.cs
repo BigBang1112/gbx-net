@@ -31,6 +31,18 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaTrackMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack
+{
+    bool IsCycling { get; set; }
+    TimeSingle? RepeatingSegmentEnd { get; set; }
+    TimeSingle? RepeatingSegmentStart { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaTrackMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaTrack where T0 : class
+{
+    new IReadOnlyList<T0> Blocks { get; set; }
+}
 public partial interface IGameCtnMediaTrack : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaTrack>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock> Blocks { get; set; }
@@ -39,14 +51,12 @@ public partial interface IGameCtnMediaTrack : IClassVersion<global::GBX.NET.Engi
     string Name { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackTMSX : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackTMSX : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX> Blocks { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackTMNESWC : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackTMNESWC : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC> Blocks { get; set; }
 }
 
 public partial interface IGameCtnMediaTrackTMU : IGameCtnMediaTrack
@@ -54,45 +64,27 @@ public partial interface IGameCtnMediaTrackTMU : IGameCtnMediaTrack
     new global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Game.CGameCtnMediaBlock> Blocks { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackVSK5 : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackVSK5 : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5> Blocks { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackTMF : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackTMF : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF> Blocks { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackMP3 : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackMP3 : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP3> Blocks { get; set; }
-    bool IsCycling { get; set; }
-    TimeSingle? RepeatingSegmentEnd { get; set; }
-    TimeSingle? RepeatingSegmentStart { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackTMT : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackTMT : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT> Blocks { get; set; }
-    bool IsCycling { get; set; }
-    TimeSingle? RepeatingSegmentEnd { get; set; }
-    TimeSingle? RepeatingSegmentStart { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackMP4 : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackMP4 : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4> Blocks { get; set; }
-    bool IsCycling { get; set; }
-    TimeSingle? RepeatingSegmentEnd { get; set; }
-    TimeSingle? RepeatingSegmentStart { get; set; }
 }
 
-public partial interface IGameCtnMediaTrackTM2020 : IGameCtnMediaTrack
+public partial interface IGameCtnMediaTrackTM2020 : IGameCtnMediaTrack, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers1, global::GBX.NET.Interfaces.Game.IGameCtnMediaTrackMembers2<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020> Blocks { get; set; }
-    bool IsCycling { get; set; }
-    TimeSingle? RepeatingSegmentEnd { get; set; }
-    TimeSingle? RepeatingSegmentStart { get; set; }
 }
 

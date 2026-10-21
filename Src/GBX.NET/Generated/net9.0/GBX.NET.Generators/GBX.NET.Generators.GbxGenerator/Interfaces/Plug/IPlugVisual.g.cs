@@ -31,84 +31,76 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVisual
+{
+    global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualMembers2 : global::GBX.NET.Interfaces.Plug.IPlugVisual
+{
+    bool IsInverse { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualMembers3 : global::GBX.NET.Interfaces.Plug.IPlugVisual
+{
+    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualMembers4 : global::GBX.NET.Interfaces.Plug.IPlugVisual
+{
+    float NPatchTessLevel { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVisualMembers5 : global::GBX.NET.Interfaces.Plug.IPlugVisual
+{
+    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
+}
 public partial interface IPlugVisual : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVisual>
 {
     Int3[] SubVisuals { get; set; }
     string? VisualId { get; set; }
 }
 
-public partial interface IPlugVisualTM10 : IPlugVisual
+public partial interface IPlugVisualTM10 : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    bool IsInverse { get; set; }
 }
 
-public partial interface IPlugVisualTMPU : IPlugVisual
+public partial interface IPlugVisualTMPU : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    bool IsInverse { get; set; }
-    float NPatchTessLevel { get; set; }
 }
 
-public partial interface IPlugVisualTMSX : IPlugVisual
+public partial interface IPlugVisualTMSX : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers2, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    bool IsInverse { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams { get; set; }
 }
 
-public partial interface IPlugVisualTMNESWC : IPlugVisual
+public partial interface IPlugVisualTMNESWC : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
-public partial interface IPlugVisualVSK5 : IPlugVisual
+public partial interface IPlugVisualVSK5 : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
-public partial interface IPlugVisualTMF : IPlugVisual
+public partial interface IPlugVisualTMF : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
     global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
-public partial interface IPlugVisualMP3 : IPlugVisual
+public partial interface IPlugVisualMP3 : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers1, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
-public partial interface IPlugVisualTMT : IPlugVisual
+public partial interface IPlugVisualTMT : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers1, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
-public partial interface IPlugVisualMP4 : IPlugVisual
+public partial interface IPlugVisualMP4 : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers1, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers3, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
-public partial interface IPlugVisualTM2020 : IPlugVisual
+public partial interface IPlugVisualTM2020 : IPlugVisual, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers1, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers4, global::GBX.NET.Interfaces.Plug.IPlugVisualMembers5
 {
-    global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    float NPatchTessLevel { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 

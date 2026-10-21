@@ -39,7 +39,7 @@ public partial class CPlugCamControlModel : global::GBX.NET.Interfaces.Plug.IPlu
         get => Shake;
         set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT.Shake
+    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT>.Shake
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugCamControlModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4.Shake
+    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4>.Shake
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugCamControlModel : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020.Shake
+    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020>.Shake
     {
         get
         {

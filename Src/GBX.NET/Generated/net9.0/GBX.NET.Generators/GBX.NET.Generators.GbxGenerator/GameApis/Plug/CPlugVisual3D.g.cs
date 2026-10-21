@@ -34,9 +34,4 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugVisual3D : global::GBX.NET.Interfaces.Plug.IPlugVisual3D, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM10, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMPU, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMSX, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMF, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP3, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMT, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP4, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilder Create() => new();
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMSX.VertexStreams
-    {
-        get => new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>(() => VertexStreams, static node => { if (node is null) throw new MemberNullException("VertexStreams"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => VertexStreams = value is null ? throw new ArgumentNullException(nameof(value)) : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
 }

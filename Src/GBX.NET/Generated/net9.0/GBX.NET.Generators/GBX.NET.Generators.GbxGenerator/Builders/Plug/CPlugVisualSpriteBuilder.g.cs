@@ -36,31 +36,31 @@ public abstract class CPlugVisualSpriteBuilderBase<TSelf> where TSelf : CPlugVis
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state;
     private protected CPlugVisualSpriteBuilderBase() => state = new();
     private protected CPlugVisualSpriteBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) => this.state = state;
-    private protected static void SetAtlasGridCountU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, ushort value) => state.Set<ushort>("AtlasGridCountU", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.AtlasGridCountU = value);
-    private protected static void SetAtlasGridCountV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, ushort value) => state.Set<ushort>("AtlasGridCountV", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.AtlasGridCountV = value);
-    private protected static void SetAtlasTexCoords(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Rect[]? value) => state.Set<Rect[]?>("AtlasTexCoords", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (Rect[])value.Clone(), static (node, value) => node.AtlasTexCoords = value);
-    private protected static void SetBiTangents(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Vec3[]? value) => state.Set<global::GBX.NET.Vec3[]?>("BiTangents", value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX, static value => value is null ? null! : (global::GBX.NET.Vec3[])value.Clone(), static (node, value) => node.BiTangents = value);
-    private protected static void SetBitmapElemToPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[]>("BitmapElemToPacks", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[])value.Clone(), static (node, value) => node.BitmapElemToPacks = value);
-    private protected static void SetBlendShapes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BlendShapes", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BlendShapes = value);
-    private protected static void SetBlendShapesReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("BlendShapes", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BlendShapes.CopyFrom(reference));
-    private protected static void SetFuncVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FuncVisual = value);
-    private protected static void SetFuncVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("FuncVisual", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FuncVisual.CopyFrom(reference));
-    private protected static void SetGlobalDirection(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Vec3 value) => state.Set<Vec3>("GlobalDirection", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.GlobalDirection = value);
-    private protected static void SetIsInverse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set<bool>("IsInverse", value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX, static value => value, static (node, value) => node.IsInverse = value);
-    private protected static void SetMorphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual.Morph[])value.Clone(), static (node, value) => node.Morphs = value);
-    private protected static void SetNPatchTessLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, float value) => state.Set<float>("NPatchTessLevel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.NPatchTessLevel = value);
-    private protected static void SetPivotPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Vec2 value) => state.Set<Vec2>("PivotPoint", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.PivotPoint = value);
-    private protected static void SetRadiusInScreen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set<bool>("RadiusInScreen", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.RadiusInScreen = value);
-    private protected static void SetRenderMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.RenderMode = value);
-    private protected static void SetSortBackToFront(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set<bool>("SortBackToFront", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.SortBackToFront = value);
-    private protected static void SetSplits(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual.Split[])value.Clone(), static (node, value) => node.Splits = value);
-    private protected static void SetSpriteFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, uint value) => state.Set<uint>("SpriteFlags", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.SpriteFlags = value);
-    private protected static void SetSpriteParam(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugSpriteParam? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SpriteParam = value);
-    private protected static void SetSubVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Int3[] value) => state.Set<Int3[]>("SubVisuals", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (Int3[])value.Clone(), static (node, value) => node.SubVisuals = value);
-    private protected static void SetUseGlobalDir(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set<bool>("UseGlobalDir", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.UseGlobalDir = value);
-    private protected static void SetUseTextureAtlas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set<bool>("UseTextureAtlas", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.UseTextureAtlas = value);
-    private protected static void SetVertexStreams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>>("VertexStreams", value, GameVersion.TMSX, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.VertexStreams = value);
-    private protected static void SetVisualId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, string? value) => state.Set<string?>("VisualId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VisualId = value);
+    private protected static void SetAtlasGridCountU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetAtlasGridCountUAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetAtlasGridCountV(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, ushort value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetAtlasGridCountVAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetAtlasTexCoords(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Rect[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetAtlasTexCoordsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetBiTangents(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Vec3[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBiTangentsAssignment(), value, GameVersion.TM10 | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX);
+    private protected static void SetBitmapElemToPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetBitmapElemToPacksAssignment(), value, GameVersion.TMF);
+    private protected static void SetBlendShapes(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBlendShapesReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual3DBuilderAssignments.GetBlendShapesReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFuncVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFuncVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetGlobalDirection(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetGlobalDirectionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetIsInverse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetIsInverseAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
+    private protected static void SetMorphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetMorphsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNPatchTessLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPivotPoint(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetPivotPointAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRadiusInScreen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetRadiusInScreenAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRenderMode(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetRenderModeAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetSortBackToFront(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetSortBackToFrontAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetSplits(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSpriteFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetSpriteFlagsAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetSpriteParam(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.Engines.Plug.CPlugSpriteParam? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetSpriteParamAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSubVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, Int3[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetUseGlobalDir(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetUseGlobalDirAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetUseTextureAtlas(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualSpriteBuilderAssignments.GetUseTextureAtlasAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetVertexStreams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVertexStreamsAssignment(), value, GameVersion.TMSX);
+    private protected static void SetVisualId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVisualIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.MwFoundations.CMwNod? BlendShapes
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("BlendShapes");
@@ -102,8 +102,586 @@ public abstract class CPlugVisualSpriteBuilderBase<TSelf> where TSelf : CPlugVis
         return (TSelf)this;
     }
 }
+public abstract class CPlugVisualSpriteBuilderMembers1<TSelf> : CPlugVisualSpriteBuilderBase<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers1<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
+    {
+        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
+        set => SetFuncVisual(state, value);
+    }
+    public TSelf WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
+    {
+        FuncVisual = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFuncVisualReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers2<TSelf> : CPlugVisualSpriteBuilderBase<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers2<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public float NPatchTessLevel
+    {
+        get => state.Get<float>("NPatchTessLevel");
+        set => SetNPatchTessLevel(state, value);
+    }
+    public TSelf WithNPatchTessLevel(float value)
+    {
+        NPatchTessLevel = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers3<TSelf> : CPlugVisualSpriteBuilderMembers2<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers3<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
+        set => SetSplits(state, value);
+    }
+    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
+    {
+        Splits = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
+    {
+        return WithSplits(values.ToArray());
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers4<TSelf> : CPlugVisualSpriteBuilderMembers3<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers4<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public Rect[]? AtlasTexCoords
+    {
+        get => state.Get<Rect[]?>("AtlasTexCoords");
+        set => SetAtlasTexCoords(state, value);
+    }
+    public TSelf WithAtlasTexCoords(params Rect[]? value)
+    {
+        AtlasTexCoords = value;
+        return (TSelf)this;
+    }
+    public TSelf WithAtlasTexCoords(IEnumerable<Rect> values)
+    {
+        return WithAtlasTexCoords(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
+        set => SetMorphs(state, value);
+    }
+    public TSelf WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
+    {
+        Morphs = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
+    {
+        return WithMorphs(values.ToArray());
+    }
+    public global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam");
+        set => SetSpriteParam(state, value);
+    }
+    public TSelf WithSpriteParam(global::GBX.NET.Engines.Plug.CPlugSpriteParam? value)
+    {
+        SpriteParam = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers5<TSelf> : CPlugVisualSpriteBuilderMembers1<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers5<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public bool RadiusInScreen
+    {
+        get => state.Get<bool>("RadiusInScreen");
+        set => SetRadiusInScreen(state, value);
+    }
+    public TSelf WithRadiusInScreen(bool value)
+    {
+        RadiusInScreen = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode");
+        set => SetRenderMode(state, value);
+    }
+    public TSelf WithRenderMode(global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value)
+    {
+        RenderMode = value;
+        return (TSelf)this;
+    }
+    public bool SortBackToFront
+    {
+        get => state.Get<bool>("SortBackToFront");
+        set => SetSortBackToFront(state, value);
+    }
+    public TSelf WithSortBackToFront(bool value)
+    {
+        SortBackToFront = value;
+        return (TSelf)this;
+    }
+    public uint SpriteFlags
+    {
+        get => state.Get<uint>("SpriteFlags");
+        set => SetSpriteFlags(state, value);
+    }
+    public TSelf WithSpriteFlags(uint value)
+    {
+        SpriteFlags = value;
+        return (TSelf)this;
+    }
+    public bool UseGlobalDir
+    {
+        get => state.Get<bool>("UseGlobalDir");
+        set => SetUseGlobalDir(state, value);
+    }
+    public TSelf WithUseGlobalDir(bool value)
+    {
+        UseGlobalDir = value;
+        return (TSelf)this;
+    }
+    public bool UseTextureAtlas
+    {
+        get => state.Get<bool>("UseTextureAtlas");
+        set => SetUseTextureAtlas(state, value);
+    }
+    public TSelf WithUseTextureAtlas(bool value)
+    {
+        UseTextureAtlas = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers6<TSelf> : CPlugVisualSpriteBuilderMembers5<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers6<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers6(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public global::GBX.NET.Vec3[]? BiTangents
+    {
+        get => state.Get<global::GBX.NET.Vec3[]?>("BiTangents");
+        set => SetBiTangents(state, value);
+    }
+    public TSelf WithBiTangents(params global::GBX.NET.Vec3[]? value)
+    {
+        BiTangents = value;
+        return (TSelf)this;
+    }
+    public TSelf WithBiTangents(IEnumerable<global::GBX.NET.Vec3> values)
+    {
+        return WithBiTangents(values.ToArray());
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers7<TSelf> : CPlugVisualSpriteBuilderMembers6<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers7<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers7(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public bool IsInverse
+    {
+        get => state.Get<bool>("IsInverse");
+        set => SetIsInverse(state, value);
+    }
+    public TSelf WithIsInverse(bool value)
+    {
+        IsInverse = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualSpriteBuilderMembers8<TSelf> : CPlugVisualSpriteBuilderMembers5<TSelf> where TSelf : CPlugVisualSpriteBuilderMembers8<TSelf>
+{
+    private protected CPlugVisualSpriteBuilderMembers8(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
+    public ushort AtlasGridCountU
+    {
+        get => state.Get<ushort>("AtlasGridCountU");
+        set => SetAtlasGridCountU(state, value);
+    }
+    public TSelf WithAtlasGridCountU(ushort value)
+    {
+        AtlasGridCountU = value;
+        return (TSelf)this;
+    }
+    public ushort AtlasGridCountV
+    {
+        get => state.Get<ushort>("AtlasGridCountV");
+        set => SetAtlasGridCountV(state, value);
+    }
+    public TSelf WithAtlasGridCountV(ushort value)
+    {
+        AtlasGridCountV = value;
+        return (TSelf)this;
+    }
+    public Vec3 GlobalDirection
+    {
+        get => state.Get<Vec3>("GlobalDirection");
+        set => SetGlobalDirection(state, value);
+    }
+    public TSelf WithGlobalDirection(Vec3 value)
+    {
+        GlobalDirection = value;
+        return (TSelf)this;
+    }
+    public float NPatchTessLevel
+    {
+        get => state.Get<float>("NPatchTessLevel");
+        set => SetNPatchTessLevel(state, value);
+    }
+    public TSelf WithNPatchTessLevel(float value)
+    {
+        NPatchTessLevel = value;
+        return (TSelf)this;
+    }
+    public Vec2 PivotPoint
+    {
+        get => state.Get<Vec2>("PivotPoint");
+        set => SetPivotPoint(state, value);
+    }
+    public TSelf WithPivotPoint(Vec2 value)
+    {
+        PivotPoint = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
+        set => SetSplits(state, value);
+    }
+    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
+    {
+        Splits = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
+    {
+        return WithSplits(values.ToArray());
+    }
+}
 public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPlugVisualSpriteBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010002 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002();
+        node.Chunks.Add(chunk09010002);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C003 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003();
+        node.Chunks.Add(chunk0902C003);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
+        node.Chunks.Add(chunk09006006);
+        var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
+        node.Chunks.Add(chunk09006007);
+        var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
+        node.Chunks.Add(chunk09006008);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010002 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002();
+        node.Chunks.Add(chunk09010002);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C003 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003();
+        node.Chunks.Add(chunk0902C003);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
+        node.Chunks.Add(chunk09006006);
+        var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
+        node.Chunks.Add(chunk09006007);
+        var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
+        node.Chunks.Add(chunk09006008);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010005 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005();
+        node.Chunks.Add(chunk09010005);
+        var chunk09010006 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006();
+        node.Chunks.Add(chunk09010006);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C003 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003();
+        node.Chunks.Add(chunk0902C003);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
+        node.Chunks.Add(chunk09006006);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600C = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C();
+        node.Chunks.Add(chunk0900600C);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600C is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010005 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005();
+        node.Chunks.Add(chunk09010005);
+        var chunk09010006 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006();
+        node.Chunks.Add(chunk09010006);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
+        node.Chunks.Add(chunk0902C004);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600D = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D();
+        node.Chunks.Add(chunk0900600D);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010005 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005();
+        node.Chunks.Add(chunk09010005);
+        var chunk09010006 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006();
+        node.Chunks.Add(chunk09010006);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
+        node.Chunks.Add(chunk0902C004);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600E = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E();
+        node.Chunks.Add(chunk0900600E);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600E is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
+        node.Chunks.Add(chunk09010008);
+        var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
+        node.Chunks.Add(chunk09010009);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
+        node.Chunks.Add(chunk0902C004);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game);
+        node.Chunks.Add(chunk0900600F);
+        var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
+        chunk09006010.Version = 0;
+        node.Chunks.Add(chunk09006010);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900600F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09006010 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
+        node.Chunks.Add(chunk09010008);
+        var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
+        node.Chunks.Add(chunk09010009);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
+        node.Chunks.Add(chunk0902C004);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game);
+        node.Chunks.Add(chunk0900600F);
+        var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
+        chunk09006010.Version = 0;
+        node.Chunks.Add(chunk09006010);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900600F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09006010 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualSprite CreateRecipe7(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
+        var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
+        node.Chunks.Add(chunk09010008);
+        var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
+        node.Chunks.Add(chunk09010009);
+        var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
+        node.Chunks.Add(chunk0902C002);
+        var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
+        node.Chunks.Add(chunk0902C004);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game);
+        node.Chunks.Add(chunk0900600F);
+        var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
+        chunk09006010.Version = 0;
+        node.Chunks.Add(chunk09006010);
+        return node;
+    }
+    private static void ValidateRecipe7(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09010009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0902C004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900600F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09006010 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVisualSprite node, GameVersion game)
+    {
+        if ((game & (GameVersion.TMF)) != 0 && node.BitmapElemToPacks is null) throw new MemberNullException("BitmapElemToPacks");
+        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.Morphs is null) throw new MemberNullException("Morphs");
+        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5)) != 0 && node.Splits is null) throw new MemberNullException("Splits");
+        if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -115,193 +693,27 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugVisualSpriteBuilderBase<TM10>
+    public partial class TM10 : CPlugVisualSpriteBuilderMembers7<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public global::GBX.NET.Vec3[]? BiTangents
-        {
-            get => state.Get<global::GBX.NET.Vec3[]?>("BiTangents");
-            set => SetBiTangents(state, value);
-        }
-        public TM10 WithBiTangents(params global::GBX.NET.Vec3[]? value)
-        {
-            BiTangents = value;
-            return this;
-        }
-        public TM10 WithBiTangents(IEnumerable<global::GBX.NET.Vec3> values)
-        {
-            return WithBiTangents(values.ToArray());
-        }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public TM10 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public TM10 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public bool IsInverse
-        {
-            get => state.Get<bool>("IsInverse");
-            set => SetIsInverse(state, value);
-        }
-        public TM10 WithIsInverse(bool value)
-        {
-            IsInverse = value;
-            return this;
-        }
-        public bool RadiusInScreen
-        {
-            get => state.Get<bool>("RadiusInScreen");
-            set => SetRadiusInScreen(state, value);
-        }
-        public TM10 WithRadiusInScreen(bool value)
-        {
-            RadiusInScreen = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode");
-            set => SetRenderMode(state, value);
-        }
-        public TM10 WithRenderMode(global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value)
-        {
-            RenderMode = value;
-            return this;
-        }
-        public bool SortBackToFront
-        {
-            get => state.Get<bool>("SortBackToFront");
-            set => SetSortBackToFront(state, value);
-        }
-        public TM10 WithSortBackToFront(bool value)
-        {
-            SortBackToFront = value;
-            return this;
-        }
-        public uint SpriteFlags
-        {
-            get => state.Get<uint>("SpriteFlags");
-            set => SetSpriteFlags(state, value);
-        }
-        public TM10 WithSpriteFlags(uint value)
-        {
-            SpriteFlags = value;
-            return this;
-        }
-        public bool UseGlobalDir
-        {
-            get => state.Get<bool>("UseGlobalDir");
-            set => SetUseGlobalDir(state, value);
-        }
-        public TM10 WithUseGlobalDir(bool value)
-        {
-            UseGlobalDir = value;
-            return this;
-        }
-        public bool UseTextureAtlas
-        {
-            get => state.Get<bool>("UseTextureAtlas");
-            set => SetUseTextureAtlas(state, value);
-        }
-        public TM10 WithUseTextureAtlas(bool value)
-        {
-            UseTextureAtlas = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010002 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002();
-            node.Chunks.Add(chunk09010002);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C003 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003();
-            node.Chunks.Add(chunk0902C003);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
-            node.Chunks.Add(chunk09006006);
-            var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
-            node.Chunks.Add(chunk09006007);
-            var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
-            node.Chunks.Add(chunk09006008);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09010002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0902C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006008 is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class TMPU : CPlugVisualSpriteBuilderBase<TMPU>
+    public partial class TMPU : CPlugVisualSpriteBuilderMembers7<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public global::GBX.NET.Vec3[]? BiTangents
-        {
-            get => state.Get<global::GBX.NET.Vec3[]?>("BiTangents");
-            set => SetBiTangents(state, value);
-        }
-        public TMPU WithBiTangents(params global::GBX.NET.Vec3[]? value)
-        {
-            BiTangents = value;
-            return this;
-        }
-        public TMPU WithBiTangents(IEnumerable<global::GBX.NET.Vec3> values)
-        {
-            return WithBiTangents(values.ToArray());
-        }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public TMPU WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public TMPU WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public bool IsInverse
-        {
-            get => state.Get<bool>("IsInverse");
-            set => SetIsInverse(state, value);
-        }
-        public TMPU WithIsInverse(bool value)
-        {
-            IsInverse = value;
-            return this;
-        }
         public float NPatchTessLevel
         {
             get => state.Get<float>("NPatchTessLevel");
@@ -312,133 +724,24 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
             NPatchTessLevel = value;
             return this;
         }
-        public bool RadiusInScreen
-        {
-            get => state.Get<bool>("RadiusInScreen");
-            set => SetRadiusInScreen(state, value);
-        }
-        public TMPU WithRadiusInScreen(bool value)
-        {
-            RadiusInScreen = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode");
-            set => SetRenderMode(state, value);
-        }
-        public TMPU WithRenderMode(global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value)
-        {
-            RenderMode = value;
-            return this;
-        }
-        public bool SortBackToFront
-        {
-            get => state.Get<bool>("SortBackToFront");
-            set => SetSortBackToFront(state, value);
-        }
-        public TMPU WithSortBackToFront(bool value)
-        {
-            SortBackToFront = value;
-            return this;
-        }
-        public uint SpriteFlags
-        {
-            get => state.Get<uint>("SpriteFlags");
-            set => SetSpriteFlags(state, value);
-        }
-        public TMPU WithSpriteFlags(uint value)
-        {
-            SpriteFlags = value;
-            return this;
-        }
-        public bool UseGlobalDir
-        {
-            get => state.Get<bool>("UseGlobalDir");
-            set => SetUseGlobalDir(state, value);
-        }
-        public TMPU WithUseGlobalDir(bool value)
-        {
-            UseGlobalDir = value;
-            return this;
-        }
-        public bool UseTextureAtlas
-        {
-            get => state.Get<bool>("UseTextureAtlas");
-            set => SetUseTextureAtlas(state, value);
-        }
-        public TMPU WithUseTextureAtlas(bool value)
-        {
-            UseTextureAtlas = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010002 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002();
-            node.Chunks.Add(chunk09010002);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C003 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003();
-            node.Chunks.Add(chunk0902C003);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
-            node.Chunks.Add(chunk09006006);
-            var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
-            node.Chunks.Add(chunk09006007);
-            var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
-            node.Chunks.Add(chunk09006008);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09010002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0902C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006009 is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class TMNESWC : CPlugVisualSpriteBuilderBase<TMNESWC>
+    public partial class TMNESWC : CPlugVisualSpriteBuilderMembers8<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public ushort AtlasGridCountU
-        {
-            get => state.Get<ushort>("AtlasGridCountU");
-            set => SetAtlasGridCountU(state, value);
-        }
-        public TMNESWC WithAtlasGridCountU(ushort value)
-        {
-            AtlasGridCountU = value;
-            return this;
-        }
-        public ushort AtlasGridCountV
-        {
-            get => state.Get<ushort>("AtlasGridCountV");
-            set => SetAtlasGridCountV(state, value);
-        }
-        public TMNESWC WithAtlasGridCountV(ushort value)
-        {
-            AtlasGridCountV = value;
-            return this;
-        }
         public global::GBX.NET.Vec3[]? BiTangents
         {
             get => state.Get<global::GBX.NET.Vec3[]?>("BiTangents");
@@ -453,385 +756,42 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
         {
             return WithBiTangents(values.ToArray());
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public TMNESWC WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public TMNESWC WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public Vec3 GlobalDirection
-        {
-            get => state.Get<Vec3>("GlobalDirection");
-            set => SetGlobalDirection(state, value);
-        }
-        public TMNESWC WithGlobalDirection(Vec3 value)
-        {
-            GlobalDirection = value;
-            return this;
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TMNESWC WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public Vec2 PivotPoint
-        {
-            get => state.Get<Vec2>("PivotPoint");
-            set => SetPivotPoint(state, value);
-        }
-        public TMNESWC WithPivotPoint(Vec2 value)
-        {
-            PivotPoint = value;
-            return this;
-        }
-        public bool RadiusInScreen
-        {
-            get => state.Get<bool>("RadiusInScreen");
-            set => SetRadiusInScreen(state, value);
-        }
-        public TMNESWC WithRadiusInScreen(bool value)
-        {
-            RadiusInScreen = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode");
-            set => SetRenderMode(state, value);
-        }
-        public TMNESWC WithRenderMode(global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value)
-        {
-            RenderMode = value;
-            return this;
-        }
-        public bool SortBackToFront
-        {
-            get => state.Get<bool>("SortBackToFront");
-            set => SetSortBackToFront(state, value);
-        }
-        public TMNESWC WithSortBackToFront(bool value)
-        {
-            SortBackToFront = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TMNESWC WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TMNESWC WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public uint SpriteFlags
-        {
-            get => state.Get<uint>("SpriteFlags");
-            set => SetSpriteFlags(state, value);
-        }
-        public TMNESWC WithSpriteFlags(uint value)
-        {
-            SpriteFlags = value;
-            return this;
-        }
-        public bool UseGlobalDir
-        {
-            get => state.Get<bool>("UseGlobalDir");
-            set => SetUseGlobalDir(state, value);
-        }
-        public TMNESWC WithUseGlobalDir(bool value)
-        {
-            UseGlobalDir = value;
-            return this;
-        }
-        public bool UseTextureAtlas
-        {
-            get => state.Get<bool>("UseTextureAtlas");
-            set => SetUseTextureAtlas(state, value);
-        }
-        public TMNESWC WithUseTextureAtlas(bool value)
-        {
-            UseTextureAtlas = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010005 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005();
-            node.Chunks.Add(chunk09010005);
-            var chunk09010006 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006();
-            node.Chunks.Add(chunk09010006);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C003 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003();
-            node.Chunks.Add(chunk0902C003);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
-            node.Chunks.Add(chunk09006006);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600C = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C();
-            node.Chunks.Add(chunk0900600C);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09010005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09010006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0902C003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900600C is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class VSK5 : CPlugVisualSpriteBuilderBase<VSK5>
+    public partial class VSK5 : CPlugVisualSpriteBuilderMembers8<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public ushort AtlasGridCountU
-        {
-            get => state.Get<ushort>("AtlasGridCountU");
-            set => SetAtlasGridCountU(state, value);
-        }
-        public VSK5 WithAtlasGridCountU(ushort value)
-        {
-            AtlasGridCountU = value;
-            return this;
-        }
-        public ushort AtlasGridCountV
-        {
-            get => state.Get<ushort>("AtlasGridCountV");
-            set => SetAtlasGridCountV(state, value);
-        }
-        public VSK5 WithAtlasGridCountV(ushort value)
-        {
-            AtlasGridCountV = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public VSK5 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public VSK5 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public Vec3 GlobalDirection
-        {
-            get => state.Get<Vec3>("GlobalDirection");
-            set => SetGlobalDirection(state, value);
-        }
-        public VSK5 WithGlobalDirection(Vec3 value)
-        {
-            GlobalDirection = value;
-            return this;
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public VSK5 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public Vec2 PivotPoint
-        {
-            get => state.Get<Vec2>("PivotPoint");
-            set => SetPivotPoint(state, value);
-        }
-        public VSK5 WithPivotPoint(Vec2 value)
-        {
-            PivotPoint = value;
-            return this;
-        }
-        public bool RadiusInScreen
-        {
-            get => state.Get<bool>("RadiusInScreen");
-            set => SetRadiusInScreen(state, value);
-        }
-        public VSK5 WithRadiusInScreen(bool value)
-        {
-            RadiusInScreen = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode");
-            set => SetRenderMode(state, value);
-        }
-        public VSK5 WithRenderMode(global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value)
-        {
-            RenderMode = value;
-            return this;
-        }
-        public bool SortBackToFront
-        {
-            get => state.Get<bool>("SortBackToFront");
-            set => SetSortBackToFront(state, value);
-        }
-        public VSK5 WithSortBackToFront(bool value)
-        {
-            SortBackToFront = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public VSK5 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public VSK5 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public uint SpriteFlags
-        {
-            get => state.Get<uint>("SpriteFlags");
-            set => SetSpriteFlags(state, value);
-        }
-        public VSK5 WithSpriteFlags(uint value)
-        {
-            SpriteFlags = value;
-            return this;
-        }
-        public bool UseGlobalDir
-        {
-            get => state.Get<bool>("UseGlobalDir");
-            set => SetUseGlobalDir(state, value);
-        }
-        public VSK5 WithUseGlobalDir(bool value)
-        {
-            UseGlobalDir = value;
-            return this;
-        }
-        public bool UseTextureAtlas
-        {
-            get => state.Get<bool>("UseTextureAtlas");
-            set => SetUseTextureAtlas(state, value);
-        }
-        public VSK5 WithUseTextureAtlas(bool value)
-        {
-            UseTextureAtlas = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010005 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005();
-            node.Chunks.Add(chunk09010005);
-            var chunk09010006 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006();
-            node.Chunks.Add(chunk09010006);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
-            node.Chunks.Add(chunk0902C004);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600D = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D();
-            node.Chunks.Add(chunk0900600D);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09010005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09010006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0902C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0900600D is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe3(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class TMF : CPlugVisualSpriteBuilderBase<TMF>
+    public partial class TMF : CPlugVisualSpriteBuilderMembers8<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public ushort AtlasGridCountU
-        {
-            get => state.Get<ushort>("AtlasGridCountU");
-            set => SetAtlasGridCountU(state, value);
-        }
-        public TMF WithAtlasGridCountU(ushort value)
-        {
-            AtlasGridCountU = value;
-            return this;
-        }
-        public ushort AtlasGridCountV
-        {
-            get => state.Get<ushort>("AtlasGridCountV");
-            set => SetAtlasGridCountV(state, value);
-        }
-        public TMF WithAtlasGridCountV(ushort value)
-        {
-            AtlasGridCountV = value;
-            return this;
-        }
         public global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks
         {
             get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[]>("BitmapElemToPacks");
@@ -846,189 +806,24 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
         {
             return WithBitmapElemToPacks(values.ToArray());
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public TMF WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public TMF WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public Vec3 GlobalDirection
-        {
-            get => state.Get<Vec3>("GlobalDirection");
-            set => SetGlobalDirection(state, value);
-        }
-        public TMF WithGlobalDirection(Vec3 value)
-        {
-            GlobalDirection = value;
-            return this;
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TMF WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public Vec2 PivotPoint
-        {
-            get => state.Get<Vec2>("PivotPoint");
-            set => SetPivotPoint(state, value);
-        }
-        public TMF WithPivotPoint(Vec2 value)
-        {
-            PivotPoint = value;
-            return this;
-        }
-        public bool RadiusInScreen
-        {
-            get => state.Get<bool>("RadiusInScreen");
-            set => SetRadiusInScreen(state, value);
-        }
-        public TMF WithRadiusInScreen(bool value)
-        {
-            RadiusInScreen = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode RenderMode
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode>("RenderMode");
-            set => SetRenderMode(state, value);
-        }
-        public TMF WithRenderMode(global::GBX.NET.Engines.Plug.CPlugVisualSprite.ERenderMode value)
-        {
-            RenderMode = value;
-            return this;
-        }
-        public bool SortBackToFront
-        {
-            get => state.Get<bool>("SortBackToFront");
-            set => SetSortBackToFront(state, value);
-        }
-        public TMF WithSortBackToFront(bool value)
-        {
-            SortBackToFront = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TMF WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TMF WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public uint SpriteFlags
-        {
-            get => state.Get<uint>("SpriteFlags");
-            set => SetSpriteFlags(state, value);
-        }
-        public TMF WithSpriteFlags(uint value)
-        {
-            SpriteFlags = value;
-            return this;
-        }
-        public bool UseGlobalDir
-        {
-            get => state.Get<bool>("UseGlobalDir");
-            set => SetUseGlobalDir(state, value);
-        }
-        public TMF WithUseGlobalDir(bool value)
-        {
-            UseGlobalDir = value;
-            return this;
-        }
-        public bool UseTextureAtlas
-        {
-            get => state.Get<bool>("UseTextureAtlas");
-            set => SetUseTextureAtlas(state, value);
-        }
-        public TMF WithUseTextureAtlas(bool value)
-        {
-            UseTextureAtlas = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010005 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005();
-            node.Chunks.Add(chunk09010005);
-            var chunk09010006 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006();
-            node.Chunks.Add(chunk09010006);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
-            node.Chunks.Add(chunk0902C004);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600E = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E();
-            node.Chunks.Add(chunk0900600E);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe4(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09010005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09010006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0902C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0900600E is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe4(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.BitmapElemToPacks is null) throw new MemberNullException("BitmapElemToPacks");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class MP3 : CPlugVisualSpriteBuilderBase<MP3>
+    public partial class MP3 : CPlugVisualSpriteBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public Rect[]? AtlasTexCoords
-        {
-            get => state.Get<Rect[]?>("AtlasTexCoords");
-            set => SetAtlasTexCoords(state, value);
-        }
-        public MP3 WithAtlasTexCoords(params Rect[]? value)
-        {
-            AtlasTexCoords = value;
-            return this;
-        }
-        public MP3 WithAtlasTexCoords(IEnumerable<Rect> values)
-        {
-            return WithAtlasTexCoords(values.ToArray());
-        }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
@@ -1045,121 +840,24 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
             SetFuncVisualReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public MP3 WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public MP3 WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public MP3 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public MP3 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public MP3 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam");
-            set => SetSpriteParam(state, value);
-        }
-        public MP3 WithSpriteParam(global::GBX.NET.Engines.Plug.CPlugSpriteParam? value)
-        {
-            SpriteParam = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
-            node.Chunks.Add(chunk09010008);
-            var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
-            node.Chunks.Add(chunk09010009);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
-            node.Chunks.Add(chunk0902C004);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.MP3);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe5(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09010008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09010009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0902C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 4 }) throw new InvalidOperationException("Required MP3 chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe5(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class TMT : CPlugVisualSpriteBuilderBase<TMT>
+    public partial class TMT : CPlugVisualSpriteBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public Rect[]? AtlasTexCoords
-        {
-            get => state.Get<Rect[]?>("AtlasTexCoords");
-            set => SetAtlasTexCoords(state, value);
-        }
-        public TMT WithAtlasTexCoords(params Rect[]? value)
-        {
-            AtlasTexCoords = value;
-            return this;
-        }
-        public TMT WithAtlasTexCoords(IEnumerable<Rect> values)
-        {
-            return WithAtlasTexCoords(values.ToArray());
-        }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
@@ -1176,121 +874,24 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
             SetFuncVisualReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public TMT WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public TMT WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TMT WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TMT WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TMT WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam");
-            set => SetSpriteParam(state, value);
-        }
-        public TMT WithSpriteParam(global::GBX.NET.Engines.Plug.CPlugSpriteParam? value)
-        {
-            SpriteParam = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
-            node.Chunks.Add(chunk09010008);
-            var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
-            node.Chunks.Add(chunk09010009);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
-            node.Chunks.Add(chunk0902C004);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.TMT);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe5(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09010008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09010009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0902C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 4 }) throw new InvalidOperationException("Required TMT chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe5(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class MP4 : CPlugVisualSpriteBuilderBase<MP4>
+    public partial class MP4 : CPlugVisualSpriteBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public Rect[]? AtlasTexCoords
-        {
-            get => state.Get<Rect[]?>("AtlasTexCoords");
-            set => SetAtlasTexCoords(state, value);
-        }
-        public MP4 WithAtlasTexCoords(params Rect[]? value)
-        {
-            AtlasTexCoords = value;
-            return this;
-        }
-        public MP4 WithAtlasTexCoords(IEnumerable<Rect> values)
-        {
-            return WithAtlasTexCoords(values.ToArray());
-        }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
         {
             get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
@@ -1307,210 +908,33 @@ public partial class CPlugVisualSpriteBuilder : CPlugVisualSpriteBuilderBase<CPl
             SetFuncVisualReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public MP4 WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public MP4 WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public MP4 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public MP4 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public MP4 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam");
-            set => SetSpriteParam(state, value);
-        }
-        public MP4 WithSpriteParam(global::GBX.NET.Engines.Plug.CPlugSpriteParam? value)
-        {
-            SpriteParam = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
-            node.Chunks.Add(chunk09010008);
-            var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
-            node.Chunks.Add(chunk09010009);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
-            node.Chunks.Add(chunk0902C004);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.MP4);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe6(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09010008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09010009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0902C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe6(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualSprite node);
     }
-    public partial class TM2020 : CPlugVisualSpriteBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVisualSpriteBuilderMembers4<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualSprite> state) : base(state) { }
-        public Rect[]? AtlasTexCoords
-        {
-            get => state.Get<Rect[]?>("AtlasTexCoords");
-            set => SetAtlasTexCoords(state, value);
-        }
-        public TM2020 WithAtlasTexCoords(params Rect[]? value)
-        {
-            AtlasTexCoords = value;
-            return this;
-        }
-        public TM2020 WithAtlasTexCoords(IEnumerable<Rect> values)
-        {
-            return WithAtlasTexCoords(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public TM2020 WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public TM2020 WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TM2020 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TM2020 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TM2020 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
-        public global::GBX.NET.Engines.Plug.CPlugSpriteParam? SpriteParam
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSpriteParam?>("SpriteParam");
-            set => SetSpriteParam(state, value);
-        }
-        public TM2020 WithSpriteParam(global::GBX.NET.Engines.Plug.CPlugSpriteParam? value)
-        {
-            SpriteParam = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualSpriteTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualSprite Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualSprite();
-            var chunk09010008 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008();
-            node.Chunks.Add(chunk09010008);
-            var chunk09010009 = new global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009();
-            node.Chunks.Add(chunk09010009);
-            var chunk0902C002 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002();
-            node.Chunks.Add(chunk0902C002);
-            var chunk0902C004 = new global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004();
-            node.Chunks.Add(chunk0902C004);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.TM2020);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualSpriteBuilder.CreateRecipe7(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010008>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09010008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisualSprite.Chunk09010009>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09010009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0902C002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual3D.Chunk0902C004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0902C004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualSpriteBuilder.ValidateRecipe7(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+            CPlugVisualSpriteBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -82,6 +82,10 @@ The existing track builder already supplies `KeepsPlaying()` before game selecti
 
 The outer builder and game stages share a generated generic base for common setters. A handwritten method replacing an inherited common setter can call `base.WithName(value)` to retain the generated assignment behavior.
 
+Stages also share bases for overlapping sets of game-specific setters. Assignment descriptors are shared by the property's declaring node, including its derived builders. Matching chunk recipes share creation and validation methods, while game-specific defaults and partial hooks still receive their selected context. Descriptors initialize on demand so an unused setter can be trimmed.
+
+Game interfaces reuse inherited members and shared member contracts. Generic contracts carry each game's child interface types. Collection adapters share conversion and validation code, follow collection replacements, and resolve references only on access. Use the named node interfaces, game interfaces, and concrete builder stages in application signatures. Generated member-group type names can change with the metadata.
+
 If a member stops being common, its generated `Set<Property>(state, value)` helper remains available while at least one game supports it. An obsolete method in the outer builder partial can use that helper to preserve pending assignments. Building for an unsupported game then reports the incompatible member.
 
 ## Exceptional creation recipes

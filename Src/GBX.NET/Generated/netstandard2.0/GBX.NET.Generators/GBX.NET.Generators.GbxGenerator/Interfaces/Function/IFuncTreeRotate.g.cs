@@ -42,10 +42,7 @@ public partial interface IFuncTreeRotate : IClassVersion<global::GBX.NET.Engines
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     float AngleMax { get; set; }
     float AngleMin { get; set; }
-    new bool AutoCreateMotion { get; set; }
     Vec3 Axis { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
 public partial interface IFuncTreeRotateTM10 : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTM10
@@ -54,51 +51,37 @@ public partial interface IFuncTreeRotateTM10 : IFuncTreeRotate, global::GBX.NET.
 
 public partial interface IFuncTreeRotateTMPU : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTMPU
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateTMSX : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTMSX
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateTMNESWC : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateVSK5 : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateTMF : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTMF
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateMP3 : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeMP3
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateTMT : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTMT
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateMP4 : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeMP4
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeRotateTM2020 : IFuncTreeRotate, global::GBX.NET.Interfaces.Function.IFuncTreeTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

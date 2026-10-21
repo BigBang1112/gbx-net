@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockImageMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImage where T0 : class
+{
+    new T0? Effect { get; set; }
+}
 public partial interface IGameCtnMediaBlockImage : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockImage>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -44,38 +49,31 @@ public partial interface IGameCtnMediaBlockImage : IClassVersion<global::GBX.NET
     PackDesc? Image { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageTMSX : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX
+public partial interface IGameCtnMediaBlockImageTMSX : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMSX>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiTMSX? Effect { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageTMNESWC : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC
+public partial interface IGameCtnMediaBlockImageTMNESWC : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiTMNESWC? Effect { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageVSK5 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5
+public partial interface IGameCtnMediaBlockImageVSK5 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockVSK5, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiVSK5? Effect { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageTMF : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF
+public partial interface IGameCtnMediaBlockImageTMF : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMF>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiTMF? Effect { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageTMT : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockImageTMT : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTMT>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiTMT? Effect { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageMP4 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockImageMP4 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiMP4>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiMP4? Effect { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockImageTM2020 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockImageTM2020 : IGameCtnMediaBlockImage, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockImageMembers1<global::GBX.NET.Interfaces.Control.IControlEffectSimiTM2020>
 {
-    new global::GBX.NET.Interfaces.Control.IControlEffectSimiTM2020? Effect { get; set; }
 }
 

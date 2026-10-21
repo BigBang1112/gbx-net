@@ -34,14 +34,15 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugClouds : global::GBX.NET.Interfaces.Plug.IPlugClouds, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5, global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF
 {
     public static global::GBX.NET.Builders.Engines.Plug.CPlugCloudsBuilder Create() => new();
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>? global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5.SolidFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>.SolidFids
     {
-        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(() => SolidFids, static node => { if (node is null) throw new MemberNullException("SolidFids"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(GetSolidFidsBuilderReferences, GameVersion.VSK5, true, "SolidFids");
+        set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>? global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF.SolidFids
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>? global::GBX.NET.Interfaces.Plug.IPlugCloudsMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>.SolidFids
     {
-        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(() => SolidFids, static node => { if (node is null) throw new MemberNullException("SolidFids"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => SolidFids is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(GetSolidFidsBuilderReferences, GameVersion.TMF, true, "SolidFids");
+        set => SolidFids = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSolid, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugSolid>? GetSolidFidsBuilderReferences() => SolidFids;
 }

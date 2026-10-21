@@ -31,6 +31,20 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneTransitionMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnZoneTransition where T0 : class
+{
+    T0? BlockInfoTransition { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_East { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_North { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_South { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_West { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_East { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_North { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_South { get; set; }
+    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_West { get; set; }
+    string? ReplacementZoneId { get; set; }
+}
 public partial interface IGameCtnZoneTransition : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnZoneTransition>, global::GBX.NET.Interfaces.Game.IGameCtnZone
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,9 +54,6 @@ public partial interface IGameCtnZoneTransition : IClassVersion<global::GBX.NET.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new int Height { get; set; }
-    new string? SurfaceId { get; set; }
-    new string? ZoneId { get; set; }
 }
 
 public partial interface IGameCtnZoneTransitionTM10 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM10
@@ -55,109 +66,33 @@ public partial interface IGameCtnZoneTransitionTMPU : IGameCtnZoneTransition, gl
 
 public partial interface IGameCtnZoneTransitionTMSX : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMSX
 {
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
 public partial interface IGameCtnZoneTransitionTMNESWC : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMNESWC
 {
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
 public partial interface IGameCtnZoneTransitionVSK5 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneVSK5
 {
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
 public partial interface IGameCtnZoneTransitionTMF : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMF
 {
-    new int Depth { get; set; }
-    new bool HasWater { get; set; }
-    new bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneTransitionMP3 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3
+public partial interface IGameCtnZoneTransitionMP3 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP3, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP3? BlockInfoTransition { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_West { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_West { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    string? ReplacementZoneId { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneTransitionTMT : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT
+public partial interface IGameCtnZoneTransitionTMT : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTMT, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMT>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTMT? BlockInfoTransition { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_West { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_West { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    string? ReplacementZoneId { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneTransitionMP4 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4
+public partial interface IGameCtnZoneTransitionMP4 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneMP4, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP4>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionMP4? BlockInfoTransition { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_West { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_West { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    string? ReplacementZoneId { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneTransitionTM2020 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020
+public partial interface IGameCtnZoneTransitionTM2020 : IGameCtnZoneTransition, global::GBX.NET.Interfaces.Game.IGameCtnZoneTM2020, global::GBX.NET.Interfaces.Game.IGameCtnZoneTransitionMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTM2020>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTransitionTM2020? BlockInfoTransition { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneTransition.EBorderType Border_West { get; set; }
-    new int Depth { get; set; }
-    new string? ForcedParentZoneFrontierId { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_East { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_North { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_South { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy? Genealogy_West { get; set; }
-    new bool IsLargeZone { get; set; }
-    new bool OldZone { get; set; }
-    string? ReplacementZoneId { get; set; }
-    new float VisualTopGroundHeight { get; set; }
-    new string? WaterId { get; set; }
 }
 

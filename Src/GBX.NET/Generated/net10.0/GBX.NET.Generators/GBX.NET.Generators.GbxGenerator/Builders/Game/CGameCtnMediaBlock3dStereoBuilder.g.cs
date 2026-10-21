@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlock3dStereoBuilderBase<TSelf> where TSelf :
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state;
     private protected CGameCtnMediaBlock3dStereoBuilderBase() => state = new();
     private protected CGameCtnMediaBlock3dStereoBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlock3dStereoBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Key>?>("Keys");
@@ -58,6 +58,20 @@ public abstract class CGameCtnMediaBlock3dStereoBuilderBase<TSelf> where TSelf :
 }
 public partial class CGameCtnMediaBlock3dStereoBuilder : CGameCtnMediaBlock3dStereoBuilderBase<CGameCtnMediaBlock3dStereoBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo();
+        var chunk03024000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000();
+        node.Chunks.Add(chunk03024000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03024000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -70,13 +84,12 @@ public partial class CGameCtnMediaBlock3dStereoBuilder : CGameCtnMediaBlock3dSte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock3dStereoTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo();
-            var chunk03024000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000();
-            node.Chunks.Add(chunk03024000);
+            var node = CGameCtnMediaBlock3dStereoBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03024000 is missing or has an incompatible version.");
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -89,13 +102,12 @@ public partial class CGameCtnMediaBlock3dStereoBuilder : CGameCtnMediaBlock3dSte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock3dStereoTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo();
-            var chunk03024000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000();
-            node.Chunks.Add(chunk03024000);
+            var node = CGameCtnMediaBlock3dStereoBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03024000 is missing or has an incompatible version.");
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -108,13 +120,12 @@ public partial class CGameCtnMediaBlock3dStereoBuilder : CGameCtnMediaBlock3dSte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock3dStereoMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo();
-            var chunk03024000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000();
-            node.Chunks.Add(chunk03024000);
+            var node = CGameCtnMediaBlock3dStereoBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03024000 is missing or has an incompatible version.");
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -127,13 +138,12 @@ public partial class CGameCtnMediaBlock3dStereoBuilder : CGameCtnMediaBlock3dSte
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock3dStereoTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo();
-            var chunk03024000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000();
-            node.Chunks.Add(chunk03024000);
+            var node = CGameCtnMediaBlock3dStereoBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlock3dStereo.Chunk03024000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03024000 is missing or has an incompatible version.");
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlock3dStereoBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

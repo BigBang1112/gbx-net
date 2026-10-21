@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Hms;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IHmsLightMembers1<T0, T1> : global::GBX.NET.Interfaces.Hms.IHmsLight where T0 : class where T1 : class
+{
+    new T0? BitmapFlare { get; set; }
+    new T0? BitmapSprite { get; set; }
+    new T1? MainGxLight { get; set; }
+}
 public partial interface IHmsLight : IClassVersion<global::GBX.NET.Engines.Hms.CHmsLight>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? BitmapFlare { get; set; }
@@ -38,73 +45,43 @@ public partial interface IHmsLight : IClassVersion<global::GBX.NET.Engines.Hms.C
     global::GBX.NET.Interfaces.Graphic.IGxLight? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTM10 : IHmsLight
+public partial interface IHmsLightTM10 : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Graphic.IGxLightTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTM10? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTMPU : IHmsLight
+public partial interface IHmsLightTMPU : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Graphic.IGxLightTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMPU? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTMSX : IHmsLight
+public partial interface IHmsLightTMSX : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Graphic.IGxLightTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMSX? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTMNESWC : IHmsLight
+public partial interface IHmsLightTMNESWC : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMNESWC? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightVSK5 : IHmsLight
+public partial interface IHmsLightVSK5 : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Graphic.IGxLightVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightVSK5? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTMF : IHmsLight
+public partial interface IHmsLightTMF : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Graphic.IGxLightTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMF? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightMP3 : IHmsLight
+public partial interface IHmsLightMP3 : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Graphic.IGxLightMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightMP3? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTMT : IHmsLight
+public partial interface IHmsLightTMT : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Graphic.IGxLightTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTMT? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightMP4 : IHmsLight
+public partial interface IHmsLightMP4 : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Graphic.IGxLightMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightMP4? MainGxLight { get; set; }
 }
 
-public partial interface IHmsLightTM2020 : IHmsLight
+public partial interface IHmsLightTM2020 : IHmsLight, global::GBX.NET.Interfaces.Hms.IHmsLightMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Graphic.IGxLightTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapFlare { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? BitmapSprite { get; set; }
-    new global::GBX.NET.Interfaces.Graphic.IGxLightTM2020? MainGxLight { get; set; }
 }
 

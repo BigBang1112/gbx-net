@@ -36,29 +36,29 @@ public abstract class CGameControlCardNetOnlineNewsBuilderBase<TSelf> where TSel
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state;
     private protected CGameControlCardNetOnlineNewsBuilderBase() => state = new();
     private protected CGameControlCardNetOnlineNewsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state) => this.state = state;
-    private protected static void SetAcceptOwnControls(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, bool value) => state.Set<bool>("AcceptOwnControls", value, GameVersion.TMF, static value => value, static (node, value) => node.AcceptOwnControls = value);
-    private protected static void SetChilds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => state.Set<global::GBX.NET.Engines.Control.CControlContainer.Child[]>("Childs", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Control.CControlContainer.Child[])value.Clone(), static (node, value) => node.Childs = value);
-    private protected static void SetControlFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, uint value) => state.Set<uint>("ControlFlags", value, GameVersion.TMF, static value => value, static (node, value) => node.ControlFlags = value);
-    private protected static void SetCreateScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain?>("CreateScript", value, GameVersion.TMF, static value => value, static (node, value) => node.CreateScript = value);
-    private protected static void SetCreateScriptReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>>("CreateScript", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.CreateScript.CopyFrom(reference));
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsItem?>("Item", value, GameVersion.TMF, static value => value, static (node, value) => node.Item = value);
-    private protected static void SetLayout(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlLayout? value) => state.Set<global::GBX.NET.Engines.Control.CControlLayout?>("Layout", value, GameVersion.TMF, static value => value, static (node, value) => node.Layout = value);
-    private protected static void SetLayoutReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlLayout>>("Layout", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlLayout>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Layout.CopyFrom(reference));
-    private protected static void SetLegacyStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle", value, GameVersion.TMF, static value => value, static (node, value) => node.LegacyStyle = value);
-    private protected static void SetLegacyStyleReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlStyle>>("LegacyStyle", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlStyle>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LegacyStyle.CopyFrom(reference));
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler", value, GameVersion.TMF, static value => value, static (node, value) => node.MessageHandler = value);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler>>("MessageHandler", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MessageHandler.CopyFrom(reference));
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set<global::GBX.NET.Engines.Motion.CMotion?>("Motion", value, GameVersion.TMF, static value => value, static (node, value) => node.Motion = value);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotion>>("Motion", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotion>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Motion.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, string? value) => state.Set<string?>("Name", value, GameVersion.TMF, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetNod(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod", value, GameVersion.TMF, static value => value, static (node, value) => node.Nod = value);
-    private protected static void SetNodReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("Nod", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Nod.CopyFrom(reference));
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink", value, GameVersion.TMF, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.ObjectLink = value);
-    private protected static void SetStackText(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, string? value) => state.Set<string?>("StackText", value, GameVersion.TMF, static value => value, static (node, value) => node.StackText = value);
-    private protected static void SetStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set<global::GBX.NET.Engines.Control.CControlStyle?>("Style", value, GameVersion.TMF, static value => value, static (node, value) => node.Style = value);
-    private protected static void SetStyleReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlStyle>>("Style", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlStyle>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Style.CopyFrom(reference));
-    private protected static void SetStyleId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, string? value) => state.Set<string?>("StyleId", value, GameVersion.TMF, static value => value, static (node, value) => node.StyleId = value);
-    private protected static void SetUseScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, bool value) => state.Set<bool>("UseScript", value, GameVersion.TMF, static value => value, static (node, value) => node.UseScript = value);
+    private protected static void SetAcceptOwnControls(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetAcceptOwnControlsAssignment(), value, GameVersion.TMF);
+    private protected static void SetChilds(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlContainer.Child[] value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetChildsAssignment(), value, GameVersion.TMF);
+    private protected static void SetControlFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.TMF);
+    private protected static void SetCreateScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptAssignment(), value, GameVersion.TMF);
+    private protected static void SetCreateScriptReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetCreateScriptReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.TMF);
+    private protected static void SetLayout(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlLayout? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.TMF);
+    private protected static void SetLayoutReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetLegacyStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.TMF);
+    private protected static void SetLegacyStyleReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TMF);
+    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.TMF);
+    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.TMF);
+    private protected static void SetNod(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.TMF);
+    private protected static void SetNodReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.TMF);
+    private protected static void SetStackText(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.TMF);
+    private protected static void SetStyle(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.TMF);
+    private protected static void SetStyleReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetStyleId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.TMF);
+    private protected static void SetUseScript(NodeBuilderState<global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlContainerBuilderAssignments.GetUseScriptAssignment(), value, GameVersion.TMF);
     public bool AcceptOwnControls
     {
         get => state.Get<bool>("AcceptOwnControls");
@@ -276,6 +276,48 @@ public abstract class CGameControlCardNetOnlineNewsBuilderBase<TSelf> where TSel
 }
 public partial class CGameControlCardNetOnlineNewsBuilder : CGameControlCardNetOnlineNewsBuilderBase<CGameControlCardNetOnlineNewsBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews();
+        var chunk07002005 = new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005();
+        node.Chunks.Add(chunk07002005);
+        var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
+        node.Chunks.Add(chunk0700100C);
+        var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
+        node.Chunks.Add(chunk0700100E);
+        var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
+        node.Chunks.Add(chunk0700100F);
+        var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
+        node.Chunks.Add(chunk07001010);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
+        node.Chunks.Add(chunk0A011006);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07002005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews node, GameVersion game)
+    {
+        if (node.Childs is null) throw new MemberNullException("Childs");
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CGameControlCardNetOnlineNewsBuilderBase<TMF>
     {
@@ -302,7 +344,7 @@ public partial class CGameControlCardNetOnlineNewsBuilder : CGameControlCardNetO
         }
         public TMF WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(values, false));
         }
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values)
         {
@@ -315,41 +357,12 @@ public partial class CGameControlCardNetOnlineNewsBuilder : CGameControlCardNetO
         public global::GBX.NET.Interfaces.Game.IGameControlCardNetOnlineNewsTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameControlCardNetOnlineNews();
-            var chunk07002005 = new global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005();
-            node.Chunks.Add(chunk07002005);
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CGameControlCardNetOnlineNewsBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlContainer.Chunk07002005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07002005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005003 is missing or has an incompatible version.");
+            CGameControlCardNetOnlineNewsBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.Childs is null) throw new MemberNullException("Childs");
+            CGameControlCardNetOnlineNewsBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

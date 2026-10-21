@@ -36,8 +36,8 @@ public abstract class CGameCtnMediaBlockFxBlurMotionBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state;
     private protected CGameCtnMediaBlockFxBlurMotionBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxBlurMotionBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state) => this.state = state;
-    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state, TimeSingle value) => state.Set<TimeSingle>("End", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.End = value);
-    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state, TimeSingle value) => state.Set<TimeSingle>("Start", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Start = value);
+    private protected static void SetEnd(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurMotionBuilderAssignments.GetEndAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStart(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion> state, TimeSingle value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxBlurMotionBuilderAssignments.GetStartAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public TimeSingle End
     {
         get => state.Get<TimeSingle>("End");
@@ -61,6 +61,20 @@ public abstract class CGameCtnMediaBlockFxBlurMotionBuilderBase<TSelf> where TSe
 }
 public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockFxBlurMotionBuilderBase<CGameCtnMediaBlockFxBlurMotionBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
+        var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
+        node.Chunks.Add(chunk03082000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03082000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -76,13 +90,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -95,13 +108,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -114,13 +126,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -133,13 +144,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -152,13 +162,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -171,13 +180,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -190,13 +198,12 @@ public partial class CGameCtnMediaBlockFxBlurMotionBuilder : CGameCtnMediaBlockF
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxBlurMotionTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion();
-            var chunk03082000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000();
-            node.Chunks.Add(chunk03082000);
+            var node = CGameCtnMediaBlockFxBlurMotionBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxBlurMotion.Chunk03082000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03082000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockFxBlurMotionBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

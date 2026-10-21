@@ -116,16 +116,13 @@ public partial interface IPlugVehicleCameraRace2ModelMP3 : IPlugVehicleCameraRac
 
 public partial interface IPlugVehicleCameraRace2ModelTMT : IPlugVehicleCameraRace2Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? Shake { get; set; }
 }
 
 public partial interface IPlugVehicleCameraRace2ModelMP4 : IPlugVehicleCameraRace2Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? Shake { get; set; }
 }
 
 public partial interface IPlugVehicleCameraRace2ModelTM2020 : IPlugVehicleCameraRace2Model, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? Shake { get; set; }
 }
 

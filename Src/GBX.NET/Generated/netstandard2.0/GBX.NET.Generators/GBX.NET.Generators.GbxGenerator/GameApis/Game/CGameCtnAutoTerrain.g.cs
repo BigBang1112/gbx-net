@@ -39,7 +39,7 @@ public partial class CGameCtnAutoTerrain : global::GBX.NET.Interfaces.Game.IGame
         get => Genealogy;
         set => Genealogy = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3.Genealogy
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP3>.Genealogy
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnAutoTerrain : global::GBX.NET.Interfaces.Game.IGame
         }
         set => Genealogy = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT.Genealogy
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTMT>.Genealogy
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameCtnAutoTerrain : global::GBX.NET.Interfaces.Game.IGame
         }
         set => Genealogy = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4.Genealogy
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyMP4>.Genealogy
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameCtnAutoTerrain : global::GBX.NET.Interfaces.Game.IGame
         }
         set => Genealogy = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnZoneGenealogy node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020.Genealogy
+    global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020? global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMembers1<global::GBX.NET.Interfaces.Game.IGameCtnZoneGenealogyTM2020>.Genealogy
     {
         get
         {

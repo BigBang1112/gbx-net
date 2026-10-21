@@ -36,9 +36,9 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state;
     private protected GxFogBlenderBuilderBase() => state = new();
     private protected GxFogBlenderBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state) => this.state = state;
-    private protected static void SetEnabled(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, bool value) => state.Set<bool>("Enabled", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Enabled = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? value) => state.Set<List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>?>("Keys", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>(value), static (node, value) => node.Keys = value);
-    private protected static void SetLegacyMode(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, int value) => state.Set<int>("LegacyMode", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LegacyMode = value);
+    private protected static void SetEnabled(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetEnabledAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, List<global::GBX.NET.Engines.Graphic.GxFogBlender.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLegacyMode(NodeBuilderState<global::GBX.NET.Engines.Graphic.GxFogBlender> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Graphic.GxFogBlenderBuilderAssignments.GetLegacyModeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public bool Enabled
     {
         get => state.Get<bool>("Enabled");
@@ -80,6 +80,20 @@ public abstract class GxFogBlenderBuilderBase<TSelf> where TSelf : GxFogBlenderB
 }
 public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderBuilder>
 {
+    private static global::GBX.NET.Engines.Graphic.GxFogBlender CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
+        var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
+        node.Chunks.Add(chunk04008000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Graphic.GxFogBlender node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk04008000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Graphic.GxFogBlender node, GameVersion game)
+    {
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -94,13 +108,12 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         public global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxFogBlender Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
-            var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
-            node.Chunks.Add(chunk04008000);
+            var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk04008000 is missing or has an incompatible version.");
+            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -113,13 +126,12 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         public global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxFogBlender Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
-            var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
-            node.Chunks.Add(chunk04008000);
+            var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk04008000 is missing or has an incompatible version.");
+            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -132,13 +144,12 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         public global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxFogBlender Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
-            var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
-            node.Chunks.Add(chunk04008000);
+            var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk04008000 is missing or has an incompatible version.");
+            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -151,13 +162,12 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         public global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxFogBlender Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
-            var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
-            node.Chunks.Add(chunk04008000);
+            var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk04008000 is missing or has an incompatible version.");
+            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -170,13 +180,12 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         public global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxFogBlender Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
-            var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
-            node.Chunks.Add(chunk04008000);
+            var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk04008000 is missing or has an incompatible version.");
+            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -189,13 +198,12 @@ public partial class GxFogBlenderBuilder : GxFogBlenderBuilderBase<GxFogBlenderB
         public global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Graphic.GxFogBlender Build()
         {
-            var node = new global::GBX.NET.Engines.Graphic.GxFogBlender();
-            var chunk04008000 = new global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000();
-            node.Chunks.Add(chunk04008000);
+            var node = GxFogBlenderBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Graphic.GxFogBlender.Chunk04008000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk04008000 is missing or has an incompatible version.");
+            GxFogBlenderBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            GxFogBlenderBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

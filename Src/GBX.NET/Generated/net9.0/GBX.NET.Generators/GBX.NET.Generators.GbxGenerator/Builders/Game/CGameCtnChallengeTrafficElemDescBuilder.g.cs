@@ -36,16 +36,16 @@ public abstract class CGameCtnChallengeTrafficElemDescBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state;
     private protected CGameCtnChallengeTrafficElemDescBuilderBase() => state = new();
     private protected CGameCtnChallengeTrafficElemDescBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state) => this.state = state;
-    private protected static void SetElemId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, string value) => state.Set<string>("ElemId", value, GameVersion.TMT, static value => value, static (node, value) => node.ElemId = value);
-    private protected static void SetFaction(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, int value) => state.Set<int>("Faction", value, GameVersion.TMT, static value => value, static (node, value) => node.Faction = value);
-    private protected static void SetLegacyModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.LegacyTrafficObject? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.LegacyTrafficObject?>("LegacyModel", value, GameVersion.TMT, static value => value, static (node, value) => node.LegacyModel = value);
-    private protected static void SetModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams?>("Model", value, GameVersion.TMT, static value => value, static (node, value) => node.Model = value);
-    private protected static void SetModelReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams>>("Model", value, GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Model.CopyFrom(reference));
-    private protected static void SetModelVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, int value) => state.Set<int>("ModelVersion", value, GameVersion.TMT, static value => value, static (node, value) => node.ModelVersion = value);
-    private protected static void SetPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, PackDesc? value) => state.Set<PackDesc?>("PackDesc", value, GameVersion.TMT, static value => value, static (node, value) => node.PackDesc = value);
-    private protected static void SetPathId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, string value) => state.Set<string>("PathId", value, GameVersion.TMT, static value => value, static (node, value) => node.PathId = value);
-    private protected static void SetTimeOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, TimeInt32 value) => state.Set<TimeInt32>("TimeOffset", value, GameVersion.TMT, static value => value, static (node, value) => node.TimeOffset = value);
-    private protected static void SetTrafficObject(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, Ident value) => state.Set<Ident>("TrafficObject", value, GameVersion.TMT, static value => value, static (node, value) => node.TrafficObject = value);
+    private protected static void SetElemId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetElemIdAssignment(), value, GameVersion.TMT);
+    private protected static void SetFaction(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetFactionAssignment(), value, GameVersion.TMT);
+    private protected static void SetLegacyModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.LegacyTrafficObject? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetLegacyModelAssignment(), value, GameVersion.TMT);
+    private protected static void SetModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetModelAssignment(), value, GameVersion.TMT);
+    private protected static void SetModelReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTrafficObjectParams> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetModelReferenceAssignment(), value, GameVersion.TMT);
+    private protected static void SetModelVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetModelVersionAssignment(), value, GameVersion.TMT);
+    private protected static void SetPackDesc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetPackDescAssignment(), value, GameVersion.TMT);
+    private protected static void SetPathId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetPathIdAssignment(), value, GameVersion.TMT);
+    private protected static void SetTimeOffset(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetTimeOffsetAssignment(), value, GameVersion.TMT);
+    private protected static void SetTrafficObject(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc> state, Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnChallengeTrafficElemDescBuilderAssignments.GetTrafficObjectAssignment(), value, GameVersion.TMT);
     public string ElemId
     {
         get => state.Get<string>("ElemId");
@@ -145,6 +145,23 @@ public abstract class CGameCtnChallengeTrafficElemDescBuilderBase<TSelf> where T
 }
 public partial class CGameCtnChallengeTrafficElemDescBuilder : CGameCtnChallengeTrafficElemDescBuilderBase<CGameCtnChallengeTrafficElemDescBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc();
+        var chunk0316E001 = new global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.Chunk0316E001(game);
+        node.Chunks.Add(chunk0316E001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.Chunk0316E001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316E001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc node, GameVersion game)
+    {
+        if (node.ElemId is null) throw new MemberNullException("ElemId");
+        if (node.PathId is null) throw new MemberNullException("PathId");
+        if (node.TrafficObject is null) throw new MemberNullException("TrafficObject");
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public partial class TMT : CGameCtnChallengeTrafficElemDescBuilderBase<TMT>
     {
@@ -156,16 +173,12 @@ public partial class CGameCtnChallengeTrafficElemDescBuilder : CGameCtnChallenge
         public global::GBX.NET.Interfaces.Game.IGameCtnChallengeTrafficElemDescTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc();
-            var chunk0316E001 = new global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.Chunk0316E001(GameVersion.TMT);
-            node.Chunks.Add(chunk0316E001);
+            var node = CGameCtnChallengeTrafficElemDescBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnChallengeTrafficElemDesc.Chunk0316E001>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0316E001 is missing or has an incompatible version.");
+            CGameCtnChallengeTrafficElemDescBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.ElemId is null) throw new MemberNullException("ElemId");
-            if (node.PathId is null) throw new MemberNullException("PathId");
-            if (node.TrafficObject is null) throw new MemberNullException("TrafficObject");
+            CGameCtnChallengeTrafficElemDescBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }

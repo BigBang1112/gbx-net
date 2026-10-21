@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterial, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM10, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMPU, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMSX, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM2020
 {
     public static global::GBX.NET.Builders.Engines.Plug.CPlugVehicleMaterialBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM10.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10>.MaterialHeightDetailBitmap
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM10.TrailManagerModel
+    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.TrailManagerModel
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => TrailManagerModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTM10.TrailShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>.TrailShader
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMPU.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU>.MaterialHeightDetailBitmap
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMPU.TrailManagerModel
+    global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.TrailManagerModel
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => TrailManagerModel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFlockModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMPU.TrailShader
+    global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers1<global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>.TrailShader
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => TrailShader = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMSX.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.MaterialHeightDetailBitmap
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMNESWC.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.MaterialHeightDetailBitmap
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialVSK5.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.MaterialHeightDetailBitmap
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialTMF.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.MaterialHeightDetailBitmap
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CPlugVehicleMaterial : global::GBX.NET.Interfaces.Plug.IPlu
         }
         set => MaterialHeightDetailBitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMP3.MaterialHeightDetailBitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugVehicleMaterialMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.MaterialHeightDetailBitmap
     {
         get
         {

@@ -31,28 +31,29 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFxLightningMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugFxLightning where T0 : class
+{
+    new T0? Sound { get; set; }
+}
 public partial interface IPlugFxLightning : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFxLightning>
 {
     global::GBX.NET.Interfaces.Plug.IPlugSound? Sound { get; set; }
 }
 
-public partial interface IPlugFxLightningMP3 : IPlugFxLightning
+public partial interface IPlugFxLightningMP3 : IPlugFxLightning, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? Sound { get; set; }
 }
 
-public partial interface IPlugFxLightningTMT : IPlugFxLightning
+public partial interface IPlugFxLightningTMT : IPlugFxLightning, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? Sound { get; set; }
 }
 
-public partial interface IPlugFxLightningMP4 : IPlugFxLightning
+public partial interface IPlugFxLightningMP4 : IPlugFxLightning, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound { get; set; }
 }
 
-public partial interface IPlugFxLightningTM2020 : IPlugFxLightning
+public partial interface IPlugFxLightningTM2020 : IPlugFxLightning, global::GBX.NET.Interfaces.Plug.IPlugFxLightningMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? Sound { get; set; }
 }
 

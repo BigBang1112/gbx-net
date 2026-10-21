@@ -36,7 +36,7 @@ public abstract class CPlugCharPhyMaterialsBuilderBase<TSelf> where TSelf : CPlu
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state;
     private protected CPlugCharPhyMaterialsBuilderBase() => state = new();
     private protected CPlugCharPhyMaterialsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state) => this.state = state;
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>("Materials", value, GameVersion.TM2020, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Materials = value);
+    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugCharPhyMaterialsBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>? Materials
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterial>?>("Materials");
@@ -58,6 +58,20 @@ public abstract class CPlugCharPhyMaterialsBuilderBase<TSelf> where TSelf : CPlu
 }
 public partial class CPlugCharPhyMaterialsBuilder : CPlugCharPhyMaterialsBuilderBase<CPlugCharPhyMaterialsBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials();
+        var chunk090FB002 = new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB002(game);
+        node.Chunks.Add(chunk090FB002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB002>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk090FB002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugCharPhyMaterialsBuilderBase<TM2020>
     {
@@ -65,13 +79,12 @@ public partial class CPlugCharPhyMaterialsBuilder : CPlugCharPhyMaterialsBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugCharPhyMaterialsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials();
-            var chunk090FB002 = new global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB002(GameVersion.TM2020);
-            node.Chunks.Add(chunk090FB002);
+            var node = CPlugCharPhyMaterialsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugCharPhyMaterials.Chunk090FB002>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090FB002 is missing or has an incompatible version.");
+            CPlugCharPhyMaterialsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugCharPhyMaterialsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

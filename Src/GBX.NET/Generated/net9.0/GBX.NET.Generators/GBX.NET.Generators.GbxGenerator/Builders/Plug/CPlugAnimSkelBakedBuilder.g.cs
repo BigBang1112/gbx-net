@@ -36,15 +36,15 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state;
     private protected CPlugAnimSkelBakedBuilderBase() => state = new();
     private protected CPlugAnimSkelBakedBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state) => this.state = state;
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags?>("Flags", value, GameVersion.TM2020, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetFlagsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, int value) => state.Set<int>("FlagsVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.FlagsVersion = value);
-    private protected static void SetHash(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, ulong value) => state.Set<ulong>("Hash", value, GameVersion.TM2020, static value => value, static (node, value) => node.Hash = value);
-    private protected static void SetJointGroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup?>("JointGroup", value, GameVersion.TM2020, static value => value, static (node, value) => node.JointGroup = value);
-    private protected static void SetJointGroupReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup>>("JointGroup", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.JointGroup.CopyFrom(reference));
-    private protected static void SetPackedLocalJointsData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, byte[]? value) => state.Set<byte[]?>("PackedLocalJointsData", value, GameVersion.TM2020, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.PackedLocalJointsData = value);
-    private protected static void SetRootMotionFrames(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]?>("RootMotionFrames", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[])value.Clone(), static (node, value) => node.RootMotionFrames = value);
-    private protected static void SetTiming(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod?>("Timing", value, GameVersion.TM2020, static value => value, static (node, value) => node.Timing = value);
-    private protected static void SetTimingVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, int value) => state.Set<int>("TimingVersion", value, GameVersion.TM2020, static value => value, static (node, value) => node.TimingVersion = value);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetFlagsVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetFlagsVersionAssignment(), value, GameVersion.TM2020);
+    private protected static void SetHash(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetHashAssignment(), value, GameVersion.TM2020);
+    private protected static void SetJointGroup(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupAssignment(), value, GameVersion.TM2020);
+    private protected static void SetJointGroupReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAnimSkelJointGroup> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetJointGroupReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetPackedLocalJointsData(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, byte[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetPackedLocalJointsDataAssignment(), value, GameVersion.TM2020);
+    private protected static void SetRootMotionFrames(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimFile.RootMotionFrame[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetRootMotionFramesAssignment(), value, GameVersion.TM2020);
+    private protected static void SetTiming(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.TimingFixedPeriod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingAssignment(), value, GameVersion.TM2020);
+    private protected static void SetTimingVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugAnimSkelBakedBuilderAssignments.GetTimingVersionAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags? Flags
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugAnimClip.ClipFlags?>("Flags");
@@ -142,6 +142,20 @@ public abstract class CPlugAnimSkelBakedBuilderBase<TSelf> where TSelf : CPlugAn
 }
 public partial class CPlugAnimSkelBakedBuilder : CPlugAnimSkelBakedBuilderBase<CPlugAnimSkelBakedBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked();
+        var chunk09132000 = new global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.Chunk09132000(game);
+        node.Chunks.Add(chunk09132000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.Chunk09132000>() is not { Version: 8 }) throw new InvalidOperationException($"Required {game} chunk Chunk09132000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CPlugAnimSkelBakedBuilderBase<TM2020>
     {
@@ -153,13 +167,12 @@ public partial class CPlugAnimSkelBakedBuilder : CPlugAnimSkelBakedBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugAnimSkelBakedTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked();
-            var chunk09132000 = new global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.Chunk09132000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09132000);
+            var node = CPlugAnimSkelBakedBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugAnimSkelBaked.Chunk09132000>() is not { Version: 8 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09132000 is missing or has an incompatible version.");
+            CPlugAnimSkelBakedBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugAnimSkelBakedBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

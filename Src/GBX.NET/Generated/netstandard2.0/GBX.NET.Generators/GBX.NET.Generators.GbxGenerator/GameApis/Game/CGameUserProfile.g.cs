@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Game;
 public partial class CGameUserProfile : global::GBX.NET.Interfaces.Game.IGameUserProfile, global::GBX.NET.Interfaces.Game.IGameUserProfileTMT, global::GBX.NET.Interfaces.Game.IGameUserProfileMP4, global::GBX.NET.Interfaces.Game.IGameUserProfileTM2020
 {
     public static global::GBX.NET.Builders.Engines.Game.CGameUserProfileBuilder Create() => new();
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? global::GBX.NET.Interfaces.Game.IGameUserProfileTMT.InputBindingsConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT? global::GBX.NET.Interfaces.Game.IGameUserProfileMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMT>.InputBindingsConfig
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CGameUserProfile : global::GBX.NET.Interfaces.Game.IGameUse
         }
         set => InputBindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? global::GBX.NET.Interfaces.Game.IGameUserProfileMP4.InputBindingsConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4? global::GBX.NET.Interfaces.Game.IGameUserProfileMembers1<global::GBX.NET.Interfaces.Input.IInputBindingsConfigMP4>.InputBindingsConfig
     {
         get
         {
@@ -56,7 +56,8 @@ public partial class CGameUserProfile : global::GBX.NET.Interfaces.Game.IGameUse
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>? global::GBX.NET.Interfaces.Game.IGameUserProfileTM2020.InputBindingsConfigs
     {
-        get => InputBindingsConfigs is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(() => InputBindingsConfigs, static node => { if (node is null) throw new MemberNullException("InputBindingsConfigs"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => InputBindingsConfigs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>(value.Select(static item => item is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InputBindingsConfigs is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(GetInputBindingsConfigsBuilderReferences, GameVersion.TM2020, true, "InputBindingsConfigs");
+        set => InputBindingsConfigs = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Input.CInputBindingsConfig, global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Input.CInputBindingsConfig>? GetInputBindingsConfigsBuilderReferences() => InputBindingsConfigs;
 }

@@ -36,21 +36,21 @@ public abstract class CPlugFontBitmapBuilderBase<TSelf> where TSelf : CPlugFontB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state;
     private protected CPlugFontBitmapBuilderBase() => state = new();
     private protected CPlugFontBitmapBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state) => this.state = state;
-    private protected static void SetBounds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, Rect value) => state.Set<Rect>("Bounds", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.Bounds = value);
-    private protected static void SetCustomMaterialModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterial?>("CustomMaterialModel", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CustomMaterialModel = value);
-    private protected static void SetCustomMaterialModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>>("CustomMaterialModel", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.CustomMaterialModel.CopyFrom(reference));
-    private protected static void SetFallbackFont(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFontBitmap?>("FallbackFont", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.FallbackFont = value);
-    private protected static void SetFallbackFontReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFontBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFontBitmap>>("FallbackFont", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFontBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FallbackFont.CopyFrom(reference));
-    private protected static void SetFontAscent(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, int value) => state.Set<int>("FontAscent", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.FontAscent = value);
-    private protected static void SetFontHeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, int value) => state.Set<int>("FontHeight", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.FontHeight = value);
-    private protected static void SetHasCustomMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, bool value) => state.Set<bool>("HasCustomMaterial", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.HasCustomMaterial = value);
-    private protected static void SetHasTextureDataRefs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, bool value) => state.Set<bool>("HasTextureDataRefs", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.HasTextureDataRefs = value);
-    private protected static void SetLetters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]?>("Letters", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[])value.Clone(), static (node, value) => node.Letters = value);
-    private protected static void SetPageTextureDataRefs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, string[]? value) => state.Set<string[]?>("PageTextureDataRefs", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (string[])value.Clone(), static (node, value) => node.PageTextureDataRefs = value);
-    private protected static void SetPageTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>?>("PageTextures", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.PageTextures = value);
-    private protected static void SetPages(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]?>("Pages", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[])value.Clone(), static (node, value) => node.Pages = value);
-    private protected static void SetRemapLetters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, ushort[]? value) => state.Set<ushort[]?>("RemapLetters", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (ushort[])value.Clone(), static (node, value) => node.RemapLetters = value);
-    private protected static void SetRemapPages(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]?>("RemapPages", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[])value.Clone(), static (node, value) => node.RemapPages = value);
+    private protected static void SetBounds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, Rect value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetBoundsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetCustomMaterialModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugMaterial? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetCustomMaterialModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetCustomMaterialModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMaterial> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetCustomMaterialModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFallbackFont(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFallbackFontAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFallbackFontReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFontBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFallbackFontReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFontAscent(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFontAscentAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetFontHeight(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetFontHeightAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetHasCustomMaterial(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetHasCustomMaterialAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetHasTextureDataRefs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetHasTextureDataRefsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetLetters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap.Letter[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetLettersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPageTextureDataRefs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, string[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPageTextureDataRefsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPageTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPageTexturesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPages(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap.Page[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetPagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetRemapLetters(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, ushort[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetRemapLettersAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetRemapPages(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugFontBitmap> state, global::GBX.NET.Engines.Plug.CPlugFontBitmap.RemapPage[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugFontBitmapBuilderAssignments.GetRemapPagesAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public Rect Bounds
     {
         get => state.Get<Rect>("Bounds");
@@ -224,6 +224,29 @@ public abstract class CPlugFontBitmapBuilderBase<TSelf> where TSelf : CPlugFontB
 }
 public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFontBitmapBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugFontBitmap CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugFontBitmap();
+        var chunk0904E004 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004();
+        node.Chunks.Add(chunk0904E004);
+        var chunk0904E006 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006();
+        node.Chunks.Add(chunk0904E006);
+        var chunk0904E008 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008();
+        node.Chunks.Add(chunk0904E008);
+        var chunk0904E009 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009(game);
+        node.Chunks.Add(chunk0904E009);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugFontBitmap node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904E004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904E006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904E008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0904E009 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugFontBitmap node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -242,22 +265,12 @@ public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFo
         public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFontBitmap();
-            var chunk0904E004 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004();
-            node.Chunks.Add(chunk0904E004);
-            var chunk0904E006 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006();
-            node.Chunks.Add(chunk0904E006);
-            var chunk0904E008 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008();
-            node.Chunks.Add(chunk0904E008);
-            var chunk0904E009 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009(GameVersion.MP4);
-            node.Chunks.Add(chunk0904E009);
+            var node = CPlugFontBitmapBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904E004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904E008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0904E009 is missing or has an incompatible version.");
+            CPlugFontBitmapBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugFontBitmapBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -278,22 +291,12 @@ public partial class CPlugFontBitmapBuilder : CPlugFontBitmapBuilderBase<CPlugFo
         public global::GBX.NET.Interfaces.Plug.IPlugFontBitmapTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugFontBitmap Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugFontBitmap();
-            var chunk0904E004 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004();
-            node.Chunks.Add(chunk0904E004);
-            var chunk0904E006 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006();
-            node.Chunks.Add(chunk0904E006);
-            var chunk0904E008 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008();
-            node.Chunks.Add(chunk0904E008);
-            var chunk0904E009 = new global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009(GameVersion.TM2020);
-            node.Chunks.Add(chunk0904E009);
+            var node = CPlugFontBitmapBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904E004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E006>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904E006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E008>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904E008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugFontBitmap.Chunk0904E009>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0904E009 is missing or has an incompatible version.");
+            CPlugFontBitmapBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugFontBitmapBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

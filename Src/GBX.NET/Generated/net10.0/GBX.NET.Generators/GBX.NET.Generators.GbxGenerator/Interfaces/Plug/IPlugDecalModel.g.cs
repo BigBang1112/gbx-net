@@ -31,6 +31,36 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecalModelMembers1<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugDecalModel where T0 : class where T1 : class
+{
+    new T0? DiffuseA { get; set; }
+    new T0? Icon { get; set; }
+    new T0? Normal { get; set; }
+    new T1? Solid { get; set; }
+    new T0? Specular { get; set; }
+    new T0? Sprite3dBitmap { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecalModelMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugDecalModel where T0 : class where T1 : class
+{
+    IReadOnlyList<T0>? DecalModels { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] MacroDecalSets { get; set; }
+    T1? Roughness { get; set; }
+    string RoughnessRef { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecalModelMembers3 : global::GBX.NET.Interfaces.Plug.IPlugDecalModel
+{
+    string DiffuseARef { get; set; }
+    int MinAngleN3d { get; set; }
+    string NormalRef { get; set; }
+    string SpecularRef { get; set; }
+    global::GBX.NET.Engines.MwFoundations.CMwNod? Svg { get; set; }
+    float SvgAlpha { get; set; }
+    string SvgRef { get; set; }
+    float SvgSize { get; set; }
+}
 public partial interface IPlugDecalModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugDecalModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBitmap? DiffuseA { get; set; }
@@ -49,75 +79,19 @@ public partial interface IPlugDecalModel : IClassVersion<global::GBX.NET.Engines
     float TexelByMeter { get; set; }
 }
 
-public partial interface IPlugDecalModelMP3 : IPlugDecalModel
+public partial interface IPlugDecalModelMP3 : IPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? DiffuseA { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? Icon { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? Normal { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? Solid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? Specular { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? Sprite3dBitmap { get; set; }
 }
 
-public partial interface IPlugDecalModelTMT : IPlugDecalModel
+public partial interface IPlugDecalModelTMT : IPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT>, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers3
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? DiffuseA { get; set; }
-    string DiffuseARef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Icon { get; set; }
-    int MinAngleN3d { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Normal { get; set; }
-    string NormalRef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? Solid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Specular { get; set; }
-    string SpecularRef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? Sprite3dBitmap { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Svg { get; set; }
-    float SvgAlpha { get; set; }
-    string SvgRef { get; set; }
-    float SvgSize { get; set; }
 }
 
-public partial interface IPlugDecalModelMP4 : IPlugDecalModel
+public partial interface IPlugDecalModelMP4 : IPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers3
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>? DecalModels { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? DiffuseA { get; set; }
-    string DiffuseARef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Icon { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] MacroDecalSets { get; set; }
-    int MinAngleN3d { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Normal { get; set; }
-    string NormalRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Roughness { get; set; }
-    string RoughnessRef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? Solid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Specular { get; set; }
-    string SpecularRef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? Sprite3dBitmap { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Svg { get; set; }
-    float SvgAlpha { get; set; }
-    string SvgRef { get; set; }
-    float SvgSize { get; set; }
 }
 
-public partial interface IPlugDecalModelTM2020 : IPlugDecalModel
+public partial interface IPlugDecalModelTM2020 : IPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMembers3
 {
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>? DecalModels { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? DiffuseA { get; set; }
-    string DiffuseARef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Icon { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugDecalModel.MacroDecalSet[] MacroDecalSets { get; set; }
-    int MinAngleN3d { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Normal { get; set; }
-    string NormalRef { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Roughness { get; set; }
-    string RoughnessRef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? Solid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Specular { get; set; }
-    string SpecularRef { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? Sprite3dBitmap { get; set; }
-    global::GBX.NET.Engines.MwFoundations.CMwNod? Svg { get; set; }
-    float SvgAlpha { get; set; }
-    string SvgRef { get; set; }
-    float SvgSize { get; set; }
 }
 

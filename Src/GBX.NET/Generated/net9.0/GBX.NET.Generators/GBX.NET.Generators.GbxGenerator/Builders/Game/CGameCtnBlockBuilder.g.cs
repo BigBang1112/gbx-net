@@ -36,26 +36,26 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state;
     private protected CGameCtnBlockBuilderBase() => state = new();
     private protected CGameCtnBlockBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) => this.state = state;
-    private protected static void SetAbsolutePositionInMap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Vec3? value) => state.Set<global::GBX.NET.Vec3?>("AbsolutePositionInMap", value, GameVersion.TM2020, static value => value, static (node, value) => node.AbsolutePositionInMap = value);
-    private protected static void SetBlockModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Ident value) => state.Set<global::GBX.NET.Ident>("BlockModel", value, GameVersion.TM10, static value => value, static (node, value) => node.BlockModel = value);
-    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.DifficultyColor value) => state.Set<global::GBX.NET.DifficultyColor>("Color", value, GameVersion.TM2020, static value => value, static (node, value) => node.Color = value);
-    private protected static void SetCoord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Int3 value) => state.Set<global::GBX.NET.Int3>("Coord", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.Coord = value);
-    private protected static void SetDirection(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Direction value) => state.Set<global::GBX.NET.Direction>("Direction", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.Direction = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, int value) => state.Set<int>("Flags", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetIsClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set<bool>("IsClip", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.IsClip = value);
-    private protected static void SetIsFree(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set<bool>("IsFree", value, GameVersion.TM2020, static value => value, static (node, value) => node.IsFree = value);
-    private protected static void SetIsGhost(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set<bool>("IsGhost", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.IsGhost = value);
-    private protected static void SetIsGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set<bool>("IsGround", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.IsGround = value);
-    private protected static void SetLightmapQuality(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.LightmapQuality value) => state.Set<global::GBX.NET.LightmapQuality>("LightmapQuality", value, GameVersion.TM2020, static value => value, static (node, value) => node.LightmapQuality = value);
-    private protected static void SetMacroblockReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.MacroblockInstance? value) => state.Set<global::GBX.NET.MacroblockInstance?>("MacroblockReference", value, GameVersion.TM2020, static value => value, static (node, value) => node.MacroblockReference = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, string value) => state.Set<string>("Name", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Engines.Game.CGameCtnBlockSkin? value) => state.Set<global::GBX.NET.Engines.Game.CGameCtnBlockSkin?>("Skin", value, GameVersion.TM10, static value => value, static (node, value) => node.Skin = value);
-    private protected static void SetSkinReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockSkin>>("Skin", value, GameVersion.TM10, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockSkin>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Skin.CopyFrom(reference));
-    private protected static void SetSubVariant(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, byte value) => state.Set<byte>("SubVariant", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.SubVariant = value);
-    private protected static void SetVariant(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, byte value) => state.Set<byte>("Variant", value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX, static value => value, static (node, value) => node.Variant = value);
-    private protected static void SetWaypointSpecialProperty(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value) => state.Set<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.WaypointSpecialProperty = value);
-    private protected static void SetWaypointSpecialPropertyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value) => state.Set<NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty>>("WaypointSpecialProperty", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.WaypointSpecialProperty.CopyFrom(reference));
-    private protected static void SetYawPitchRoll(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Vec3? value) => state.Set<global::GBX.NET.Vec3?>("YawPitchRoll", value, GameVersion.TM2020, static value => value, static (node, value) => node.YawPitchRoll = value);
+    private protected static void SetAbsolutePositionInMap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetAbsolutePositionInMapAssignment(), value, GameVersion.TM2020);
+    private protected static void SetBlockModel(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Ident value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetBlockModelAssignment(), value, GameVersion.TM10);
+    private protected static void SetColor(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.DifficultyColor value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetColorAssignment(), value, GameVersion.TM2020);
+    private protected static void SetCoord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Int3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetCoordAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetDirection(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Direction value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetDirectionAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetIsClip(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsClipAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetIsFree(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsFreeAssignment(), value, GameVersion.TM2020);
+    private protected static void SetIsGhost(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGhostAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetIsGround(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetIsGroundAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetLightmapQuality(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.LightmapQuality value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetLightmapQualityAssignment(), value, GameVersion.TM2020);
+    private protected static void SetMacroblockReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.MacroblockInstance? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetMacroblockReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetNameAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetSkin(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Engines.Game.CGameCtnBlockSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSkinAssignment(), value, GameVersion.TM10);
+    private protected static void SetSkinReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, NodeRef<global::GBX.NET.Engines.Game.CGameCtnBlockSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSkinReferenceAssignment(), value, GameVersion.TM10);
+    private protected static void SetSubVariant(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetSubVariantAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetVariant(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetVariantAssignment(), value, GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMSX);
+    private protected static void SetWaypointSpecialProperty(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetWaypointSpecialPropertyReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetWaypointSpecialPropertyReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetYawPitchRoll(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state, global::GBX.NET.Vec3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnBlockBuilderAssignments.GetYawPitchRollAssignment(), value, GameVersion.TM2020);
     public global::GBX.NET.Int3 Coord
     {
         get => state.Get<global::GBX.NET.Int3>("Coord");
@@ -117,8 +117,85 @@ public abstract class CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBloc
         return (TSelf)this;
     }
 }
+public abstract class CGameCtnBlockBuilderMembers1<TSelf> : CGameCtnBlockBuilderBase<TSelf> where TSelf : CGameCtnBlockBuilderMembers1<TSelf>
+{
+    private protected CGameCtnBlockBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
+    public bool IsClip
+    {
+        get => state.Get<bool>("IsClip");
+        set => SetIsClip(state, value);
+    }
+    public TSelf WithIsClip(bool value)
+    {
+        IsClip = value;
+        return (TSelf)this;
+    }
+    public byte SubVariant
+    {
+        get => state.Get<byte>("SubVariant");
+        set => SetSubVariant(state, value);
+    }
+    public TSelf WithSubVariant(byte value)
+    {
+        SubVariant = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnBlockBuilderMembers2<TSelf> : CGameCtnBlockBuilderMembers1<TSelf> where TSelf : CGameCtnBlockBuilderMembers2<TSelf>
+{
+    private protected CGameCtnBlockBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
+    public bool IsGhost
+    {
+        get => state.Get<bool>("IsGhost");
+        set => SetIsGhost(state, value);
+    }
+    public TSelf WithIsGhost(bool value)
+    {
+        IsGhost = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
+    {
+        get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
+        set => SetWaypointSpecialProperty(state, value);
+    }
+    public TSelf WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
+    {
+        WaypointSpecialProperty = value;
+        return (TSelf)this;
+    }
+    public TSelf WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetWaypointSpecialPropertyReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlockBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnBlock CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
+        var chunk03057002 = new global::GBX.NET.Engines.Game.CGameCtnBlock.Chunk03057002();
+        node.Chunks.Add(chunk03057002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnBlock node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlock.Chunk03057002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03057002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnBlock CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnBlock node, GameVersion game)
+    {
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnBlock node, GameVersion game)
+    {
+        if (node.Name is null) throw new MemberNullException("Name");
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
@@ -162,162 +239,77 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlock Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
-            var chunk03057002 = new global::GBX.NET.Engines.Game.CGameCtnBlock.Chunk03057002();
-            node.Chunks.Add(chunk03057002);
+            var node = CGameCtnBlockBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnBlock.Chunk03057002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk03057002 is missing or has an incompatible version.");
+            CGameCtnBlockBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CGameCtnBlockBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
     }
-    public partial class TMSX : CGameCtnBlockBuilderBase<TMSX>
+    public partial class TMSX : CGameCtnBlockBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
-        public bool IsClip
-        {
-            get => state.Get<bool>("IsClip");
-            set => SetIsClip(state, value);
-        }
-        public TMSX WithIsClip(bool value)
-        {
-            IsClip = value;
-            return this;
-        }
-        public byte SubVariant
-        {
-            get => state.Get<byte>("SubVariant");
-            set => SetSubVariant(state, value);
-        }
-        public TMSX WithSubVariant(byte value)
-        {
-            SubVariant = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlock Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
+            var node = CGameCtnBlockBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
+            CGameCtnBlockBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CGameCtnBlockBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
     }
-    public partial class TMF : CGameCtnBlockBuilderBase<TMF>
+    public partial class TMF : CGameCtnBlockBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
-        public bool IsClip
-        {
-            get => state.Get<bool>("IsClip");
-            set => SetIsClip(state, value);
-        }
-        public TMF WithIsClip(bool value)
-        {
-            IsClip = value;
-            return this;
-        }
-        public byte SubVariant
-        {
-            get => state.Get<byte>("SubVariant");
-            set => SetSubVariant(state, value);
-        }
-        public TMF WithSubVariant(byte value)
-        {
-            SubVariant = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlock Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
+            var node = CGameCtnBlockBuilder.CreateRecipe1(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
+            CGameCtnBlockBuilder.ValidateRecipe1(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CGameCtnBlockBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
     }
-    public partial class MP4 : CGameCtnBlockBuilderBase<MP4>
+    public partial class MP4 : CGameCtnBlockBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
-        public bool IsClip
-        {
-            get => state.Get<bool>("IsClip");
-            set => SetIsClip(state, value);
-        }
-        public MP4 WithIsClip(bool value)
-        {
-            IsClip = value;
-            return this;
-        }
-        public bool IsGhost
-        {
-            get => state.Get<bool>("IsGhost");
-            set => SetIsGhost(state, value);
-        }
-        public MP4 WithIsGhost(bool value)
-        {
-            IsGhost = value;
-            return this;
-        }
-        public byte SubVariant
-        {
-            get => state.Get<byte>("SubVariant");
-            set => SetSubVariant(state, value);
-        }
-        public MP4 WithSubVariant(byte value)
-        {
-            SubVariant = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
-            set => SetWaypointSpecialProperty(state, value);
-        }
-        public MP4 WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
-        {
-            WaypointSpecialProperty = value;
-            return this;
-        }
-        public MP4 WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetWaypointSpecialPropertyReference(state, value);
-            return this;
-        }
         public MP4 WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP4? value)
         {
-            return WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlock Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
+            var node = CGameCtnBlockBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
+            CGameCtnBlockBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CGameCtnBlockBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnBlock node);
     }
-    public partial class TM2020 : CGameCtnBlockBuilderBase<TM2020>
+    public partial class TM2020 : CGameCtnBlockBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnBlock> state) : base(state) { }
         public global::GBX.NET.Vec3? AbsolutePositionInMap
@@ -340,16 +332,6 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
             Color = value;
             return this;
         }
-        public bool IsClip
-        {
-            get => state.Get<bool>("IsClip");
-            set => SetIsClip(state, value);
-        }
-        public TM2020 WithIsClip(bool value)
-        {
-            IsClip = value;
-            return this;
-        }
         public bool IsFree
         {
             get => state.Get<bool>("IsFree");
@@ -358,16 +340,6 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public TM2020 WithIsFree(bool value)
         {
             IsFree = value;
-            return this;
-        }
-        public bool IsGhost
-        {
-            get => state.Get<bool>("IsGhost");
-            set => SetIsGhost(state, value);
-        }
-        public TM2020 WithIsGhost(bool value)
-        {
-            IsGhost = value;
             return this;
         }
         public global::GBX.NET.LightmapQuality LightmapQuality
@@ -390,35 +362,9 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
             MacroblockReference = value;
             return this;
         }
-        public byte SubVariant
-        {
-            get => state.Get<byte>("SubVariant");
-            set => SetSubVariant(state, value);
-        }
-        public TM2020 WithSubVariant(byte value)
-        {
-            SubVariant = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? WaypointSpecialProperty
-        {
-            get => state.Get<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?>("WaypointSpecialProperty");
-            set => SetWaypointSpecialProperty(state, value);
-        }
-        public TM2020 WithWaypointSpecialProperty(global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty? value)
-        {
-            WaypointSpecialProperty = value;
-            return this;
-        }
-        public TM2020 WithWaypointSpecialPropertyReference(NodeRef<global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetWaypointSpecialPropertyReference(state, value);
-            return this;
-        }
         public TM2020 WithWaypointSpecialProperty(global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTM2020? value)
         {
-            return WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithWaypointSpecialProperty(value is null ? (global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty?)null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Vec3? YawPitchRoll
         {
@@ -433,11 +379,12 @@ public partial class CGameCtnBlockBuilder : CGameCtnBlockBuilderBase<CGameCtnBlo
         public global::GBX.NET.Interfaces.Game.IGameCtnBlockTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnBlock Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnBlock();
+            var node = CGameCtnBlockBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
+            CGameCtnBlockBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Name is null) throw new MemberNullException("Name");
+            CGameCtnBlockBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

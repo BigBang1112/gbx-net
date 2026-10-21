@@ -31,6 +31,18 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCommonItemEntityModelEditionMembers1<T0, T1, T2, T3, T4> : global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEdition where T0 : class where T1 : class where T2 : class where T3 : class where T4 : class
+{
+    new T0? CustomHitShapeCrystal { get; set; }
+    new T0? CustomTriggerShapeCrystal { get; set; }
+    new T1? DestroyParticleModel { get; set; }
+    new T2? LocAnim { get; set; }
+    new T0? MeshCrystal { get; set; }
+    new T3? PickupActionModel { get; set; }
+    new T4? Solid { get; set; }
+    new IReadOnlyList<T3>? TriggeredActions { get; set; }
+}
 public partial interface IGameCommonItemEntityModelEdition : IClassVersion<global::GBX.NET.Engines.GameData.CGameCommonItemEntityModelEdition>
 {
     global::GBX.NET.Interfaces.Plug.IPlugCrystal? CustomHitShapeCrystal { get; set; }
@@ -68,27 +80,11 @@ public partial interface IGameCommonItemEntityModelEdition : IClassVersion<globa
     bool UseMeshAsTriggerShape { get; set; }
 }
 
-public partial interface IGameCommonItemEntityModelEditionMP4 : IGameCommonItemEntityModelEdition
+public partial interface IGameCommonItemEntityModelEditionMP4 : IGameCommonItemEntityModelEdition, global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4, global::GBX.NET.Interfaces.GameData.IGameActionModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4? CustomHitShapeCrystal { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4? CustomTriggerShapeCrystal { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? DestroyParticleModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleMP4? LocAnim { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCrystalMP4? MeshCrystal { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameActionModelMP4? PickupActionModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? Solid { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelMP4>? TriggeredActions { get; set; }
 }
 
-public partial interface IGameCommonItemEntityModelEditionTM2020 : IGameCommonItemEntityModelEdition
+public partial interface IGameCommonItemEntityModelEditionTM2020 : IGameCommonItemEntityModelEdition, global::GBX.NET.Interfaces.GameData.IGameCommonItemEntityModelEditionMembers1<global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020, global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020? CustomHitShapeCrystal { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020? CustomTriggerShapeCrystal { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020? DestroyParticleModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugAnimLocSimpleTM2020? LocAnim { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugCrystalTM2020? MeshCrystal { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020? PickupActionModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? Solid { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.GameData.IGameActionModelTM2020>? TriggeredActions { get; set; }
 }
 

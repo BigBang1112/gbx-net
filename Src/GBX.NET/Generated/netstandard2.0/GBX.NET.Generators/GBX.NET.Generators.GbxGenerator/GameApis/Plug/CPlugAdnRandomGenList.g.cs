@@ -36,12 +36,13 @@ public partial class CPlugAdnRandomGenList : global::GBX.NET.Interfaces.Plug.IPl
     public static global::GBX.NET.Builders.Engines.Plug.CPlugAdnRandomGenListBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>? global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenList.Datas
     {
-        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>(() => Datas, static node => node ?? throw new MemberNullException("Datas"));
-        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>(GetDatasBuilderReferences, GameVersion.Unspecified, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGen>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>? global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenListTM2020.Datas
     {
-        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>(() => Datas, static node => { if (node is null) throw new MemberNullException("Datas"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugAdnRandomGen node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Datas is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>(GetDatasBuilderReferences, GameVersion.TM2020, true, "Datas");
+        set => Datas = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen, global::GBX.NET.Interfaces.Plug.IPlugAdnRandomGenTM2020>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugAdnRandomGen>? GetDatasBuilderReferences() => Datas;
 }

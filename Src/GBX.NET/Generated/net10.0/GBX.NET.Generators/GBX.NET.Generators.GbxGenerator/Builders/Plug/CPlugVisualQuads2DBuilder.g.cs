@@ -36,17 +36,17 @@ public abstract class CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVi
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state;
     private protected CPlugVisualQuads2DBuilderBase() => state = new();
     private protected CPlugVisualQuads2DBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) => this.state = state;
-    private protected static void SetBitmapElemToPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[]>("BitmapElemToPacks", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[])value.Clone(), static (node, value) => node.BitmapElemToPacks = value);
-    private protected static void SetFuncVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FuncVisual = value);
-    private protected static void SetFuncVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("FuncVisual", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FuncVisual.CopyFrom(reference));
-    private protected static void SetIsInverse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, bool value) => state.Set<bool>("IsInverse", value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX, static value => value, static (node, value) => node.IsInverse = value);
-    private protected static void SetMorphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual.Morph[])value.Clone(), static (node, value) => node.Morphs = value);
-    private protected static void SetNPatchTessLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, float value) => state.Set<float>("NPatchTessLevel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.NPatchTessLevel = value);
-    private protected static void SetSplits(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual.Split[])value.Clone(), static (node, value) => node.Splits = value);
-    private protected static void SetSubVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, Int3[] value) => state.Set<Int3[]>("SubVisuals", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (Int3[])value.Clone(), static (node, value) => node.SubVisuals = value);
-    private protected static void SetVertexStreams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set<global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream>>("VertexStreams", value, GameVersion.TMSX, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.VertexStreams = value);
-    private protected static void SetVertices2D(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[]>("Vertices2D", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[])value.Clone(), static (node, value) => node.Vertices2D = value);
-    private protected static void SetVisualId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, string? value) => state.Set<string?>("VisualId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VisualId = value);
+    private protected static void SetBitmapElemToPacks(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetBitmapElemToPacksAssignment(), value, GameVersion.TMF);
+    private protected static void SetFuncVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFuncVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetFuncVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsInverse(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetIsInverseAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
+    private protected static void SetMorphs(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetMorphsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetNPatchTessLevel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetNPatchTessLevelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSplits(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSplitsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSubVisuals(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, Int3[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetSubVisualsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVertexStreams(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.NodeRefList<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVertexStreamsAssignment(), value, GameVersion.TMSX);
+    private protected static void SetVertices2D(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, global::GBX.NET.Engines.Plug.CPlugVisual2D.Vertex2D[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisual2DBuilderAssignments.GetVertices2DAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVisualId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVisualBuilderAssignments.GetVisualIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public Int3[] SubVisuals
     {
         get => state.Get<Int3[]>("SubVisuals");
@@ -86,8 +86,347 @@ public abstract class CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVi
         return (TSelf)this;
     }
 }
+public abstract class CPlugVisualQuads2DBuilderMembers1<TSelf> : CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVisualQuads2DBuilderMembers1<TSelf>
+{
+    private protected CPlugVisualQuads2DBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
+    public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
+    {
+        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
+        set => SetFuncVisual(state, value);
+    }
+    public TSelf WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
+    {
+        FuncVisual = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFuncVisualReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualQuads2DBuilderMembers2<TSelf> : CPlugVisualQuads2DBuilderBase<TSelf> where TSelf : CPlugVisualQuads2DBuilderMembers2<TSelf>
+{
+    private protected CPlugVisualQuads2DBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
+    public float NPatchTessLevel
+    {
+        get => state.Get<float>("NPatchTessLevel");
+        set => SetNPatchTessLevel(state, value);
+    }
+    public TSelf WithNPatchTessLevel(float value)
+    {
+        NPatchTessLevel = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualQuads2DBuilderMembers3<TSelf> : CPlugVisualQuads2DBuilderMembers1<TSelf> where TSelf : CPlugVisualQuads2DBuilderMembers3<TSelf>
+{
+    private protected CPlugVisualQuads2DBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
+    public bool IsInverse
+    {
+        get => state.Get<bool>("IsInverse");
+        set => SetIsInverse(state, value);
+    }
+    public TSelf WithIsInverse(bool value)
+    {
+        IsInverse = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVisualQuads2DBuilderMembers4<TSelf> : CPlugVisualQuads2DBuilderMembers2<TSelf> where TSelf : CPlugVisualQuads2DBuilderMembers4<TSelf>
+{
+    private protected CPlugVisualQuads2DBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
+        set => SetSplits(state, value);
+    }
+    public TSelf WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
+    {
+        Splits = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
+    {
+        return WithSplits(values.ToArray());
+    }
+}
+public abstract class CPlugVisualQuads2DBuilderMembers5<TSelf> : CPlugVisualQuads2DBuilderMembers4<TSelf> where TSelf : CPlugVisualQuads2DBuilderMembers5<TSelf>
+{
+    private protected CPlugVisualQuads2DBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
+        set => SetMorphs(state, value);
+    }
+    public TSelf WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
+    {
+        Morphs = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
+    {
+        return WithMorphs(values.ToArray());
+    }
+}
 public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<CPlugVisualQuads2DBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
+        node.Chunks.Add(chunk09006006);
+        var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
+        node.Chunks.Add(chunk09006007);
+        var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
+        node.Chunks.Add(chunk09006008);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
+        node.Chunks.Add(chunk09006006);
+        var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
+        node.Chunks.Add(chunk09006007);
+        var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
+        node.Chunks.Add(chunk09006008);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006008 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
+        node.Chunks.Add(chunk09006006);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600C = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C();
+        node.Chunks.Add(chunk0900600C);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600C is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600D = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D();
+        node.Chunks.Add(chunk0900600D);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600E = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E();
+        node.Chunks.Add(chunk0900600E);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600E is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game);
+        node.Chunks.Add(chunk0900600F);
+        var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
+        chunk09006010.Version = 0;
+        node.Chunks.Add(chunk09006010);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900600F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09006010 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
+        node.Chunks.Add(chunk09006004);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game);
+        node.Chunks.Add(chunk0900600F);
+        var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
+        chunk09006010.Version = 0;
+        node.Chunks.Add(chunk09006010);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900600F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09006010 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVisualQuads2D CreateRecipe7(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
+        var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
+        node.Chunks.Add(chunk0904A000);
+        var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
+        node.Chunks.Add(chunk09006001);
+        var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
+        node.Chunks.Add(chunk09006005);
+        var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
+        node.Chunks.Add(chunk09006009);
+        var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
+        node.Chunks.Add(chunk0900600B);
+        var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(game);
+        node.Chunks.Add(chunk0900600F);
+        var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
+        chunk09006010.Version = 0;
+        node.Chunks.Add(chunk09006010);
+        return node;
+    }
+    private static void ValidateRecipe7(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09006009 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900600B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk0900600F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09006010 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node, GameVersion game)
+    {
+        if ((game & (GameVersion.TMF)) != 0 && node.BitmapElemToPacks is null) throw new MemberNullException("BitmapElemToPacks");
+        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT)) != 0 && node.Morphs is null) throw new MemberNullException("Morphs");
+        if ((game & (GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5)) != 0 && node.Splits is null) throw new MemberNullException("Splits");
+        if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
+        if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
@@ -99,100 +438,27 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugVisualQuads2DBuilderBase<TM10>
+    public partial class TM10 : CPlugVisualQuads2DBuilderMembers3<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public TM10 WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public TM10 WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public bool IsInverse
-        {
-            get => state.Get<bool>("IsInverse");
-            set => SetIsInverse(state, value);
-        }
-        public TM10 WithIsInverse(bool value)
-        {
-            IsInverse = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
-            node.Chunks.Add(chunk09006006);
-            var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
-            node.Chunks.Add(chunk09006007);
-            var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
-            node.Chunks.Add(chunk09006008);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09006008 is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class TMPU : CPlugVisualQuads2DBuilderBase<TMPU>
+    public partial class TMPU : CPlugVisualQuads2DBuilderMembers3<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
-        public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwNod?>("FuncVisual");
-            set => SetFuncVisual(state, value);
-        }
-        public TMPU WithFuncVisual(global::GBX.NET.Engines.MwFoundations.CMwNod? value)
-        {
-            FuncVisual = value;
-            return this;
-        }
-        public TMPU WithFuncVisualReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFuncVisualReference(state, value);
-            return this;
-        }
-        public bool IsInverse
-        {
-            get => state.Get<bool>("IsInverse");
-            set => SetIsInverse(state, value);
-        }
-        public TMPU WithIsInverse(bool value)
-        {
-            IsInverse = value;
-            return this;
-        }
         public float NPatchTessLevel
         {
             get => state.Get<float>("NPatchTessLevel");
@@ -206,43 +472,19 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
-            node.Chunks.Add(chunk09006006);
-            var chunk09006007 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007();
-            node.Chunks.Add(chunk09006007);
-            var chunk09006008 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008();
-            node.Chunks.Add(chunk09006008);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006007>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006008>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006008 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09006009 is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class TMNESWC : CPlugVisualQuads2DBuilderBase<TMNESWC>
+    public partial class TMNESWC : CPlugVisualQuads2DBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
@@ -261,71 +503,22 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
             SetFuncVisualReference(state, value);
             return this;
         }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TMNESWC WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TMNESWC WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TMNESWC WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006006 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006();
-            node.Chunks.Add(chunk09006006);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600C = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C();
-            node.Chunks.Add(chunk0900600C);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600C>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900600C is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class VSK5 : CPlugVisualQuads2DBuilderBase<VSK5>
+    public partial class VSK5 : CPlugVisualQuads2DBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
@@ -344,68 +537,22 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
             SetFuncVisualReference(state, value);
             return this;
         }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public VSK5 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public VSK5 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public VSK5 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600D = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D();
-            node.Chunks.Add(chunk0900600D);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0900600D is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe3(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class TMF : CPlugVisualQuads2DBuilderBase<TMF>
+    public partial class TMF : CPlugVisualQuads2DBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
         public global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks
@@ -438,69 +585,22 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
             SetFuncVisualReference(state, value);
             return this;
         }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TMF WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TMF WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TMF WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600E = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E();
-            node.Chunks.Add(chunk0900600E);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe4(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0900600E is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe4(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.BitmapElemToPacks is null) throw new MemberNullException("BitmapElemToPacks");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class MP3 : CPlugVisualQuads2DBuilderBase<MP3>
+    public partial class MP3 : CPlugVisualQuads2DBuilderMembers5<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
@@ -519,87 +619,22 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
             SetFuncVisualReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public MP3 WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public MP3 WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public MP3 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public MP3 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public MP3 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.MP3);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe5(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 4 }) throw new InvalidOperationException("Required MP3 chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe5(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class TMT : CPlugVisualQuads2DBuilderBase<TMT>
+    public partial class TMT : CPlugVisualQuads2DBuilderMembers5<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
@@ -618,87 +653,22 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
             SetFuncVisualReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public TMT WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public TMT WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TMT WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TMT WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TMT WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.TMT);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe5(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 4 }) throw new InvalidOperationException("Required TMT chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe5(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class MP4 : CPlugVisualQuads2DBuilderBase<MP4>
+    public partial class MP4 : CPlugVisualQuads2DBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
         public global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual
@@ -717,160 +687,33 @@ public partial class CPlugVisualQuads2DBuilder : CPlugVisualQuads2DBuilderBase<C
             SetFuncVisualReference(state, value);
             return this;
         }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public MP4 WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public MP4 WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public MP4 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public MP4 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public MP4 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006004 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004();
-            node.Chunks.Add(chunk09006004);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.MP4);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe6(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe6(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVisualQuads2D node);
     }
-    public partial class TM2020 : CPlugVisualQuads2DBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVisualQuads2DBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVisualQuads2D> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Morph[]>("Morphs");
-            set => SetMorphs(state, value);
-        }
-        public TM2020 WithMorphs(params global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] value)
-        {
-            Morphs = value;
-            return this;
-        }
-        public TM2020 WithMorphs(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Morph> values)
-        {
-            return WithMorphs(values.ToArray());
-        }
-        public float NPatchTessLevel
-        {
-            get => state.Get<float>("NPatchTessLevel");
-            set => SetNPatchTessLevel(state, value);
-        }
-        public TM2020 WithNPatchTessLevel(float value)
-        {
-            NPatchTessLevel = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVisual.Split[]>("Splits");
-            set => SetSplits(state, value);
-        }
-        public TM2020 WithSplits(params global::GBX.NET.Engines.Plug.CPlugVisual.Split[] value)
-        {
-            Splits = value;
-            return this;
-        }
-        public TM2020 WithSplits(IEnumerable<global::GBX.NET.Engines.Plug.CPlugVisual.Split> values)
-        {
-            return WithSplits(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVisualQuads2DTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVisualQuads2D Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVisualQuads2D();
-            var chunk0904A000 = new global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000();
-            node.Chunks.Add(chunk0904A000);
-            var chunk09006001 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001();
-            node.Chunks.Add(chunk09006001);
-            var chunk09006005 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005();
-            node.Chunks.Add(chunk09006005);
-            var chunk09006009 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009();
-            node.Chunks.Add(chunk09006009);
-            var chunk0900600B = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B();
-            node.Chunks.Add(chunk0900600B);
-            var chunk0900600F = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F(GameVersion.TM2020);
-            node.Chunks.Add(chunk0900600F);
-            var chunk09006010 = new global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010();
-            chunk09006010.Version = 0;
-            node.Chunks.Add(chunk09006010);
+            var node = CPlugVisualQuads2DBuilder.CreateRecipe7(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual2D.Chunk0904A000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09006005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006009>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09006009 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600B>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0900600B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk0900600F>() is not { Version: 6 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0900600F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVisual.Chunk09006010>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09006010 is missing or has an incompatible version.");
+            CPlugVisualQuads2DBuilder.ValidateRecipe7(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Morphs is null) throw new MemberNullException("Morphs");
-            if (node.Splits is null) throw new MemberNullException("Splits");
-            if (node.SubVisuals is null) throw new MemberNullException("SubVisuals");
-            if (node.Vertices2D is null) throw new MemberNullException("Vertices2D");
+            CPlugVisualQuads2DBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -39,7 +39,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         get => Zone;
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTM10? global::GBX.NET.Interfaces.Scene.ISceneSectorTM10.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTM10? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTM10>.Zone
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU? global::GBX.NET.Interfaces.Scene.ISceneSectorTMPU.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU>.Zone
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX? global::GBX.NET.Interfaces.Scene.ISceneSectorTMSX.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX>.Zone
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneSectorTMNESWC.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC>.Zone
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5? global::GBX.NET.Interfaces.Scene.ISceneSectorVSK5.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5>.Zone
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTMF? global::GBX.NET.Interfaces.Scene.ISceneSectorTMF.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTMF? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMF>.Zone
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneMP3? global::GBX.NET.Interfaces.Scene.ISceneSectorMP3.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneMP3? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneMP3>.Zone
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTMT? global::GBX.NET.Interfaces.Scene.ISceneSectorTMT.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTMT? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMT>.Zone
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneMP4? global::GBX.NET.Interfaces.Scene.ISceneSectorMP4.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneMP4? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneMP4>.Zone
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CSceneSector : global::GBX.NET.Interfaces.Scene.ISceneSecto
         }
         set => Zone = value is null ? null : value is global::GBX.NET.Engines.Hms.CHmsZone node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020? global::GBX.NET.Interfaces.Scene.ISceneSectorTM2020.Zone
+    global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020? global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020>.Zone
     {
         get
         {

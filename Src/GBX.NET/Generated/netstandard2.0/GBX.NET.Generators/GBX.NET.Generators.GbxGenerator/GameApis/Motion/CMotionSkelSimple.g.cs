@@ -39,7 +39,7 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         get => SkelValues;
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10.SkelValues
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10>.SkelValues
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU.SkelValues
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU>.SkelValues
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX.SkelValues
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX>.SkelValues
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC.SkelValues
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC>.SkelValues
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5.SkelValues
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5>.SkelValues
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CMotionSkelSimple : global::GBX.NET.Interfaces.Motion.IMoti
         }
         set => SkelValues = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncSkelValues node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF.SkelValues
+    global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF>.SkelValues
     {
         get
         {

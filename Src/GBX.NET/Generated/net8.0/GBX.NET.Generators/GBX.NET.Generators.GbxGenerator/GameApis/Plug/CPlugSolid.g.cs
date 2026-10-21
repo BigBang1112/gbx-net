@@ -44,7 +44,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         get => Tree;
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? global::GBX.NET.Interfaces.Plug.IPlugSolidTM10.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTM10? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>.Model
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTM10? global::GBX.NET.Interfaces.Plug.IPlugSolidTM10.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTM10? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM10, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>.Tree
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>.Model
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU? global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMPU, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>.Tree
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>.Model
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX? global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMSX, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>.Tree
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>.Model
     {
         get
         {
@@ -114,7 +114,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>.Tree
     {
         get
         {
@@ -124,7 +124,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>.Model
     {
         get
         {
@@ -134,7 +134,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5? global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>.Tree
     {
         get
         {
@@ -144,7 +144,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? global::GBX.NET.Interfaces.Plug.IPlugSolidTMF.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>.Model
     {
         get
         {
@@ -154,7 +154,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTMF? global::GBX.NET.Interfaces.Plug.IPlugSolidTMF.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTMF? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>.Tree
     {
         get
         {
@@ -164,7 +164,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Plug.IPlugSolidMP3.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>.Model
     {
         get
         {
@@ -174,17 +174,17 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolidMP3.ParticleEmitterModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.ParticleEmitterModels
     {
-        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>(() => ParticleEmitterModels, static node => { if (node is null) throw new MemberNullException("ParticleEmitterModels"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>(GetParticleEmitterModelsBuilderReferences, GameVersion.MP3, true, "ParticleEmitterModels");
+        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolidMP3.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.Sounds
     {
-        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(() => Sounds, static node => { if (node is null) throw new MemberNullException("Sounds"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(GetSoundsBuilderReferences, GameVersion.MP3, true, "Sounds");
+        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeMP3? global::GBX.NET.Interfaces.Plug.IPlugSolidMP3.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeMP3? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>.Tree
     {
         get
         {
@@ -194,7 +194,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Plug.IPlugSolidTMT.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>.Model
     {
         get
         {
@@ -204,17 +204,17 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolidTMT.ParticleEmitterModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.ParticleEmitterModels
     {
-        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>(() => ParticleEmitterModels, static node => { if (node is null) throw new MemberNullException("ParticleEmitterModels"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>(GetParticleEmitterModelsBuilderReferences, GameVersion.TMT, true, "ParticleEmitterModels");
+        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolidTMT.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.Sounds
     {
-        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>(() => Sounds, static node => { if (node is null) throw new MemberNullException("Sounds"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>(GetSoundsBuilderReferences, GameVersion.TMT, true, "Sounds");
+        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTMT? global::GBX.NET.Interfaces.Plug.IPlugSolidTMT.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTMT? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>.Tree
     {
         get
         {
@@ -224,7 +224,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Plug.IPlugSolidMP4.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>.Model
     {
         get
         {
@@ -234,17 +234,17 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolidMP4.ParticleEmitterModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.ParticleEmitterModels
     {
-        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>(() => ParticleEmitterModels, static node => { if (node is null) throw new MemberNullException("ParticleEmitterModels"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>(GetParticleEmitterModelsBuilderReferences, GameVersion.MP4, true, "ParticleEmitterModels");
+        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolidMP4.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.Sounds
     {
-        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(() => Sounds, static node => { if (node is null) throw new MemberNullException("Sounds"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(GetSoundsBuilderReferences, GameVersion.MP4, true, "Sounds");
+        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeMP4? global::GBX.NET.Interfaces.Plug.IPlugSolidMP4.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeMP4? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>.Tree
     {
         get
         {
@@ -254,7 +254,7 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020.Model
+    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>.Model
     {
         get
         {
@@ -264,10 +264,10 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Model = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020.ParticleEmitterModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.ParticleEmitterModels
     {
-        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>(() => ParticleEmitterModels, static node => { if (node is null) throw new MemberNullException("ParticleEmitterModels"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ParticleEmitterModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>(GetParticleEmitterModelsBuilderReferences, GameVersion.TM2020, true, "ParticleEmitterModels");
+        set => ParticleEmitterModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugPathTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020.Path
     {
@@ -279,12 +279,12 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Path = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugPath node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020.Sounds
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers1<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.Sounds
     {
-        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>(() => Sounds, static node => { if (node is null) throw new MemberNullException("Sounds"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Sounds is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>(GetSoundsBuilderReferences, GameVersion.TM2020, true, "Sounds");
+        set => Sounds = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugSound, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020.Tree
+    global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020? global::GBX.NET.Interfaces.Plug.IPlugSolidMembers4<global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>.Tree
     {
         get
         {
@@ -294,4 +294,6 @@ public partial class CPlugSolid : global::GBX.NET.Interfaces.Plug.IPlugSolid, gl
         }
         set => Tree = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>? GetParticleEmitterModelsBuilderReferences() => ParticleEmitterModels;
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugSound>? GetSoundsBuilderReferences() => Sounds;
 }

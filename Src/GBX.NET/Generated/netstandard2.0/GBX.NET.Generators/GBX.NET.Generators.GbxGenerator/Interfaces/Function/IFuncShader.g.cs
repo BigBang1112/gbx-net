@@ -40,9 +40,6 @@ public partial interface IFuncShader : IClassVersion<global::GBX.NET.Engines.Fun
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
 public partial interface IFuncShaderTM10 : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTM10
@@ -51,51 +48,37 @@ public partial interface IFuncShaderTM10 : IFuncShader, global::GBX.NET.Interfac
 
 public partial interface IFuncShaderTMPU : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTMPU
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderTMSX : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTMSX
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderTMNESWC : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTMNESWC
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderVSK5 : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugVSK5
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderTMF : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTMF
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderMP3 : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugMP3
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderTMT : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTMT
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderMP4 : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugMP4
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderTM2020 : IFuncShader, global::GBX.NET.Interfaces.Function.IFuncPlugTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

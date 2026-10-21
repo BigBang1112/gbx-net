@@ -31,6 +31,17 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEffectSimiMembers1 : global::GBX.NET.Interfaces.Control.IControlEffectSimi
+{
+    bool IsInterpolated { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlEffectSimiMembers2 : global::GBX.NET.Interfaces.Control.IControlEffectSimi
+{
+    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
+    bool IsContinousEffect { get; set; }
+}
 public partial interface IControlEffectSimi : IClassVersion<global::GBX.NET.Engines.Control.CControlEffectSimi>, global::GBX.NET.Interfaces.Control.IControlEffect
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -48,50 +59,31 @@ public partial interface IControlEffectSimiTMSX : IControlEffectSimi, global::GB
 {
 }
 
-public partial interface IControlEffectSimiTMNESWC : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC
+public partial interface IControlEffectSimiTMNESWC : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMNESWC, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
 }
 
-public partial interface IControlEffectSimiVSK5 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectVSK5
+public partial interface IControlEffectSimiVSK5 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectVSK5, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
 }
 
-public partial interface IControlEffectSimiTMF : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMF
+public partial interface IControlEffectSimiTMF : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMF, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers1, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
-    bool IsInterpolated { get; set; }
 }
 
-public partial interface IControlEffectSimiMP3 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectMP3
+public partial interface IControlEffectSimiMP3 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectMP3, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers1, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
-    bool IsInterpolated { get; set; }
 }
 
-public partial interface IControlEffectSimiTMT : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMT
+public partial interface IControlEffectSimiTMT : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTMT, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers1, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
-    bool IsInterpolated { get; set; }
 }
 
-public partial interface IControlEffectSimiMP4 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectMP4
+public partial interface IControlEffectSimiMP4 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectMP4, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers1, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
-    bool IsInterpolated { get; set; }
 }
 
-public partial interface IControlEffectSimiTM2020 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTM2020
+public partial interface IControlEffectSimiTM2020 : IControlEffectSimi, global::GBX.NET.Interfaces.Control.IControlEffectTM2020, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers1, global::GBX.NET.Interfaces.Control.IControlEffectSimiMembers2
 {
-    global::GBX.NET.Engines.Control.CControlEffectSimi.EColorBlendMode ColorBlendMode { get; set; }
-    bool IsContinousEffect { get; set; }
-    bool IsInterpolated { get; set; }
 }
 

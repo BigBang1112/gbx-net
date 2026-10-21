@@ -36,12 +36,12 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state;
     private protected CPlugVertexStreamBuilderBase() => state = new();
     private protected CPlugVertexStreamBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) => this.state = state;
-    private protected static void SetCompressLocalFloat3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, bool value) => state.Set<bool>("CompressLocalFloat3", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.CompressLocalFloat3 = value);
-    private protected static void SetDataDecls(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]?>("DataDecls", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[])value.Clone(), static (node, value) => node.DataDecls = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, uint value) => state.Set<uint>("Flags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetStreamModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, global::GBX.NET.Engines.Plug.CPlugVertexStream? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVertexStream?>("StreamModel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.StreamModel = value);
-    private protected static void SetStreamModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream>>("StreamModel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.StreamModel.CopyFrom(reference));
-    private protected static void SetVertexCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, int value) => state.Set<int>("VertexCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.VertexCount = value);
+    private protected static void SetCompressLocalFloat3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetCompressLocalFloat3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDataDecls(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetDataDeclsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStreamModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, global::GBX.NET.Engines.Plug.CPlugVertexStream? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStreamModelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVertexStream> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetStreamModelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVertexCount(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVertexStreamBuilderAssignments.GetVertexCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? DataDecls
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]?>("DataDecls");
@@ -93,8 +93,47 @@ public abstract class CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVer
         return (TSelf)this;
     }
 }
+public abstract class CPlugVertexStreamBuilderMembers1<TSelf> : CPlugVertexStreamBuilderBase<TSelf> where TSelf : CPlugVertexStreamBuilderMembers1<TSelf>
+{
+    private protected CPlugVertexStreamBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
+    public bool CompressLocalFloat3
+    {
+        get => state.Get<bool>("CompressLocalFloat3");
+        set => SetCompressLocalFloat3(state, value);
+    }
+    public TSelf WithCompressLocalFloat3(bool value)
+    {
+        CompressLocalFloat3 = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPlugVertexStreamBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVertexStream CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
+        var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(game);
+        node.Chunks.Add(chunk09056000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVertexStream node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk09056000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVertexStream CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
+        var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(game);
+        node.Chunks.Add(chunk09056000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVertexStream node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk09056000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVertexStream node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -115,13 +154,12 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.TMSX);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMSX chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -138,13 +176,12 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.TMNESWC);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMNESWC chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -161,13 +198,12 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.VSK5);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException("Required VSK5 chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -184,32 +220,21 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.TMF);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMF chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
-    public partial class MP3 : CPlugVertexStreamBuilderBase<MP3>
+    public partial class MP3 : CPlugVertexStreamBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
-        public bool CompressLocalFloat3
-        {
-            get => state.Get<bool>("CompressLocalFloat3");
-            set => SetCompressLocalFloat3(state, value);
-        }
-        public MP3 WithCompressLocalFloat3(bool value)
-        {
-            CompressLocalFloat3 = value;
-            return this;
-        }
         public MP3 WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3? value)
         {
             return base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -217,13 +242,12 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.MP3);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -240,32 +264,21 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.TMT);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
-    public partial class MP4 : CPlugVertexStreamBuilderBase<MP4>
+    public partial class MP4 : CPlugVertexStreamBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
-        public bool CompressLocalFloat3
-        {
-            get => state.Get<bool>("CompressLocalFloat3");
-            set => SetCompressLocalFloat3(state, value);
-        }
-        public MP4 WithCompressLocalFloat3(bool value)
-        {
-            CompressLocalFloat3 = value;
-            return this;
-        }
         public MP4 WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4? value)
         {
             return base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -273,32 +286,21 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.MP4);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVertexStream node);
     }
-    public partial class TM2020 : CPlugVertexStreamBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVertexStreamBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVertexStream> state) : base(state) { }
-        public bool CompressLocalFloat3
-        {
-            get => state.Get<bool>("CompressLocalFloat3");
-            set => SetCompressLocalFloat3(state, value);
-        }
-        public TM2020 WithCompressLocalFloat3(bool value)
-        {
-            CompressLocalFloat3 = value;
-            return this;
-        }
         public TM2020 WithStreamModel(global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020? value)
         {
             return base.WithStreamModel(value is null ? (global::GBX.NET.Engines.Plug.CPlugVertexStream?)null : value is global::GBX.NET.Engines.Plug.CPlugVertexStream node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -306,13 +308,12 @@ public partial class CPlugVertexStreamBuilder : CPlugVertexStreamBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVertexStream Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVertexStream();
-            var chunk09056000 = new global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09056000);
+            var node = CPlugVertexStreamBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVertexStream.Chunk09056000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09056000 is missing or has an incompatible version.");
+            CPlugVertexStreamBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVertexStreamBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

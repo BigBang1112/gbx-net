@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM10, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMPU, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMSX, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugFlockModelVSK5, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMF, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4, global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020
 {
     public static global::GBX.NET.Builders.Engines.Plug.CPlugFlockModelBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3.SoundEventTakeOff
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SoundEventTakeOff
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP3.SoundLoop
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>.SoundLoop
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT.SoundEventTakeOff
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundEventTakeOff
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT.SoundLoop
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>.SoundLoop
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4.SoundEventTakeOff
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundEventTakeOff
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4.SoundLoop
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>.SoundLoop
     {
         get
         {
@@ -94,7 +94,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundLoop = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020.SoundEventTakeOff
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundEventTakeOff
     {
         get
         {
@@ -104,7 +104,7 @@ public partial class CPlugFlockModel : global::GBX.NET.Interfaces.Plug.IPlugFloc
         }
         set => SoundEventTakeOff = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020.SoundLoop
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>.SoundLoop
     {
         get
         {

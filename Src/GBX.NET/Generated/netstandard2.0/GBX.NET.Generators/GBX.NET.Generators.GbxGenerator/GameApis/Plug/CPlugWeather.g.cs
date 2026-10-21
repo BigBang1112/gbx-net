@@ -79,7 +79,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         get => MaterialSky_SunRise;
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.BitmapFlareMoon
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.BitmapFlareSun
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.BitmapRainFid
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.MaterialSea0
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.MaterialSea1
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.MaterialSky_Day
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.MaterialSky_Night
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.MaterialSky_SunFall
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM10.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>.MaterialSky_SunRise
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.BitmapFlareMoon
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.BitmapFlareSun
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.BitmapRainFid
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.MaterialSea0
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.MaterialSea1
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.MaterialSky_Day
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.MaterialSky_Night
     {
         get
         {
@@ -239,7 +239,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.MaterialSky_SunFall
     {
         get
         {
@@ -249,7 +249,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMPU.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.MaterialSky_SunRise
     {
         get
         {
@@ -259,7 +259,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.BitmapFlareMoon
     {
         get
         {
@@ -269,7 +269,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.BitmapFlareSun
     {
         get
         {
@@ -279,7 +279,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.BitmapRainFid
     {
         get
         {
@@ -289,7 +289,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX>.BitmapSkyGradV
     {
         get
         {
@@ -299,7 +299,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialSea0
     {
         get
         {
@@ -309,7 +309,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialSea1
     {
         get
         {
@@ -319,7 +319,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialSky_Day
     {
         get
         {
@@ -329,7 +329,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialSky_Night
     {
         get
         {
@@ -339,7 +339,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialSky_SunFall
     {
         get
         {
@@ -349,7 +349,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMSX.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.MaterialSky_SunRise
     {
         get
         {
@@ -359,7 +359,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.BitmapFlareMoon
     {
         get
         {
@@ -369,7 +369,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.BitmapFlareSun
     {
         get
         {
@@ -379,7 +379,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.BitmapRainFid
     {
         get
         {
@@ -389,7 +389,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC>.BitmapSkyGradV
     {
         get
         {
@@ -399,7 +399,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.Clouds
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTMNESWC>.Clouds
     {
         get
         {
@@ -409,7 +409,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => Clouds = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugClouds node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialSea0
     {
         get
         {
@@ -419,7 +419,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialSea1
     {
         get
         {
@@ -429,7 +429,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialSky_Day
     {
         get
         {
@@ -439,7 +439,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialSky_Night
     {
         get
         {
@@ -449,7 +449,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialSky_SunFall
     {
         get
         {
@@ -459,7 +459,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMNESWC.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.MaterialSky_SunRise
     {
         get
         {
@@ -469,7 +469,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.BitmapFlareMoon
     {
         get
         {
@@ -479,7 +479,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.BitmapFlareSun
     {
         get
         {
@@ -489,7 +489,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.BitmapRainFid
     {
         get
         {
@@ -499,7 +499,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5>.BitmapSkyGradV
     {
         get
         {
@@ -509,7 +509,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.Clouds
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsVSK5>.Clouds
     {
         get
         {
@@ -519,7 +519,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => Clouds = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugClouds node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.FogBlender
+    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderVSK5>.FogBlender
     {
         get
         {
@@ -529,7 +529,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => FogBlender = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxFogBlender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialSea0
     {
         get
         {
@@ -539,7 +539,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialSea1
     {
         get
         {
@@ -549,7 +549,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialSky_Day
     {
         get
         {
@@ -559,7 +559,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialSky_Night
     {
         get
         {
@@ -569,7 +569,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialSky_SunFall
     {
         get
         {
@@ -579,7 +579,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherVSK5.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.MaterialSky_SunRise
     {
         get
         {
@@ -589,7 +589,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.BitmapFlareMoon
     {
         get
         {
@@ -599,7 +599,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.BitmapFlareSun
     {
         get
         {
@@ -609,7 +609,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.BitmapRainFid
     {
         get
         {
@@ -619,7 +619,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF>.BitmapSkyGradV
     {
         get
         {
@@ -629,7 +629,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.Clouds
+    global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers2<global::GBX.NET.Interfaces.Plug.IPlugCloudsTMF>.Clouds
     {
         get
         {
@@ -639,7 +639,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => Clouds = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugClouds node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.FogBlender
+    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMF>.FogBlender
     {
         get
         {
@@ -649,7 +649,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => FogBlender = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxFogBlender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialSea0
     {
         get
         {
@@ -659,7 +659,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialSea1
     {
         get
         {
@@ -669,7 +669,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialSky_Day
     {
         get
         {
@@ -679,7 +679,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialSky_Night
     {
         get
         {
@@ -689,7 +689,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialSky_SunFall
     {
         get
         {
@@ -699,7 +699,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMF.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.MaterialSky_SunRise
     {
         get
         {
@@ -709,7 +709,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.BitmapFlareMoon
     {
         get
         {
@@ -719,7 +719,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.BitmapFlareSun
     {
         get
         {
@@ -729,7 +729,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.BitmapRainFid
     {
         get
         {
@@ -739,7 +739,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.BitmapSkyGradV
     {
         get
         {
@@ -749,7 +749,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.FogBlender
+    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP3>.FogBlender
     {
         get
         {
@@ -759,7 +759,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => FogBlender = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxFogBlender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialSea0
     {
         get
         {
@@ -769,7 +769,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialSea1
     {
         get
         {
@@ -779,7 +779,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialSky_Day
     {
         get
         {
@@ -789,7 +789,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialSky_Night
     {
         get
         {
@@ -799,7 +799,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialSky_SunFall
     {
         get
         {
@@ -809,7 +809,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP3.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>.MaterialSky_SunRise
     {
         get
         {
@@ -819,7 +819,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.BitmapFlareMoon
     {
         get
         {
@@ -829,7 +829,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.BitmapFlareSun
     {
         get
         {
@@ -839,7 +839,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.BitmapRainFid
     {
         get
         {
@@ -849,7 +849,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.BitmapSkyGradV
     {
         get
         {
@@ -859,7 +859,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.FogBlender
+    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTMT>.FogBlender
     {
         get
         {
@@ -869,7 +869,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => FogBlender = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxFogBlender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialSea0
     {
         get
         {
@@ -879,7 +879,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialSea1
     {
         get
         {
@@ -889,7 +889,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialSky_Day
     {
         get
         {
@@ -899,7 +899,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialSky_Night
     {
         get
         {
@@ -909,7 +909,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialSky_SunFall
     {
         get
         {
@@ -919,7 +919,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherTMT.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>.MaterialSky_SunRise
     {
         get
         {
@@ -929,7 +929,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.BitmapFlareMoon
     {
         get
         {
@@ -939,7 +939,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.BitmapFlareSun
     {
         get
         {
@@ -949,7 +949,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.BitmapRainFid
     {
         get
         {
@@ -959,7 +959,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapSkyGradV
     {
         get
         {
@@ -969,7 +969,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapSkyGradV = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.FogBlender
+    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderMP4>.FogBlender
     {
         get
         {
@@ -979,7 +979,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => FogBlender = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxFogBlender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialSea0
     {
         get
         {
@@ -989,7 +989,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialSea1
     {
         get
         {
@@ -999,7 +999,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialSky_Day
     {
         get
         {
@@ -1009,7 +1009,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialSky_Night
     {
         get
         {
@@ -1019,7 +1019,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialSky_SunFall
     {
         get
         {
@@ -1029,7 +1029,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMP4.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4, global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>.MaterialSky_SunRise
     {
         get
         {
@@ -1039,7 +1039,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunRise = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.BitmapFlareMoon
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.BitmapFlareMoon
     {
         get
         {
@@ -1049,7 +1049,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareMoon = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.BitmapFlareSun
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.BitmapFlareSun
     {
         get
         {
@@ -1059,7 +1059,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapFlareSun = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.BitmapRainFid
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.BitmapRainFid
     {
         get
         {
@@ -1069,7 +1069,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => BitmapRainFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.BitmapSkyGradV
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers4<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapSkyGradV
     {
         get
         {
@@ -1089,7 +1089,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => EmitterInFog = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.FogBlender
+    global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers5<global::GBX.NET.Interfaces.Graphic.IGxFogBlenderTM2020>.FogBlender
     {
         get
         {
@@ -1099,7 +1099,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => FogBlender = value is null ? null : value is global::GBX.NET.Engines.Graphic.GxFogBlender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.MaterialSea0
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialSea0
     {
         get
         {
@@ -1109,7 +1109,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea0 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.MaterialSea1
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialSea1
     {
         get
         {
@@ -1119,7 +1119,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSea1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.MaterialSky_Day
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialSky_Day
     {
         get
         {
@@ -1129,7 +1129,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Day = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.MaterialSky_Night
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialSky_Night
     {
         get
         {
@@ -1139,7 +1139,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_Night = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.MaterialSky_SunFall
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialSky_SunFall
     {
         get
         {
@@ -1149,7 +1149,7 @@ public partial class CPlugWeather : global::GBX.NET.Interfaces.Plug.IPlugWeather
         }
         set => MaterialSky_SunFall = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherTM2020.MaterialSky_SunRise
+    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? global::GBX.NET.Interfaces.Plug.IPlugWeatherMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020, global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>.MaterialSky_SunRise
     {
         get
         {

@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionSkelMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionSkel where T0 : class
+{
+    new T0? KeysSkel { get; set; }
+}
 public partial interface IMotionSkel : IClassVersion<global::GBX.NET.Engines.Motion.CMotionSkel>, global::GBX.NET.Interfaces.Motion.IMotionSkelSimple
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -41,42 +46,35 @@ public partial interface IMotionSkel : IClassVersion<global::GBX.NET.Engines.Mot
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
     global::GBX.NET.Interfaces.Function.IFuncKeysSkel? KeysSkel { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncSkelValues? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelTM10 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10
+public partial interface IMotionSkelTM10 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTM10, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncKeysSkelTM10? KeysSkel { get; set; }
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTM10? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelTMPU : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU
+public partial interface IMotionSkelTMPU : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMPU, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMPU? KeysSkel { get; set; }
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMPU? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelTMSX : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX
+public partial interface IMotionSkelTMSX : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMSX, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMSX? KeysSkel { get; set; }
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMSX? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelTMNESWC : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC
+public partial interface IMotionSkelTMNESWC : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMNESWC? KeysSkel { get; set; }
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMNESWC? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelVSK5 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5
+public partial interface IMotionSkelVSK5 : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleVSK5, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncKeysSkelVSK5? KeysSkel { get; set; }
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesVSK5? SkelValues { get; set; }
 }
 
-public partial interface IMotionSkelTMF : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF
+public partial interface IMotionSkelTMF : IMotionSkel, global::GBX.NET.Interfaces.Motion.IMotionSkelSimpleTMF, global::GBX.NET.Interfaces.Motion.IMotionSkelMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncKeysSkelTMF? KeysSkel { get; set; }
     new global::GBX.NET.Interfaces.Function.IFuncSkelValuesTMF? SkelValues { get; set; }
 }
 

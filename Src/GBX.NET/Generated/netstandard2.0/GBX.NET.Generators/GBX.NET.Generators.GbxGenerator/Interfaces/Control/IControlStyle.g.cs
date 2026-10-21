@@ -31,6 +31,103 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Control;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers1 : global::GBX.NET.Interfaces.Control.IControlStyle
+{
+    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusGainedScript { get; set; }
+    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusLostScript { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers2 : global::GBX.NET.Interfaces.Control.IControlStyle
+{
+    global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons { get; set; }
+    new global::GBX.NET.Engines.Function.CFuncEnum? EnumForceIcons { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers3<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    new T0? FocusGainedScript { get; set; }
+    new T0? FocusLostScript { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers4<T0, T1> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class
+{
+    new T0? DefaultShader { get; set; }
+    new T1? EntrySound { get; set; }
+    new T0? EnumListShader { get; set; }
+    new T1? EnumSound { get; set; }
+    new T1? FocusSound { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers5<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    T0? ActionSound { get; set; }
+    float ButtonIconHeight { get; set; }
+    float ButtonIconWidth { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers6 : global::GBX.NET.Interfaces.Control.IControlStyle
+{
+    string? ButtonDefaultIconId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers7<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    new T0? EnumForceIcons { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers8<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    T0? ButtonDefaultIcons { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers9 : global::GBX.NET.Interfaces.Control.IControlStyle
+{
+    Vec4 QuadLinesColor { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers10 : global::GBX.NET.Interfaces.Control.IControlStyle
+{
+    Vec4 QuadGradientColor0 { get; set; }
+    Vec4 QuadGradientColor1 { get; set; }
+    bool QuadIsFill { get; set; }
+    bool QuadIsLines { get; set; }
+    float QuadZ { get; set; }
+    float QuadZLines { get; set; }
+    Vec2 Quad_UvBottomRight { get; set; }
+    Vec2 Quad_UvTopLeft { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers11<T0> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class
+{
+    T0? EffectMaster { get; set; }
+    Vec4 LineGradientColor0 { get; set; }
+    Vec4 LineGradientColor1 { get; set; }
+    float Skew { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IControlStyleMembers12<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Control.IControlStyle where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    bool FocusAreaEnable { get; set; }
+    T0? FocusAreaMaterial { get; set; }
+    T0? FocusAreaMaterialFocused { get; set; }
+    T0? FocusAreaMaterialReadOnly { get; set; }
+    T0? FocusAreaMaterialSelected { get; set; }
+    float FocusAreaMinHeight { get; set; }
+    float FocusAreaMinWidth { get; set; }
+    T1? FocusAreaSolid { get; set; }
+    float FocusAreaXMargin { get; set; }
+    float FocusAreaYMargin { get; set; }
+    float FocusAreaZOffset { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
+    float SliderBarHeight { get; set; }
+    T2? SliderBarIcons { get; set; }
+    float SliderBarWidth { get; set; }
+    float SliderCursorHeight { get; set; }
+    T2? SliderCursorIcons { get; set; }
+    float SliderCursorWidth { get; set; }
+    T3? SliderSound { get; set; }
+}
 public partial interface IControlStyle : IClassVersion<global::GBX.NET.Engines.Control.CControlStyle>
 {
     global::GBX.NET.Interfaces.Plug.IPlugShader? DefaultShader { get; set; }
@@ -48,379 +145,44 @@ public partial interface IControlStyle : IClassVersion<global::GBX.NET.Engines.C
     global::GBX.NET.Interfaces.Plug.IPlugSound? FocusSound { get; set; }
 }
 
-public partial interface IControlStyleTM10 : IControlStyle
+public partial interface IControlStyleTM10 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10, global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM10>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? ActionSound { get; set; }
-    global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? DefaultShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? EntrySound { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncEnum? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM10? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? EnumSound { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? FocusGainedScript { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTM10? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM10? FocusSound { get; set; }
 }
 
-public partial interface IControlStyleTMPU : IControlStyle
+public partial interface IControlStyleTMPU : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU, global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? ActionSound { get; set; }
-    global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? DefaultShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? EntrySound { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncEnum? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? EnumSound { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? FocusGainedScript { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMPU? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMPU? FocusSound { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
 }
 
-public partial interface IControlStyleTMSX : IControlStyle
+public partial interface IControlStyleTMSX : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers2, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX, global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? ActionSound { get; set; }
-    global::GBX.NET.Engines.Function.CFuncEnum? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMSX? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? EntrySound { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncEnum? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? EnumSound { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? FocusGainedScript { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMSX? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMSX? FocusSound { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
 }
 
-public partial interface IControlStyleTMNESWC : IControlStyle
+public partial interface IControlStyleTMNESWC : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? ActionSound { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMNESWC? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumTMNESWC? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? EnumSound { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? FocusGainedScript { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMNESWC? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMNESWC? FocusSound { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
 }
 
-public partial interface IControlStyleVSK5 : IControlStyle
+public partial interface IControlStyleVSK5 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5, global::GBX.NET.Interfaces.Function.IFuncEnumVSK5, global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? ActionSound { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterVSK5? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? EnumSound { get; set; }
-    bool FocusAreaEnable { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? FocusAreaMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? FocusAreaMaterialFocused { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? FocusAreaMaterialReadOnly { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? FocusAreaMaterialSelected { get; set; }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidVSK5? FocusAreaSolid { get; set; }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? FocusGainedScript { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainVSK5? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? FocusSound { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
-    float SliderBarHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? SliderBarIcons { get; set; }
-    float SliderBarWidth { get; set; }
-    float SliderCursorHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumVSK5? SliderCursorIcons { get; set; }
-    float SliderCursorWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundVSK5? SliderSound { get; set; }
 }
 
-public partial interface IControlStyleTMF : IControlStyle
+public partial interface IControlStyleTMF : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers3<global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugSolidTMF, global::GBX.NET.Interfaces.Function.IFuncEnumTMF, global::GBX.NET.Interfaces.Plug.IPlugSoundTMF>
 {
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? ActionSound { get; set; }
-    string? ButtonDefaultIconId { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMF? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumTMF? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMF? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? EnumSound { get; set; }
-    bool FocusAreaEnable { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? FocusAreaMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? FocusAreaMaterialFocused { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? FocusAreaMaterialReadOnly { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? FocusAreaMaterialSelected { get; set; }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMF? FocusAreaSolid { get; set; }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? FocusGainedScript { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMainTMF? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? FocusSound { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
-    float SliderBarHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? SliderBarIcons { get; set; }
-    float SliderBarWidth { get; set; }
-    float SliderCursorHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMF? SliderCursorIcons { get; set; }
-    float SliderCursorWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMF? SliderSound { get; set; }
 }
 
-public partial interface IControlStyleMP3 : IControlStyle
+public partial interface IControlStyleMP3 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugSolidMP3, global::GBX.NET.Interfaces.Function.IFuncEnumMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterMP3? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumMP3? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP3? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? EnumSound { get; set; }
-    bool FocusAreaEnable { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? FocusAreaMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? FocusAreaMaterialFocused { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? FocusAreaMaterialReadOnly { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? FocusAreaMaterialSelected { get; set; }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? FocusAreaSolid { get; set; }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusGainedScript { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? FocusSound { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
-    float SliderBarHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? SliderBarIcons { get; set; }
-    float SliderBarWidth { get; set; }
-    float SliderCursorHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP3? SliderCursorIcons { get; set; }
-    float SliderCursorWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? SliderSound { get; set; }
 }
 
-public partial interface IControlStyleTMT : IControlStyle
+public partial interface IControlStyleTMT : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers9, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugSolidTMT, global::GBX.NET.Interfaces.Function.IFuncEnumTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTMT? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumTMT? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTMT? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? EnumSound { get; set; }
-    bool FocusAreaEnable { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? FocusAreaMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? FocusAreaMaterialFocused { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? FocusAreaMaterialReadOnly { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? FocusAreaMaterialSelected { get; set; }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? FocusAreaSolid { get; set; }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusGainedScript { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? FocusSound { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    Vec4 QuadLinesColor { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
-    float SliderBarHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? SliderBarIcons { get; set; }
-    float SliderBarWidth { get; set; }
-    float SliderCursorHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTMT? SliderCursorIcons { get; set; }
-    float SliderCursorWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? SliderSound { get; set; }
 }
 
-public partial interface IControlStyleMP4 : IControlStyle
+public partial interface IControlStyleMP4 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers6, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers8<global::GBX.NET.Interfaces.Function.IFuncEnumMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugSolidMP4, global::GBX.NET.Interfaces.Function.IFuncEnumMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
     global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? ActionBackSound { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? ActionSound { get; set; }
-    string? ButtonDefaultIconId { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? ButtonDefaultIcons { get; set; }
-    float ButtonIconHeight { get; set; }
-    float ButtonIconWidth { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterMP4? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumMP4? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderMP4? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? EnumSound { get; set; }
-    bool FocusAreaEnable { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? FocusAreaMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? FocusAreaMaterialFocused { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? FocusAreaMaterialReadOnly { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? FocusAreaMaterialSelected { get; set; }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? FocusAreaSolid { get; set; }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusGainedScript { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? FocusSound { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
-    float SliderBarHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? SliderBarIcons { get; set; }
-    float SliderBarWidth { get; set; }
-    float SliderCursorHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumMP4? SliderCursorIcons { get; set; }
-    float SliderCursorWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SliderSound { get; set; }
 }
 
-public partial interface IControlStyleTM2020 : IControlStyle
+public partial interface IControlStyleTM2020 : IControlStyle, global::GBX.NET.Interfaces.Control.IControlStyleMembers1, global::GBX.NET.Interfaces.Control.IControlStyleMembers4<global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers7<global::GBX.NET.Interfaces.Function.IFuncEnumTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers10, global::GBX.NET.Interfaces.Control.IControlStyleMembers11<global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020>, global::GBX.NET.Interfaces.Control.IControlStyleMembers12<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020, global::GBX.NET.Interfaces.Function.IFuncEnumTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? DefaultShader { get; set; }
-    global::GBX.NET.Interfaces.Control.IControlEffectMasterTM2020? EffectMaster { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? EntrySound { get; set; }
-    new global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? EnumForceIcons { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugShaderTM2020? EnumListShader { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? EnumSound { get; set; }
-    bool FocusAreaEnable { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? FocusAreaMaterial { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? FocusAreaMaterialFocused { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? FocusAreaMaterialReadOnly { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? FocusAreaMaterialSelected { get; set; }
-    float FocusAreaMinHeight { get; set; }
-    float FocusAreaMinWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? FocusAreaSolid { get; set; }
-    float FocusAreaXMargin { get; set; }
-    float FocusAreaYMargin { get; set; }
-    float FocusAreaZOffset { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusGainedScript { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlockMain? FocusLostScript { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? FocusSound { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFont? Font { get; set; }
-    Vec4 LineGradientColor0 { get; set; }
-    Vec4 LineGradientColor1 { get; set; }
-    Vec4 QuadGradientColor0 { get; set; }
-    Vec4 QuadGradientColor1 { get; set; }
-    bool QuadIsFill { get; set; }
-    bool QuadIsLines { get; set; }
-    float QuadZ { get; set; }
-    float QuadZLines { get; set; }
-    Vec2 Quad_UvBottomRight { get; set; }
-    Vec2 Quad_UvTopLeft { get; set; }
-    float Skew { get; set; }
-    float SliderBarHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? SliderBarIcons { get; set; }
-    float SliderBarWidth { get; set; }
-    float SliderCursorHeight { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncEnumTM2020? SliderCursorIcons { get; set; }
-    float SliderCursorWidth { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? SliderSound { get; set; }
 }
 

@@ -36,10 +36,72 @@ public abstract class CPlugSurfaceGeomBuilderBase<TSelf> where TSelf : CPlugSurf
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state;
     private protected CPlugSurfaceGeomBuilderBase() => state = new();
     private protected CPlugSurfaceGeomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) => this.state = state;
-    private protected static void SetBoundingBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state, BoxAligned value) => state.Set<BoxAligned>("BoundingBox", value, GameVersion.TMF | GameVersion.VSK5, static value => value, static (node, value) => node.BoundingBox = value);
+    private protected static void SetBoundingBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state, BoxAligned value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceGeomBuilderAssignments.GetBoundingBoxAssignment(), value, GameVersion.TMF | GameVersion.VSK5);
+}
+public abstract class CPlugSurfaceGeomBuilderMembers1<TSelf> : CPlugSurfaceGeomBuilderBase<TSelf> where TSelf : CPlugSurfaceGeomBuilderMembers1<TSelf>
+{
+    private protected CPlugSurfaceGeomBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
+    public BoxAligned BoundingBox
+    {
+        get => state.Get<BoxAligned>("BoundingBox");
+        set => SetBoundingBox(state, value);
+    }
+    public TSelf WithBoundingBox(BoxAligned value)
+    {
+        BoundingBox = value;
+        return (TSelf)this;
+    }
 }
 public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlugSurfaceGeomBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugSurfaceGeom CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
+        var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
+        node.Chunks.Add(chunk0900C000);
+        var chunk0900C001 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001();
+        node.Chunks.Add(chunk0900C001);
+        var chunk0900D002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002();
+        node.Chunks.Add(chunk0900D002);
+        var chunk0900F002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002();
+        node.Chunks.Add(chunk0900F002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900D002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900F002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugSurfaceGeom CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
+        var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
+        node.Chunks.Add(chunk0900C000);
+        var chunk0900F004 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004();
+        node.Chunks.Add(chunk0900F004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900F004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugSurfaceGeom CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
+        var chunk0900F004 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004();
+        node.Chunks.Add(chunk0900F004);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900F004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -52,22 +114,12 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-            var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
-            node.Chunks.Add(chunk0900C000);
-            var chunk0900C001 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001();
-            node.Chunks.Add(chunk0900C001);
-            var chunk0900D002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002();
-            node.Chunks.Add(chunk0900D002);
-            var chunk0900F002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002();
-            node.Chunks.Add(chunk0900F002);
+            var node = CPlugSurfaceGeomBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0900C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0900C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0900D002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0900F002 is missing or has an incompatible version.");
+            CPlugSurfaceGeomBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CPlugSurfaceGeomBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -80,22 +132,12 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-            var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
-            node.Chunks.Add(chunk0900C000);
-            var chunk0900C001 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001();
-            node.Chunks.Add(chunk0900C001);
-            var chunk0900D002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002();
-            node.Chunks.Add(chunk0900D002);
-            var chunk0900F002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002();
-            node.Chunks.Add(chunk0900F002);
+            var node = CPlugSurfaceGeomBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0900C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0900C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0900D002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0900F002 is missing or has an incompatible version.");
+            CPlugSurfaceGeomBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CPlugSurfaceGeomBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -108,22 +150,12 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-            var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
-            node.Chunks.Add(chunk0900C000);
-            var chunk0900C001 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001();
-            node.Chunks.Add(chunk0900C001);
-            var chunk0900D002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002();
-            node.Chunks.Add(chunk0900D002);
-            var chunk0900F002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002();
-            node.Chunks.Add(chunk0900F002);
+            var node = CPlugSurfaceGeomBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0900C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0900C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0900D002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0900F002 is missing or has an incompatible version.");
+            CPlugSurfaceGeomBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugSurfaceGeomBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -136,83 +168,48 @@ public partial class CPlugSurfaceGeomBuilder : CPlugSurfaceGeomBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-            var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
-            node.Chunks.Add(chunk0900C000);
-            var chunk0900C001 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001();
-            node.Chunks.Add(chunk0900C001);
-            var chunk0900D002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002();
-            node.Chunks.Add(chunk0900D002);
-            var chunk0900F002 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002();
-            node.Chunks.Add(chunk0900F002);
+            var node = CPlugSurfaceGeomBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900C001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900D002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900D002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0900F002 is missing or has an incompatible version.");
+            CPlugSurfaceGeomBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugSurfaceGeomBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
     }
-    public partial class VSK5 : CPlugSurfaceGeomBuilderBase<VSK5>
+    public partial class VSK5 : CPlugSurfaceGeomBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
-        public BoxAligned BoundingBox
-        {
-            get => state.Get<BoxAligned>("BoundingBox");
-            set => SetBoundingBox(state, value);
-        }
-        public VSK5 WithBoundingBox(BoxAligned value)
-        {
-            BoundingBox = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-            var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000();
-            node.Chunks.Add(chunk0900C000);
-            var chunk0900F004 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004();
-            node.Chunks.Add(chunk0900F004);
+            var node = CPlugSurfaceGeomBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900C000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0900C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0900F004 is missing or has an incompatible version.");
+            CPlugSurfaceGeomBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugSurfaceGeomBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node);
     }
-    public partial class TMF : CPlugSurfaceGeomBuilderBase<TMF>
+    public partial class TMF : CPlugSurfaceGeomBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> state) : base(state) { }
-        public BoxAligned BoundingBox
-        {
-            get => state.Get<BoxAligned>("BoundingBox");
-            set => SetBoundingBox(state, value);
-        }
-        public TMF WithBoundingBox(BoxAligned value)
-        {
-            BoundingBox = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceGeomTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurfaceGeom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom();
-            var chunk0900F004 = new global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004();
-            node.Chunks.Add(chunk0900F004);
+            var node = CPlugSurfaceGeomBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom.Chunk0900F004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0900F004 is missing or has an incompatible version.");
+            CPlugSurfaceGeomBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugSurfaceGeomBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

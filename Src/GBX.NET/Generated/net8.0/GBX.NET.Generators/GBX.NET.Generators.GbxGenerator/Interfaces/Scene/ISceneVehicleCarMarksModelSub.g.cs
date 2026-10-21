@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneVehicleCarMarksModelSubMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSub where T0 : class
+{
+    new T0? Material { get; set; }
+}
 public partial interface ISceneVehicleCarMarksModelSub : IClassVersion<global::GBX.NET.Engines.Scene.CSceneVehicleCarMarksModelSub>
 {
     float Alpha { get; set; }
@@ -54,18 +59,15 @@ public partial interface ISceneVehicleCarMarksModelSub : IClassVersion<global::G
     float WidthMax { get; set; }
 }
 
-public partial interface ISceneVehicleCarMarksModelSubTMT : ISceneVehicleCarMarksModelSub
+public partial interface ISceneVehicleCarMarksModelSubTMT : ISceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? Material { get; set; }
 }
 
-public partial interface ISceneVehicleCarMarksModelSubMP4 : ISceneVehicleCarMarksModelSub
+public partial interface ISceneVehicleCarMarksModelSubMP4 : ISceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? Material { get; set; }
 }
 
-public partial interface ISceneVehicleCarMarksModelSubTM2020 : ISceneVehicleCarMarksModelSub
+public partial interface ISceneVehicleCarMarksModelSubTM2020 : ISceneVehicleCarMarksModelSub, global::GBX.NET.Interfaces.Scene.ISceneVehicleCarMarksModelSubMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? Material { get; set; }
 }
 

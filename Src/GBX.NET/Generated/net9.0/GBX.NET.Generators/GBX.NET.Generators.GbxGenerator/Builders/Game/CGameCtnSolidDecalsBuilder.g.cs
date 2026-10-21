@@ -36,11 +36,11 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state;
     private protected CGameCtnSolidDecalsBuilderBase() => state = new();
     private protected CGameCtnSolidDecalsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state) => this.state = state;
-    private protected static void SetDecalFrequency(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, uint value) => state.Set<uint>("DecalFrequency", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DecalFrequency = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, string value) => state.Set<string>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetSceneDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, byte[] value) => state.Set<byte[]>("SceneDecals", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (byte[])value.Clone(), static (node, value) => node.SceneDecals = value);
-    private protected static void SetTypeId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, string value) => state.Set<string>("TypeId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TypeId = value);
-    private protected static void SetTypeIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, uint value) => state.Set<uint>("TypeIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.TypeIntensity = value);
+    private protected static void SetDecalFrequency(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetDecalFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSceneDecals(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, byte[] value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetSceneDecalsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTypeId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTypeIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnSolidDecals> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnSolidDecalsBuilderAssignments.GetTypeIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public uint DecalFrequency
     {
         get => state.Get<uint>("DecalFrequency");
@@ -98,6 +98,32 @@ public abstract class CGameCtnSolidDecalsBuilderBase<TSelf> where TSelf : CGameC
 }
 public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase<CGameCtnSolidDecalsBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnSolidDecals CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals();
+        var chunk03121001 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001(game);
+        node.Chunks.Add(chunk03121001);
+        var chunk03121002 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002();
+        node.Chunks.Add(chunk03121002);
+        var chunk03121003 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003();
+        node.Chunks.Add(chunk03121003);
+        var chunk03121004 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004();
+        node.Chunks.Add(chunk03121004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk03121001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03121002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03121003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03121004 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnSolidDecals node, GameVersion game)
+    {
+        if (node.Name is null) throw new MemberNullException("Name");
+        if (node.SceneDecals is null) throw new MemberNullException("SceneDecals");
+        if (node.TypeId is null) throw new MemberNullException("TypeId");
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -110,25 +136,12 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnSolidDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals();
-            var chunk03121001 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001(GameVersion.MP3);
-            node.Chunks.Add(chunk03121001);
-            var chunk03121002 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002();
-            node.Chunks.Add(chunk03121002);
-            var chunk03121003 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003();
-            node.Chunks.Add(chunk03121003);
-            var chunk03121004 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004();
-            node.Chunks.Add(chunk03121004);
+            var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk03121001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03121002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03121003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03121004 is missing or has an incompatible version.");
+            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.Name is null) throw new MemberNullException("Name");
-            if (node.SceneDecals is null) throw new MemberNullException("SceneDecals");
-            if (node.TypeId is null) throw new MemberNullException("TypeId");
+            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -141,25 +154,12 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnSolidDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals();
-            var chunk03121001 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001(GameVersion.TMT);
-            node.Chunks.Add(chunk03121001);
-            var chunk03121002 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002();
-            node.Chunks.Add(chunk03121002);
-            var chunk03121003 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003();
-            node.Chunks.Add(chunk03121003);
-            var chunk03121004 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004();
-            node.Chunks.Add(chunk03121004);
+            var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk03121001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03121002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03121003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03121004 is missing or has an incompatible version.");
+            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Name is null) throw new MemberNullException("Name");
-            if (node.SceneDecals is null) throw new MemberNullException("SceneDecals");
-            if (node.TypeId is null) throw new MemberNullException("TypeId");
+            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -172,25 +172,12 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnSolidDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals();
-            var chunk03121001 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001(GameVersion.MP4);
-            node.Chunks.Add(chunk03121001);
-            var chunk03121002 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002();
-            node.Chunks.Add(chunk03121002);
-            var chunk03121003 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003();
-            node.Chunks.Add(chunk03121003);
-            var chunk03121004 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004();
-            node.Chunks.Add(chunk03121004);
+            var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk03121001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03121002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03121003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03121004 is missing or has an incompatible version.");
+            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Name is null) throw new MemberNullException("Name");
-            if (node.SceneDecals is null) throw new MemberNullException("SceneDecals");
-            if (node.TypeId is null) throw new MemberNullException("TypeId");
+            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -203,25 +190,12 @@ public partial class CGameCtnSolidDecalsBuilder : CGameCtnSolidDecalsBuilderBase
         public global::GBX.NET.Interfaces.Game.IGameCtnSolidDecalsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnSolidDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals();
-            var chunk03121001 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001(GameVersion.TM2020);
-            node.Chunks.Add(chunk03121001);
-            var chunk03121002 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002();
-            node.Chunks.Add(chunk03121002);
-            var chunk03121003 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003();
-            node.Chunks.Add(chunk03121003);
-            var chunk03121004 = new global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004();
-            node.Chunks.Add(chunk03121004);
+            var node = CGameCtnSolidDecalsBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121001>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk03121001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03121002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03121003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnSolidDecals.Chunk03121004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03121004 is missing or has an incompatible version.");
+            CGameCtnSolidDecalsBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Name is null) throw new MemberNullException("Name");
-            if (node.SceneDecals is null) throw new MemberNullException("SceneDecals");
-            if (node.TypeId is null) throw new MemberNullException("TypeId");
+            CGameCtnSolidDecalsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

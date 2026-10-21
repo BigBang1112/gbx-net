@@ -54,14 +54,4 @@ public partial class CGameManiaPlanet : global::GBX.NET.Interfaces.Game.IGameMan
         }
         set => DefaultStyleSheet = value is null ? null : value is global::GBX.NET.Engines.Control.CControlStyleSheet node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Game.IGameResourcesMP4? global::GBX.NET.Interfaces.Game.IGameManiaPlanetMP4.Resources
-    {
-        get
-        {
-            var node = Resources;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => Resources = value is null ? null : value is global::GBX.NET.Engines.Game.CGameResources node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
 }

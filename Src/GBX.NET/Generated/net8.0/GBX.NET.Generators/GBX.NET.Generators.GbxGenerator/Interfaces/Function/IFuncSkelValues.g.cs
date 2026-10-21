@@ -31,39 +31,38 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncSkelValuesMembers1<T0> : global::GBX.NET.Interfaces.Function.IFuncSkelValues where T0 : class
+{
+    new T0? Skel { get; set; }
+}
 public partial interface IFuncSkelValues : IClassVersion<global::GBX.NET.Engines.Function.CFuncSkelValues>
 {
     global::GBX.NET.Engines.Function.CFuncKeysSkel.Loc[]? Locations { get; set; }
     global::GBX.NET.Interfaces.Function.IFuncSkel? Skel { get; set; }
 }
 
-public partial interface IFuncSkelValuesTM10 : IFuncSkelValues
+public partial interface IFuncSkelValuesTM10 : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTM10>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelTM10? Skel { get; set; }
 }
 
-public partial interface IFuncSkelValuesTMPU : IFuncSkelValues
+public partial interface IFuncSkelValuesTMPU : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMPU>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelTMPU? Skel { get; set; }
 }
 
-public partial interface IFuncSkelValuesTMSX : IFuncSkelValues
+public partial interface IFuncSkelValuesTMSX : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMSX>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelTMSX? Skel { get; set; }
 }
 
-public partial interface IFuncSkelValuesTMNESWC : IFuncSkelValues
+public partial interface IFuncSkelValuesTMNESWC : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelTMNESWC? Skel { get; set; }
 }
 
-public partial interface IFuncSkelValuesVSK5 : IFuncSkelValues
+public partial interface IFuncSkelValuesVSK5 : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelVSK5>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelVSK5? Skel { get; set; }
 }
 
-public partial interface IFuncSkelValuesTMF : IFuncSkelValues
+public partial interface IFuncSkelValuesTMF : IFuncSkelValues, global::GBX.NET.Interfaces.Function.IFuncSkelValuesMembers1<global::GBX.NET.Interfaces.Function.IFuncSkelTMF>
 {
-    new global::GBX.NET.Interfaces.Function.IFuncSkelTMF? Skel { get; set; }
 }
 

@@ -31,6 +31,23 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecoratorTreeMembers1 : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree
+{
+    int CollidableCond { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecoratorTreeMembers2<T0, T1> : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree where T0 : class where T1 : class
+{
+    new T0? Material { get; set; }
+    new T1? TreeLight { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugDecoratorTreeMembers3 : global::GBX.NET.Interfaces.Plug.IPlugDecoratorTree
+{
+    int ExistCond { get; set; }
+    bool NoLocation { get; set; }
+}
 public partial interface IPlugDecoratorTree : IClassVersion<global::GBX.NET.Engines.Plug.CPlugDecoratorTree>
 {
     global::GBX.NET.Interfaces.Plug.IPlugMaterial? Material { get; set; }
@@ -43,62 +60,31 @@ public partial interface IPlugDecoratorTree : IClassVersion<global::GBX.NET.Engi
     int VisibleCond { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeTMNESWC : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeTMNESWC : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? Material { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMNESWC? TreeLight { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeVSK5 : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeVSK5 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5, global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
-    int ExistCond { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? Material { get; set; }
-    bool NoLocation { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightVSK5? TreeLight { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeTMF : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeTMF : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
-    int CollidableCond { get; set; }
-    int ExistCond { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? Material { get; set; }
-    bool NoLocation { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMF? TreeLight { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeMP3 : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeMP3 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
-    int CollidableCond { get; set; }
-    int ExistCond { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? Material { get; set; }
-    bool NoLocation { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP3? TreeLight { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeTMT : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeTMT : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
-    int CollidableCond { get; set; }
-    int ExistCond { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? Material { get; set; }
-    bool NoLocation { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightTMT? TreeLight { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeMP4 : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeMP4 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4, global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
-    int CollidableCond { get; set; }
-    int ExistCond { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? Material { get; set; }
-    bool NoLocation { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightMP4? TreeLight { get; set; }
 }
 
-public partial interface IPlugDecoratorTreeTM2020 : IPlugDecoratorTree
+public partial interface IPlugDecoratorTreeTM2020 : IPlugDecoratorTree, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers1, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers2<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020, global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020>, global::GBX.NET.Interfaces.Plug.IPlugDecoratorTreeMembers3
 {
-    int CollidableCond { get; set; }
-    int ExistCond { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? Material { get; set; }
-    bool NoLocation { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugTreeLightTM2020? TreeLight { get; set; }
 }
 

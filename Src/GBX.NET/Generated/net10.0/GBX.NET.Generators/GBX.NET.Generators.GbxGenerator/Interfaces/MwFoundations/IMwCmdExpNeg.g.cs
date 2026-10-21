@@ -40,9 +40,6 @@ public partial interface IMwCmdExpNeg : IClassVersion<global::GBX.NET.Engines.Mw
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new int Integer { get; set; }
-    new float Real { get; set; }
-    new int Type { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value { get; set; }
 }
 

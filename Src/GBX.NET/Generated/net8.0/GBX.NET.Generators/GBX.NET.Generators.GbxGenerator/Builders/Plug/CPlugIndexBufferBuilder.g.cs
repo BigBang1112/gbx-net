@@ -39,6 +39,31 @@ public abstract class CPlugIndexBufferBuilderBase<TSelf> where TSelf : CPlugInde
 }
 public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlugIndexBufferBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugIndexBuffer CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
+        var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
+        node.Chunks.Add(chunk09057000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09057000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugIndexBuffer CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
+        var chunk09057001 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057001();
+        node.Chunks.Add(chunk09057001);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09057001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugIndexBuffer node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -55,13 +80,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -74,13 +98,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -93,13 +116,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -112,13 +134,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -131,13 +152,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -150,13 +170,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -169,13 +188,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057000 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000();
-            node.Chunks.Add(chunk09057000);
+            var node = CPlugIndexBufferBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09057000 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -188,13 +206,12 @@ public partial class CPlugIndexBufferBuilder : CPlugIndexBufferBuilderBase<CPlug
         public global::GBX.NET.Interfaces.Plug.IPlugIndexBufferTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugIndexBuffer Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer();
-            var chunk09057001 = new global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057001();
-            node.Chunks.Add(chunk09057001);
+            var node = CPlugIndexBufferBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugIndexBuffer.Chunk09057001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09057001 is missing or has an incompatible version.");
+            CPlugIndexBufferBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugIndexBufferBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -40,9 +40,6 @@ public partial interface IMwCmdBlockMain : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwCmdScript>? Cmds { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? ContextVariables { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdBlock.BlockVariable[]? Variables { get; set; }
 }
 
 public partial interface IMwCmdBlockMainTM10 : IMwCmdBlockMain, global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockTM10

@@ -36,9 +36,9 @@ public abstract class CPlugBitmapDecalsBuilderBase<TSelf> where TSelf : CPlugBit
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state;
     private protected CPlugBitmapDecalsBuilderBase() => state = new();
     private protected CPlugBitmapDecalsBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state) => this.state = state;
-    private protected static void SetDecalModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>?>("DecalModels", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.DecalModels = value);
-    private protected static void SetDecalSets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]?>("DecalSets", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[])value.Clone(), static (node, value) => node.DecalSets = value);
-    private protected static void SetMatterId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, string? value) => state.Set<string?>("MatterId", value, GameVersion.TM2020, static value => value, static (node, value) => node.MatterId = value);
+    private protected static void SetDecalModels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetDecalModelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDecalSets(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetDecalSetsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetMatterId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugBitmapDecalsBuilderAssignments.GetMatterIdAssignment(), value, GameVersion.TM2020);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>? DecalModels
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugDecalModel>?>("DecalModels");
@@ -74,6 +74,51 @@ public abstract class CPlugBitmapDecalsBuilderBase<TSelf> where TSelf : CPlugBit
 }
 public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPlugBitmapDecalsBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapDecals CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
+        var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(game);
+        node.Chunks.Add(chunk09078000);
+        var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
+        node.Chunks.Add(chunk09078001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugBitmapDecals node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk09078000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09078001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapDecals CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
+        var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(game);
+        node.Chunks.Add(chunk09078000);
+        var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
+        node.Chunks.Add(chunk09078001);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugBitmapDecals node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk09078000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09078001 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugBitmapDecals CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
+        var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(game);
+        node.Chunks.Add(chunk09078000);
+        var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
+        node.Chunks.Add(chunk09078001);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugBitmapDecals node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk09078000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09078001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugBitmapDecals node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -85,7 +130,7 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state) : base(state) { }
         public MP3 WithDecalModels(params global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3[] values)
         {
-            return base.WithDecalModels(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithDecalModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>(values, false));
         }
         public MP3 WithDecalModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3> values)
         {
@@ -94,16 +139,12 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
-            var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(GameVersion.MP3);
-            node.Chunks.Add(chunk09078000);
-            var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
-            node.Chunks.Add(chunk09078001);
+            var node = CPlugBitmapDecalsBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk09078000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09078001 is missing or has an incompatible version.");
+            CPlugBitmapDecalsBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugBitmapDecalsBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -115,7 +156,7 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state) : base(state) { }
         public TMT WithDecalModels(params global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT[] values)
         {
-            return base.WithDecalModels(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithDecalModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>(values, false));
         }
         public TMT WithDecalModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT> values)
         {
@@ -124,16 +165,12 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
-            var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(GameVersion.TMT);
-            node.Chunks.Add(chunk09078000);
-            var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
-            node.Chunks.Add(chunk09078001);
+            var node = CPlugBitmapDecalsBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk09078000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09078001 is missing or has an incompatible version.");
+            CPlugBitmapDecalsBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugBitmapDecalsBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -145,7 +182,7 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state) : base(state) { }
         public MP4 WithDecalModels(params global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4[] values)
         {
-            return base.WithDecalModels(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithDecalModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>(values, false));
         }
         public MP4 WithDecalModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4> values)
         {
@@ -154,16 +191,12 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
-            var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(GameVersion.MP4);
-            node.Chunks.Add(chunk09078000);
-            var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
-            node.Chunks.Add(chunk09078001);
+            var node = CPlugBitmapDecalsBuilder.CreateRecipe1(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk09078000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09078001 is missing or has an incompatible version.");
+            CPlugBitmapDecalsBuilder.ValidateRecipe1(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugBitmapDecalsBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -175,7 +208,7 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugBitmapDecals> state) : base(state) { }
         public TM2020 WithDecalModels(params global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020[] values)
         {
-            return base.WithDecalModels(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugDecalModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithDecalModels(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugDecalModel, global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>(values, false));
         }
         public TM2020 WithDecalModels(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020> values)
         {
@@ -194,16 +227,12 @@ public partial class CPlugBitmapDecalsBuilder : CPlugBitmapDecalsBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugBitmapDecals Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals();
-            var chunk09078000 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000(GameVersion.TM2020);
-            node.Chunks.Add(chunk09078000);
-            var chunk09078001 = new global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001();
-            node.Chunks.Add(chunk09078001);
+            var node = CPlugBitmapDecalsBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078000>() is not { Version: 4 }) throw new InvalidOperationException("Required TM2020 chunk Chunk09078000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugBitmapDecals.Chunk09078001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09078001 is missing or has an incompatible version.");
+            CPlugBitmapDecalsBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugBitmapDecalsBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

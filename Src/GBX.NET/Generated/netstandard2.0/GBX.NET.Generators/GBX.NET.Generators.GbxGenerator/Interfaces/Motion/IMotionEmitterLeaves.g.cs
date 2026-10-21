@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionEmitterLeavesMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionEmitterLeaves where T0 : class
+{
+    T0? ManagerModel { get; set; }
+    Vec3 Pos { get; set; }
+    Vec3 Radius { get; set; }
+}
 public partial interface IMotionEmitterLeaves : IClassVersion<global::GBX.NET.Engines.Motion.CMotionEmitterLeaves>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -42,70 +49,39 @@ public partial interface IMotionEmitterLeaves : IClassVersion<global::GBX.NET.En
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
 }
 
-public partial interface IMotionEmitterLeavesTM10 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10
+public partial interface IMotionEmitterLeavesTM10 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTM10? ManagerModel { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesTMPU : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU
+public partial interface IMotionEmitterLeavesTMPU : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMPU? ManagerModel { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesTMSX : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX
+public partial interface IMotionEmitterLeavesTMSX : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMSX? ManagerModel { get; set; }
-    new string? Name { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesTMNESWC : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMNESWC
+public partial interface IMotionEmitterLeavesTMNESWC : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMNESWC? ManagerModel { get; set; }
-    new string? Name { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesVSK5 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
+public partial interface IMotionEmitterLeavesVSK5 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesVSK5? ManagerModel { get; set; }
-    new string? Name { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesTMF : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF
+public partial interface IMotionEmitterLeavesTMF : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMF? ManagerModel { get; set; }
-    new string? Name { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesMP3 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3
+public partial interface IMotionEmitterLeavesMP3 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMP3? ManagerModel { get; set; }
-    new string? Name { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
-public partial interface IMotionEmitterLeavesTMT : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT
+public partial interface IMotionEmitterLeavesTMT : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT, global::GBX.NET.Interfaces.Motion.IMotionEmitterLeavesMembers1<global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT>
 {
-    global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesTMT? ManagerModel { get; set; }
-    new string? Name { get; set; }
-    Vec3 Pos { get; set; }
-    Vec3 Radius { get; set; }
 }
 
 public partial interface IMotionEmitterLeavesMP4 : IMotionEmitterLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagedMP4
 {
-    new string? Name { get; set; }
 }
 

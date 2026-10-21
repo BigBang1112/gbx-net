@@ -36,9 +36,9 @@ public abstract class CPlugLocatedSoundBuilderBase<TSelf> where TSelf : CPlugLoc
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state;
     private protected CPlugLocatedSoundBuilderBase() => state = new();
     private protected CPlugLocatedSoundBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state) => this.state = state;
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, Iso4 value) => state.Set<Iso4>("Loc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Loc = value);
-    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSound?>("Sound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Sound = value);
-    private protected static void SetSoundReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>>("Sound", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSound>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Sound.CopyFrom(reference));
+    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSound(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, global::GBX.NET.Engines.Plug.CPlugSound? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugLocatedSound> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSound> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugLocatedSoundBuilderAssignments.GetSoundReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
@@ -68,6 +68,20 @@ public abstract class CPlugLocatedSoundBuilderBase<TSelf> where TSelf : CPlugLoc
 }
 public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPlugLocatedSoundBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugLocatedSound CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugLocatedSound();
+        var chunk09061000 = new global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000();
+        node.Chunks.Add(chunk09061000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugLocatedSound node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09061000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugLocatedSound node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -84,13 +98,12 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLocatedSound Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLocatedSound();
-            var chunk09061000 = new global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000();
-            node.Chunks.Add(chunk09061000);
+            var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09061000 is missing or has an incompatible version.");
+            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -107,13 +120,12 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLocatedSound Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLocatedSound();
-            var chunk09061000 = new global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000();
-            node.Chunks.Add(chunk09061000);
+            var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09061000 is missing or has an incompatible version.");
+            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -130,13 +142,12 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLocatedSound Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLocatedSound();
-            var chunk09061000 = new global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000();
-            node.Chunks.Add(chunk09061000);
+            var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09061000 is missing or has an incompatible version.");
+            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -153,13 +164,12 @@ public partial class CPlugLocatedSoundBuilder : CPlugLocatedSoundBuilderBase<CPl
         public global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugLocatedSound Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugLocatedSound();
-            var chunk09061000 = new global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000();
-            node.Chunks.Add(chunk09061000);
+            var node = CPlugLocatedSoundBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugLocatedSound.Chunk09061000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09061000 is missing or has an incompatible version.");
+            CPlugLocatedSoundBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugLocatedSoundBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

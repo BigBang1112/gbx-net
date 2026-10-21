@@ -39,57 +39,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         get => Slope;
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.AirBlockUnitInfos
-    {
-        get => AirBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>(() => AirBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.AirHelperMobil
-    {
-        get
-        {
-            var node = AirHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
-        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.ConstructionModeHelperMobil
-    {
-        get
-        {
-            var node = ConstructionModeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
-        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.GroundBlockUnitInfos
-    {
-        get => GroundBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM10?>(() => GroundBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.GroundHelperMobil
-    {
-        get
-        {
-            var node = GroundHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
-        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.Pillar
-    {
-        get
-        {
-            var node = Pillar;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            return node;
-        }
-        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM10.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM10>.Slope
     {
         get
         {
@@ -99,57 +49,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.AirBlockUnitInfos
-    {
-        get => AirBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>(() => AirBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.AirHelperMobil
-    {
-        get
-        {
-            var node = AirHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
-        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.ConstructionModeHelperMobil
-    {
-        get
-        {
-            var node = ConstructionModeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
-        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.GroundBlockUnitInfos
-    {
-        get => GroundBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMPU?>(() => GroundBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.GroundHelperMobil
-    {
-        get
-        {
-            var node = GroundHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
-        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.Pillar
-    {
-        get
-        {
-            var node = Pillar;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            return node;
-        }
-        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMPU.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMPU>.Slope
     {
         get
         {
@@ -159,57 +59,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.AirBlockUnitInfos
-    {
-        get => AirBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>(() => AirBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.AirHelperMobil
-    {
-        get
-        {
-            var node = AirHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.ConstructionModeHelperMobil
-    {
-        get
-        {
-            var node = ConstructionModeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.GroundBlockUnitInfos
-    {
-        get => GroundBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMSX?>(() => GroundBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.GroundHelperMobil
-    {
-        get
-        {
-            var node = GroundHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.Pillar
-    {
-        get
-        {
-            var node = Pillar;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            return node;
-        }
-        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMSX.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMSX>.Slope
     {
         get
         {
@@ -219,57 +69,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.AirBlockUnitInfos
-    {
-        get => AirBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>(() => AirBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.AirHelperMobil
-    {
-        get
-        {
-            var node = AirHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.ConstructionModeHelperMobil
-    {
-        get
-        {
-            var node = ConstructionModeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.GroundBlockUnitInfos
-    {
-        get => GroundBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMNESWC?>(() => GroundBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.GroundHelperMobil
-    {
-        get
-        {
-            var node = GroundHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.Pillar
-    {
-        get
-        {
-            var node = Pillar;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            return node;
-        }
-        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMNESWC.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMNESWC>.Slope
     {
         get
         {
@@ -279,57 +79,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.AirBlockUnitInfos
-    {
-        get => AirBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>(() => AirBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.AirHelperMobil
-    {
-        get
-        {
-            var node = AirHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.ConstructionModeHelperMobil
-    {
-        get
-        {
-            var node = ConstructionModeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.GroundBlockUnitInfos
-    {
-        get => GroundBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoVSK5?>(() => GroundBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.GroundHelperMobil
-    {
-        get
-        {
-            var node = GroundHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.Pillar
-    {
-        get
-        {
-            var node = Pillar;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            return node;
-        }
-        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadVSK5.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeVSK5>.Slope
     {
         get
         {
@@ -339,57 +89,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.AirBlockUnitInfos
-    {
-        get => AirBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>(() => AirBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => AirBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.AirHelperMobil
-    {
-        get
-        {
-            var node = AirHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => AirHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.ConstructionModeHelperMobil
-    {
-        get
-        {
-            var node = ConstructionModeHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => ConstructionModeHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.GroundBlockUnitInfos
-    {
-        get => GroundBlockUnitInfos is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMF?>(() => GroundBlockUnitInfos, static node => { if (node is null) return null; NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => GroundBlockUnitInfos = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo?>(value.Select(static item => item is null ? null : item is global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.GroundHelperMobil
-    {
-        get
-        {
-            var node = GroundHelperMobil;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => GroundHelperMobil = value is null ? null : value is global::GBX.NET.Engines.Scene.CSceneMobil node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClassicTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.Pillar
-    {
-        get
-        {
-            var node = Pillar;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            return node;
-        }
-        set => Pillar = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoClassic node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMF.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMF>.Slope
     {
         get
         {
@@ -399,37 +99,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.AdditionalVariantsAir
-    {
-        get => AdditionalVariantsAir is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP3>(() => AdditionalVariantsAir, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsAir"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => AdditionalVariantsAir = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.AdditionalVariantsGround
-    {
-        get => AdditionalVariantsGround is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP3>(() => AdditionalVariantsGround, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsGround"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => AdditionalVariantsGround = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.CharPhySpecialProperty
-    {
-        get
-        {
-            var node = CharPhySpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => CharPhySpecialProperty = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.FogVolumeBox
-    {
-        get
-        {
-            var node = FogVolumeBox;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => FogVolumeBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP3>.Slope
     {
         get
         {
@@ -439,87 +109,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.Sound1
-    {
-        get
-        {
-            var node = Sound1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => Sound1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.Sound2
-    {
-        get
-        {
-            var node = Sound2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => Sound2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyMP3? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP3.WaypointSpecialProperty
-    {
-        get
-        {
-            var node = WaypointSpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            return node;
-        }
-        set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.AdditionalVariantsAir
-    {
-        get => AdditionalVariantsAir is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTMT>(() => AdditionalVariantsAir, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsAir"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => AdditionalVariantsAir = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.AdditionalVariantsGround
-    {
-        get => AdditionalVariantsGround is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTMT>(() => AdditionalVariantsGround, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsGround"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => AdditionalVariantsGround = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.CharPhySpecialProperty
-    {
-        get
-        {
-            var node = CharPhySpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => CharPhySpecialProperty = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.FogVolumeBox
-    {
-        get
-        {
-            var node = FogVolumeBox;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => FogVolumeBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.IconMacroBlockInfo
-    {
-        get
-        {
-            var node = IconMacroBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => IconMacroBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnPrecalcPartParamsTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.PrecalcPartParams
-    {
-        get
-        {
-            var node = PrecalcPartParams;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => PrecalcPartParams = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnPrecalcPartParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTMT>.Slope
     {
         get
         {
@@ -529,77 +119,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.Sound1
-    {
-        get
-        {
-            var node = Sound1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => Sound1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.Sound2
-    {
-        get
-        {
-            var node = Sound2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => Sound2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.GameData.IGameWaypointSpecialPropertyTMT? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTMT.WaypointSpecialProperty
-    {
-        get
-        {
-            var node = WaypointSpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => WaypointSpecialProperty = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameWaypointSpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.AdditionalVariantsAir
-    {
-        get => AdditionalVariantsAir is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirMP4>(() => AdditionalVariantsAir, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsAir"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => AdditionalVariantsAir = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.AdditionalVariantsGround
-    {
-        get => AdditionalVariantsGround is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMP4>(() => AdditionalVariantsGround, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsGround"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => AdditionalVariantsGround = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.CharPhySpecialProperty
-    {
-        get
-        {
-            var node = CharPhySpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => CharPhySpecialProperty = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.FogVolumeBox
-    {
-        get
-        {
-            var node = FogVolumeBox;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => FogVolumeBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.IconMacroBlockInfo
-    {
-        get
-        {
-            var node = IconMacroBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => IconMacroBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeMP4>.Slope
     {
         get
         {
@@ -609,97 +129,7 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.Sound1
-    {
-        get
-        {
-            var node = Sound1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => Sound1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMP4.Sound2
-    {
-        get
-        {
-            var node = Sound2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => Sound2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.AdditionalVariantsAir
-    {
-        get => AdditionalVariantsAir is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantAirTM2020>(() => AdditionalVariantsAir, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsAir"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => AdditionalVariantsAir = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantAir node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020>? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.AdditionalVariantsGround
-    {
-        get => AdditionalVariantsGround is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundTM2020>(() => AdditionalVariantsGround, static node => { if (node is null) throw new MemberNullException("AdditionalVariantsGround"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => AdditionalVariantsGround = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.BlockInfoModelFid
-    {
-        get
-        {
-            var node = BlockInfoModelFid;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => BlockInfoModelFid = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugCharPhySpecialPropertyTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.CharPhySpecialProperty
-    {
-        get
-        {
-            var node = CharPhySpecialProperty;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => CharPhySpecialProperty = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCharPhySpecialProperty node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugFogVolumeBoxTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.FogVolumeBox
-    {
-        get
-        {
-            var node = FogVolumeBox;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => FogVolumeBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugFogVolumeBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnMacroBlockInfoTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.IconMacroBlockInfo
-    {
-        get
-        {
-            var node = IconMacroBlockInfo;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => IconMacroBlockInfo = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMacroBlockInfo node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.MaterialModifier
-    {
-        get
-        {
-            var node = MaterialModifier;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => MaterialModifier = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinAndFolderTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.MaterialModifier2
-    {
-        get
-        {
-            var node = MaterialModifier2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => MaterialModifier2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkinAndFolder node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.Slope
+    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoSlopeTM2020>.Slope
     {
         get
         {
@@ -708,25 +138,5 @@ public partial class CGameCtnBlockInfoRoad : global::GBX.NET.Interfaces.Game.IGa
             return node;
         }
         set => Slope = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnBlockInfoSlope node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.Sound1
-    {
-        get
-        {
-            var node = Sound1;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => Sound1 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoRoadTM2020.Sound2
-    {
-        get
-        {
-            var node = Sound2;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => Sound2 = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
 }

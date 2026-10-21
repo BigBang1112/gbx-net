@@ -36,24 +36,24 @@ public abstract class CControlScriptEditorBuilderBase<TSelf> where TSelf : CCont
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state;
     private protected CControlScriptEditorBuilderBase() => state = new();
     private protected CControlScriptEditorBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) => this.state = state;
-    private protected static void SetControlFlags(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, uint value) => state.Set<uint>("ControlFlags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ControlFlags = value);
-    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsItem?>("Item", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Item = value);
-    private protected static void SetLayout(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Control.CControlLayout? value) => state.Set<global::GBX.NET.Engines.Control.CControlLayout?>("Layout", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Layout = value);
-    private protected static void SetLayoutReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlLayout>>("Layout", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlLayout>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Layout.CopyFrom(reference));
-    private protected static void SetLegacyStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set<global::GBX.NET.Engines.Control.CControlStyle?>("LegacyStyle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LegacyStyle = value);
-    private protected static void SetLegacyStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlStyle>>("LegacyStyle", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlStyle>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.LegacyStyle.CopyFrom(reference));
-    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MessageHandler = value);
-    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set<NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler>>("MessageHandler", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MessageHandler.CopyFrom(reference));
-    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set<global::GBX.NET.Engines.Motion.CMotion?>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Motion = value);
-    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotion>>("Motion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotion>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Motion.CopyFrom(reference));
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetNod(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwNod?>("Nod", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Nod = value);
-    private protected static void SetNodReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>>("Nod", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Nod.CopyFrom(reference));
-    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>?>("ObjectLink", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.ObjectLink = value);
-    private protected static void SetStackText(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, string? value) => state.Set<string?>("StackText", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.StackText = value);
-    private protected static void SetStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set<global::GBX.NET.Engines.Control.CControlStyle?>("Style", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Style = value);
-    private protected static void SetStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set<NodeRef<global::GBX.NET.Engines.Control.CControlStyle>>("Style", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Control.CControlStyle>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Style.CopyFrom(reference));
-    private protected static void SetStyleId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, string? value) => state.Set<string?>("StyleId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.StyleId = value);
+    private protected static void SetControlFlags(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetControlFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetItem(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Hms.CHmsItem? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetItemAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLayout(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Control.CControlLayout? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLayoutReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Control.CControlLayout> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLayoutReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLegacyStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLegacyStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetLegacyStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMessageHandler(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Scene.CSceneMessageHandler? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMessageHandlerReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetMessageHandlerReferenceAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMotion(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Motion.CMotion? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMotionReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Motion.CMotion> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetMotionReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneObjectBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetNod(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.MwFoundations.CMwNod? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetNodReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwNod> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetNodReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetObjectLink(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneObjectLink>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneMobilBuilderAssignments.GetObjectLinkAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStackText(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStackTextAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStyle(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, global::GBX.NET.Engines.Control.CControlStyle? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStyleReference(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetStyleId(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Control.CControlBaseBuilderAssignments.GetStyleIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public uint ControlFlags
     {
         get => state.Get<uint>("ControlFlags");
@@ -177,8 +177,204 @@ public abstract class CControlScriptEditorBuilderBase<TSelf> where TSelf : CCont
         return (TSelf)this;
     }
 }
+public abstract class CControlScriptEditorBuilderMembers1<TSelf> : CControlScriptEditorBuilderBase<TSelf> where TSelf : CControlScriptEditorBuilderMembers1<TSelf>
+{
+    private protected CControlScriptEditorBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
+    public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
+    {
+        get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
+        set => SetMessageHandler(state, value);
+    }
+    public TSelf WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
+    {
+        MessageHandler = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetMessageHandlerReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CControlScriptEditorBuilderMembers2<TSelf> : CControlScriptEditorBuilderBase<TSelf> where TSelf : CControlScriptEditorBuilderMembers2<TSelf>
+{
+    private protected CControlScriptEditorBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
+    public global::GBX.NET.Engines.Control.CControlStyle? Style
+    {
+        get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
+        set => SetStyle(state, value);
+    }
+    public TSelf WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
+    {
+        Style = value;
+        return (TSelf)this;
+    }
+    public TSelf WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetStyleReference(state, value);
+        return (TSelf)this;
+    }
+    public string? StyleId
+    {
+        get => state.Get<string?>("StyleId");
+        set => SetStyleId(state, value);
+    }
+    public TSelf WithStyleId(string? value)
+    {
+        StyleId = value;
+        return (TSelf)this;
+    }
+}
 public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBase<CControlScriptEditorBuilder>
 {
+    private static global::GBX.NET.Engines.Control.CControlScriptEditor CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
+        var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
+        node.Chunks.Add(chunk0700100C);
+        var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
+        node.Chunks.Add(chunk0700100E);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
+        node.Chunks.Add(chunk0A011004);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
+        node.Chunks.Add(chunk0A011006);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
+        node.Chunks.Add(chunk0A005004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Control.CControlScriptEditor node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlScriptEditor CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
+        var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
+        node.Chunks.Add(chunk0700100C);
+        var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
+        node.Chunks.Add(chunk0700100E);
+        var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
+        node.Chunks.Add(chunk0700100F);
+        var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
+        node.Chunks.Add(chunk07001010);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
+        node.Chunks.Add(chunk0A011004);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
+        node.Chunks.Add(chunk0A011006);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
+        node.Chunks.Add(chunk0A005004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Control.CControlScriptEditor node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlScriptEditor CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
+        var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
+        node.Chunks.Add(chunk0700100C);
+        var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
+        node.Chunks.Add(chunk0700100E);
+        var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
+        node.Chunks.Add(chunk0700100F);
+        var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
+        node.Chunks.Add(chunk07001010);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
+        node.Chunks.Add(chunk0A011006);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Control.CControlScriptEditor node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Control.CControlScriptEditor CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
+        var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
+        node.Chunks.Add(chunk0700100C);
+        var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
+        node.Chunks.Add(chunk0700100E);
+        var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
+        node.Chunks.Add(chunk0700100F);
+        var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
+        node.Chunks.Add(chunk07001010);
+        var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
+        node.Chunks.Add(chunk0A011003);
+        var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
+        node.Chunks.Add(chunk0A011005);
+        var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
+        node.Chunks.Add(chunk0A005001);
+        var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
+        node.Chunks.Add(chunk0A005003);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Control.CControlScriptEditor node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100E is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0700100F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk07001010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A011005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A005003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Control.CControlScriptEditor node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -191,32 +387,16 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CControlScriptEditorBuilderBase<TM10>
+    public partial class TM10 : CControlScriptEditorBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TM10 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM10? value)
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TM10 WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TM10 WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
-        }
         public TM10 WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM10 WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTM10? value)
         {
@@ -224,7 +404,7 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public TM10 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>(values, false));
         }
         public TM10 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10> values)
         {
@@ -233,69 +413,28 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CControlScriptEditorBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0A005004 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class TMPU : CControlScriptEditorBuilderBase<TMPU>
+    public partial class TMPU : CControlScriptEditorBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TMPU WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMPU? value)
         {
             return base.WithLegacyStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Scene.CSceneMessageHandler? MessageHandler
-        {
-            get => state.Get<global::GBX.NET.Engines.Scene.CSceneMessageHandler?>("MessageHandler");
-            set => SetMessageHandler(state, value);
-        }
-        public TMPU WithMessageHandler(global::GBX.NET.Engines.Scene.CSceneMessageHandler? value)
-        {
-            MessageHandler = value;
-            return this;
-        }
-        public TMPU WithMessageHandlerReference(NodeRef<global::GBX.NET.Engines.Scene.CSceneMessageHandler> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMessageHandlerReference(state, value);
-            return this;
-        }
         public TMPU WithMessageHandler(global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? value)
         {
-            return WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithMessageHandler(value is null ? (global::GBX.NET.Engines.Scene.CSceneMessageHandler?)null : value is global::GBX.NET.Engines.Scene.CSceneMessageHandler node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMPU WithMotion(global::GBX.NET.Interfaces.Motion.IMotionTMPU? value)
         {
@@ -303,7 +442,7 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public TMPU WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>(values, false));
         }
         public TMPU WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU> values)
         {
@@ -312,44 +451,19 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CControlScriptEditorBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0A005004 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class TMSX : CControlScriptEditorBuilderBase<TMSX>
+    public partial class TMSX : CControlScriptEditorBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TMSX WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value)
@@ -382,89 +496,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public TMSX WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>(values, false));
         }
         public TMSX WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public TMSX WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public TMSX WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public TMSX WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMSX? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public TMSX WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CControlScriptEditorBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0A005004 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class TMNESWC : CControlScriptEditorBuilderBase<TMNESWC>
+    public partial class TMNESWC : CControlScriptEditorBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TMNESWC WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value)
@@ -497,89 +554,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public TMNESWC WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>(values, false));
         }
         public TMNESWC WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public TMNESWC WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public TMNESWC WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public TMNESWC WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMNESWC? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public TMNESWC WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011004 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004();
-            node.Chunks.Add(chunk0A011004);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
-            var chunk0A005004 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004();
-            node.Chunks.Add(chunk0A005004);
+            var node = CControlScriptEditorBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0A005004 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class VSK5 : CControlScriptEditorBuilderBase<VSK5>
+    public partial class VSK5 : CControlScriptEditorBuilderMembers2<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public VSK5 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value)
@@ -612,83 +612,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public VSK5 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>(values, false));
         }
         public VSK5 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public VSK5 WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public VSK5 WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public VSK5 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleVSK5? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public VSK5 WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CControlScriptEditorBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class TMF : CControlScriptEditorBuilderBase<TMF>
+    public partial class TMF : CControlScriptEditorBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TMF WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTMF? value)
@@ -725,83 +674,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public TMF WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>(values, false));
         }
         public TMF WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public TMF WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public TMF WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public TMF WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMF? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public TMF WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A011006 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006();
-            node.Chunks.Add(chunk0A011006);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CControlScriptEditorBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required TMF chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A011006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A005003 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class MP3 : CControlScriptEditorBuilderBase<MP3>
+    public partial class MP3 : CControlScriptEditorBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public MP3 WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value)
@@ -814,80 +712,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public MP3 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3>(values, false));
         }
         public MP3 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP3> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public MP3 WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public MP3 WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public MP3 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP3? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public MP3 WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CControlScriptEditorBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class TMT : CControlScriptEditorBuilderBase<TMT>
+    public partial class TMT : CControlScriptEditorBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TMT WithLegacyStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value)
@@ -900,80 +750,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public TMT WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT>(values, false));
         }
         public TMT WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMT> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public TMT WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public TMT WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public TMT WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTMT? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public TMT WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CControlScriptEditorBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required TMT chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0A005003 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class MP4 : CControlScriptEditorBuilderBase<MP4>
+    public partial class MP4 : CControlScriptEditorBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public MP4 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutMP4? value)
@@ -990,80 +792,32 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         }
         public MP4 WithObjectLink(params global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4[] values)
         {
-            return base.WithObjectLink(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneObjectLink node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithObjectLink(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4>(values, false));
         }
         public MP4 WithObjectLink(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMP4> values)
         {
             return WithObjectLink(values.ToArray());
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public MP4 WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public MP4 WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public MP4 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleMP4? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public MP4 WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CControlScriptEditorBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
         partial void ValidateNode(global::GBX.NET.Engines.Control.CControlScriptEditor node);
     }
-    public partial class TM2020 : CControlScriptEditorBuilderBase<TM2020>
+    public partial class TM2020 : CControlScriptEditorBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Control.CControlScriptEditor> state) : base(state) { }
         public TM2020 WithLayout(global::GBX.NET.Interfaces.Control.IControlLayoutTM2020? value)
@@ -1078,67 +832,19 @@ public partial class CControlScriptEditorBuilder : CControlScriptEditorBuilderBa
         {
             return base.WithMotion(value is null ? (global::GBX.NET.Engines.Motion.CMotion?)null : value is global::GBX.NET.Engines.Motion.CMotion node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Control.CControlStyle? Style
-        {
-            get => state.Get<global::GBX.NET.Engines.Control.CControlStyle?>("Style");
-            set => SetStyle(state, value);
-        }
-        public TM2020 WithStyle(global::GBX.NET.Engines.Control.CControlStyle? value)
-        {
-            Style = value;
-            return this;
-        }
-        public TM2020 WithStyleReference(NodeRef<global::GBX.NET.Engines.Control.CControlStyle> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetStyleReference(state, value);
-            return this;
-        }
         public TM2020 WithStyle(global::GBX.NET.Interfaces.Control.IControlStyleTM2020? value)
         {
-            return WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public string? StyleId
-        {
-            get => state.Get<string?>("StyleId");
-            set => SetStyleId(state, value);
-        }
-        public TM2020 WithStyleId(string? value)
-        {
-            StyleId = value;
-            return this;
+            return base.WithStyle(value is null ? (global::GBX.NET.Engines.Control.CControlStyle?)null : value is global::GBX.NET.Engines.Control.CControlStyle node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Control.IControlScriptEditorTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Control.CControlScriptEditor Build()
         {
-            var node = new global::GBX.NET.Engines.Control.CControlScriptEditor();
-            var chunk0700100C = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C();
-            node.Chunks.Add(chunk0700100C);
-            var chunk0700100E = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E();
-            node.Chunks.Add(chunk0700100E);
-            var chunk0700100F = new global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F();
-            node.Chunks.Add(chunk0700100F);
-            var chunk07001010 = new global::GBX.NET.Engines.Control.CControlBase.Chunk07001010();
-            node.Chunks.Add(chunk07001010);
-            var chunk0A011003 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003();
-            node.Chunks.Add(chunk0A011003);
-            var chunk0A011005 = new global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005();
-            node.Chunks.Add(chunk0A011005);
-            var chunk0A005001 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001();
-            node.Chunks.Add(chunk0A005001);
-            var chunk0A005003 = new global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003();
-            node.Chunks.Add(chunk0A005003);
+            var node = CControlScriptEditorBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100C>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0700100C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100E>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0700100E is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk0700100F>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0700100F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Control.CControlBase.Chunk07001010>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk07001010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A011003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneMobil.Chunk0A011005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A011005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneObject.Chunk0A005003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0A005003 is missing or has an incompatible version.");
+            CControlScriptEditorBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CControlScriptEditorBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

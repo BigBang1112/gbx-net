@@ -36,10 +36,10 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> where 
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state;
     private protected CGameCtnDecorationTerrainModifierBuilderBase() => state = new();
     private protected CGameCtnDecorationTerrainModifierBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state) => this.state = state;
-    private protected static void SetIdName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, string? value) => state.Set<string?>("IdName", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IdName = value);
-    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, string? value) => state.Set<string?>("RemapFolder", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RemapFolder = value);
-    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("Remapping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Remapping = value);
-    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>("Remapping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Remapping.CopyFrom(reference));
+    private protected static void SetIdName(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetIdNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationTerrainModifierBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
     public string? IdName
     {
         get => state.Get<string?>("IdName");
@@ -79,6 +79,23 @@ public abstract class CGameCtnDecorationTerrainModifierBuilderBase<TSelf> where 
 }
 public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorationTerrainModifierBuilderBase<CGameCtnDecorationTerrainModifierBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier();
+        var chunk0303C000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000();
+        node.Chunks.Add(chunk0303C000);
+        var chunk0303C001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001();
+        node.Chunks.Add(chunk0303C001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303C000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303C001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier node, GameVersion game)
+    {
+    }
     public VSK5 ForVSK5() => new(state.Snapshot());
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
@@ -96,16 +113,12 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier();
-            var chunk0303C000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000();
-            node.Chunks.Add(chunk0303C000);
-            var chunk0303C001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001();
-            node.Chunks.Add(chunk0303C001);
+            var node = CGameCtnDecorationTerrainModifierBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303C001 is missing or has an incompatible version.");
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -122,16 +135,12 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier();
-            var chunk0303C000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000();
-            node.Chunks.Add(chunk0303C000);
-            var chunk0303C001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001();
-            node.Chunks.Add(chunk0303C001);
+            var node = CGameCtnDecorationTerrainModifierBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303C001 is missing or has an incompatible version.");
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -148,16 +157,12 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier();
-            var chunk0303C000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000();
-            node.Chunks.Add(chunk0303C000);
-            var chunk0303C001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001();
-            node.Chunks.Add(chunk0303C001);
+            var node = CGameCtnDecorationTerrainModifierBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303C001 is missing or has an incompatible version.");
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -174,16 +179,12 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier();
-            var chunk0303C000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000();
-            node.Chunks.Add(chunk0303C000);
-            var chunk0303C001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001();
-            node.Chunks.Add(chunk0303C001);
+            var node = CGameCtnDecorationTerrainModifierBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303C001 is missing or has an incompatible version.");
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -200,16 +201,12 @@ public partial class CGameCtnDecorationTerrainModifierBuilder : CGameCtnDecorati
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier();
-            var chunk0303C000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000();
-            node.Chunks.Add(chunk0303C000);
-            var chunk0303C001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001();
-            node.Chunks.Add(chunk0303C001);
+            var node = CGameCtnDecorationTerrainModifierBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303C000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationTerrainModifier.Chunk0303C001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303C001 is missing or has an incompatible version.");
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnDecorationTerrainModifierBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

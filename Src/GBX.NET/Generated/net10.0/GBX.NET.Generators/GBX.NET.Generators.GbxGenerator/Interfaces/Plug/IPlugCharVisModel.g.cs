@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugCharVisModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugCharVisModel where T0 : class
+{
+    new T0? NullMesh { get; set; }
+}
 public partial interface IPlugCharVisModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugCharVisModel>
 {
     global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModel? AttractorModel { get; set; }
@@ -94,7 +99,7 @@ public partial interface IPlugCharVisModel : IClassVersion<global::GBX.NET.Engin
     PlugCurve? WallJumpVolumeFromVel { get; set; }
 }
 
-public partial interface IPlugCharVisModelMP4 : IPlugCharVisModel
+public partial interface IPlugCharVisModelMP4 : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>
 {
     int AimingAfterFireDurationMs { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? AttractorModel { get; set; }
@@ -102,7 +107,6 @@ public partial interface IPlugCharVisModelMP4 : IPlugCharVisModel
     new global::GBX.NET.Interfaces.Plug.IPlugBeamEmitterModelMP4? GrapnelModel { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? JumpMaterialImpact { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? LandMaterialImpact { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? NullMesh { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? ParagliderMesh { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_Deactivated { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMP4? Particle_DeactivatedShot { get; set; }
@@ -162,10 +166,9 @@ public partial interface IPlugCharVisModelMP4 : IPlugCharVisModel
     global::GBX.NET.Interfaces.Plug.IPlugParticleMaterialImpactModelMP4? WalkStepMaterialImpact { get; set; }
 }
 
-public partial interface IPlugCharVisModelTM2020 : IPlugCharVisModel
+public partial interface IPlugCharVisModelTM2020 : IPlugCharVisModel, global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>
 {
     new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? AttractorModel { get; set; }
     new global::GBX.NET.Engines.Plug.CPlugBeamEmitterModel? GrapnelModel { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? NullMesh { get; set; }
 }
 

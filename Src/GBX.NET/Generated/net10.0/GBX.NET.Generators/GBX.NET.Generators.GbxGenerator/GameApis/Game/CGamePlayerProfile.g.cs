@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Game;
 public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGamePlayerProfile, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM10, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMPU, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMSX, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMNESWC, global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMP3, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMT, global::GBX.NET.Interfaces.Game.IGamePlayerProfileMP4, global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM2020
 {
     public static global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileBuilder Create() => new();
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTM10.BindingsForCompatConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTM10>.BindingsForCompatConfig
     {
         get
         {
@@ -44,7 +44,7 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMPU.BindingsForCompatConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMPU>.BindingsForCompatConfig
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMSX.BindingsForCompatConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMSX>.BindingsForCompatConfig
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMNESWC.BindingsForCompatConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMNESWC>.BindingsForCompatConfig
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5? global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5.BindingsConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>.BindingsConfig
     {
         get
         {
@@ -84,7 +84,7 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5? global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5.BindingsForCompatConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5>.BindingsForCompatConfig
     {
         get
         {
@@ -94,22 +94,22 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsForCompatConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5.InboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(() => InboxMessages, static node => { if (node is null) throw new MemberNullException("InboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(GetInboxMessagesBuilderReferences, GameVersion.VSK5, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5.OutboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(() => OutboxMessages, static node => { if (node is null) throw new MemberNullException("OutboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(GetOutboxMessagesBuilderReferences, GameVersion.VSK5, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileVSK5.ReadMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigVSK5, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(() => ReadMessages, static node => { if (node is null) throw new MemberNullException("ReadMessages"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(GetReadMessagesBuilderReferences, GameVersion.VSK5, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageVSK5>(value, false));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.BindingsConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>.BindingsConfig
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => BindingsConfig = value is null ? null : value is global::GBX.NET.Engines.Input.CInputBindingsConfig node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.BindingsForCompatConfig
+    global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers2<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF>.BindingsForCompatConfig
     {
         get
         {
@@ -131,28 +131,28 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.CustomCampaigns
     {
-        get => CustomCampaigns is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>(() => CustomCampaigns, static node => { if (node is null) throw new MemberNullException("CustomCampaigns"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => CustomCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameCtnCampaign node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CustomCampaigns is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>(GetCustomCampaignsBuilderReferences, GameVersion.TMF, true, "CustomCampaigns");
+        set => CustomCampaigns = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCtnCampaign, global::GBX.NET.Interfaces.Game.IGameCtnCampaignTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.InboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>.InboxMessages
     {
-        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(() => InboxMessages, static node => { if (node is null) throw new MemberNullException("InboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => InboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(GetInboxMessagesBuilderReferences, GameVersion.TMF, true, "InboxMessages");
+        set => InboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(value, false));
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameLeagueTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.Leagues
     {
-        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMF>(() => Leagues, static node => { if (node is null) throw new MemberNullException("Leagues"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameLeague node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Leagues is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMF>(GetLeaguesBuilderReferences, GameVersion.TMF, true, "Leagues");
+        set => Leagues = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameLeague, global::GBX.NET.Interfaces.Game.IGameLeagueTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.OutboxMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>.OutboxMessages
     {
-        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(() => OutboxMessages, static node => { if (node is null) throw new MemberNullException("OutboxMessages"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => OutboxMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(GetOutboxMessagesBuilderReferences, GameVersion.TMF, true, "OutboxMessages");
+        set => OutboxMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.ReadMessages
+    IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>? global::GBX.NET.Interfaces.Game.IGamePlayerProfileMembers7<global::GBX.NET.Interfaces.Input.IInputBindingsConfigTMF, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>.ReadMessages
     {
-        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(() => ReadMessages, static node => { if (node is null) throw new MemberNullException("ReadMessages"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(value.Select(static item => item is global::GBX.NET.Engines.Game.CGameNetOnlineMessage node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => ReadMessages is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(GetReadMessagesBuilderReferences, GameVersion.TMF, true, "ReadMessages");
+        set => ReadMessages = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameNetOnlineMessage, global::GBX.NET.Interfaces.Game.IGameNetOnlineMessageTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Game.IGameCtnMediaShootParamsTMF? global::GBX.NET.Interfaces.Game.IGamePlayerProfileTMF.ShootParams
     {
@@ -164,4 +164,9 @@ public partial class CGamePlayerProfile : global::GBX.NET.Interfaces.Game.IGameP
         }
         set => ShootParams = value is null ? null : value is global::GBX.NET.Engines.Game.CGameCtnMediaShootParams node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameCtnCampaign>? GetCustomCampaignsBuilderReferences() => CustomCampaigns;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetInboxMessagesBuilderReferences() => InboxMessages;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameLeague>? GetLeaguesBuilderReferences() => Leagues;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetOutboxMessagesBuilderReferences() => OutboxMessages;
+    private NodeRefList<global::GBX.NET.Engines.Game.CGameNetOnlineMessage>? GetReadMessagesBuilderReferences() => ReadMessages;
 }

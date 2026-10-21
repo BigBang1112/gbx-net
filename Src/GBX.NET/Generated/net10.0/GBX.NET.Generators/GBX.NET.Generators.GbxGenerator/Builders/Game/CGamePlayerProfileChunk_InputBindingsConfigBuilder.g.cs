@@ -36,8 +36,8 @@ public abstract class CGamePlayerProfileChunk_InputBindingsConfigBuilderBase<TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state;
     private protected CGamePlayerProfileChunk_InputBindingsConfigBuilderBase() => state = new();
     private protected CGamePlayerProfileChunk_InputBindingsConfigBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state) => this.state = state;
-    private protected static void SetConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state, global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => state.Set<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("Config", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Config = value);
-    private protected static void SetConfigReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => state.Set<NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>>("Config", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Config.CopyFrom(reference));
+    private protected static void SetConfig(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state, global::GBX.NET.Engines.Input.CInputBindingsConfig? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfigBuilderAssignments.GetConfigAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetConfigReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig> state, NodeRef<global::GBX.NET.Engines.Input.CInputBindingsConfig> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfigBuilderAssignments.GetConfigReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Input.CInputBindingsConfig? Config
     {
         get => state.Get<global::GBX.NET.Engines.Input.CInputBindingsConfig?>("Config");
@@ -57,6 +57,20 @@ public abstract class CGamePlayerProfileChunk_InputBindingsConfigBuilderBase<TSe
 }
 public partial class CGamePlayerProfileChunk_InputBindingsConfigBuilder : CGamePlayerProfileChunk_InputBindingsConfigBuilderBase<CGamePlayerProfileChunk_InputBindingsConfigBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig();
+        var chunk0312F000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000(game);
+        node.Chunks.Add(chunk0312F000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0312F000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -73,13 +87,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfigBuilder : CGameP
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig();
-            var chunk0312F000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000(GameVersion.MP3);
-            node.Chunks.Add(chunk0312F000);
+            var node = CGamePlayerProfileChunk_InputBindingsConfigBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0312F000 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -96,13 +109,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfigBuilder : CGameP
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig();
-            var chunk0312F000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000(GameVersion.TMT);
-            node.Chunks.Add(chunk0312F000);
+            var node = CGamePlayerProfileChunk_InputBindingsConfigBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0312F000 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -119,13 +131,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfigBuilder : CGameP
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig();
-            var chunk0312F000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000(GameVersion.MP4);
-            node.Chunks.Add(chunk0312F000);
+            var node = CGamePlayerProfileChunk_InputBindingsConfigBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0312F000 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -142,13 +153,12 @@ public partial class CGamePlayerProfileChunk_InputBindingsConfigBuilder : CGameP
         public global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_InputBindingsConfigTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig();
-            var chunk0312F000 = new global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000(GameVersion.TM2020);
-            node.Chunks.Add(chunk0312F000);
+            var node = CGamePlayerProfileChunk_InputBindingsConfigBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_InputBindingsConfig.Chunk0312F000>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0312F000 is missing or has an incompatible version.");
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGamePlayerProfileChunk_InputBindingsConfigBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

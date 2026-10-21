@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionDayTimeMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionDayTime where T0 : class
+{
+    new T0? DayMaterial { get; set; }
+    new T0? NightMaterial { get; set; }
+}
 public partial interface IMotionDayTime : IClassVersion<global::GBX.NET.Engines.Motion.CMotionDayTime>, global::GBX.NET.Interfaces.Motion.IMotionManaged
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -45,70 +51,43 @@ public partial interface IMotionDayTime : IClassVersion<global::GBX.NET.Engines.
     global::GBX.NET.Interfaces.Plug.IPlugMaterial? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTM10 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10
+public partial interface IMotionDayTimeTM10 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTM10, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? DayMaterial { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM10? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTMPU : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU
+public partial interface IMotionDayTimeTMPU : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMPU, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? DayMaterial { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTMSX : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX
+public partial interface IMotionDayTimeTMSX : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMSX, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTMNESWC : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMNESWC
+public partial interface IMotionDayTimeTMNESWC : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeVSK5 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5
+public partial interface IMotionDayTimeVSK5 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedVSK5, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTMF : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF
+public partial interface IMotionDayTimeTMF : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMF, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeMP3 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3
+public partial interface IMotionDayTimeMP3 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedMP3, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP3? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTMT : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT
+public partial interface IMotionDayTimeTMT : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTMT, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTMT? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeMP4 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedMP4
+public partial interface IMotionDayTimeMP4 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedMP4, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? DayMaterial { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialMP4? NightMaterial { get; set; }
 }
 
-public partial interface IMotionDayTimeTM2020 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTM2020
+public partial interface IMotionDayTimeTM2020 : IMotionDayTime, global::GBX.NET.Interfaces.Motion.IMotionManagedTM2020, global::GBX.NET.Interfaces.Motion.IMotionDayTimeMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? DayMaterial { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugMaterialTM2020? NightMaterial { get; set; }
 }
 

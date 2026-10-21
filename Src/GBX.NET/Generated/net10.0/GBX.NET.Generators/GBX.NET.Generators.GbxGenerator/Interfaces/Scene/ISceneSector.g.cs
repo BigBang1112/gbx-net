@@ -31,59 +31,54 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneSectorMembers1<T0> : global::GBX.NET.Interfaces.Scene.ISceneSector where T0 : class
+{
+    new T0? Zone { get; set; }
+}
 public partial interface ISceneSector : IClassVersion<global::GBX.NET.Engines.Scene.CSceneSector>
 {
     int Scene { get; set; }
     global::GBX.NET.Interfaces.Hms.IHmsZone? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTM10 : ISceneSector
+public partial interface ISceneSectorTM10 : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTM10>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTM10? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTMPU : ISceneSector
+public partial interface ISceneSectorTMPU : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTMPU? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTMSX : ISceneSector
+public partial interface ISceneSectorTMSX : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTMSX? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTMNESWC : ISceneSector
+public partial interface ISceneSectorTMNESWC : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTMNESWC? Zone { get; set; }
 }
 
-public partial interface ISceneSectorVSK5 : ISceneSector
+public partial interface ISceneSectorVSK5 : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneVSK5? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTMF : ISceneSector
+public partial interface ISceneSectorTMF : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMF>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTMF? Zone { get; set; }
 }
 
-public partial interface ISceneSectorMP3 : ISceneSector
+public partial interface ISceneSectorMP3 : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneMP3>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneMP3? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTMT : ISceneSector
+public partial interface ISceneSectorTMT : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTMT>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTMT? Zone { get; set; }
 }
 
-public partial interface ISceneSectorMP4 : ISceneSector
+public partial interface ISceneSectorMP4 : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneMP4>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneMP4? Zone { get; set; }
 }
 
-public partial interface ISceneSectorTM2020 : ISceneSector
+public partial interface ISceneSectorTM2020 : ISceneSector, global::GBX.NET.Interfaces.Scene.ISceneSectorMembers1<global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020>
 {
-    new global::GBX.NET.Interfaces.Hms.IHmsZoneTM2020? Zone { get; set; }
 }
 

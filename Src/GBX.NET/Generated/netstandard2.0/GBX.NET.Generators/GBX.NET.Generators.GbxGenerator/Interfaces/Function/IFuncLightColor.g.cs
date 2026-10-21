@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncLightColorMembers1 : global::GBX.NET.Interfaces.Function.IFuncLightColor
+{
+    Vec4 Color0 { get; set; }
+    Vec4 Color1 { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
+}
 public partial interface IFuncLightColor : IClassVersion<global::GBX.NET.Engines.Function.CFuncLightColor>, global::GBX.NET.Interfaces.Function.IFuncLight
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,116 +47,45 @@ public partial interface IFuncLightColor : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
-public partial interface IFuncLightColorTM10 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTM10
+public partial interface IFuncLightColorTM10 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTM10, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
 }
 
-public partial interface IFuncLightColorTMPU : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMPU
+public partial interface IFuncLightColorTMPU : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMPU, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorTMSX : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMSX
+public partial interface IFuncLightColorTMSX : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMSX, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorTMNESWC : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC
+public partial interface IFuncLightColorTMNESWC : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMNESWC, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorVSK5 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightVSK5
+public partial interface IFuncLightColorVSK5 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightVSK5, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorTMF : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMF
+public partial interface IFuncLightColorTMF : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMF, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorMP3 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightMP3
+public partial interface IFuncLightColorMP3 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightMP3, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorTMT : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMT
+public partial interface IFuncLightColorTMT : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTMT, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncLightColorMP4 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightMP4
+public partial interface IFuncLightColorMP4 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightMP4, global::GBX.NET.Interfaces.Function.IFuncLightColorMembers1
 {
-    Vec4 Color0 { get; set; }
-    Vec4 Color1 { get; set; }
-    new global::GBX.NET.Engines.Function.CFuncLight.EFctType FctType { get; set; }
-    new int FlickCount { get; set; }
-    new float FlickPeriod { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugFileImg? Image { get; set; }
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncLightColorTM2020 : IFuncLightColor, global::GBX.NET.Interfaces.Function.IFuncLightTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

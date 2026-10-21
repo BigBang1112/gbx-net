@@ -36,14 +36,14 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state;
     private protected CFuncEnvelopeBuilderBase() => state = new();
     private protected CFuncEnvelopeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state) => this.state = state;
-    private protected static void SetAmplitude(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("Amplitude", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Amplitude = value);
-    private protected static void SetFrequency(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("Frequency", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Frequency = value);
-    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("KeyFramePos1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KeyFramePos1 = value);
-    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("KeyFrameValue0", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KeyFrameValue0 = value);
-    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("KeyFrameValue1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KeyFrameValue1 = value);
-    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("KeyFrameValue2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KeyFrameValue2 = value);
-    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set<float>("KeyFrameValue3", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.KeyFrameValue3 = value);
-    private protected static void SetModFunc(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation value) => state.Set<global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation>("ModFunc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ModFunc = value);
+    private protected static void SetAmplitude(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetAmplitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFrequency(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetFrequencyAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKeyFramePos1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFramePos1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKeyFrameValue0(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue0Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKeyFrameValue1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKeyFrameValue2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetKeyFrameValue3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetKeyFrameValue3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetModFunc(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncEnvelope> state, global::GBX.NET.Engines.Function.CFuncEnvelope.EModulation value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncEnvelopeBuilderAssignments.GetModFuncAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float Amplitude
     {
         get => state.Get<float>("Amplitude");
@@ -127,6 +127,20 @@ public abstract class CFuncEnvelopeBuilderBase<TSelf> where TSelf : CFuncEnvelop
 }
 public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelopeBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncEnvelope CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
+        var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
+        node.Chunks.Add(chunk05036000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncEnvelope node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk05036000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncEnvelope node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -142,13 +156,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -161,13 +174,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -180,13 +192,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -199,13 +210,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -218,13 +228,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -237,13 +246,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -256,13 +264,12 @@ public partial class CFuncEnvelopeBuilder : CFuncEnvelopeBuilderBase<CFuncEnvelo
         public global::GBX.NET.Interfaces.Function.IFuncEnvelopeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncEnvelope Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncEnvelope();
-            var chunk05036000 = new global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000();
-            node.Chunks.Add(chunk05036000);
+            var node = CFuncEnvelopeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncEnvelope.Chunk05036000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk05036000 is missing or has an incompatible version.");
+            CFuncEnvelopeBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CFuncEnvelopeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

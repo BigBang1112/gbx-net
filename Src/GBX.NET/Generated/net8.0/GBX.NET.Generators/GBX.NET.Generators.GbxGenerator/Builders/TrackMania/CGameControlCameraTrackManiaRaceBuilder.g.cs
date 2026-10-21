@@ -36,47 +36,47 @@ public abstract class CGameControlCameraTrackManiaRaceBuilderBase<TSelf> where T
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state;
     private protected CGameControlCameraTrackManiaRaceBuilderBase() => state = new();
     private protected CGameControlCameraTrackManiaRaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) => this.state = state;
-    private protected static void SetCanCameraMove(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("CanCameraMove", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.CanCameraMove = value);
-    private protected static void SetCanUseRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("CanUseRelativeTargetLocation", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.CanUseRelativeTargetLocation = value);
-    private protected static void SetCarCameraAlign(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("CarCameraAlign", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CarCameraAlign = value);
-    private protected static void SetCarCameraDistance(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("CarCameraDistance", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CarCameraDistance = value);
-    private protected static void SetCarCameraHeight(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("CarCameraHeight", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CarCameraHeight = value);
-    private protected static void SetCarCameraTargetDistance(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("CarCameraTargetDistance", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CarCameraTargetDistance = value);
-    private protected static void SetConeAperture(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("ConeAperture", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ConeAperture = value);
-    private protected static void SetConeMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("ConeMaxSpeed", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ConeMaxSpeed = value);
-    private protected static void SetConeMinSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("ConeMinSpeed", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ConeMinSpeed = value);
-    private protected static void SetDefaultFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("DefaultFarZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultFarZ = value);
-    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("DefaultFov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultFov = value);
-    private protected static void SetDefaultNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("DefaultNearZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.DefaultNearZ = value);
-    private protected static void SetForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Iso4 value) => state.Set<Iso4>("ForcedLocation", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ForcedLocation = value);
-    private protected static void SetForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Vec3 value) => state.Set<Vec3>("ForcedUp", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.ForcedUp = value);
-    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("Fov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.Fov = value);
-    private protected static void SetInterpolate(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("Interpolate", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Interpolate = value);
-    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("IsFirstPerson", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.IsFirstPerson = value);
-    private protected static void SetIsFollowing(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("IsFollowing", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.IsFollowing = value);
-    private protected static void SetIsSegmentCast(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("IsSegmentCast", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsSegmentCast = value);
-    private protected static void SetIsUpLinked(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("IsUpLinked", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsUpLinked = value);
-    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Iso4 value) => state.Set<Iso4>("Location", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Location = value);
-    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("LookAtFactor", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.LookAtFactor = value);
-    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MaxDist", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MaxDist = value);
-    private protected static void SetMaxFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MaxFarZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MaxFarZ = value);
-    private protected static void SetMaxFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MaxFov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MaxFov = value);
-    private protected static void SetMaxNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MaxNearZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MaxNearZ = value);
-    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MaxSpeed", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MaxSpeed = value);
-    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MinDist", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.MinDist = value);
-    private protected static void SetMinFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MinFarZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MinFarZ = value);
-    private protected static void SetMinFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MinFov", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MinFov = value);
-    private protected static void SetMinNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("MinNearZ", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.MinNearZ = value);
-    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, string? value) => state.Set<string?>("Name", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Name = value);
-    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("PlaneDist", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.PlaneDist = value);
-    private protected static void SetRelativeFollowedPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Vec3 value) => state.Set<Vec3>("RelativeFollowedPos", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.RelativeFollowedPos = value);
-    private protected static void SetRelativeTargetPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Vec3 value) => state.Set<Vec3>("RelativeTargetPos", value, GameVersion.TMSX, static value => value, static (node, value) => node.RelativeTargetPos = value);
-    private protected static void SetSegmentCastLength(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("SegmentCastLength", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SegmentCastLength = value);
-    private protected static void SetSegmentCastMinDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set<float>("SegmentCastMinDist", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SegmentCastMinDist = value);
-    private protected static void SetUseForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("UseForcedLocation", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.UseForcedLocation = value);
-    private protected static void SetUseForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("UseForcedUp", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5, static value => value, static (node, value) => node.UseForcedUp = value);
-    private protected static void SetUseOnlyFollowedMobilPosition(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("UseOnlyFollowedMobilPosition", value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.UseOnlyFollowedMobilPosition = value);
-    private protected static void SetUseSpeedDir(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set<bool>("UseSpeedDir", value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.UseSpeedDir = value);
+    private protected static void SetCanCameraMove(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetCanCameraMoveAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetCanUseRelativeTargetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetCanUseRelativeTargetLocationAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetCarCameraAlign(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraAlignAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCarCameraDistance(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraDistanceAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCarCameraHeight(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraHeightAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCarCameraTargetDistance(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetCarCameraTargetDistanceAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetConeAperture(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeApertureAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetConeMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeMaxSpeedAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetConeMinSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetConeMinSpeedAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDefaultFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetDefaultFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetDefaultNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetDefaultNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetInterpolate(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetInterpolateAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsFirstPerson(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetIsFollowing(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetIsFollowingAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetIsSegmentCast(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetIsSegmentCastAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsUpLinked(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetIsUpLinkedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLookAtFactor(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraTargetBuilderAssignments.GetLookAtFactorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMaxDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMaxFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMaxFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMaxNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMaxSpeed(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMaxSpeedAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMinDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetMinFarZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFarZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMinFov(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinFovAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetMinNearZ(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetMinNearZAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetName(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetNameAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPlaneDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetPlaneDistAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetRelativeFollowedPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeFollowedPosAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetRelativeTargetPos(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetRelativeTargetPosAssignment(), value, GameVersion.TMSX);
+    private protected static void SetSegmentCastLength(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetSegmentCastLengthAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSegmentCastMinDist(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, float value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetSegmentCastMinDistAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetUseForcedLocation(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedLocationAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetUseForcedUp(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseForcedUpAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.VSK5);
+    private protected static void SetUseOnlyFollowedMobilPosition(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameControlCameraBuilderAssignments.GetUseOnlyFollowedMobilPositionAssignment(), value, GameVersion.MP4 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetUseSpeedDir(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.TrackMania.CGameControlCameraTrackManiaRaceBuilderAssignments.GetUseSpeedDirAssignment(), value, GameVersion.MP3 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool Interpolate
     {
         get => state.Get<bool>("Interpolate");
@@ -128,8 +128,517 @@ public abstract class CGameControlCameraTrackManiaRaceBuilderBase<TSelf> where T
         return (TSelf)this;
     }
 }
+public abstract class CGameControlCameraTrackManiaRaceBuilderMembers1<TSelf> : CGameControlCameraTrackManiaRaceBuilderBase<TSelf> where TSelf : CGameControlCameraTrackManiaRaceBuilderMembers1<TSelf>
+{
+    private protected CGameControlCameraTrackManiaRaceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
+    public float CarCameraAlign
+    {
+        get => state.Get<float>("CarCameraAlign");
+        set => SetCarCameraAlign(state, value);
+    }
+    public TSelf WithCarCameraAlign(float value)
+    {
+        CarCameraAlign = value;
+        return (TSelf)this;
+    }
+    public float CarCameraDistance
+    {
+        get => state.Get<float>("CarCameraDistance");
+        set => SetCarCameraDistance(state, value);
+    }
+    public TSelf WithCarCameraDistance(float value)
+    {
+        CarCameraDistance = value;
+        return (TSelf)this;
+    }
+    public float CarCameraHeight
+    {
+        get => state.Get<float>("CarCameraHeight");
+        set => SetCarCameraHeight(state, value);
+    }
+    public TSelf WithCarCameraHeight(float value)
+    {
+        CarCameraHeight = value;
+        return (TSelf)this;
+    }
+    public float CarCameraTargetDistance
+    {
+        get => state.Get<float>("CarCameraTargetDistance");
+        set => SetCarCameraTargetDistance(state, value);
+    }
+    public TSelf WithCarCameraTargetDistance(float value)
+    {
+        CarCameraTargetDistance = value;
+        return (TSelf)this;
+    }
+    public float ConeAperture
+    {
+        get => state.Get<float>("ConeAperture");
+        set => SetConeAperture(state, value);
+    }
+    public TSelf WithConeAperture(float value)
+    {
+        ConeAperture = value;
+        return (TSelf)this;
+    }
+    public float ConeMaxSpeed
+    {
+        get => state.Get<float>("ConeMaxSpeed");
+        set => SetConeMaxSpeed(state, value);
+    }
+    public TSelf WithConeMaxSpeed(float value)
+    {
+        ConeMaxSpeed = value;
+        return (TSelf)this;
+    }
+    public float ConeMinSpeed
+    {
+        get => state.Get<float>("ConeMinSpeed");
+        set => SetConeMinSpeed(state, value);
+    }
+    public TSelf WithConeMinSpeed(float value)
+    {
+        ConeMinSpeed = value;
+        return (TSelf)this;
+    }
+    public bool IsSegmentCast
+    {
+        get => state.Get<bool>("IsSegmentCast");
+        set => SetIsSegmentCast(state, value);
+    }
+    public TSelf WithIsSegmentCast(bool value)
+    {
+        IsSegmentCast = value;
+        return (TSelf)this;
+    }
+    public float SegmentCastLength
+    {
+        get => state.Get<float>("SegmentCastLength");
+        set => SetSegmentCastLength(state, value);
+    }
+    public TSelf WithSegmentCastLength(float value)
+    {
+        SegmentCastLength = value;
+        return (TSelf)this;
+    }
+    public float SegmentCastMinDist
+    {
+        get => state.Get<float>("SegmentCastMinDist");
+        set => SetSegmentCastMinDist(state, value);
+    }
+    public TSelf WithSegmentCastMinDist(float value)
+    {
+        SegmentCastMinDist = value;
+        return (TSelf)this;
+    }
+    public bool UseSpeedDir
+    {
+        get => state.Get<bool>("UseSpeedDir");
+        set => SetUseSpeedDir(state, value);
+    }
+    public TSelf WithUseSpeedDir(bool value)
+    {
+        UseSpeedDir = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameControlCameraTrackManiaRaceBuilderMembers2<TSelf> : CGameControlCameraTrackManiaRaceBuilderBase<TSelf> where TSelf : CGameControlCameraTrackManiaRaceBuilderMembers2<TSelf>
+{
+    private protected CGameControlCameraTrackManiaRaceBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
+    public bool CanCameraMove
+    {
+        get => state.Get<bool>("CanCameraMove");
+        set => SetCanCameraMove(state, value);
+    }
+    public TSelf WithCanCameraMove(bool value)
+    {
+        CanCameraMove = value;
+        return (TSelf)this;
+    }
+    public float DefaultFov
+    {
+        get => state.Get<float>("DefaultFov");
+        set => SetDefaultFov(state, value);
+    }
+    public TSelf WithDefaultFov(float value)
+    {
+        DefaultFov = value;
+        return (TSelf)this;
+    }
+    public Iso4 ForcedLocation
+    {
+        get => state.Get<Iso4>("ForcedLocation");
+        set => SetForcedLocation(state, value);
+    }
+    public TSelf WithForcedLocation(Iso4 value)
+    {
+        ForcedLocation = value;
+        return (TSelf)this;
+    }
+    public float Fov
+    {
+        get => state.Get<float>("Fov");
+        set => SetFov(state, value);
+    }
+    public TSelf WithFov(float value)
+    {
+        Fov = value;
+        return (TSelf)this;
+    }
+    public bool IsFirstPerson
+    {
+        get => state.Get<bool>("IsFirstPerson");
+        set => SetIsFirstPerson(state, value);
+    }
+    public TSelf WithIsFirstPerson(bool value)
+    {
+        IsFirstPerson = value;
+        return (TSelf)this;
+    }
+    public bool IsFollowing
+    {
+        get => state.Get<bool>("IsFollowing");
+        set => SetIsFollowing(state, value);
+    }
+    public TSelf WithIsFollowing(bool value)
+    {
+        IsFollowing = value;
+        return (TSelf)this;
+    }
+    public float MaxDist
+    {
+        get => state.Get<float>("MaxDist");
+        set => SetMaxDist(state, value);
+    }
+    public TSelf WithMaxDist(float value)
+    {
+        MaxDist = value;
+        return (TSelf)this;
+    }
+    public float MaxSpeed
+    {
+        get => state.Get<float>("MaxSpeed");
+        set => SetMaxSpeed(state, value);
+    }
+    public TSelf WithMaxSpeed(float value)
+    {
+        MaxSpeed = value;
+        return (TSelf)this;
+    }
+    public float MinDist
+    {
+        get => state.Get<float>("MinDist");
+        set => SetMinDist(state, value);
+    }
+    public TSelf WithMinDist(float value)
+    {
+        MinDist = value;
+        return (TSelf)this;
+    }
+    public float PlaneDist
+    {
+        get => state.Get<float>("PlaneDist");
+        set => SetPlaneDist(state, value);
+    }
+    public TSelf WithPlaneDist(float value)
+    {
+        PlaneDist = value;
+        return (TSelf)this;
+    }
+    public bool UseForcedLocation
+    {
+        get => state.Get<bool>("UseForcedLocation");
+        set => SetUseForcedLocation(state, value);
+    }
+    public TSelf WithUseForcedLocation(bool value)
+    {
+        UseForcedLocation = value;
+        return (TSelf)this;
+    }
+    public bool UseOnlyFollowedMobilPosition
+    {
+        get => state.Get<bool>("UseOnlyFollowedMobilPosition");
+        set => SetUseOnlyFollowedMobilPosition(state, value);
+    }
+    public TSelf WithUseOnlyFollowedMobilPosition(bool value)
+    {
+        UseOnlyFollowedMobilPosition = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameControlCameraTrackManiaRaceBuilderMembers3<TSelf> : CGameControlCameraTrackManiaRaceBuilderMembers1<TSelf> where TSelf : CGameControlCameraTrackManiaRaceBuilderMembers3<TSelf>
+{
+    private protected CGameControlCameraTrackManiaRaceBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
+    public bool CanUseRelativeTargetLocation
+    {
+        get => state.Get<bool>("CanUseRelativeTargetLocation");
+        set => SetCanUseRelativeTargetLocation(state, value);
+    }
+    public TSelf WithCanUseRelativeTargetLocation(bool value)
+    {
+        CanUseRelativeTargetLocation = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameControlCameraTrackManiaRaceBuilderMembers4<TSelf> : CGameControlCameraTrackManiaRaceBuilderMembers2<TSelf> where TSelf : CGameControlCameraTrackManiaRaceBuilderMembers4<TSelf>
+{
+    private protected CGameControlCameraTrackManiaRaceBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
+    public float DefaultFarZ
+    {
+        get => state.Get<float>("DefaultFarZ");
+        set => SetDefaultFarZ(state, value);
+    }
+    public TSelf WithDefaultFarZ(float value)
+    {
+        DefaultFarZ = value;
+        return (TSelf)this;
+    }
+    public float DefaultNearZ
+    {
+        get => state.Get<float>("DefaultNearZ");
+        set => SetDefaultNearZ(state, value);
+    }
+    public TSelf WithDefaultNearZ(float value)
+    {
+        DefaultNearZ = value;
+        return (TSelf)this;
+    }
+    public Vec3 ForcedUp
+    {
+        get => state.Get<Vec3>("ForcedUp");
+        set => SetForcedUp(state, value);
+    }
+    public TSelf WithForcedUp(Vec3 value)
+    {
+        ForcedUp = value;
+        return (TSelf)this;
+    }
+    public float MaxFarZ
+    {
+        get => state.Get<float>("MaxFarZ");
+        set => SetMaxFarZ(state, value);
+    }
+    public TSelf WithMaxFarZ(float value)
+    {
+        MaxFarZ = value;
+        return (TSelf)this;
+    }
+    public float MaxFov
+    {
+        get => state.Get<float>("MaxFov");
+        set => SetMaxFov(state, value);
+    }
+    public TSelf WithMaxFov(float value)
+    {
+        MaxFov = value;
+        return (TSelf)this;
+    }
+    public float MaxNearZ
+    {
+        get => state.Get<float>("MaxNearZ");
+        set => SetMaxNearZ(state, value);
+    }
+    public TSelf WithMaxNearZ(float value)
+    {
+        MaxNearZ = value;
+        return (TSelf)this;
+    }
+    public float MinFarZ
+    {
+        get => state.Get<float>("MinFarZ");
+        set => SetMinFarZ(state, value);
+    }
+    public TSelf WithMinFarZ(float value)
+    {
+        MinFarZ = value;
+        return (TSelf)this;
+    }
+    public float MinFov
+    {
+        get => state.Get<float>("MinFov");
+        set => SetMinFov(state, value);
+    }
+    public TSelf WithMinFov(float value)
+    {
+        MinFov = value;
+        return (TSelf)this;
+    }
+    public float MinNearZ
+    {
+        get => state.Get<float>("MinNearZ");
+        set => SetMinNearZ(state, value);
+    }
+    public TSelf WithMinNearZ(float value)
+    {
+        MinNearZ = value;
+        return (TSelf)this;
+    }
+    public Vec3 RelativeFollowedPos
+    {
+        get => state.Get<Vec3>("RelativeFollowedPos");
+        set => SetRelativeFollowedPos(state, value);
+    }
+    public TSelf WithRelativeFollowedPos(Vec3 value)
+    {
+        RelativeFollowedPos = value;
+        return (TSelf)this;
+    }
+    public bool UseForcedUp
+    {
+        get => state.Get<bool>("UseForcedUp");
+        set => SetUseForcedUp(state, value);
+    }
+    public TSelf WithUseForcedUp(bool value)
+    {
+        UseForcedUp = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCameraTrackManiaRaceBuilderBase<CGameControlCameraTrackManiaRaceBuilder>
 {
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
+        node.Chunks.Add(chunk24085000);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B001 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001();
+        node.Chunks.Add(chunk0306B001);
+        var chunk0306B002 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002();
+        node.Chunks.Add(chunk0306B002);
+        var chunk0306B003 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003();
+        node.Chunks.Add(chunk0306B003);
+        var chunk0306B004 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004();
+        node.Chunks.Add(chunk0306B004);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24085000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
+        node.Chunks.Add(chunk24085000);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
+        node.Chunks.Add(chunk0306B009);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24085000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B009 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
+        node.Chunks.Add(chunk24085000);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        var chunk0306B00B = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B();
+        node.Chunks.Add(chunk0306B00B);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24085000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00B is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
+        node.Chunks.Add(chunk24085000);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
+        node.Chunks.Add(chunk03072002);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24085000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
+        node.Chunks.Add(chunk24085000);
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk24085000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        var chunk0306B00C = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C();
+        node.Chunks.Add(chunk0306B00C);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00C is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
+        var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
+        node.Chunks.Add(chunk03072001);
+        var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
+        node.Chunks.Add(chunk0306B00A);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03072001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0306B00A is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -140,7 +649,7 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TMSX : CGameControlCameraTrackManiaRaceBuilderBase<TMSX>
+    public partial class TMSX : CGameControlCameraTrackManiaRaceBuilderMembers3<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
         public bool CanCameraMove
@@ -151,86 +660,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public TMSX WithCanCameraMove(bool value)
         {
             CanCameraMove = value;
-            return this;
-        }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
-        }
-        public TMSX WithCanUseRelativeTargetLocation(bool value)
-        {
-            CanUseRelativeTargetLocation = value;
-            return this;
-        }
-        public float CarCameraAlign
-        {
-            get => state.Get<float>("CarCameraAlign");
-            set => SetCarCameraAlign(state, value);
-        }
-        public TMSX WithCarCameraAlign(float value)
-        {
-            CarCameraAlign = value;
-            return this;
-        }
-        public float CarCameraDistance
-        {
-            get => state.Get<float>("CarCameraDistance");
-            set => SetCarCameraDistance(state, value);
-        }
-        public TMSX WithCarCameraDistance(float value)
-        {
-            CarCameraDistance = value;
-            return this;
-        }
-        public float CarCameraHeight
-        {
-            get => state.Get<float>("CarCameraHeight");
-            set => SetCarCameraHeight(state, value);
-        }
-        public TMSX WithCarCameraHeight(float value)
-        {
-            CarCameraHeight = value;
-            return this;
-        }
-        public float CarCameraTargetDistance
-        {
-            get => state.Get<float>("CarCameraTargetDistance");
-            set => SetCarCameraTargetDistance(state, value);
-        }
-        public TMSX WithCarCameraTargetDistance(float value)
-        {
-            CarCameraTargetDistance = value;
-            return this;
-        }
-        public float ConeAperture
-        {
-            get => state.Get<float>("ConeAperture");
-            set => SetConeAperture(state, value);
-        }
-        public TMSX WithConeAperture(float value)
-        {
-            ConeAperture = value;
-            return this;
-        }
-        public float ConeMaxSpeed
-        {
-            get => state.Get<float>("ConeMaxSpeed");
-            set => SetConeMaxSpeed(state, value);
-        }
-        public TMSX WithConeMaxSpeed(float value)
-        {
-            ConeMaxSpeed = value;
-            return this;
-        }
-        public float ConeMinSpeed
-        {
-            get => state.Get<float>("ConeMinSpeed");
-            set => SetConeMinSpeed(state, value);
-        }
-        public TMSX WithConeMinSpeed(float value)
-        {
-            ConeMinSpeed = value;
             return this;
         }
         public float DefaultFov
@@ -283,16 +712,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             IsFollowing = value;
             return this;
         }
-        public bool IsSegmentCast
-        {
-            get => state.Get<bool>("IsSegmentCast");
-            set => SetIsSegmentCast(state, value);
-        }
-        public TMSX WithIsSegmentCast(bool value)
-        {
-            IsSegmentCast = value;
-            return this;
-        }
         public float MaxDist
         {
             get => state.Get<float>("MaxDist");
@@ -343,26 +762,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             RelativeTargetPos = value;
             return this;
         }
-        public float SegmentCastLength
-        {
-            get => state.Get<float>("SegmentCastLength");
-            set => SetSegmentCastLength(state, value);
-        }
-        public TMSX WithSegmentCastLength(float value)
-        {
-            SegmentCastLength = value;
-            return this;
-        }
-        public float SegmentCastMinDist
-        {
-            get => state.Get<float>("SegmentCastMinDist");
-            set => SetSegmentCastMinDist(state, value);
-        }
-        public TMSX WithSegmentCastMinDist(float value)
-        {
-            SegmentCastMinDist = value;
-            return this;
-        }
         public bool UseForcedLocation
         {
             get => state.Get<bool>("UseForcedLocation");
@@ -383,63 +782,24 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             UseOnlyFollowedMobilPosition = value;
             return this;
         }
-        public bool UseSpeedDir
-        {
-            get => state.Get<bool>("UseSpeedDir");
-            set => SetUseSpeedDir(state, value);
-        }
-        public TMSX WithUseSpeedDir(bool value)
-        {
-            UseSpeedDir = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
-            node.Chunks.Add(chunk24085000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B001 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001();
-            node.Chunks.Add(chunk0306B001);
-            var chunk0306B002 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002();
-            node.Chunks.Add(chunk0306B002);
-            var chunk0306B003 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003();
-            node.Chunks.Add(chunk0306B003);
-            var chunk0306B004 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004();
-            node.Chunks.Add(chunk0306B004);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk24085000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0306B004 is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class TMNESWC : CGameControlCameraTrackManiaRaceBuilderBase<TMNESWC>
+    public partial class TMNESWC : CGameControlCameraTrackManiaRaceBuilderMembers4<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public TMNESWC WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
@@ -520,86 +880,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             ConeMinSpeed = value;
             return this;
         }
-        public float DefaultFarZ
-        {
-            get => state.Get<float>("DefaultFarZ");
-            set => SetDefaultFarZ(state, value);
-        }
-        public TMNESWC WithDefaultFarZ(float value)
-        {
-            DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public TMNESWC WithDefaultFov(float value)
-        {
-            DefaultFov = value;
-            return this;
-        }
-        public float DefaultNearZ
-        {
-            get => state.Get<float>("DefaultNearZ");
-            set => SetDefaultNearZ(state, value);
-        }
-        public TMNESWC WithDefaultNearZ(float value)
-        {
-            DefaultNearZ = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public TMNESWC WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
-        public Vec3 ForcedUp
-        {
-            get => state.Get<Vec3>("ForcedUp");
-            set => SetForcedUp(state, value);
-        }
-        public TMNESWC WithForcedUp(Vec3 value)
-        {
-            ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public TMNESWC WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TMNESWC WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public TMNESWC WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
-            return this;
-        }
         public bool IsSegmentCast
         {
             get => state.Get<bool>("IsSegmentCast");
@@ -608,116 +888,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public TMNESWC WithIsSegmentCast(bool value)
         {
             IsSegmentCast = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public TMNESWC WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MaxFarZ
-        {
-            get => state.Get<float>("MaxFarZ");
-            set => SetMaxFarZ(state, value);
-        }
-        public TMNESWC WithMaxFarZ(float value)
-        {
-            MaxFarZ = value;
-            return this;
-        }
-        public float MaxFov
-        {
-            get => state.Get<float>("MaxFov");
-            set => SetMaxFov(state, value);
-        }
-        public TMNESWC WithMaxFov(float value)
-        {
-            MaxFov = value;
-            return this;
-        }
-        public float MaxNearZ
-        {
-            get => state.Get<float>("MaxNearZ");
-            set => SetMaxNearZ(state, value);
-        }
-        public TMNESWC WithMaxNearZ(float value)
-        {
-            MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMNESWC WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public TMNESWC WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float MinFarZ
-        {
-            get => state.Get<float>("MinFarZ");
-            set => SetMinFarZ(state, value);
-        }
-        public TMNESWC WithMinFarZ(float value)
-        {
-            MinFarZ = value;
-            return this;
-        }
-        public float MinFov
-        {
-            get => state.Get<float>("MinFov");
-            set => SetMinFov(state, value);
-        }
-        public TMNESWC WithMinFov(float value)
-        {
-            MinFov = value;
-            return this;
-        }
-        public float MinNearZ
-        {
-            get => state.Get<float>("MinNearZ");
-            set => SetMinNearZ(state, value);
-        }
-        public TMNESWC WithMinNearZ(float value)
-        {
-            MinNearZ = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public TMNESWC WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
-        public Vec3 RelativeFollowedPos
-        {
-            get => state.Get<Vec3>("RelativeFollowedPos");
-            set => SetRelativeFollowedPos(state, value);
-        }
-        public TMNESWC WithRelativeFollowedPos(Vec3 value)
-        {
-            RelativeFollowedPos = value;
             return this;
         }
         public float SegmentCastLength
@@ -740,36 +910,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             SegmentCastMinDist = value;
             return this;
         }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public TMNESWC WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
-        }
-        public bool UseForcedUp
-        {
-            get => state.Get<bool>("UseForcedUp");
-            set => SetUseForcedUp(state, value);
-        }
-        public TMNESWC WithUseForcedUp(bool value)
-        {
-            UseForcedUp = value;
-            return this;
-        }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public TMNESWC WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
         public bool UseSpeedDir
         {
             get => state.Get<bool>("UseSpeedDir");
@@ -783,41 +923,21 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
-            node.Chunks.Add(chunk24085000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
-            node.Chunks.Add(chunk0306B009);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk24085000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0306B009 is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class VSK5 : CGameControlCameraTrackManiaRaceBuilderBase<VSK5>
+    public partial class VSK5 : CGameControlCameraTrackManiaRaceBuilderMembers4<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public VSK5 WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
@@ -898,86 +1018,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             ConeMinSpeed = value;
             return this;
         }
-        public float DefaultFarZ
-        {
-            get => state.Get<float>("DefaultFarZ");
-            set => SetDefaultFarZ(state, value);
-        }
-        public VSK5 WithDefaultFarZ(float value)
-        {
-            DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public VSK5 WithDefaultFov(float value)
-        {
-            DefaultFov = value;
-            return this;
-        }
-        public float DefaultNearZ
-        {
-            get => state.Get<float>("DefaultNearZ");
-            set => SetDefaultNearZ(state, value);
-        }
-        public VSK5 WithDefaultNearZ(float value)
-        {
-            DefaultNearZ = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public VSK5 WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
-        public Vec3 ForcedUp
-        {
-            get => state.Get<Vec3>("ForcedUp");
-            set => SetForcedUp(state, value);
-        }
-        public VSK5 WithForcedUp(Vec3 value)
-        {
-            ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public VSK5 WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public VSK5 WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public VSK5 WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
-            return this;
-        }
         public bool IsSegmentCast
         {
             get => state.Get<bool>("IsSegmentCast");
@@ -986,116 +1026,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public VSK5 WithIsSegmentCast(bool value)
         {
             IsSegmentCast = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public VSK5 WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MaxFarZ
-        {
-            get => state.Get<float>("MaxFarZ");
-            set => SetMaxFarZ(state, value);
-        }
-        public VSK5 WithMaxFarZ(float value)
-        {
-            MaxFarZ = value;
-            return this;
-        }
-        public float MaxFov
-        {
-            get => state.Get<float>("MaxFov");
-            set => SetMaxFov(state, value);
-        }
-        public VSK5 WithMaxFov(float value)
-        {
-            MaxFov = value;
-            return this;
-        }
-        public float MaxNearZ
-        {
-            get => state.Get<float>("MaxNearZ");
-            set => SetMaxNearZ(state, value);
-        }
-        public VSK5 WithMaxNearZ(float value)
-        {
-            MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public VSK5 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public VSK5 WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float MinFarZ
-        {
-            get => state.Get<float>("MinFarZ");
-            set => SetMinFarZ(state, value);
-        }
-        public VSK5 WithMinFarZ(float value)
-        {
-            MinFarZ = value;
-            return this;
-        }
-        public float MinFov
-        {
-            get => state.Get<float>("MinFov");
-            set => SetMinFov(state, value);
-        }
-        public VSK5 WithMinFov(float value)
-        {
-            MinFov = value;
-            return this;
-        }
-        public float MinNearZ
-        {
-            get => state.Get<float>("MinNearZ");
-            set => SetMinNearZ(state, value);
-        }
-        public VSK5 WithMinNearZ(float value)
-        {
-            MinNearZ = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public VSK5 WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
-        public Vec3 RelativeFollowedPos
-        {
-            get => state.Get<Vec3>("RelativeFollowedPos");
-            set => SetRelativeFollowedPos(state, value);
-        }
-        public VSK5 WithRelativeFollowedPos(Vec3 value)
-        {
-            RelativeFollowedPos = value;
             return this;
         }
         public float SegmentCastLength
@@ -1118,36 +1048,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             SegmentCastMinDist = value;
             return this;
         }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public VSK5 WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
-        }
-        public bool UseForcedUp
-        {
-            get => state.Get<bool>("UseForcedUp");
-            set => SetUseForcedUp(state, value);
-        }
-        public VSK5 WithUseForcedUp(bool value)
-        {
-            UseForcedUp = value;
-            return this;
-        }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public VSK5 WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
         public bool UseSpeedDir
         {
             get => state.Get<bool>("UseSpeedDir");
@@ -1161,41 +1061,21 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
-            node.Chunks.Add(chunk24085000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B009 = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009();
-            node.Chunks.Add(chunk0306B009);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk24085000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B009>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0306B009 is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class TMF : CGameControlCameraTrackManiaRaceBuilderBase<TMF>
+    public partial class TMF : CGameControlCameraTrackManiaRaceBuilderMembers4<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public TMF WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
         public bool CanUseRelativeTargetLocation
         {
             get => state.Get<bool>("CanUseRelativeTargetLocation");
@@ -1276,86 +1156,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             ConeMinSpeed = value;
             return this;
         }
-        public float DefaultFarZ
-        {
-            get => state.Get<float>("DefaultFarZ");
-            set => SetDefaultFarZ(state, value);
-        }
-        public TMF WithDefaultFarZ(float value)
-        {
-            DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public TMF WithDefaultFov(float value)
-        {
-            DefaultFov = value;
-            return this;
-        }
-        public float DefaultNearZ
-        {
-            get => state.Get<float>("DefaultNearZ");
-            set => SetDefaultNearZ(state, value);
-        }
-        public TMF WithDefaultNearZ(float value)
-        {
-            DefaultNearZ = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public TMF WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
-        public Vec3 ForcedUp
-        {
-            get => state.Get<Vec3>("ForcedUp");
-            set => SetForcedUp(state, value);
-        }
-        public TMF WithForcedUp(Vec3 value)
-        {
-            ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public TMF WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public TMF WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public TMF WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
-            return this;
-        }
         public bool IsSegmentCast
         {
             get => state.Get<bool>("IsSegmentCast");
@@ -1364,116 +1164,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public TMF WithIsSegmentCast(bool value)
         {
             IsSegmentCast = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public TMF WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MaxFarZ
-        {
-            get => state.Get<float>("MaxFarZ");
-            set => SetMaxFarZ(state, value);
-        }
-        public TMF WithMaxFarZ(float value)
-        {
-            MaxFarZ = value;
-            return this;
-        }
-        public float MaxFov
-        {
-            get => state.Get<float>("MaxFov");
-            set => SetMaxFov(state, value);
-        }
-        public TMF WithMaxFov(float value)
-        {
-            MaxFov = value;
-            return this;
-        }
-        public float MaxNearZ
-        {
-            get => state.Get<float>("MaxNearZ");
-            set => SetMaxNearZ(state, value);
-        }
-        public TMF WithMaxNearZ(float value)
-        {
-            MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public TMF WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public TMF WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float MinFarZ
-        {
-            get => state.Get<float>("MinFarZ");
-            set => SetMinFarZ(state, value);
-        }
-        public TMF WithMinFarZ(float value)
-        {
-            MinFarZ = value;
-            return this;
-        }
-        public float MinFov
-        {
-            get => state.Get<float>("MinFov");
-            set => SetMinFov(state, value);
-        }
-        public TMF WithMinFov(float value)
-        {
-            MinFov = value;
-            return this;
-        }
-        public float MinNearZ
-        {
-            get => state.Get<float>("MinNearZ");
-            set => SetMinNearZ(state, value);
-        }
-        public TMF WithMinNearZ(float value)
-        {
-            MinNearZ = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public TMF WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
-        public Vec3 RelativeFollowedPos
-        {
-            get => state.Get<Vec3>("RelativeFollowedPos");
-            set => SetRelativeFollowedPos(state, value);
-        }
-        public TMF WithRelativeFollowedPos(Vec3 value)
-        {
-            RelativeFollowedPos = value;
             return this;
         }
         public float SegmentCastLength
@@ -1496,36 +1186,6 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
             SegmentCastMinDist = value;
             return this;
         }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public TMF WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
-        }
-        public bool UseForcedUp
-        {
-            get => state.Get<bool>("UseForcedUp");
-            set => SetUseForcedUp(state, value);
-        }
-        public TMF WithUseForcedUp(bool value)
-        {
-            UseForcedUp = value;
-            return this;
-        }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public TMF WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
         public bool UseSpeedDir
         {
             get => state.Get<bool>("UseSpeedDir");
@@ -1539,563 +1199,66 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
-            node.Chunks.Add(chunk24085000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
-            var chunk0306B00B = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B();
-            node.Chunks.Add(chunk0306B00B);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk24085000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0306B00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00B>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0306B00B is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class MP3 : CGameControlCameraTrackManiaRaceBuilderBase<MP3>
+    public partial class MP3 : CGameControlCameraTrackManiaRaceBuilderMembers3<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public bool CanUseRelativeTargetLocation
-        {
-            get => state.Get<bool>("CanUseRelativeTargetLocation");
-            set => SetCanUseRelativeTargetLocation(state, value);
-        }
-        public MP3 WithCanUseRelativeTargetLocation(bool value)
-        {
-            CanUseRelativeTargetLocation = value;
-            return this;
-        }
-        public float CarCameraAlign
-        {
-            get => state.Get<float>("CarCameraAlign");
-            set => SetCarCameraAlign(state, value);
-        }
-        public MP3 WithCarCameraAlign(float value)
-        {
-            CarCameraAlign = value;
-            return this;
-        }
-        public float CarCameraDistance
-        {
-            get => state.Get<float>("CarCameraDistance");
-            set => SetCarCameraDistance(state, value);
-        }
-        public MP3 WithCarCameraDistance(float value)
-        {
-            CarCameraDistance = value;
-            return this;
-        }
-        public float CarCameraHeight
-        {
-            get => state.Get<float>("CarCameraHeight");
-            set => SetCarCameraHeight(state, value);
-        }
-        public MP3 WithCarCameraHeight(float value)
-        {
-            CarCameraHeight = value;
-            return this;
-        }
-        public float CarCameraTargetDistance
-        {
-            get => state.Get<float>("CarCameraTargetDistance");
-            set => SetCarCameraTargetDistance(state, value);
-        }
-        public MP3 WithCarCameraTargetDistance(float value)
-        {
-            CarCameraTargetDistance = value;
-            return this;
-        }
-        public float ConeAperture
-        {
-            get => state.Get<float>("ConeAperture");
-            set => SetConeAperture(state, value);
-        }
-        public MP3 WithConeAperture(float value)
-        {
-            ConeAperture = value;
-            return this;
-        }
-        public float ConeMaxSpeed
-        {
-            get => state.Get<float>("ConeMaxSpeed");
-            set => SetConeMaxSpeed(state, value);
-        }
-        public MP3 WithConeMaxSpeed(float value)
-        {
-            ConeMaxSpeed = value;
-            return this;
-        }
-        public float ConeMinSpeed
-        {
-            get => state.Get<float>("ConeMinSpeed");
-            set => SetConeMinSpeed(state, value);
-        }
-        public MP3 WithConeMinSpeed(float value)
-        {
-            ConeMinSpeed = value;
-            return this;
-        }
-        public bool IsSegmentCast
-        {
-            get => state.Get<bool>("IsSegmentCast");
-            set => SetIsSegmentCast(state, value);
-        }
-        public MP3 WithIsSegmentCast(bool value)
-        {
-            IsSegmentCast = value;
-            return this;
-        }
-        public float SegmentCastLength
-        {
-            get => state.Get<float>("SegmentCastLength");
-            set => SetSegmentCastLength(state, value);
-        }
-        public MP3 WithSegmentCastLength(float value)
-        {
-            SegmentCastLength = value;
-            return this;
-        }
-        public float SegmentCastMinDist
-        {
-            get => state.Get<float>("SegmentCastMinDist");
-            set => SetSegmentCastMinDist(state, value);
-        }
-        public MP3 WithSegmentCastMinDist(float value)
-        {
-            SegmentCastMinDist = value;
-            return this;
-        }
-        public bool UseSpeedDir
-        {
-            get => state.Get<bool>("UseSpeedDir");
-            set => SetUseSpeedDir(state, value);
-        }
-        public MP3 WithUseSpeedDir(bool value)
-        {
-            UseSpeedDir = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
-            node.Chunks.Add(chunk24085000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk03072002 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002();
-            node.Chunks.Add(chunk03072002);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk24085000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk03072002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0306B00A is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class TMT : CGameControlCameraTrackManiaRaceBuilderBase<TMT>
+    public partial class TMT : CGameControlCameraTrackManiaRaceBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public float CarCameraAlign
-        {
-            get => state.Get<float>("CarCameraAlign");
-            set => SetCarCameraAlign(state, value);
-        }
-        public TMT WithCarCameraAlign(float value)
-        {
-            CarCameraAlign = value;
-            return this;
-        }
-        public float CarCameraDistance
-        {
-            get => state.Get<float>("CarCameraDistance");
-            set => SetCarCameraDistance(state, value);
-        }
-        public TMT WithCarCameraDistance(float value)
-        {
-            CarCameraDistance = value;
-            return this;
-        }
-        public float CarCameraHeight
-        {
-            get => state.Get<float>("CarCameraHeight");
-            set => SetCarCameraHeight(state, value);
-        }
-        public TMT WithCarCameraHeight(float value)
-        {
-            CarCameraHeight = value;
-            return this;
-        }
-        public float CarCameraTargetDistance
-        {
-            get => state.Get<float>("CarCameraTargetDistance");
-            set => SetCarCameraTargetDistance(state, value);
-        }
-        public TMT WithCarCameraTargetDistance(float value)
-        {
-            CarCameraTargetDistance = value;
-            return this;
-        }
-        public float ConeAperture
-        {
-            get => state.Get<float>("ConeAperture");
-            set => SetConeAperture(state, value);
-        }
-        public TMT WithConeAperture(float value)
-        {
-            ConeAperture = value;
-            return this;
-        }
-        public float ConeMaxSpeed
-        {
-            get => state.Get<float>("ConeMaxSpeed");
-            set => SetConeMaxSpeed(state, value);
-        }
-        public TMT WithConeMaxSpeed(float value)
-        {
-            ConeMaxSpeed = value;
-            return this;
-        }
-        public float ConeMinSpeed
-        {
-            get => state.Get<float>("ConeMinSpeed");
-            set => SetConeMinSpeed(state, value);
-        }
-        public TMT WithConeMinSpeed(float value)
-        {
-            ConeMinSpeed = value;
-            return this;
-        }
-        public bool IsSegmentCast
-        {
-            get => state.Get<bool>("IsSegmentCast");
-            set => SetIsSegmentCast(state, value);
-        }
-        public TMT WithIsSegmentCast(bool value)
-        {
-            IsSegmentCast = value;
-            return this;
-        }
-        public float SegmentCastLength
-        {
-            get => state.Get<float>("SegmentCastLength");
-            set => SetSegmentCastLength(state, value);
-        }
-        public TMT WithSegmentCastLength(float value)
-        {
-            SegmentCastLength = value;
-            return this;
-        }
-        public float SegmentCastMinDist
-        {
-            get => state.Get<float>("SegmentCastMinDist");
-            set => SetSegmentCastMinDist(state, value);
-        }
-        public TMT WithSegmentCastMinDist(float value)
-        {
-            SegmentCastMinDist = value;
-            return this;
-        }
-        public bool UseSpeedDir
-        {
-            get => state.Get<bool>("UseSpeedDir");
-            set => SetUseSpeedDir(state, value);
-        }
-        public TMT WithUseSpeedDir(bool value)
-        {
-            UseSpeedDir = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk24085000 = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000();
-            node.Chunks.Add(chunk24085000);
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace.Chunk24085000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk24085000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0306B00A is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe4(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
         partial void ValidateNode(global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace node);
     }
-    public partial class MP4 : CGameControlCameraTrackManiaRaceBuilderBase<MP4>
+    public partial class MP4 : CGameControlCameraTrackManiaRaceBuilderMembers4<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace> state) : base(state) { }
-        public bool CanCameraMove
-        {
-            get => state.Get<bool>("CanCameraMove");
-            set => SetCanCameraMove(state, value);
-        }
-        public MP4 WithCanCameraMove(bool value)
-        {
-            CanCameraMove = value;
-            return this;
-        }
-        public float DefaultFarZ
-        {
-            get => state.Get<float>("DefaultFarZ");
-            set => SetDefaultFarZ(state, value);
-        }
-        public MP4 WithDefaultFarZ(float value)
-        {
-            DefaultFarZ = value;
-            return this;
-        }
-        public float DefaultFov
-        {
-            get => state.Get<float>("DefaultFov");
-            set => SetDefaultFov(state, value);
-        }
-        public MP4 WithDefaultFov(float value)
-        {
-            DefaultFov = value;
-            return this;
-        }
-        public float DefaultNearZ
-        {
-            get => state.Get<float>("DefaultNearZ");
-            set => SetDefaultNearZ(state, value);
-        }
-        public MP4 WithDefaultNearZ(float value)
-        {
-            DefaultNearZ = value;
-            return this;
-        }
-        public Iso4 ForcedLocation
-        {
-            get => state.Get<Iso4>("ForcedLocation");
-            set => SetForcedLocation(state, value);
-        }
-        public MP4 WithForcedLocation(Iso4 value)
-        {
-            ForcedLocation = value;
-            return this;
-        }
-        public Vec3 ForcedUp
-        {
-            get => state.Get<Vec3>("ForcedUp");
-            set => SetForcedUp(state, value);
-        }
-        public MP4 WithForcedUp(Vec3 value)
-        {
-            ForcedUp = value;
-            return this;
-        }
-        public float Fov
-        {
-            get => state.Get<float>("Fov");
-            set => SetFov(state, value);
-        }
-        public MP4 WithFov(float value)
-        {
-            Fov = value;
-            return this;
-        }
-        public bool IsFirstPerson
-        {
-            get => state.Get<bool>("IsFirstPerson");
-            set => SetIsFirstPerson(state, value);
-        }
-        public MP4 WithIsFirstPerson(bool value)
-        {
-            IsFirstPerson = value;
-            return this;
-        }
-        public bool IsFollowing
-        {
-            get => state.Get<bool>("IsFollowing");
-            set => SetIsFollowing(state, value);
-        }
-        public MP4 WithIsFollowing(bool value)
-        {
-            IsFollowing = value;
-            return this;
-        }
-        public float MaxDist
-        {
-            get => state.Get<float>("MaxDist");
-            set => SetMaxDist(state, value);
-        }
-        public MP4 WithMaxDist(float value)
-        {
-            MaxDist = value;
-            return this;
-        }
-        public float MaxFarZ
-        {
-            get => state.Get<float>("MaxFarZ");
-            set => SetMaxFarZ(state, value);
-        }
-        public MP4 WithMaxFarZ(float value)
-        {
-            MaxFarZ = value;
-            return this;
-        }
-        public float MaxFov
-        {
-            get => state.Get<float>("MaxFov");
-            set => SetMaxFov(state, value);
-        }
-        public MP4 WithMaxFov(float value)
-        {
-            MaxFov = value;
-            return this;
-        }
-        public float MaxNearZ
-        {
-            get => state.Get<float>("MaxNearZ");
-            set => SetMaxNearZ(state, value);
-        }
-        public MP4 WithMaxNearZ(float value)
-        {
-            MaxNearZ = value;
-            return this;
-        }
-        public float MaxSpeed
-        {
-            get => state.Get<float>("MaxSpeed");
-            set => SetMaxSpeed(state, value);
-        }
-        public MP4 WithMaxSpeed(float value)
-        {
-            MaxSpeed = value;
-            return this;
-        }
-        public float MinDist
-        {
-            get => state.Get<float>("MinDist");
-            set => SetMinDist(state, value);
-        }
-        public MP4 WithMinDist(float value)
-        {
-            MinDist = value;
-            return this;
-        }
-        public float MinFarZ
-        {
-            get => state.Get<float>("MinFarZ");
-            set => SetMinFarZ(state, value);
-        }
-        public MP4 WithMinFarZ(float value)
-        {
-            MinFarZ = value;
-            return this;
-        }
-        public float MinFov
-        {
-            get => state.Get<float>("MinFov");
-            set => SetMinFov(state, value);
-        }
-        public MP4 WithMinFov(float value)
-        {
-            MinFov = value;
-            return this;
-        }
-        public float MinNearZ
-        {
-            get => state.Get<float>("MinNearZ");
-            set => SetMinNearZ(state, value);
-        }
-        public MP4 WithMinNearZ(float value)
-        {
-            MinNearZ = value;
-            return this;
-        }
-        public float PlaneDist
-        {
-            get => state.Get<float>("PlaneDist");
-            set => SetPlaneDist(state, value);
-        }
-        public MP4 WithPlaneDist(float value)
-        {
-            PlaneDist = value;
-            return this;
-        }
-        public Vec3 RelativeFollowedPos
-        {
-            get => state.Get<Vec3>("RelativeFollowedPos");
-            set => SetRelativeFollowedPos(state, value);
-        }
-        public MP4 WithRelativeFollowedPos(Vec3 value)
-        {
-            RelativeFollowedPos = value;
-            return this;
-        }
-        public bool UseForcedLocation
-        {
-            get => state.Get<bool>("UseForcedLocation");
-            set => SetUseForcedLocation(state, value);
-        }
-        public MP4 WithUseForcedLocation(bool value)
-        {
-            UseForcedLocation = value;
-            return this;
-        }
-        public bool UseForcedUp
-        {
-            get => state.Get<bool>("UseForcedUp");
-            set => SetUseForcedUp(state, value);
-        }
-        public MP4 WithUseForcedUp(bool value)
-        {
-            UseForcedUp = value;
-            return this;
-        }
-        public bool UseOnlyFollowedMobilPosition
-        {
-            get => state.Get<bool>("UseOnlyFollowedMobilPosition");
-            set => SetUseOnlyFollowedMobilPosition(state, value);
-        }
-        public MP4 WithUseOnlyFollowedMobilPosition(bool value)
-        {
-            UseOnlyFollowedMobilPosition = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
-            var chunk0306B00C = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C();
-            node.Chunks.Add(chunk0306B00C);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0306B00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0306B00C is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe5(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -2108,16 +1271,12 @@ public partial class CGameControlCameraTrackManiaRaceBuilder : CGameControlCamer
         public global::GBX.NET.Interfaces.TrackMania.IGameControlCameraTrackManiaRaceTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace Build()
         {
-            var node = new global::GBX.NET.Engines.TrackMania.CGameControlCameraTrackManiaRace();
-            var chunk03072001 = new global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001();
-            node.Chunks.Add(chunk03072001);
-            var chunk0306B00A = new global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A();
-            node.Chunks.Add(chunk0306B00A);
+            var node = CGameControlCameraTrackManiaRaceBuilder.CreateRecipe6(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCameraTarget.Chunk03072001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03072001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameControlCamera.Chunk0306B00A>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0306B00A is missing or has an incompatible version.");
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRecipe6(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameControlCameraTrackManiaRaceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

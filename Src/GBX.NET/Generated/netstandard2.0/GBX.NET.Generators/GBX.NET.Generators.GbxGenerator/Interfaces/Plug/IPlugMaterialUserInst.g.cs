@@ -31,6 +31,20 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialUserInstMembers1 : global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst
+{
+    string? HidingGroup { get; set; }
+    bool IsNatural { get; set; }
+    float TextureSizeInMeters { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugMaterialUserInstMembers2 : global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInst
+{
+    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures { get; set; }
+}
 public partial interface IPlugMaterialUserInst : IClassVersion<global::GBX.NET.Engines.Plug.CPlugMaterialUserInst>
 {
     string? BaseTexture { get; set; }
@@ -47,30 +61,17 @@ public partial interface IPlugMaterialUserInstMP3 : IPlugMaterialUserInst
 {
 }
 
-public partial interface IPlugMaterialUserInstTMT : IPlugMaterialUserInst
+public partial interface IPlugMaterialUserInstTMT : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
 {
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures { get; set; }
 }
 
-public partial interface IPlugMaterialUserInstMP4 : IPlugMaterialUserInst
+public partial interface IPlugMaterialUserInstMP4 : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
 {
-    string? HidingGroup { get; set; }
-    bool IsNatural { get; set; }
-    float TextureSizeInMeters { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures { get; set; }
 }
 
-public partial interface IPlugMaterialUserInstTM2020 : IPlugMaterialUserInst
+public partial interface IPlugMaterialUserInstTM2020 : IPlugMaterialUserInst, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers1, global::GBX.NET.Interfaces.Plug.IPlugMaterialUserInstMembers2
 {
-    string? HidingGroup { get; set; }
-    bool IsNatural { get; set; }
     bool IsUsingGameMaterial { get; set; }
     global::GBX.NET.Engines.Plug.CPlugSurface.GameplayId SurfaceGameplayId { get; set; }
-    float TextureSizeInMeters { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingU { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.ETexAddress TilingV { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugMaterialUserInst.UserTexture[]? UserTextures { get; set; }
 }
 

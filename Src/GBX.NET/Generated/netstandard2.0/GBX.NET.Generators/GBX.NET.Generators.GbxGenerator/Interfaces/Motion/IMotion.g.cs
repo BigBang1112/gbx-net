@@ -31,43 +31,41 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionMembers1 : global::GBX.NET.Interfaces.Motion.IMotion
+{
+    string? Name { get; set; }
+}
 public partial interface IMotion : IClassVersion<global::GBX.NET.Engines.Motion.CMotion>
 {
 }
 
-public partial interface IMotionTMSX : IMotion
+public partial interface IMotionTMSX : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
-public partial interface IMotionTMNESWC : IMotion
+public partial interface IMotionTMNESWC : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
-public partial interface IMotionVSK5 : IMotion
+public partial interface IMotionVSK5 : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
-public partial interface IMotionTMF : IMotion
+public partial interface IMotionTMF : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
-public partial interface IMotionMP3 : IMotion
+public partial interface IMotionMP3 : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
-public partial interface IMotionTMT : IMotion
+public partial interface IMotionTMT : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
-public partial interface IMotionMP4 : IMotion
+public partial interface IMotionMP4 : IMotion, global::GBX.NET.Interfaces.Motion.IMotionMembers1
 {
-    string? Name { get; set; }
 }
 
 public partial interface IMotionTM10 : IMotion

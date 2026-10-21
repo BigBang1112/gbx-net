@@ -59,7 +59,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         get => Shape;
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMP3.Armor
+    global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.Armor
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMP3.GateCloseSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.GateCloseSound
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMP3.GateOpenSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.GateOpenSound
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMP3.GateSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.GateSound
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMP3.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP3, global::GBX.NET.Interfaces.Plug.IPlugSoundMP3, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.Shape
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelTMT.Armor
+    global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.Armor
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelTMT.GateCloseSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.GateCloseSound
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelTMT.GateOpenSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.GateOpenSound
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelTMT.GateSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.GateSound
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelTMT.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTMT, global::GBX.NET.Interfaces.Plug.IPlugSoundTMT, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.Shape
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMP4.Armor
+    global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.Armor
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMP4.GateCloseSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.GateCloseSound
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMP4.GateOpenSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.GateOpenSound
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMP4.GateSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.GateSound
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMP4.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelMP4, global::GBX.NET.Interfaces.Plug.IPlugSoundMP4, global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.Shape
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020.Armor
+    global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.Armor
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => Armor = value is null ? null : value is global::GBX.NET.Engines.GameData.CGameArmorModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020.GateCloseSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.GateCloseSound
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateCloseSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020.GateOpenSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.GateOpenSound
     {
         get
         {
@@ -239,7 +239,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateOpenSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020.GateSound
+    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.GateSound
     {
         get
         {
@@ -249,7 +249,7 @@ public partial class CGameGateModel : global::GBX.NET.Interfaces.GameData.IGameG
         }
         set => GateSound = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSound node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameGateModelMembers1<global::GBX.NET.Interfaces.GameData.IGameArmorModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020, global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.Shape
     {
         get
         {

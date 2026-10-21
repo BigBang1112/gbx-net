@@ -31,6 +31,17 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneObjectLinkMembers1<T0, T1> : global::GBX.NET.Interfaces.Scene.ISceneObjectLink where T0 : class where T1 : class
+{
+    new T0? Mobil { get; set; }
+    new T1? Object { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneObjectLinkMembers2 : global::GBX.NET.Interfaces.Scene.ISceneObjectLink
+{
+    string? MobilTreeId { get; set; }
+}
 public partial interface ISceneObjectLink : IClassVersion<global::GBX.NET.Engines.Scene.CSceneObjectLink>
 {
     global::GBX.NET.Interfaces.Scene.ISceneMobil? Mobil { get; set; }
@@ -39,64 +50,39 @@ public partial interface ISceneObjectLink : IClassVersion<global::GBX.NET.Engine
     Iso4 RelativeLocation { get; set; }
 }
 
-public partial interface ISceneObjectLinkTM10 : ISceneObjectLink
+public partial interface ISceneObjectLinkTM10 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTM10, global::GBX.NET.Interfaces.Scene.ISceneObjectTM10>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTM10? Mobil { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectTM10? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkTMPU : ISceneObjectLink
+public partial interface ISceneObjectLinkTMPU : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU, global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU? Mobil { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectTMPU? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkTMSX : ISceneObjectLink
+public partial interface ISceneObjectLinkTMSX : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX, global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectTMSX? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkTMNESWC : ISceneObjectLink
+public partial interface ISceneObjectLinkTMNESWC : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC, global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectTMNESWC? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkVSK5 : ISceneObjectLink
+public partial interface ISceneObjectLinkVSK5 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectVSK5? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkTMF : ISceneObjectLink
+public partial interface ISceneObjectLinkTMF : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneObjectTMF>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMF? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectTMF? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkMP3 : ISceneObjectLink
+public partial interface ISceneObjectLinkMP3 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP3, global::GBX.NET.Interfaces.Scene.ISceneObjectMP3>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectMP3? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkTMT : ISceneObjectLink
+public partial interface ISceneObjectLinkTMT : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilTMT, global::GBX.NET.Interfaces.Scene.ISceneObjectTMT>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilTMT? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectTMT? Object { get; set; }
 }
 
-public partial interface ISceneObjectLinkMP4 : ISceneObjectLink
+public partial interface ISceneObjectLinkMP4 : ISceneObjectLink, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilMP4, global::GBX.NET.Interfaces.Scene.ISceneObjectMP4>, global::GBX.NET.Interfaces.Scene.ISceneObjectLinkMembers2
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilMP4? Mobil { get; set; }
-    string? MobilTreeId { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneObjectMP4? Object { get; set; }
 }
 

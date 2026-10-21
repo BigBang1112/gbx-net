@@ -36,28 +36,28 @@ public abstract class CPlugTreeVisualMipBuilderBase<TSelf> where TSelf : CPlugTr
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state;
     private protected CPlugTreeVisualMipBuilderBase() => state = new();
     private protected CPlugTreeVisualMipBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) => this.state = state;
-    private protected static void SetChildren(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>?>("Children", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Children = value);
-    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, ulong value) => state.Set<ulong>("Flags", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Flags = value);
-    private protected static void SetFuncTree(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Function.CFuncTree? value) => state.Set<global::GBX.NET.Engines.Function.CFuncTree?>("FuncTree", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.FuncTree = value);
-    private protected static void SetFuncTreeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Function.CFuncTree> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncTree>>("FuncTree", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncTree>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FuncTree.CopyFrom(reference));
-    private protected static void SetGenerator(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlugTreeGenerator? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugTreeGenerator?>("Generator", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Generator = value);
-    private protected static void SetGeneratorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeGenerator>>("Generator", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeGenerator>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Generator.CopyFrom(reference));
-    private protected static void SetIsCustomBBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, bool value) => state.Set<bool>("IsCustomBBox", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsCustomBBox = value);
-    private protected static void SetLevels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Level> value) => state.Set<global::System.Collections.Generic.List<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Level>>("Levels", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new global::System.Collections.Generic.List<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Level>(value), static (node, value) => node.Levels = value);
-    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, Iso4? value) => state.Set<Iso4?>("Location", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Location = value);
-    private protected static void SetModelPlugId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, string? value) => state.Set<string?>("ModelPlugId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ModelPlugId = value);
-    private protected static void SetModelSolid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSolid?>("ModelSolid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ModelSolid = value);
-    private protected static void SetModelSolidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid>>("ModelSolid", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ModelSolid.CopyFrom(reference));
-    private protected static void SetNodParameterIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, string[] value) => state.Set<string[]>("NodParameterIds", value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX, static value => value is null ? null! : (string[])value.Clone(), static (node, value) => node.NodParameterIds = value);
-    private protected static void SetPlugId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, string value) => state.Set<string>("PlugId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.PlugId = value);
-    private protected static void SetRefBuffer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer", value, GameVersion.TMNESWC | GameVersion.TMSX, static value => value, static (node, value) => node.RefBuffer = value);
-    private protected static void SetRefBufferReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer>>("RefBuffer", value, GameVersion.TMNESWC | GameVersion.TMSX, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.RefBuffer.CopyFrom(reference));
-    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set<global::GBX.NET.Engines.Plug.CPlug?>("Shader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Shader = value);
-    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlug>>("Shader", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlug>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shader.CopyFrom(reference));
-    private protected static void SetSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set<global::GBX.NET.Engines.Plug.CPlug?>("Surface", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Surface = value);
-    private protected static void SetSurfaceReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlug>>("Surface", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlug>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Surface.CopyFrom(reference));
-    private protected static void SetVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlugVisual? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVisual?>("Visual", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Visual = value);
-    private protected static void SetVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVisual> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugVisual>>("Visual", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugVisual>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Visual.CopyFrom(reference));
+    private protected static void SetChildren(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetChildrenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFlags(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, ulong value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFlagsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFuncTree(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Function.CFuncTree? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFuncTreeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetFuncTreeReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Function.CFuncTree> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetFuncTreeReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetGenerator(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlugTreeGenerator? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetGeneratorAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetGeneratorReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugTreeGenerator> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetGeneratorReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsCustomBBox(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetIsCustomBBoxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLevels(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::System.Collections.Generic.List<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Level> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeVisualMipBuilderAssignments.GetLevelsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLocation(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, Iso4? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetLocationAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetModelPlugId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelPlugIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetModelSolid(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlugSolid? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelSolidAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetModelSolidReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSolid> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetModelSolidReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetNodParameterIds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, string[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetNodParameterIdsAssignment(), value, GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX);
+    private protected static void SetPlugId(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, string value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetPlugIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRefBuffer(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetRefBufferAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
+    private protected static void SetRefBufferReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetRefBufferReferenceAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
+    private protected static void SetShader(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetShaderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShaderReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetShaderReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSurface(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlug? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetSurfaceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSurfaceReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlug> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetSurfaceReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVisual(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, global::GBX.NET.Engines.Plug.CPlugVisual? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetVisualAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetVisualReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVisual> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugTreeBuilderAssignments.GetVisualReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>? Children
     {
         get => state.Get<NodeRefList<global::GBX.NET.Engines.Plug.CPlugTree>?>("Children");
@@ -241,8 +241,167 @@ public abstract class CPlugTreeVisualMipBuilderBase<TSelf> where TSelf : CPlugTr
         return (TSelf)this;
     }
 }
+public abstract class CPlugTreeVisualMipBuilderMembers1<TSelf> : CPlugTreeVisualMipBuilderBase<TSelf> where TSelf : CPlugTreeVisualMipBuilderMembers1<TSelf>
+{
+    private protected CPlugTreeVisualMipBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
+    public string[] NodParameterIds
+    {
+        get => state.Get<string[]>("NodParameterIds");
+        set => SetNodParameterIds(state, value);
+    }
+    public TSelf WithNodParameterIds(params string[] value)
+    {
+        NodParameterIds = value;
+        return (TSelf)this;
+    }
+    public TSelf WithNodParameterIds(IEnumerable<string> values)
+    {
+        return WithNodParameterIds(values.ToArray());
+    }
+}
+public abstract class CPlugTreeVisualMipBuilderMembers2<TSelf> : CPlugTreeVisualMipBuilderBase<TSelf> where TSelf : CPlugTreeVisualMipBuilderMembers2<TSelf>
+{
+    private protected CPlugTreeVisualMipBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
+    public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
+    {
+        get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
+        set => SetRefBuffer(state, value);
+    }
+    public TSelf WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
+    {
+        RefBuffer = value;
+        return (TSelf)this;
+    }
+    public TSelf WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetRefBufferReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<CPlugTreeVisualMipBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugTreeVisualMip CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
+        var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
+        node.Chunks.Add(chunk09015002);
+        var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
+        node.Chunks.Add(chunk0904F006);
+        var chunk0904F00C = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C();
+        node.Chunks.Add(chunk0904F00C);
+        var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
+        node.Chunks.Add(chunk0904F00D);
+        var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
+        node.Chunks.Add(chunk0904F011);
+        var chunk0904F015 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F015();
+        node.Chunks.Add(chunk0904F015);
+        var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
+        node.Chunks.Add(chunk0904F016);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09015002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F015>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F016 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugTreeVisualMip CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
+        var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
+        node.Chunks.Add(chunk09015002);
+        var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
+        node.Chunks.Add(chunk0904F006);
+        var chunk0904F00C = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C();
+        node.Chunks.Add(chunk0904F00C);
+        var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
+        node.Chunks.Add(chunk0904F00D);
+        var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
+        node.Chunks.Add(chunk0904F011);
+        var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
+        node.Chunks.Add(chunk0904F016);
+        var chunk0904F017 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017();
+        node.Chunks.Add(chunk0904F017);
+        var chunk0904F019 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F019();
+        node.Chunks.Add(chunk0904F019);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09015002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F019>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F019 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugTreeVisualMip CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
+        var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
+        node.Chunks.Add(chunk09015002);
+        var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
+        node.Chunks.Add(chunk0904F006);
+        var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
+        node.Chunks.Add(chunk0904F00D);
+        var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
+        node.Chunks.Add(chunk0904F011);
+        var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
+        node.Chunks.Add(chunk0904F016);
+        var chunk0904F017 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017();
+        node.Chunks.Add(chunk0904F017);
+        var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
+        node.Chunks.Add(chunk0904F01A);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09015002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F017 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F01A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugTreeVisualMip CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
+        var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
+        node.Chunks.Add(chunk09015002);
+        var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
+        node.Chunks.Add(chunk0904F006);
+        var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
+        node.Chunks.Add(chunk0904F00D);
+        var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
+        node.Chunks.Add(chunk0904F011);
+        var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
+        node.Chunks.Add(chunk0904F016);
+        var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
+        node.Chunks.Add(chunk0904F01A);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09015002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F016 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0904F01A is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node, GameVersion game)
+    {
+        if ((game & (GameVersion.TM10 | GameVersion.TMPU | GameVersion.TMSX)) != 0 && node.NodParameterIds is null) throw new MemberNullException("NodParameterIds");
+        if (node.PlugId is null) throw new MemberNullException("PlugId");
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -255,12 +414,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TM10 : CPlugTreeVisualMipBuilderBase<TM10>
+    public partial class TM10 : CPlugTreeVisualMipBuilderMembers1<TM10>
     {
         internal TM10(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TM10 WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTM10[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM10>(values, false));
         }
         public TM10 WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTM10> values)
         {
@@ -274,20 +433,6 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         {
             return base.WithModelSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public string[] NodParameterIds
-        {
-            get => state.Get<string[]>("NodParameterIds");
-            set => SetNodParameterIds(state, value);
-        }
-        public TM10 WithNodParameterIds(params string[] value)
-        {
-            NodParameterIds = value;
-            return this;
-        }
-        public TM10 WithNodParameterIds(IEnumerable<string> values)
-        {
-            return WithNodParameterIds(values.ToArray());
-        }
         public TM10 WithVisual(global::GBX.NET.Interfaces.Plug.IPlugVisualTM10? value)
         {
             return base.WithVisual(value is null ? (global::GBX.NET.Engines.Plug.CPlugVisual?)null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -295,45 +440,24 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00C = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C();
-            node.Chunks.Add(chunk0904F00C);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F015 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F015();
-            node.Chunks.Add(chunk0904F015);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904F00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F015>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904F015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0904F016 is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
-            if (node.NodParameterIds is null) throw new MemberNullException("NodParameterIds");
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node);
     }
-    public partial class TMPU : CPlugTreeVisualMipBuilderBase<TMPU>
+    public partial class TMPU : CPlugTreeVisualMipBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TMPU WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU>(values, false));
         }
         public TMPU WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTMPU> values)
         {
@@ -347,20 +471,6 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         {
             return base.WithModelSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public string[] NodParameterIds
-        {
-            get => state.Get<string[]>("NodParameterIds");
-            set => SetNodParameterIds(state, value);
-        }
-        public TMPU WithNodParameterIds(params string[] value)
-        {
-            NodParameterIds = value;
-            return this;
-        }
-        public TMPU WithNodParameterIds(IEnumerable<string> values)
-        {
-            return WithNodParameterIds(values.ToArray());
-        }
         public TMPU WithVisual(global::GBX.NET.Interfaces.Plug.IPlugVisualTMPU? value)
         {
             return base.WithVisual(value is null ? (global::GBX.NET.Engines.Plug.CPlugVisual?)null : value is global::GBX.NET.Engines.Plug.CPlugVisual node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
@@ -368,45 +478,24 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00C = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C();
-            node.Chunks.Add(chunk0904F00C);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F015 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F015();
-            node.Chunks.Add(chunk0904F015);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904F00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F015>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904F015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0904F016 is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
-            if (node.NodParameterIds is null) throw new MemberNullException("NodParameterIds");
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node);
     }
-    public partial class TMSX : CPlugTreeVisualMipBuilderBase<TMSX>
+    public partial class TMSX : CPlugTreeVisualMipBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TMSX WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX>(values, false));
         }
         public TMSX WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTMSX> values)
         {
@@ -438,25 +527,9 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         {
             return WithNodParameterIds(values.ToArray());
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
-            set => SetRefBuffer(state, value);
-        }
-        public TMSX WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            RefBuffer = value;
-            return this;
-        }
-        public TMSX WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRefBufferReference(state, value);
-            return this;
-        }
         public TMSX WithRefBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMSX? value)
         {
-            return WithRefBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithRefBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMSX WithVisual(global::GBX.NET.Interfaces.Plug.IPlugVisualTMSX? value)
         {
@@ -465,48 +538,24 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00C = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C();
-            node.Chunks.Add(chunk0904F00C);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F017 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017();
-            node.Chunks.Add(chunk0904F017);
-            var chunk0904F019 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F019();
-            node.Chunks.Add(chunk0904F019);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00C>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F019>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0904F019 is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
-            if (node.NodParameterIds is null) throw new MemberNullException("NodParameterIds");
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugTreeVisualMip node);
     }
-    public partial class TMNESWC : CPlugTreeVisualMipBuilderBase<TMNESWC>
+    public partial class TMNESWC : CPlugTreeVisualMipBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TMNESWC WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC>(values, false));
         }
         public TMNESWC WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTMNESWC> values)
         {
@@ -524,25 +573,9 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         {
             return base.WithModelSolid(value is null ? (global::GBX.NET.Engines.Plug.CPlugSolid?)null : value is global::GBX.NET.Engines.Plug.CPlugSolid node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? RefBuffer
-        {
-            get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?>("RefBuffer");
-            set => SetRefBuffer(state, value);
-        }
-        public TMNESWC WithRefBuffer(global::GBX.NET.Engines.MwFoundations.CMwRefBuffer? value)
-        {
-            RefBuffer = value;
-            return this;
-        }
-        public TMNESWC WithRefBufferReference(NodeRef<global::GBX.NET.Engines.MwFoundations.CMwRefBuffer> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetRefBufferReference(state, value);
-            return this;
-        }
         public TMNESWC WithRefBuffer(global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMNESWC? value)
         {
-            return WithRefBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithRefBuffer(value is null ? (global::GBX.NET.Engines.MwFoundations.CMwRefBuffer?)null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMNESWC WithVisual(global::GBX.NET.Interfaces.Plug.IPlugVisualTMNESWC? value)
         {
@@ -551,32 +584,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F017 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017();
-            node.Chunks.Add(chunk0904F017);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe2(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F017>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904F017 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe2(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -588,7 +601,7 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public VSK5 WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5>(values, false));
         }
         public VSK5 WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeVSK5> values)
         {
@@ -613,29 +626,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe3(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe3(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -647,7 +643,7 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TMF WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTMF[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMF>(values, false));
         }
         public TMF WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTMF> values)
         {
@@ -672,29 +668,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe3(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -706,7 +685,7 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public MP3 WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeMP3[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP3>(values, false));
         }
         public MP3 WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeMP3> values)
         {
@@ -731,29 +710,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -765,7 +727,7 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TMT WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTMT[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTMT>(values, false));
         }
         public TMT WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTMT> values)
         {
@@ -790,29 +752,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -824,7 +769,7 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public MP4 WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeMP4[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeMP4>(values, false));
         }
         public MP4 WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeMP4> values)
         {
@@ -849,29 +794,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -883,7 +811,7 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip> state) : base(state) { }
         public TM2020 WithChildren(params global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020[] values)
         {
-            return base.WithChildren(values.Select(static value => value is global::GBX.NET.Engines.Plug.CPlugTree node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithChildren(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugTree, global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020>(values, false));
         }
         public TM2020 WithChildren(IEnumerable<global::GBX.NET.Interfaces.Plug.IPlugTreeTM2020> values)
         {
@@ -908,29 +836,12 @@ public partial class CPlugTreeVisualMipBuilder : CPlugTreeVisualMipBuilderBase<C
         public global::GBX.NET.Interfaces.Plug.IPlugTreeVisualMipTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugTreeVisualMip Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip();
-            var chunk09015002 = new global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002();
-            node.Chunks.Add(chunk09015002);
-            var chunk0904F006 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006();
-            node.Chunks.Add(chunk0904F006);
-            var chunk0904F00D = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D();
-            node.Chunks.Add(chunk0904F00D);
-            var chunk0904F011 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011();
-            node.Chunks.Add(chunk0904F011);
-            var chunk0904F016 = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016();
-            node.Chunks.Add(chunk0904F016);
-            var chunk0904F01A = new global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A();
-            node.Chunks.Add(chunk0904F01A);
+            var node = CPlugTreeVisualMipBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTreeVisualMip.Chunk09015002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09015002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F006>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F00D>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904F00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F011>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904F011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F016>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904F016 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugTree.Chunk0904F01A>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0904F01A is missing or has an incompatible version.");
+            CPlugTreeVisualMipBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.PlugId is null) throw new MemberNullException("PlugId");
+            CPlugTreeVisualMipBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

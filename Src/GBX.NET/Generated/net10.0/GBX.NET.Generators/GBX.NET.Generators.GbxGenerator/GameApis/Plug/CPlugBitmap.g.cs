@@ -39,7 +39,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         get => BitmapRender;
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10? global::GBX.NET.Interfaces.Plug.IPlugBitmapTM10.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM10>.BitmapRender
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMPU.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMPU>.BitmapRender
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMSX.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMSX>.BitmapRender
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMNESWC.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMNESWC>.BitmapRender
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapVSK5.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderVSK5>.BitmapRender
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMF.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMF>.BitmapRender
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP3>.BitmapRender
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3.Decals
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3>.Decals
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => Decals = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapDecals node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3.SpriteParam
+    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP3, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP3>.SpriteParam
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => SpriteParam = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSpriteParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTMT>.BitmapRender
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT.Decals
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT>.Decals
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => Decals = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapDecals node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT.SpriteParam
+    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTMT, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTMT>.SpriteParam
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => SpriteParam = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSpriteParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderMP4>.BitmapRender
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4.Decals
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4>.Decals
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => Decals = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapDecals node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugImageArrayMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4.ImageArray
+    global::GBX.NET.Interfaces.Plug.IPlugImageArrayMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugImageArrayMP4>.ImageArray
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => ImageArray = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugImageArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4.SpriteParam
+    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMP4, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamMP4>.SpriteParam
     {
         get
         {
@@ -199,7 +199,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => SpriteParam = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSpriteParam node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020.BitmapRender
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers3<global::GBX.NET.Interfaces.Plug.IPlugBitmapRenderTM2020>.BitmapRender
     {
         get
         {
@@ -209,7 +209,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => BitmapRender = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapRender node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020.Decals
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020>.Decals
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => Decals = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapDecals node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020.ImageArray
+    global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers2<global::GBX.NET.Interfaces.Plug.IPlugImageArrayTM2020>.ImageArray
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CPlugBitmap : global::GBX.NET.Interfaces.Plug.IPlugBitmap, 
         }
         set => ImageArray = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugImageArray node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020.SpriteParam
+    global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020? global::GBX.NET.Interfaces.Plug.IPlugBitmapMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsTM2020, global::GBX.NET.Interfaces.Plug.IPlugSpriteParamTM2020>.SpriteParam
     {
         get
         {

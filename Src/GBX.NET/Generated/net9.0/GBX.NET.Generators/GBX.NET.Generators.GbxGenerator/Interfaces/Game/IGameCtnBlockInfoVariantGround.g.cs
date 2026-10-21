@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockInfoVariantGroundMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGround where T0 : class
+{
+    new IReadOnlyList<T0>? AutoTerrains { get; set; }
+}
 public partial interface IGameCtnBlockInfoVariantGround : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround>, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariant
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -43,114 +48,49 @@ public partial interface IGameCtnBlockInfoVariantGround : IClassVersion<global::
     int AutoTerrainHeightOffset { get; set; }
     global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariantGround.EAutoTerrainPlaceType AutoTerrainPlaceType { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrain>? AutoTerrains { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo>? BlockUnitModels { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCaptureZoneModel? CaptureZone { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.ECardinalDir CardinalDir { get; set; }
-    new ushort Flags { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameGateModel? Gate { get; set; }
-    new bool HasManualSymmetryD1 { get; set; }
-    new bool HasManualSymmetryD2 { get; set; }
-    new bool HasManualSymmetryH { get; set; }
-    new bool HasManualSymmetryV { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Game.CGameCtnBlockInfoMobil>[]? Mobils { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.EMultiDir MultiDir { get; set; }
-    new string? Name { get; set; }
-    new byte NoPillarBelowIndex { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugProbe? Probe { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid? ScreenInteractionTriggerSolid { get; set; }
-    new int SymmetricalVariantIndex { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameTeleporterModel? Teleporter { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameTurbineModel? Turbine { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.EVariantBaseType VariantBaseType { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolid? WaypointTriggerSolid { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoVariantGroundMP3 : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantMP3
+public partial interface IGameCtnBlockInfoVariantGroundMP3 : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantMP3, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP3>? AutoTerrains { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP3>? BlockUnitModels { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? FacultativeHelperMobil { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameGateModelMP3? Gate { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilMP3? HelperMobil { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugProbeMP3? Probe { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? ScreenInteractionTriggerSolid { get; set; }
-    new Iso4 SpawnLoc { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP3? Teleporter { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTurbineModelMP3? Turbine { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidMP3? WaypointTriggerSolid { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoVariantGroundTMT : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantTMT
+public partial interface IGameCtnBlockInfoVariantGroundTMT : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantTMT, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTMT>? AutoTerrains { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTMT>? BlockUnitModels { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? FacultativeHelperSolidFid { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.FlockEmitterState? FlockEmitter { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFlockModelTMT? FlockModel { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameGateModelTMT? Gate { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? HelperSolidFid { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugProbeTMT? Probe { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? ScreenInteractionTriggerSolid { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT? SpawnModel { get; set; }
-    new float SpawnPitch { get; set; }
-    new Vec3 SpawnTrans { get; set; }
-    new float SpawnYaw { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTeleporterModelTMT? Teleporter { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTurbineModelTMT? Turbine { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTMT? WaypointTriggerSolid { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoVariantGroundMP4 : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantMP4
+public partial interface IGameCtnBlockInfoVariantGroundMP4 : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantMP4, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainMP4>? AutoTerrains { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMP4>? BlockUnitModels { get; set; }
-    new Iso4 CompoundLoc { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameObjectPhyCompoundModel? CompoundModel { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugEntitySpawner>? EntitySpawners { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? FacultativeHelperSolidFid { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.FlockEmitterState? FlockEmitter { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFlockModelMP4? FlockModel { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameGateModelMP4? Gate { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? HelperSolidFid { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.PlacedPillarParam[]? PlacedPillarParams { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugProbeMP4? Probe { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.ReplacedPillarParam[]? ReplacedPillarParams { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? ScreenInteractionTriggerSolid { get; set; }
-    new global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4? SpawnModel { get; set; }
-    new float SpawnPitch { get; set; }
-    new Vec3 SpawnTrans { get; set; }
-    new float SpawnYaw { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.SubMapSpot[]? SubMapSpots { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMP4? Teleporter { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTurbineModelMP4? Turbine { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.WaterVolume[]? WaterVolumes { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidMP4? WaypointTriggerSolid { get; set; }
 }
 
-public partial interface IGameCtnBlockInfoVariantGroundTM2020 : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantTM2020
+public partial interface IGameCtnBlockInfoVariantGroundTM2020 : IGameCtnBlockInfoVariantGround, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantTM2020, global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVariantGroundMembers1<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnAutoTerrainTM2020>? AutoTerrains { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoTM2020>? BlockUnitModels { get; set; }
-    new Iso4 CompoundLoc { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameObjectPhyCompoundModel? CompoundModel { get; set; }
-    new string? DefaultPlacementItem { get; set; }
-    new NodeRefList<global::GBX.NET.Engines.Plug.CPlugEntitySpawner>? EntitySpawners { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? FacultativeHelperSolidFid { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.FlockEmitterState? FlockEmitter { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugFlockModelTM2020? FlockModel { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameGateModelTM2020? Gate { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugPrefab? HelperPrefabFid { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? HelperSolidFid { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.PlacedPillarParam[]? PlacedPillarParams { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugProbeTM2020? Probe { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.ReplacedPillarParam[]? ReplacedPillarParams { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? ScreenInteractionTriggerShape { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? ScreenInteractionTriggerSolid { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameSpawnModel? SpawnModel { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTeleporterModelTM2020? Teleporter { get; set; }
     new global::GBX.NET.Interfaces.GameData.IGameTurbineModelTM2020? Turbine { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnBlockInfoVariant.WaterVolume[]? WaterVolumes { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? WaypointTriggerShape { get; set; }
     new global::GBX.NET.Interfaces.Plug.IPlugSolidTM2020? WaypointTriggerSolid { get; set; }
 }
 

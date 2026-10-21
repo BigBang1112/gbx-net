@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Motion;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IMotionManagerLeavesMembers1<T0> : global::GBX.NET.Interfaces.Motion.IMotionManagerLeaves where T0 : class
+{
+    new T0? MobilLeaves { get; set; }
+}
 public partial interface IMotionManagerLeaves : IClassVersion<global::GBX.NET.Engines.Motion.CMotionManagerLeaves>, global::GBX.NET.Interfaces.Motion.IMotionManager
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -43,43 +48,35 @@ public partial interface IMotionManagerLeaves : IClassVersion<global::GBX.NET.En
     global::GBX.NET.Interfaces.Scene.ISceneMobilLeaves? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesTM10 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10
+public partial interface IMotionManagerLeavesTM10 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTM10, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTM10? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesTMPU : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMPU
+public partial interface IMotionManagerLeavesTMPU : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMPU, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMPU? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesTMSX : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX
+public partial interface IMotionManagerLeavesTMSX : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMSX, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMSX? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesTMNESWC : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC
+public partial interface IMotionManagerLeavesTMNESWC : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMNESWC, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMNESWC? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesVSK5 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5
+public partial interface IMotionManagerLeavesVSK5 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerVSK5, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesVSK5? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesTMF : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF
+public partial interface IMotionManagerLeavesTMF : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMF, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMF? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesMP3 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3
+public partial interface IMotionManagerLeavesMP3 : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerMP3, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesMP3? MobilLeaves { get; set; }
 }
 
-public partial interface IMotionManagerLeavesTMT : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT
+public partial interface IMotionManagerLeavesTMT : IMotionManagerLeaves, global::GBX.NET.Interfaces.Motion.IMotionManagerTMT, global::GBX.NET.Interfaces.Motion.IMotionManagerLeavesMembers1<global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT>
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMobilLeavesTMT? MobilLeaves { get; set; }
 }
 

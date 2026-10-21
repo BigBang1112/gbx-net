@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockEntityMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntity where T0 : class
+{
+    new T0? RecordData { get; set; }
+}
 public partial interface IGameCtnMediaBlockEntity : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -54,21 +59,19 @@ public partial interface IGameCtnMediaBlockEntity : IClassVersion<global::GBX.NE
     TimeSingle StartOffset { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockEntityMP4 : IGameCtnMediaBlockEntity, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockEntityMP4 : IGameCtnMediaBlockEntity, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMembers1<global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4>
 {
     TimeSingle? End { get; set; }
     global::GBX.NET.Vec3 LightTrailColor { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataMP4? RecordData { get; set; }
     TimeSingle? Start { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockEntityTM2020 : IGameCtnMediaBlockEntity, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockEntityTM2020 : IGameCtnMediaBlockEntity, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockEntityMembers1<global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020>
 {
     int AppearanceArchiveVersion { get; set; }
     string? GhostName { get; set; }
     List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockEntity.Key>? Keys { get; set; }
     TimeInt32? RaceTime { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugEntRecordDataTM2020? RecordData { get; set; }
     string? SkinOptions { get; set; }
     float TimeScale { get; set; }
 }

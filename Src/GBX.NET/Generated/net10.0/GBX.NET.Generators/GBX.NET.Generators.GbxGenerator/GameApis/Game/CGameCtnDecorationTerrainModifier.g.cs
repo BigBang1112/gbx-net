@@ -39,7 +39,7 @@ public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfa
         get => Remapping;
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5.Remapping
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5>.Remapping
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfa
         }
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF.Remapping
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF>.Remapping
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfa
         }
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3.Remapping
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>.Remapping
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfa
         }
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT.Remapping
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>.Remapping
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CGameCtnDecorationTerrainModifier : global::GBX.NET.Interfa
         }
         set => Remapping = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4.Remapping
+    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>.Remapping
     {
         get
         {

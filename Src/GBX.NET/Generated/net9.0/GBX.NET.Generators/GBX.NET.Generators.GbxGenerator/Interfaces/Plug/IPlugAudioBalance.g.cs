@@ -31,6 +31,36 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAudioBalanceMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugAudioBalance where T0 : class
+{
+    float AttackDuration { get; set; }
+    global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? Groups { get; set; }
+    bool IsAbsolute { get; set; }
+    float MaxDistFade_Ratio_Focused { get; set; }
+    float MaxDistFade_Ratio_Others { get; set; }
+    float MaxDistFade_Rolloff_Focused { get; set; }
+    float MaxDistFade_Rolloff_Others { get; set; }
+    T0? PitchFromDistance_BengsGuns_Focused { get; set; }
+    T0? PitchFromDistance_BengsGuns_Others { get; set; }
+    T0? PitchFromDistance_Player_Focused { get; set; }
+    T0? PitchFromDistance_Player_Others { get; set; }
+    float RefDistanceFactor { get; set; }
+    float ReleaseDuration { get; set; }
+    float RolloffFactor { get; set; }
+    T0? RolloffFromMusicVolume { get; set; }
+    float SceneVolume { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugAudioBalanceMembers2 : global::GBX.NET.Interfaces.Plug.IPlugAudioBalance
+{
+    float AutoRadiusFactor { get; set; }
+    float GlobalLfeSend { get; set; }
+    float MinimumDuration { get; set; }
+    float MusicLfeSend { get; set; }
+    float SceneLfeSend { get; set; }
+    float UiVolume { get; set; }
+}
 public partial interface IPlugAudioBalance : IClassVersion<global::GBX.NET.Engines.Plug.CPlugAudioBalance>, global::GBX.NET.Interfaces.Plug.IPlugAudio
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -59,101 +89,19 @@ public partial interface IPlugAudioBalanceTMF : IPlugAudioBalance, global::GBX.N
 {
 }
 
-public partial interface IPlugAudioBalanceMP3 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3
+public partial interface IPlugAudioBalanceMP3 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioMP3, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3>
 {
-    float AttackDuration { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? Groups { get; set; }
-    bool IsAbsolute { get; set; }
-    float MaxDistFade_Ratio_Focused { get; set; }
-    float MaxDistFade_Ratio_Others { get; set; }
-    float MaxDistFade_Rolloff_Focused { get; set; }
-    float MaxDistFade_Rolloff_Others { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? PitchFromDistance_BengsGuns_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? PitchFromDistance_BengsGuns_Others { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? PitchFromDistance_Player_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? PitchFromDistance_Player_Others { get; set; }
-    float RefDistanceFactor { get; set; }
-    float ReleaseDuration { get; set; }
-    float RolloffFactor { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? RolloffFromMusicVolume { get; set; }
-    float SceneVolume { get; set; }
 }
 
-public partial interface IPlugAudioBalanceTMT : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT
+public partial interface IPlugAudioBalanceTMT : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioTMT, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT>, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers2
 {
-    float AttackDuration { get; set; }
-    float AutoRadiusFactor { get; set; }
-    float GlobalLfeSend { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? Groups { get; set; }
-    bool IsAbsolute { get; set; }
-    float MaxDistFade_Ratio_Focused { get; set; }
-    float MaxDistFade_Ratio_Others { get; set; }
-    float MaxDistFade_Rolloff_Focused { get; set; }
-    float MaxDistFade_Rolloff_Others { get; set; }
-    float MinimumDuration { get; set; }
-    float MusicLfeSend { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? PitchFromDistance_BengsGuns_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? PitchFromDistance_BengsGuns_Others { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? PitchFromDistance_Player_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? PitchFromDistance_Player_Others { get; set; }
-    float RefDistanceFactor { get; set; }
-    float ReleaseDuration { get; set; }
-    float RolloffFactor { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? RolloffFromMusicVolume { get; set; }
-    float SceneLfeSend { get; set; }
-    float SceneVolume { get; set; }
-    float UiVolume { get; set; }
 }
 
-public partial interface IPlugAudioBalanceMP4 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioMP4
+public partial interface IPlugAudioBalanceMP4 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioMP4, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4>, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers2
 {
-    float AttackDuration { get; set; }
-    float AutoRadiusFactor { get; set; }
-    float GlobalLfeSend { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? Groups { get; set; }
-    bool IsAbsolute { get; set; }
-    float MaxDistFade_Ratio_Focused { get; set; }
-    float MaxDistFade_Ratio_Others { get; set; }
-    float MaxDistFade_Rolloff_Focused { get; set; }
-    float MaxDistFade_Rolloff_Others { get; set; }
-    float MinimumDuration { get; set; }
-    float MusicLfeSend { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? PitchFromDistance_BengsGuns_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? PitchFromDistance_BengsGuns_Others { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? PitchFromDistance_Player_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? PitchFromDistance_Player_Others { get; set; }
-    float RefDistanceFactor { get; set; }
-    float ReleaseDuration { get; set; }
-    float RolloffFactor { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? RolloffFromMusicVolume { get; set; }
-    float SceneLfeSend { get; set; }
-    float SceneVolume { get; set; }
-    float UiVolume { get; set; }
 }
 
-public partial interface IPlugAudioBalanceTM2020 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioTM2020
+public partial interface IPlugAudioBalanceTM2020 : IPlugAudioBalance, global::GBX.NET.Interfaces.Plug.IPlugAudioTM2020, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers1<global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020>, global::GBX.NET.Interfaces.Plug.IPlugAudioBalanceMembers2
 {
-    float AttackDuration { get; set; }
-    float AutoRadiusFactor { get; set; }
-    float GlobalLfeSend { get; set; }
-    global::GBX.NET.Engines.Plug.CPlugAudioBalance.Group[]? Groups { get; set; }
-    bool IsAbsolute { get; set; }
-    float MaxDistFade_Ratio_Focused { get; set; }
-    float MaxDistFade_Ratio_Others { get; set; }
-    float MaxDistFade_Rolloff_Focused { get; set; }
-    float MaxDistFade_Rolloff_Others { get; set; }
-    float MinimumDuration { get; set; }
-    float MusicLfeSend { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? PitchFromDistance_BengsGuns_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? PitchFromDistance_BengsGuns_Others { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? PitchFromDistance_Player_Focused { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? PitchFromDistance_Player_Others { get; set; }
-    float RefDistanceFactor { get; set; }
-    float ReleaseDuration { get; set; }
-    float RolloffFactor { get; set; }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? RolloffFromMusicVolume { get; set; }
-    float SceneLfeSend { get; set; }
-    float SceneVolume { get; set; }
-    float UiVolume { get; set; }
 }
 

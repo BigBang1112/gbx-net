@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockCameraEffectShakeBuilderBase<TSelf> wher
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake> state;
     private protected CGameCtnMediaBlockCameraEffectShakeBuilderBase() => state = new();
     private protected CGameCtnMediaBlockCameraEffectShakeBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockCameraEffectShakeBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Key>?>("Keys");
@@ -58,6 +58,20 @@ public abstract class CGameCtnMediaBlockCameraEffectShakeBuilderBase<TSelf> wher
 }
 public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaBlockCameraEffectShakeBuilderBase<CGameCtnMediaBlockCameraEffectShakeBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
+        var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
+        node.Chunks.Add(chunk030A4000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk030A4000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -73,13 +87,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -92,13 +105,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -111,13 +123,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -130,13 +141,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -149,13 +159,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -168,13 +177,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -187,13 +195,12 @@ public partial class CGameCtnMediaBlockCameraEffectShakeBuilder : CGameCtnMediaB
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockCameraEffectShakeTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake();
-            var chunk030A4000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000();
-            node.Chunks.Add(chunk030A4000);
+            var node = CGameCtnMediaBlockCameraEffectShakeBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockCameraEffectShake.Chunk030A4000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk030A4000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockCameraEffectShakeBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

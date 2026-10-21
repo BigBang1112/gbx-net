@@ -48,13 +48,9 @@ public partial interface IGameManiaPlanetTMF : IGameManiaPlanet, global::GBX.NET
 
 public partial interface IGameManiaPlanetMP4 : IGameManiaPlanet, global::GBX.NET.Interfaces.Game.IGameCtnAppMP4
 {
-    new NodeRefList<global::GBX.NET.Engines.MwFoundations.CMwNod>? AdditionalSkinsFids { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Advertising { get; set; }
     global::GBX.NET.Interfaces.Game.IGameCoverFlowDescMP4? CoverFlowDesc { get; set; }
     global::GBX.NET.Interfaces.Control.IControlStyleSheetMP4? DefaultStyleSheet { get; set; }
     string? ManiaTitlesFolder { get; set; }
-    new bool MenuBackground_MustLoopIntro { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGameResourcesMP4? Resources { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? TitleMainDefaultBgFid { get; set; }
 }
 

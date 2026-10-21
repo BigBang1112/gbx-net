@@ -39,6 +39,31 @@ public abstract class CPlugRoadChunkCitizenBuilderBase<TSelf> where TSelf : CPlu
 }
 public partial class CPlugRoadChunkCitizenBuilder : CPlugRoadChunkCitizenBuilderBase<CPlugRoadChunkCitizenBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen();
+        var chunk09128000 = new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000();
+        node.Chunks.Add(chunk09128000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09128000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen();
+        var chunk09128000 = new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000();
+        node.Chunks.Add(chunk09128000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk09128000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -49,13 +74,12 @@ public partial class CPlugRoadChunkCitizenBuilder : CPlugRoadChunkCitizenBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen();
-            var chunk09128000 = new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000();
-            node.Chunks.Add(chunk09128000);
+            var node = CPlugRoadChunkCitizenBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk09128000 is missing or has an incompatible version.");
+            CPlugRoadChunkCitizenBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugRoadChunkCitizenBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -68,13 +92,12 @@ public partial class CPlugRoadChunkCitizenBuilder : CPlugRoadChunkCitizenBuilder
         public global::GBX.NET.Interfaces.Plug.IPlugRoadChunkCitizenTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugRoadChunkCitizen();
-            var chunk09128000 = new global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000();
-            node.Chunks.Add(chunk09128000);
+            var node = CPlugRoadChunkCitizenBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugRoadChunk.Chunk09128000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk09128000 is missing or has an incompatible version.");
+            CPlugRoadChunkCitizenBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugRoadChunkCitizenBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

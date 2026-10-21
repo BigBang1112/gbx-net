@@ -40,12 +40,6 @@ public partial interface IGameCtnMediaBlockTriangles2D : IClassVersion<global::G
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::System.Collections.Generic.List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.Key> Keys { get; set; }
-    new global::GBX.NET.Engines.Game.CGameCtnMediaBlockTriangles.E3DPickMode PickMode3D { get; set; }
-    new Vec3 PickPlaneNormal { get; set; }
-    new Vec3 PickPlanePosition { get; set; }
-    new global::GBX.NET.Int3[] Triangles { get; set; }
-    new global::GBX.NET.Vec4[] Vertices { get; set; }
 }
 
 public partial interface IGameCtnMediaBlockTriangles2DTMF : IGameCtnMediaBlockTriangles2D, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrianglesTMF
@@ -66,6 +60,5 @@ public partial interface IGameCtnMediaBlockTriangles2DMP4 : IGameCtnMediaBlockTr
 
 public partial interface IGameCtnMediaBlockTriangles2DTM2020 : IGameCtnMediaBlockTriangles2D, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTrianglesTM2020
 {
-    new int ClipEntId { get; set; }
 }
 

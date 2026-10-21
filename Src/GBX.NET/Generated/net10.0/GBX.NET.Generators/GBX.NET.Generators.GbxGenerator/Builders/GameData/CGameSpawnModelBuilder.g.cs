@@ -36,11 +36,11 @@ public abstract class CGameSpawnModelBuilderBase<TSelf> where TSelf : CGameSpawn
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state;
     private protected CGameSpawnModelBuilderBase() => state = new();
     private protected CGameSpawnModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state) => this.state = state;
-    private protected static void SetDefaultGravitySpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, Vec3 value) => state.Set<Vec3>("DefaultGravitySpawn", value, GameVersion.MP4, static value => value, static (node, value) => node.DefaultGravitySpawn = value);
-    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, Iso4 value) => state.Set<Iso4>("Loc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.Loc = value);
-    private protected static void SetTorqueDuration(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, int value) => state.Set<int>("TorqueDuration", value, GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.TorqueDuration = value);
-    private protected static void SetTorqueX(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, float value) => state.Set<float>("TorqueX", value, GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.TorqueX = value);
-    private protected static void SetUnderground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, bool value) => state.Set<bool>("Underground", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT, static value => value, static (node, value) => node.Underground = value);
+    private protected static void SetDefaultGravitySpawn(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetDefaultGravitySpawnAssignment(), value, GameVersion.MP4);
+    private protected static void SetLoc(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, Iso4 value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetLocAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetTorqueDuration(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetTorqueDurationAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetTorqueX(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetTorqueXAssignment(), value, GameVersion.MP4 | GameVersion.TMT);
+    private protected static void SetUnderground(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameSpawnModelBuilderAssignments.GetUndergroundAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TMT);
     public Iso4 Loc
     {
         get => state.Get<Iso4>("Loc");
@@ -62,8 +62,68 @@ public abstract class CGameSpawnModelBuilderBase<TSelf> where TSelf : CGameSpawn
         return (TSelf)this;
     }
 }
+public abstract class CGameSpawnModelBuilderMembers1<TSelf> : CGameSpawnModelBuilderBase<TSelf> where TSelf : CGameSpawnModelBuilderMembers1<TSelf>
+{
+    private protected CGameSpawnModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state) : base(state) { }
+    public int TorqueDuration
+    {
+        get => state.Get<int>("TorqueDuration");
+        set => SetTorqueDuration(state, value);
+    }
+    public TSelf WithTorqueDuration(int value)
+    {
+        TorqueDuration = value;
+        return (TSelf)this;
+    }
+    public float TorqueX
+    {
+        get => state.Get<float>("TorqueX");
+        set => SetTorqueX(state, value);
+    }
+    public TSelf WithTorqueX(float value)
+    {
+        TorqueX = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGameSpawnModelBuilder : CGameSpawnModelBuilderBase<CGameSpawnModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameSpawnModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameSpawnModel();
+        var chunk2E00E000 = new global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000(game);
+        node.Chunks.Add(chunk2E00E000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameSpawnModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00E000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameSpawnModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameSpawnModel();
+        var chunk2E00E000 = new global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000(game);
+        node.Chunks.Add(chunk2E00E000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.GameData.CGameSpawnModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00E000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameSpawnModel CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameSpawnModel();
+        var chunk2E00E000 = new global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000(game);
+        node.Chunks.Add(chunk2E00E000);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.GameData.CGameSpawnModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E00E000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameSpawnModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -75,59 +135,37 @@ public partial class CGameSpawnModelBuilder : CGameSpawnModelBuilderBase<CGameSp
         public global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameSpawnModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameSpawnModel();
-            var chunk2E00E000 = new global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000(GameVersion.MP3);
-            node.Chunks.Add(chunk2E00E000);
+            var node = CGameSpawnModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk2E00E000 is missing or has an incompatible version.");
+            CGameSpawnModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameSpawnModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameSpawnModel node);
         partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameSpawnModel node);
     }
-    public partial class TMT : CGameSpawnModelBuilderBase<TMT>
+    public partial class TMT : CGameSpawnModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state) : base(state) { }
-        public int TorqueDuration
-        {
-            get => state.Get<int>("TorqueDuration");
-            set => SetTorqueDuration(state, value);
-        }
-        public TMT WithTorqueDuration(int value)
-        {
-            TorqueDuration = value;
-            return this;
-        }
-        public float TorqueX
-        {
-            get => state.Get<float>("TorqueX");
-            set => SetTorqueX(state, value);
-        }
-        public TMT WithTorqueX(float value)
-        {
-            TorqueX = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameSpawnModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameSpawnModel();
-            var chunk2E00E000 = new global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000(GameVersion.TMT);
-            node.Chunks.Add(chunk2E00E000);
+            var node = CGameSpawnModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk2E00E000 is missing or has an incompatible version.");
+            CGameSpawnModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameSpawnModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.GameData.CGameSpawnModel node);
         partial void ValidateNode(global::GBX.NET.Engines.GameData.CGameSpawnModel node);
     }
-    public partial class MP4 : CGameSpawnModelBuilderBase<MP4>
+    public partial class MP4 : CGameSpawnModelBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameSpawnModel> state) : base(state) { }
         public Vec3 DefaultGravitySpawn
@@ -140,36 +178,15 @@ public partial class CGameSpawnModelBuilder : CGameSpawnModelBuilderBase<CGameSp
             DefaultGravitySpawn = value;
             return this;
         }
-        public int TorqueDuration
-        {
-            get => state.Get<int>("TorqueDuration");
-            set => SetTorqueDuration(state, value);
-        }
-        public MP4 WithTorqueDuration(int value)
-        {
-            TorqueDuration = value;
-            return this;
-        }
-        public float TorqueX
-        {
-            get => state.Get<float>("TorqueX");
-            set => SetTorqueX(state, value);
-        }
-        public MP4 WithTorqueX(float value)
-        {
-            TorqueX = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameSpawnModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameSpawnModel();
-            var chunk2E00E000 = new global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000(GameVersion.MP4);
-            node.Chunks.Add(chunk2E00E000);
+            var node = CGameSpawnModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameSpawnModel.Chunk2E00E000>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E00E000 is missing or has an incompatible version.");
+            CGameSpawnModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameSpawnModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

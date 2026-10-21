@@ -43,11 +43,15 @@ public partial interface IGameCtnMediaBlockMP4 : IGameCtnMediaBlock
 {
 }
 
+public partial interface IGameCtnMediaBlockTM2020 : IGameCtnMediaBlock
+{
+}
+
 public partial interface IGameCtnMediaBlockTMF : IGameCtnMediaBlock
 {
 }
 
-public partial interface IGameCtnMediaBlockTM2020 : IGameCtnMediaBlock
+public partial interface IGameCtnMediaBlockMP3 : IGameCtnMediaBlock
 {
 }
 
@@ -60,10 +64,6 @@ public partial interface IGameCtnMediaBlockTMNESWC : IGameCtnMediaBlock
 }
 
 public partial interface IGameCtnMediaBlockVSK5 : IGameCtnMediaBlock
-{
-}
-
-public partial interface IGameCtnMediaBlockMP3 : IGameCtnMediaBlock
 {
 }
 

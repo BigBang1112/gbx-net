@@ -31,6 +31,12 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGamePlayerProfileChunk_GameScoresMembers1<T0> : global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScores where T0 : class
+{
+    new T0? OfficialScores1 { get; set; }
+    new T0? OfficialScores2 { get; set; }
+}
 public partial interface IGamePlayerProfileChunk_GameScores : IClassVersion<global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores>
 {
     global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.LadderMatchResult[]? LadderMatchResults { get; set; }
@@ -39,21 +45,15 @@ public partial interface IGamePlayerProfileChunk_GameScores : IClassVersion<glob
     global::GBX.NET.Engines.Game.CGamePlayerProfileChunk_GameScores.STrainingMedalsScores[]? TrainingMedalsScores { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_GameScoresMP3 : IGamePlayerProfileChunk_GameScores
+public partial interface IGamePlayerProfileChunk_GameScoresMP3 : IGamePlayerProfileChunk_GameScores, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3>
 {
-    new global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? OfficialScores1 { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP3? OfficialScores2 { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_GameScoresTMT : IGamePlayerProfileChunk_GameScores
+public partial interface IGamePlayerProfileChunk_GameScoresTMT : IGamePlayerProfileChunk_GameScores, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT>
 {
-    new global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? OfficialScores1 { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresTMT? OfficialScores2 { get; set; }
 }
 
-public partial interface IGamePlayerProfileChunk_GameScoresMP4 : IGamePlayerProfileChunk_GameScores
+public partial interface IGamePlayerProfileChunk_GameScoresMP4 : IGamePlayerProfileChunk_GameScores, global::GBX.NET.Interfaces.Game.IGamePlayerProfileChunk_GameScoresMembers1<global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4>
 {
-    new global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? OfficialScores1 { get; set; }
-    new global::GBX.NET.Interfaces.Game.IGamePlayerOfficialScoresMP4? OfficialScores2 { get; set; }
 }
 

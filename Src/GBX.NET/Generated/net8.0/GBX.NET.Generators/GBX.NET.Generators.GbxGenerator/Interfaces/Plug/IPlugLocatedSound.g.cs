@@ -31,29 +31,30 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugLocatedSoundMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugLocatedSound where T0 : class
+{
+    new T0? Sound { get; set; }
+}
 public partial interface IPlugLocatedSound : IClassVersion<global::GBX.NET.Engines.Plug.CPlugLocatedSound>
 {
     Iso4 Loc { get; set; }
     global::GBX.NET.Interfaces.Plug.IPlugSound? Sound { get; set; }
 }
 
-public partial interface IPlugLocatedSoundMP3 : IPlugLocatedSound
+public partial interface IPlugLocatedSoundMP3 : IPlugLocatedSound, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? Sound { get; set; }
 }
 
-public partial interface IPlugLocatedSoundTMT : IPlugLocatedSound
+public partial interface IPlugLocatedSoundTMT : IPlugLocatedSound, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? Sound { get; set; }
 }
 
-public partial interface IPlugLocatedSoundMP4 : IPlugLocatedSound
+public partial interface IPlugLocatedSoundMP4 : IPlugLocatedSound, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? Sound { get; set; }
 }
 
-public partial interface IPlugLocatedSoundTM2020 : IPlugLocatedSound
+public partial interface IPlugLocatedSoundTM2020 : IPlugLocatedSound, global::GBX.NET.Interfaces.Plug.IPlugLocatedSoundMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? Sound { get; set; }
 }
 

@@ -39,6 +39,31 @@ public abstract class CPlugParticleSplashModelBuilderBase<TSelf> where TSelf : C
 }
 public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelBuilderBase<CPlugParticleSplashModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugParticleSplashModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
+        var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(game);
+        node.Chunks.Add(chunk090B5000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B5000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugParticleSplashModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
+        var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(game);
+        node.Chunks.Add(chunk090B5000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090B5000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugParticleSplashModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -51,13 +76,12 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
         public global::GBX.NET.Interfaces.Plug.IPlugParticleSplashModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugParticleSplashModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
-            var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(GameVersion.MP3);
-            node.Chunks.Add(chunk090B5000);
+            var node = CPlugParticleSplashModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 4 }) throw new InvalidOperationException("Required MP3 chunk Chunk090B5000 is missing or has an incompatible version.");
+            CPlugParticleSplashModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -70,13 +94,12 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
         public global::GBX.NET.Interfaces.Plug.IPlugParticleSplashModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugParticleSplashModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
-            var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(GameVersion.TMT);
-            node.Chunks.Add(chunk090B5000);
+            var node = CPlugParticleSplashModelBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 4 }) throw new InvalidOperationException("Required TMT chunk Chunk090B5000 is missing or has an incompatible version.");
+            CPlugParticleSplashModelBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -89,13 +112,12 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
         public global::GBX.NET.Interfaces.Plug.IPlugParticleSplashModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugParticleSplashModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
-            var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(GameVersion.MP4);
-            node.Chunks.Add(chunk090B5000);
+            var node = CPlugParticleSplashModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 4 }) throw new InvalidOperationException("Required MP4 chunk Chunk090B5000 is missing or has an incompatible version.");
+            CPlugParticleSplashModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -108,13 +130,12 @@ public partial class CPlugParticleSplashModelBuilder : CPlugParticleSplashModelB
         public global::GBX.NET.Interfaces.Plug.IPlugParticleSplashModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugParticleSplashModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel();
-            var chunk090B5000 = new global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090B5000);
+            var node = CPlugParticleSplashModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugParticleSplashModel.Chunk090B5000>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090B5000 is missing or has an incompatible version.");
+            CPlugParticleSplashModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugParticleSplashModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

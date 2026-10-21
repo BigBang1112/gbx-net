@@ -36,53 +36,53 @@ public abstract class CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGa
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state;
     private protected CGameCtnDecorationMoodBuilderBase() => state = new();
     private protected CGameCtnDecorationMoodBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) => this.state = state;
-    private protected static void SetBackgroundIsLocallyLighted(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set<bool>("BackgroundIsLocallyLighted", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BackgroundIsLocallyLighted = value);
-    private protected static void SetCloudsSolids(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Function.CFuncCloudsSolids? value) => state.Set<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.CloudsSolids = value);
-    private protected static void SetCloudsSolidsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids>>("CloudsSolids", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.CloudsSolids.CopyFrom(reference));
-    private protected static void SetDeltaGMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("DeltaGMT", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DeltaGMT = value);
-    private protected static void SetEditorHelperHdrScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("EditorHelperHdrScale", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EditorHelperHdrScale = value);
-    private protected static void SetEnableStars(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set<bool>("EnableStars", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.EnableStars = value);
-    private protected static void SetFxBloom_FidFuncIntensAtHdrNorm(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FxBloom_FidFuncIntensAtHdrNorm = value);
-    private protected static void SetFxBloom_FidFuncIntensAtHdrNormReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>("FxBloom_FidFuncIntensAtHdrNorm", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FxBloom_FidFuncIntensAtHdrNorm.CopyFrom(reference));
-    private protected static void SetFxHdrScalesT3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FxHdrScalesT3 = value);
-    private protected static void SetFxHdrScalesT3Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3>>("FxHdrScalesT3", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FxHdrScalesT3.CopyFrom(reference));
-    private protected static void SetFxLightning(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxLightning? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FxLightning = value);
-    private protected static void SetFxLightningReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning>>("FxLightning", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FxLightning.CopyFrom(reference));
-    private protected static void SetFxWindOnDecal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FxWindOnDecal = value);
-    private protected static void SetFxWindOnDecalReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal>>("FxWindOnDecal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FxWindOnDecal.CopyFrom(reference));
-    private protected static void SetFxWindOnTreeSprite(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.FxWindOnTreeSprite = value);
-    private protected static void SetFxWindOnTreeSpriteReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite>>("FxWindOnTreeSprite", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FxWindOnTreeSprite.CopyFrom(reference));
-    private protected static void SetHmsAmbientOcc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.HmsAmbientOcc = value);
-    private protected static void SetHmsAmbientOccReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value) => state.Set<NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc>>("HmsAmbientOcc", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.HmsAmbientOcc.CopyFrom(reference));
-    private protected static void SetHmsLightMap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Hms.CHmsLightMap? value) => state.Set<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.HmsLightMap = value);
-    private protected static void SetHmsLightMapReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap>>("HmsLightMap", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.HmsLightMap.CopyFrom(reference));
-    private protected static void SetIsNight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set<bool>("IsNight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsNight = value);
-    private protected static void SetLatitude(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("Latitude", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Latitude = value);
-    private protected static void SetLocalLightScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("LocalLightScale", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.LocalLightScale = value);
-    private protected static void SetLongitude(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("Longitude", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Longitude = value);
-    private protected static void SetMoodBlender(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugMoodBlender? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMoodBlender?>("MoodBlender", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.MoodBlender = value);
-    private protected static void SetMoodBlenderReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender>>("MoodBlender", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MoodBlender.CopyFrom(reference));
-    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, string? value) => state.Set<string?>("RemapFolder", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RemapFolder = value);
-    private protected static void SetRemappedStartDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("RemappedStartDayTime", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RemappedStartDayTime = value);
-    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugGameSkin?>("Remapping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Remapping = value);
-    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>>("Remapping", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Remapping.CopyFrom(reference));
-    private protected static void SetShadowCarIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("ShadowCarIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowCarIntensity = value);
-    private protected static void SetShadowCountCarHuman(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, int value) => state.Set<int>("ShadowCountCarHuman", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowCountCarHuman = value);
-    private protected static void SetShadowCountCarOpponent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, int value) => state.Set<int>("ShadowCountCarOpponent", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowCountCarOpponent = value);
-    private protected static void SetShadowScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set<bool>("ShadowScene", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.ShadowScene = value);
-    private protected static void SetSolidLightAreSkinned(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set<bool>("SolidLightAreSkinned", value, GameVersion.TMNESWC | GameVersion.TMSX, static value => value, static (node, value) => node.SolidLightAreSkinned = value);
-    private protected static void SetSunMoonIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("SunMoonIntensity", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SunMoonIntensity = value);
-    private protected static void SetTech3Bloom(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec3 value) => state.Set<Vec3>("Tech3Bloom", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Tech3Bloom = value);
-    private protected static void SetTech3SpecularFake_ExpScaleMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec3 value) => state.Set<Vec3>("Tech3SpecularFake_ExpScaleMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Tech3SpecularFake_ExpScaleMax = value);
-    private protected static void SetTech3SpecularLocal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec2 value) => state.Set<Vec2>("Tech3SpecularLocal", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Tech3SpecularLocal = value);
-    private protected static void SetTech3ToneMapAutoExp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec4 value) => state.Set<Vec4>("Tech3ToneMapAutoExp", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Tech3ToneMapAutoExp = value);
-    private protected static void SetTimeSunFall(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, TimeInt32 value) => state.Set<TimeInt32>("TimeSunFall", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.TimeSunFall = value);
-    private protected static void SetTimeSunRise(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, TimeInt32 value) => state.Set<TimeInt32>("TimeSunRise", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.TimeSunRise = value);
-    private protected static void SetToneMapAutoExp_FidAvgLumiToKeyValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ToneMapAutoExp_FidAvgLumiToKeyValue = value);
-    private protected static void SetToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set<NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>>("ToneMapAutoExp_FidAvgLumiToKeyValue", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.ToneMapAutoExp_FidAvgLumiToKeyValue.CopyFrom(reference));
-    private protected static void SetToneMapExposureStaticBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set<float>("ToneMapExposureStaticBase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ToneMapExposureStaticBase = value);
-    private protected static void SetToneMapFilmCurve(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, int value) => state.Set<int>("ToneMapFilmCurve", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.ToneMapFilmCurve = value);
-    private protected static void SetWaterReflectFakeCube(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set<bool>("WaterReflectFakeCube", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.WaterReflectFakeCube = value);
+    private protected static void SetBackgroundIsLocallyLighted(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetBackgroundIsLocallyLightedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCloudsSolids(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Function.CFuncCloudsSolids? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetCloudsSolidsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetCloudsSolidsReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetCloudsSolidsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDeltaGMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetDeltaGMTAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetEditorHelperHdrScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetEditorHelperHdrScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetEnableStars(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetEnableStarsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxBloom_FidFuncIntensAtHdrNorm(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxBloom_FidFuncIntensAtHdrNormReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxBloom_FidFuncIntensAtHdrNormReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxHdrScalesT3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxHdrScalesT3Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxHdrScalesT3Reference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxHdrScalesT3ReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxLightning(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxLightning? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxLightningAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxLightningReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxLightningReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxWindOnDecal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnDecalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxWindOnDecalReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnDecalReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxWindOnTreeSprite(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnTreeSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxWindOnTreeSpriteReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetFxWindOnTreeSpriteReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetHmsAmbientOcc(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsAmbientOccAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetHmsAmbientOccReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsAmbientOccReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetHmsLightMap(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Hms.CHmsLightMap? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsLightMapAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetHmsLightMapReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetHmsLightMapReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsNight(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetIsNightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLatitude(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLatitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetLocalLightScale(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLocalLightScaleAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetLongitude(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetLongitudeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMoodBlender(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugMoodBlender? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetMoodBlenderAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetMoodBlenderReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetMoodBlenderReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetRemapFolder(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemapFolderAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRemappedStartDayTime(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappedStartDayTimeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRemapping(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Plug.CPlugGameSkin? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappingAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRemappingReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugGameSkin> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetRemappingReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowCarIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCarIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowCountCarHuman(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCountCarHumanAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowCountCarOpponent(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowCountCarOpponentAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetShadowScene(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetShadowSceneAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSolidLightAreSkinned(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetSolidLightAreSkinnedAssignment(), value, GameVersion.TMNESWC | GameVersion.TMSX);
+    private protected static void SetSunMoonIntensity(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetSunMoonIntensityAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTech3Bloom(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3BloomAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTech3SpecularFake_ExpScaleMax(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3SpecularFake_ExpScaleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTech3SpecularLocal(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec2 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3SpecularLocalAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTech3ToneMapAutoExp(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, Vec4 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTech3ToneMapAutoExpAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetTimeSunFall(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTimeSunFallAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTimeSunRise(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, TimeInt32 value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetTimeSunRiseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetToneMapAutoExp_FidAvgLumiToKeyValue(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, global::GBX.NET.Engines.Function.CFuncKeysReal? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapAutoExp_FidAvgLumiToKeyValueAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapAutoExp_FidAvgLumiToKeyValueReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetToneMapExposureStaticBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapExposureStaticBaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetToneMapFilmCurve(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetToneMapFilmCurveAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetWaterReflectFakeCube(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnDecorationMoodBuilderAssignments.GetWaterReflectFakeCubeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public bool BackgroundIsLocallyLighted
     {
         get => state.Get<bool>("BackgroundIsLocallyLighted");
@@ -230,8 +230,446 @@ public abstract class CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGa
         return (TSelf)this;
     }
 }
+public abstract class CGameCtnDecorationMoodBuilderMembers1<TSelf> : CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers1<TSelf>
+{
+    private protected CGameCtnDecorationMoodBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
+    public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
+        set => SetHmsLightMap(state, value);
+    }
+    public TSelf WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
+    {
+        HmsLightMap = value;
+        return (TSelf)this;
+    }
+    public TSelf WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetHmsLightMapReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnDecorationMoodBuilderMembers2<TSelf> : CGameCtnDecorationMoodBuilderBase<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers2<TSelf>
+{
+    private protected CGameCtnDecorationMoodBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
+    public bool SolidLightAreSkinned
+    {
+        get => state.Get<bool>("SolidLightAreSkinned");
+        set => SetSolidLightAreSkinned(state, value);
+    }
+    public TSelf WithSolidLightAreSkinned(bool value)
+    {
+        SolidLightAreSkinned = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnDecorationMoodBuilderMembers3<TSelf> : CGameCtnDecorationMoodBuilderMembers1<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers3<TSelf>
+{
+    private protected CGameCtnDecorationMoodBuilderMembers3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
+    public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
+    {
+        get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
+        set => SetHmsAmbientOcc(state, value);
+    }
+    public TSelf WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
+    {
+        HmsAmbientOcc = value;
+        return (TSelf)this;
+    }
+    public TSelf WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetHmsAmbientOccReference(state, value);
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnDecorationMoodBuilderMembers4<TSelf> : CGameCtnDecorationMoodBuilderMembers3<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers4<TSelf>
+{
+    private protected CGameCtnDecorationMoodBuilderMembers4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
+    public global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids");
+        set => SetCloudsSolids(state, value);
+    }
+    public TSelf WithCloudsSolids(global::GBX.NET.Engines.Function.CFuncCloudsSolids? value)
+    {
+        CloudsSolids = value;
+        return (TSelf)this;
+    }
+    public TSelf WithCloudsSolidsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetCloudsSolidsReference(state, value);
+        return (TSelf)this;
+    }
+    public float EditorHelperHdrScale
+    {
+        get => state.Get<float>("EditorHelperHdrScale");
+        set => SetEditorHelperHdrScale(state, value);
+    }
+    public TSelf WithEditorHelperHdrScale(float value)
+    {
+        EditorHelperHdrScale = value;
+        return (TSelf)this;
+    }
+    public bool EnableStars
+    {
+        get => state.Get<bool>("EnableStars");
+        set => SetEnableStars(state, value);
+    }
+    public TSelf WithEnableStars(bool value)
+    {
+        EnableStars = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm");
+        set => SetFxBloom_FidFuncIntensAtHdrNorm(state, value);
+    }
+    public TSelf WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
+    {
+        FxBloom_FidFuncIntensAtHdrNorm = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFxBloom_FidFuncIntensAtHdrNormReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? FxHdrScalesT3
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3");
+        set => SetFxHdrScalesT3(state, value);
+    }
+    public TSelf WithFxHdrScalesT3(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value)
+    {
+        FxHdrScalesT3 = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFxHdrScalesT3Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFxHdrScalesT3Reference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugFxLightning? FxLightning
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning");
+        set => SetFxLightning(state, value);
+    }
+    public TSelf WithFxLightning(global::GBX.NET.Engines.Plug.CPlugFxLightning? value)
+    {
+        FxLightning = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFxLightningReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFxLightningReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal");
+        set => SetFxWindOnDecal(state, value);
+    }
+    public TSelf WithFxWindOnDecal(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value)
+    {
+        FxWindOnDecal = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFxWindOnDecalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFxWindOnDecalReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite");
+        set => SetFxWindOnTreeSprite(state, value);
+    }
+    public TSelf WithFxWindOnTreeSprite(global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value)
+    {
+        FxWindOnTreeSprite = value;
+        return (TSelf)this;
+    }
+    public TSelf WithFxWindOnTreeSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetFxWindOnTreeSpriteReference(state, value);
+        return (TSelf)this;
+    }
+    public float LocalLightScale
+    {
+        get => state.Get<float>("LocalLightScale");
+        set => SetLocalLightScale(state, value);
+    }
+    public TSelf WithLocalLightScale(float value)
+    {
+        LocalLightScale = value;
+        return (TSelf)this;
+    }
+    public float SunMoonIntensity
+    {
+        get => state.Get<float>("SunMoonIntensity");
+        set => SetSunMoonIntensity(state, value);
+    }
+    public TSelf WithSunMoonIntensity(float value)
+    {
+        SunMoonIntensity = value;
+        return (TSelf)this;
+    }
+    public Vec3 Tech3Bloom
+    {
+        get => state.Get<Vec3>("Tech3Bloom");
+        set => SetTech3Bloom(state, value);
+    }
+    public TSelf WithTech3Bloom(Vec3 value)
+    {
+        Tech3Bloom = value;
+        return (TSelf)this;
+    }
+    public Vec3 Tech3SpecularFake_ExpScaleMax
+    {
+        get => state.Get<Vec3>("Tech3SpecularFake_ExpScaleMax");
+        set => SetTech3SpecularFake_ExpScaleMax(state, value);
+    }
+    public TSelf WithTech3SpecularFake_ExpScaleMax(Vec3 value)
+    {
+        Tech3SpecularFake_ExpScaleMax = value;
+        return (TSelf)this;
+    }
+    public Vec2 Tech3SpecularLocal
+    {
+        get => state.Get<Vec2>("Tech3SpecularLocal");
+        set => SetTech3SpecularLocal(state, value);
+    }
+    public TSelf WithTech3SpecularLocal(Vec2 value)
+    {
+        Tech3SpecularLocal = value;
+        return (TSelf)this;
+    }
+    public Vec4 Tech3ToneMapAutoExp
+    {
+        get => state.Get<Vec4>("Tech3ToneMapAutoExp");
+        set => SetTech3ToneMapAutoExp(state, value);
+    }
+    public TSelf WithTech3ToneMapAutoExp(Vec4 value)
+    {
+        Tech3ToneMapAutoExp = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Function.CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
+    {
+        get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue");
+        set => SetToneMapAutoExp_FidAvgLumiToKeyValue(state, value);
+    }
+    public TSelf WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
+    {
+        ToneMapAutoExp_FidAvgLumiToKeyValue = value;
+        return (TSelf)this;
+    }
+    public TSelf WithToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetToneMapAutoExp_FidAvgLumiToKeyValueReference(state, value);
+        return (TSelf)this;
+    }
+    public float ToneMapExposureStaticBase
+    {
+        get => state.Get<float>("ToneMapExposureStaticBase");
+        set => SetToneMapExposureStaticBase(state, value);
+    }
+    public TSelf WithToneMapExposureStaticBase(float value)
+    {
+        ToneMapExposureStaticBase = value;
+        return (TSelf)this;
+    }
+    public int ToneMapFilmCurve
+    {
+        get => state.Get<int>("ToneMapFilmCurve");
+        set => SetToneMapFilmCurve(state, value);
+    }
+    public TSelf WithToneMapFilmCurve(int value)
+    {
+        ToneMapFilmCurve = value;
+        return (TSelf)this;
+    }
+    public bool WaterReflectFakeCube
+    {
+        get => state.Get<bool>("WaterReflectFakeCube");
+        set => SetWaterReflectFakeCube(state, value);
+    }
+    public TSelf WithWaterReflectFakeCube(bool value)
+    {
+        WaterReflectFakeCube = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CGameCtnDecorationMoodBuilderMembers5<TSelf> : CGameCtnDecorationMoodBuilderMembers4<TSelf> where TSelf : CGameCtnDecorationMoodBuilderMembers5<TSelf>
+{
+    private protected CGameCtnDecorationMoodBuilderMembers5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodBlender?>("MoodBlender");
+        set => SetMoodBlender(state, value);
+    }
+    public TSelf WithMoodBlender(global::GBX.NET.Engines.Plug.CPlugMoodBlender? value)
+    {
+        MoodBlender = value;
+        return (TSelf)this;
+    }
+    public TSelf WithMoodBlenderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetMoodBlenderReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuilderBase<CGameCtnDecorationMoodBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
+        var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
+        node.Chunks.Add(chunk0303A000);
+        var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
+        node.Chunks.Add(chunk0303A001);
+        var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
+        node.Chunks.Add(chunk0303A002);
+        var chunk0303A003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003();
+        node.Chunks.Add(chunk0303A003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
+        var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
+        node.Chunks.Add(chunk0303A000);
+        var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
+        node.Chunks.Add(chunk0303A001);
+        var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
+        node.Chunks.Add(chunk0303A002);
+        var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
+        node.Chunks.Add(chunk0303A004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
+        var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
+        node.Chunks.Add(chunk0303A000);
+        var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
+        node.Chunks.Add(chunk0303A001);
+        var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
+        node.Chunks.Add(chunk0303A002);
+        var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
+        node.Chunks.Add(chunk0303A004);
+        var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
+        node.Chunks.Add(chunk0303A005);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
+        var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
+        node.Chunks.Add(chunk0303A000);
+        var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
+        node.Chunks.Add(chunk0303A002);
+        var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
+        node.Chunks.Add(chunk0303A004);
+        var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
+        node.Chunks.Add(chunk0303A005);
+        var chunk0303A007 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007();
+        node.Chunks.Add(chunk0303A007);
+        var chunk0303A00C = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C();
+        node.Chunks.Add(chunk0303A00C);
+        var chunk0303A00F = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(game);
+        node.Chunks.Add(chunk0303A00F);
+        var chunk0303A012 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(game);
+        node.Chunks.Add(chunk0303A012);
+        var chunk0303A013 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013();
+        chunk0303A013.Version = 0;
+        node.Chunks.Add(chunk0303A013);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A013 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameCtnDecorationMood CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
+        var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
+        node.Chunks.Add(chunk0303A000);
+        var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
+        node.Chunks.Add(chunk0303A002);
+        var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
+        node.Chunks.Add(chunk0303A004);
+        var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
+        node.Chunks.Add(chunk0303A005);
+        var chunk0303A007 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007();
+        node.Chunks.Add(chunk0303A007);
+        var chunk0303A00C = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C();
+        node.Chunks.Add(chunk0303A00C);
+        var chunk0303A00F = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(game);
+        node.Chunks.Add(chunk0303A00F);
+        var chunk0303A012 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(game);
+        node.Chunks.Add(chunk0303A012);
+        var chunk0303A013 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013();
+        chunk0303A013.Version = 0;
+        node.Chunks.Add(chunk0303A013);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A002 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A005 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A007 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303A013 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -242,112 +680,56 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
     public TM2020 ForTM2020() => new(state.Snapshot());
-    public partial class TMSX : CGameCtnDecorationMoodBuilderBase<TMSX>
+    public partial class TMSX : CGameCtnDecorationMoodBuilderMembers2<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
         public TMSX WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMSX? value)
         {
             return base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool SolidLightAreSkinned
-        {
-            get => state.Get<bool>("SolidLightAreSkinned");
-            set => SetSolidLightAreSkinned(state, value);
-        }
-        public TMSX WithSolidLightAreSkinned(bool value)
-        {
-            SolidLightAreSkinned = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
-            node.Chunks.Add(chunk0303A001);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003();
-            node.Chunks.Add(chunk0303A003);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303A001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303A003 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class TMNESWC : CGameCtnDecorationMoodBuilderBase<TMNESWC>
+    public partial class TMNESWC : CGameCtnDecorationMoodBuilderMembers2<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
         public TMNESWC WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMNESWC? value)
         {
             return base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public bool SolidLightAreSkinned
-        {
-            get => state.Get<bool>("SolidLightAreSkinned");
-            set => SetSolidLightAreSkinned(state, value);
-        }
-        public TMNESWC WithSolidLightAreSkinned(bool value)
-        {
-            SolidLightAreSkinned = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
-            node.Chunks.Add(chunk0303A001);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A003 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003();
-            node.Chunks.Add(chunk0303A003);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303A001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303A003 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class VSK5 : CGameCtnDecorationMoodBuilderBase<VSK5>
+    public partial class VSK5 : CGameCtnDecorationMoodBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-        public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-            set => SetHmsLightMap(state, value);
-        }
-        public VSK5 WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
-        {
-            HmsLightMap = value;
-            return this;
-        }
-        public VSK5 WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsLightMapReference(state, value);
-            return this;
-        }
         public VSK5 WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapVSK5? value)
         {
-            return WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public VSK5 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinVSK5? value)
         {
@@ -356,70 +738,28 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
-            node.Chunks.Add(chunk0303A001);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
-            node.Chunks.Add(chunk0303A004);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303A001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303A004 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class TMF : CGameCtnDecorationMoodBuilderBase<TMF>
+    public partial class TMF : CGameCtnDecorationMoodBuilderMembers3<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-        public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
-            set => SetHmsAmbientOcc(state, value);
-        }
-        public TMF WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
-        {
-            HmsAmbientOcc = value;
-            return this;
-        }
-        public TMF WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsAmbientOccReference(state, value);
-            return this;
-        }
         public TMF WithHmsAmbientOcc(global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF? value)
         {
-            return WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-            set => SetHmsLightMap(state, value);
-        }
-        public TMF WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
-        {
-            HmsLightMap = value;
-            return this;
-        }
-        public TMF WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsLightMapReference(state, value);
-            return this;
+            return base.WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapTMF? value)
         {
-            return WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMF WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMF? value)
         {
@@ -428,1361 +768,196 @@ public partial class CGameCtnDecorationMoodBuilder : CGameCtnDecorationMoodBuild
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A001 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001();
-            node.Chunks.Add(chunk0303A001);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
-            node.Chunks.Add(chunk0303A004);
-            var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
-            node.Chunks.Add(chunk0303A005);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303A001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303A005 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class MP3 : CGameCtnDecorationMoodBuilderBase<MP3>
+    public partial class MP3 : CGameCtnDecorationMoodBuilderMembers4<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-        public global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids");
-            set => SetCloudsSolids(state, value);
-        }
-        public MP3 WithCloudsSolids(global::GBX.NET.Engines.Function.CFuncCloudsSolids? value)
-        {
-            CloudsSolids = value;
-            return this;
-        }
-        public MP3 WithCloudsSolidsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCloudsSolidsReference(state, value);
-            return this;
-        }
-        public float EditorHelperHdrScale
-        {
-            get => state.Get<float>("EditorHelperHdrScale");
-            set => SetEditorHelperHdrScale(state, value);
-        }
-        public MP3 WithEditorHelperHdrScale(float value)
-        {
-            EditorHelperHdrScale = value;
-            return this;
-        }
-        public bool EnableStars
-        {
-            get => state.Get<bool>("EnableStars");
-            set => SetEnableStars(state, value);
-        }
-        public MP3 WithEnableStars(bool value)
-        {
-            EnableStars = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm");
-            set => SetFxBloom_FidFuncIntensAtHdrNorm(state, value);
-        }
-        public MP3 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            FxBloom_FidFuncIntensAtHdrNorm = value;
-            return this;
-        }
-        public MP3 WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxBloom_FidFuncIntensAtHdrNormReference(state, value);
-            return this;
-        }
         public MP3 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? value)
         {
-            return WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? FxHdrScalesT3
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3");
-            set => SetFxHdrScalesT3(state, value);
-        }
-        public MP3 WithFxHdrScalesT3(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value)
-        {
-            FxHdrScalesT3 = value;
-            return this;
-        }
-        public MP3 WithFxHdrScalesT3Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxHdrScalesT3Reference(state, value);
-            return this;
+            return base.WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFxHdrScalesT3(global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP3? value)
         {
-            return WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxLightning? FxLightning
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning");
-            set => SetFxLightning(state, value);
-        }
-        public MP3 WithFxLightning(global::GBX.NET.Engines.Plug.CPlugFxLightning? value)
-        {
-            FxLightning = value;
-            return this;
-        }
-        public MP3 WithFxLightningReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxLightningReference(state, value);
-            return this;
+            return base.WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithFxLightning(global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP3? value)
         {
-            return WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal");
-            set => SetFxWindOnDecal(state, value);
-        }
-        public MP3 WithFxWindOnDecal(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value)
-        {
-            FxWindOnDecal = value;
-            return this;
-        }
-        public MP3 WithFxWindOnDecalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnDecalReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite");
-            set => SetFxWindOnTreeSprite(state, value);
-        }
-        public MP3 WithFxWindOnTreeSprite(global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value)
-        {
-            FxWindOnTreeSprite = value;
-            return this;
-        }
-        public MP3 WithFxWindOnTreeSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnTreeSpriteReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
-            set => SetHmsAmbientOcc(state, value);
-        }
-        public MP3 WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
-        {
-            HmsAmbientOcc = value;
-            return this;
-        }
-        public MP3 WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsAmbientOccReference(state, value);
-            return this;
+            return base.WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithHmsAmbientOcc(global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3? value)
         {
-            return WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-            set => SetHmsLightMap(state, value);
-        }
-        public MP3 WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
-        {
-            HmsLightMap = value;
-            return this;
-        }
-        public MP3 WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsLightMapReference(state, value);
-            return this;
+            return base.WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapMP3? value)
         {
-            return WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float LocalLightScale
-        {
-            get => state.Get<float>("LocalLightScale");
-            set => SetLocalLightScale(state, value);
-        }
-        public MP3 WithLocalLightScale(float value)
-        {
-            LocalLightScale = value;
-            return this;
+            return base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP3 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? value)
         {
             return base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SunMoonIntensity
-        {
-            get => state.Get<float>("SunMoonIntensity");
-            set => SetSunMoonIntensity(state, value);
-        }
-        public MP3 WithSunMoonIntensity(float value)
-        {
-            SunMoonIntensity = value;
-            return this;
-        }
-        public Vec3 Tech3Bloom
-        {
-            get => state.Get<Vec3>("Tech3Bloom");
-            set => SetTech3Bloom(state, value);
-        }
-        public MP3 WithTech3Bloom(Vec3 value)
-        {
-            Tech3Bloom = value;
-            return this;
-        }
-        public Vec3 Tech3SpecularFake_ExpScaleMax
-        {
-            get => state.Get<Vec3>("Tech3SpecularFake_ExpScaleMax");
-            set => SetTech3SpecularFake_ExpScaleMax(state, value);
-        }
-        public MP3 WithTech3SpecularFake_ExpScaleMax(Vec3 value)
-        {
-            Tech3SpecularFake_ExpScaleMax = value;
-            return this;
-        }
-        public Vec2 Tech3SpecularLocal
-        {
-            get => state.Get<Vec2>("Tech3SpecularLocal");
-            set => SetTech3SpecularLocal(state, value);
-        }
-        public MP3 WithTech3SpecularLocal(Vec2 value)
-        {
-            Tech3SpecularLocal = value;
-            return this;
-        }
-        public Vec4 Tech3ToneMapAutoExp
-        {
-            get => state.Get<Vec4>("Tech3ToneMapAutoExp");
-            set => SetTech3ToneMapAutoExp(state, value);
-        }
-        public MP3 WithTech3ToneMapAutoExp(Vec4 value)
-        {
-            Tech3ToneMapAutoExp = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue");
-            set => SetToneMapAutoExp_FidAvgLumiToKeyValue(state, value);
-        }
-        public MP3 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            ToneMapAutoExp_FidAvgLumiToKeyValue = value;
-            return this;
-        }
-        public MP3 WithToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetToneMapAutoExp_FidAvgLumiToKeyValueReference(state, value);
-            return this;
-        }
         public MP3 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP3? value)
         {
-            return WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float ToneMapExposureStaticBase
-        {
-            get => state.Get<float>("ToneMapExposureStaticBase");
-            set => SetToneMapExposureStaticBase(state, value);
-        }
-        public MP3 WithToneMapExposureStaticBase(float value)
-        {
-            ToneMapExposureStaticBase = value;
-            return this;
-        }
-        public int ToneMapFilmCurve
-        {
-            get => state.Get<int>("ToneMapFilmCurve");
-            set => SetToneMapFilmCurve(state, value);
-        }
-        public MP3 WithToneMapFilmCurve(int value)
-        {
-            ToneMapFilmCurve = value;
-            return this;
-        }
-        public bool WaterReflectFakeCube
-        {
-            get => state.Get<bool>("WaterReflectFakeCube");
-            set => SetWaterReflectFakeCube(state, value);
-        }
-        public MP3 WithWaterReflectFakeCube(bool value)
-        {
-            WaterReflectFakeCube = value;
-            return this;
+            return base.WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
-            node.Chunks.Add(chunk0303A004);
-            var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
-            node.Chunks.Add(chunk0303A005);
-            var chunk0303A007 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007();
-            node.Chunks.Add(chunk0303A007);
-            var chunk0303A00C = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C();
-            node.Chunks.Add(chunk0303A00C);
-            var chunk0303A00F = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(GameVersion.MP3);
-            node.Chunks.Add(chunk0303A00F);
-            var chunk0303A012 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(GameVersion.MP3);
-            node.Chunks.Add(chunk0303A012);
-            var chunk0303A013 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013();
-            chunk0303A013.Version = 0;
-            node.Chunks.Add(chunk0303A013);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303A005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303A007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk0303A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0303A012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException("Required MP3 chunk Chunk0303A013 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class TMT : CGameCtnDecorationMoodBuilderBase<TMT>
+    public partial class TMT : CGameCtnDecorationMoodBuilderMembers4<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-        public global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids");
-            set => SetCloudsSolids(state, value);
-        }
-        public TMT WithCloudsSolids(global::GBX.NET.Engines.Function.CFuncCloudsSolids? value)
-        {
-            CloudsSolids = value;
-            return this;
-        }
-        public TMT WithCloudsSolidsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCloudsSolidsReference(state, value);
-            return this;
-        }
-        public float EditorHelperHdrScale
-        {
-            get => state.Get<float>("EditorHelperHdrScale");
-            set => SetEditorHelperHdrScale(state, value);
-        }
-        public TMT WithEditorHelperHdrScale(float value)
-        {
-            EditorHelperHdrScale = value;
-            return this;
-        }
-        public bool EnableStars
-        {
-            get => state.Get<bool>("EnableStars");
-            set => SetEnableStars(state, value);
-        }
-        public TMT WithEnableStars(bool value)
-        {
-            EnableStars = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm");
-            set => SetFxBloom_FidFuncIntensAtHdrNorm(state, value);
-        }
-        public TMT WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            FxBloom_FidFuncIntensAtHdrNorm = value;
-            return this;
-        }
-        public TMT WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxBloom_FidFuncIntensAtHdrNormReference(state, value);
-            return this;
-        }
         public TMT WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? value)
         {
-            return WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? FxHdrScalesT3
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3");
-            set => SetFxHdrScalesT3(state, value);
-        }
-        public TMT WithFxHdrScalesT3(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value)
-        {
-            FxHdrScalesT3 = value;
-            return this;
-        }
-        public TMT WithFxHdrScalesT3Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxHdrScalesT3Reference(state, value);
-            return this;
+            return base.WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFxHdrScalesT3(global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TMT? value)
         {
-            return WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxLightning? FxLightning
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning");
-            set => SetFxLightning(state, value);
-        }
-        public TMT WithFxLightning(global::GBX.NET.Engines.Plug.CPlugFxLightning? value)
-        {
-            FxLightning = value;
-            return this;
-        }
-        public TMT WithFxLightningReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxLightningReference(state, value);
-            return this;
+            return base.WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithFxLightning(global::GBX.NET.Interfaces.Plug.IPlugFxLightningTMT? value)
         {
-            return WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal");
-            set => SetFxWindOnDecal(state, value);
-        }
-        public TMT WithFxWindOnDecal(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value)
-        {
-            FxWindOnDecal = value;
-            return this;
-        }
-        public TMT WithFxWindOnDecalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnDecalReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite");
-            set => SetFxWindOnTreeSprite(state, value);
-        }
-        public TMT WithFxWindOnTreeSprite(global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value)
-        {
-            FxWindOnTreeSprite = value;
-            return this;
-        }
-        public TMT WithFxWindOnTreeSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnTreeSpriteReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
-            set => SetHmsAmbientOcc(state, value);
-        }
-        public TMT WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
-        {
-            HmsAmbientOcc = value;
-            return this;
-        }
-        public TMT WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsAmbientOccReference(state, value);
-            return this;
+            return base.WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithHmsAmbientOcc(global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT? value)
         {
-            return WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-            set => SetHmsLightMap(state, value);
-        }
-        public TMT WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
-        {
-            HmsLightMap = value;
-            return this;
-        }
-        public TMT WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsLightMapReference(state, value);
-            return this;
+            return base.WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapTMT? value)
         {
-            return WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float LocalLightScale
-        {
-            get => state.Get<float>("LocalLightScale");
-            set => SetLocalLightScale(state, value);
-        }
-        public TMT WithLocalLightScale(float value)
-        {
-            LocalLightScale = value;
-            return this;
+            return base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? value)
         {
             return base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SunMoonIntensity
-        {
-            get => state.Get<float>("SunMoonIntensity");
-            set => SetSunMoonIntensity(state, value);
-        }
-        public TMT WithSunMoonIntensity(float value)
-        {
-            SunMoonIntensity = value;
-            return this;
-        }
-        public Vec3 Tech3Bloom
-        {
-            get => state.Get<Vec3>("Tech3Bloom");
-            set => SetTech3Bloom(state, value);
-        }
-        public TMT WithTech3Bloom(Vec3 value)
-        {
-            Tech3Bloom = value;
-            return this;
-        }
-        public Vec3 Tech3SpecularFake_ExpScaleMax
-        {
-            get => state.Get<Vec3>("Tech3SpecularFake_ExpScaleMax");
-            set => SetTech3SpecularFake_ExpScaleMax(state, value);
-        }
-        public TMT WithTech3SpecularFake_ExpScaleMax(Vec3 value)
-        {
-            Tech3SpecularFake_ExpScaleMax = value;
-            return this;
-        }
-        public Vec2 Tech3SpecularLocal
-        {
-            get => state.Get<Vec2>("Tech3SpecularLocal");
-            set => SetTech3SpecularLocal(state, value);
-        }
-        public TMT WithTech3SpecularLocal(Vec2 value)
-        {
-            Tech3SpecularLocal = value;
-            return this;
-        }
-        public Vec4 Tech3ToneMapAutoExp
-        {
-            get => state.Get<Vec4>("Tech3ToneMapAutoExp");
-            set => SetTech3ToneMapAutoExp(state, value);
-        }
-        public TMT WithTech3ToneMapAutoExp(Vec4 value)
-        {
-            Tech3ToneMapAutoExp = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue");
-            set => SetToneMapAutoExp_FidAvgLumiToKeyValue(state, value);
-        }
-        public TMT WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            ToneMapAutoExp_FidAvgLumiToKeyValue = value;
-            return this;
-        }
-        public TMT WithToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetToneMapAutoExp_FidAvgLumiToKeyValueReference(state, value);
-            return this;
-        }
         public TMT WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Interfaces.Function.IFuncKeysRealTMT? value)
         {
-            return WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float ToneMapExposureStaticBase
-        {
-            get => state.Get<float>("ToneMapExposureStaticBase");
-            set => SetToneMapExposureStaticBase(state, value);
-        }
-        public TMT WithToneMapExposureStaticBase(float value)
-        {
-            ToneMapExposureStaticBase = value;
-            return this;
-        }
-        public int ToneMapFilmCurve
-        {
-            get => state.Get<int>("ToneMapFilmCurve");
-            set => SetToneMapFilmCurve(state, value);
-        }
-        public TMT WithToneMapFilmCurve(int value)
-        {
-            ToneMapFilmCurve = value;
-            return this;
-        }
-        public bool WaterReflectFakeCube
-        {
-            get => state.Get<bool>("WaterReflectFakeCube");
-            set => SetWaterReflectFakeCube(state, value);
-        }
-        public TMT WithWaterReflectFakeCube(bool value)
-        {
-            WaterReflectFakeCube = value;
-            return this;
+            return base.WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
-            node.Chunks.Add(chunk0303A004);
-            var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
-            node.Chunks.Add(chunk0303A005);
-            var chunk0303A007 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007();
-            node.Chunks.Add(chunk0303A007);
-            var chunk0303A00C = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C();
-            node.Chunks.Add(chunk0303A00C);
-            var chunk0303A00F = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(GameVersion.TMT);
-            node.Chunks.Add(chunk0303A00F);
-            var chunk0303A012 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(GameVersion.TMT);
-            node.Chunks.Add(chunk0303A012);
-            var chunk0303A013 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013();
-            chunk0303A013.Version = 0;
-            node.Chunks.Add(chunk0303A013);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303A005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303A007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 2 }) throw new InvalidOperationException("Required TMT chunk Chunk0303A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0303A012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0303A013 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class MP4 : CGameCtnDecorationMoodBuilderBase<MP4>
+    public partial class MP4 : CGameCtnDecorationMoodBuilderMembers5<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-        public global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids");
-            set => SetCloudsSolids(state, value);
-        }
-        public MP4 WithCloudsSolids(global::GBX.NET.Engines.Function.CFuncCloudsSolids? value)
-        {
-            CloudsSolids = value;
-            return this;
-        }
-        public MP4 WithCloudsSolidsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCloudsSolidsReference(state, value);
-            return this;
-        }
-        public float EditorHelperHdrScale
-        {
-            get => state.Get<float>("EditorHelperHdrScale");
-            set => SetEditorHelperHdrScale(state, value);
-        }
-        public MP4 WithEditorHelperHdrScale(float value)
-        {
-            EditorHelperHdrScale = value;
-            return this;
-        }
-        public bool EnableStars
-        {
-            get => state.Get<bool>("EnableStars");
-            set => SetEnableStars(state, value);
-        }
-        public MP4 WithEnableStars(bool value)
-        {
-            EnableStars = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm");
-            set => SetFxBloom_FidFuncIntensAtHdrNorm(state, value);
-        }
-        public MP4 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            FxBloom_FidFuncIntensAtHdrNorm = value;
-            return this;
-        }
-        public MP4 WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxBloom_FidFuncIntensAtHdrNormReference(state, value);
-            return this;
-        }
         public MP4 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value)
         {
-            return WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? FxHdrScalesT3
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3");
-            set => SetFxHdrScalesT3(state, value);
-        }
-        public MP4 WithFxHdrScalesT3(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value)
-        {
-            FxHdrScalesT3 = value;
-            return this;
-        }
-        public MP4 WithFxHdrScalesT3Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxHdrScalesT3Reference(state, value);
-            return this;
+            return base.WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFxHdrScalesT3(global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3MP4? value)
         {
-            return WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxLightning? FxLightning
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning");
-            set => SetFxLightning(state, value);
-        }
-        public MP4 WithFxLightning(global::GBX.NET.Engines.Plug.CPlugFxLightning? value)
-        {
-            FxLightning = value;
-            return this;
-        }
-        public MP4 WithFxLightningReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxLightningReference(state, value);
-            return this;
+            return base.WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithFxLightning(global::GBX.NET.Interfaces.Plug.IPlugFxLightningMP4? value)
         {
-            return WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal");
-            set => SetFxWindOnDecal(state, value);
-        }
-        public MP4 WithFxWindOnDecal(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value)
-        {
-            FxWindOnDecal = value;
-            return this;
-        }
-        public MP4 WithFxWindOnDecalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnDecalReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite");
-            set => SetFxWindOnTreeSprite(state, value);
-        }
-        public MP4 WithFxWindOnTreeSprite(global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value)
-        {
-            FxWindOnTreeSprite = value;
-            return this;
-        }
-        public MP4 WithFxWindOnTreeSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnTreeSpriteReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
-            set => SetHmsAmbientOcc(state, value);
-        }
-        public MP4 WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
-        {
-            HmsAmbientOcc = value;
-            return this;
-        }
-        public MP4 WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsAmbientOccReference(state, value);
-            return this;
+            return base.WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithHmsAmbientOcc(global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4? value)
         {
-            return WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-            set => SetHmsLightMap(state, value);
-        }
-        public MP4 WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
-        {
-            HmsLightMap = value;
-            return this;
-        }
-        public MP4 WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsLightMapReference(state, value);
-            return this;
+            return base.WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapMP4? value)
         {
-            return WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float LocalLightScale
-        {
-            get => state.Get<float>("LocalLightScale");
-            set => SetLocalLightScale(state, value);
-        }
-        public MP4 WithLocalLightScale(float value)
-        {
-            LocalLightScale = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodBlender?>("MoodBlender");
-            set => SetMoodBlender(state, value);
-        }
-        public MP4 WithMoodBlender(global::GBX.NET.Engines.Plug.CPlugMoodBlender? value)
-        {
-            MoodBlender = value;
-            return this;
-        }
-        public MP4 WithMoodBlenderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMoodBlenderReference(state, value);
-            return this;
+            return base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? value)
         {
             return base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SunMoonIntensity
-        {
-            get => state.Get<float>("SunMoonIntensity");
-            set => SetSunMoonIntensity(state, value);
-        }
-        public MP4 WithSunMoonIntensity(float value)
-        {
-            SunMoonIntensity = value;
-            return this;
-        }
-        public Vec3 Tech3Bloom
-        {
-            get => state.Get<Vec3>("Tech3Bloom");
-            set => SetTech3Bloom(state, value);
-        }
-        public MP4 WithTech3Bloom(Vec3 value)
-        {
-            Tech3Bloom = value;
-            return this;
-        }
-        public Vec3 Tech3SpecularFake_ExpScaleMax
-        {
-            get => state.Get<Vec3>("Tech3SpecularFake_ExpScaleMax");
-            set => SetTech3SpecularFake_ExpScaleMax(state, value);
-        }
-        public MP4 WithTech3SpecularFake_ExpScaleMax(Vec3 value)
-        {
-            Tech3SpecularFake_ExpScaleMax = value;
-            return this;
-        }
-        public Vec2 Tech3SpecularLocal
-        {
-            get => state.Get<Vec2>("Tech3SpecularLocal");
-            set => SetTech3SpecularLocal(state, value);
-        }
-        public MP4 WithTech3SpecularLocal(Vec2 value)
-        {
-            Tech3SpecularLocal = value;
-            return this;
-        }
-        public Vec4 Tech3ToneMapAutoExp
-        {
-            get => state.Get<Vec4>("Tech3ToneMapAutoExp");
-            set => SetTech3ToneMapAutoExp(state, value);
-        }
-        public MP4 WithTech3ToneMapAutoExp(Vec4 value)
-        {
-            Tech3ToneMapAutoExp = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue");
-            set => SetToneMapAutoExp_FidAvgLumiToKeyValue(state, value);
-        }
-        public MP4 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            ToneMapAutoExp_FidAvgLumiToKeyValue = value;
-            return this;
-        }
-        public MP4 WithToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetToneMapAutoExp_FidAvgLumiToKeyValueReference(state, value);
-            return this;
-        }
         public MP4 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Interfaces.Function.IFuncKeysRealMP4? value)
         {
-            return WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float ToneMapExposureStaticBase
-        {
-            get => state.Get<float>("ToneMapExposureStaticBase");
-            set => SetToneMapExposureStaticBase(state, value);
-        }
-        public MP4 WithToneMapExposureStaticBase(float value)
-        {
-            ToneMapExposureStaticBase = value;
-            return this;
-        }
-        public int ToneMapFilmCurve
-        {
-            get => state.Get<int>("ToneMapFilmCurve");
-            set => SetToneMapFilmCurve(state, value);
-        }
-        public MP4 WithToneMapFilmCurve(int value)
-        {
-            ToneMapFilmCurve = value;
-            return this;
-        }
-        public bool WaterReflectFakeCube
-        {
-            get => state.Get<bool>("WaterReflectFakeCube");
-            set => SetWaterReflectFakeCube(state, value);
-        }
-        public MP4 WithWaterReflectFakeCube(bool value)
-        {
-            WaterReflectFakeCube = value;
-            return this;
+            return base.WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
-            node.Chunks.Add(chunk0303A004);
-            var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
-            node.Chunks.Add(chunk0303A005);
-            var chunk0303A007 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007();
-            node.Chunks.Add(chunk0303A007);
-            var chunk0303A00C = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C();
-            node.Chunks.Add(chunk0303A00C);
-            var chunk0303A00F = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(GameVersion.MP4);
-            node.Chunks.Add(chunk0303A00F);
-            var chunk0303A012 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(GameVersion.MP4);
-            node.Chunks.Add(chunk0303A012);
-            var chunk0303A013 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013();
-            chunk0303A013.Version = 0;
-            node.Chunks.Add(chunk0303A013);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe4(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303A005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303A007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 3 }) throw new InvalidOperationException("Required MP4 chunk Chunk0303A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0303A012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0303A013 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe4(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameCtnDecorationMood node);
     }
-    public partial class TM2020 : CGameCtnDecorationMoodBuilderBase<TM2020>
+    public partial class TM2020 : CGameCtnDecorationMoodBuilderMembers5<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnDecorationMood> state) : base(state) { }
-        public global::GBX.NET.Engines.Function.CFuncCloudsSolids? CloudsSolids
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncCloudsSolids?>("CloudsSolids");
-            set => SetCloudsSolids(state, value);
-        }
-        public TM2020 WithCloudsSolids(global::GBX.NET.Engines.Function.CFuncCloudsSolids? value)
-        {
-            CloudsSolids = value;
-            return this;
-        }
-        public TM2020 WithCloudsSolidsReference(NodeRef<global::GBX.NET.Engines.Function.CFuncCloudsSolids> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetCloudsSolidsReference(state, value);
-            return this;
-        }
-        public float EditorHelperHdrScale
-        {
-            get => state.Get<float>("EditorHelperHdrScale");
-            set => SetEditorHelperHdrScale(state, value);
-        }
-        public TM2020 WithEditorHelperHdrScale(float value)
-        {
-            EditorHelperHdrScale = value;
-            return this;
-        }
-        public bool EnableStars
-        {
-            get => state.Get<bool>("EnableStars");
-            set => SetEnableStars(state, value);
-        }
-        public TM2020 WithEnableStars(bool value)
-        {
-            EnableStars = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? FxBloom_FidFuncIntensAtHdrNorm
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("FxBloom_FidFuncIntensAtHdrNorm");
-            set => SetFxBloom_FidFuncIntensAtHdrNorm(state, value);
-        }
-        public TM2020 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            FxBloom_FidFuncIntensAtHdrNorm = value;
-            return this;
-        }
-        public TM2020 WithFxBloom_FidFuncIntensAtHdrNormReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxBloom_FidFuncIntensAtHdrNormReference(state, value);
-            return this;
-        }
         public TM2020 WithFxBloom_FidFuncIntensAtHdrNorm(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value)
         {
-            return WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? FxHdrScalesT3
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?>("FxHdrScalesT3");
-            set => SetFxHdrScalesT3(state, value);
-        }
-        public TM2020 WithFxHdrScalesT3(global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3? value)
-        {
-            FxHdrScalesT3 = value;
-            return this;
-        }
-        public TM2020 WithFxHdrScalesT3Reference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxHdrScalesT3Reference(state, value);
-            return this;
+            return base.WithFxBloom_FidFuncIntensAtHdrNorm(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFxHdrScalesT3(global::GBX.NET.Interfaces.Plug.IPlugFxHdrScales_Tech3TM2020? value)
         {
-            return WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxLightning? FxLightning
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxLightning?>("FxLightning");
-            set => SetFxLightning(state, value);
-        }
-        public TM2020 WithFxLightning(global::GBX.NET.Engines.Plug.CPlugFxLightning? value)
-        {
-            FxLightning = value;
-            return this;
-        }
-        public TM2020 WithFxLightningReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxLightning> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxLightningReference(state, value);
-            return this;
+            return base.WithFxHdrScalesT3(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3?)null : value is global::GBX.NET.Engines.Plug.CPlugFxHdrScales_Tech3 node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithFxLightning(global::GBX.NET.Interfaces.Plug.IPlugFxLightningTM2020? value)
         {
-            return WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? FxWindOnDecal
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal?>("FxWindOnDecal");
-            set => SetFxWindOnDecal(state, value);
-        }
-        public TM2020 WithFxWindOnDecal(global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal? value)
-        {
-            FxWindOnDecal = value;
-            return this;
-        }
-        public TM2020 WithFxWindOnDecalReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnDecal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnDecalReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? FxWindOnTreeSprite
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite?>("FxWindOnTreeSprite");
-            set => SetFxWindOnTreeSprite(state, value);
-        }
-        public TM2020 WithFxWindOnTreeSprite(global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite? value)
-        {
-            FxWindOnTreeSprite = value;
-            return this;
-        }
-        public TM2020 WithFxWindOnTreeSpriteReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugFxWindOnTreeSprite> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetFxWindOnTreeSpriteReference(state, value);
-            return this;
-        }
-        public global::GBX.NET.Engines.Hms.CHmsAmbientOcc? HmsAmbientOcc
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsAmbientOcc?>("HmsAmbientOcc");
-            set => SetHmsAmbientOcc(state, value);
-        }
-        public TM2020 WithHmsAmbientOcc(global::GBX.NET.Engines.Hms.CHmsAmbientOcc? value)
-        {
-            HmsAmbientOcc = value;
-            return this;
-        }
-        public TM2020 WithHmsAmbientOccReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsAmbientOccReference(state, value);
-            return this;
+            return base.WithFxLightning(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxLightning?)null : value is global::GBX.NET.Engines.Plug.CPlugFxLightning node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithHmsAmbientOcc(global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020? value)
         {
-            return WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Hms.CHmsLightMap? HmsLightMap
-        {
-            get => state.Get<global::GBX.NET.Engines.Hms.CHmsLightMap?>("HmsLightMap");
-            set => SetHmsLightMap(state, value);
-        }
-        public TM2020 WithHmsLightMap(global::GBX.NET.Engines.Hms.CHmsLightMap? value)
-        {
-            HmsLightMap = value;
-            return this;
-        }
-        public TM2020 WithHmsLightMapReference(NodeRef<global::GBX.NET.Engines.Hms.CHmsLightMap> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetHmsLightMapReference(state, value);
-            return this;
+            return base.WithHmsAmbientOcc(value is null ? (global::GBX.NET.Engines.Hms.CHmsAmbientOcc?)null : value is global::GBX.NET.Engines.Hms.CHmsAmbientOcc node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithHmsLightMap(global::GBX.NET.Interfaces.Hms.IHmsLightMapTM2020? value)
         {
-            return WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float LocalLightScale
-        {
-            get => state.Get<float>("LocalLightScale");
-            set => SetLocalLightScale(state, value);
-        }
-        public TM2020 WithLocalLightScale(float value)
-        {
-            LocalLightScale = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugMoodBlender? MoodBlender
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMoodBlender?>("MoodBlender");
-            set => SetMoodBlender(state, value);
-        }
-        public TM2020 WithMoodBlender(global::GBX.NET.Engines.Plug.CPlugMoodBlender? value)
-        {
-            MoodBlender = value;
-            return this;
-        }
-        public TM2020 WithMoodBlenderReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugMoodBlender> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetMoodBlenderReference(state, value);
-            return this;
+            return base.WithHmsLightMap(value is null ? (global::GBX.NET.Engines.Hms.CHmsLightMap?)null : value is global::GBX.NET.Engines.Hms.CHmsLightMap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TM2020 WithRemapping(global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? value)
         {
             return base.WithRemapping(value is null ? (global::GBX.NET.Engines.Plug.CPlugGameSkin?)null : value is global::GBX.NET.Engines.Plug.CPlugGameSkin node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SunMoonIntensity
-        {
-            get => state.Get<float>("SunMoonIntensity");
-            set => SetSunMoonIntensity(state, value);
-        }
-        public TM2020 WithSunMoonIntensity(float value)
-        {
-            SunMoonIntensity = value;
-            return this;
-        }
-        public Vec3 Tech3Bloom
-        {
-            get => state.Get<Vec3>("Tech3Bloom");
-            set => SetTech3Bloom(state, value);
-        }
-        public TM2020 WithTech3Bloom(Vec3 value)
-        {
-            Tech3Bloom = value;
-            return this;
-        }
-        public Vec3 Tech3SpecularFake_ExpScaleMax
-        {
-            get => state.Get<Vec3>("Tech3SpecularFake_ExpScaleMax");
-            set => SetTech3SpecularFake_ExpScaleMax(state, value);
-        }
-        public TM2020 WithTech3SpecularFake_ExpScaleMax(Vec3 value)
-        {
-            Tech3SpecularFake_ExpScaleMax = value;
-            return this;
-        }
-        public Vec2 Tech3SpecularLocal
-        {
-            get => state.Get<Vec2>("Tech3SpecularLocal");
-            set => SetTech3SpecularLocal(state, value);
-        }
-        public TM2020 WithTech3SpecularLocal(Vec2 value)
-        {
-            Tech3SpecularLocal = value;
-            return this;
-        }
-        public Vec4 Tech3ToneMapAutoExp
-        {
-            get => state.Get<Vec4>("Tech3ToneMapAutoExp");
-            set => SetTech3ToneMapAutoExp(state, value);
-        }
-        public TM2020 WithTech3ToneMapAutoExp(Vec4 value)
-        {
-            Tech3ToneMapAutoExp = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Function.CFuncKeysReal? ToneMapAutoExp_FidAvgLumiToKeyValue
-        {
-            get => state.Get<global::GBX.NET.Engines.Function.CFuncKeysReal?>("ToneMapAutoExp_FidAvgLumiToKeyValue");
-            set => SetToneMapAutoExp_FidAvgLumiToKeyValue(state, value);
-        }
-        public TM2020 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Engines.Function.CFuncKeysReal? value)
-        {
-            ToneMapAutoExp_FidAvgLumiToKeyValue = value;
-            return this;
-        }
-        public TM2020 WithToneMapAutoExp_FidAvgLumiToKeyValueReference(NodeRef<global::GBX.NET.Engines.Function.CFuncKeysReal> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetToneMapAutoExp_FidAvgLumiToKeyValueReference(state, value);
-            return this;
-        }
         public TM2020 WithToneMapAutoExp_FidAvgLumiToKeyValue(global::GBX.NET.Interfaces.Function.IFuncKeysRealTM2020? value)
         {
-            return WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float ToneMapExposureStaticBase
-        {
-            get => state.Get<float>("ToneMapExposureStaticBase");
-            set => SetToneMapExposureStaticBase(state, value);
-        }
-        public TM2020 WithToneMapExposureStaticBase(float value)
-        {
-            ToneMapExposureStaticBase = value;
-            return this;
-        }
-        public int ToneMapFilmCurve
-        {
-            get => state.Get<int>("ToneMapFilmCurve");
-            set => SetToneMapFilmCurve(state, value);
-        }
-        public TM2020 WithToneMapFilmCurve(int value)
-        {
-            ToneMapFilmCurve = value;
-            return this;
-        }
-        public bool WaterReflectFakeCube
-        {
-            get => state.Get<bool>("WaterReflectFakeCube");
-            set => SetWaterReflectFakeCube(state, value);
-        }
-        public TM2020 WithWaterReflectFakeCube(bool value)
-        {
-            WaterReflectFakeCube = value;
-            return this;
+            return base.WithToneMapAutoExp_FidAvgLumiToKeyValue(value is null ? (global::GBX.NET.Engines.Function.CFuncKeysReal?)null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnDecorationMood Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood();
-            var chunk0303A000 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000();
-            node.Chunks.Add(chunk0303A000);
-            var chunk0303A002 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002();
-            node.Chunks.Add(chunk0303A002);
-            var chunk0303A004 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004();
-            node.Chunks.Add(chunk0303A004);
-            var chunk0303A005 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005();
-            node.Chunks.Add(chunk0303A005);
-            var chunk0303A007 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007();
-            node.Chunks.Add(chunk0303A007);
-            var chunk0303A00C = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C();
-            node.Chunks.Add(chunk0303A00C);
-            var chunk0303A00F = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F(GameVersion.TM2020);
-            node.Chunks.Add(chunk0303A00F);
-            var chunk0303A012 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012(GameVersion.TM2020);
-            node.Chunks.Add(chunk0303A012);
-            var chunk0303A013 = new global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013();
-            chunk0303A013.Version = 0;
-            node.Chunks.Add(chunk0303A013);
+            var node = CGameCtnDecorationMoodBuilder.CreateRecipe4(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A002>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A002 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A005 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A007>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A007 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00C>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A00F>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A012>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnDecorationMood.Chunk0303A013>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0303A013 is missing or has an incompatible version.");
+            CGameCtnDecorationMoodBuilder.ValidateRecipe4(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnDecorationMoodBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

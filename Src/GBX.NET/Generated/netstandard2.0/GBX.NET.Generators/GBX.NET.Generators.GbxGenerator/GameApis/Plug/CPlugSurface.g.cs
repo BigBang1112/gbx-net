@@ -44,7 +44,7 @@ public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface
         }
         set => Geom = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurfaceGeom node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP3>.Skel
     {
         get
         {
@@ -54,7 +54,7 @@ public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelTMT>.Skel
     {
         get
         {
@@ -64,7 +64,7 @@ public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelMP4>.Skel
     {
         get
         {
@@ -74,7 +74,7 @@ public partial class CPlugSurface : global::GBX.NET.Interfaces.Plug.IPlugSurface
         }
         set => Skel = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020.Skel
+    global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? global::GBX.NET.Interfaces.Plug.IPlugSurfaceMembers1<global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020>.Skel
     {
         get
         {

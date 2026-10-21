@@ -36,13 +36,13 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state;
     private protected CMotionCmdBaseBuilderBase() => state = new();
     private protected CMotionCmdBaseBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state) => this.state = state;
-    private protected static void SetCmdBaseParams(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? value) => state.Set<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams?>("CmdBaseParams", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CmdBaseParams = value);
-    private protected static void SetCmdBaseParamsReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> value) => state.Set<NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams>>("CmdBaseParams", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.CmdBaseParams.CopyFrom(reference));
-    private protected static void SetIsAbsolutePhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, bool value) => state.Set<bool>("IsAbsolutePhase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsAbsolutePhase = value);
-    private protected static void SetIsOnce(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, bool value) => state.Set<bool>("IsOnce", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsOnce = value);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, uint value) => state.Set<uint>("Period", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Period = value);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, float value) => state.Set<float>("Phase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Phase = value);
-    private protected static void SetWaveType(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType value) => state.Set<global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType>("WaveType", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.WaveType = value);
+    private protected static void SetCmdBaseParams(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCmdBaseParamsReference(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, NodeRef<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams> value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetCmdBaseParamsReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsAbsolutePhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsAbsolutePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsOnce(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetIsOnceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetWaveType(NodeBuilderState<global::GBX.NET.Engines.Motion.CMotionCmdBase> state, global::GBX.NET.Engines.Motion.CMotionCmdBase.EWaveType value) => state.Set(global::GBX.NET.Builders.Engines.Motion.CMotionCmdBaseBuilderAssignments.GetWaveTypeAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Motion.CMotionCmdBaseParams? CmdBaseParams
     {
         get => state.Get<global::GBX.NET.Engines.Motion.CMotionCmdBaseParams?>("CmdBaseParams");
@@ -112,6 +112,20 @@ public abstract class CMotionCmdBaseBuilderBase<TSelf> where TSelf : CMotionCmdB
 }
 public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCmdBaseBuilder>
 {
+    private static global::GBX.NET.Engines.Motion.CMotionCmdBase CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
+        var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
+        node.Chunks.Add(chunk08029002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Motion.CMotionCmdBase node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk08029002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Motion.CMotionCmdBase node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -133,13 +147,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -156,13 +169,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -179,13 +191,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -202,13 +213,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -225,13 +235,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -248,13 +257,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -271,13 +279,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -294,13 +301,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -317,13 +323,12 @@ public partial class CMotionCmdBaseBuilder : CMotionCmdBaseBuilderBase<CMotionCm
         public global::GBX.NET.Interfaces.Motion.IMotionCmdBaseMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Motion.CMotionCmdBase Build()
         {
-            var node = new global::GBX.NET.Engines.Motion.CMotionCmdBase();
-            var chunk08029002 = new global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002();
-            node.Chunks.Add(chunk08029002);
+            var node = CMotionCmdBaseBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Motion.CMotionCmdBase.Chunk08029002>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk08029002 is missing or has an incompatible version.");
+            CMotionCmdBaseBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CMotionCmdBaseBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }

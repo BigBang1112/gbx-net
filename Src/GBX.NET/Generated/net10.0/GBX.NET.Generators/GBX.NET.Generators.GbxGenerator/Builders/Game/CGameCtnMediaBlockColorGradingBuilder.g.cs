@@ -36,8 +36,8 @@ public abstract class CGameCtnMediaBlockColorGradingBuilderBase<TSelf> where TSe
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state;
     private protected CGameCtnMediaBlockColorGradingBuilderBase() => state = new();
     private protected CGameCtnMediaBlockColorGradingBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state) => this.state = state;
-    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state, PackDesc? value) => state.Set<PackDesc?>("Image", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Image = value);
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetImage(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state, PackDesc? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetImageAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockColorGradingBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public PackDesc? Image
     {
         get => state.Get<PackDesc?>("Image");
@@ -69,6 +69,23 @@ public abstract class CGameCtnMediaBlockColorGradingBuilderBase<TSelf> where TSe
 }
 public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockColorGradingBuilderBase<CGameCtnMediaBlockColorGradingBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading();
+        var chunk03186000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000();
+        node.Chunks.Add(chunk03186000);
+        var chunk03186001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001();
+        node.Chunks.Add(chunk03186001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03186000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03186001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -80,16 +97,12 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockColorGradingTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading();
-            var chunk03186000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000();
-            node.Chunks.Add(chunk03186000);
-            var chunk03186001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001();
-            node.Chunks.Add(chunk03186001);
+            var node = CGameCtnMediaBlockColorGradingBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03186000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk03186001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockColorGradingBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockColorGradingBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -102,16 +115,12 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockColorGradingMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading();
-            var chunk03186000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000();
-            node.Chunks.Add(chunk03186000);
-            var chunk03186001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001();
-            node.Chunks.Add(chunk03186001);
+            var node = CGameCtnMediaBlockColorGradingBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03186000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk03186001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockColorGradingBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockColorGradingBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -124,16 +133,12 @@ public partial class CGameCtnMediaBlockColorGradingBuilder : CGameCtnMediaBlockC
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockColorGradingTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading();
-            var chunk03186000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000();
-            node.Chunks.Add(chunk03186000);
-            var chunk03186001 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001();
-            node.Chunks.Add(chunk03186001);
+            var node = CGameCtnMediaBlockColorGradingBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03186000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockColorGrading.Chunk03186001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk03186001 is missing or has an incompatible version.");
+            CGameCtnMediaBlockColorGradingBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockColorGradingBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockObjectMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObject where T0 : class
+{
+    new T0? VisData { get; set; }
+}
 public partial interface IGameCtnMediaBlockObject : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockObject>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -46,18 +51,15 @@ public partial interface IGameCtnMediaBlockObject : IClassVersion<global::GBX.NE
     global::GBX.NET.Interfaces.Game.IGameReplayObjectVisData? VisData { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockObjectTMT : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT
+public partial interface IGameCtnMediaBlockObjectTMT : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMT, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT>
 {
-    new global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTMT? VisData { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockObjectMP4 : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockObjectMP4 : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4>
 {
-    new global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataMP4? VisData { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockObjectTM2020 : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockObjectTM2020 : IGameCtnMediaBlockObject, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockObjectMembers1<global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020>
 {
-    new global::GBX.NET.Interfaces.Game.IGameReplayObjectVisDataTM2020? VisData { get; set; }
 }
 

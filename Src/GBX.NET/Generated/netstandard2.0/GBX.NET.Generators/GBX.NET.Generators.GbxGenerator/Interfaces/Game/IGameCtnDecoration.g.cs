@@ -31,6 +31,42 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
+{
+    string? DecorationZoneFrontierId { get; set; }
+    bool IsWaterOutsidePlayField { get; set; }
+    string? VehicleFxFolder { get; set; }
+    T0? VehicleFxSkin { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnDecoration
+{
+    global::GBX.NET.Engines.Game.CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
+{
+    T0? DecoratorSolidWarp { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMembers4<T0, T1, T2> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class where T1 : class where T2 : class
+{
+    T0? DecoAudio { get; set; }
+    T1? DecoMood { get; set; }
+    T2? DecoSize { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMembers5<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
+{
+    T0? DecoAudioAmbient { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnDecorationMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnDecoration where T0 : class
+{
+    T0? TerrainModifierBase { get; set; }
+    T0? TerrainModifierCovered { get; set; }
+}
 public partial interface IGameCtnDecoration : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnDecoration>, global::GBX.NET.Interfaces.GameData.IGameCtnCollector
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,214 +76,47 @@ public partial interface IGameCtnDecoration : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new int CatalogPosition { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? IconFid { get; set; }
-    new global::GBX.NET.Ident Ident { get; set; }
-    new bool IsInternal { get; set; }
-    new string? PageName { get; set; }
 }
 
 public partial interface IGameCtnDecorationTM10 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM10
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
 public partial interface IGameCtnDecorationTMPU : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMPU
 {
-    new int CopperPrice { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
-public partial interface IGameCtnDecorationTMSX : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX
+public partial interface IGameCtnDecorationTMSX : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX>
 {
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMSX? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMSX? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMSX? DecoSize { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
-public partial interface IGameCtnDecorationTMNESWC : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC
+public partial interface IGameCtnDecorationTMNESWC : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC>
 {
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMNESWC? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMNESWC? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMNESWC? DecoSize { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMNESWC? DecoratorSolidWarp { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
 }
 
-public partial interface IGameCtnDecorationVSK5 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5
+public partial interface IGameCtnDecorationVSK5 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5>
 {
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioVSK5? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodVSK5? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeVSK5? DecoSize { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidVSK5? DecoratorSolidWarp { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5? TerrainModifierBase { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierVSK5? TerrainModifierCovered { get; set; }
 }
 
-public partial interface IGameCtnDecorationTMF : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF
+public partial interface IGameCtnDecorationTMF : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF>
 {
-    new int CopperPrice { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMF? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMF? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMF? DecoSize { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMF? DecoratorSolidWarp { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new int NbAvailableMax { get; set; }
-    new int NbAvailableMin { get; set; }
-    new bool NeedUnlock { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ESkinKind SkinKind { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF? TerrainModifierBase { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMF? TerrainModifierCovered { get; set; }
 }
 
-public partial interface IGameCtnDecorationMP3 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3
+public partial interface IGameCtnDecorationMP3 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP3? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP3? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP3? DecoSize { get; set; }
-    string? DecorationZoneFrontierId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP3? DecoratorSolidWarp { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new string? SkinDirectory { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3? TerrainModifierBase { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP3? TerrainModifierCovered { get; set; }
-    string? VehicleFxFolder { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP3? VehicleFxSkin { get; set; }
 }
 
-public partial interface IGameCtnDecorationTMT : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT
+public partial interface IGameCtnDecorationTMT : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTMT? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? DecoAudioAmbient { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTMT? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTMT? DecoSize { get; set; }
-    string? DecorationZoneFrontierId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTMT? DecoratorSolidWarp { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    new string? SkinDirectory { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT? TerrainModifierBase { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierTMT? TerrainModifierCovered { get; set; }
-    string? VehicleFxFolder { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTMT? VehicleFxSkin { get; set; }
 }
 
-public partial interface IGameCtnDecorationMP4 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4
+public partial interface IGameCtnDecorationMP4 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers6<global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioMP4? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? DecoAudioAmbient { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodMP4? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeMP4? DecoSize { get; set; }
-    string? DecorationZoneFrontierId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidMP4? DecoratorSolidWarp { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new string? Name { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    new string? SkinDirectory { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4? TerrainModifierBase { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationTerrainModifierMP4? TerrainModifierCovered { get; set; }
-    string? VehicleFxFolder { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinMP4? VehicleFxSkin { get; set; }
 }
 
-public partial interface IGameCtnDecorationTM2020 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020
+public partial interface IGameCtnDecorationTM2020 : IGameCtnDecoration, global::GBX.NET.Interfaces.GameData.IGameCtnCollectorTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers1<global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers2, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers3<global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers4<global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020, global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnDecorationMembers5<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationAudioTM2020? DecoAudio { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? DecoAudioAmbient { get; set; }
     global::GBX.NET.Interfaces.Game.IGameCtnChallengeTM2020? DecoMap { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? DecoMapLightMap { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationMoodTM2020? DecoMood { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnDecorationSizeTM2020? DecoSize { get; set; }
-    string? DecorationZoneFrontierId { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugDecoratorSolidTM2020? DecoratorSolidWarp { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugFileZip? DefaultSkin { get; set; }
-    new string? DefaultSkinName { get; set; }
-    new string? Description { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.ECollectorFlags Flags { get; set; }
-    new global::GBX.NET.Color[,]? Icon { get; set; }
-    new float IconPhase01 { get; set; }
-    new int IconQuarterRotationY { get; set; }
-    new bool IconUseAutoRender { get; set; }
-    new byte[]? IconWebP { get; set; }
-    new bool IsAdvanced { get; set; }
-    bool IsWaterOutsidePlayField { get; set; }
-    new DateTime? LightmapComputeTime { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDb { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? ModelKitDbRelease { get; set; }
-    new string? Name { get; set; }
-    new string? ParentCollectorId { get; set; }
-    new global::GBX.NET.Engines.GameData.CGameCtnCollector.EProdState ProdState { get; set; }
-    new string? SkinDirectory { get; set; }
-    string? VehicleFxFolder { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugGameSkinTM2020? VehicleFxSkin { get; set; }
 }
 

@@ -40,22 +40,9 @@ public partial interface IGameControlCardNetOnlineNews : IClassVersion<global::G
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AcceptOwnControls { get; set; }
-    new global::GBX.NET.Engines.Control.CControlContainer.Child[] Childs { get; set; }
-    new uint ControlFlags { get; set; }
-    new global::GBX.NET.Interfaces.MwFoundations.IMwCmdBlockMain? CreateScript { get; set; }
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlLayout? Layout { get; set; }
-    new global::GBX.NET.Interfaces.Control.IControlStyle? LegacyStyle { get; set; }
     global::GBX.NET.Interfaces.Scene.ISceneMessageHandler? MessageHandler { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? Nod { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink { get; set; }
-    new string? StackText { get; set; }
     global::GBX.NET.Interfaces.Control.IControlStyle? Style { get; set; }
     string? StyleId { get; set; }
-    new bool UseScript { get; set; }
 }
 
 public partial interface IGameControlCardNetOnlineNewsTMF : IGameControlCardNetOnlineNews, global::GBX.NET.Interfaces.Game.IGameControlCardTMF

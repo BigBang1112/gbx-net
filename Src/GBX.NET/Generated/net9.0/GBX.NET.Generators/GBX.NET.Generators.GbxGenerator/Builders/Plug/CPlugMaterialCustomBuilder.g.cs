@@ -36,10 +36,10 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugM
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state;
     private protected CPlugMaterialCustomBuilderBase() => state = new();
     private protected CPlugMaterialCustomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) => this.state = state;
-    private protected static void SetGpuFxs1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]?>("GpuFxs1", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[])value.Clone(), static (node, value) => node.GpuFxs1 = value);
-    private protected static void SetGpuFxs2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]?>("GpuFxs2", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[])value.Clone(), static (node, value) => node.GpuFxs2 = value);
-    private protected static void SetSkipSamplers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[])value.Clone(), static (node, value) => node.SkipSamplers = value);
-    private protected static void SetTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]?>("Textures", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[])value.Clone(), static (node, value) => node.Textures = value);
+    private protected static void SetGpuFxs1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs1Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetGpuFxs2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetGpuFxs2Assignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSkipSamplers(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetSkipSamplersAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetTextures(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state, global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Bitmap[]? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugMaterialCustomBuilderAssignments.GetTexturesAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]? GpuFxs1
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.GpuFx[]?>("GpuFxs1");
@@ -83,8 +83,222 @@ public abstract class CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugM
         return WithTextures(values.ToArray());
     }
 }
+public abstract class CPlugMaterialCustomBuilderMembers1<TSelf> : CPlugMaterialCustomBuilderBase<TSelf> where TSelf : CPlugMaterialCustomBuilderMembers1<TSelf>
+{
+    private protected CPlugMaterialCustomBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
+        set => SetSkipSamplers(state, value);
+    }
+    public TSelf WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
+    {
+        SkipSamplers = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
+    {
+        return WithSkipSamplers(values.ToArray());
+    }
+}
 public partial class CPlugMaterialCustomBuilder : CPlugMaterialCustomBuilderBase<CPlugMaterialCustomBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
+        node.Chunks.Add(chunk0903A006);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
+        node.Chunks.Add(chunk0903A006);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        var chunk0903A00B = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B();
+        node.Chunks.Add(chunk0903A00B);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00B is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
+        node.Chunks.Add(chunk0903A006);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        var chunk0903A00B = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B();
+        node.Chunks.Add(chunk0903A00B);
+        var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
+        node.Chunks.Add(chunk0903A00C);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00B is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00C is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
+        node.Chunks.Add(chunk0903A006);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
+        node.Chunks.Add(chunk0903A00C);
+        var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
+        node.Chunks.Add(chunk0903A00D);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00D is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe4(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
+        node.Chunks.Add(chunk0903A006);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
+        node.Chunks.Add(chunk0903A00C);
+        var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
+        node.Chunks.Add(chunk0903A00D);
+        var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(game);
+        node.Chunks.Add(chunk0903A00F);
+        var chunk0903A010 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A010();
+        node.Chunks.Add(chunk0903A010);
+        var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
+        node.Chunks.Add(chunk0903A011);
+        return node;
+    }
+    private static void ValidateRecipe4(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A011 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe5(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
+        node.Chunks.Add(chunk0903A00C);
+        var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
+        node.Chunks.Add(chunk0903A00D);
+        var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(game);
+        node.Chunks.Add(chunk0903A00F);
+        var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
+        node.Chunks.Add(chunk0903A011);
+        var chunk0903A012 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012();
+        node.Chunks.Add(chunk0903A012);
+        var chunk0903A013 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013();
+        chunk0903A013.Version = 0;
+        node.Chunks.Add(chunk0903A013);
+        var chunk0903A014 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014(game);
+        node.Chunks.Add(chunk0903A014);
+        var chunk0903A015 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015(game);
+        node.Chunks.Add(chunk0903A015);
+        return node;
+    }
+    private static void ValidateRecipe5(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00D is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A015 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugMaterialCustom CreateRecipe6(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
+        var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
+        node.Chunks.Add(chunk0903A004);
+        var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
+        node.Chunks.Add(chunk0903A00A);
+        var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
+        node.Chunks.Add(chunk0903A00C);
+        var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(game);
+        node.Chunks.Add(chunk0903A00F);
+        var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
+        node.Chunks.Add(chunk0903A011);
+        var chunk0903A012 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012();
+        node.Chunks.Add(chunk0903A012);
+        var chunk0903A013 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013();
+        chunk0903A013.Version = 0;
+        node.Chunks.Add(chunk0903A013);
+        var chunk0903A014 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014(game);
+        node.Chunks.Add(chunk0903A014);
+        var chunk0903A015 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015(game);
+        node.Chunks.Add(chunk0903A015);
+        var chunk0903A016 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A016(game);
+        node.Chunks.Add(chunk0903A016);
+        return node;
+    }
+    private static void ValidateRecipe6(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00A is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00C is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0903A012 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A013 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A014 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A015 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A016>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk0903A016 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node, GameVersion game)
+    {
+    }
     public TMSX ForTMSX() => new(state.Snapshot());
     public TMNESWC ForTMNESWC() => new(state.Snapshot());
     public VSK5 ForVSK5() => new(state.Snapshot());
@@ -101,19 +315,12 @@ public partial class CPlugMaterialCustomBuilder : CPlugMaterialCustomBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
-            node.Chunks.Add(chunk0903A006);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0903A006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0903A00A is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -126,342 +333,120 @@ public partial class CPlugMaterialCustomBuilder : CPlugMaterialCustomBuilderBase
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
-            node.Chunks.Add(chunk0903A006);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00B = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B();
-            node.Chunks.Add(chunk0903A00B);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0903A006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0903A00B is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
-    public partial class VSK5 : CPlugMaterialCustomBuilderBase<VSK5>
+    public partial class VSK5 : CPlugMaterialCustomBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-            set => SetSkipSamplers(state, value);
-        }
-        public VSK5 WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
-        {
-            SkipSamplers = value;
-            return this;
-        }
-        public VSK5 WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
-        {
-            return WithSkipSamplers(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
-            node.Chunks.Add(chunk0903A006);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00B = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B();
-            node.Chunks.Add(chunk0903A00B);
-            var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
-            node.Chunks.Add(chunk0903A00C);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0903A006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00B>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0903A00B is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0903A00C is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
-    public partial class TMF : CPlugMaterialCustomBuilderBase<TMF>
+    public partial class TMF : CPlugMaterialCustomBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-            set => SetSkipSamplers(state, value);
-        }
-        public TMF WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
-        {
-            SkipSamplers = value;
-            return this;
-        }
-        public TMF WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
-        {
-            return WithSkipSamplers(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
-            node.Chunks.Add(chunk0903A006);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
-            node.Chunks.Add(chunk0903A00C);
-            var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
-            node.Chunks.Add(chunk0903A00D);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0903A006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0903A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0903A00D is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe3(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
-    public partial class MP3 : CPlugMaterialCustomBuilderBase<MP3>
+    public partial class MP3 : CPlugMaterialCustomBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-            set => SetSkipSamplers(state, value);
-        }
-        public MP3 WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
-        {
-            SkipSamplers = value;
-            return this;
-        }
-        public MP3 WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
-        {
-            return WithSkipSamplers(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
-            node.Chunks.Add(chunk0903A006);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
-            node.Chunks.Add(chunk0903A00C);
-            var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
-            node.Chunks.Add(chunk0903A00D);
-            var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(GameVersion.MP3);
-            node.Chunks.Add(chunk0903A00F);
-            var chunk0903A010 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A010();
-            node.Chunks.Add(chunk0903A010);
-            var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
-            node.Chunks.Add(chunk0903A011);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe4(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0903A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A010>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0903A011 is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe4(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
-    public partial class TMT : CPlugMaterialCustomBuilderBase<TMT>
+    public partial class TMT : CPlugMaterialCustomBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-            set => SetSkipSamplers(state, value);
-        }
-        public TMT WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
-        {
-            SkipSamplers = value;
-            return this;
-        }
-        public TMT WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
-        {
-            return WithSkipSamplers(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A006 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006();
-            node.Chunks.Add(chunk0903A006);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
-            node.Chunks.Add(chunk0903A00C);
-            var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
-            node.Chunks.Add(chunk0903A00D);
-            var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(GameVersion.TMT);
-            node.Chunks.Add(chunk0903A00F);
-            var chunk0903A010 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A010();
-            node.Chunks.Add(chunk0903A010);
-            var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
-            node.Chunks.Add(chunk0903A011);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe4(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A006>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0903A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A010>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0903A011 is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe4(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
-    public partial class MP4 : CPlugMaterialCustomBuilderBase<MP4>
+    public partial class MP4 : CPlugMaterialCustomBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-            set => SetSkipSamplers(state, value);
-        }
-        public MP4 WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
-        {
-            SkipSamplers = value;
-            return this;
-        }
-        public MP4 WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
-        {
-            return WithSkipSamplers(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
-            node.Chunks.Add(chunk0903A00C);
-            var chunk0903A00D = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D();
-            node.Chunks.Add(chunk0903A00D);
-            var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(GameVersion.MP4);
-            node.Chunks.Add(chunk0903A00F);
-            var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
-            node.Chunks.Add(chunk0903A011);
-            var chunk0903A012 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012();
-            node.Chunks.Add(chunk0903A012);
-            var chunk0903A013 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013();
-            chunk0903A013.Version = 0;
-            node.Chunks.Add(chunk0903A013);
-            var chunk0903A014 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014(GameVersion.MP4);
-            node.Chunks.Add(chunk0903A014);
-            var chunk0903A015 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015(GameVersion.MP4);
-            node.Chunks.Add(chunk0903A015);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe5(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0903A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00D>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0903A00D is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 2 }) throw new InvalidOperationException("Required MP4 chunk Chunk0903A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0903A011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0903A012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0903A013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0903A014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0903A015 is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe5(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugMaterialCustom node);
     }
-    public partial class TM2020 : CPlugMaterialCustomBuilderBase<TM2020>
+    public partial class TM2020 : CPlugMaterialCustomBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugMaterialCustom> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? SkipSamplers
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]?>("SkipSamplers");
-            set => SetSkipSamplers(state, value);
-        }
-        public TM2020 WithSkipSamplers(params global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip[]? value)
-        {
-            SkipSamplers = value;
-            return this;
-        }
-        public TM2020 WithSkipSamplers(IEnumerable<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.BitmapSkip> values)
-        {
-            return WithSkipSamplers(values.ToArray());
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugMaterialCustomTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugMaterialCustom Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom();
-            var chunk0903A004 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004();
-            node.Chunks.Add(chunk0903A004);
-            var chunk0903A00A = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A();
-            node.Chunks.Add(chunk0903A00A);
-            var chunk0903A00C = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C();
-            node.Chunks.Add(chunk0903A00C);
-            var chunk0903A00F = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F(GameVersion.TM2020);
-            node.Chunks.Add(chunk0903A00F);
-            var chunk0903A011 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011();
-            node.Chunks.Add(chunk0903A011);
-            var chunk0903A012 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012();
-            node.Chunks.Add(chunk0903A012);
-            var chunk0903A013 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013();
-            chunk0903A013.Version = 0;
-            node.Chunks.Add(chunk0903A013);
-            var chunk0903A014 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014(GameVersion.TM2020);
-            node.Chunks.Add(chunk0903A014);
-            var chunk0903A015 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015(GameVersion.TM2020);
-            node.Chunks.Add(chunk0903A015);
-            var chunk0903A016 = new global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A016(GameVersion.TM2020);
-            node.Chunks.Add(chunk0903A016);
+            var node = CPlugMaterialCustomBuilder.CreateRecipe6(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A004>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00A>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A00A is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00C>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A00C is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A00F>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A011>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A012>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A012 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A013>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A013 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A014>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A014 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A015>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A015 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugMaterialCustom.Chunk0903A016>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0903A016 is missing or has an incompatible version.");
+            CPlugMaterialCustomBuilder.ValidateRecipe6(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugMaterialCustomBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

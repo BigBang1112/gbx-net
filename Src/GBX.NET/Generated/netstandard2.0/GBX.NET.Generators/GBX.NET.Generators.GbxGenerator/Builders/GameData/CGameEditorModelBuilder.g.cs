@@ -36,11 +36,11 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state;
     private protected CGameEditorModelBuilderBase() => state = new();
     private protected CGameEditorModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state) => this.state = state;
-    private protected static void SetAutoCreateTooltipsFromBindings(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, bool value) => state.Set<bool>("AutoCreateTooltipsFromBindings", value, GameVersion.TM2020, static value => value, static (node, value) => node.AutoCreateTooltipsFromBindings = value);
-    private protected static void SetAutoGenerateHelp(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, bool value) => state.Set<bool>("AutoGenerateHelp", value, GameVersion.TM2020, static value => value, static (node, value) => node.AutoGenerateHelp = value);
-    private protected static void SetBindingContexts(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]?>("BindingContexts", value, GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[])value.Clone(), static (node, value) => node.BindingContexts = value);
-    private protected static void SetEditorType(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, int value) => state.Set<int>("EditorType", value, GameVersion.TM2020, static value => value, static (node, value) => node.EditorType = value);
-    private protected static void SetMediaFolder(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, string? value) => state.Set<string?>("MediaFolder", value, GameVersion.TM2020, static value => value, static (node, value) => node.MediaFolder = value);
+    private protected static void SetAutoCreateTooltipsFromBindings(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoCreateTooltipsFromBindingsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetAutoGenerateHelp(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetAutoGenerateHelpAssignment(), value, GameVersion.TM2020);
+    private protected static void SetBindingContexts(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, global::GBX.NET.Engines.GameData.CGameEditorModel.BindingContext[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetBindingContextsAssignment(), value, GameVersion.TM2020);
+    private protected static void SetEditorType(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetEditorTypeAssignment(), value, GameVersion.TM2020);
+    private protected static void SetMediaFolder(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameEditorModel> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameEditorModelBuilderAssignments.GetMediaFolderAssignment(), value, GameVersion.TM2020);
     public bool AutoCreateTooltipsFromBindings
     {
         get => state.Get<bool>("AutoCreateTooltipsFromBindings");
@@ -98,6 +98,27 @@ public abstract class CGameEditorModelBuilderBase<TSelf> where TSelf : CGameEdit
 }
 public partial class CGameEditorModelBuilder : CGameEditorModelBuilderBase<CGameEditorModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameEditorModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameEditorModel();
+        var chunk2E01B000 = new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B000(game);
+        node.Chunks.Add(chunk2E01B000);
+        var chunk2E01B003 = new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B003(game);
+        node.Chunks.Add(chunk2E01B003);
+        var chunk2E01B005 = new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B005();
+        chunk2E01B005.Version = 0;
+        node.Chunks.Add(chunk2E01B005);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameEditorModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B000>() is not { Version: 4 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E01B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B003>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E01B003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B005>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E01B005 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameEditorModel node, GameVersion game)
+    {
+    }
     public TM2020 ForTM2020() => new(state.Snapshot());
     public partial class TM2020 : CGameEditorModelBuilderBase<TM2020>
     {
@@ -105,20 +126,12 @@ public partial class CGameEditorModelBuilder : CGameEditorModelBuilderBase<CGame
         public global::GBX.NET.Interfaces.GameData.IGameEditorModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameEditorModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameEditorModel();
-            var chunk2E01B000 = new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B000(GameVersion.TM2020);
-            node.Chunks.Add(chunk2E01B000);
-            var chunk2E01B003 = new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B003(GameVersion.TM2020);
-            node.Chunks.Add(chunk2E01B003);
-            var chunk2E01B005 = new global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B005();
-            chunk2E01B005.Version = 0;
-            node.Chunks.Add(chunk2E01B005);
+            var node = CGameEditorModelBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B000>() is not { Version: 4 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E01B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B003>() is not { Version: 2 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E01B003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameEditorModel.Chunk2E01B005>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E01B005 is missing or has an incompatible version.");
+            CGameEditorModelBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameEditorModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

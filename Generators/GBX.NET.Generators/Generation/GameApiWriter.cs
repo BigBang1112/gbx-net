@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GBX.NET.Generators.Generation;
 
-internal static class GameApiWriter
+internal static partial class GameApiWriter
 {
     private static readonly DiagnosticDescriptor InvalidApi = new("GBXNETGEN300", "Cannot generate game API",
         "Cannot generate game API for {0}: {1}", "GBX.NET.Generators", DiagnosticSeverity.Error, true);
@@ -33,6 +33,9 @@ internal static class GameApiWriter
             return;
         }
         var coverage = new List<string>();
+        var sharedInterfaces = nodes.Values.Where(static n => n.Games.Count > 0 && n.MetadataError is null)
+            .ToDictionary(static n => n.Layout.Name, n => CreateInterfaceGroups(n, plan, nodes), StringComparer.Ordinal);
+        WritePropertyDescriptors(context, plan, nodes);
         foreach (var node in nodes.Values.OrderBy(static n => n.Layout.File.TypeKey, StringComparer.Ordinal))
         {
             context.CancellationToken.ThrowIfCancellationRequested();
@@ -61,8 +64,8 @@ internal static class GameApiWriter
                     context.ReportDiagnostic(Diagnostic.Create(MissingRecipe, Location.Create(node.Layout.File.Path, default, default),
                         node.Layout.Name, game.Key, game.Value));
                 }
-                context.AddSource($"Interfaces/{node.Layout.File.Engine}/{node.InterfaceName}.g.cs", Interfaces(node, plan, nodes, compilation));
-                context.AddSource($"GameApis/{node.Layout.File.Engine}/{node.Layout.Name}.g.cs", Node(node, plan, nodes));
+                context.AddSource($"Interfaces/{node.Layout.File.Engine}/{node.InterfaceName}.g.cs", Interfaces(node, plan, nodes, compilation, sharedInterfaces));
+                context.AddSource($"GameApis/{node.Layout.File.Engine}/{node.Layout.Name}.g.cs", Node(node, plan, nodes, sharedInterfaces));
                 if (!node.Layout.IsAbstract && node.Games.Any(g => !node.RecipeErrors.ContainsKey(g)))
                     context.AddSource($"Builders/{node.Layout.File.Engine}/{node.BuilderName}.g.cs", Builder(node, plan, nodes));
             }
@@ -96,11 +99,14 @@ internal static class GameApiWriter
         return code;
     }
 
-    private static string Interfaces(GameNodeModel node, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes, Compilation compilation)
+    private static string Interfaces(GameNodeModel node, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes, Compilation compilation,
+        Dictionary<string, List<InterfaceMemberGroup>> sharedInterfaces)
     {
         var code = Start(node.InterfaceNamespace, plan);
         var parent = node.Layout.BaseName is not null && nodes.TryGetValue(node.Layout.BaseName, out var ancestor) &&
             ancestor.Games.Count > 0 ? ancestor : null;
+        var groups = sharedInterfaces[node.Layout.Name];
+        WriteInterfaceGroups(code, node, groups, nodes);
         foreach (var game in new[] { "" }.Concat(node.Games))
         {
             var name = node.InterfaceName + game;
@@ -108,6 +114,7 @@ internal static class GameApiWriter
                 throw new InvalidOperationException("Existing interface must be partial: " + existing.Key);
             var bases = new List<string> { game.Length == 0 ? $"IClassVersion<{node.Layout.QualifiedName}>" : node.InterfaceName };
             if (parent is not null && (game.Length == 0 || parent.Games.Contains(game))) bases.Add(parent.Interface(game));
+            bases.AddRange(groups.Where(g => g.Games.Contains(game)).Select(g => g.Contract(game)));
             code.Open($"public partial interface {name} : " + string.Join(", ", bases));
             if (game.Length == 0 && parent is not null)
                 CommonClassContract(code, compilation.GetTypeByMetadataName("GBX.NET.IClassVersion`1")!);
@@ -115,6 +122,8 @@ internal static class GameApiWriter
             foreach (var member in members)
             {
                 if (ExistingProperty(plan, node, game, member, nodes)) continue;
+                if (InheritedProperty(node, game, member, plan, nodes)) continue;
+                if (groups.Any(g => g.Games.Contains(game) && g.Members.Contains(member))) continue;
                 var common = game.Length > 0 && node.Common.Any(m => m.Name == member.Name);
                 var type = Project(member, game, nodes);
                 if (common && type == Project(member, "", nodes)) continue;
@@ -125,6 +134,7 @@ internal static class GameApiWriter
             foreach (var method in node.Methods.Where(m => game.Length == 0 ? node.Games.All(m.Games.Contains) : m.Games.Contains(game)))
             {
                 if (ExistingMethod(plan, node, game, method)) continue;
+                if (InheritedMethod(node, game, method, nodes)) continue;
                 var common = game.Length > 0 && node.Games.All(method.Games.Contains);
                 var returned = ProjectReturn(method, game, nodes);
                 if (common && returned == ProjectReturn(method, "", nodes)) continue;
@@ -192,12 +202,48 @@ internal static class GameApiWriter
         return type;
     }
 
+    private static bool InheritedProperty(GameNodeModel node, string game, GameMember member, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes)
+    {
+        if (node.Layout.BaseName is null || !nodes.TryGetValue(node.Layout.BaseName, out var parent) || parent.Games.Count == 0 ||
+            game.Length > 0 && (!parent.Games.Contains(game) || node.Common.Any(m => m.Name == member.Name))) return false;
+        var inherited = (game.Length == 0 ? parent.Common : parent.Members.Where(m => m.Games.Contains(game)))
+            .FirstOrDefault(m => m.Name == member.Name);
+        if (GameNodeModel.ExistingContract(plan, parent, game, member.Name) is { } existing &&
+            (SyntaxOverlap.Normalize(GameNodeModel.Qualify(existing.Type.ToString(), member.Owner, plan)) !=
+                SyntaxOverlap.Normalize(Project(member, game, nodes)) ||
+             existing.AccessorList?.Accessors.Any(static a => a.IsKind(SyntaxKind.SetAccessorDeclaration)) != member.Writable)) return false;
+        return inherited is not null && inherited.Owner == member.Owner && inherited.Type == member.Type &&
+            inherited.Writable == member.Writable && Project(inherited, game, nodes) == Project(member, game, nodes);
+    }
+
+    private static bool InheritedMethod(GameNodeModel node, string game, GameMethod method, Dictionary<string, GameNodeModel> nodes)
+    {
+        if (node.Layout.BaseName is null || !nodes.TryGetValue(node.Layout.BaseName, out var parent) || parent.Games.Count == 0 ||
+            game.Length > 0 && (!parent.Games.Contains(game) || node.Games.All(method.Games.Contains))) return false;
+        return parent.Methods.Any(m => m.Owner == method.Owner && m.Declaration == method.Declaration &&
+            (game.Length == 0 ? parent.Games.All(m.Games.Contains) : m.Games.Contains(game)) &&
+            ProjectReturn(m, game, nodes) == ProjectReturn(method, game, nodes));
+    }
+
+    private static string PropertyContract(GameNodeModel node, string game, GameMember member, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes,
+        Dictionary<string, List<InterfaceMemberGroup>> sharedInterfaces)
+    {
+        if (game.Length > 0 && node.Common.Any(m => m.Name == member.Name) && Project(member, game, nodes) == Project(member, "", nodes))
+            game = "";
+        if (InheritedProperty(node, game, member, plan, nodes))
+            return PropertyContract(nodes[node.Layout.BaseName!], game, member, plan, nodes, sharedInterfaces);
+        var group = sharedInterfaces[node.Layout.Name].FirstOrDefault(g => g.Games.Contains(game) && g.Members.Any(m => m.Name == member.Name));
+        if (group is not null) return group.Contract(game);
+        return node.Interface(game);
+    }
+
     private static bool ExistingMethod(GenerationPlan plan, GameNodeModel node, string game, GameMethod method)
         => plan.Existing.TryGetValue(node.InterfaceNamespace + "." + node.InterfaceName + game, out var existing) &&
             SyntaxOverlap.Method(existing, method.Declaration.Identifier.ValueText, method.Declaration.ParameterList.Parameters
                 .Select(static p => p.Type?.ToString() ?? "object").ToArray());
 
-    private static string Node(GameNodeModel node, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes)
+    private static string Node(GameNodeModel node, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes,
+        Dictionary<string, List<InterfaceMemberGroup>> sharedInterfaces)
     {
         var code = Start(node.Layout.File.Namespace, plan);
         code.Open("public partial class " + node.Layout.Name + " : " + string.Join(", ", new[] { "" }.Concat(node.Games).Select(node.Interface)));
@@ -221,7 +267,7 @@ internal static class GameApiWriter
                     if (own is null || own.Owner == member.Owner || Project(member, game, nodes) != member.Type) continue;
                     var common = game.Length > 0 && parentNode.Common.Any(m => m.Name == member.Name) &&
                         Project(member, "", nodes) == member.Type;
-                    var contract = parentNode.Interface(common ? "" : game);
+                    var contract = PropertyContract(parentNode, common ? "" : game, member, plan, nodes, sharedInterfaces);
                     if (!forwarded.Add(contract + "." + member.Name)) continue;
                     var name = SyntaxOverlap.Escape(member.Name);
                     var access = $"(({parentNode.Layout.QualifiedName})this).{name}";
@@ -239,6 +285,7 @@ internal static class GameApiWriter
             foreach (var member in game.Length == 0 ? node.Common : node.Members.Where(m => m.Games.Contains(game)))
             {
                 if (ExistingProperty(plan, node, game, member, nodes)) continue;
+                if (InheritedProperty(node, game, member, plan, nodes)) continue;
                 var projected = Project(member, game, nodes);
                 if (projected == member.Type) continue;
                 var common = game.Length > 0 && node.Common.Any(m => m.Name == member.Name);
@@ -247,7 +294,7 @@ internal static class GameApiWriter
                 var child = nodes[WireTypes.Map(member.Field!.StorageDeclaration.Type.Name)];
                 var scalar = member.Field.StorageDeclaration.Type.ArrayDimensions == 0;
                 var nullable = member.Type.EndsWith("?", StringComparison.Ordinal);
-                code.Open($"{projected} {node.Interface(game)}.{property}");
+                code.Open($"{projected} {PropertyContract(node, game, member, plan, nodes, sharedInterfaces)}.{property}");
                 if (scalar)
                 {
                     if (game.Length == 0) code.Line($"get => {property};");
@@ -267,24 +314,30 @@ internal static class GameApiWriter
                 {
                     var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field), member.Owner, plan);
                     var view = child.Interface(game) + (element.EndsWith("?", StringComparison.Ordinal) ? "?" : "");
-                    var missing = $"throw new MemberNullException({SymbolDisplay.FormatLiteral(member.Name, true)})";
                     var requiredElement = !element.EndsWith("?", StringComparison.Ordinal);
-                    var projection = game.Length == 0 ? (requiredElement ? "node ?? " + missing : "node") :
-                        $"{{ if (node is null) {(requiredElement ? missing + ";" : "return null;")} NodeBuilderValidation.Validate(node, GameVersion.{game}); return node; }}";
-                    code.Line($"get => {(nullable ? property + " is null ? null : " : "")}new ScopedNodeList<{element}, {view}>(() => {property}, static node => {projection});");
+                    var selected = game.Length == 0 ? "Unspecified" : game;
+                    code.Line($"get => {(nullable ? property + " is null ? null : " : "")}new ScopedNodeList<{element}, {view}>(Get{member.Name}BuilderReferences, GameVersion.{selected}, {(requiredElement ? "true" : "false")}, {SymbolDisplay.FormatLiteral(member.Name, true)});");
                     if (member.Writable)
-                        code.Line($"set => {property} = value is null ? {(nullable ? "null" : "throw new ArgumentNullException(nameof(value))")} : new NodeRefList<{element}>(value.Select(static item => {(requiredElement ? "" : "item is null ? null : ")}item is {child.Layout.QualifiedName} node ? node : throw new ArgumentException(\"A GBX.NET node is required.\", nameof(value))));");
+                        code.Line($"set => {property} = value is null ? {(nullable ? "null" : "throw new ArgumentNullException(nameof(value))")} : new NodeRefList<{element}>(NodeBuilderReferences.ToNodes<{element}, {view}>(value, {(requiredElement ? "false" : "true")}));");
                 }
                 code.Close();
             }
             foreach (var method in node.Methods.Where(m => game.Length == 0 ? node.Games.All(m.Games.Contains) : m.Games.Contains(game)))
             {
                 if (ExistingMethod(plan, node, game, method)) continue;
+                if (InheritedMethod(node, game, method, nodes)) continue;
                 var returned = ProjectReturn(method, game, nodes);
                 if (returned == method.ReturnType || game.Length > 0 && node.Games.All(method.Games.Contains) &&
                     returned == ProjectReturn(method, "", nodes)) continue;
                 code.Line($"{returned} {node.Interface(game)}.{method.Declaration.Identifier.Text}({method.Parameters}) => {method.Declaration.Identifier.Text}({method.Arguments});");
             }
+        }
+        foreach (var member in node.Members.Where(m => m.Field?.StorageDeclaration.Type.ArrayDimensions == 1 &&
+            new[] { "" }.Concat(node.Games).Any(game => (game.Length == 0 ? node.Games.All(m.Games.Contains) : m.Games.Contains(game)) &&
+                !ExistingProperty(plan, node, game, m, nodes) && !InheritedProperty(node, game, m, plan, nodes) && Project(m, game, nodes) != m.Type)))
+        {
+            var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field!), member.Owner, plan);
+            code.Line($"private NodeRefList<{element}>? Get{member.Name}BuilderReferences() => {SyntaxOverlap.Escape(member.Name)};");
         }
         code.Close();
         return code.ToString();
@@ -302,16 +355,27 @@ internal static class GameApiWriter
         foreach (var member in node.Members.Where(static m => m.Writable))
         {
             var mask = string.Join(" | ", member.Games.OrderBy(static g => g, StringComparer.Ordinal).Select(static g => "GameVersion." + g));
-            code.Line($"private protected static void Set{member.Name}(NodeBuilderState<{node.Layout.QualifiedName}> state, {member.Type} value) => state.Set<{member.Type}>({SymbolDisplay.FormatLiteral(member.Name, true)}, value, {mask}, static value => {Copy(member, plan, "value")}, static (node, value) => node.{SyntaxOverlap.Escape(member.Name)} = value);");
+            var descriptors = $"global::GBX.NET.Builders.Engines.{member.Owner.File.Engine}.{member.Owner.Name}BuilderAssignments";
+            code.Line($"private protected static void Set{member.Name}(NodeBuilderState<{node.Layout.QualifiedName}> state, {member.Type} value) => state.Set({descriptors}.Get{member.Name}Assignment(), value, {mask});");
             if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0)
             {
                 var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field), member.Owner, plan);
-                code.Line($"private protected static void Set{member.Name}Reference(NodeBuilderState<{node.Layout.QualifiedName}> state, NodeRef<{element}> value) => state.Set<NodeRef<{element}>>({SymbolDisplay.FormatLiteral(member.Name, true)}, value, {mask}, static reference => {{ var copy = new NodeRef<{element}>(); copy.CopyFrom(reference); return copy; }}, static (node, reference) => node.References.{SyntaxOverlap.Escape(member.Name)}.CopyFrom(reference));");
+                code.Line($"private protected static void Set{member.Name}Reference(NodeBuilderState<{node.Layout.QualifiedName}> state, NodeRef<{element}> value) => state.Set({descriptors}.Get{member.Name}ReferenceAssignment(), value, {mask});");
             }
         }
         WriteMembers(code, node, "", null, plan, nodes);
         code.Close();
+        var (groups, stages) = BuilderMemberGroup.Create(node, plan);
+        foreach (var group in groups)
+        {
+            var parent = group.Parent?.Name ?? node.BuilderName + "Base";
+            code.Open($"public abstract class {group.Name}<TSelf> : {parent}<TSelf> where TSelf : {group.Name}<TSelf>");
+            code.Line($"private protected {group.Name}(NodeBuilderState<{node.Layout.QualifiedName}> state) : base(state) {{ }}");
+            WriteMembers(code, node, "", null, plan, nodes, group.Members.Except(group.Parent?.Members ?? []));
+            code.Close();
+        }
         code.Open($"public partial class {node.BuilderName} : {node.BuilderName}Base<{node.BuilderName}>");
+        var recipes = WriteRecipes(code, node);
         foreach (var game in node.Games.Where(g => !node.RecipeErrors.ContainsKey(g)))
         {
             if (!SyntaxOverlap.Method(existing, "For" + game)) code.Line($"public {game} For{game}() => new(state.Snapshot());");
@@ -325,44 +389,20 @@ internal static class GameApiWriter
         {
             plan.Existing.TryGetValue(node.BuilderNamespace + "." + node.BuilderName + "+" + game, out var stage);
             EngineWriter.RequirePartial(stage);
-            code.Open($"public partial class {game} : {node.BuilderName}Base<{game}>");
+            var group = stages[game];
+            code.Open($"public partial class {game} : {group?.Name ?? node.BuilderName + "Base"}<{game}>");
             code.Line($"internal {game}(NodeBuilderState<{node.Layout.QualifiedName}> state) : base(state) {{ }}");
-            WriteMembers(code, node, game, stage, plan, nodes);
+            WriteMembers(code, node, game, stage, plan, nodes, inheritedMembers: group?.Members);
             if (SyntaxOverlap.Has(stage, "Build") || SyntaxOverlap.Has(stage, "BuildInterface"))
                 throw new InvalidOperationException("Build and BuildInterface are reserved for generated construction. Use the partial hooks.");
             code.Line($"public {node.Interface(game)} BuildInterface() => Build();");
             code.Open($"public {node.Layout.QualifiedName} Build()");
-            var gameCtor = GameDefaultsWriter.Enabled(node.Layout.Scope, false) || node.Layout.Existing?.Constructors
-                .Any(static c => c.ParameterList.Parameters.Count == 1 && SyntaxOverlap.Normalize(c.ParameterList.Parameters[0].Type?.ToString() ?? "") == "GameVersion") == true;
-            code.Line($"var node = new {node.Layout.QualifiedName}({(gameCtor ? "GameVersion." + game : "")});");
-            foreach (var candidate in node.Recipes[game])
-            {
-                var chunk = candidate.Chunk;
-                var type = candidate.Owner.QualifiedName + "." + chunk.Name;
-                var hasCtor = GameDefaultsWriter.Enabled(chunk.Scope, true) || chunk.Scope.Existing?.Constructors
-                    .Any(static c => c.ParameterList.Parameters.Count == 1 && SyntaxOverlap.Normalize(c.ParameterList.Parameters[0].Type?.ToString() ?? "") == "GameVersion") == true;
-                var variable = "chunk" + (chunk.IsHeader ? "Header" : "") + chunk.Id.ToString("X8");
-                code.Line($"var {variable} = new {type}({(hasCtor ? "GameVersion." + game : "")});");
-                if (candidate.HasVersion && !hasCtor) code.Line($"{variable}.Version = {candidate.Version(game)};");
-                code.Line($"node.Chunks.Add({variable});");
-            }
+            code.Line($"var node = {node.BuilderName}.CreateRecipe{recipes[game]}(GameVersion.{game});");
             code.Line($"state.Apply(node, GameVersion.{game});");
             code.Line("CustomizeNode(node);");
-            foreach (var candidate in node.Recipes[game])
-            {
-                var chunk = candidate.Chunk;
-                var chunkType = candidate.Owner.QualifiedName + "." + chunk.Name;
-                var mismatch = candidate.HasVersion ? $" is not {{ Version: {candidate.Version(game)} }}" : " is null";
-                code.Line($"if (node.GetChunk<{chunkType}>(){mismatch}) throw new InvalidOperationException(\"Required {game} chunk {chunk.Name} is missing or has an incompatible version.\");");
-            }
+            code.Line($"{node.BuilderName}.ValidateRecipe{recipes[game]}(node, GameVersion.{game});");
             code.Line($"NodeBuilderValidation.Validate(node, GameVersion.{game});");
-            foreach (var member in node.Members.Where(m => m.Games.Contains(game) && !m.Type.EndsWith("?", StringComparison.Ordinal)))
-            {
-                if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0)
-                    code.Line($"if (node.References.{SyntaxOverlap.Escape(member.Name)}.Kind == NodeRefKind.None) throw new MemberNullException({SymbolDisplay.FormatLiteral(member.Name, true)});");
-                else if (IsReferenceType(member.Type))
-                    code.Line($"if (node.{SyntaxOverlap.Escape(member.Name)} is null) throw new MemberNullException({SymbolDisplay.FormatLiteral(member.Name, true)});");
-            }
+            code.Line($"{node.BuilderName}.ValidateRequiredMembers(node, GameVersion.{game});");
             code.Line("ValidateNode(node);");
             code.Line("return node;");
             code.Close();
@@ -374,19 +414,101 @@ internal static class GameApiWriter
         return code.ToString();
     }
 
+    private static void WritePropertyDescriptors(SourceProductionContext context, GenerationPlan plan, Dictionary<string, GameNodeModel> nodes)
+    {
+        var owners = nodes.Values.Where(static n => n.MetadataError is null && n.Games.Count > 0 && !n.Layout.IsAbstract &&
+                n.Games.Any(g => !n.RecipeErrors.ContainsKey(g))).SelectMany(static n => n.Members).Where(static m => m.Writable)
+            .GroupBy(static m => m.Owner).OrderBy(static g => g.Key.File.TypeKey, StringComparer.Ordinal);
+        foreach (var owner in owners)
+        {
+            var code = Start("GBX.NET.Builders.Engines." + owner.Key.File.Engine, plan);
+            code.Open($"internal static class {owner.Key.Name}BuilderAssignments");
+            foreach (var member in owner.GroupBy(static m => m.Name, StringComparer.Ordinal).Select(static g => g.First()).OrderBy(static m => m.Name, StringComparer.Ordinal))
+            {
+                // Lazy descriptors let the trimmer discard unused setters.
+                // Eager initialization would root every setter on the owner.
+                var name = SymbolDisplay.FormatLiteral(member.Name, true);
+                var property = SyntaxOverlap.Escape(member.Name);
+                var copy = Copy(member, plan, "value");
+                code.Line($"private static NodeBuilderProperty<{member.Type}>? cached{member.Name};");
+                code.Line($"internal static NodeBuilderProperty<{member.Type}> Get{member.Name}Assignment() => cached{member.Name} ??= new({name}, static (node, value) => (({owner.Key.QualifiedName})node).{property} = value{(copy == "value" ? "" : ", static value => " + copy)});");
+                if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0)
+                {
+                    var element = GameNodeModel.Qualify(ReferenceModel.Element(member.Field), member.Owner, plan);
+                    code.Line($"private static NodeBuilderProperty<NodeRef<{element}>>? cached{member.Name}Reference;");
+                    code.Line($"internal static NodeBuilderProperty<NodeRef<{element}>> Get{member.Name}ReferenceAssignment() => cached{member.Name}Reference ??= new({name}, static (node, value) => (({owner.Key.QualifiedName})node).References.{property}.CopyFrom(value), static reference => {{ var copy = new NodeRef<{element}>(); copy.CopyFrom(reference); return copy; }});");
+                }
+            }
+            code.Close();
+            context.AddSource($"Builders/{owner.Key.File.Engine}/{owner.Key.Name}BuilderAssignments.g.cs", code.ToString());
+        }
+    }
+
+    private static Dictionary<string, int> WriteRecipes(CodeWriter code, GameNodeModel node)
+    {
+        var recipes = node.Games.Where(g => !node.RecipeErrors.ContainsKey(g)).GroupBy(game =>
+            string.Join("|", node.Recipes[game].Select(c => c.Owner.QualifiedName + "." + c.Chunk.Name + ":" + c.Version(game)))).ToArray();
+        var result = new Dictionary<string, int>(StringComparer.Ordinal);
+        var gameCtor = GameDefaultsWriter.Enabled(node.Layout.Scope, false) || HasGameConstructor(node.Layout.Existing);
+        for (var i = 0; i < recipes.Length; i++)
+        {
+            var recipe = recipes[i];
+            var game = recipe.First();
+            foreach (var selected in recipe) result.Add(selected, i);
+            code.Open($"private static {node.Layout.QualifiedName} CreateRecipe{i}(GameVersion game)");
+            code.Line($"var node = new {node.Layout.QualifiedName}({(gameCtor ? "game" : "")});");
+            foreach (var candidate in node.Recipes[game])
+            {
+                var chunk = candidate.Chunk;
+                var hasCtor = GameDefaultsWriter.Enabled(chunk.Scope, true) || HasGameConstructor(chunk.Scope.Existing);
+                var variable = "chunk" + (chunk.IsHeader ? "Header" : "") + chunk.Id.ToString("X8");
+                code.Line($"var {variable} = new {candidate.Owner.QualifiedName}.{chunk.Name}({(hasCtor ? "game" : "")});");
+                if (candidate.HasVersion && !hasCtor) code.Line($"{variable}.Version = {candidate.Version(game)};");
+                code.Line($"node.Chunks.Add({variable});");
+            }
+            code.Line("return node;");
+            code.Close();
+            code.Open($"private static void ValidateRecipe{i}({node.Layout.QualifiedName} node, GameVersion game)");
+            foreach (var candidate in node.Recipes[game])
+            {
+                var mismatch = candidate.HasVersion ? $" is not {{ Version: {candidate.Version(game)} }}" : " is null";
+                code.Line($"if (node.GetChunk<{candidate.Owner.QualifiedName}.{candidate.Chunk.Name}>(){mismatch}) throw new InvalidOperationException($\"Required {{game}} chunk {candidate.Chunk.Name} is missing or has an incompatible version.\");");
+            }
+            code.Close();
+        }
+        code.Open($"private static void ValidateRequiredMembers({node.Layout.QualifiedName} node, GameVersion game)");
+        foreach (var member in node.Members.Where(static m => !m.Type.EndsWith("?", StringComparison.Ordinal)))
+        {
+            string condition;
+            if (member.IsReference && member.Field?.StorageDeclaration.Type.ArrayDimensions == 0)
+                condition = $"node.References.{SyntaxOverlap.Escape(member.Name)}.Kind == NodeRefKind.None";
+            else if (IsReferenceType(member.Type)) condition = $"node.{SyntaxOverlap.Escape(member.Name)} is null";
+            else continue;
+            var mask = string.Join(" | ", member.Games.OrderBy(static g => g, StringComparer.Ordinal).Select(static g => "GameVersion." + g));
+            var available = node.Games.All(member.Games.Contains) ? "" : $"(game & ({mask})) != 0 && ";
+            code.Line($"if ({available}{condition}) throw new MemberNullException({SymbolDisplay.FormatLiteral(member.Name, true)});");
+        }
+        code.Close();
+        return result;
+    }
+
+    private static bool HasGameConstructor(ExistingType? type) => type?.Constructors.Any(static c =>
+        c.ParameterList.Parameters.Count == 1 && SyntaxOverlap.Normalize(c.ParameterList.Parameters[0].Type?.ToString() ?? "") == "GameVersion") == true;
+
     private static bool IsReferenceType(string type) => type is "string" or "Ident" or "PackDesc" ||
         type.EndsWith("[]", StringComparison.Ordinal) || type.StartsWith("List<", StringComparison.Ordinal) ||
         type.StartsWith("NodeRefList<", StringComparison.Ordinal) || type.StartsWith("global::GBX.NET.Engines.", StringComparison.Ordinal) && !type.Contains(".E");
 
     private static void WriteMembers(CodeWriter code, GameNodeModel node, string game, ExistingType? existing,
-        GenerationPlan plan, Dictionary<string, GameNodeModel> nodes)
+        GenerationPlan plan, Dictionary<string, GameNodeModel> nodes, IEnumerable<GameMember>? selectedMembers = null,
+        IEnumerable<GameMember>? inheritedMembers = null)
     {
         var stage = game.Length == 0 ? "TSelf" : game;
         var self = game.Length == 0 ? "(TSelf)this" : "this";
-        var members = (game.Length == 0 ? node.Common : node.Members.Where(m => m.Games.Contains(game))).Where(static m => m.Writable);
+        var members = (selectedMembers ?? (game.Length == 0 ? node.Common : node.Members.Where(m => m.Games.Contains(game)))).Where(static m => m.Writable);
         foreach (var member in members)
         {
-            var inherited = game.Length > 0 && node.Common.Any(m => m.Name == member.Name);
+            var inherited = game.Length > 0 && (node.Common.Any(m => m.Name == member.Name) || inheritedMembers?.Contains(member) == true);
             if (inherited)
             {
                 WriteScopedOverloads(code, node, game, member, nodes, "base.");
@@ -470,10 +592,10 @@ internal static class GameApiWriter
         else
         {
             var nullable = member.Field.Occurrences.Any(static d => d.Type.IsNullable);
-            var convert = (nullable ? "value is null ? null : " : "") + $"value is {child.Layout.QualifiedName} node ? node : throw new ArgumentException(\"A GBX.NET node is required.\", nameof(values))";
             if (nullable) childView += "?";
             code.Open($"public {game} {method}(params {childView}[] values)");
-            code.Line($"return {prefix}{method}(values.Select(static value => {convert}).ToArray());");
+            var element = child.Layout.QualifiedName + (nullable ? "?" : "");
+            code.Line($"return {prefix}{method}(NodeBuilderReferences.ToNodes<{element}, {childView}>(values, {(nullable ? "true" : "false")}));");
             code.Close();
             code.Open($"public {game} {method}(IEnumerable<{childView}> values)");
             code.Line($"return {method}(values.ToArray());");

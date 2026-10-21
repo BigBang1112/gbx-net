@@ -36,7 +36,7 @@ public abstract class CGameCtnMediaBlockFxCameraBlendBuilderBase<TSelf> where TS
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state;
     private protected CGameCtnMediaBlockFxCameraBlendBuilderBase() => state = new();
     private protected CGameCtnMediaBlockFxCameraBlendBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state) => this.state = state;
-    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>? value) => state.Set<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>?>("Keys", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value is null ? null! : new List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>(value), static (node, value) => node.Keys = value);
+    private protected static void SetKeys(NodeBuilderState<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend> state, List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameCtnMediaBlockFxCameraBlendBuilderAssignments.GetKeysAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>? Keys
     {
         get => state.Get<List<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Key>?>("Keys");
@@ -58,6 +58,21 @@ public abstract class CGameCtnMediaBlockFxCameraBlendBuilderBase<TSelf> where TS
 }
 public partial class CGameCtnMediaBlockFxCameraBlendBuilder : CGameCtnMediaBlockFxCameraBlendBuilderBase<CGameCtnMediaBlockFxCameraBlendBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend();
+        var chunk0316D000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000();
+        chunk0316D000.Version = 0;
+        node.Chunks.Add(chunk0316D000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk0316D000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend node, GameVersion game)
+    {
+    }
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
@@ -69,14 +84,12 @@ public partial class CGameCtnMediaBlockFxCameraBlendBuilder : CGameCtnMediaBlock
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxCameraBlendTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend();
-            var chunk0316D000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000();
-            chunk0316D000.Version = 0;
-            node.Chunks.Add(chunk0316D000);
+            var node = CGameCtnMediaBlockFxCameraBlendBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000>() is not { Version: 0 }) throw new InvalidOperationException("Required TMT chunk Chunk0316D000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxCameraBlendBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameCtnMediaBlockFxCameraBlendBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -89,14 +102,12 @@ public partial class CGameCtnMediaBlockFxCameraBlendBuilder : CGameCtnMediaBlock
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxCameraBlendMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend();
-            var chunk0316D000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000();
-            chunk0316D000.Version = 0;
-            node.Chunks.Add(chunk0316D000);
+            var node = CGameCtnMediaBlockFxCameraBlendBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk0316D000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxCameraBlendBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameCtnMediaBlockFxCameraBlendBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -109,14 +120,12 @@ public partial class CGameCtnMediaBlockFxCameraBlendBuilder : CGameCtnMediaBlock
         public global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockFxCameraBlendTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend();
-            var chunk0316D000 = new global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000();
-            chunk0316D000.Version = 0;
-            node.Chunks.Add(chunk0316D000);
+            var node = CGameCtnMediaBlockFxCameraBlendBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameCtnMediaBlockFxCameraBlend.Chunk0316D000>() is not { Version: 0 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0316D000 is missing or has an incompatible version.");
+            CGameCtnMediaBlockFxCameraBlendBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameCtnMediaBlockFxCameraBlendBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

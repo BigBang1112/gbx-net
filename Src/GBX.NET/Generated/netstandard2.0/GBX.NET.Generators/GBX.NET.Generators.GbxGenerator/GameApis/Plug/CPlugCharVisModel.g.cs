@@ -89,7 +89,7 @@ public partial class CPlugCharVisModel : global::GBX.NET.Interfaces.Plug.IPlugCh
         }
         set => LandMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMP4.NullMesh
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelMP4>.NullMesh
     {
         get
         {
@@ -669,7 +669,7 @@ public partial class CPlugCharVisModel : global::GBX.NET.Interfaces.Plug.IPlugCh
         }
         set => WalkStepMaterialImpact = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugParticleMaterialImpactModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelTM2020.NullMesh
+    global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugCharVisModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSolid2ModelTM2020>.NullMesh
     {
         get
         {

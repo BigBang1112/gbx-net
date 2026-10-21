@@ -36,9 +36,9 @@ public abstract class CHmsAmbientOccBuilderBase<TSelf> where TSelf : CHmsAmbient
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state;
     private protected CHmsAmbientOccBuilderBase() => state = new();
     private protected CHmsAmbientOccBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state) => this.state = state;
-    private protected static void SetBlurPower(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, float value) => state.Set<float>("BlurPower", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.BlurPower = value);
-    private protected static void SetBlurTexelCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, uint value) => state.Set<uint>("BlurTexelCount", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.BlurTexelCount = value);
-    private protected static void SetImageRadius(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, float value) => state.Set<float>("ImageRadius", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.ImageRadius = value);
+    private protected static void SetBlurPower(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurPowerAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetBlurTexelCount(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, uint value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetBlurTexelCountAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetImageRadius(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsAmbientOcc> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsAmbientOccBuilderAssignments.GetImageRadiusAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
     public float BlurPower
     {
         get => state.Get<float>("BlurPower");
@@ -72,6 +72,20 @@ public abstract class CHmsAmbientOccBuilderBase<TSelf> where TSelf : CHmsAmbient
 }
 public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbientOccBuilder>
 {
+    private static global::GBX.NET.Engines.Hms.CHmsAmbientOcc CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc(game);
+        var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
+        node.Chunks.Add(chunk06026000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06026000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsAmbientOcc node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -85,13 +99,12 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
         public global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsAmbientOcc Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc(GameVersion.TMF);
-            var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
-            node.Chunks.Add(chunk06026000);
+            var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06026000 is missing or has an incompatible version.");
+            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -104,13 +117,12 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
         public global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsAmbientOcc Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc(GameVersion.MP3);
-            var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
-            node.Chunks.Add(chunk06026000);
+            var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06026000 is missing or has an incompatible version.");
+            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -123,13 +135,12 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
         public global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsAmbientOcc Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc(GameVersion.TMT);
-            var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
-            node.Chunks.Add(chunk06026000);
+            var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06026000 is missing or has an incompatible version.");
+            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -142,13 +153,12 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
         public global::GBX.NET.Interfaces.Hms.IHmsAmbientOccMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsAmbientOcc Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc(GameVersion.MP4);
-            var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
-            node.Chunks.Add(chunk06026000);
+            var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk06026000 is missing or has an incompatible version.");
+            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -161,13 +171,12 @@ public partial class CHmsAmbientOccBuilder : CHmsAmbientOccBuilderBase<CHmsAmbie
         public global::GBX.NET.Interfaces.Hms.IHmsAmbientOccTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsAmbientOcc Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc(GameVersion.TM2020);
-            var chunk06026000 = new global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000();
-            node.Chunks.Add(chunk06026000);
+            var node = CHmsAmbientOccBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsAmbientOcc.Chunk06026000>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk06026000 is missing or has an incompatible version.");
+            CHmsAmbientOccBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CHmsAmbientOccBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

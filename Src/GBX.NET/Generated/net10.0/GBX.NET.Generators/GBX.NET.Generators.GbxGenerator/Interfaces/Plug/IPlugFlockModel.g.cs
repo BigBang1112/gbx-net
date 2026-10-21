@@ -31,229 +31,85 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFlockModelMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugFlockModel where T0 : class
+{
+    int AnimFlappingEnd { get; set; }
+    int AnimFlappingStart { get; set; }
+    int AnimGlidingEnd { get; set; }
+    int AnimGlidingStart { get; set; }
+    int AnimStandingEnd { get; set; }
+    int AnimStandingStart { get; set; }
+    T0? SoundEventTakeOff { get; set; }
+    T0? SoundLoop { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugFlockModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugFlockModel
+{
+    float CosViewAngle { get; set; }
+    float KAvoidance { get; set; }
+    float KGroundAvoid { get; set; }
+    float KGrouping { get; set; }
+    float KMatching { get; set; }
+    float MaxSpeed { get; set; }
+    float MinSpeed { get; set; }
+    float Range { get; set; }
+    int StandingDuration { get; set; }
+    int UpdateFrequency { get; set; }
+    float VAvoidance { get; set; }
+    float VGroundAvoid { get; set; }
+    float VGrouping { get; set; }
+    float VMatching { get; set; }
+    float Variance { get; set; }
+    float Volatility { get; set; }
+}
 public partial interface IPlugFlockModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugFlockModel>
 {
     int AnimPeriod { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? BirdModelFid { get; set; }
 }
 
-public partial interface IPlugFlockModelTM10 : IPlugFlockModel
+public partial interface IPlugFlockModelTM10 : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelTMPU : IPlugFlockModel
+public partial interface IPlugFlockModelTMPU : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelTMSX : IPlugFlockModel
+public partial interface IPlugFlockModelTMSX : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelTMNESWC : IPlugFlockModel
+public partial interface IPlugFlockModelTMNESWC : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelVSK5 : IPlugFlockModel
+public partial interface IPlugFlockModelVSK5 : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelTMF : IPlugFlockModel
+public partial interface IPlugFlockModelTMF : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelMP3 : IPlugFlockModel
+public partial interface IPlugFlockModelMP3 : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP3>, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    int AnimFlappingEnd { get; set; }
-    int AnimFlappingStart { get; set; }
-    int AnimGlidingEnd { get; set; }
-    int AnimGlidingStart { get; set; }
-    int AnimStandingEnd { get; set; }
-    int AnimStandingStart { get; set; }
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? SoundEventTakeOff { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP3? SoundLoop { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelTMT : IPlugFlockModel
+public partial interface IPlugFlockModelTMT : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTMT>, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
-    int AnimFlappingEnd { get; set; }
-    int AnimFlappingStart { get; set; }
-    int AnimGlidingEnd { get; set; }
-    int AnimGlidingStart { get; set; }
-    int AnimStandingEnd { get; set; }
-    int AnimStandingStart { get; set; }
-    float CosViewAngle { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? SoundEventTakeOff { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTMT? SoundLoop { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelMP4 : IPlugFlockModel
+public partial interface IPlugFlockModelMP4 : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundMP4>, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers2
 {
     global::GBX.NET.Engines.MwFoundations.CMwNod? AnimFileFid { get; set; }
-    int AnimFlappingEnd { get; set; }
-    int AnimFlappingStart { get; set; }
-    int AnimGlidingEnd { get; set; }
-    int AnimGlidingStart { get; set; }
-    int AnimStandingEnd { get; set; }
-    int AnimStandingStart { get; set; }
     global::GBX.NET.Engines.MwFoundations.CMwNod? BirdModel { get; set; }
-    float CosViewAngle { get; set; }
     int DefSpawnCount { get; set; }
     global::GBX.NET.Engines.Plug.CPlugFlockModel.EFlockType FlockType { get; set; }
-    float KAvoidance { get; set; }
-    float KGroundAvoid { get; set; }
-    float KGrouping { get; set; }
-    float KMatching { get; set; }
-    float MaxSpeed { get; set; }
-    float MinSpeed { get; set; }
-    float Range { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundEventTakeOff { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundMP4? SoundLoop { get; set; }
-    int StandingDuration { get; set; }
-    int UpdateFrequency { get; set; }
-    float VAvoidance { get; set; }
-    float VGroundAvoid { get; set; }
-    float VGrouping { get; set; }
-    float VMatching { get; set; }
-    float Variance { get; set; }
-    float Volatility { get; set; }
 }
 
-public partial interface IPlugFlockModelTM2020 : IPlugFlockModel
+public partial interface IPlugFlockModelTM2020 : IPlugFlockModel, global::GBX.NET.Interfaces.Plug.IPlugFlockModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020>
 {
-    int AnimFlappingEnd { get; set; }
-    int AnimFlappingStart { get; set; }
-    int AnimGlidingEnd { get; set; }
-    int AnimGlidingStart { get; set; }
-    int AnimStandingEnd { get; set; }
-    int AnimStandingStart { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? SoundEventTakeOff { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugSoundTM2020? SoundLoop { get; set; }
 }
 

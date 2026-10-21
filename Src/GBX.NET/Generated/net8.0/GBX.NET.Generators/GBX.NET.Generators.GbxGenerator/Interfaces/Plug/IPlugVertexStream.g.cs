@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVertexStreamMembers1 : global::GBX.NET.Interfaces.Plug.IPlugVertexStream
+{
+    bool CompressLocalFloat3 { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVertexStreamMembers2<T0> : global::GBX.NET.Interfaces.Plug.IPlugVertexStream where T0 : class
+{
+    new T0? StreamModel { get; set; }
+}
 public partial interface IPlugVertexStream : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVertexStream>
 {
     global::GBX.NET.Engines.Plug.CPlugVertexStream.DataDecl[]? DataDecls { get; set; }
@@ -39,46 +49,35 @@ public partial interface IPlugVertexStream : IClassVersion<global::GBX.NET.Engin
     int VertexCount { get; set; }
 }
 
-public partial interface IPlugVertexStreamTMSX : IPlugVertexStream
+public partial interface IPlugVertexStreamTMSX : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamTMNESWC : IPlugVertexStream
+public partial interface IPlugVertexStreamTMNESWC : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMNESWC? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamVSK5 : IPlugVertexStream
+public partial interface IPlugVertexStreamVSK5 : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamVSK5? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamTMF : IPlugVertexStream
+public partial interface IPlugVertexStreamTMF : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMF? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamMP3 : IPlugVertexStream
+public partial interface IPlugVertexStreamMP3 : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers1, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3>
 {
-    bool CompressLocalFloat3 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP3? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamTMT : IPlugVertexStream
+public partial interface IPlugVertexStreamTMT : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMT? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamMP4 : IPlugVertexStream
+public partial interface IPlugVertexStreamMP4 : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers1, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4>
 {
-    bool CompressLocalFloat3 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMP4? StreamModel { get; set; }
 }
 
-public partial interface IPlugVertexStreamTM2020 : IPlugVertexStream
+public partial interface IPlugVertexStreamTM2020 : IPlugVertexStream, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers1, global::GBX.NET.Interfaces.Plug.IPlugVertexStreamMembers2<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020>
 {
-    bool CompressLocalFloat3 { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTM2020? StreamModel { get; set; }
 }
 

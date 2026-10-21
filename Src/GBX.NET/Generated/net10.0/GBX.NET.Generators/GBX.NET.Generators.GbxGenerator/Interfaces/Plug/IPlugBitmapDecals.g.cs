@@ -31,30 +31,31 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugBitmapDecalsMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugBitmapDecals where T0 : class
+{
+    new IReadOnlyList<T0>? DecalModels { get; set; }
+}
 public partial interface IPlugBitmapDecals : IClassVersion<global::GBX.NET.Engines.Plug.CPlugBitmapDecals>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModel>? DecalModels { get; set; }
     global::GBX.NET.Engines.Plug.CPlugBitmapDecals.DecalSet[]? DecalSets { get; set; }
 }
 
-public partial interface IPlugBitmapDecalsMP3 : IPlugBitmapDecals
+public partial interface IPlugBitmapDecalsMP3 : IPlugBitmapDecals, global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP3>? DecalModels { get; set; }
 }
 
-public partial interface IPlugBitmapDecalsTMT : IPlugBitmapDecals
+public partial interface IPlugBitmapDecalsTMT : IPlugBitmapDecals, global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTMT>? DecalModels { get; set; }
 }
 
-public partial interface IPlugBitmapDecalsMP4 : IPlugBitmapDecals
+public partial interface IPlugBitmapDecalsMP4 : IPlugBitmapDecals, global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelMP4>? DecalModels { get; set; }
 }
 
-public partial interface IPlugBitmapDecalsTM2020 : IPlugBitmapDecals
+public partial interface IPlugBitmapDecalsTM2020 : IPlugBitmapDecals, global::GBX.NET.Interfaces.Plug.IPlugBitmapDecalsMembers1<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugDecalModelTM2020>? DecalModels { get; set; }
     string? MatterId { get; set; }
 }
 

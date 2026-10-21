@@ -49,7 +49,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         get => TriggerShapeFid;
         set => TriggerShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP3.HitShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.HitShapeFid
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => HitShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP3.MoveShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.MoveShapeFid
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => MoveShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP3.TriggerShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>.TriggerShapeFid
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => TriggerShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTMT.HitShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.HitShapeFid
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => HitShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTMT.MoveShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.MoveShapeFid
     {
         get
         {
@@ -99,7 +99,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => MoveShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTMT.TriggerShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>.TriggerShapeFid
     {
         get
         {
@@ -109,7 +109,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => TriggerShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4.HitShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.HitShapeFid
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => HitShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4.MoveShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.MoveShapeFid
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => MoveShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMP4.TriggerShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>.TriggerShapeFid
     {
         get
         {
@@ -139,7 +139,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => TriggerShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020.HitShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.HitShapeFid
     {
         get
         {
@@ -149,7 +149,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => HitShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020.MoveShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.MoveShapeFid
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CGameObjectPhyModel : global::GBX.NET.Interfaces.GameData.I
         }
         set => MoveShapeFid = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugSurface node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelTM2020.TriggerShapeFid
+    global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? global::GBX.NET.Interfaces.GameData.IGameObjectPhyModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>.TriggerShapeFid
     {
         get
         {

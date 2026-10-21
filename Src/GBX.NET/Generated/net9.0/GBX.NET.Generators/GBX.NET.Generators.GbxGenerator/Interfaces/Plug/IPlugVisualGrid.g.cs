@@ -40,91 +40,49 @@ public partial interface IPlugVisualGrid : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? BlendShapes { get; set; }
     int NbPointX { get; set; }
     int NbPointZ { get; set; }
     float RangeX { get; set; }
     float RangeZ { get; set; }
-    new Int3[] SubVisuals { get; set; }
-    new string? VisualId { get; set; }
 }
 
 public partial interface IPlugVisualGridTM10 : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM10
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
 }
 
 public partial interface IPlugVisualGridTMPU : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMPU
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
 }
 
 public partial interface IPlugVisualGridTMSX : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMSX
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new bool IsInverse { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVertexStreamTMSX> VertexStreams { get; set; }
 }
 
 public partial interface IPlugVisualGridTMNESWC : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMNESWC
 {
-    new global::GBX.NET.Vec3[]? BiTangents { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualGridVSK5 : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DVSK5
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualGridTMF : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMF
 {
-    new global::GBX.NET.Engines.Plug.CPlugVisual.BitmapElemToPack[] BitmapElemToPacks { get; set; }
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualGridMP3 : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP3
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualGridTMT : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTMT
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualGridMP4 : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DMP4
 {
-    new global::GBX.NET.Engines.MwFoundations.CMwNod? FuncVisual { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 
 public partial interface IPlugVisualGridTM2020 : IPlugVisualGrid, global::GBX.NET.Interfaces.Plug.IPlugVisual3DTM2020
 {
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Morph[] Morphs { get; set; }
-    new float NPatchTessLevel { get; set; }
-    new global::GBX.NET.Engines.Plug.CPlugVisual.Split[] Splits { get; set; }
 }
 

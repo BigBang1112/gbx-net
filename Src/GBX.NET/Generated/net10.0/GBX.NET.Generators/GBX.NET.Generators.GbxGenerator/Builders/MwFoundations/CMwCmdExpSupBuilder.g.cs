@@ -36,10 +36,10 @@ public abstract class CMwCmdExpSupBuilderBase<TSelf> where TSelf : CMwCmdExpSupB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state;
     private protected CMwCmdExpSupBuilderBase() => state = new();
     private protected CMwCmdExpSupBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state) => this.state = state;
-    private protected static void SetValue1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value1", value, GameVersion.TMF, static value => value, static (node, value) => node.Value1 = value);
-    private protected static void SetValue1Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Value1", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Value1.CopyFrom(reference));
-    private protected static void SetValue2(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value2", value, GameVersion.TMF, static value => value, static (node, value) => node.Value2 = value);
-    private protected static void SetValue2Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set<NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>>("Value2", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Value2.CopyFrom(reference));
+    private protected static void SetValue1(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1Assignment(), value, GameVersion.TMF);
+    private protected static void SetValue1Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue1ReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetValue2(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, global::GBX.NET.Engines.MwFoundations.CMwCmdExp? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2Assignment(), value, GameVersion.TMF);
+    private protected static void SetValue2Reference(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup> state, NodeRef<global::GBX.NET.Engines.MwFoundations.CMwCmdExp> value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpBoolBinBuilderAssignments.GetValue2ReferenceAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value1
     {
         get => state.Get<global::GBX.NET.Engines.MwFoundations.CMwCmdExp?>("Value1");
@@ -75,6 +75,23 @@ public abstract class CMwCmdExpSupBuilderBase<TSelf> where TSelf : CMwCmdExpSupB
 }
 public partial class CMwCmdExpSupBuilder : CMwCmdExpSupBuilderBase<CMwCmdExpSupBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup();
+        var chunk0103B000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk0103B000();
+        node.Chunks.Add(chunk0103B000);
+        var chunk01054000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000();
+        node.Chunks.Add(chunk01054000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk0103B000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0103B000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01054000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpSupBuilderBase<TMF>
     {
@@ -82,16 +99,12 @@ public partial class CMwCmdExpSupBuilder : CMwCmdExpSupBuilderBase<CMwCmdExpSupB
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpSupTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpSup();
-            var chunk0103B000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk0103B000();
-            node.Chunks.Add(chunk0103B000);
-            var chunk01054000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000();
-            node.Chunks.Add(chunk01054000);
+            var node = CMwCmdExpSupBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk0103B000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0103B000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpBoolBin.Chunk01054000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01054000 is missing or has an incompatible version.");
+            CMwCmdExpSupBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdExpSupBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

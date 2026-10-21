@@ -36,54 +36,54 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state;
     private protected CGamePlayerScoreBuilderBase() => state = new();
     private protected CGamePlayerScoreBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) => this.state = state;
-    private protected static void SetCampaignPlayerScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>?>("CampaignPlayerScores", value, GameVersion.TMF, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.CampaignPlayerScores = value);
-    private protected static void SetCampaignRecordsStateVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, byte value) => state.Set<byte>("CampaignRecordsStateVersion", value, GameVersion.TMF, static value => value, static (node, value) => node.CampaignRecordsStateVersion = value);
-    private protected static void SetCampaignRecordsStates(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]?>("CampaignRecordsStates", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[])value.Clone(), static (node, value) => node.CampaignRecordsStates = value);
-    private protected static void SetFinishCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("FinishCount", value, GameVersion.TMF, static value => value, static (node, value) => node.FinishCount = value);
-    private protected static void SetHotSeatTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("HotSeatTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.HotSeatTimeSeconds = value);
-    private protected static void SetLadderMatchResults(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]?>("LadderMatchResults", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[])value.Clone(), static (node, value) => node.LadderMatchResults = value);
-    private protected static void SetManiaLinkTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("ManiaLinkTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.ManiaLinkTimeSeconds = value);
-    private protected static void SetMapCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("MapCount", value, GameVersion.TMF, static value => value, static (node, value) => node.MapCount = value);
-    private protected static void SetMapEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("MapEditorTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.MapEditorTimeSeconds = value);
-    private protected static void SetNetworkCupTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("NetworkCupTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.NetworkCupTimeSeconds = value);
-    private protected static void SetNetworkLapsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("NetworkLapsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.NetworkLapsTimeSeconds = value);
-    private protected static void SetNetworkRoundsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("NetworkRoundsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.NetworkRoundsTimeSeconds = value);
-    private protected static void SetNetworkStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("NetworkStuntsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.NetworkStuntsTimeSeconds = value);
-    private protected static void SetNetworkTimeAttackTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("NetworkTimeAttackTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.NetworkTimeAttackTimeSeconds = value);
-    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set<string?>("NickName", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.NickName = value);
-    private protected static void SetPlayerId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set<string?>("PlayerId", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.PlayerId = value);
-    private protected static void SetPlayerName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set<string?>("PlayerName", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.PlayerName = value);
-    private protected static void SetPlayerOfficialScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores?>("PlayerOfficialScores", value, GameVersion.TMF, static value => value, static (node, value) => node.PlayerOfficialScores = value);
-    private protected static void SetPlayerOfficialScoresReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value) => state.Set<NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores>>("PlayerOfficialScores", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.PlayerOfficialScores.CopyFrom(reference));
-    private protected static void SetReplayEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("ReplayEditorTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.ReplayEditorTimeSeconds = value);
-    private protected static void SetResetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("ResetCount", value, GameVersion.TMF, static value => value, static (node, value) => node.ResetCount = value);
-    private protected static void SetScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]?>("Scores", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerScore.Score[])value.Clone(), static (node, value) => node.Scores = value);
-    private protected static void SetScoresVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("ScoresVersion", value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.ScoresVersion = value);
-    private protected static void SetSkinEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SkinEditorTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SkinEditorTimeSeconds = value);
-    private protected static void SetSoloPlatformTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SoloPlatformTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SoloPlatformTimeSeconds = value);
-    private protected static void SetSoloPuzzleTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SoloPuzzleTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SoloPuzzleTimeSeconds = value);
-    private protected static void SetSoloRaceTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SoloRaceTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SoloRaceTimeSeconds = value);
-    private protected static void SetSoloStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SoloStuntsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SoloStuntsTimeSeconds = value);
-    private protected static void SetSubmittedFinishCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedFinishCount", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedFinishCount = value);
-    private protected static void SetSubmittedHotSeatTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedHotSeatTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedHotSeatTimeSeconds = value);
-    private protected static void SetSubmittedManiaLinkTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedManiaLinkTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedManiaLinkTimeSeconds = value);
-    private protected static void SetSubmittedMapCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedMapCount", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedMapCount = value);
-    private protected static void SetSubmittedMapEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedMapEditorTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedMapEditorTimeSeconds = value);
-    private protected static void SetSubmittedNetworkCupTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedNetworkCupTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedNetworkCupTimeSeconds = value);
-    private protected static void SetSubmittedNetworkLapsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedNetworkLapsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedNetworkLapsTimeSeconds = value);
-    private protected static void SetSubmittedNetworkRoundsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedNetworkRoundsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedNetworkRoundsTimeSeconds = value);
-    private protected static void SetSubmittedNetworkStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedNetworkStuntsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedNetworkStuntsTimeSeconds = value);
-    private protected static void SetSubmittedNetworkTimeAttackTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedNetworkTimeAttackTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedNetworkTimeAttackTimeSeconds = value);
-    private protected static void SetSubmittedReplayEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedReplayEditorTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedReplayEditorTimeSeconds = value);
-    private protected static void SetSubmittedResetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedResetCount", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedResetCount = value);
-    private protected static void SetSubmittedSkinEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedSkinEditorTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedSkinEditorTimeSeconds = value);
-    private protected static void SetSubmittedSoloPlatformTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedSoloPlatformTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedSoloPlatformTimeSeconds = value);
-    private protected static void SetSubmittedSoloPuzzleTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedSoloPuzzleTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedSoloPuzzleTimeSeconds = value);
-    private protected static void SetSubmittedSoloRaceTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedSoloRaceTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedSoloRaceTimeSeconds = value);
-    private protected static void SetSubmittedSoloStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SubmittedSoloStuntsTimeSeconds", value, GameVersion.TMF, static value => value, static (node, value) => node.SubmittedSoloStuntsTimeSeconds = value);
-    private protected static void SetSurvivalScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[])value.Clone(), static (node, value) => node.SurvivalScores = value);
-    private protected static void SetSurvivalScoresVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set<int>("SurvivalScoresVersion", value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5, static value => value, static (node, value) => node.SurvivalScoresVersion = value);
-    private protected static void SetTrainingMedalsScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? value) => state.Set<global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]?>("TrainingMedalsScores", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[])value.Clone(), static (node, value) => node.TrainingMedalsScores = value);
+    private protected static void SetCampaignPlayerScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignPlayerScoresAssignment(), value, GameVersion.TMF);
+    private protected static void SetCampaignRecordsStateVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, byte value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignRecordsStateVersionAssignment(), value, GameVersion.TMF);
+    private protected static void SetCampaignRecordsStates(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.CampaignRecordsState[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetCampaignRecordsStatesAssignment(), value, GameVersion.TMF);
+    private protected static void SetFinishCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetFinishCountAssignment(), value, GameVersion.TMF);
+    private protected static void SetHotSeatTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetHotSeatTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetLadderMatchResults(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.LadderMatchResult[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetLadderMatchResultsAssignment(), value, GameVersion.TMF);
+    private protected static void SetManiaLinkTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetManiaLinkTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetMapCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetMapCountAssignment(), value, GameVersion.TMF);
+    private protected static void SetMapEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetMapEditorTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetNetworkCupTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkCupTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetNetworkLapsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkLapsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetNetworkRoundsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkRoundsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetNetworkStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetNetworkTimeAttackTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNetworkTimeAttackTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetNickName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetNickNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetPlayerId(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerIdAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetPlayerName(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerNameAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetPlayerOfficialScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerOfficialScores? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerOfficialScoresAssignment(), value, GameVersion.TMF);
+    private protected static void SetPlayerOfficialScoresReference(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, NodeRef<global::GBX.NET.Engines.Game.CGamePlayerOfficialScores> value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetPlayerOfficialScoresReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetReplayEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetReplayEditorTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetResetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetResetCountAssignment(), value, GameVersion.TMF);
+    private protected static void SetScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.Score[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetScoresAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetScoresVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetScoresVersionAssignment(), value, GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetSkinEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSkinEditorTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSoloPlatformTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloPlatformTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSoloPuzzleTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloPuzzleTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSoloRaceTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloRaceTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSoloStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSoloStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedFinishCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedFinishCountAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedHotSeatTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedHotSeatTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedManiaLinkTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedManiaLinkTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedMapCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedMapCountAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedMapEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedMapEditorTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedNetworkCupTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkCupTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedNetworkLapsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkLapsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedNetworkRoundsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkRoundsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedNetworkStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedNetworkTimeAttackTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedNetworkTimeAttackTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedReplayEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedReplayEditorTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedResetCount(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedResetCountAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedSkinEditorTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSkinEditorTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedSoloPlatformTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloPlatformTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedSoloPuzzleTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloPuzzleTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedSoloRaceTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloRaceTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSubmittedSoloStuntsTimeSeconds(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSubmittedSoloStuntsTimeSecondsAssignment(), value, GameVersion.TMF);
+    private protected static void SetSurvivalScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSurvivalScoresAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetSurvivalScoresVersion(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetSurvivalScoresVersionAssignment(), value, GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMSX | GameVersion.VSK5);
+    private protected static void SetTrainingMedalsScores(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state, global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGamePlayerScoreBuilderAssignments.GetTrainingMedalsScoresAssignment(), value, GameVersion.TMF);
     public string? NickName
     {
         get => state.Get<string?>("NickName");
@@ -139,8 +139,107 @@ public abstract class CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlay
         return (TSelf)this;
     }
 }
+public abstract class CGamePlayerScoreBuilderMembers1<TSelf> : CGamePlayerScoreBuilderBase<TSelf> where TSelf : CGamePlayerScoreBuilderMembers1<TSelf>
+{
+    private protected CGamePlayerScoreBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
+    public global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores
+    {
+        get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores");
+        set => SetSurvivalScores(state, value);
+    }
+    public TSelf WithSurvivalScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value)
+    {
+        SurvivalScores = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSurvivalScores(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore> values)
+    {
+        return WithSurvivalScores(values.ToArray());
+    }
+    public int SurvivalScoresVersion
+    {
+        get => state.Get<int>("SurvivalScoresVersion");
+        set => SetSurvivalScoresVersion(state, value);
+    }
+    public TSelf WithSurvivalScoresVersion(int value)
+    {
+        SurvivalScoresVersion = value;
+        return (TSelf)this;
+    }
+}
 public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGamePlayerScoreBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGamePlayerScore CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
+        var chunk0308D003 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D003();
+        node.Chunks.Add(chunk0308D003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGamePlayerScore node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGamePlayerScore CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
+        var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
+        node.Chunks.Add(chunk0308D004);
+        var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
+        node.Chunks.Add(chunk0308D006);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGamePlayerScore node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D006 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGamePlayerScore CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
+        var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
+        node.Chunks.Add(chunk0308D004);
+        var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
+        node.Chunks.Add(chunk0308D006);
+        var chunk0308D008 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D008();
+        node.Chunks.Add(chunk0308D008);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGamePlayerScore node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D008>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D008 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGamePlayerScore CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
+        var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
+        node.Chunks.Add(chunk0308D004);
+        var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
+        node.Chunks.Add(chunk0308D006);
+        var chunk0308D00F = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D00F();
+        node.Chunks.Add(chunk0308D00F);
+        var chunk0308D010 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D010();
+        node.Chunks.Add(chunk0308D010);
+        var chunk0308D011 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D011();
+        node.Chunks.Add(chunk0308D011);
+        var chunk0308D012 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D012();
+        node.Chunks.Add(chunk0308D012);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGamePlayerScore node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D004 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D00F>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D00F is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D010>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D010 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D011>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D011 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D012>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0308D012 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGamePlayerScore node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -153,13 +252,12 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-            var chunk0308D003 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D003();
-            node.Chunks.Add(chunk0308D003);
+            var node = CGamePlayerScoreBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0308D003 is missing or has an incompatible version.");
+            CGamePlayerScoreBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CGamePlayerScoreBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -172,161 +270,73 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-            var chunk0308D003 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D003();
-            node.Chunks.Add(chunk0308D003);
+            var node = CGamePlayerScoreBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0308D003 is missing or has an incompatible version.");
+            CGamePlayerScoreBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CGamePlayerScoreBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
     }
-    public partial class TMSX : CGamePlayerScoreBuilderBase<TMSX>
+    public partial class TMSX : CGamePlayerScoreBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores");
-            set => SetSurvivalScores(state, value);
-        }
-        public TMSX WithSurvivalScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value)
-        {
-            SurvivalScores = value;
-            return this;
-        }
-        public TMSX WithSurvivalScores(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore> values)
-        {
-            return WithSurvivalScores(values.ToArray());
-        }
-        public int SurvivalScoresVersion
-        {
-            get => state.Get<int>("SurvivalScoresVersion");
-            set => SetSurvivalScoresVersion(state, value);
-        }
-        public TMSX WithSurvivalScoresVersion(int value)
-        {
-            SurvivalScoresVersion = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-            var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
-            node.Chunks.Add(chunk0308D004);
-            var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
-            node.Chunks.Add(chunk0308D006);
+            var node = CGamePlayerScoreBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0308D004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0308D006 is missing or has an incompatible version.");
+            CGamePlayerScoreBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGamePlayerScoreBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
     }
-    public partial class TMNESWC : CGamePlayerScoreBuilderBase<TMNESWC>
+    public partial class TMNESWC : CGamePlayerScoreBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores");
-            set => SetSurvivalScores(state, value);
-        }
-        public TMNESWC WithSurvivalScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value)
-        {
-            SurvivalScores = value;
-            return this;
-        }
-        public TMNESWC WithSurvivalScores(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore> values)
-        {
-            return WithSurvivalScores(values.ToArray());
-        }
-        public int SurvivalScoresVersion
-        {
-            get => state.Get<int>("SurvivalScoresVersion");
-            set => SetSurvivalScoresVersion(state, value);
-        }
-        public TMNESWC WithSurvivalScoresVersion(int value)
-        {
-            SurvivalScoresVersion = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-            var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
-            node.Chunks.Add(chunk0308D004);
-            var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
-            node.Chunks.Add(chunk0308D006);
+            var node = CGamePlayerScoreBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0308D004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0308D006 is missing or has an incompatible version.");
+            CGamePlayerScoreBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGamePlayerScoreBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
     }
-    public partial class VSK5 : CGamePlayerScoreBuilderBase<VSK5>
+    public partial class VSK5 : CGamePlayerScoreBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
-        public global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores");
-            set => SetSurvivalScores(state, value);
-        }
-        public VSK5 WithSurvivalScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value)
-        {
-            SurvivalScores = value;
-            return this;
-        }
-        public VSK5 WithSurvivalScores(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore> values)
-        {
-            return WithSurvivalScores(values.ToArray());
-        }
-        public int SurvivalScoresVersion
-        {
-            get => state.Get<int>("SurvivalScoresVersion");
-            set => SetSurvivalScoresVersion(state, value);
-        }
-        public VSK5 WithSurvivalScoresVersion(int value)
-        {
-            SurvivalScoresVersion = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-            var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
-            node.Chunks.Add(chunk0308D004);
-            var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
-            node.Chunks.Add(chunk0308D006);
-            var chunk0308D008 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D008();
-            node.Chunks.Add(chunk0308D008);
+            var node = CGamePlayerScoreBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0308D004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0308D006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D008>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0308D008 is missing or has an incompatible version.");
+            CGamePlayerScoreBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGamePlayerScoreBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGamePlayerScore node);
     }
-    public partial class TMF : CGamePlayerScoreBuilderBase<TMF>
+    public partial class TMF : CGamePlayerScoreBuilderMembers1<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Game.CGamePlayerScore> state) : base(state) { }
         public NodeRefList<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores>? CampaignPlayerScores
@@ -349,7 +359,7 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         }
         public TMF WithCampaignPlayerScores(params global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF[] values)
         {
-            return WithCampaignPlayerScores(values.Select(static value => value is global::GBX.NET.Engines.Game.CGameCampaignPlayerScores node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return WithCampaignPlayerScores(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Game.CGameCampaignPlayerScores, global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF>(values, false));
         }
         public TMF WithCampaignPlayerScores(IEnumerable<global::GBX.NET.Interfaces.Game.IGameCampaignPlayerScoresTMF> values)
         {
@@ -753,30 +763,6 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
             SubmittedSoloStuntsTimeSeconds = value;
             return this;
         }
-        public global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? SurvivalScores
-        {
-            get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]?>("SurvivalScores");
-            set => SetSurvivalScores(state, value);
-        }
-        public TMF WithSurvivalScores(params global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore[]? value)
-        {
-            SurvivalScores = value;
-            return this;
-        }
-        public TMF WithSurvivalScores(IEnumerable<global::GBX.NET.Engines.Game.CGamePlayerScore.SurvivalScore> values)
-        {
-            return WithSurvivalScores(values.ToArray());
-        }
-        public int SurvivalScoresVersion
-        {
-            get => state.Get<int>("SurvivalScoresVersion");
-            set => SetSurvivalScoresVersion(state, value);
-        }
-        public TMF WithSurvivalScoresVersion(int value)
-        {
-            SurvivalScoresVersion = value;
-            return this;
-        }
         public global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]? TrainingMedalsScores
         {
             get => state.Get<global::GBX.NET.Engines.Game.CGamePlayerScore.TrainingMedalsScore[]?>("TrainingMedalsScores");
@@ -794,28 +780,12 @@ public partial class CGamePlayerScoreBuilder : CGamePlayerScoreBuilderBase<CGame
         public global::GBX.NET.Interfaces.Game.IGamePlayerScoreTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGamePlayerScore Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGamePlayerScore();
-            var chunk0308D004 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004();
-            node.Chunks.Add(chunk0308D004);
-            var chunk0308D006 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006();
-            node.Chunks.Add(chunk0308D006);
-            var chunk0308D00F = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D00F();
-            node.Chunks.Add(chunk0308D00F);
-            var chunk0308D010 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D010();
-            node.Chunks.Add(chunk0308D010);
-            var chunk0308D011 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D011();
-            node.Chunks.Add(chunk0308D011);
-            var chunk0308D012 = new global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D012();
-            node.Chunks.Add(chunk0308D012);
+            var node = CGamePlayerScoreBuilder.CreateRecipe3(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D004>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0308D004 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D006>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0308D006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D00F>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0308D00F is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D010>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0308D010 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D011>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0308D011 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGamePlayerScore.Chunk0308D012>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0308D012 is missing or has an incompatible version.");
+            CGamePlayerScoreBuilder.ValidateRecipe3(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGamePlayerScoreBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

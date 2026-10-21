@@ -40,10 +40,7 @@ public partial interface IFuncShaderLayerUV : IClassVersion<global::GBX.NET.Engi
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
     string? LayerName { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVTM10 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTM10
@@ -52,51 +49,37 @@ public partial interface IFuncShaderLayerUVTM10 : IFuncShaderLayerUV, global::GB
 
 public partial interface IFuncShaderLayerUVTMPU : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMPU
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVTMSX : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMSX
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVTMNESWC : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMNESWC
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVVSK5 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderVSK5
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVTMF : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMF
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVMP3 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderMP3
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVTMT : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTMT
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVMP4 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderMP4
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncShaderLayerUVTM2020 : IFuncShaderLayerUV, global::GBX.NET.Interfaces.Function.IFuncShaderTM2020
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
 }
 

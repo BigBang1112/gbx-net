@@ -39,7 +39,7 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
         get => Bitmap;
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMP3.Bitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP3>.Bitmap
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
         }
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelTMT.Bitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTMT>.Bitmap
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
         }
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMP4.Bitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.Bitmap
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
         }
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMP4.BitmapOverLife
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapMP4>.BitmapOverLife
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
         }
         set => BitmapOverLife = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelTM2020.Bitmap
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers1<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.Bitmap
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugParticleGpuModel : global::GBX.NET.Interfaces.Plug.IPl
         }
         set => Bitmap = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmap node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelTM2020.BitmapOverLife
+    global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020? global::GBX.NET.Interfaces.Plug.IPlugParticleGpuModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugBitmapTM2020>.BitmapOverLife
     {
         get
         {

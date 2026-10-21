@@ -36,14 +36,14 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state;
     private protected CFuncTreeRotateBuilderBase() => state = new();
     private protected CFuncTreeRotateBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) => this.state = state;
-    private protected static void SetAngleMax(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set<float>("AngleMax", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleMax = value);
-    private protected static void SetAngleMin(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set<float>("AngleMin", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AngleMin = value);
-    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, bool value) => state.Set<bool>("AutoCreateMotion", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.AutoCreateMotion = value);
-    private protected static void SetAxis(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, Vec3 value) => state.Set<Vec3>("Axis", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Axis = value);
-    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, string? value) => state.Set<string?>("InputValId", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value, static (node, value) => node.InputValId = value);
-    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set<float>("Period", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Period = value);
-    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set<float>("Phase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.Phase = value);
-    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, bool value) => state.Set<bool>("RandomizePhase", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.RandomizePhase = value);
+    private protected static void SetAngleMax(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMaxAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAngleMin(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAngleMinAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAutoCreateMotion(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetAutoCreateMotionAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetAxis(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncTreeRotateBuilderAssignments.GetAxisAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetInputValId(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetInputValIdAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetPeriod(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPeriodAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetPhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetPhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetRandomizePhase(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Function.CFuncPlugBuilderAssignments.GetRandomizePhaseAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public float AngleMax
     {
         get => state.Get<float>("AngleMax");
@@ -105,8 +105,81 @@ public abstract class CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeR
         return (TSelf)this;
     }
 }
+public abstract class CFuncTreeRotateBuilderMembers1<TSelf> : CFuncTreeRotateBuilderBase<TSelf> where TSelf : CFuncTreeRotateBuilderMembers1<TSelf>
+{
+    private protected CFuncTreeRotateBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
+    public bool RandomizePhase
+    {
+        get => state.Get<bool>("RandomizePhase");
+        set => SetRandomizePhase(state, value);
+    }
+    public TSelf WithRandomizePhase(bool value)
+    {
+        RandomizePhase = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CFuncTreeRotateBuilderMembers2<TSelf> : CFuncTreeRotateBuilderMembers1<TSelf> where TSelf : CFuncTreeRotateBuilderMembers2<TSelf>
+{
+    private protected CFuncTreeRotateBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
+    public string? InputValId
+    {
+        get => state.Get<string?>("InputValId");
+        set => SetInputValId(state, value);
+    }
+    public TSelf WithInputValId(string? value)
+    {
+        InputValId = value;
+        return (TSelf)this;
+    }
+}
 public partial class CFuncTreeRotateBuilder : CFuncTreeRotateBuilderBase<CFuncTreeRotateBuilder>
 {
+    private static global::GBX.NET.Engines.Function.CFuncTreeRotate CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
+        var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
+        node.Chunks.Add(chunk0501E001);
+        var chunk0500B003 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003();
+        node.Chunks.Add(chunk0500B003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Function.CFuncTreeRotate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501E001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncTreeRotate CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
+        var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
+        node.Chunks.Add(chunk0501E001);
+        var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
+        node.Chunks.Add(chunk0500B004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Function.CFuncTreeRotate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501E001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Function.CFuncTreeRotate CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
+        var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
+        node.Chunks.Add(chunk0501E001);
+        var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
+        node.Chunks.Add(chunk0500B005);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Function.CFuncTreeRotate node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0501E001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0500B005 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Function.CFuncTreeRotate node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -125,354 +198,174 @@ public partial class CFuncTreeRotateBuilder : CFuncTreeRotateBuilderBase<CFuncTr
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B003 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003();
-            node.Chunks.Add(chunk0500B003);
+            var node = CFuncTreeRotateBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0500B003 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class TMPU : CFuncTreeRotateBuilderBase<TMPU>
+    public partial class TMPU : CFuncTreeRotateBuilderMembers1<TMPU>
     {
         internal TMPU(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMPU WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeRotateBuilder.CreateRecipe1(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe1(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class TMSX : CFuncTreeRotateBuilderBase<TMSX>
+    public partial class TMSX : CFuncTreeRotateBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMSX WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeRotateBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class TMNESWC : CFuncTreeRotateBuilderBase<TMNESWC>
+    public partial class TMNESWC : CFuncTreeRotateBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMNESWC WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeRotateBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class VSK5 : CFuncTreeRotateBuilderBase<VSK5>
+    public partial class VSK5 : CFuncTreeRotateBuilderMembers1<VSK5>
     {
         internal VSK5(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public VSK5 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B004 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004();
-            node.Chunks.Add(chunk0500B004);
+            var node = CFuncTreeRotateBuilder.CreateRecipe1(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B004>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0500B004 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe1(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class TMF : CFuncTreeRotateBuilderBase<TMF>
+    public partial class TMF : CFuncTreeRotateBuilderMembers2<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public TMF WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMF WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeRotateBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class MP3 : CFuncTreeRotateBuilderBase<MP3>
+    public partial class MP3 : CFuncTreeRotateBuilderMembers2<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public MP3 WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public MP3 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeRotateBuilder.CreateRecipe2(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe2(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class TMT : CFuncTreeRotateBuilderBase<TMT>
+    public partial class TMT : CFuncTreeRotateBuilderMembers2<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public TMT WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TMT WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeRotateBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class MP4 : CFuncTreeRotateBuilderBase<MP4>
+    public partial class MP4 : CFuncTreeRotateBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public MP4 WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public MP4 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeRotateBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
         partial void ValidateNode(global::GBX.NET.Engines.Function.CFuncTreeRotate node);
     }
-    public partial class TM2020 : CFuncTreeRotateBuilderBase<TM2020>
+    public partial class TM2020 : CFuncTreeRotateBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Function.CFuncTreeRotate> state) : base(state) { }
-        public string? InputValId
-        {
-            get => state.Get<string?>("InputValId");
-            set => SetInputValId(state, value);
-        }
-        public TM2020 WithInputValId(string? value)
-        {
-            InputValId = value;
-            return this;
-        }
-        public bool RandomizePhase
-        {
-            get => state.Get<bool>("RandomizePhase");
-            set => SetRandomizePhase(state, value);
-        }
-        public TM2020 WithRandomizePhase(bool value)
-        {
-            RandomizePhase = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Function.IFuncTreeRotateTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Function.CFuncTreeRotate Build()
         {
-            var node = new global::GBX.NET.Engines.Function.CFuncTreeRotate();
-            var chunk0501E001 = new global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001();
-            node.Chunks.Add(chunk0501E001);
-            var chunk0500B005 = new global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005();
-            node.Chunks.Add(chunk0500B005);
+            var node = CFuncTreeRotateBuilder.CreateRecipe2(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncTreeRotate.Chunk0501E001>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0501E001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Function.CFuncPlug.Chunk0500B005>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0500B005 is missing or has an incompatible version.");
+            CFuncTreeRotateBuilder.ValidateRecipe2(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CFuncTreeRotateBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

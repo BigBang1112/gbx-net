@@ -36,9 +36,9 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state;
     private protected CSceneFxBloomBuilderBase() => state = new();
     private protected CSceneFxBloomBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) => this.state = state;
-    private protected static void SetBlurSize(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, int value) => state.Set<int>("BlurSize", value, GameVersion.TMF, static value => value, static (node, value) => node.BlurSize = value);
-    private protected static void SetDatas(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value) => state.Set<NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>?>("Datas", value, GameVersion.TMF, static value => value is null ? null! : NodeBuilderReferences.CopyList(value), static (node, value) => node.Datas = value);
-    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, float value) => state.Set<float>("Intensity", value, GameVersion.TMF, static value => value, static (node, value) => node.Intensity = value);
+    private protected static void SetBlurSize(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetBlurSizeAssignment(), value, GameVersion.TMF);
+    private protected static void SetDatas(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, NodeRefList<global::GBX.NET.Engines.Scene.CSceneFxBloomData>? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetDatasAssignment(), value, GameVersion.TMF);
+    private protected static void SetIntensity(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxBloomBuilderAssignments.GetIntensityAssignment(), value, GameVersion.TMF);
     public int BlurSize
     {
         get => state.Get<int>("BlurSize");
@@ -80,13 +80,27 @@ public abstract class CSceneFxBloomBuilderBase<TSelf> where TSelf : CSceneFxBloo
 }
 public partial class CSceneFxBloomBuilder : CSceneFxBloomBuilderBase<CSceneFxBloomBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneFxBloom CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxBloom();
+        var chunk0A03B002 = new global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002();
+        node.Chunks.Add(chunk0A03B002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxBloom node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A03B002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxBloom node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CSceneFxBloomBuilderBase<TMF>
     {
         internal TMF(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxBloom> state) : base(state) { }
         public TMF WithDatas(params global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF[] values)
         {
-            return base.WithDatas(values.Select(static value => value is global::GBX.NET.Engines.Scene.CSceneFxBloomData node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(values))).ToArray());
+            return base.WithDatas(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Scene.CSceneFxBloomData, global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF>(values, false));
         }
         public TMF WithDatas(IEnumerable<global::GBX.NET.Interfaces.Scene.ISceneFxBloomDataTMF> values)
         {
@@ -95,13 +109,12 @@ public partial class CSceneFxBloomBuilder : CSceneFxBloomBuilderBase<CSceneFxBlo
         public global::GBX.NET.Interfaces.Scene.ISceneFxBloomTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneFxBloom Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneFxBloom();
-            var chunk0A03B002 = new global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002();
-            node.Chunks.Add(chunk0A03B002);
+            var node = CSceneFxBloomBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxBloom.Chunk0A03B002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A03B002 is missing or has an incompatible version.");
+            CSceneFxBloomBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneFxBloomBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

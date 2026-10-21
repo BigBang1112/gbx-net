@@ -50,10 +50,6 @@ public partial interface IGameCtnMediaBlockCameraEffectMP4 : IGameCtnMediaBlockC
 {
 }
 
-public partial interface IGameCtnMediaBlockCameraEffectTM2020 : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
-{
-}
-
 public partial interface IGameCtnMediaBlockCameraEffectTMSX : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMSX
 {
 }
@@ -67,6 +63,10 @@ public partial interface IGameCtnMediaBlockCameraEffectVSK5 : IGameCtnMediaBlock
 }
 
 public partial interface IGameCtnMediaBlockCameraEffectTMF : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTMF
+{
+}
+
+public partial interface IGameCtnMediaBlockCameraEffectTM2020 : IGameCtnMediaBlockCameraEffect, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
 {
 }
 

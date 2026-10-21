@@ -36,10 +36,77 @@ public abstract class CGameGhostBuilderBase<TSelf> where TSelf : CGameGhostBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state;
     private protected CGameGhostBuilderBase() => state = new();
     private protected CGameGhostBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) => this.state = state;
-    private protected static void SetSavedMobilClassId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state, uint? value) => state.Set<uint?>("SavedMobilClassId", value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX, static value => value, static (node, value) => node.SavedMobilClassId = value);
+    private protected static void SetSavedMobilClassId(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state, uint? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameGhostBuilderAssignments.GetSavedMobilClassIdAssignment(), value, GameVersion.TMNESWC | GameVersion.TMS | GameVersion.TMSX);
+}
+public abstract class CGameGhostBuilderMembers1<TSelf> : CGameGhostBuilderBase<TSelf> where TSelf : CGameGhostBuilderMembers1<TSelf>
+{
+    private protected CGameGhostBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) : base(state) { }
+    public uint? SavedMobilClassId
+    {
+        get => state.Get<uint?>("SavedMobilClassId");
+        set => SetSavedMobilClassId(state, value);
+    }
+    public TSelf WithSavedMobilClassId(uint? value)
+    {
+        SavedMobilClassId = value;
+        return (TSelf)this;
+    }
 }
 public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameGhost();
+        var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
+        node.Chunks.Add(chunk0303F003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameGhost();
+        var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
+        node.Chunks.Add(chunk0303F003);
+        var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
+        node.Chunks.Add(chunk0303F004);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F003 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F004 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameGhost();
+        var chunk0303F005 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005();
+        node.Chunks.Add(chunk0303F005);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F005 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Game.CGameGhost CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameGhost();
+        var chunk0303F006 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(game);
+        node.Chunks.Add(chunk0303F006);
+        var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
+        node.Chunks.Add(chunk0303F007);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk0303F006 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0303F007 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameGhost node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMS ForTMS() => new(state.Snapshot());
@@ -60,13 +127,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
-            node.Chunks.Add(chunk0303F003);
+            var node = CGameGhostBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0303F003 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -79,109 +145,66 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
-            node.Chunks.Add(chunk0303F003);
+            var node = CGameGhostBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0303F003 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
-    public partial class TMS : CGameGhostBuilderBase<TMS>
+    public partial class TMS : CGameGhostBuilderMembers1<TMS>
     {
         internal TMS(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) : base(state) { }
-        public uint? SavedMobilClassId
-        {
-            get => state.Get<uint?>("SavedMobilClassId");
-            set => SetSavedMobilClassId(state, value);
-        }
-        public TMS WithSavedMobilClassId(uint? value)
-        {
-            SavedMobilClassId = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameGhostTMS BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
-            node.Chunks.Add(chunk0303F003);
-            var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
-            node.Chunks.Add(chunk0303F004);
+            var node = CGameGhostBuilder.CreateRecipe1(GameVersion.TMS);
             state.Apply(node, GameVersion.TMS);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException("Required TMS chunk Chunk0303F003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException("Required TMS chunk Chunk0303F004 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe1(node, GameVersion.TMS);
             NodeBuilderValidation.Validate(node, GameVersion.TMS);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMS);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
-    public partial class TMSX : CGameGhostBuilderBase<TMSX>
+    public partial class TMSX : CGameGhostBuilderMembers1<TMSX>
     {
         internal TMSX(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) : base(state) { }
-        public uint? SavedMobilClassId
-        {
-            get => state.Get<uint?>("SavedMobilClassId");
-            set => SetSavedMobilClassId(state, value);
-        }
-        public TMSX WithSavedMobilClassId(uint? value)
-        {
-            SavedMobilClassId = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameGhostTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
-            node.Chunks.Add(chunk0303F003);
-            var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
-            node.Chunks.Add(chunk0303F004);
+            var node = CGameGhostBuilder.CreateRecipe1(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303F003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0303F004 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe1(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Game.CGameGhost node);
         partial void ValidateNode(global::GBX.NET.Engines.Game.CGameGhost node);
     }
-    public partial class TMNESWC : CGameGhostBuilderBase<TMNESWC>
+    public partial class TMNESWC : CGameGhostBuilderMembers1<TMNESWC>
     {
         internal TMNESWC(NodeBuilderState<global::GBX.NET.Engines.Game.CGameGhost> state) : base(state) { }
-        public uint? SavedMobilClassId
-        {
-            get => state.Get<uint?>("SavedMobilClassId");
-            set => SetSavedMobilClassId(state, value);
-        }
-        public TMNESWC WithSavedMobilClassId(uint? value)
-        {
-            SavedMobilClassId = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Game.IGameGhostTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F003 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003();
-            node.Chunks.Add(chunk0303F003);
-            var chunk0303F004 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004();
-            node.Chunks.Add(chunk0303F004);
+            var node = CGameGhostBuilder.CreateRecipe1(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303F003 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F004>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0303F004 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe1(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -194,13 +217,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostTMU BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F005 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005();
-            node.Chunks.Add(chunk0303F005);
+            var node = CGameGhostBuilder.CreateRecipe2(GameVersion.TMU);
             state.Apply(node, GameVersion.TMU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005>() is null) throw new InvalidOperationException("Required TMU chunk Chunk0303F005 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe2(node, GameVersion.TMU);
             NodeBuilderValidation.Validate(node, GameVersion.TMU);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMU);
             ValidateNode(node);
             return node;
         }
@@ -213,13 +235,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F005 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005();
-            node.Chunks.Add(chunk0303F005);
+            var node = CGameGhostBuilder.CreateRecipe2(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0303F005 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe2(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -232,13 +253,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F005 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005();
-            node.Chunks.Add(chunk0303F005);
+            var node = CGameGhostBuilder.CreateRecipe2(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F005>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0303F005 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe2(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -251,16 +271,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F006 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(GameVersion.MP3);
-            node.Chunks.Add(chunk0303F006);
-            var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
-            node.Chunks.Add(chunk0303F007);
+            var node = CGameGhostBuilder.CreateRecipe3(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk0303F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0303F007 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -273,16 +289,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F006 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(GameVersion.TMT);
-            node.Chunks.Add(chunk0303F006);
-            var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
-            node.Chunks.Add(chunk0303F007);
+            var node = CGameGhostBuilder.CreateRecipe3(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException("Required TMT chunk Chunk0303F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0303F007 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -295,16 +307,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F006 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(GameVersion.MP4);
-            node.Chunks.Add(chunk0303F006);
-            var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
-            node.Chunks.Add(chunk0303F007);
+            var node = CGameGhostBuilder.CreateRecipe3(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException("Required MP4 chunk Chunk0303F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0303F007 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -317,16 +325,12 @@ public partial class CGameGhostBuilder : CGameGhostBuilderBase<CGameGhostBuilder
         public global::GBX.NET.Interfaces.Game.IGameGhostTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGhost Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGhost();
-            var chunk0303F006 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006(GameVersion.TM2020);
-            node.Chunks.Add(chunk0303F006);
-            var chunk0303F007 = new global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007();
-            node.Chunks.Add(chunk0303F007);
+            var node = CGameGhostBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F006>() is not { Version: 1 }) throw new InvalidOperationException("Required TM2020 chunk Chunk0303F006 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGhost.Chunk0303F007>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0303F007 is missing or has an incompatible version.");
+            CGameGhostBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameGhostBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

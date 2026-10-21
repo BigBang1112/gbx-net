@@ -34,34 +34,4 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugVehicleCameraInternalModel : global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModel, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMP3, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelTMT, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugVehicleCameraInternalModelBuilder Create() => new();
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelTMT.Shake
-    {
-        get
-        {
-            var node = Shake;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            return node;
-        }
-        set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelMP4.Shake
-    {
-        get
-        {
-            var node = Shake;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            return node;
-        }
-        set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugCamShakeModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCameraInternalModelTM2020.Shake
-    {
-        get
-        {
-            var node = Shake;
-            if (node is not null) NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            return node;
-        }
-        set => Shake = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamShakeModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
 }

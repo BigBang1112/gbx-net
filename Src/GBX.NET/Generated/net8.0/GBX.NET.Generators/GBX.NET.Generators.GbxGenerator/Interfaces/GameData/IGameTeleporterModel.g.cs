@@ -31,6 +31,16 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.GameData;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameTeleporterModelMembers1<T0> : global::GBX.NET.Interfaces.GameData.IGameTeleporterModel where T0 : class
+{
+    new T0? Spawn { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameTeleporterModelMembers2<T0> : global::GBX.NET.Interfaces.GameData.IGameTeleporterModel where T0 : class
+{
+    new T0? TriggerShape { get; set; }
+}
 public partial interface IGameTeleporterModel : IClassVersion<global::GBX.NET.Engines.GameData.CGameTeleporterModel>
 {
     Vec3 CenterPos { get; set; }
@@ -38,27 +48,20 @@ public partial interface IGameTeleporterModel : IClassVersion<global::GBX.NET.En
     global::GBX.NET.Interfaces.Plug.IPlugSurface? TriggerShape { get; set; }
 }
 
-public partial interface IGameTeleporterModelMP3 : IGameTeleporterModel
+public partial interface IGameTeleporterModelMP3 : IGameTeleporterModel, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers1<global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP3>, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP3? Spawn { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3? TriggerShape { get; set; }
 }
 
-public partial interface IGameTeleporterModelTMT : IGameTeleporterModel
+public partial interface IGameTeleporterModelTMT : IGameTeleporterModel, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers1<global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT>, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameSpawnModelTMT? Spawn { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT? TriggerShape { get; set; }
 }
 
-public partial interface IGameTeleporterModelMP4 : IGameTeleporterModel
+public partial interface IGameTeleporterModelMP4 : IGameTeleporterModel, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers1<global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4>, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4>
 {
-    new global::GBX.NET.Interfaces.GameData.IGameSpawnModelMP4? Spawn { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4? TriggerShape { get; set; }
 }
 
-public partial interface IGameTeleporterModelTM2020 : IGameTeleporterModel
+public partial interface IGameTeleporterModelTM2020 : IGameTeleporterModel, global::GBX.NET.Interfaces.GameData.IGameTeleporterModelMembers2<global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020>
 {
     new global::GBX.NET.Engines.GameData.CGameSpawnModel? Spawn { get; set; }
-    new global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020? TriggerShape { get; set; }
 }
 

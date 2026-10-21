@@ -36,9 +36,9 @@ public abstract class CSceneFxDistor2dBuilderBase<TSelf> where TSelf : CSceneFxD
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state;
     private protected CSceneFxDistor2dBuilderBase() => state = new();
     private protected CSceneFxDistor2dBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state) => this.state = state;
-    private protected static void SetBitmapDistor(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugShaderApply?>("BitmapDistor", value, GameVersion.TMF, static value => value, static (node, value) => node.BitmapDistor = value);
-    private protected static void SetBitmapDistorReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>>("BitmapDistor", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapDistor.CopyFrom(reference));
-    private protected static void SetDistorScale(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, float value) => state.Set<float>("DistorScale", value, GameVersion.TMF, static value => value, static (node, value) => node.DistorScale = value);
+    private protected static void SetBitmapDistor(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, global::GBX.NET.Engines.Plug.CPlugShaderApply? value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorAssignment(), value, GameVersion.TMF);
+    private protected static void SetBitmapDistorReference(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugShaderApply> value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetBitmapDistorReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetDistorScale(NodeBuilderState<global::GBX.NET.Engines.Scene.CSceneFxDistor2d> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Scene.CSceneFxDistor2dBuilderAssignments.GetDistorScaleAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.Plug.CPlugShaderApply? BitmapDistor
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugShaderApply?>("BitmapDistor");
@@ -68,6 +68,20 @@ public abstract class CSceneFxDistor2dBuilderBase<TSelf> where TSelf : CSceneFxD
 }
 public partial class CSceneFxDistor2dBuilder : CSceneFxDistor2dBuilderBase<CSceneFxDistor2dBuilder>
 {
+    private static global::GBX.NET.Engines.Scene.CSceneFxDistor2d CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Scene.CSceneFxDistor2d();
+        var chunk0A07B001 = new global::GBX.NET.Engines.Scene.CSceneFxDistor2d.Chunk0A07B001();
+        node.Chunks.Add(chunk0A07B001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxDistor2d.Chunk0A07B001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0A07B001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Scene.CSceneFxDistor2d node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CSceneFxDistor2dBuilderBase<TMF>
     {
@@ -79,13 +93,12 @@ public partial class CSceneFxDistor2dBuilder : CSceneFxDistor2dBuilderBase<CScen
         public global::GBX.NET.Interfaces.Scene.ISceneFxDistor2dTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Scene.CSceneFxDistor2d Build()
         {
-            var node = new global::GBX.NET.Engines.Scene.CSceneFxDistor2d();
-            var chunk0A07B001 = new global::GBX.NET.Engines.Scene.CSceneFxDistor2d.Chunk0A07B001();
-            node.Chunks.Add(chunk0A07B001);
+            var node = CSceneFxDistor2dBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Scene.CSceneFxDistor2d.Chunk0A07B001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0A07B001 is missing or has an incompatible version.");
+            CSceneFxDistor2dBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CSceneFxDistor2dBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

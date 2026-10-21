@@ -31,19 +31,22 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugVehicleVisStylesMembers1<T0> : global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyles where T0 : class
+{
+    new IReadOnlyList<T0>? RandomGroups { get; set; }
+}
 public partial interface IPlugVehicleVisStyles : IClassVersion<global::GBX.NET.Engines.Plug.CPlugVehicleVisStyles>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroup>? RandomGroups { get; set; }
     string? UnwantedTrafficVehiclesMatchName { get; set; }
 }
 
-public partial interface IPlugVehicleVisStylesMP4 : IPlugVehicleVisStyles
+public partial interface IPlugVehicleVisStylesMP4 : IPlugVehicleVisStyles, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupMP4>? RandomGroups { get; set; }
 }
 
-public partial interface IPlugVehicleVisStylesTM2020 : IPlugVehicleVisStyles
+public partial interface IPlugVehicleVisStylesTM2020 : IPlugVehicleVisStyles, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStylesMembers1<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugVehicleVisStyleRandomGroupTM2020>? RandomGroups { get; set; }
 }
 

@@ -36,17 +36,17 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state;
     private protected CGameMenuColorEffectBuilderBase() => state = new();
     private protected CGameMenuColorEffectBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state) => this.state = state;
-    private protected static void SetColorBeams(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value) => state.Set<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]?>("ColorBeams", value, GameVersion.TMF, static value => value is null ? null! : (global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[])value.Clone(), static (node, value) => node.ColorBeams = value);
-    private protected static void SetForceFirstColorWord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("ForceFirstColorWord", value, GameVersion.TMF, static value => value, static (node, value) => node.ForceFirstColorWord = value);
-    private protected static void SetForceNoMove(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("ForceNoMove", value, GameVersion.TMF, static value => value, static (node, value) => node.ForceNoMove = value);
-    private protected static void SetIsBeamColorEvolving(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("IsBeamColorEvolving", value, GameVersion.TMF, static value => value, static (node, value) => node.IsBeamColorEvolving = value);
-    private protected static void SetIsBeamMoving(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("IsBeamMoving", value, GameVersion.TMF, static value => value, static (node, value) => node.IsBeamMoving = value);
-    private protected static void SetIsColorEvolveHalf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("IsColorEvolveHalf", value, GameVersion.TMF, static value => value, static (node, value) => node.IsColorEvolveHalf = value);
-    private protected static void SetIsColorEvolveInverse(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("IsColorEvolveInverse", value, GameVersion.TMF, static value => value, static (node, value) => node.IsColorEvolveInverse = value);
-    private protected static void SetIsMoveHalf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("IsMoveHalf", value, GameVersion.TMF, static value => value, static (node, value) => node.IsMoveHalf = value);
-    private protected static void SetIsMoveInverse(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set<bool>("IsMoveInverse", value, GameVersion.TMF, static value => value, static (node, value) => node.IsMoveInverse = value);
-    private protected static void SetLastInterWidth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, float value) => state.Set<float>("LastInterWidth", value, GameVersion.TMF, static value => value, static (node, value) => node.LastInterWidth = value);
-    private protected static void SetPeriodMs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, int value) => state.Set<int>("PeriodMs", value, GameVersion.TMF, static value => value, static (node, value) => node.PeriodMs = value);
+    private protected static void SetColorBeams(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetColorBeamsAssignment(), value, GameVersion.TMF);
+    private protected static void SetForceFirstColorWord(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceFirstColorWordAssignment(), value, GameVersion.TMF);
+    private protected static void SetForceNoMove(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetForceNoMoveAssignment(), value, GameVersion.TMF);
+    private protected static void SetIsBeamColorEvolving(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamColorEvolvingAssignment(), value, GameVersion.TMF);
+    private protected static void SetIsBeamMoving(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsBeamMovingAssignment(), value, GameVersion.TMF);
+    private protected static void SetIsColorEvolveHalf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveHalfAssignment(), value, GameVersion.TMF);
+    private protected static void SetIsColorEvolveInverse(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsColorEvolveInverseAssignment(), value, GameVersion.TMF);
+    private protected static void SetIsMoveHalf(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveHalfAssignment(), value, GameVersion.TMF);
+    private protected static void SetIsMoveInverse(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetIsMoveInverseAssignment(), value, GameVersion.TMF);
+    private protected static void SetLastInterWidth(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetLastInterWidthAssignment(), value, GameVersion.TMF);
+    private protected static void SetPeriodMs(NodeBuilderState<global::GBX.NET.Engines.Game.CGameMenuColorEffect> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Game.CGameMenuColorEffectBuilderAssignments.GetPeriodMsAssignment(), value, GameVersion.TMF);
     public global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]? ColorBeams
     {
         get => state.Get<global::GBX.NET.Engines.Game.CGameMenuColorEffect.ColorBeam[]?>("ColorBeams");
@@ -164,6 +164,20 @@ public abstract class CGameMenuColorEffectBuilderBase<TSelf> where TSelf : CGame
 }
 public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBase<CGameMenuColorEffectBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameMenuColorEffect CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameMenuColorEffect();
+        var chunk03019000 = new global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000();
+        node.Chunks.Add(chunk03019000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameMenuColorEffect node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk03019000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameMenuColorEffect node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CGameMenuColorEffectBuilderBase<TMF>
     {
@@ -171,13 +185,12 @@ public partial class CGameMenuColorEffectBuilder : CGameMenuColorEffectBuilderBa
         public global::GBX.NET.Interfaces.Game.IGameMenuColorEffectTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameMenuColorEffect Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameMenuColorEffect();
-            var chunk03019000 = new global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000();
-            node.Chunks.Add(chunk03019000);
+            var node = CGameMenuColorEffectBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameMenuColorEffect.Chunk03019000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk03019000 is missing or has an incompatible version.");
+            CGameMenuColorEffectBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameMenuColorEffectBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

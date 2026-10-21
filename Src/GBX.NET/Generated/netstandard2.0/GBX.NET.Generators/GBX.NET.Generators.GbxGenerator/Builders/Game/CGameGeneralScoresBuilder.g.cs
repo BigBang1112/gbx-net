@@ -39,6 +39,20 @@ public abstract class CGameGeneralScoresBuilderBase<TSelf> where TSelf : CGameGe
 }
 public partial class CGameGeneralScoresBuilder : CGameGeneralScoresBuilderBase<CGameGeneralScoresBuilder>
 {
+    private static global::GBX.NET.Engines.Game.CGameGeneralScores CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Game.CGameGeneralScores();
+        var chunk03065001 = new global::GBX.NET.Engines.Game.CGameGeneralScores.Chunk03065001(game);
+        node.Chunks.Add(chunk03065001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Game.CGameGeneralScores node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGeneralScores.Chunk03065001>() is not { Version: 1 }) throw new InvalidOperationException($"Required {game} chunk Chunk03065001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Game.CGameGeneralScores node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public partial class TMF : CGameGeneralScoresBuilderBase<TMF>
@@ -47,13 +61,12 @@ public partial class CGameGeneralScoresBuilder : CGameGeneralScoresBuilderBase<C
         public global::GBX.NET.Interfaces.Game.IGameGeneralScoresTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGeneralScores Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGeneralScores();
-            var chunk03065001 = new global::GBX.NET.Engines.Game.CGameGeneralScores.Chunk03065001(GameVersion.TMF);
-            node.Chunks.Add(chunk03065001);
+            var node = CGameGeneralScoresBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGeneralScores.Chunk03065001>() is not { Version: 1 }) throw new InvalidOperationException("Required TMF chunk Chunk03065001 is missing or has an incompatible version.");
+            CGameGeneralScoresBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CGameGeneralScoresBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -66,13 +79,12 @@ public partial class CGameGeneralScoresBuilder : CGameGeneralScoresBuilderBase<C
         public global::GBX.NET.Interfaces.Game.IGameGeneralScoresMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Game.CGameGeneralScores Build()
         {
-            var node = new global::GBX.NET.Engines.Game.CGameGeneralScores();
-            var chunk03065001 = new global::GBX.NET.Engines.Game.CGameGeneralScores.Chunk03065001(GameVersion.MP3);
-            node.Chunks.Add(chunk03065001);
+            var node = CGameGeneralScoresBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Game.CGameGeneralScores.Chunk03065001>() is not { Version: 1 }) throw new InvalidOperationException("Required MP3 chunk Chunk03065001 is missing or has an incompatible version.");
+            CGameGeneralScoresBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CGameGeneralScoresBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }

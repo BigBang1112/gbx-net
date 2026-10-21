@@ -31,6 +31,14 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Scene;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface ISceneVehicleMembers1<T0, T1, T2, T3> : global::GBX.NET.Interfaces.Scene.ISceneVehicle where T0 : class where T1 : class where T2 : class where T3 : class
+{
+    T0? Environment { get; set; }
+    T1? VehicleMaterials { get; set; }
+    T2? VehicleStruct { get; set; }
+    T3? VehicleTunings { get; set; }
+}
 public partial interface ISceneVehicle : IClassVersion<global::GBX.NET.Engines.Scene.CSceneVehicle>, global::GBX.NET.Interfaces.Scene.ISceneMobil
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,60 +48,42 @@ public partial interface ISceneVehicle : IClassVersion<global::GBX.NET.Engines.S
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.Hms.CHmsItem? Item { get; set; }
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLink>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneVehicleTM10 : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilTM10
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTM10? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTM10? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTM10>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneVehicleTMPU : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilTMPU
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMPU? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMPU? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMPU>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneVehicleTMSX : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilTMSX
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMSX? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMSX? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMSX>? ObjectLink { get; set; }
 }
 
 public partial interface ISceneVehicleTMNESWC : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilTMNESWC
 {
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMNESWC? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMNESWC? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMNESWC>? ObjectLink { get; set; }
 }
 
-public partial interface ISceneVehicleVSK5 : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5
+public partial interface ISceneVehicleVSK5 : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilVSK5, global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5? Environment { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerVSK5? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionVSK5? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkVSK5>? ObjectLink { get; set; }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferVSK5? VehicleMaterials { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedVSK5? VehicleStruct { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsVSK5? VehicleTunings { get; set; }
 }
 
-public partial interface ISceneVehicleTMF : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF
+public partial interface ISceneVehicleTMF : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilTMF, global::GBX.NET.Interfaces.Scene.ISceneVehicleMembers1<global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF, global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF, global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF>
 {
-    global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF? Environment { get; set; }
-    new global::GBX.NET.Interfaces.Scene.ISceneMessageHandlerTMF? MessageHandler { get; set; }
     new global::GBX.NET.Interfaces.Motion.IMotionTMF? Motion { get; set; }
     new IReadOnlyList<global::GBX.NET.Interfaces.Scene.ISceneObjectLinkTMF>? ObjectLink { get; set; }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMF? VehicleMaterials { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMF? VehicleStruct { get; set; }
-    global::GBX.NET.Interfaces.Plug.IPlugVehiclePhyTuningsTMF? VehicleTunings { get; set; }
 }
 
 public partial interface ISceneVehicleMP3 : ISceneVehicle, global::GBX.NET.Interfaces.Scene.ISceneMobilMP3

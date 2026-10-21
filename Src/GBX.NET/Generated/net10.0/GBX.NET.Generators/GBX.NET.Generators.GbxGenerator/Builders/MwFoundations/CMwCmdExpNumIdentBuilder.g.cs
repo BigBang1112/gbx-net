@@ -36,7 +36,7 @@ public abstract class CMwCmdExpNumIdentBuilderBase<TSelf> where TSelf : CMwCmdEx
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent> state;
     private protected CMwCmdExpNumIdentBuilderBase() => state = new();
     private protected CMwCmdExpNumIdentBuilderBase(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent> state) => this.state = state;
-    private protected static void SetIdent(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent> state, string? value) => state.Set<string?>("Ident", value, GameVersion.TMF, static value => value, static (node, value) => node.Ident = value);
+    private protected static void SetIdent(NodeBuilderState<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent> state, string? value) => state.Set(global::GBX.NET.Builders.Engines.MwFoundations.CMwCmdExpNumIdentBuilderAssignments.GetIdentAssignment(), value, GameVersion.TMF);
     public string? Ident
     {
         get => state.Get<string?>("Ident");
@@ -50,6 +50,23 @@ public abstract class CMwCmdExpNumIdentBuilderBase<TSelf> where TSelf : CMwCmdEx
 }
 public partial class CMwCmdExpNumIdentBuilder : CMwCmdExpNumIdentBuilderBase<CMwCmdExpNumIdentBuilder>
 {
+    private static global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent();
+        var chunk01046000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01046000();
+        node.Chunks.Add(chunk01046000);
+        var chunk01047001 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01047001();
+        node.Chunks.Add(chunk01047001);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01046000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01046000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01047001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk01047001 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent node, GameVersion game)
+    {
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public partial class TMF : CMwCmdExpNumIdentBuilderBase<TMF>
     {
@@ -57,16 +74,12 @@ public partial class CMwCmdExpNumIdentBuilder : CMwCmdExpNumIdentBuilderBase<CMw
         public global::GBX.NET.Interfaces.MwFoundations.IMwCmdExpNumIdentTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent Build()
         {
-            var node = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent();
-            var chunk01046000 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01046000();
-            node.Chunks.Add(chunk01046000);
-            var chunk01047001 = new global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01047001();
-            node.Chunks.Add(chunk01047001);
+            var node = CMwCmdExpNumIdentBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01046000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01046000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.MwFoundations.CMwCmdExpNumIdent.Chunk01047001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk01047001 is missing or has an incompatible version.");
+            CMwCmdExpNumIdentBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CMwCmdExpNumIdentBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }

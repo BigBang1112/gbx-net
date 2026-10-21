@@ -40,144 +40,47 @@ public partial interface IGxLightFrustum : IClassVersion<global::GBX.NET.Engines
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new Vec3 AmbientRGB { get; set; }
-    new Vec3 Color { get; set; }
-    new float EmittingRadius { get; set; }
     uint Flags { get; set; }
-    new float FlareIntensity { get; set; }
-    new float FlareSize { get; set; }
     global::GBX.NET.Engines.Graphic.GxLightFrustum.FrustumData Frustum { get; set; }
-    new float Intensity { get; set; }
-    new float Radius { get; set; }
-    new float ShadowIntensity { get; set; }
-    new Vec3 ShadowRGB { get; set; }
 }
 
 public partial interface IGxLightFrustumTM10 : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM10
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
 }
 
 public partial interface IGxLightFrustumTMPU : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMPU
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
 }
 
 public partial interface IGxLightFrustumTMSX : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMSX
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
 }
 
 public partial interface IGxLightFrustumTMNESWC : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMNESWC
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
 }
 
 public partial interface IGxLightFrustumVSK5 : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallVSK5
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightFrustumTMF : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMF
 {
-    new float Attenuation1 { get; set; }
-    new float Attenuation2 { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightFrustumMP3 : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP3
 {
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightFrustumTMT : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTMT
 {
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightFrustumMP4 : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallMP4
 {
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
-    new float SpecularIntens { get; set; }
-    new float SpecularPower { get; set; }
 }
 
 public partial interface IGxLightFrustumTM2020 : IGxLightFrustum, global::GBX.NET.Interfaces.Graphic.IGxLightBallTM2020
 {
-    new float AttHTnLR { get; set; }
-    new float AttHTnLR2 { get; set; }
-    new float AttHdrRadiusCoef { get; set; }
-    new float AttHyper2DerivAt0 { get; set; }
-    new float AttHyper2Tension { get; set; }
-    new float DiffuseIntensity { get; set; }
-    new float EmittingCylinderLenZ { get; set; }
-    new float FlareBiasZ { get; set; }
-    new float RadiusFlare { get; set; }
-    new float RadiusIndex { get; set; }
-    new float RadiusShadow { get; set; }
-    new float RadiusSpecular { get; set; }
 }
 

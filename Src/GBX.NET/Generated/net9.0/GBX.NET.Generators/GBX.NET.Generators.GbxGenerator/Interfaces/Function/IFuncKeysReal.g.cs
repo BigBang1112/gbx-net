@@ -31,6 +31,24 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncKeysRealMembers1 : global::GBX.NET.Interfaces.Function.IFuncKeysReal
+{
+    bool ForceTangentMaxX { get; set; }
+    bool ForceTangentMinX { get; set; }
+    float ForcedTangentMaxX { get; set; }
+    float ForcedTangentMinX { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncKeysRealMembers2 : global::GBX.NET.Interfaces.Function.IFuncKeysReal
+{
+    float[]? Ys { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncKeysRealMembers3 : global::GBX.NET.Interfaces.Function.IFuncKeysReal
+{
+    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
+}
 public partial interface IFuncKeysReal : IClassVersion<global::GBX.NET.Engines.Function.CFuncKeysReal>, global::GBX.NET.Interfaces.Function.IFuncKeys
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,71 +58,42 @@ public partial interface IFuncKeysReal : IClassVersion<global::GBX.NET.Engines.F
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new float[]? Xs { get; set; }
 }
 
-public partial interface IFuncKeysRealTM10 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTM10
+public partial interface IFuncKeysRealTM10 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTM10, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2
 {
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealTMPU : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU
+public partial interface IFuncKeysRealTMPU : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMPU, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2
 {
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealTMSX : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX
+public partial interface IFuncKeysRealTMSX : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMSX, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealTMNESWC : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC
+public partial interface IFuncKeysRealTMNESWC : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMNESWC, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealVSK5 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5
+public partial interface IFuncKeysRealVSK5 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysVSK5, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealTMF : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMF
+public partial interface IFuncKeysRealTMF : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMF, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealMP3 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysMP3
+public partial interface IFuncKeysRealMP3 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysMP3, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers1, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    bool ForceTangentMaxX { get; set; }
-    bool ForceTangentMinX { get; set; }
-    float ForcedTangentMaxX { get; set; }
-    float ForcedTangentMinX { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealTMT : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMT
+public partial interface IFuncKeysRealTMT : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTMT, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers1, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    bool ForceTangentMaxX { get; set; }
-    bool ForceTangentMinX { get; set; }
-    float ForcedTangentMaxX { get; set; }
-    float ForcedTangentMinX { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
-public partial interface IFuncKeysRealMP4 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysMP4
+public partial interface IFuncKeysRealMP4 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysMP4, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers1, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers2, global::GBX.NET.Interfaces.Function.IFuncKeysRealMembers3
 {
-    bool ForceTangentMaxX { get; set; }
-    bool ForceTangentMinX { get; set; }
-    float ForcedTangentMaxX { get; set; }
-    float ForcedTangentMinX { get; set; }
-    global::GBX.NET.Engines.Function.CFuncKeysReal.ERealInterp RealInterp { get; set; }
-    float[]? Ys { get; set; }
 }
 
 public partial interface IFuncKeysRealTM2020 : IFuncKeysReal, global::GBX.NET.Interfaces.Function.IFuncKeysTM2020

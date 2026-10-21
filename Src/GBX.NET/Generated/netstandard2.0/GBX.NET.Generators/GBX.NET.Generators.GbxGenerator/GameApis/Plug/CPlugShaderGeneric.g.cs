@@ -34,21 +34,6 @@ namespace GBX.NET.Engines.Plug;
 public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugShaderGeneric, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMPU, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMSX, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMNESWC, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMF, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP3, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMT, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP4, global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM2020
 {
     public static new global::GBX.NET.Builders.Engines.Plug.CPlugShaderGenericBuilder Create() => new();
-    global::GBX.NET.Interfaces.Function.IFuncShader? global::GBX.NET.Interfaces.Plug.IPlugShaderGeneric.FuncShader
-    {
-        get => FuncShader;
-        set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPass>? global::GBX.NET.Interfaces.Plug.IPlugShaderGeneric.Passes
-    {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPass>(() => Passes, static node => node ?? throw new MemberNullException("Passes"));
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
-    global::GBX.NET.Interfaces.Plug.IPlugBitmapApply? global::GBX.NET.Interfaces.Plug.IPlugShaderGeneric.SolidWiredApply
-    {
-        get => SolidWiredApply;
-        set => SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
-    }
     global::GBX.NET.Interfaces.Function.IFuncShaderTM10? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10.FuncShader
     {
         get
@@ -59,15 +44,10 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10.LegacyCustomShaders
-    {
-        get => LegacyCustomShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTM10>(() => LegacyCustomShaders, static node => { if (node is null) throw new MemberNullException("LegacyCustomShaders"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TM10); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>(GetPassesBuilderReferences, GameVersion.TM10, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM10>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM10? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM10.SolidWiredApply
     {
@@ -89,15 +69,10 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMPU.LegacyCustomShaders
-    {
-        get => LegacyCustomShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMPU>(() => LegacyCustomShaders, static node => { if (node is null) throw new MemberNullException("LegacyCustomShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMPU.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>(GetPassesBuilderReferences, GameVersion.TMPU, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMPU>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMPU? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMPU.SolidWiredApply
     {
@@ -119,15 +94,10 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMSX.LegacyCustomShaders
-    {
-        get => LegacyCustomShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMSX>(() => LegacyCustomShaders, static node => { if (node is null) throw new MemberNullException("LegacyCustomShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMSX.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>(GetPassesBuilderReferences, GameVersion.TMSX, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMSX>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMSX? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMSX.SolidWiredApply
     {
@@ -149,15 +119,10 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMNESWC.LegacyCustomShaders
-    {
-        get => LegacyCustomShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMNESWC>(() => LegacyCustomShaders, static node => { if (node is null) throw new MemberNullException("LegacyCustomShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMNESWC.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>(GetPassesBuilderReferences, GameVersion.TMNESWC, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMNESWC>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMNESWC.SolidWiredApply
     {
@@ -179,15 +144,10 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5.LegacyCustomShaders
-    {
-        get => LegacyCustomShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderVSK5>(() => LegacyCustomShaders, static node => { if (node is null) throw new MemberNullException("LegacyCustomShaders"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>(GetPassesBuilderReferences, GameVersion.VSK5, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassVSK5>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyVSK5? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericVSK5.SolidWiredApply
     {
@@ -209,15 +169,10 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => FuncShader = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMF.LegacyCustomShaders
-    {
-        get => LegacyCustomShaders is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShader, global::GBX.NET.Interfaces.Plug.IPlugShaderTMF>(() => LegacyCustomShaders, static node => { if (node is null) throw new MemberNullException("LegacyCustomShaders"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => LegacyCustomShaders = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShader>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShader node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
-    }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMF.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>(GetPassesBuilderReferences, GameVersion.TMF, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMF>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMF? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMF.SolidWiredApply
     {
@@ -241,8 +196,8 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP3.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.MP3); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>(GetPassesBuilderReferences, GameVersion.MP3, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP3>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP3? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP3.SolidWiredApply
     {
@@ -266,8 +221,8 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMT.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>(GetPassesBuilderReferences, GameVersion.TMT, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTMT>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTMT? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTMT.SolidWiredApply
     {
@@ -291,8 +246,8 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP4.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>(GetPassesBuilderReferences, GameVersion.MP4, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassMP4>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyMP4? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericMP4.SolidWiredApply
     {
@@ -316,8 +271,8 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
     }
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM2020.Passes
     {
-        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>(() => Passes, static node => { if (node is null) throw new MemberNullException("Passes"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugShaderPass node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Passes is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>(GetPassesBuilderReferences, GameVersion.TM2020, true, "Passes");
+        set => Passes = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugShaderPass, global::GBX.NET.Interfaces.Plug.IPlugShaderPassTM2020>(value, false));
     }
     global::GBX.NET.Interfaces.Plug.IPlugBitmapApplyTM2020? global::GBX.NET.Interfaces.Plug.IPlugShaderGenericTM2020.SolidWiredApply
     {
@@ -329,4 +284,5 @@ public partial class CPlugShaderGeneric : global::GBX.NET.Interfaces.Plug.IPlugS
         }
         set => SolidWiredApply = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugBitmapApply node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugShaderPass>? GetPassesBuilderReferences() => Passes;
 }

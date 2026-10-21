@@ -40,8 +40,6 @@ public partial interface ISceneLocationCamera : IClassVersion<global::GBX.NET.En
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Interfaces.Motion.IMotion? Motion { get; set; }
-    new string? Name { get; set; }
 }
 
 public partial interface ISceneLocationCameraTM10 : ISceneLocationCamera, global::GBX.NET.Interfaces.Scene.ISceneLocationTM10

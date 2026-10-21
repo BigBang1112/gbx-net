@@ -31,6 +31,13 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Function;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IFuncTreeSubVisualSequenceMembers1 : global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequence
+{
+    int SimpleModeEndIndex { get; set; }
+    bool SimpleModeIsLooping { get; set; }
+    int SimpleModeStartIndex { get; set; }
+}
 public partial interface IFuncTreeSubVisualSequence : IClassVersion<global::GBX.NET.Engines.Function.CFuncTreeSubVisualSequence>, global::GBX.NET.Interfaces.Function.IFuncTree
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -40,9 +47,6 @@ public partial interface IFuncTreeSubVisualSequence : IClassVersion<global::GBX.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new bool AutoCreateMotion { get; set; }
-    new float Period { get; set; }
-    new float Phase { get; set; }
     global::GBX.NET.Engines.Function.CFuncKeysNatural? SubKeys { get; set; }
 }
 
@@ -52,69 +56,37 @@ public partial interface IFuncTreeSubVisualSequenceTM10 : IFuncTreeSubVisualSequ
 
 public partial interface IFuncTreeSubVisualSequenceTMPU : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMPU
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeSubVisualSequenceTMSX : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMSX
 {
-    new bool RandomizePhase { get; set; }
 }
 
 public partial interface IFuncTreeSubVisualSequenceTMNESWC : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMNESWC
 {
-    new bool RandomizePhase { get; set; }
 }
 
-public partial interface IFuncTreeSubVisualSequenceVSK5 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5
+public partial interface IFuncTreeSubVisualSequenceVSK5 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeVSK5, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
-    new bool RandomizePhase { get; set; }
-    int SimpleModeEndIndex { get; set; }
-    bool SimpleModeIsLooping { get; set; }
-    int SimpleModeStartIndex { get; set; }
 }
 
-public partial interface IFuncTreeSubVisualSequenceTMF : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMF
+public partial interface IFuncTreeSubVisualSequenceTMF : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMF, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    int SimpleModeEndIndex { get; set; }
-    bool SimpleModeIsLooping { get; set; }
-    int SimpleModeStartIndex { get; set; }
 }
 
-public partial interface IFuncTreeSubVisualSequenceMP3 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeMP3
+public partial interface IFuncTreeSubVisualSequenceMP3 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeMP3, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    int SimpleModeEndIndex { get; set; }
-    bool SimpleModeIsLooping { get; set; }
-    int SimpleModeStartIndex { get; set; }
 }
 
-public partial interface IFuncTreeSubVisualSequenceTMT : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMT
+public partial interface IFuncTreeSubVisualSequenceTMT : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTMT, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    int SimpleModeEndIndex { get; set; }
-    bool SimpleModeIsLooping { get; set; }
-    int SimpleModeStartIndex { get; set; }
 }
 
-public partial interface IFuncTreeSubVisualSequenceMP4 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeMP4
+public partial interface IFuncTreeSubVisualSequenceMP4 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeMP4, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    int SimpleModeEndIndex { get; set; }
-    bool SimpleModeIsLooping { get; set; }
-    int SimpleModeStartIndex { get; set; }
 }
 
-public partial interface IFuncTreeSubVisualSequenceTM2020 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTM2020
+public partial interface IFuncTreeSubVisualSequenceTM2020 : IFuncTreeSubVisualSequence, global::GBX.NET.Interfaces.Function.IFuncTreeTM2020, global::GBX.NET.Interfaces.Function.IFuncTreeSubVisualSequenceMembers1
 {
-    new string? InputValId { get; set; }
-    new bool RandomizePhase { get; set; }
-    int SimpleModeEndIndex { get; set; }
-    bool SimpleModeIsLooping { get; set; }
-    int SimpleModeStartIndex { get; set; }
 }
 

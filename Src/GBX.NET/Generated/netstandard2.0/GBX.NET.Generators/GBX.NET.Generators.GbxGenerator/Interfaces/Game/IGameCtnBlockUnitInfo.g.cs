@@ -31,6 +31,49 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo where T0 : class
+{
+    T0? BottomClip { get; set; }
+    Direction? BottomClipDir { get; set; }
+    T0? TopClip { get; set; }
+    Direction? TopClipDir { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers2<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo where T0 : class
+{
+    T0? PylonEast { get; set; }
+    T0? PylonNorth { get; set; }
+    T0? PylonSouth { get; set; }
+    T0? PylonWest { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers3<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo where T0 : class
+{
+    new IReadOnlyList<T0>? Clips { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers4 : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo
+{
+    int AcceptPylons { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers5 : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo
+{
+    bool Underground { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers6<T0> : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo where T0 : class
+{
+    global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir MultiDir { get; set; }
+    T0? ReplacementBlockInfo { get; set; }
+    string? ReplacementId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnBlockUnitInfoMembers7 : global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfo
+{
+    string? TerrainModifierId { get; set; }
+}
 public partial interface IGameCtnBlockUnitInfo : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClip>? Clips { get; set; }
@@ -41,121 +84,49 @@ public partial interface IGameCtnBlockUnitInfo : IClassVersion<global::GBX.NET.E
     string? Surface { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTM10 : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTM10 : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM10>? Clips { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTMPU : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTMPU : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMPU>? Clips { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTMSX : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTMSX : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMSX>? Clips { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir MultiDir { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMSX? ReplacementBlockInfo { get; set; }
-    string? ReplacementId { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTMNESWC : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTMNESWC : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC>
 {
-    int AcceptPylons { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMNESWC>? Clips { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir MultiDir { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMNESWC? ReplacementBlockInfo { get; set; }
-    string? ReplacementId { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoVSK5 : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoVSK5 : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
-    int AcceptPylons { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipVSK5>? Clips { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir MultiDir { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoVSK5? ReplacementBlockInfo { get; set; }
-    string? ReplacementId { get; set; }
-    string? TerrainModifierId { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTMF : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTMF : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers6<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
-    int AcceptPylons { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMF>? Clips { get; set; }
-    global::GBX.NET.Engines.Game.CGameCtnBlockUnitInfo.ReplacementDir MultiDir { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoTMF? ReplacementBlockInfo { get; set; }
-    string? ReplacementId { get; set; }
-    string? TerrainModifierId { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoMP3 : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoMP3 : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
-    int AcceptPylons { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3? BottomClip { get; set; }
-    Direction? BottomClipDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3>? Clips { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? PylonEast { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? PylonNorth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? PylonSouth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP3? PylonWest { get; set; }
-    string? TerrainModifierId { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP3? TopClip { get; set; }
-    Direction? TopClipDir { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTMT : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTMT : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
-    int AcceptPylons { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT? BottomClip { get; set; }
-    Direction? BottomClipDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT>? Clips { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? PylonEast { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? PylonNorth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? PylonSouth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTMT? PylonWest { get; set; }
-    string? TerrainModifierId { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTMT? TopClip { get; set; }
-    Direction? TopClipDir { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoMP4 : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoMP4 : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers1<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
-    int AcceptPylons { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4? BottomClip { get; set; }
-    Direction? BottomClipDir { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4>? Clips { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? PylonEast { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? PylonNorth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? PylonSouth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonMP4? PylonWest { get; set; }
-    string? TerrainModifierId { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipMP4? TopClip { get; set; }
-    Direction? TopClipDir { get; set; }
-    bool Underground { get; set; }
 }
 
-public partial interface IGameCtnBlockUnitInfoTM2020 : IGameCtnBlockUnitInfo
+public partial interface IGameCtnBlockUnitInfoTM2020 : IGameCtnBlockUnitInfo, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers2<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers3<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers4, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers5, global::GBX.NET.Interfaces.Game.IGameCtnBlockUnitInfoMembers7
 {
-    int AcceptPylons { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? Clips { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? ClipsBottom { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? ClipsEast { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? ClipsNorth { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? ClipsSouth { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? ClipsTop { get; set; }
     IReadOnlyList<global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoClipTM2020>? ClipsWest { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? PylonEast { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? PylonNorth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? PylonSouth { get; set; }
-    global::GBX.NET.Interfaces.Game.IGameCtnBlockInfoPylonTM2020? PylonWest { get; set; }
-    string? TerrainModifierId { get; set; }
-    bool Underground { get; set; }
 }
 

@@ -40,7 +40,6 @@ public partial interface IGameRace : IClassVersion<global::GBX.NET.Engines.Game.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new string? Name { get; set; }
 }
 
 public partial interface IGameRaceTM10 : IGameRace, global::GBX.NET.Interfaces.Game.IGamePlaygroundTM10

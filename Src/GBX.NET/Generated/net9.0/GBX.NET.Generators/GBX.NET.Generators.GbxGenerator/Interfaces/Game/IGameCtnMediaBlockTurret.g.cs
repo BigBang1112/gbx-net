@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnMediaBlockTurretMembers1<T0> : global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurret where T0 : class
+{
+    new T0? DataTape { get; set; }
+}
 public partial interface IGameCtnMediaBlockTurret : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnMediaBlockTurret>, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlock
 {
     new global::GBX.NET.GameVersion GameVersion { get; }
@@ -43,13 +48,11 @@ public partial interface IGameCtnMediaBlockTurret : IClassVersion<global::GBX.NE
     global::GBX.NET.Interfaces.Plug.IPlugDataTape? DataTape { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockTurretMP4 : IGameCtnMediaBlockTurret, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4
+public partial interface IGameCtnMediaBlockTurretMP4 : IGameCtnMediaBlockTurret, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockMP4, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? DataTape { get; set; }
 }
 
-public partial interface IGameCtnMediaBlockTurretTM2020 : IGameCtnMediaBlockTurret, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020
+public partial interface IGameCtnMediaBlockTurretTM2020 : IGameCtnMediaBlockTurret, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTM2020, global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockTurretMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020>
 {
-    new global::GBX.NET.Interfaces.Plug.IPlugDataTapeTM2020? DataTape { get; set; }
 }
 

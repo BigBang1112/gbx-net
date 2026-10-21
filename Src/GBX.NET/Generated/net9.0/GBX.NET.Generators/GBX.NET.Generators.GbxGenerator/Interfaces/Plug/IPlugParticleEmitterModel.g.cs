@@ -31,72 +31,65 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Plug;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleEmitterModelMembers1 : global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel
+{
+    bool IsSplashMode { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleEmitterModelMembers2 : global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel
+{
+    float Coef { get; set; }
+    int EmitPeriod { get; set; }
+    bool EnableVortexEmitter { get; set; }
+    int LifeTime { get; set; }
+    float Radius { get; set; }
+    float Randomness { get; set; }
+    float ShadowMapTexelSize { get; set; }
+    float Strength { get; set; }
+    int VortexCountPerCircle { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IPlugParticleEmitterModelMembers3<T0> : global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModel where T0 : class
+{
+    new IReadOnlyList<T0>? ParticleEmitterSubModels { get; set; }
+}
 public partial interface IPlugParticleEmitterModel : IClassVersion<global::GBX.NET.Engines.Plug.CPlugParticleEmitterModel>
 {
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModel>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelTMSX : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelTMSX : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMSX>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelTMNESWC : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelTMNESWC : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMNESWC>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelVSK5 : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelVSK5 : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelVSK5>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelTMF : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelTMF : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>
 {
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMF>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelMP3 : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelMP3 : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>
 {
-    bool IsSplashMode { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP3>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelTMT : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelTMT : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>
 {
-    bool IsSplashMode { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTMT>? ParticleEmitterSubModels { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelMP4 : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelMP4 : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>
 {
-    float Coef { get; set; }
-    int EmitPeriod { get; set; }
-    bool EnableVortexEmitter { get; set; }
-    bool IsSplashMode { get; set; }
-    int LifeTime { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelMP4>? ParticleEmitterSubModels { get; set; }
-    float Radius { get; set; }
-    float Randomness { get; set; }
-    float ShadowMapTexelSize { get; set; }
-    float Strength { get; set; }
-    int VortexCountPerCircle { get; set; }
 }
 
-public partial interface IPlugParticleEmitterModelTM2020 : IPlugParticleEmitterModel
+public partial interface IPlugParticleEmitterModelTM2020 : IPlugParticleEmitterModel, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers1, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers2, global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterModelMembers3<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>
 {
     Vec3 CircleNormal { get; set; }
-    float Coef { get; set; }
-    int EmitPeriod { get; set; }
-    bool EnableVortexEmitter { get; set; }
-    bool IsSplashMode { get; set; }
-    int LifeTime { get; set; }
     float Lod_cPixelMin { get; set; }
-    new IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugParticleEmitterSubModelTM2020>? ParticleEmitterSubModels { get; set; }
-    float Radius { get; set; }
-    float Randomness { get; set; }
-    float ShadowMapTexelSize { get; set; }
-    float Strength { get; set; }
-    int VortexCountPerCircle { get; set; }
 }
 

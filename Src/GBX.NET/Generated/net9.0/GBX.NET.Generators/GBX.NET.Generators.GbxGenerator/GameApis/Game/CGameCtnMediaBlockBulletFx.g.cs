@@ -39,7 +39,7 @@ public partial class CGameCtnMediaBlockBulletFx : global::GBX.NET.Interfaces.Gam
         get => DataTape;
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxTMT.DataTape
+    global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeTMT>.DataTape
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CGameCtnMediaBlockBulletFx : global::GBX.NET.Interfaces.Gam
         }
         set => DataTape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugDataTape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxMP4.DataTape
+    global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4? global::GBX.NET.Interfaces.Game.IGameCtnMediaBlockBulletFxMembers1<global::GBX.NET.Interfaces.Plug.IPlugDataTapeMP4>.DataTape
     {
         get
         {

@@ -36,23 +36,23 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state;
     private protected CHmsPortalBuilderBase() => state = new();
     private protected CHmsPortalBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state) => this.state = state;
-    private protected static void SetCanPassThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("CanPassThrough", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CanPassThrough = value);
-    private protected static void SetCanSeeThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("CanSeeThrough", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.CanSeeThrough = value);
-    private protected static void SetDirectOcclusion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set<int>("DirectOcclusion", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DirectOcclusion = value);
-    private protected static void SetDirectOcclusionRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set<float>("DirectOcclusionRatio", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DirectOcclusionRatio = value);
-    private protected static void SetDirectOcclusionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set<float>("DirectOcclusionSpectralRatio", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.DirectOcclusionSpectralRatio = value);
-    private protected static void SetIndirectObstruction(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set<int>("IndirectObstruction", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IndirectObstruction = value);
-    private protected static void SetIndirectObstructionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set<float>("IndirectObstructionSpectralRatio", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IndirectObstructionSpectralRatio = value);
-    private protected static void SetIndirectOcclusion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set<int>("IndirectOcclusion", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IndirectOcclusion = value);
-    private protected static void SetIndirectOcclusionRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set<float>("IndirectOcclusionRatio", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IndirectOcclusionRatio = value);
-    private protected static void SetIndirectOcclusionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set<float>("IndirectOcclusionSpectralRatio", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IndirectOcclusionSpectralRatio = value);
-    private protected static void SetIsDirectPathSet(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("IsDirectPathSet", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsDirectPathSet = value);
-    private protected static void SetIsPickingPossible(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("IsPickingPossible", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsPickingPossible = value);
-    private protected static void SetIsVisualVisible(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("IsVisualVisible", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.IsVisualVisible = value);
-    private protected static void SetNeedClipping2D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("NeedClipping2D", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.NeedClipping2D = value);
-    private protected static void SetNeedClipping3D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("NeedClipping3D", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.NeedClipping3D = value);
-    private protected static void SetSeeThroughOpacity(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set<float>("SeeThroughOpacity", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SeeThroughOpacity = value);
-    private protected static void SetSoundCanPassThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set<bool>("SoundCanPassThrough", value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.SoundCanPassThrough = value);
+    private protected static void SetCanPassThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetCanSeeThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetCanSeeThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDirectOcclusion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDirectOcclusionRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetDirectOcclusionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetDirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIndirectObstruction(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIndirectObstructionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectObstructionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIndirectOcclusion(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIndirectOcclusionRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIndirectOcclusionSpectralRatio(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIndirectOcclusionSpectralRatioAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsDirectPathSet(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsDirectPathSetAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsPickingPossible(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsPickingPossibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetIsVisualVisible(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetIsVisualVisibleAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetNeedClipping2D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping2DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetNeedClipping3D(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetNeedClipping3DAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSeeThroughOpacity(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSeeThroughOpacityAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetSoundCanPassThrough(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsPortal> state, bool value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsPortalBuilderAssignments.GetSoundCanPassThroughAssignment(), value, GameVersion.MP3 | GameVersion.TM10 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public bool CanPassThrough
     {
         get => state.Get<bool>("CanPassThrough");
@@ -226,6 +226,23 @@ public abstract class CHmsPortalBuilderBase<TSelf> where TSelf : CHmsPortalBuild
 }
 public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder>
 {
+    private static global::GBX.NET.Engines.Hms.CHmsPortal CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
+        var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
+        node.Chunks.Add(chunk06006001);
+        var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
+        node.Chunks.Add(chunk06006002);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsPortal node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06006001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk06006002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsPortal node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -240,16 +257,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -262,16 +275,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -284,16 +293,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -306,16 +311,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -328,16 +329,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -350,16 +347,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required TMF chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -372,16 +365,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -394,16 +383,12 @@ public partial class CHmsPortalBuilder : CHmsPortalBuilderBase<CHmsPortalBuilder
         public global::GBX.NET.Interfaces.Hms.IHmsPortalTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsPortal Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsPortal();
-            var chunk06006001 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001();
-            node.Chunks.Add(chunk06006001);
-            var chunk06006002 = new global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002();
-            node.Chunks.Add(chunk06006002);
+            var node = CHmsPortalBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006001>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06006001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsPortal.Chunk06006002>() is null) throw new InvalidOperationException("Required TMT chunk Chunk06006002 is missing or has an incompatible version.");
+            CHmsPortalBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CHmsPortalBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }

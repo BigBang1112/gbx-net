@@ -36,12 +36,12 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state;
     private protected CHmsLightBuilderBase() => state = new();
     private protected CHmsLightBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state) => this.state = state;
-    private protected static void SetBitmapFlare(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlare", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BitmapFlare = value);
-    private protected static void SetBitmapFlareReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapFlare", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapFlare.CopyFrom(reference));
-    private protected static void SetBitmapSprite(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapSprite", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.BitmapSprite = value);
-    private protected static void SetBitmapSpriteReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>>("BitmapSprite", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.BitmapSprite.CopyFrom(reference));
-    private protected static void SetMainGxLight(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Graphic.GxLight? value) => state.Set<global::GBX.NET.Engines.Graphic.GxLight?>("MainGxLight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static value => value, static (node, value) => node.MainGxLight = value);
-    private protected static void SetMainGxLightReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => state.Set<NodeRef<global::GBX.NET.Engines.Graphic.GxLight>>("MainGxLight", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Graphic.GxLight>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.MainGxLight.CopyFrom(reference));
+    private protected static void SetBitmapFlare(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapFlareReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapFlareReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapSprite(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Plug.CPlugBitmap? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetBitmapSpriteReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugBitmap> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetBitmapSpriteReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMainGxLight(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, global::GBX.NET.Engines.Graphic.GxLight? value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
+    private protected static void SetMainGxLightReference(NodeBuilderState<global::GBX.NET.Engines.Hms.CHmsLight> state, NodeRef<global::GBX.NET.Engines.Graphic.GxLight> value) => state.Set(global::GBX.NET.Builders.Engines.Hms.CHmsLightBuilderAssignments.GetMainGxLightReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM10 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMNESWC | GameVersion.TMPU | GameVersion.TMSX | GameVersion.TMT | GameVersion.VSK5);
     public global::GBX.NET.Engines.Plug.CPlugBitmap? BitmapFlare
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugBitmap?>("BitmapFlare");
@@ -93,6 +93,20 @@ public abstract class CHmsLightBuilderBase<TSelf> where TSelf : CHmsLightBuilder
 }
 public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
 {
+    private static global::GBX.NET.Engines.Hms.CHmsLight CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Hms.CHmsLight();
+        var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
+        node.Chunks.Add(chunk0600C003);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Hms.CHmsLight node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0600C003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Hms.CHmsLight node, GameVersion game)
+    {
+    }
     public TM10 ForTM10() => new(state.Snapshot());
     public TMPU ForTMPU() => new(state.Snapshot());
     public TMSX ForTMSX() => new(state.Snapshot());
@@ -123,13 +137,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTM10 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TM10);
             state.Apply(node, GameVersion.TM10);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TM10 chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TM10);
             NodeBuilderValidation.Validate(node, GameVersion.TM10);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TM10);
             ValidateNode(node);
             return node;
         }
@@ -154,13 +167,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTMPU BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMPU);
             state.Apply(node, GameVersion.TMPU);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TMPU chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMPU);
             NodeBuilderValidation.Validate(node, GameVersion.TMPU);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMPU);
             ValidateNode(node);
             return node;
         }
@@ -185,13 +197,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTMSX BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMSX);
             state.Apply(node, GameVersion.TMSX);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TMSX chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMSX);
             NodeBuilderValidation.Validate(node, GameVersion.TMSX);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMSX);
             ValidateNode(node);
             return node;
         }
@@ -216,13 +227,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTMNESWC BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMNESWC);
             state.Apply(node, GameVersion.TMNESWC);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TMNESWC chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMNESWC);
             NodeBuilderValidation.Validate(node, GameVersion.TMNESWC);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMNESWC);
             ValidateNode(node);
             return node;
         }
@@ -247,13 +257,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightVSK5 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.VSK5);
             state.Apply(node, GameVersion.VSK5);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required VSK5 chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.VSK5);
             NodeBuilderValidation.Validate(node, GameVersion.VSK5);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.VSK5);
             ValidateNode(node);
             return node;
         }
@@ -278,13 +287,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
@@ -309,13 +317,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
@@ -340,13 +347,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
@@ -371,13 +377,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -402,13 +407,12 @@ public partial class CHmsLightBuilder : CHmsLightBuilderBase<CHmsLightBuilder>
         public global::GBX.NET.Interfaces.Hms.IHmsLightTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Hms.CHmsLight Build()
         {
-            var node = new global::GBX.NET.Engines.Hms.CHmsLight();
-            var chunk0600C003 = new global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003();
-            node.Chunks.Add(chunk0600C003);
+            var node = CHmsLightBuilder.CreateRecipe0(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Hms.CHmsLight.Chunk0600C003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0600C003 is missing or has an incompatible version.");
+            CHmsLightBuilder.ValidateRecipe0(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CHmsLightBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

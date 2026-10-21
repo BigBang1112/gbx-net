@@ -36,11 +36,11 @@ public abstract class CGameVehicleModelBuilderBase<TSelf> where TSelf : CGameVeh
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state;
     private protected CGameVehicleModelBuilderBase() => state = new();
     private protected CGameVehicleModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state) => this.state = state;
-    private protected static void SetItemOccupantSlotModels(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? value) => state.Set<global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]?>("ItemOccupantSlotModels", value, GameVersion.MP4 | GameVersion.TM2020, static value => value is null ? null! : (global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[])value.Clone(), static (node, value) => node.ItemOccupantSlotModels = value);
-    private protected static void SetPhyModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel?>("PhyModel", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.PhyModel = value);
-    private protected static void SetPhyModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel>>("PhyModel", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.PhyModel.CopyFrom(reference));
-    private protected static void SetVisModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel?>("VisModel", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.VisModel = value);
-    private protected static void SetVisModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel>>("VisModel", value, GameVersion.MP4 | GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.VisModel.CopyFrom(reference));
+    private protected static void SetItemOccupantSlotModels(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetItemOccupantSlotModelsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPhyModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetPhyModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetPhyModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehiclePhyModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetPhyModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetVisModel(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel? value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetVisModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetVisModelReference(NodeBuilderState<global::GBX.NET.Engines.GameData.CGameVehicleModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> value) => state.Set(global::GBX.NET.Builders.Engines.GameData.CGameVehicleModelBuilderAssignments.GetVisModelReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
     public global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]? ItemOccupantSlotModels
     {
         get => state.Get<global::GBX.NET.Engines.GameData.CGameVehicleModel.ItemOccupantSlotModel[]?>("ItemOccupantSlotModels");
@@ -90,6 +90,31 @@ public abstract class CGameVehicleModelBuilderBase<TSelf> where TSelf : CGameVeh
 }
 public partial class CGameVehicleModelBuilder : CGameVehicleModelBuilderBase<CGameVehicleModelBuilder>
 {
+    private static global::GBX.NET.Engines.GameData.CGameVehicleModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameVehicleModel();
+        var chunk2E01C000 = new global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000(game);
+        node.Chunks.Add(chunk2E01C000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.GameData.CGameVehicleModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000>() is not { Version: 0 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E01C000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.GameData.CGameVehicleModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.GameData.CGameVehicleModel();
+        var chunk2E01C000 = new global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000(game);
+        node.Chunks.Add(chunk2E01C000);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.GameData.CGameVehicleModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000>() is not { Version: 3 }) throw new InvalidOperationException($"Required {game} chunk Chunk2E01C000 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.GameData.CGameVehicleModel node, GameVersion game)
+    {
+    }
     public MP4 ForMP4() => new(state.Snapshot());
     public MP4 ForTM2() => ForMP4();
     public MP4 ForSM() => ForMP4();
@@ -108,13 +133,12 @@ public partial class CGameVehicleModelBuilder : CGameVehicleModelBuilderBase<CGa
         public global::GBX.NET.Interfaces.GameData.IGameVehicleModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameVehicleModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameVehicleModel();
-            var chunk2E01C000 = new global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000(GameVersion.MP4);
-            node.Chunks.Add(chunk2E01C000);
+            var node = CGameVehicleModelBuilder.CreateRecipe0(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000>() is not { Version: 0 }) throw new InvalidOperationException("Required MP4 chunk Chunk2E01C000 is missing or has an incompatible version.");
+            CGameVehicleModelBuilder.ValidateRecipe0(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CGameVehicleModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
@@ -135,13 +159,12 @@ public partial class CGameVehicleModelBuilder : CGameVehicleModelBuilderBase<CGa
         public global::GBX.NET.Interfaces.GameData.IGameVehicleModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.GameData.CGameVehicleModel Build()
         {
-            var node = new global::GBX.NET.Engines.GameData.CGameVehicleModel();
-            var chunk2E01C000 = new global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000(GameVersion.TM2020);
-            node.Chunks.Add(chunk2E01C000);
+            var node = CGameVehicleModelBuilder.CreateRecipe1(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.GameData.CGameVehicleModel.Chunk2E01C000>() is not { Version: 3 }) throw new InvalidOperationException("Required TM2020 chunk Chunk2E01C000 is missing or has an incompatible version.");
+            CGameVehicleModelBuilder.ValidateRecipe1(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CGameVehicleModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

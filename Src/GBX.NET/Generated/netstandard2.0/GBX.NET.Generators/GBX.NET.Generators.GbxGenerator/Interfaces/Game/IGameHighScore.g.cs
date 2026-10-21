@@ -31,6 +31,11 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameHighScoreMembers1 : global::GBX.NET.Interfaces.Game.IGameHighScore
+{
+    string? GhostUrl { get; set; }
+}
 public partial interface IGameHighScore : IClassVersion<global::GBX.NET.Engines.Game.CGameHighScore>
 {
     int Count { get; set; }
@@ -44,18 +49,15 @@ public partial interface IGameHighScoreTMF : IGameHighScore
 {
 }
 
-public partial interface IGameHighScoreMP3 : IGameHighScore
+public partial interface IGameHighScoreMP3 : IGameHighScore, global::GBX.NET.Interfaces.Game.IGameHighScoreMembers1
 {
-    string? GhostUrl { get; set; }
 }
 
-public partial interface IGameHighScoreTMT : IGameHighScore
+public partial interface IGameHighScoreTMT : IGameHighScore, global::GBX.NET.Interfaces.Game.IGameHighScoreMembers1
 {
-    string? GhostUrl { get; set; }
 }
 
-public partial interface IGameHighScoreMP4 : IGameHighScore
+public partial interface IGameHighScoreMP4 : IGameHighScore, global::GBX.NET.Interfaces.Game.IGameHighScoreMembers1
 {
-    string? GhostUrl { get; set; }
 }
 

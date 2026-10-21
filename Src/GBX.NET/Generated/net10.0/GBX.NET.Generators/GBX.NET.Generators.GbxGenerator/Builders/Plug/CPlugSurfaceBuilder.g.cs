@@ -36,11 +36,11 @@ public abstract class CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceB
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state;
     private protected CPlugSurfaceBuilderBase() => state = new();
     private protected CPlugSurfaceBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) => this.state = state;
-    private protected static void SetGeom(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom?>("Geom", value, GameVersion.TMF, static value => value, static (node, value) => node.Geom = value);
-    private protected static void SetGeomReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom>>("Geom", value, GameVersion.TMF, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Geom.CopyFrom(reference));
-    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[]>("Materials", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT, static value => value is null ? null! : (global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[])value.Clone(), static (node, value) => node.Materials = value);
-    private protected static void SetSkel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSkel? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Skel = value);
-    private protected static void SetSkelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel>>("Skel", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Skel.CopyFrom(reference));
+    private protected static void SetGeom(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSurfaceGeom? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomAssignment(), value, GameVersion.TMF);
+    private protected static void SetGeomReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSurfaceGeom> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetGeomReferenceAssignment(), value, GameVersion.TMF);
+    private protected static void SetMaterials(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetMaterialsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMF | GameVersion.TMT);
+    private protected static void SetSkel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, global::GBX.NET.Engines.Plug.CPlugSkel? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSkelReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugSurfaceBuilderAssignments.GetSkelReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[] Materials
     {
         get => state.Get<global::GBX.NET.Engines.Plug.CPlugSurface.SurfMaterial[]>("Materials");
@@ -56,8 +56,76 @@ public abstract class CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceB
         return WithMaterials(values.ToArray());
     }
 }
+public abstract class CPlugSurfaceBuilderMembers1<TSelf> : CPlugSurfaceBuilderBase<TSelf> where TSelf : CPlugSurfaceBuilderMembers1<TSelf>
+{
+    private protected CPlugSurfaceBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
+        set => SetSkel(state, value);
+    }
+    public TSelf WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
+    {
+        Skel = value;
+        return (TSelf)this;
+    }
+    public TSelf WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetSkelReference(state, value);
+        return (TSelf)this;
+    }
+}
 public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
+        var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C000();
+        node.Chunks.Add(chunk0900C000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C000>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
+        var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
+        node.Chunks.Add(chunk0900C003);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
+        var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
+        node.Chunks.Add(chunk0900C003);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C003 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugSurface CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
+        var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
+        node.Chunks.Add(chunk0900C003);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException($"Required {game} chunk Chunk0900C003 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugSurface node, GameVersion game)
+    {
+        if (node.Materials is null) throw new MemberNullException("Materials");
+    }
     public TMF ForTMF() => new(state.Snapshot());
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
@@ -91,174 +159,100 @@ public partial class CPlugSurfaceBuilder : CPlugSurfaceBuilderBase<CPlugSurfaceB
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMF BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurface Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
-            var chunk0900C000 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C000();
-            node.Chunks.Add(chunk0900C000);
+            var node = CPlugSurfaceBuilder.CreateRecipe0(GameVersion.TMF);
             state.Apply(node, GameVersion.TMF);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C000>() is null) throw new InvalidOperationException("Required TMF chunk Chunk0900C000 is missing or has an incompatible version.");
+            CPlugSurfaceBuilder.ValidateRecipe0(node, GameVersion.TMF);
             NodeBuilderValidation.Validate(node, GameVersion.TMF);
-            if (node.Materials is null) throw new MemberNullException("Materials");
+            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.TMF);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
-    public partial class MP3 : CPlugSurfaceBuilderBase<MP3>
+    public partial class MP3 : CPlugSurfaceBuilderMembers1<MP3>
     {
         internal MP3(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-            set => SetSkel(state, value);
-        }
-        public MP3 WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
-        {
-            Skel = value;
-            return this;
-        }
-        public MP3 WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSkelReference(state, value);
-            return this;
-        }
         public MP3 WithSkel(global::GBX.NET.Interfaces.Plug.IPlugSkelMP3? value)
         {
-            return WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurface Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
-            var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
-            node.Chunks.Add(chunk0900C003);
+            var node = CPlugSurfaceBuilder.CreateRecipe1(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException("Required MP3 chunk Chunk0900C003 is missing or has an incompatible version.");
+            CPlugSurfaceBuilder.ValidateRecipe1(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
-            if (node.Materials is null) throw new MemberNullException("Materials");
+            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
-    public partial class TMT : CPlugSurfaceBuilderBase<TMT>
+    public partial class TMT : CPlugSurfaceBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-            set => SetSkel(state, value);
-        }
-        public TMT WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
-        {
-            Skel = value;
-            return this;
-        }
-        public TMT WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSkelReference(state, value);
-            return this;
-        }
         public TMT WithSkel(global::GBX.NET.Interfaces.Plug.IPlugSkelTMT? value)
         {
-            return WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurface Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
-            var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
-            node.Chunks.Add(chunk0900C003);
+            var node = CPlugSurfaceBuilder.CreateRecipe2(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException("Required TMT chunk Chunk0900C003 is missing or has an incompatible version.");
+            CPlugSurfaceBuilder.ValidateRecipe2(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
-            if (node.Materials is null) throw new MemberNullException("Materials");
+            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
-    public partial class MP4 : CPlugSurfaceBuilderBase<MP4>
+    public partial class MP4 : CPlugSurfaceBuilderMembers1<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-            set => SetSkel(state, value);
-        }
-        public MP4 WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
-        {
-            Skel = value;
-            return this;
-        }
-        public MP4 WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSkelReference(state, value);
-            return this;
-        }
         public MP4 WithSkel(global::GBX.NET.Interfaces.Plug.IPlugSkelMP4? value)
         {
-            return WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurface Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
-            var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
-            node.Chunks.Add(chunk0900C003);
+            var node = CPlugSurfaceBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException("Required MP4 chunk Chunk0900C003 is missing or has an incompatible version.");
+            CPlugSurfaceBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
-            if (node.Materials is null) throw new MemberNullException("Materials");
+            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugSurface node);
     }
-    public partial class TM2020 : CPlugSurfaceBuilderBase<TM2020>
+    public partial class TM2020 : CPlugSurfaceBuilderMembers1<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugSurface> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugSkel? Skel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugSkel?>("Skel");
-            set => SetSkel(state, value);
-        }
-        public TM2020 WithSkel(global::GBX.NET.Engines.Plug.CPlugSkel? value)
-        {
-            Skel = value;
-            return this;
-        }
-        public TM2020 WithSkelReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugSkel> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetSkelReference(state, value);
-            return this;
-        }
         public TM2020 WithSkel(global::GBX.NET.Interfaces.Plug.IPlugSkelTM2020? value)
         {
-            return WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
+            return base.WithSkel(value is null ? (global::GBX.NET.Engines.Plug.CPlugSkel?)null : value is global::GBX.NET.Engines.Plug.CPlugSkel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Interfaces.Plug.IPlugSurfaceTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugSurface Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugSurface();
-            var chunk0900C003 = new global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003();
-            node.Chunks.Add(chunk0900C003);
+            var node = CPlugSurfaceBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugSurface.Chunk0900C003>() is null) throw new InvalidOperationException("Required TM2020 chunk Chunk0900C003 is missing or has an incompatible version.");
+            CPlugSurfaceBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
-            if (node.Materials is null) throw new MemberNullException("Materials");
+            CPlugSurfaceBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

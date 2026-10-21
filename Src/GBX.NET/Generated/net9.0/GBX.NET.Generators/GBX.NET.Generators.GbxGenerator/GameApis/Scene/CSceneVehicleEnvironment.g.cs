@@ -36,32 +36,33 @@ public partial class CSceneVehicleEnvironment : global::GBX.NET.Interfaces.Scene
     public static global::GBX.NET.Builders.Engines.Scene.CSceneVehicleEnvironmentBuilder Create() => new();
     IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterial>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironment.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(() => Materials, static node => node ?? throw new MemberNullException("Materials"));
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(GetMaterialsBuilderReferences, GameVersion.Unspecified, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterial>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMPU.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.TMPU); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>(GetMaterialsBuilderReferences, GameVersion.TMPU, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMPU>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMSX.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.TMSX); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>(GetMaterialsBuilderReferences, GameVersion.TMSX, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMSX>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMNESWC.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.TMNESWC); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>(GetMaterialsBuilderReferences, GameVersion.TMNESWC, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMNESWC>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentVSK5.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.VSK5); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>(GetMaterialsBuilderReferences, GameVersion.VSK5, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialVSK5>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentTMF.Materials
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>? global::GBX.NET.Interfaces.Scene.ISceneVehicleEnvironmentMembers1<global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>.Materials
     {
-        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>(() => Materials, static node => { if (node is null) throw new MemberNullException("Materials"); NodeBuilderValidation.Validate(node, GameVersion.TMF); return node; });
-        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugMaterial node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => Materials is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>(GetMaterialsBuilderReferences, GameVersion.TMF, true, "Materials");
+        set => Materials = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugMaterial, global::GBX.NET.Interfaces.Plug.IPlugMaterialTMF>(value, false));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugMaterial>? GetMaterialsBuilderReferences() => Materials;
 }

@@ -31,6 +31,25 @@ using global::TmEssentials;
 
 namespace GBX.NET.Interfaces.Game;
 
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneMembers1 : global::GBX.NET.Interfaces.Game.IGameCtnZone
+{
+    string? ForcedParentZoneFrontierId { get; set; }
+    bool IsLargeZone { get; set; }
+    float VisualTopGroundHeight { get; set; }
+    string? WaterId { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneMembers2 : global::GBX.NET.Interfaces.Game.IGameCtnZone
+{
+    bool HasWater { get; set; }
+}
+[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+public interface IGameCtnZoneMembers3 : global::GBX.NET.Interfaces.Game.IGameCtnZone
+{
+    int Depth { get; set; }
+    bool OldZone { get; set; }
+}
 public partial interface IGameCtnZone : IClassVersion<global::GBX.NET.Engines.Game.CGameCtnZone>
 {
     int Height { get; set; }
@@ -46,71 +65,35 @@ public partial interface IGameCtnZoneTMPU : IGameCtnZone
 {
 }
 
-public partial interface IGameCtnZoneTMSX : IGameCtnZone
+public partial interface IGameCtnZoneTMSX : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers2, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    bool HasWater { get; set; }
-    bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneTMNESWC : IGameCtnZone
+public partial interface IGameCtnZoneTMNESWC : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers2, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    bool HasWater { get; set; }
-    bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneVSK5 : IGameCtnZone
+public partial interface IGameCtnZoneVSK5 : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers2, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    bool HasWater { get; set; }
-    bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneTMF : IGameCtnZone
+public partial interface IGameCtnZoneTMF : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers2, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    bool HasWater { get; set; }
-    bool OldZone { get; set; }
 }
 
-public partial interface IGameCtnZoneMP3 : IGameCtnZone
+public partial interface IGameCtnZoneMP3 : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    string? ForcedParentZoneFrontierId { get; set; }
-    bool IsLargeZone { get; set; }
-    bool OldZone { get; set; }
-    float VisualTopGroundHeight { get; set; }
-    string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneTMT : IGameCtnZone
+public partial interface IGameCtnZoneTMT : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    string? ForcedParentZoneFrontierId { get; set; }
-    bool IsLargeZone { get; set; }
-    bool OldZone { get; set; }
-    float VisualTopGroundHeight { get; set; }
-    string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneMP4 : IGameCtnZone
+public partial interface IGameCtnZoneMP4 : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    string? ForcedParentZoneFrontierId { get; set; }
-    bool IsLargeZone { get; set; }
-    bool OldZone { get; set; }
-    float VisualTopGroundHeight { get; set; }
-    string? WaterId { get; set; }
 }
 
-public partial interface IGameCtnZoneTM2020 : IGameCtnZone
+public partial interface IGameCtnZoneTM2020 : IGameCtnZone, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers1, global::GBX.NET.Interfaces.Game.IGameCtnZoneMembers3
 {
-    int Depth { get; set; }
-    string? ForcedParentZoneFrontierId { get; set; }
-    bool IsLargeZone { get; set; }
-    bool OldZone { get; set; }
-    float VisualTopGroundHeight { get; set; }
-    string? WaterId { get; set; }
 }
 

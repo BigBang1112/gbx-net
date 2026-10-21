@@ -40,7 +40,6 @@ public partial interface IMwCmdAffectIdentClass : IClassVersion<global::GBX.NET.
     new global::GBX.NET.Gbx ToGbx();
     new void Save(global::System.IO.Stream stream, global::GBX.NET.GbxWriteSettings settings = default);
     new void Save(string fileName, global::GBX.NET.GbxWriteSettings settings = default);
-    new global::GBX.NET.Engines.MwFoundations.CMwCmdExp? Value { get; set; }
 }
 
 public partial interface IMwCmdAffectIdentClassTM10 : IMwCmdAffectIdentClass, global::GBX.NET.Interfaces.MwFoundations.IMwCmdAffectIdentTM10

@@ -36,26 +36,26 @@ public abstract class CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlug
     private protected readonly NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state;
     private protected CPlugVehicleVisModelBuilderBase() => state = new();
     private protected CPlugVehicleVisModelBuilderBase(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) => this.state = state;
-    private protected static void SetAudioEnvironmentForFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?>("AudioEnvironmentForFirstPerson", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.AudioEnvironmentForFirstPerson = value);
-    private protected static void SetAudioEnvironmentForFirstPersonReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment>>("AudioEnvironmentForFirstPerson", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.AudioEnvironmentForFirstPerson.CopyFrom(reference));
-    private protected static void SetDefaultDamperMinLen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("DefaultDamperMinLen", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DefaultDamperMinLen = value);
-    private protected static void SetDefaultSparkleRelSpeedThreshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("DefaultSparkleRelSpeedThreshold", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DefaultSparkleRelSpeedThreshold = value);
-    private protected static void SetDefaultSparkleScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("DefaultSparkleScale", value, GameVersion.MP4 | GameVersion.TM2020, static value => value, static (node, value) => node.DefaultSparkleScale = value);
-    private protected static void SetDefaultWheelOffsetY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("DefaultWheelOffsetY", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.DefaultWheelOffsetY = value);
-    private protected static void SetFxSystem(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugFxSystem? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugFxSystem?>("FxSystem", value, GameVersion.TM2020, static value => value, static (node, value) => node.FxSystem = value);
-    private protected static void SetFxSystemReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxSystem> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugFxSystem>>("FxSystem", value, GameVersion.TM2020, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugFxSystem>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.FxSystem.CopyFrom(reference));
-    private protected static void SetGeomModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel>("GeomModel", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.GeomModel = value);
-    private protected static void SetShared(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?>("Shared", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Shared = value);
-    private protected static void SetSharedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value) => state.Set<NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared>>("Shared", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static reference => { var copy = new NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared>(); copy.CopyFrom(reference); return copy; }, static (node, reference) => node.References.Shared.CopyFrom(reference));
-    private protected static void SetSoundBodyImpact_Hard_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("SoundBodyImpact_Hard_ThresholdKmh", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundBodyImpact_Hard_ThresholdKmh = value);
-    private protected static void SetSoundBodyImpact_Soft_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("SoundBodyImpact_Soft_ThresholdKmh", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundBodyImpact_Soft_ThresholdKmh = value);
-    private protected static void SetSoundEvents(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet>("SoundEvents", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundEvents = value);
-    private protected static void SetSoundImpactWheelBackPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, Vec3 value) => state.Set<Vec3>("SoundImpactWheelBackPos", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundImpactWheelBackPos = value);
-    private protected static void SetSoundImpactWheelFrontPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, Vec3 value) => state.Set<Vec3>("SoundImpactWheelFrontPos", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundImpactWheelFrontPos = value);
-    private protected static void SetSoundWheelImpact_Hard_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("SoundWheelImpact_Hard_ThresholdKmh", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundWheelImpact_Hard_ThresholdKmh = value);
-    private protected static void SetSoundWheelImpact_Soft_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set<float>("SoundWheelImpact_Soft_ThresholdKmh", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SoundWheelImpact_Soft_ThresholdKmh = value);
-    private protected static void SetSounds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet value) => state.Set<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet>("Sounds", value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.Sounds = value);
-    private protected static void SetSurfVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, int value) => state.Set<int>("SurfVersion", value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT, static value => value, static (node, value) => node.SurfVersion = value);
+    private protected static void SetAudioEnvironmentForFirstPerson(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetAudioEnvironmentForFirstPersonReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetAudioEnvironmentForFirstPersonReferenceAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDefaultDamperMinLen(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultDamperMinLenAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetDefaultSparkleRelSpeedThreshold(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultSparkleRelSpeedThresholdAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDefaultSparkleScale(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultSparkleScaleAssignment(), value, GameVersion.MP4 | GameVersion.TM2020);
+    private protected static void SetDefaultWheelOffsetY(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetDefaultWheelOffsetYAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetFxSystem(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugFxSystem? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetFxSystemAssignment(), value, GameVersion.TM2020);
+    private protected static void SetFxSystemReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugFxSystem> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetFxSystemReferenceAssignment(), value, GameVersion.TM2020);
+    private protected static void SetGeomModel(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetGeomModelAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetShared(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared? value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSharedAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSharedReference(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, NodeRef<global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared> value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSharedReferenceAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundBodyImpact_Hard_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundBodyImpact_Hard_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundBodyImpact_Soft_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundBodyImpact_Soft_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundEvents(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundEventsAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundImpactWheelBackPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundImpactWheelBackPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundImpactWheelFrontPos(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, Vec3 value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundImpactWheelFrontPosAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundWheelImpact_Hard_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundWheelImpact_Hard_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSoundWheelImpact_Soft_ThresholdKmh(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, float value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundWheelImpact_Soft_ThresholdKmhAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSounds(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundSet value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSoundsAssignment(), value, GameVersion.MP3 | GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
+    private protected static void SetSurfVersion(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state, int value) => state.Set(global::GBX.NET.Builders.Engines.Plug.CPlugVehicleVisModelBuilderAssignments.GetSurfVersionAssignment(), value, GameVersion.MP4 | GameVersion.TM2020 | GameVersion.TMT);
     public float DefaultDamperMinLen
     {
         get => state.Get<float>("DefaultDamperMinLen");
@@ -103,8 +103,207 @@ public abstract class CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlug
         return (TSelf)this;
     }
 }
+public abstract class CPlugVehicleVisModelBuilderMembers1<TSelf> : CPlugVehicleVisModelBuilderBase<TSelf> where TSelf : CPlugVehicleVisModelBuilderMembers1<TSelf>
+{
+    private protected CPlugVehicleVisModelBuilderMembers1(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) : base(state) { }
+    public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?>("AudioEnvironmentForFirstPerson");
+        set => SetAudioEnvironmentForFirstPerson(state, value);
+    }
+    public TSelf WithAudioEnvironmentForFirstPerson(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value)
+    {
+        AudioEnvironmentForFirstPerson = value;
+        return (TSelf)this;
+    }
+    public TSelf WithAudioEnvironmentForFirstPersonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value)
+    {
+        if (value is null) throw new ArgumentNullException(nameof(value));
+        SetAudioEnvironmentForFirstPersonReference(state, value);
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel>("GeomModel");
+        set => SetGeomModel(state, value);
+    }
+    public TSelf WithGeomModel(global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value)
+    {
+        GeomModel = value;
+        return (TSelf)this;
+    }
+    public float SoundBodyImpact_Hard_ThresholdKmh
+    {
+        get => state.Get<float>("SoundBodyImpact_Hard_ThresholdKmh");
+        set => SetSoundBodyImpact_Hard_ThresholdKmh(state, value);
+    }
+    public TSelf WithSoundBodyImpact_Hard_ThresholdKmh(float value)
+    {
+        SoundBodyImpact_Hard_ThresholdKmh = value;
+        return (TSelf)this;
+    }
+    public float SoundBodyImpact_Soft_ThresholdKmh
+    {
+        get => state.Get<float>("SoundBodyImpact_Soft_ThresholdKmh");
+        set => SetSoundBodyImpact_Soft_ThresholdKmh(state, value);
+    }
+    public TSelf WithSoundBodyImpact_Soft_ThresholdKmh(float value)
+    {
+        SoundBodyImpact_Soft_ThresholdKmh = value;
+        return (TSelf)this;
+    }
+    public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents
+    {
+        get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet>("SoundEvents");
+        set => SetSoundEvents(state, value);
+    }
+    public TSelf WithSoundEvents(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value)
+    {
+        SoundEvents = value;
+        return (TSelf)this;
+    }
+    public Vec3 SoundImpactWheelBackPos
+    {
+        get => state.Get<Vec3>("SoundImpactWheelBackPos");
+        set => SetSoundImpactWheelBackPos(state, value);
+    }
+    public TSelf WithSoundImpactWheelBackPos(Vec3 value)
+    {
+        SoundImpactWheelBackPos = value;
+        return (TSelf)this;
+    }
+    public Vec3 SoundImpactWheelFrontPos
+    {
+        get => state.Get<Vec3>("SoundImpactWheelFrontPos");
+        set => SetSoundImpactWheelFrontPos(state, value);
+    }
+    public TSelf WithSoundImpactWheelFrontPos(Vec3 value)
+    {
+        SoundImpactWheelFrontPos = value;
+        return (TSelf)this;
+    }
+    public float SoundWheelImpact_Hard_ThresholdKmh
+    {
+        get => state.Get<float>("SoundWheelImpact_Hard_ThresholdKmh");
+        set => SetSoundWheelImpact_Hard_ThresholdKmh(state, value);
+    }
+    public TSelf WithSoundWheelImpact_Hard_ThresholdKmh(float value)
+    {
+        SoundWheelImpact_Hard_ThresholdKmh = value;
+        return (TSelf)this;
+    }
+    public float SoundWheelImpact_Soft_ThresholdKmh
+    {
+        get => state.Get<float>("SoundWheelImpact_Soft_ThresholdKmh");
+        set => SetSoundWheelImpact_Soft_ThresholdKmh(state, value);
+    }
+    public TSelf WithSoundWheelImpact_Soft_ThresholdKmh(float value)
+    {
+        SoundWheelImpact_Soft_ThresholdKmh = value;
+        return (TSelf)this;
+    }
+    public int SurfVersion
+    {
+        get => state.Get<int>("SurfVersion");
+        set => SetSurfVersion(state, value);
+    }
+    public TSelf WithSurfVersion(int value)
+    {
+        SurfVersion = value;
+        return (TSelf)this;
+    }
+}
+public abstract class CPlugVehicleVisModelBuilderMembers2<TSelf> : CPlugVehicleVisModelBuilderMembers1<TSelf> where TSelf : CPlugVehicleVisModelBuilderMembers2<TSelf>
+{
+    private protected CPlugVehicleVisModelBuilderMembers2(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) : base(state) { }
+    public float DefaultSparkleRelSpeedThreshold
+    {
+        get => state.Get<float>("DefaultSparkleRelSpeedThreshold");
+        set => SetDefaultSparkleRelSpeedThreshold(state, value);
+    }
+    public TSelf WithDefaultSparkleRelSpeedThreshold(float value)
+    {
+        DefaultSparkleRelSpeedThreshold = value;
+        return (TSelf)this;
+    }
+    public float DefaultSparkleScale
+    {
+        get => state.Get<float>("DefaultSparkleScale");
+        set => SetDefaultSparkleScale(state, value);
+    }
+    public TSelf WithDefaultSparkleScale(float value)
+    {
+        DefaultSparkleScale = value;
+        return (TSelf)this;
+    }
+}
 public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBase<CPlugVehicleVisModelBuilder>
 {
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe0(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
+        var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game);
+        node.Chunks.Add(chunk090E7000);
+        return node;
+    }
+    private static void ValidateRecipe0(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 2 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7000 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe1(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
+        var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game);
+        node.Chunks.Add(chunk090E7000);
+        var chunk090E7001 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(game);
+        node.Chunks.Add(chunk090E7001);
+        var chunk090E7002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(game);
+        node.Chunks.Add(chunk090E7002);
+        return node;
+    }
+    private static void ValidateRecipe1(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe2(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
+        var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game);
+        node.Chunks.Add(chunk090E7000);
+        var chunk090E7001 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(game);
+        node.Chunks.Add(chunk090E7001);
+        var chunk090E7002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(game);
+        node.Chunks.Add(chunk090E7002);
+        return node;
+    }
+    private static void ValidateRecipe2(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 9 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001>() is not { Version: 6 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7002 is missing or has an incompatible version.");
+    }
+    private static global::GBX.NET.Engines.Plug.CPlugVehicleVisModel CreateRecipe3(GameVersion game)
+    {
+        var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(game);
+        var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(game);
+        node.Chunks.Add(chunk090E7000);
+        var chunk090E7001 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(game);
+        node.Chunks.Add(chunk090E7001);
+        var chunk090E7002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(game);
+        node.Chunks.Add(chunk090E7002);
+        return node;
+    }
+    private static void ValidateRecipe3(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node, GameVersion game)
+    {
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 18 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7000 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001>() is not { Version: 10 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7001 is missing or has an incompatible version.");
+        if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002>() is not { Version: 5 }) throw new InvalidOperationException($"Required {game} chunk Chunk090E7002 is missing or has an incompatible version.");
+    }
+    private static void ValidateRequiredMembers(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node, GameVersion game)
+    {
+    }
     public MP3 ForMP3() => new(state.Snapshot());
     public TMT ForTMT() => new(state.Snapshot());
     public MP4 ForMP4() => new(state.Snapshot());
@@ -121,359 +320,76 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP3 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(GameVersion.MP3);
-            var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(GameVersion.MP3);
-            node.Chunks.Add(chunk090E7000);
+            var node = CPlugVehicleVisModelBuilder.CreateRecipe0(GameVersion.MP3);
             state.Apply(node, GameVersion.MP3);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 2 }) throw new InvalidOperationException("Required MP3 chunk Chunk090E7000 is missing or has an incompatible version.");
+            CPlugVehicleVisModelBuilder.ValidateRecipe0(node, GameVersion.MP3);
             NodeBuilderValidation.Validate(node, GameVersion.MP3);
+            CPlugVehicleVisModelBuilder.ValidateRequiredMembers(node, GameVersion.MP3);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
     }
-    public partial class TMT : CPlugVehicleVisModelBuilderBase<TMT>
+    public partial class TMT : CPlugVehicleVisModelBuilderMembers1<TMT>
     {
         internal TMT(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?>("AudioEnvironmentForFirstPerson");
-            set => SetAudioEnvironmentForFirstPerson(state, value);
-        }
-        public TMT WithAudioEnvironmentForFirstPerson(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value)
-        {
-            AudioEnvironmentForFirstPerson = value;
-            return this;
-        }
-        public TMT WithAudioEnvironmentForFirstPersonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAudioEnvironmentForFirstPersonReference(state, value);
-            return this;
-        }
         public TMT WithAudioEnvironmentForFirstPerson(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTMT? value)
         {
-            return WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel>("GeomModel");
-            set => SetGeomModel(state, value);
-        }
-        public TMT WithGeomModel(global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value)
-        {
-            GeomModel = value;
-            return this;
+            return base.WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public TMT WithShared(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTMT? value)
         {
             return base.WithShared(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SoundBodyImpact_Hard_ThresholdKmh
-        {
-            get => state.Get<float>("SoundBodyImpact_Hard_ThresholdKmh");
-            set => SetSoundBodyImpact_Hard_ThresholdKmh(state, value);
-        }
-        public TMT WithSoundBodyImpact_Hard_ThresholdKmh(float value)
-        {
-            SoundBodyImpact_Hard_ThresholdKmh = value;
-            return this;
-        }
-        public float SoundBodyImpact_Soft_ThresholdKmh
-        {
-            get => state.Get<float>("SoundBodyImpact_Soft_ThresholdKmh");
-            set => SetSoundBodyImpact_Soft_ThresholdKmh(state, value);
-        }
-        public TMT WithSoundBodyImpact_Soft_ThresholdKmh(float value)
-        {
-            SoundBodyImpact_Soft_ThresholdKmh = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet>("SoundEvents");
-            set => SetSoundEvents(state, value);
-        }
-        public TMT WithSoundEvents(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value)
-        {
-            SoundEvents = value;
-            return this;
-        }
-        public Vec3 SoundImpactWheelBackPos
-        {
-            get => state.Get<Vec3>("SoundImpactWheelBackPos");
-            set => SetSoundImpactWheelBackPos(state, value);
-        }
-        public TMT WithSoundImpactWheelBackPos(Vec3 value)
-        {
-            SoundImpactWheelBackPos = value;
-            return this;
-        }
-        public Vec3 SoundImpactWheelFrontPos
-        {
-            get => state.Get<Vec3>("SoundImpactWheelFrontPos");
-            set => SetSoundImpactWheelFrontPos(state, value);
-        }
-        public TMT WithSoundImpactWheelFrontPos(Vec3 value)
-        {
-            SoundImpactWheelFrontPos = value;
-            return this;
-        }
-        public float SoundWheelImpact_Hard_ThresholdKmh
-        {
-            get => state.Get<float>("SoundWheelImpact_Hard_ThresholdKmh");
-            set => SetSoundWheelImpact_Hard_ThresholdKmh(state, value);
-        }
-        public TMT WithSoundWheelImpact_Hard_ThresholdKmh(float value)
-        {
-            SoundWheelImpact_Hard_ThresholdKmh = value;
-            return this;
-        }
-        public float SoundWheelImpact_Soft_ThresholdKmh
-        {
-            get => state.Get<float>("SoundWheelImpact_Soft_ThresholdKmh");
-            set => SetSoundWheelImpact_Soft_ThresholdKmh(state, value);
-        }
-        public TMT WithSoundWheelImpact_Soft_ThresholdKmh(float value)
-        {
-            SoundWheelImpact_Soft_ThresholdKmh = value;
-            return this;
-        }
-        public int SurfVersion
-        {
-            get => state.Get<int>("SurfVersion");
-            set => SetSurfVersion(state, value);
-        }
-        public TMT WithSurfVersion(int value)
-        {
-            SurfVersion = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTMT BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(GameVersion.TMT);
-            var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(GameVersion.TMT);
-            node.Chunks.Add(chunk090E7000);
-            var chunk090E7001 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(GameVersion.TMT);
-            node.Chunks.Add(chunk090E7001);
-            var chunk090E7002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(GameVersion.TMT);
-            node.Chunks.Add(chunk090E7002);
+            var node = CPlugVehicleVisModelBuilder.CreateRecipe1(GameVersion.TMT);
             state.Apply(node, GameVersion.TMT);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk Chunk090E7000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001>() is not { Version: 6 }) throw new InvalidOperationException("Required TMT chunk Chunk090E7001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002>() is not { Version: 5 }) throw new InvalidOperationException("Required TMT chunk Chunk090E7002 is missing or has an incompatible version.");
+            CPlugVehicleVisModelBuilder.ValidateRecipe1(node, GameVersion.TMT);
             NodeBuilderValidation.Validate(node, GameVersion.TMT);
+            CPlugVehicleVisModelBuilder.ValidateRequiredMembers(node, GameVersion.TMT);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
     }
-    public partial class MP4 : CPlugVehicleVisModelBuilderBase<MP4>
+    public partial class MP4 : CPlugVehicleVisModelBuilderMembers2<MP4>
     {
         internal MP4(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?>("AudioEnvironmentForFirstPerson");
-            set => SetAudioEnvironmentForFirstPerson(state, value);
-        }
-        public MP4 WithAudioEnvironmentForFirstPerson(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value)
-        {
-            AudioEnvironmentForFirstPerson = value;
-            return this;
-        }
-        public MP4 WithAudioEnvironmentForFirstPersonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAudioEnvironmentForFirstPersonReference(state, value);
-            return this;
-        }
         public MP4 WithAudioEnvironmentForFirstPerson(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentMP4? value)
         {
-            return WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float DefaultSparkleRelSpeedThreshold
-        {
-            get => state.Get<float>("DefaultSparkleRelSpeedThreshold");
-            set => SetDefaultSparkleRelSpeedThreshold(state, value);
-        }
-        public MP4 WithDefaultSparkleRelSpeedThreshold(float value)
-        {
-            DefaultSparkleRelSpeedThreshold = value;
-            return this;
-        }
-        public float DefaultSparkleScale
-        {
-            get => state.Get<float>("DefaultSparkleScale");
-            set => SetDefaultSparkleScale(state, value);
-        }
-        public MP4 WithDefaultSparkleScale(float value)
-        {
-            DefaultSparkleScale = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel>("GeomModel");
-            set => SetGeomModel(state, value);
-        }
-        public MP4 WithGeomModel(global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value)
-        {
-            GeomModel = value;
-            return this;
+            return base.WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public MP4 WithShared(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedMP4? value)
         {
             return base.WithShared(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SoundBodyImpact_Hard_ThresholdKmh
-        {
-            get => state.Get<float>("SoundBodyImpact_Hard_ThresholdKmh");
-            set => SetSoundBodyImpact_Hard_ThresholdKmh(state, value);
-        }
-        public MP4 WithSoundBodyImpact_Hard_ThresholdKmh(float value)
-        {
-            SoundBodyImpact_Hard_ThresholdKmh = value;
-            return this;
-        }
-        public float SoundBodyImpact_Soft_ThresholdKmh
-        {
-            get => state.Get<float>("SoundBodyImpact_Soft_ThresholdKmh");
-            set => SetSoundBodyImpact_Soft_ThresholdKmh(state, value);
-        }
-        public MP4 WithSoundBodyImpact_Soft_ThresholdKmh(float value)
-        {
-            SoundBodyImpact_Soft_ThresholdKmh = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet>("SoundEvents");
-            set => SetSoundEvents(state, value);
-        }
-        public MP4 WithSoundEvents(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value)
-        {
-            SoundEvents = value;
-            return this;
-        }
-        public Vec3 SoundImpactWheelBackPos
-        {
-            get => state.Get<Vec3>("SoundImpactWheelBackPos");
-            set => SetSoundImpactWheelBackPos(state, value);
-        }
-        public MP4 WithSoundImpactWheelBackPos(Vec3 value)
-        {
-            SoundImpactWheelBackPos = value;
-            return this;
-        }
-        public Vec3 SoundImpactWheelFrontPos
-        {
-            get => state.Get<Vec3>("SoundImpactWheelFrontPos");
-            set => SetSoundImpactWheelFrontPos(state, value);
-        }
-        public MP4 WithSoundImpactWheelFrontPos(Vec3 value)
-        {
-            SoundImpactWheelFrontPos = value;
-            return this;
-        }
-        public float SoundWheelImpact_Hard_ThresholdKmh
-        {
-            get => state.Get<float>("SoundWheelImpact_Hard_ThresholdKmh");
-            set => SetSoundWheelImpact_Hard_ThresholdKmh(state, value);
-        }
-        public MP4 WithSoundWheelImpact_Hard_ThresholdKmh(float value)
-        {
-            SoundWheelImpact_Hard_ThresholdKmh = value;
-            return this;
-        }
-        public float SoundWheelImpact_Soft_ThresholdKmh
-        {
-            get => state.Get<float>("SoundWheelImpact_Soft_ThresholdKmh");
-            set => SetSoundWheelImpact_Soft_ThresholdKmh(state, value);
-        }
-        public MP4 WithSoundWheelImpact_Soft_ThresholdKmh(float value)
-        {
-            SoundWheelImpact_Soft_ThresholdKmh = value;
-            return this;
-        }
-        public int SurfVersion
-        {
-            get => state.Get<int>("SurfVersion");
-            set => SetSurfVersion(state, value);
-        }
-        public MP4 WithSurfVersion(int value)
-        {
-            SurfVersion = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelMP4 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(GameVersion.MP4);
-            var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(GameVersion.MP4);
-            node.Chunks.Add(chunk090E7000);
-            var chunk090E7001 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(GameVersion.MP4);
-            node.Chunks.Add(chunk090E7001);
-            var chunk090E7002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(GameVersion.MP4);
-            node.Chunks.Add(chunk090E7002);
+            var node = CPlugVehicleVisModelBuilder.CreateRecipe2(GameVersion.MP4);
             state.Apply(node, GameVersion.MP4);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 9 }) throw new InvalidOperationException("Required MP4 chunk Chunk090E7000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001>() is not { Version: 6 }) throw new InvalidOperationException("Required MP4 chunk Chunk090E7001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002>() is not { Version: 5 }) throw new InvalidOperationException("Required MP4 chunk Chunk090E7002 is missing or has an incompatible version.");
+            CPlugVehicleVisModelBuilder.ValidateRecipe2(node, GameVersion.MP4);
             NodeBuilderValidation.Validate(node, GameVersion.MP4);
+            CPlugVehicleVisModelBuilder.ValidateRequiredMembers(node, GameVersion.MP4);
             ValidateNode(node);
             return node;
         }
         partial void CustomizeNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
         partial void ValidateNode(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel node);
     }
-    public partial class TM2020 : CPlugVehicleVisModelBuilderBase<TM2020>
+    public partial class TM2020 : CPlugVehicleVisModelBuilderMembers2<TM2020>
     {
         internal TM2020(NodeBuilderState<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel> state) : base(state) { }
-        public global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? AudioEnvironmentForFirstPerson
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?>("AudioEnvironmentForFirstPerson");
-            set => SetAudioEnvironmentForFirstPerson(state, value);
-        }
-        public TM2020 WithAudioEnvironmentForFirstPerson(global::GBX.NET.Engines.Plug.CPlugAudioEnvironment? value)
-        {
-            AudioEnvironmentForFirstPerson = value;
-            return this;
-        }
-        public TM2020 WithAudioEnvironmentForFirstPersonReference(NodeRef<global::GBX.NET.Engines.Plug.CPlugAudioEnvironment> value)
-        {
-            if (value is null) throw new ArgumentNullException(nameof(value));
-            SetAudioEnvironmentForFirstPersonReference(state, value);
-            return this;
-        }
         public TM2020 WithAudioEnvironmentForFirstPerson(global::GBX.NET.Interfaces.Plug.IPlugAudioEnvironmentTM2020? value)
         {
-            return WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
-        }
-        public float DefaultSparkleRelSpeedThreshold
-        {
-            get => state.Get<float>("DefaultSparkleRelSpeedThreshold");
-            set => SetDefaultSparkleRelSpeedThreshold(state, value);
-        }
-        public TM2020 WithDefaultSparkleRelSpeedThreshold(float value)
-        {
-            DefaultSparkleRelSpeedThreshold = value;
-            return this;
-        }
-        public float DefaultSparkleScale
-        {
-            get => state.Get<float>("DefaultSparkleScale");
-            set => SetDefaultSparkleScale(state, value);
-        }
-        public TM2020 WithDefaultSparkleScale(float value)
-        {
-            DefaultSparkleScale = value;
-            return this;
+            return base.WithAudioEnvironmentForFirstPerson(value is null ? (global::GBX.NET.Engines.Plug.CPlugAudioEnvironment?)null : value is global::GBX.NET.Engines.Plug.CPlugAudioEnvironment node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
         public global::GBX.NET.Engines.Plug.CPlugFxSystem? FxSystem
         {
@@ -495,116 +411,19 @@ public partial class CPlugVehicleVisModelBuilder : CPlugVehicleVisModelBuilderBa
         {
             return WithFxSystem(value is null ? (global::GBX.NET.Engines.Plug.CPlugFxSystem?)null : value is global::GBX.NET.Engines.Plug.CPlugFxSystem node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel GeomModel
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel>("GeomModel");
-            set => SetGeomModel(state, value);
-        }
-        public TM2020 WithGeomModel(global::GBX.NET.Engines.Plug.CPlugVehicleVisGeomModel value)
-        {
-            GeomModel = value;
-            return this;
-        }
         public TM2020 WithShared(global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelSharedTM2020? value)
         {
             return base.WithShared(value is null ? (global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared?)null : value is global::GBX.NET.Engines.Plug.CPlugVehicleVisModelShared node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value)));
         }
-        public float SoundBodyImpact_Hard_ThresholdKmh
-        {
-            get => state.Get<float>("SoundBodyImpact_Hard_ThresholdKmh");
-            set => SetSoundBodyImpact_Hard_ThresholdKmh(state, value);
-        }
-        public TM2020 WithSoundBodyImpact_Hard_ThresholdKmh(float value)
-        {
-            SoundBodyImpact_Hard_ThresholdKmh = value;
-            return this;
-        }
-        public float SoundBodyImpact_Soft_ThresholdKmh
-        {
-            get => state.Get<float>("SoundBodyImpact_Soft_ThresholdKmh");
-            set => SetSoundBodyImpact_Soft_ThresholdKmh(state, value);
-        }
-        public TM2020 WithSoundBodyImpact_Soft_ThresholdKmh(float value)
-        {
-            SoundBodyImpact_Soft_ThresholdKmh = value;
-            return this;
-        }
-        public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet SoundEvents
-        {
-            get => state.Get<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet>("SoundEvents");
-            set => SetSoundEvents(state, value);
-        }
-        public TM2020 WithSoundEvents(global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.SoundEventSet value)
-        {
-            SoundEvents = value;
-            return this;
-        }
-        public Vec3 SoundImpactWheelBackPos
-        {
-            get => state.Get<Vec3>("SoundImpactWheelBackPos");
-            set => SetSoundImpactWheelBackPos(state, value);
-        }
-        public TM2020 WithSoundImpactWheelBackPos(Vec3 value)
-        {
-            SoundImpactWheelBackPos = value;
-            return this;
-        }
-        public Vec3 SoundImpactWheelFrontPos
-        {
-            get => state.Get<Vec3>("SoundImpactWheelFrontPos");
-            set => SetSoundImpactWheelFrontPos(state, value);
-        }
-        public TM2020 WithSoundImpactWheelFrontPos(Vec3 value)
-        {
-            SoundImpactWheelFrontPos = value;
-            return this;
-        }
-        public float SoundWheelImpact_Hard_ThresholdKmh
-        {
-            get => state.Get<float>("SoundWheelImpact_Hard_ThresholdKmh");
-            set => SetSoundWheelImpact_Hard_ThresholdKmh(state, value);
-        }
-        public TM2020 WithSoundWheelImpact_Hard_ThresholdKmh(float value)
-        {
-            SoundWheelImpact_Hard_ThresholdKmh = value;
-            return this;
-        }
-        public float SoundWheelImpact_Soft_ThresholdKmh
-        {
-            get => state.Get<float>("SoundWheelImpact_Soft_ThresholdKmh");
-            set => SetSoundWheelImpact_Soft_ThresholdKmh(state, value);
-        }
-        public TM2020 WithSoundWheelImpact_Soft_ThresholdKmh(float value)
-        {
-            SoundWheelImpact_Soft_ThresholdKmh = value;
-            return this;
-        }
-        public int SurfVersion
-        {
-            get => state.Get<int>("SurfVersion");
-            set => SetSurfVersion(state, value);
-        }
-        public TM2020 WithSurfVersion(int value)
-        {
-            SurfVersion = value;
-            return this;
-        }
         public global::GBX.NET.Interfaces.Plug.IPlugVehicleVisModelTM2020 BuildInterface() => Build();
         public global::GBX.NET.Engines.Plug.CPlugVehicleVisModel Build()
         {
-            var node = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel(GameVersion.TM2020);
-            var chunk090E7000 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000(GameVersion.TM2020);
-            node.Chunks.Add(chunk090E7000);
-            var chunk090E7001 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001(GameVersion.TM2020);
-            node.Chunks.Add(chunk090E7001);
-            var chunk090E7002 = new global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002(GameVersion.TM2020);
-            node.Chunks.Add(chunk090E7002);
+            var node = CPlugVehicleVisModelBuilder.CreateRecipe3(GameVersion.TM2020);
             state.Apply(node, GameVersion.TM2020);
             CustomizeNode(node);
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7000>() is not { Version: 18 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E7000 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7001>() is not { Version: 10 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E7001 is missing or has an incompatible version.");
-            if (node.GetChunk<global::GBX.NET.Engines.Plug.CPlugVehicleVisModel.Chunk090E7002>() is not { Version: 5 }) throw new InvalidOperationException("Required TM2020 chunk Chunk090E7002 is missing or has an incompatible version.");
+            CPlugVehicleVisModelBuilder.ValidateRecipe3(node, GameVersion.TM2020);
             NodeBuilderValidation.Validate(node, GameVersion.TM2020);
+            CPlugVehicleVisModelBuilder.ValidateRequiredMembers(node, GameVersion.TM2020);
             ValidateNode(node);
             return node;
         }

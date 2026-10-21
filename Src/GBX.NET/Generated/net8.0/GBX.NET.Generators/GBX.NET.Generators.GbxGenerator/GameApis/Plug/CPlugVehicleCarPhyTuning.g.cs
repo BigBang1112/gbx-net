@@ -39,7 +39,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         get => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning)this).Name ?? throw new MemberNullException("Name");
         set => ((global::GBX.NET.Engines.Plug.CPlugVehiclePhyTuning)this).Name = value;
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMSX.BrakeHeatSpeedFromFBrake
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.BrakeHeatSpeedFromFBrake
     {
         get
         {
@@ -49,7 +49,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => BrakeHeatSpeedFromFBrake = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMSX.WaterSplashFromSpeed
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMSX>.WaterSplashFromSpeed
     {
         get
         {
@@ -59,7 +59,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => WaterSplashFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMNESWC.BrakeHeatSpeedFromFBrake
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.BrakeHeatSpeedFromFBrake
     {
         get
         {
@@ -69,7 +69,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => BrakeHeatSpeedFromFBrake = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMNESWC.WaterSplashFromSpeed
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers7<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMNESWC>.WaterSplashFromSpeed
     {
         get
         {
@@ -79,7 +79,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => WaterSplashFromSpeed = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningVSK5.BrakeHeatSpeedFromFBrake
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealVSK5>.BrakeHeatSpeedFromFBrake
     {
         get
         {
@@ -89,7 +89,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => BrakeHeatSpeedFromFBrake = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMF.BrakeHeatSpeedFromFBrake
+    global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers8<global::GBX.NET.Interfaces.Function.IFuncKeysRealTMF>.BrakeHeatSpeedFromFBrake
     {
         get
         {
@@ -99,17 +99,17 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => BrakeHeatSpeedFromFBrake = value is null ? null : value is global::GBX.NET.Engines.Function.CFuncKeysReal node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMT.CameraModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.CameraModels
     {
-        get => CameraModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>(() => CameraModels, static node => { if (node is null) throw new MemberNullException("CameraModels"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CameraModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>(GetCameraModelsBuilderReferences, GameVersion.TMT, true, "CameraModels");
+        set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMT.CameraModels_Console
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.CameraModels_Console
     {
-        get => CameraModels_Console is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>(() => CameraModels_Console, static node => { if (node is null) throw new MemberNullException("CameraModels_Console"); NodeBuilderValidation.Validate(node, GameVersion.TMT); return node; });
-        set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CameraModels_Console is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>(GetCameraModels_ConsoleBuilderReferences, GameVersion.TMT, true, "CameraModels_Console");
+        set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT>(value, false));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTMT.Materials
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTMT, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTMT>.Materials
     {
         get
         {
@@ -119,7 +119,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => Materials = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.CamModelIronSight
+    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>.CamModelIronSight
     {
         get
         {
@@ -129,7 +129,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => CamModelIronSight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.CamModelRear
+    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>.CamModelRear
     {
         get
         {
@@ -139,17 +139,17 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => CamModelRear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.CameraModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.CameraModels
     {
-        get => CameraModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>(() => CameraModels, static node => { if (node is null) throw new MemberNullException("CameraModels"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CameraModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>(GetCameraModelsBuilderReferences, GameVersion.MP4, true, "CameraModels");
+        set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.CameraModels_Console
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.CameraModels_Console
     {
-        get => CameraModels_Console is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>(() => CameraModels_Console, static node => { if (node is null) throw new MemberNullException("CameraModels_Console"); NodeBuilderValidation.Validate(node, GameVersion.MP4); return node; });
-        set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CameraModels_Console is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>(GetCameraModels_ConsoleBuilderReferences, GameVersion.MP4, true, "CameraModels_Console");
+        set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.GearBox
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>.GearBox
     {
         get
         {
@@ -159,7 +159,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => GearBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.Materials
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferMP4>.Materials
     {
         get
         {
@@ -169,7 +169,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => Materials = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMP4.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxMP4, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeMP4>.Shape
     {
         get
         {
@@ -179,7 +179,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.CamModelIronSight
+    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.CamModelIronSight
     {
         get
         {
@@ -189,7 +189,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => CamModelIronSight = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.CamModelRear
+    global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.CamModelRear
     {
         get
         {
@@ -199,17 +199,17 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => CamModelRear = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.CameraModels
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.CameraModels
     {
-        get => CameraModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(() => CameraModels, static node => { if (node is null) throw new MemberNullException("CameraModels"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CameraModels is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(GetCameraModelsBuilderReferences, GameVersion.TM2020, true, "CameraModels");
+        set => CameraModels = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(value, false));
     }
-    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.CameraModels_Console
+    IReadOnlyList<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.CameraModels_Console
     {
-        get => CameraModels_Console is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(() => CameraModels_Console, static node => { if (node is null) throw new MemberNullException("CameraModels_Console"); NodeBuilderValidation.Validate(node, GameVersion.TM2020); return node; });
-        set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(value.Select(static item => item is global::GBX.NET.Engines.Plug.CPlugCamControlModel node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value))));
+        get => CameraModels_Console is null ? null : new ScopedNodeList<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(GetCameraModels_ConsoleBuilderReferences, GameVersion.TM2020, true, "CameraModels_Console");
+        set => CameraModels_Console = value is null ? null : new NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>(NodeBuilderReferences.ToNodes<global::GBX.NET.Engines.Plug.CPlugCamControlModel, global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020>(value, false));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.GearBox
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.GearBox
     {
         get
         {
@@ -219,7 +219,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => GearBox = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleGearBox node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.Materials
+    global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers11<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.MwFoundations.IMwRefBufferTM2020>.Materials
     {
         get
         {
@@ -229,7 +229,7 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => Materials = value is null ? null : value is global::GBX.NET.Engines.MwFoundations.CMwRefBuffer node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
-    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningTM2020.Shape
+    global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020? global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyTuningMembers2<global::GBX.NET.Interfaces.Plug.IPlugCamControlModelTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleGearBoxTM2020, global::GBX.NET.Interfaces.Plug.IPlugVehicleCarPhyShapeTM2020>.Shape
     {
         get
         {
@@ -239,4 +239,6 @@ public partial class CPlugVehicleCarPhyTuning : global::GBX.NET.Interfaces.Plug.
         }
         set => Shape = value is null ? null : value is global::GBX.NET.Engines.Plug.CPlugVehicleCarPhyShape node ? node : throw new ArgumentException("A GBX.NET node is required.", nameof(value));
     }
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModelsBuilderReferences() => CameraModels;
+    private NodeRefList<global::GBX.NET.Engines.Plug.CPlugCamControlModel>? GetCameraModels_ConsoleBuilderReferences() => CameraModels_Console;
 }
